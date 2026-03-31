@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets • Fak'ugesi Festival 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; cursor: none; }
+        
+        #custom-cursor { width: 12px; height: 12px; background: #C8FF00; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
+        
+        nav { position: sticky; top: 0; z-index: 600; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links a { font-size: 12px; color: rgba(255, 255, 255, 0.65); text-decoration: none; letter-spacing: 0.04em; padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
+        
+        .hero { position: relative; min-height: 380px; background: #060614; display: flex; align-items: flex-end; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a2a, #1a1a3a); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(4,4,20,0.8), rgba(4,4,20,0.4)); }
+        .hero-signia { position: absolute; bottom: 30px; right: 36px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; }
+        .signia-text { background: #fff; padding: 10px 16px 8px; text-align: center; }
+        .signia-text .s1 { font-weight: 900; font-size: 24px; color: #111; line-height: 1; }
+        .signia-text .s2 { font-size: 10px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 3px; margin-top: 3px; }
+        .hero-content { position: relative; z-index: 5; padding: 40px; max-width: 700px; }
+        .hero-eyebrow { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
+        .hero-title { font-weight: 900; font-size: clamp(36px, 6vw, 70px); color: #fff; line-height: 1; }
+        
+        /* Tickets Section with Peeling Effect */
+        .tickets-section { background: #111; padding: 72px 56px; }
+        .tickets-container { max-width: 1200px; margin: 0 auto; }
+        .section-title { color: #fff; font-size: 42px; font-weight: 900; margin-bottom: 48px; letter-spacing: -0.02em; }
+        
+        /* Peeling Ticket - from top left corner */
+        .peel-ticket {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2a, #0f0f1a);
+            border: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 32px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        /* Peeling effect - top left corner peel */
+        .peel-ticket .ticket-cover {
+            padding: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: top left;
+        }
+        
+        /* Peeling corner effect */
+        .peel-ticket .ticket-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(200,255,0,0.3) 0%, transparent 70%);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            pointer-events: none;
+            transition: all 0.4s;
+        }
+        
+        .peel-ticket:hover .ticket-cover::before {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(200,255,0,0.5) 0%, transparent 70%);
+        }
+        
+        .peel-ticket.peeled .ticket-cover {
+            transform: rotate(-2deg) translateX(-8px) translateY(-8px);
+            box-shadow: -10px 10px 20px rgba(0,0,0,0.3);
+            opacity: 0.95;
+        }
+        
+        .peel-ticket.peeled .ticket-cover::before {
+            opacity: 0;
+        }
+        
+        /* Peeling curl effect */
+        .peel-ticket.peeled .ticket-cover::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #C8FF00, #ffaa00);
+            transform: rotate(45deg);
+            border-radius: 0 0 20px 0;
+            opacity: 0.6;
+        }
+        
+        .ticket-info h3 { color: #fff; font-size: 28px; margin-bottom: 8px; }
+        .ticket-info p { color: rgba(255,255,255,0.5); font-size: 13px; }
+        .ticket-price .price { font-size: 32px; font-weight: 900; color: #C8FF00; }
+        .ticket-price .student { font-size: 12px; color: rgba(255,255,255,0.4); }
+        
+        .ticket-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            padding: 0 32px;
+            border-top: none;
+        }
+        
+        .peel-ticket.peeled .ticket-details {
+            max-height: 300px;
+            padding: 24px 32px 32px;
+            border-top: 1px dashed rgba(255,255,255,0.2);
+        }
+        
+        .ticket-details ul { list-style: none; margin: 16px 0; }
+        .ticket-details li { color: rgba(255,255,255,0.7); font-size: 13px; padding: 6px 0; padding-left: 24px; position: relative; }
+        .ticket-details li::before { content: '⚡'; position: absolute; left: 0; color: #C8FF00; }
+        .ticket-btn { display: inline-block; padding: 12px 28px; background: #C8FF00; color: #111; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: transform 0.2s; }
+        .ticket-btn:hover { transform: translateX(5px); }
+        
+        .peel-hint {
+            position: absolute;
+            top: 8px;
+            left: 70px;
+            font-size: 9px;
+            color: rgba(200,255,0,0.6);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .peel-ticket:hover .peel-hint { opacity: 1; }
+        
+        footer { background: #0a0a10; padding: 48px 56px 28px; margin-top: 0; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
+        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
+        
+        @media (max-width: 768px) {
+            .tickets-section { padding: 40px 20px; }
+            .ticket-cover { flex-direction: column; text-align: center; gap: 16px; }
+            .peel-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div id="custom-cursor"></div>
+    
+    <nav>
+        <div><span style="color:rgba(255,255,255,0.35); margin-right:6px;">+</span><a href="index.html" style="color:#fff; font-weight:800;">Home</a></div>
+        <ul class="nav-links">
+            <li><a href="immersive-africa.html">Immersive Africa</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="tickets.html" class="active">Tickets</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="#" style="font-size:12px; color:#C8FF00;">fakugesi.co.za</a></div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-signia">
+            <div class="signia-text"><div class="s1">fak'<br>ugesi</div><div class="s2">TICKETS</div></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Fak'ugesi Festival 2026</div>
+            <h1 class="hero-title">Get Your<br>Festival Pass</h1>
+        </div>
+    </section>
+    
+    <section class="tickets-section">
+        <div class="tickets-container">
+            <h2 class="section-title">Choose Your Experience</h2>
+            
+            <!-- Full Pass Ticket - Peeling from top left corner -->
+            <div class="peel-ticket" id="ticket1">
+                <div class="ticket-cover" onclick="peelTicket('ticket1')">
+                    <div class="ticket-info">
+                        <h3>Full Festival Pass</h3>
+                        <p>Access to all 5 days of Fak'ugesi 2026</p>
+                    </div>
+                    <div class="ticket-price">
+                        <div class="price">R750</div>
+                        <div class="student">Student: R200</div>
+                    </div>
+                    <div class="peel-hint">↖ peel from corner</div>
+                </div>
+                <div class="ticket-details">
+                    <ul>
+                        <li>All panels & workshops (5 days)</li>
+                        <li>Expo & showcases access</li>
+                        <li>Immersive Africa dome screenings</li>
+                        <li>Live performances & music events</li>
+                        <li>Awards ceremony access</li>
+                        <li>Networking mixer invitation</li>
+                    </ul>
+                    <a href="#" class="ticket-btn">BUY FULL PASS →</a>
+                </div>
+            </div>
+            
+            <!-- Day Pass Ticket -->
+            <div class="peel-ticket" id="ticket2">
+                <div class="ticket-cover" onclick="peelTicket('ticket2')">
+                    <div class="ticket-info">
+                        <h3>Day Pass</h3>
+                        <p>Choose any single festival day</p>
+                    </div>
+                    <div class="ticket-price">
+                        <div class="price">R340</div>
+                        <div class="student">Student: R135</div>
+                    </div>
+                    <div class="peel-hint">↖ peel from corner</div>
+                </div>
+                <div class="ticket-details">
+                    <ul>
+                        <li>Full access on your chosen day</li>
+                        <li>All panels & workshops that day</li>
+                        <li>Expo & showcase access</li>
+                        <li>Immersive Africa screenings</li>
+                        <li>Day-specific performances</li>
+                    </ul>
+                    <a href="#" class="ticket-btn">BUY DAY PASS →</a>
+                </div>
+            </div>
+            
+            <!-- Industry Pass Ticket -->
+            <div class="peel-ticket" id="ticket3">
+                <div class="ticket-cover" onclick="peelTicket('ticket3')">
+                    <div class="ticket-info">
+                        <h3>Industry Pass</h3>
+                        <p>Premium access for professionals</p>
+                    </div>
+                    <div class="ticket-price">
+                        <div class="price">R3,500</div>
+                        <div class="student">VIP Access</div>
+                    </div>
+                    <div class="peel-hint">↖ peel from corner</div>
+                </div>
+                <div class="ticket-details">
+                    <ul>
+                        <li>All Full Pass benefits</li>
+                        <li>Exclusive industry networking sessions</li>
+                        <li>Invitation to Awards ceremony & gala</li>
+                        <li>Priority seating at keynotes</li>
+                        <li>VIP lounge access</li>
+                        <li>Curated industry dinners</li>
+                    </ul>
+                    <a href="#" class="ticket-btn">ENQUIRE NOW →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-grid">
+            <div><div class="footer-brand">fakʼugesi</div><p style="font-size:13px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
+            <div><strong>Festival</strong><a href="programme.html">Programme</a><a href="tickets.html">Tickets</a></div>
+            <div><strong>Community</strong><a href="awards.html">Awards</a><a href="about.html">About</a></div>
+            <div><strong>Connect</strong><a href="#">Instagram</a><a href="#">X</a></div>
+        </div>
+    </footer>
+    
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, .peel-ticket').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+        });
+        
+        function peelTicket(ticketId) {
+            const ticket = document.getElementById(ticketId);
+            // Close other tickets
+            document.querySelectorAll('.peel-ticket').forEach(t => {
+                if (t.id !== ticketId) t.classList.remove('peeled');
+            });
+            // Toggle current ticket
+            ticket.classList.toggle('peeled');
+        }
+        
+        window.peelTicket = peelTicket;
+    </script>
+</body>
+</html>

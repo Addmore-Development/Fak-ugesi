@@ -1,0 +1,20 @@
+{
+  "name": "fak-ugesi-frontend",
+  "version": "1.0.0",
+  "description": "Fak'ugesi Festival Frontend - African Digital & Innovation Festival",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Frontend is served by the main server.js'",
+    "dev": "echo 'Run npm start from the root folder'"
+  },
+  "keywords": [
+    "fakugesi",
+    "festival",
+    "africa",
+    "digital",
+    "art",
+    "frontend"
+  ],
+  "author": "Fak'ugesi Festival",
+  "license": "MIT"
+}

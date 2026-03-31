@@ -1,0 +1,40 @@
+/* Additional global styles */
+.corner-decoration {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 5;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.corner-decoration::before {
+    width: 1px;
+    height: 100%;
+}
+
+.corner-decoration::after {
+    width: 100%;
+    height: 1px;
+}
+
+.corner-tl { top: 15px; left: 15px; }
+.corner-tl::before { left: 0; }
+.corner-tl::after { top: 0; }
+
+.corner-tr { top: 15px; right: 15px; }
+.corner-tr::before { right: 0; }
+.corner-tr::after { top: 0; }
+
+.corner-bl { bottom: 15px; left: 15px; }
+.corner-bl::before { left: 0; }
+.corner-bl::after { bottom: 0; }
+
+.corner-br { bottom: 15px; right: 15px; }
+.corner-br::before { right: 0; }
+.corner-br::after { bottom: 0; }

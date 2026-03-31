@@ -1,0 +1,341 @@
+# ============================================
+# FAK'UGESI FESTIVAL - MAIN .gitignore
+# ============================================
+
+# ==================== DEPENDENCIES ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ==================== ENVIRONMENT VARIABLES ====================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ==================== DATABASE ====================
+database/*.sqlite
+database/*.sqlite-journal
+database/*.db
+database/*.db-journal
+*.sqlite
+*.sqlite3
+*.db
+
+# ==================== UPLOADS ====================
+uploads/
+uploads/*
+!uploads/.gitkeep
+public/uploads/
+public/uploads/*
+
+# ==================== LOGS ====================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+access.log
+error.log
+app.log
+combined.log
+
+# ==================== OS FILES ====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+
+# ==================== IDE FILES ====================
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+# ==================== EDITOR CONFIG ====================
+*.sublime-project
+*.sublime-workspace
+.sublime/
+*.sublime-*
+
+# ==================== COMPILED FILES ====================
+*.class
+*.jar
+*.war
+*.ear
+*.pyc
+*.pyo
+__pycache__/
+*.psd
+*.ai
+*.tmp
+*.cache
+
+# ==================== BUILD FILES ====================
+dist/
+build/
+out/
+*.min.js
+*.min.css
+*.bundle.js
+*.chunk.js
+
+# ==================== TEST COVERAGE ====================
+coverage/
+.nyc_output/
+*.lcov
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# ==================== BACKUP FILES ====================
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.save
+*.crdownload
+
+# ==================== SECURITY ====================
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+secrets/
+secrets.json
+credentials.json
+*.secret
+.env.production
+
+# ==================== TEMP FILES ====================
+tmp/
+temp/
+.tmp/
+.temp/
+*.swp
+*.swo
+*~
+*.pid
+*.seed
+*.pid.lock
+
+# ==================== PROJECT SPECIFIC ====================
+# Uploaded award submissions
+uploads/submissions/
+uploads/temp/
+
+# Database migrations backup
+database/migrations/*.bak
+database/backup/
+
+# Generated thumbnails
+public/images/thumbnails/
+public/images/.generated/
+
+# Session files
+sessions/
+session-store/
+
+# Reports
+reports/
+test-reports/
+
+# Debug files
+debug.log
+chrome-user-data/
+
+# ==================== MACOS ====================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ==================== WINDOWS ====================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ==================== LINUX ====================
+*~
+.directory
+*.swp
+*.swo
+*.swn
+*.swx
+*.un~
+session.state
+
+# ==================== DOCKER ====================
+.docker/
+docker-compose.override.yml
+*.dockerignore
+docker-compose.*.yml
+!docker-compose.yml
+
+# ==================== NODE SPECIFIC ====================
+lib-cov/
+lcov.info
+*.pid
+*.gz
+*.seed
+*.cpuprofile
+*.heapdump
+.eslintcache
+.stylelintcache
+.tern-port
+.node_repl_history
+.nyc_output/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.nuxt-dist/
+.output/
+.serverless/
+.vercel/
+.netlify/
+
+# ==================== FRONTEND SPECIFIC ====================
+frontend/.env
+frontend/.env.local
+frontend/build/
+frontend/dist/
+frontend/.cache/
+frontend/node_modules/
+
+# ==================== BACKEND SPECIFIC ====================
+backend/node_modules/
+backend/.env
+backend/.env.local
+backend/temp/
+backend/coverage/
+
+# ==================== VISUAL STUDIO CODE ====================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+*.vsix
+
+# ==================== INTELLIJ IDEA ====================
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+.idea/
+.idea_modules/
+
+# ==================== SUBLIME TEXT ====================
+.sublime-project
+.sublime-workspace
+.sublime/
+
+# ==================== ATOM ====================
+.atom/
+.apm/
+.atom-build.json
+.atom-snippets.cson
+
+# ==================== BRACKETS ====================
+*.brackets.json
+.brackets.json
+
+# ==================== VIM ====================
+*.swp
+*.swo
+*.swn
+*.un~
+Session.vim
+.viminfo
+
+# ==================== EMACS ====================
+*~
+\#*\#
+.\#*
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==================== JETBRAINS ====================
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+out/
+.idea/
+.idea_modules/
+
+# ==================== WEBPACK ====================
+webpack-stats.json
+webpack-stats-dev.json
+webpack-stats-prod.json
+
+# ==================== GIT ====================
+*.orig
+*.rej
+*.patch
+*.diff
+.git/config.local
+.git/index.lock
+
+# ==================== MISC ====================
+*.log
+*.sql
+*.sql.gz
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.vhd
+*.vmdk

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fak'ugesi African Digital & Innovation Festival 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; overflow-x: hidden; cursor: none; }
+        
+        /* Custom Cursor */
+        #custom-cursor {
+            width: 12px; height: 12px; background: #C8FF00; border-radius: 50%;
+            position: fixed; top: 0; left: 0; pointer-events: none;
+            z-index: 99999; transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        }
+        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
+        
+        /* Navigation */
+        nav {
+            position: sticky; top: 0; z-index: 600;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 28px; height: 52px;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
+        }
+        .nav-links { display: flex; gap: 0; list-style: none; }
+        .nav-links a {
+            font-size: 12px; color: rgba(255, 255, 255, 0.65);
+            text-decoration: none; letter-spacing: 0.04em;
+            padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
+        
+        /* Hero with Lightning */
+        .hero {
+            position: relative; height: calc(100vh - 52px); min-height: 580px;
+            background: #060614; overflow: hidden; display: flex; align-items: flex-end;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3a 100%);
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(105deg, rgba(4, 4, 20, 0.7) 0%, rgba(4, 4, 20, 0.4) 100%);
+        }
+        
+        /* Lightning Container - 7 bolts, 7 colors */
+        .lightning-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+        .lightning-bolt { position: absolute; opacity: 0; }
+        @keyframes lightningStrike {
+            0% { opacity: 0; transform: scale(0.5); }
+            10% { opacity: 1; transform: scale(1); }
+            30% { opacity: 0.8; transform: scale(1.1); }
+            70% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        @keyframes thunderFlash {
+            0% { opacity: 0; } 5% { opacity: 0.95; } 25% { opacity: 0.5; }
+            60% { opacity: 0.2; } 100% { opacity: 0; }
+        }
+        .thunder-flash { position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; z-index: 3; }
+        
+        /* Signia - like third image */
+        .hero-signia {
+            position: absolute; bottom: 40px; right: 36px; z-index: 10;
+            display: flex; flex-direction: column; align-items: flex-end;
+        }
+        .signia-bolt { width: 40px; height: auto; margin-bottom: 4px; }
+        .signia-text { background: #fff; padding: 12px 18px 10px; text-align: center; }
+        .signia-text .s1 { font-weight: 900; font-size: 28px; color: #111; letter-spacing: -0.02em; line-height: 1; }
+        .signia-text .s2 { font-size: 11px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 4px; margin-top: 4px; }
+        
+        .hero-content { position: relative; z-index: 5; padding: 0 40px 52px; max-width: 800px; }
+        .hero-eyebrow { font-size: 11px; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+        .hero-title { font-weight: 900; font-size: clamp(52px, 8vw, 100px); line-height: 0.93; color: #fff; letter-spacing: -0.03em; }
+        .hero-title span { background: linear-gradient(135deg, #C8FF00, #ff6600); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        
+        /* Theme Section - exactly like first image */
+        .theme-section {
+            display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
+        }
+        .theme-left {
+            background: #1b2244; padding: 48px 40px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .theme-label { font-size: 11px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+        .theme-year { font-size: 14px; color: #C8FF00; font-weight: 700; margin-bottom: 8px; }
+        .theme-title { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 24px; }
+        .theme-desc { font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.7); margin-bottom: 32px; max-width: 90%; }
+        .theme-buttons { display: flex; gap: 16px; }
+        .btn-primary { padding: 12px 28px; background: #C8FF00; color: #111; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+        .btn-secondary { padding: 12px 28px; background: transparent; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); }
+        .theme-right { position: relative; overflow: hidden; }
+        .theme-right img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Ticker */
+        .ticker { background: #C8FF00; padding: 12px 0; overflow: hidden; white-space: nowrap; }
+        .ticker-content { display: inline-block; animation: tickerScroll 20s linear infinite; }
+        .ticker-content span { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: #111; padding: 0 24px; }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        
+        /* Footer */
+        footer { background: #0a0a10; padding: 48px 56px 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
+        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
+        .footer-col strong { display: block; font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+        .footer-col a { color: #555; text-decoration: none; font-size: 13px; display: block; margin-bottom: 8px; }
+        .footer-bottom { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #1a1a22; font-size: 11px; color: #555; }
+        
+        @media (max-width: 768px) {
+            .theme-section { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-signia { bottom: 20px; right: 20px; }
+            .hero-signia .signia-text { padding: 8px 12px; }
+            .hero-signia .signia-text .s1 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <span style="color: rgba(255,255,255,0.35); margin-right: 6px;">+</span>
+            <a href="index.html" style="color:#fff; font-weight:800; font-size:13px; text-decoration:none;">Home</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="immersive-africa.html">Immersive Africa</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="tickets.html">Tickets</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="color: rgba(255,255,255,0.35);">+</span>
+            <a href="#" style="font-size:12px; color:#C8FF00; text-decoration:none; font-weight:600;">fakugesi.co.za</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Lightning Container with 7 bolts, 7 rainbow colors -->
+        <div class="lightning-container" id="lightningContainer"></div>
+        <div class="thunder-flash" id="thunderFlash"></div>
+        
+        <!-- Signia - like third image -->
+        <div class="hero-signia">
+            <svg class="signia-bolt" viewBox="0 0 100 180" fill="none">
+                <path d="M60 5L10 90H50L40 175L90 80H55L60 5Z" fill="#C8FF00"/>
+            </svg>
+            <div class="signia-text">
+                <div class="s1">fak'<br>ugesi</div>
+                <div class="s2">FESTIVAL</div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-eyebrow">Fak'ugesi African Digital & Innovation Festival</div>
+            <h1 class="hero-title">African<br><span>Imaginaries</span></h1>
+        </div>
+    </section>
+
+    <div class="ticker">
+        <div class="ticker-content">
+            <span>Awards applications now open. Learn more →</span>
+            <span>07 — 12.10.2026</span>
+            <span>African Imaginaries 2026 Theme</span>
+            <span>Get your tickets now →</span>
+            <span>#Fakugesi2026</span>
+        </div>
+    </div>
+
+    <!-- Theme Section - exactly like first image with girl image -->
+    <section class="theme-section">
+        <div class="theme-left">
+            <div class="theme-label">2026 Theme</div>
+            <div class="theme-year">Africa's creative energy unleashed</div>
+            <h2 class="theme-title">African<br>Imaginaries</h2>
+            <p class="theme-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.</p>
+            <div class="theme-buttons">
+                <a href="programme.html" class="btn-primary">VIEW PROGRAMME</a>
+                <a href="tickets.html" class="btn-secondary">GET TICKETS</a>
+            </div>
+        </div>
+        <div class="theme-right">
+            <img src="images/girl-hero.jpg" alt="African creativity" onerror="this.src='https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80'">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">fakʼugesi</div>
+                <p style="font-size:13px; margin-top:16px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
+                <p style="font-size:13px; margin-top:10px; color:#555;">hello@fakugesi.co.za<br>+27 11 717 8156</p>
+            </div>
+            <div class="footer-col">
+                <strong>Festival</strong>
+                <a href="programme.html">Programme</a>
+                <a href="tickets.html">Tickets</a>
+                <a href="immersive-africa.html">Immersive Africa</a>
+            </div>
+            <div class="footer-col">
+                <strong>Community</strong>
+                <a href="awards.html">Awards</a>
+                <a href="about.html">Volunteers</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="footer-col">
+                <strong>Connect</strong>
+                <a href="#">Instagram</a>
+                <a href="#">X</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Fak'ugesi Festival · All Rights Reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+        });
+
+        // Lightning effect: 7 bolts, 7 rainbow colors
+        const colors = ['#ff0080', '#ff6600', '#C8FF00', '#00ffff', '#0099ff', '#9933ff', '#ff0080'];
+        const positions = [
+            { left: '20%', top: '30%', rotate: '-15deg' },
+            { left: '45%', top: '20%', rotate: '5deg' },
+            { left: '70%', top: '40%', rotate: '25deg' },
+            { left: '15%', top: '60%', rotate: '-25deg' },
+            { left: '55%', top: '70%', rotate: '10deg' },
+            { left: '85%', top: '55%', rotate: '-5deg' },
+            { left: '35%', top: '45%', rotate: '15deg' }
+        ];
+
+        function createLightningBolt(index) {
+            const bolt = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            bolt.setAttribute('viewBox', '0 0 100 180');
+            bolt.setAttribute('class', 'lightning-bolt');
+            bolt.style.position = 'absolute';
+            bolt.style.left = positions[index].left;
+            bolt.style.top = positions[index].top;
+            bolt.style.width = '80px';
+            bolt.style.height = 'auto';
+            bolt.style.transform = `translate(-50%, -50%) rotate(${positions[index].rotate})`;
+            bolt.style.filter = `drop-shadow(0 0 8px ${colors[index]})`;
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M60 5L10 90H50L40 175L90 80H55L60 5Z');
+            path.setAttribute('fill', colors[index]);
+            path.setAttribute('stroke', '#fff');
+            path.setAttribute('stroke-width', '1.5');
+            bolt.appendChild(path);
+            
+            return bolt;
+        }
+
+        function triggerLightning() {
+            const container = document.getElementById('lightningContainer');
+            const thunderFlash = document.getElementById('thunderFlash');
+            
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 7; i++) {
+                const bolt = createLightningBolt(i);
+                container.appendChild(bolt);
+                bolt.style.animation = `lightningStrike ${0.6 + i * 0.05}s ease-out forwards`;
+                bolt.style.animationDelay = `${i * 0.08}s`;
+            }
+            
+            thunderFlash.style.animation = 'thunderFlash 1.2s ease-out forwards';
+            
+            const rainbowSpray = document.createElement('div');
+            rainbowSpray.style.position = 'absolute';
+            rainbowSpray.style.inset = '0';
+            rainbowSpray.style.background = 'radial-gradient(circle at 50% 50%, #ff0080, #ff6600, #C8FF00, #00ffff, #0099ff, #9933ff)';
+            rainbowSpray.style.mixBlendMode = 'screen';
+            rainbowSpray.style.opacity = '0';
+            rainbowSpray.style.pointerEvents = 'none';
+            rainbowSpray.style.animation = 'thunderFlash 0.8s ease-out forwards';
+            container.appendChild(rainbowSpray);
+            
+            setTimeout(() => {
+                thunderFlash.style.animation = '';
+                if (rainbowSpray) rainbowSpray.remove();
+            }, 1300);
+        }
+        
+        setTimeout(triggerLightning, 300);
+        setInterval(triggerLightning, 12000);
+    </script>
+</body>
+</html>

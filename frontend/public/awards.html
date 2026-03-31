@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards • Fak'ugesi Festival 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; cursor: none; }
+        
+        #custom-cursor { width: 12px; height: 12px; background: #C8FF00; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
+        
+        nav { position: sticky; top: 0; z-index: 600; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links a { font-size: 12px; color: rgba(255, 255, 255, 0.65); text-decoration: none; letter-spacing: 0.04em; padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
+        
+        .hero { position: relative; min-height: 400px; background: #060614; display: flex; align-items: flex-end; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a2a, #1a1a3a); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(4,4,20,0.8), rgba(4,4,20,0.4)); }
+        .hero-signia { position: absolute; bottom: 30px; right: 36px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; }
+        .signia-text { background: #fff; padding: 10px 16px 8px; text-align: center; }
+        .signia-text .s1 { font-weight: 900; font-size: 24px; color: #111; line-height: 1; }
+        .signia-text .s2 { font-size: 10px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 3px; margin-top: 3px; }
+        .hero-content { position: relative; z-index: 5; padding: 40px; max-width: 700px; }
+        .hero-eyebrow { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
+        .hero-title { font-weight: 900; font-size: clamp(36px, 6vw, 70px); color: #fff; line-height: 1; }
+        
+        /* Winners Section */
+        .winners-section { padding: 64px 56px; background: #e8e8f0; }
+        .winners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+        .winners-title { font-weight: 900; font-size: clamp(32px, 5vw, 60px); color: #111; }
+        .zip-button { display: flex; align-items: center; gap: 12px; padding: 14px 32px; background: #1b2244; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.3s; }
+        .zip-button:hover { background: #C8FF00; color: #111; transform: scale(1.02); }
+        
+        /* Winners Gallery - attaches directly to website when opened */
+        .winners-gallery { display: none; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 40px; animation: fadeSlideUp 0.6s ease; }
+        .winners-gallery.active { display: grid; }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .winner-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .winner-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .winner-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .winner-info { padding: 24px; }
+        .winner-category { font-size: 10px; color: #C8FF00; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: #1b2244; display: inline-block; padding: 4px 12px; margin-bottom: 12px; }
+        .winner-title { font-weight: 800; font-size: 20px; margin-bottom: 8px; }
+        .winner-artist { font-size: 13px; color: #666; margin-bottom: 12px; }
+        .winner-desc { font-size: 13px; line-height: 1.6; color: #444; }
+        
+        /* Slideshow Modal Popup */
+        .slideshow-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; }
+        .slideshow-modal.active { display: flex; }
+        .slideshow-container { position: relative; width: 90%; max-width: 1000px; background: #111; border-radius: 12px; overflow: hidden; }
+        .slideshow-slide { display: none; padding: 40px; animation: slideFade 0.5s ease; }
+        .slideshow-slide.active { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @keyframes slideFade { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        .slideshow-slide img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; }
+        .slide-info { color: #fff; }
+        .slide-category { font-size: 11px; color: #C8FF00; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+        .slide-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+        .slide-artist { font-size: 14px; color: #C8FF00; margin-bottom: 16px; }
+        .slide-desc { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.7); }
+        .slide-nav { display: flex; justify-content: space-between; margin-top: 30px; }
+        .slide-nav button { padding: 10px 24px; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; cursor: pointer; transition: all 0.2s; }
+        .slide-nav button:hover { background: #C8FF00; color: #111; border-color: #C8FF00; }
+        .close-modal { position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: #fff; font-size: 28px; cursor: pointer; z-index: 10; }
+        .slide-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; padding-bottom: 20px; }
+        .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; }
+        .slide-dot.active { background: #C8FF00; width: 24px; border-radius: 4px; }
+        
+        footer { background: #0a0a10; padding: 48px 56px 28px; margin-top: 64px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
+        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
+        @media (max-width: 768px) { .slideshow-slide.active { grid-template-columns: 1fr; } .winners-section { padding: 40px 20px; } }
+    </style>
+</head>
+<body>
+    <div id="custom-cursor"></div>
+    
+    <nav>
+        <div><span style="color:rgba(255,255,255,0.35); margin-right:6px;">+</span><a href="index.html" style="color:#fff; font-weight:800;">Home</a></div>
+        <ul class="nav-links">
+            <li><a href="immersive-africa.html">Immersive Africa</a></li>
+            <li><a href="awards.html" class="active">Awards</a></li>
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="tickets.html">Tickets</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="#" style="font-size:12px; color:#C8FF00;">fakugesi.co.za</a></div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-signia">
+            <div class="signia-text"><div class="s1">fak'<br>ugesi</div><div class="s2">AWARDS</div></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Fak'ugesi Awards 2026</div>
+            <h1 class="hero-title">Celebrating African<br>Digital Creativity</h1>
+        </div>
+    </section>
+    
+    <section class="winners-section">
+        <div class="winners-header">
+            <h2 class="winners-title">2025 Winners</h2>
+            <button class="zip-button" id="zipBtn">⚡ VIEW WINNERS GALLERY ⚡</button>
+        </div>
+        <div class="winners-gallery" id="winnersGallery"></div>
+    </section>
+    
+    <!-- Slideshow Modal -->
+    <div class="slideshow-modal" id="slideshowModal">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <div class="slideshow-container" id="slideshowContainer"></div>
+    </div>
+    
+    <footer>
+        <div class="footer-grid">
+            <div><div class="footer-brand">fakʼugesi</div><p style="font-size:13px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
+            <div><strong>Festival</strong><a href="programme.html">Programme</a><a href="tickets.html">Tickets</a></div>
+            <div><strong>Community</strong><a href="awards.html">Awards</a><a href="about.html">About</a></div>
+            <div><strong>Connect</strong><a href="#">Instagram</a><a href="#">X</a></div>
+        </div>
+    </footer>
+    
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+        });
+        
+        // Winners data
+        const winners = [
+            { category: 'Digital Art', title: 'Unmuted: The Power of African Youth', artist: 'Jopee Dairo', country: 'Nigeria', desc: 'A striking generative art series exploring the intersection of protest culture and digital expression.', image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400' },
+            { category: 'Immersive Media', title: 'AfriVerse: Ancestral Futures', artist: 'Athanasius Johnson', country: 'South Africa', desc: 'An immersive dome experience that places African mythology at the centre of speculative futures.', image: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=400' },
+            { category: 'Interactive Design', title: 'Sankofa Interface', artist: 'Amara Diallo', country: 'Senegal', desc: 'A landmark interface design project challenging Western-centric UX paradigms.', image: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=400' },
+            { category: 'Social Impact Tech', title: 'FarmLink: AI Agricultural Intelligence', artist: 'Nadia Mwangi', country: 'Kenya', desc: 'Satellite imagery and machine learning delivering crop predictions to smallholder farmers.', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400' }
+        ];
+        
+        let currentSlide = 0;
+        let autoSlideInterval;
+        
+        // Build winners gallery
+        function buildGallery() {
+            const gallery = document.getElementById('winnersGallery');
+            gallery.innerHTML = winners.map((w, idx) => `
+                <div class="winner-card" data-index="${idx}">
+                    <img src="${w.image}" alt="${w.title}">
+                    <div class="winner-info">
+                        <div class="winner-category">${w.category}</div>
+                        <div class="winner-title">${w.title}</div>
+                        <div class="winner-artist">${w.artist} · ${w.country}</div>
+                        <div class="winner-desc">${w.desc.substring(0, 100)}...</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Add click handlers to open slideshow
+            document.querySelectorAll('.winner-card').forEach(card => {
+                card.addEventListener('click', () => openSlideshow(parseInt(card.dataset.index)));
+            });
+        }
+        
+        // Build slideshow
+        function buildSlideshow(startIndex = 0) {
+            currentSlide = startIndex;
+            const container = document.getElementById('slideshowContainer');
+            container.innerHTML = `
+                <div class="slideshow-inner" id="slideshowInner"></div>
+                <div class="slide-dots" id="slideDots"></div>
+                <div class="slide-nav">
+                    <button id="prevSlide">← PREV</button>
+                    <button id="nextSlide">NEXT →</button>
+                </div>
+            `;
+            
+            const inner = document.getElementById('slideshowInner');
+            inner.innerHTML = winners.map((w, idx) => `
+                <div class="slideshow-slide" data-slide="${idx}">
+                    <img src="${w.image}" alt="${w.title}">
+                    <div class="slide-info">
+                        <div class="slide-category">${w.category}</div>
+                        <div class="slide-title">${w.title}</div>
+                        <div class="slide-artist">${w.artist} · ${w.country}</div>
+                        <div class="slide-desc">${w.desc}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            const dotsContainer = document.getElementById('slideDots');
+            dotsContainer.innerHTML = winners.map((_, idx) => `<div class="slide-dot" data-dot="${idx}"></div>`).join('');
+            
+            updateSlide(currentSlide);
+            
+            document.getElementById('prevSlide').addEventListener('click', () => changeSlide(-1));
+            document.getElementById('nextSlide').addEventListener('click', () => changeSlide(1));
+            document.querySelectorAll('.slide-dot').forEach(dot => {
+                dot.addEventListener('click', () => changeSlide(parseInt(dot.dataset.dot) - currentSlide));
+            });
+        }
+        
+        function updateSlide(index) {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slide-dot');
+            slides.forEach((s, i) => s.classList.toggle('active', i === index));
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+        
+        function changeSlide(delta) {
+            currentSlide = (currentSlide + delta + winners.length) % winners.length;
+            updateSlide(currentSlide);
+            resetAutoSlide();
+        }
+        
+        function resetAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % winners.length;
+                updateSlide(currentSlide);
+            }, 4000);
+        }
+        
+        function openSlideshow(startIdx = 0) {
+            buildSlideshow(startIdx);
+            const modal = document.getElementById('slideshowModal');
+            modal.classList.add('active');
+            resetAutoSlide();
+        }
+        
+        // Zip button: opens gallery (attaches to website directly)
+        const zipBtn = document.getElementById('zipBtn');
+        const gallery = document.getElementById('winnersGallery');
+        let galleryActive = false;
+        
+        zipBtn.addEventListener('click', () => {
+            if (!galleryActive) {
+                buildGallery();
+                gallery.classList.add('active');
+                zipBtn.innerHTML = '⚡ HIDE WINNERS GALLERY ⚡';
+                zipBtn.style.background = '#C8FF00';
+                zipBtn.style.color = '#111';
+                galleryActive = true;
+            } else {
+                gallery.classList.remove('active');
+                zipBtn.innerHTML = '⚡ VIEW WINNERS GALLERY ⚡';
+                zipBtn.style.background = '#1b2244';
+                zipBtn.style.color = '#fff';
+                galleryActive = false;
+                if (autoSlideInterval) clearInterval(autoSlideInterval);
+            }
+        });
+        
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('slideshowModal').classList.remove('active');
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+        });
+        
+        document.getElementById('slideshowModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('slideshowModal')) {
+                document.getElementById('slideshowModal').classList.remove('active');
+                if (autoSlideInterval) clearInterval(autoSlideInterval);
+            }
+        });
+    </script>
+</body>
+</html>

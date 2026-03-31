@@ -1,0 +1,247 @@
+# ============================================
+# FAK'UGESI FESTIVAL - BACKEND .gitignore
+# ============================================
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+database/*.sqlite
+database/*.sqlite-journal
+database/*.db
+database/*.db-journal
+!database/.gitkeep
+!database/migrations/*.sql
+
+# Database backups
+database/backup/
+database/migrations/*.bak
+*.sql.gz
+*.sql.zip
+
+# Uploads
+uploads/
+uploads/*
+!uploads/.gitkeep
+uploads/submissions/
+uploads/temp/
+uploads/*.jpg
+uploads/*.png
+uploads/*.pdf
+uploads/*.zip
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+access.log
+error.log
+combined.log
+debug.log
+
+# Secrets
+secrets/
+secrets.json
+credentials.json
+*.key
+*.pem
+*.crt
+*.csr
+*.p12
+*.pfx
+*.secret
+*.token
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.iml
+*.ipr
+*.iws
+
+# Test coverage
+coverage/
+.nyc_output/
+*.lcov
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Temp files
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.save
+
+# Sessions
+sessions/
+session-store/
+*.session
+
+# Redis
+dump.rdb
+appendonly.aof
+
+# MongoDB
+mongodb-data/
+
+# Docker
+.docker/
+*.dockerignore
+docker-compose.override.yml
+
+# PM2
+.pm2/
+pm2-*.log
+
+# Nodemon
+nodemon.json
+!nodemon.sample.json
+
+# Environment example
+.env.example
+!.env.example
+
+# Certificates
+*.cert
+*.key
+*.pem
+*.crt
+*.csr
+
+# Package files
+*.tgz
+*.tar.gz
+*.zip
+
+# Redis data
+*.rdb
+*.aof
+
+# PostgreSQL
+*.pgdata
+pg_data/
+
+# MySQL
+*.sql
+!*.sql
+*.sql.gz
+
+# API documentation
+apidoc/
+docs/api/
+
+# Coverage reports
+lcov.info
+.nyc_output/
+coverage.xml
+
+# Profiling
+*.cpuprofile
+*.heapsnapshot
+*.heapprofile
+
+# Process files
+*.pid
+*.seed
+*.pid.lock
+
+# Debug logs
+debug-*.log
+
+# Generated types
+types/generated/
+!types/generated/.gitkeep
+
+# Swagger
+swagger.json
+swagger.yaml
+!swagger.yaml
+
+# GraphQL
+schema.graphql
+!schema.graphql
+
+# Code coverage
+.c8/
+.nyc_output/
+coverage/
+
+# .env files
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Upload directories
+public/uploads/
+storage/uploads/
+
+# Keep upload folder structure
+!uploads/.gitkeep
+!public/uploads/.gitkeep
+
+# Migration files backups
+database/migrations/backup/
+database/seeds/backup/
+
+# Redis dumps
+dump.rdb
+appendonly.aof
+
+# Memcached
+memcached.pid
+
+# Elasticsearch
+elasticsearch-data/
+
+# Docker volumes
+volumes/

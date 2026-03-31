@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersive Africa • Fak'ugesi Festival 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; cursor: none; }
+        
+        #custom-cursor { width: 12px; height: 12px; background: #C8FF00; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
+        
+        nav { position: sticky; top: 0; z-index: 600; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links a { font-size: 12px; color: rgba(255, 255, 255, 0.65); text-decoration: none; letter-spacing: 0.04em; padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
+        
+        .hero { position: relative; min-height: 500px; background: #060614; display: flex; align-items: flex-end; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a2a, #1a1a3a); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(4,4,20,0.8), rgba(4,4,20,0.4)); }
+        .hero-signia { position: absolute; bottom: 30px; right: 36px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; }
+        .signia-text { background: #fff; padding: 10px 16px 8px; text-align: center; }
+        .signia-text .s1 { font-weight: 900; font-size: 24px; color: #111; line-height: 1; }
+        .signia-text .s2 { font-size: 10px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 3px; margin-top: 3px; }
+        .hero-content { position: relative; z-index: 5; padding: 40px; max-width: 700px; }
+        .hero-eyebrow { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
+        .hero-title { font-weight: 900; font-size: clamp(42px, 7vw, 80px); color: #fff; line-height: 1; }
+        .hero-title span { color: #C8FF00; }
+        
+        .feature-section { padding: 72px 56px; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 48px; font-weight: 900; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .section-desc { font-size: 16px; line-height: 1.7; color: #555; max-width: 700px; margin-bottom: 48px; }
+        
+        .dome-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 80px; align-items: center; }
+        .dome-showcase img { width: 100%; border-radius: 12px; }
+        .dome-info h3 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+        .dome-info p { line-height: 1.7; color: #555; margin-bottom: 24px; }
+        .btn-primary { padding: 12px 28px; background: #1b2244; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-block; }
+        
+        .partner-section { background: #e8e8f0; padding: 72px 56px; }
+        .partner-logos { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 48px; }
+        .partner-logo { background: #fff; padding: 24px 32px; border-radius: 8px; min-width: 160px; text-align: center; font-weight: 700; color: #1b2244; }
+        
+        footer { background: #0a0a10; padding: 48px 56px 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
+        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
+        
+        @media (max-width: 768px) { .dome-showcase { grid-template-columns: 1fr; } .feature-section, .partner-section { padding: 40px 20px; } }
+    </style>
+</head>
+<body>
+    <div id="custom-cursor"></div>
+    
+    <nav>
+        <div><span style="color:rgba(255,255,255,0.35); margin-right:6px;">+</span><a href="index.html" style="color:#fff; font-weight:800;">Home</a></div>
+        <ul class="nav-links">
+            <li><a href="immersive-africa.html" class="active">Immersive Africa</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="tickets.html">Tickets</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="#" style="font-size:12px; color:#C8FF00;">fakugesi.co.za</a></div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-signia">
+            <div class="signia-text"><div class="s1">IMMERSIVE</div><div class="s2">AFRICA</div></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Fak'ugesi Festival 2026</div>
+            <h1 class="hero-title">Explore the<br><span>AfriVerse</span></h1>
+        </div>
+    </section>
+    
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title">Immersive Experiences</h2>
+            <p class="section-desc">Immersive Africa is Fak'ugesi's flagship programme celebrating African digital art in its most immersive form — from 360° dome screenings at the Wits Anglo American Digital Dome to interactive installations that blur the boundary between art and experience.</p>
+            
+            <div class="dome-showcase">
+                <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&q=80" alt="Digital Dome">
+                <div class="dome-info">
+                    <h3>Kancícà Kwasukasukela</h3>
+                    <p>A breathtaking dome film that weaves together ancestral mythology and digital innovation. Premiering in South Africa exclusively at the Wits Anglo American Digital Dome as part of Immersive Africa. The 42-minute immersive experience draws on oral traditions from across the continent.</p>
+                    <a href="tickets.html" class="btn-primary">GET TICKETS →</a>
+                </div>
+            </div>
+            
+            <div class="dome-showcase">
+                <div class="dome-info">
+                    <h3>Ongoing Dome Screenings</h3>
+                    <p>Kwasukasukela — meaning "once upon a time" — presents a curated anthology of short films and works that centre African stories in immersive formats. Screenings run daily at the Wits Anglo American Digital Dome from 07–21 April 2026.</p>
+                    <a href="tickets.html" class="btn-primary">VIEW SCHEDULE →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Dome Experience">
+            </div>
+        </div>
+    </section>
+    
+    <section class="partner-section">
+        <div class="container">
+            <h2 class="section-title">Our Immersive Africa Partners</h2>
+            <p class="section-desc">Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC — EU National Institutes for Culture.</p>
+            <div class="partner-logos">
+                <div class="partner-logo">EUNIC</div>
+                <div class="partner-logo">Institut Français</div>
+                <div class="partner-logo">Goethe-Institut</div>
+                <div class="partner-logo">British Council</div>
+                <div class="partner-logo">Wits Digital Dome</div>
+            </div>
+            <p style="font-size: 12px; color: #888; margin-top: 48px; text-align: center;">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-grid">
+            <div><div class="footer-brand">fakʼugesi</div><p style="font-size:13px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
+            <div><strong>Festival</strong><a href="programme.html">Programme</a><a href="tickets.html">Tickets</a></div>
+            <div><strong>Community</strong><a href="awards.html">Awards</a><a href="about.html">About</a></div>
+            <div><strong>Connect</strong><a href="#">Instagram</a><a href="#">X</a></div>
+        </div>
+    </footer>
+    
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+        });
+    </script>
+</body>
+</html>

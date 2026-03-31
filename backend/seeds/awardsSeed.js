@@ -54,11 +54,13 @@ function seedAwards() {
             award.country,
             award.description,
             award.image_url
-        ]);
+        ], (err) => {
+            if (err) console.error('Error seeding award:', err);
+        });
     });
 
     stmt.finalize();
-    console.log('✅ Awards data seeded');
+    console.log(`✅ Seeded ${awardsData.length} awards`);
 }
 
 module.exports = { seedAwards };

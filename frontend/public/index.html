@@ -1,308 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fak'ugesi African Digital & Innovation Festival 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; overflow-x: hidden; cursor: none; }
-        
-        /* Custom Cursor */
-        #custom-cursor {
-            width: 12px; height: 12px; background: #C8FF00; border-radius: 50%;
-            position: fixed; top: 0; left: 0; pointer-events: none;
-            z-index: 99999; transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
-        }
-        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
-        
-        /* Navigation */
-        nav {
-            position: sticky; top: 0; z-index: 600;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 28px; height: 52px;
-            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
-        }
-        .nav-links { display: flex; gap: 0; list-style: none; }
-        .nav-links a {
-            font-size: 12px; color: rgba(255, 255, 255, 0.65);
-            text-decoration: none; letter-spacing: 0.04em;
-            padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500;
-        }
-        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
-        
-        /* Hero with Lightning */
-        .hero {
-            position: relative; height: calc(100vh - 52px); min-height: 580px;
-            background: #060614; overflow: hidden; display: flex; align-items: flex-end;
-        }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3a 100%);
-        }
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(105deg, rgba(4, 4, 20, 0.7) 0%, rgba(4, 4, 20, 0.4) 100%);
-        }
-        
-        /* Lightning Container - 7 bolts, 7 colors */
-        .lightning-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-        .lightning-bolt { position: absolute; opacity: 0; }
-        @keyframes lightningStrike {
-            0% { opacity: 0; transform: scale(0.5); }
-            10% { opacity: 1; transform: scale(1); }
-            30% { opacity: 0.8; transform: scale(1.1); }
-            70% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.5); }
-        }
-        @keyframes thunderFlash {
-            0% { opacity: 0; } 5% { opacity: 0.95; } 25% { opacity: 0.5; }
-            60% { opacity: 0.2; } 100% { opacity: 0; }
-        }
-        .thunder-flash { position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; z-index: 3; }
-        
-        /* Signia - like third image */
-        .hero-signia {
-            position: absolute; bottom: 40px; right: 36px; z-index: 10;
-            display: flex; flex-direction: column; align-items: flex-end;
-        }
-        .signia-bolt { width: 40px; height: auto; margin-bottom: 4px; }
-        .signia-text { background: #fff; padding: 12px 18px 10px; text-align: center; }
-        .signia-text .s1 { font-weight: 900; font-size: 28px; color: #111; letter-spacing: -0.02em; line-height: 1; }
-        .signia-text .s2 { font-size: 11px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 4px; margin-top: 4px; }
-        
-        .hero-content { position: relative; z-index: 5; padding: 0 40px 52px; max-width: 800px; }
-        .hero-eyebrow { font-size: 11px; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
-        .hero-title { font-weight: 900; font-size: clamp(52px, 8vw, 100px); line-height: 0.93; color: #fff; letter-spacing: -0.03em; }
-        .hero-title span { background: linear-gradient(135deg, #C8FF00, #ff6600); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        
-        /* Theme Section - exactly like first image */
-        .theme-section {
-            display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
-        }
-        .theme-left {
-            background: #1b2244; padding: 48px 40px;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .theme-label { font-size: 11px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-        .theme-year { font-size: 14px; color: #C8FF00; font-weight: 700; margin-bottom: 8px; }
-        .theme-title { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 24px; }
-        .theme-desc { font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.7); margin-bottom: 32px; max-width: 90%; }
-        .theme-buttons { display: flex; gap: 16px; }
-        .btn-primary { padding: 12px 28px; background: #C8FF00; color: #111; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-        .btn-secondary { padding: 12px 28px; background: transparent; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); }
-        .theme-right { position: relative; overflow: hidden; }
-        .theme-right img { width: 100%; height: 100%; object-fit: cover; }
-        
-        /* Ticker */
-        .ticker { background: #C8FF00; padding: 12px 0; overflow: hidden; white-space: nowrap; }
-        .ticker-content { display: inline-block; animation: tickerScroll 20s linear infinite; }
-        .ticker-content span { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: #111; padding: 0 24px; }
-        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        
-        /* Footer */
-        footer { background: #0a0a10; padding: 48px 56px 28px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
-        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
-        .footer-col strong { display: block; font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
-        .footer-col a { color: #555; text-decoration: none; font-size: 13px; display: block; margin-bottom: 8px; }
-        .footer-bottom { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #1a1a22; font-size: 11px; color: #555; }
-        
-        @media (max-width: 768px) {
-            .theme-section { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .hero-signia { bottom: 20px; right: 20px; }
-            .hero-signia .signia-text { padding: 8px 12px; }
-            .hero-signia .signia-text .s1 { font-size: 20px; }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Fak'ugesi African Digital & Innovation Festival 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --yellow: #d4e600;
+      --dark-navy: #0d1117;
+      --navy: #1a2332;
+      --light-bg: #e8eaf0;
+      --light-mid: #d4d7e3;
+      --text-dark: #1a1f2e;
+      --text-mid: #4a5568;
+      --border: rgba(255,255,255,0.15);
+      --border-dark: rgba(0,0,0,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #0d1117; color: #fff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(13,17,23,0.7); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-plus { color: rgba(255,255,255,0.5); font-size: 20px; font-weight: 300; line-height: 1; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-ticket-btn {
+      background: var(--yellow); color: #000; padding: 9px 22px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none; border-radius: 2px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(13,17,23,0.45) 50%, rgba(13,17,23,0.7) 100%),
+                  url('https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-content { position: relative; z-index: 2; padding: 140px 60px 60px; max-width: 700px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; font-weight: 500; }
+    .hero-title { font-size: clamp(42px, 6vw, 72px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 440px; margin-bottom: 28px; }
+    .hero-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+    .hero-logo-badge {
+      position: absolute; top: 140px; right: 60px; z-index: 2;
+      background: #fff; color: #000; padding: 16px 20px;
+      font-size: 28px; font-weight: 900; line-height: 1;
+      font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;
+    }
+    .hero-logo-badge span { display: block; }
+    .hero-logo-badge .accent { color: #c0392b; }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--yellow); overflow: hidden;
+      padding: 10px 0; white-space: nowrap;
+    }
+    .ticker-inner { display: inline-flex; gap: 0; animation: ticker 25s linear infinite; }
+    .ticker-item {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #000; padding: 0 32px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .ticker-item::after { content: '→'; opacity: 0.5; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── THEME SECTION ── */
+    .theme-section {
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 560px;
+      background: linear-gradient(135deg, #2d3a6b 0%, #3d4f8a 40%, #4a5f9e 60%, #6b7fb0 100%);
+      position: relative; overflow: hidden;
+    }
+    .theme-left { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; z-index: 2; }
+    .theme-box { background: rgba(100,120,40,0.85); padding: 40px; max-width: 420px; }
+    .theme-year-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; font-weight: 600; }
+    .theme-heading { font-size: clamp(36px, 4vw, 52px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0; color: #fff; }
+    .theme-sub { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; font-weight: 600; }
+    .theme-subtext { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-top: 16px; }
+    .theme-btns { display: flex; gap: 12px; margin-top: 28px; }
+    .btn-dark-outline { background: rgba(0,0,0,0.6); color: #fff; padding: 11px 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); }
+    .theme-date { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-top: 40px; opacity: 0.9; }
+    .theme-right { position: relative; overflow: hidden; }
+    .theme-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .theme-right-overlay {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, #4a7a2a);
+    }
+    .crosshair {
+      position: absolute; color: rgba(255,255,255,0.3); font-size: 18px; font-weight: 300;
+      line-height: 1; pointer-events: none;
+    }
+    .theme-section .crosshair { color: rgba(255,255,255,0.25); }
+
+    /* ── GET INVOLVED ── */
+    .get-involved {
+      position: relative; overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover no-repeat;
+      padding: 100px 60px;
+    }
+    .get-involved::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+    .gi-inner { position: relative; z-index: 2; }
+    .gi-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
+    .gi-title { font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; }
+    .gi-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; margin-top: 8px; }
+    .gi-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .gi-card {
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+      padding: 28px; backdrop-filter: blur(4px);
+    }
+    .gi-num { font-size: clamp(36px, 4vw, 52px); font-weight: 800; color: var(--yellow); line-height: 1; margin-bottom: 4px; float: right; }
+    .gi-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; clear: both; }
+    .gi-card-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+    .gi-card-desc { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
+    .gi-btn { background: #fff; color: #000; padding: 10px 0; width: 100%; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; display: block; text-decoration: none; }
+
+    /* ── SPOTLIGHT ── */
+    .spotlight-section { background: var(--light-bg); padding: 80px 60px; }
+    .spotlight-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 48px; }
+    .spotlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .spotlight-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; max-height: 440px; }
+    .spotlight-cat { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; }
+    .spotlight-heading { font-size: clamp(28px, 3vw, 40px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.1; }
+    .spotlight-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
+    .spotlight-btn {
+      display: inline-block; border: 1px solid var(--text-dark); color: var(--text-dark);
+      padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+    }
+
+    /* ── WHAT'S HAPPENING ── */
+    .happening-section { background: #fff; padding: 80px 60px; }
+    .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .happening-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
+    .social-icons { display: flex; gap: 12px; align-items: center; }
+    .social-icon { width: 28px; height: 28px; background: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; text-decoration: none; }
+    .photos-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .photos-scroll::-webkit-scrollbar { display: none; }
+    .photo-item { flex-shrink: 0; width: 300px; height: 320px; background: #ddd; overflow: hidden; }
+    .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+    .happening-caption { font-size: 11px; color: var(--text-mid); margin-top: 16px; }
+
+    /* ── PARTNERS ── */
+    .partners-section { background: var(--light-bg); padding: 80px 60px; }
+    .partners-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+    .partners-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
+    .partners-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .partner-card { background: #fff; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .partner-logo-area { height: 120px; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 16px; }
+    .partner-logo-area img { max-width: 160px; max-height: 90px; object-fit: contain; }
+    .partner-desc { font-size: 11px; color: var(--text-mid); line-height: 1.6; text-align: center; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--light-bg); border-top: 1px solid var(--light-mid); padding: 48px 60px 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: start; }
+    .footer-address { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
+    .footer-address strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; }
+    .footer-contact strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; font-size: 12px; }
+    .footer-contact a { font-size: 12px; color: var(--text-dark); display: block; text-decoration: none; margin-bottom: 4px; border-bottom: 1px solid var(--text-dark); width: fit-content; }
+    .footer-logo-area { display: flex; align-items: flex-start; justify-content: flex-end; gap: 16px; }
+    .footer-logo-badge { background: var(--text-dark); color: #fff; padding: 12px 14px; font-size: 20px; font-weight: 900; line-height: 1; font-family: 'Space Grotesk', sans-serif; }
+    .footer-copy { font-size: 11px; color: var(--text-mid); line-height: 1.5; }
+    .footer-copy strong { display: block; color: var(--text-dark); font-weight: 600; }
+    .footer-socials { background: var(--navy); color: #fff; margin: 0 -60px; padding: 14px 60px; text-align: center; }
+    .footer-socials p { font-size: 12px; letter-spacing: 0.08em; }
+    .footer-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; padding: 0; }
+    .footer-crosshairs span { color: rgba(0,0,0,0.2); font-size: 18px; }
+    .footer-bottom-line { display: flex; justify-content: space-between; padding-top: 16px; }
+
+    /* Crosshairs decorative */
+    .section-crosshairs { display: flex; justify-content: space-between; padding: 0 60px; }
+    .section-crosshairs span { color: rgba(255,255,255,0.2); font-size: 18px; }
+    .section-crosshairs.dark span { color: rgba(0,0,0,0.2); }
+  </style>
 </head>
 <body>
-    <div id="custom-cursor"></div>
 
-    <nav>
-        <div style="display: flex; align-items: center;">
-            <span style="color: rgba(255,255,255,0.35); margin-right: 6px;">+</span>
-            <a href="index.html" style="color:#fff; font-weight:800; font-size:13px; text-decoration:none;">Home</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="immersive-africa.html">Immersive Africa</a></li>
-            <li><a href="awards.html">Awards</a></li>
-            <li><a href="programme.html">Programme</a></li>
-            <li><a href="tickets.html">Tickets</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-        <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="color: rgba(255,255,255,0.35);">+</span>
-            <a href="#" style="font-size:12px; color:#C8FF00; text-decoration:none; font-weight:600;">fakugesi.co.za</a>
-        </div>
-    </nav>
+<!-- NAV -->
+<nav>
+  <span class="nav-plus">+</span>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/immersive-africa.html">Immersive Africa</a></li>
+    <li><a href="/awards.html">Awards</a></li>
+    <li><a href="/programme.html">Programme</a></li>
+    <li><a href="/tickets.html">Tickets</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-ticket-btn" href="/tickets.html">Get Tickets</a>
+    <span class="nav-plus">+</span>
+  </div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        
-        <!-- Lightning Container with 7 bolts, 7 rainbow colors -->
-        <div class="lightning-container" id="lightningContainer"></div>
-        <div class="thunder-flash" id="thunderFlash"></div>
-        
-        <!-- Signia - like third image -->
-        <div class="hero-signia">
-            <svg class="signia-bolt" viewBox="0 0 100 180" fill="none">
-                <path d="M60 5L10 90H50L40 175L90 80H55L60 5Z" fill="#C8FF00"/>
-            </svg>
-            <div class="signia-text">
-                <div class="s1">fak'<br>ugesi</div>
-                <div class="s2">FESTIVAL</div>
-            </div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-eyebrow">Fak'ugesi African Digital & Innovation Festival</div>
-            <h1 class="hero-title">African<br><span>Imaginaries</span></h1>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <!-- Crosshairs -->
+  <div class="crosshair" style="top:90px;left:40px">+</div>
+  <div class="crosshair" style="top:90px;left:50%;transform:translateX(-50%)">+</div>
+  <div class="crosshair" style="top:90px;right:40px">+</div>
+  <div class="crosshair" style="bottom:40px;left:40px">+</div>
+  <div class="crosshair" style="bottom:40px;right:40px">+</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">African Digital & Innovation Festival</div>
+    <h1 class="hero-title">Fak'ugesi<br/>Festival</h1>
+    <p class="hero-desc">Africa's leading festival for digital art, culture and innovation. Join us for 10 days of immersive experiences, panels, workshops and performances at the heart of Johannesburg.</p>
+    <a class="hero-link" href="/about.html">What is Fak'ugesi?</a>
+  </div>
+  <div class="hero-logo-badge">
+    <span>fak'</span>
+    <span class="accent">ugesi</span>
+  </div>
+</section>
 
-    <div class="ticker">
-        <div class="ticker-content">
-            <span>Awards applications now open. Learn more →</span>
-            <span>07 — 12.10.2026</span>
-            <span>African Imaginaries 2026 Theme</span>
-            <span>Get your tickets now →</span>
-            <span>#Fakugesi2026</span>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+  </div>
+</div>
+
+<!-- 2026 THEME -->
+<div style="position:relative">
+  <div class="section-crosshairs" style="position:absolute;top:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
+  <div class="section-crosshairs" style="position:absolute;bottom:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
+  <section class="theme-section">
+    <div class="theme-left">
+      <div class="theme-box">
+        <div class="theme-year-label">· 2026 Theme</div>
+        <div class="theme-sub">Africa's creative energy unleashed</div>
+        <h2 class="theme-heading">African<br/>Imaginaries</h2>
+        <p class="theme-subtext">Africa's digital future is being built now — by artists, coders, makers and dreamers across the continent. This year's theme explores what it means to imagine Africa anew.</p>
+        <div class="theme-btns">
+          <a class="btn-dark-outline" href="/programme.html">VIEW PROGRAMME</a>
+          <a class="btn-dark-outline" href="/tickets.html">GET TICKETS</a>
         </div>
+      </div>
+      <div class="theme-date">07 — 12.10.2026</div>
     </div>
+    <div class="theme-right">
+      <img src="https://images.unsplash.com/photo-1598127034007-18e4786c8d34?w=900&q=80" alt="Afrofuturist portrait" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
+    </div>
+  </section>
+</div>
 
-    <!-- Theme Section - exactly like first image with girl image -->
-    <section class="theme-section">
-        <div class="theme-left">
-            <div class="theme-label">2026 Theme</div>
-            <div class="theme-year">Africa's creative energy unleashed</div>
-            <h2 class="theme-title">African<br>Imaginaries</h2>
-            <p class="theme-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.</p>
-            <div class="theme-buttons">
-                <a href="programme.html" class="btn-primary">VIEW PROGRAMME</a>
-                <a href="tickets.html" class="btn-secondary">GET TICKETS</a>
-            </div>
+<!-- GET INVOLVED -->
+<section class="get-involved">
+  <div class="crosshair" style="top:24px;left:40px">+</div>
+  <div class="crosshair" style="top:24px;left:50%;transform:translateX(-50%)">+</div>
+  <div class="crosshair" style="top:24px;right:40px">+</div>
+  <div class="crosshair" style="bottom:24px;left:40px">+</div>
+  <div class="crosshair" style="bottom:24px;left:50%;transform:translateX(-50%)">+</div>
+  <div class="crosshair" style="bottom:24px;right:40px">+</div>
+  <div class="gi-inner">
+    <div class="gi-header">
+      <h2 class="gi-title">Get involved</h2>
+      <a class="gi-link" href="/about.html">What is Fak'ugesi?</a>
+    </div>
+    <div class="gi-cards">
+      <div class="gi-card">
+        <div class="gi-num">01</div>
+        <div class="gi-cat">Festival Collaboration</div>
+        <h3 class="gi-card-title">Investors & Funders</h3>
+        <p class="gi-card-desc">Partner with Africa's leading digital festival. Your investment powers the artists, innovators and ideas that will shape the continent's digital future.</p>
+        <a class="gi-btn" href="/about.html#contact">LEARN MORE</a>
+      </div>
+      <div class="gi-card">
+        <div class="gi-num">02</div>
+        <div class="gi-cat">Curated Festival Experiences</div>
+        <h3 class="gi-card-title">Expo & Showcases</h3>
+        <p class="gi-card-desc">Showcase your work, product or innovation at one of Africa's most watched festivals. Reach audiences from 80+ countries at the Turbine Hall.</p>
+        <a class="gi-btn" href="/programme.html">LEARN MORE</a>
+      </div>
+      <div class="gi-card">
+        <div class="gi-num">03</div>
+        <div class="gi-cat">Lend a Hand</div>
+        <h3 class="gi-card-title">Volunteers</h3>
+        <p class="gi-card-desc">Be part of the team that makes it all happen. Volunteer at Fak'ugesi 2026 and get free festival access, training and unforgettable experience.</p>
+        <a class="gi-btn" href="/about.html#contact">LEARN MORE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="spotlight-section">
+  <h2 class="spotlight-title">Spotlight</h2>
+  <div class="spotlight-grid">
+    <div>
+      <img class="spotlight-img" src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="VR experience at Fak'ugesi"/>
+    </div>
+    <div>
+      <div class="spotlight-cat">Fak'ugesi Awards</div>
+      <h3 class="spotlight-heading">Awards applications<br/>now open</h3>
+      <p class="spotlight-desc">The Fak'ugesi Awards recognise excellence across eight categories of African digital creativity. Submit your work for a chance at prizes, international residencies, and exposure to a global audience of curators, collectors and collaborators.</p>
+      <a class="spotlight-btn" href="/awards.html">LEARN MORE</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S HAPPENING -->
+<section class="happening-section">
+  <div class="happening-header">
+    <h2 class="happening-title">What's happening</h2>
+    <div class="social-icons">
+      <a class="social-icon" href="#" style="background:#000;border-radius:4px;font-size:10px;font-weight:700">IG</a>
+      <a class="social-icon" href="#" style="background:#000;border-radius:4px;font-size:10px;font-weight:700">X</a>
+      <a class="social-icon" href="#" style="background:#000;border-radius:4px;font-size:10px;font-weight:700">FB</a>
+    </div>
+  </div>
+  <div class="photos-scroll">
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70" alt="Digital art"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70" alt="Panel"/></div>
+  </div>
+  <p class="happening-caption">Follow us @fakugesi · Johannesburg · September 2026</p>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section">
+  <div class="section-crosshairs dark" style="margin-bottom:24px"><span>+</span><span>+</span><span>+</span></div>
+  <div class="partners-header">
+    <h2 class="partners-title">Our Main Partners</h2>
+    <a class="partners-link" href="/about.html#partners">View all partners</a>
+  </div>
+  <div class="partners-grid">
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <div style="text-align:center">
+          <div style="font-family:monospace;font-size:18px;font-weight:900;letter-spacing:0.08em;color:#1a2332;line-height:1.1">TSHI<br/>MOLO<br/>GONG</div>
+          <div style="font-size:9px;letter-spacing:0.2em;margin-top:6px;color:#1a2332">WITS UNIVERSITY</div>
         </div>
-        <div class="theme-right">
-            <img src="images/girl-hero.jpg" alt="African creativity" onerror="this.src='https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80'">
+      </div>
+      <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <div style="text-align:center">
+          <div style="font-size:28px;font-weight:900;color:#003087;letter-spacing:-0.02em">WITS</div>
+          <div style="font-size:11px;letter-spacing:0.12em;color:#003087">UNIVERSITY</div>
         </div>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <div class="footer-brand">fakʼugesi</div>
-                <p style="font-size:13px; margin-top:16px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
-                <p style="font-size:13px; margin-top:10px; color:#555;">hello@fakugesi.co.za<br>+27 11 717 8156</p>
-            </div>
-            <div class="footer-col">
-                <strong>Festival</strong>
-                <a href="programme.html">Programme</a>
-                <a href="tickets.html">Tickets</a>
-                <a href="immersive-africa.html">Immersive Africa</a>
-            </div>
-            <div class="footer-col">
-                <strong>Community</strong>
-                <a href="awards.html">Awards</a>
-                <a href="about.html">Volunteers</a>
-                <a href="about.html">About</a>
-            </div>
-            <div class="footer-col">
-                <strong>Connect</strong>
-                <a href="#">Instagram</a>
-                <a href="#">X</a>
-                <a href="#">Facebook</a>
-            </div>
+      </div>
+      <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <div style="text-align:center">
+          <div style="font-size:11px;letter-spacing:0.1em;color:#000;margin-bottom:2px">WITS ANGLO AMERICAN</div>
+          <div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-0.02em">DIGITAL<br/>DOME</div>
         </div>
-        <div class="footer-bottom">
-            <div>© 2026 Fak'ugesi Festival · All Rights Reserved</div>
-        </div>
-    </footer>
+      </div>
+      <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner for Fak'ugesi.</p>
+    </div>
+  </div>
+  <div class="section-crosshairs dark" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
+</section>
 
-    <script>
-        // Custom cursor
-        const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-        });
+<!-- FOOTER SOCIAL BAR -->
+<div class="footer-socials" style="background:#1a2332;color:#fff;padding:14px 60px;text-align:center">
+  <p style="font-size:13px;font-weight:500">Follow us on socials <strong>@fakugesi</strong></p>
+</div>
 
-        // Lightning effect: 7 bolts, 7 rainbow colors
-        const colors = ['#ff0080', '#ff6600', '#C8FF00', '#00ffff', '#0099ff', '#9933ff', '#ff0080'];
-        const positions = [
-            { left: '20%', top: '30%', rotate: '-15deg' },
-            { left: '45%', top: '20%', rotate: '5deg' },
-            { left: '70%', top: '40%', rotate: '25deg' },
-            { left: '15%', top: '60%', rotate: '-25deg' },
-            { left: '55%', top: '70%', rotate: '10deg' },
-            { left: '85%', top: '55%', rotate: '-5deg' },
-            { left: '35%', top: '45%', rotate: '15deg' }
-        ];
+<!-- FOOTER -->
+<footer>
+  <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+  <div class="footer-grid">
+    <div class="footer-address">
+      <strong>Fak'ugesi Festival</strong>
+      41 Juta Street, Braamfontein<br/>
+      Johannesburg, South Africa
+    </div>
+    <div class="footer-contact">
+      <strong>Contact us</strong>
+      <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
+      <a href="tel:+27117178156">+27 11 717 8156</a>
+    </div>
+    <div class="footer-logo-area">
+      <div class="footer-logo-badge">
+        <div style="font-size:13px">fak'</div>
+        <div style="font-size:13px">ugesi</div>
+      </div>
+      <div class="footer-copy">
+        <strong>© 2026</strong>
+        Fak'ugesi Festival<br/>All Rights Reserved
+      </div>
+    </div>
+  </div>
+  <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+</footer>
 
-        function createLightningBolt(index) {
-            const bolt = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            bolt.setAttribute('viewBox', '0 0 100 180');
-            bolt.setAttribute('class', 'lightning-bolt');
-            bolt.style.position = 'absolute';
-            bolt.style.left = positions[index].left;
-            bolt.style.top = positions[index].top;
-            bolt.style.width = '80px';
-            bolt.style.height = 'auto';
-            bolt.style.transform = `translate(-50%, -50%) rotate(${positions[index].rotate})`;
-            bolt.style.filter = `drop-shadow(0 0 8px ${colors[index]})`;
-            
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', 'M60 5L10 90H50L40 175L90 80H55L60 5Z');
-            path.setAttribute('fill', colors[index]);
-            path.setAttribute('stroke', '#fff');
-            path.setAttribute('stroke-width', '1.5');
-            bolt.appendChild(path);
-            
-            return bolt;
-        }
-
-        function triggerLightning() {
-            const container = document.getElementById('lightningContainer');
-            const thunderFlash = document.getElementById('thunderFlash');
-            
-            container.innerHTML = '';
-            
-            for (let i = 0; i < 7; i++) {
-                const bolt = createLightningBolt(i);
-                container.appendChild(bolt);
-                bolt.style.animation = `lightningStrike ${0.6 + i * 0.05}s ease-out forwards`;
-                bolt.style.animationDelay = `${i * 0.08}s`;
-            }
-            
-            thunderFlash.style.animation = 'thunderFlash 1.2s ease-out forwards';
-            
-            const rainbowSpray = document.createElement('div');
-            rainbowSpray.style.position = 'absolute';
-            rainbowSpray.style.inset = '0';
-            rainbowSpray.style.background = 'radial-gradient(circle at 50% 50%, #ff0080, #ff6600, #C8FF00, #00ffff, #0099ff, #9933ff)';
-            rainbowSpray.style.mixBlendMode = 'screen';
-            rainbowSpray.style.opacity = '0';
-            rainbowSpray.style.pointerEvents = 'none';
-            rainbowSpray.style.animation = 'thunderFlash 0.8s ease-out forwards';
-            container.appendChild(rainbowSpray);
-            
-            setTimeout(() => {
-                thunderFlash.style.animation = '';
-                if (rainbowSpray) rainbowSpray.remove();
-            }, 1300);
-        }
-        
-        setTimeout(triggerLightning, 300);
-        setInterval(triggerLightning, 12000);
-    </script>
 </body>
 </html>

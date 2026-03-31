@@ -33,11 +33,13 @@ function seedTickets() {
             ticket.price,
             ticket.student_price,
             ticket.features
-        ]);
+        ], (err) => {
+            if (err) console.error('Error seeding ticket:', err);
+        });
     });
 
     stmt.finalize();
-    console.log('✅ Tickets data seeded');
+    console.log(`✅ Seeded ${ticketsData.length} tickets`);
 }
 
 module.exports = { seedTickets };

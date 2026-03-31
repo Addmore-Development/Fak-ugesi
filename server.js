@@ -29,8 +29,8 @@ app.use(helmet({
 
 // Rate limiting
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000,
+    max: 100,
     message: { error: 'Too many requests, please try again later.' }
 });
 app.use('/api/', limiter);
@@ -51,12 +51,32 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static files - Frontend
-app.use(express.static(path.join(__dirname, 'frontend')));
-app.use('/css', express.static(path.join(__dirname, 'frontend/css')));
-app.use('/js', express.static(path.join(__dirname, 'frontend/js')));
-app.use('/images', express.static(path.join(__dirname, 'frontend/images')));
-app.use('/assets', express.static(path.join(__dirname, 'frontend/assets')));
+// ==================== STATIC FILES ====================
+// Check multiple possible locations for static files
+const possibleFrontendPaths = [
+    path.join(__dirname, 'frontend'),
+    path.join(__dirname, 'frontend', 'public'),
+    path.join(__dirname, 'public')
+];
+
+let frontendPath = null;
+for (const p of possibleFrontendPaths) {
+    if (fs.existsSync(p)) {
+        frontendPath = p;
+        console.log(`✅ Found frontend at: ${p}`);
+        break;
+    }
+}
+
+if (frontendPath) {
+    app.use(express.static(frontendPath));
+    app.use('/css', express.static(path.join(frontendPath, 'css')));
+    app.use('/js', express.static(path.join(frontendPath, 'js')));
+    app.use('/images', express.static(path.join(frontendPath, 'images')));
+    app.use('/assets', express.static(path.join(frontendPath, 'assets')));
+} else {
+    console.error('❌ Frontend directory not found!');
+}
 
 // Uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -247,31 +267,65 @@ app.get('/api/health', (req, res) => {
 
 // ==================== FRONTEND ROUTES ====================
 
-// Serve HTML pages
-const pages = ['index', 'immersive-africa', 'awards', 'tickets', 'programme', 'about'];
-pages.forEach(page => {
-    app.get(`/${page === 'index' ? '' : page}`, (req, res) => {
-        const filePath = path.join(__dirname, 'frontend', `${page}.html`);
-        if (fs.existsSync(filePath)) {
-            res.sendFile(filePath);
-        } else {
-            res.status(404).sendFile(path.join(__dirname, 'frontend', '404.html'));
-        }
-    });
+// Function to find HTML files in possible locations
+function findHTMLFile(filename) {
+    const possiblePaths = [
+        path.join(__dirname, 'frontend', filename),
+        path.join(__dirname, 'frontend', 'public', filename),
+        path.join(__dirname, 'public', filename),
+        path.join(__dirname, filename)
+    ];
     
-    app.get(`/${page}.html`, (req, res) => {
-        const filePath = path.join(__dirname, 'frontend', `${page}.html`);
-        if (fs.existsSync(filePath)) {
+    for (const p of possiblePaths) {
+        if (fs.existsSync(p)) {
+            return p;
+        }
+    }
+    return null;
+}
+
+// Serve HTML pages
+const pages = [
+    { route: '/', file: 'index.html' },
+    { route: '/index', file: 'index.html' },
+    { route: '/index.html', file: 'index.html' },
+    { route: '/immersive-africa', file: 'immersiveAfrica.html' },
+    { route: '/immersive-africa.html', file: 'immersiveAfrica.html' },
+    { route: '/awards', file: 'awards.html' },
+    { route: '/awards.html', file: 'awards.html' },
+    { route: '/tickets', file: 'tickets.html' },
+    { route: '/tickets.html', file: 'tickets.html' },
+    { route: '/programme', file: 'programme.html' },
+    { route: '/programme.html', file: 'programme.html' },
+    { route: '/about', file: 'about.html' },
+    { route: '/about.html', file: 'about.html' }
+];
+
+pages.forEach(({ route, file }) => {
+    app.get(route, (req, res) => {
+        const filePath = findHTMLFile(file);
+        if (filePath) {
             res.sendFile(filePath);
         } else {
-            res.status(404).sendFile(path.join(__dirname, 'frontend', '404.html'));
+            // Try to serve 404
+            const notFoundPath = findHTMLFile('404.html');
+            if (notFoundPath) {
+                res.status(404).sendFile(notFoundPath);
+            } else {
+                res.status(404).send('<h1>404 - Page Not Found</h1><p>The requested page could not be found.</p>');
+            }
         }
     });
 });
 
-// 404 handler
+// 404 handler for any other routes
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'frontend', '404.html'));
+    const notFoundPath = findHTMLFile('404.html');
+    if (notFoundPath) {
+        res.status(404).sendFile(notFoundPath);
+    } else {
+        res.status(404).send('<h1>404 - Page Not Found</h1><p>The requested page could not be found.</p>');
+    }
 });
 
 // Error handling middleware
@@ -290,7 +344,7 @@ app.listen(PORT, () => {
     ==========================================
     🚀 Server running at: http://localhost:${PORT}
     📁 Project: ${__dirname}
-    📊 Database: SQLite
+    📁 Frontend path: ${frontendPath || 'Not found'}
     
     📄 Available Pages:
        • Home: http://localhost:${PORT}

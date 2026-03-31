@@ -1,99 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programme • Fak'ugesi Festival 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; cursor: none; }
-        
-        #custom-cursor { width: 12px; height: 12px; background: #C8FF00; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
-        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200, 255, 0, 0.25); border: 1.5px solid #C8FF00; }
-        
-        nav { position: sticky; top: 0; z-index: 600; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links a { font-size: 12px; color: rgba(255, 255, 255, 0.65); text-decoration: none; letter-spacing: 0.04em; padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
-        
-        .hero { position: relative; min-height: 400px; background: #060614; display: flex; align-items: flex-end; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a2a, #1a1a3a); }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(4,4,20,0.8), rgba(4,4,20,0.4)); }
-        .hero-signia { position: absolute; bottom: 30px; right: 36px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; }
-        .signia-text { background: #fff; padding: 10px 16px 8px; text-align: center; }
-        .signia-text .s1 { font-weight: 900; font-size: 24px; color: #111; line-height: 1; }
-        .signia-text .s2 { font-size: 10px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 3px; margin-top: 3px; }
-        .hero-content { position: relative; z-index: 5; padding: 40px; max-width: 700px; }
-        .hero-eyebrow { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
-        .hero-title { font-weight: 900; font-size: clamp(42px, 7vw, 80px); color: #fff; line-height: 1; }
-        
-        .programme-section { padding: 72px 56px; background: #fff; text-align: center; min-height: 60vh; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .coming-soon { font-size: 24px; font-weight: 700; color: #C8FF00; margin-bottom: 24px; }
-        .programme-date { font-size: 18px; color: #666; margin-bottom: 32px; }
-        .programme-desc { font-size: 16px; line-height: 1.7; color: #555; margin-bottom: 40px; }
-        .btn-tickets { padding: 14px 32px; background: #1b2244; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-block; }
-        
-        footer { background: #0a0a10; padding: 48px 56px 28px; margin-top: 0; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
-        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
-        
-        @media (max-width: 768px) { .programme-section { padding: 40px 20px; } }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Programme • Fak'ugesi Festival 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--green:#00ff88;--pink:#ff2d6b;--yellow:#ffe600;--blue:#00cfff;--dark:#0a0a0a;--card:#111;--border:rgba(255,255,255,.08)}
+    body{background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+
+    .page-hero{padding:160px 40px 80px;background:#000;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,45,107,.07) 0%,transparent 70%);pointer-events:none}
+    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+    .page-title{font-size:clamp(48px,7vw,96px);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:24px}
+    .page-subtitle{font-size:18px;color:rgba(255,255,255,.55);max-width:600px;line-height:1.6}
+
+    /* FILTERS */
+    .filters-bar{padding:32px 40px;background:var(--dark);border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:center;flex-wrap:wrap;position:sticky;top:73px;z-index:100;backdrop-filter:blur(20px)}
+    .filter-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-right:8px}
+    .filter-btn{background:none;border:1px solid var(--border);color:rgba(255,255,255,.55);padding:8px 18px;border-radius:2px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+    .filter-btn:hover,.filter-btn.active{background:var(--green);border-color:var(--green);color:#000}
+    .filter-sep{width:1px;height:24px;background:var(--border)}
+
+    /* DAY SECTIONS */
+    .programme-section{padding:0 40px 80px}
+    .day-header{padding:48px 0 32px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:24px;margin-bottom:0}
+    .day-number{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.2em;text-transform:uppercase}
+    .day-date{font-size:32px;font-weight:800;letter-spacing:-.02em}
+    .day-theme{font-size:14px;color:rgba(255,255,255,.4);margin-left:auto;font-style:italic}
+
+    /* EVENT ROWS */
+    .event-row{display:grid;grid-template-columns:100px 140px 1fr auto;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--border);transition:background .15s;cursor:default}
+    .event-row:hover{background:rgba(255,255,255,.02);margin:0 -40px;padding:24px 40px}
+    .event-time-col{font-family:'Space Mono',monospace;font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.05em}
+    .event-cat-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:5px 12px;border-radius:2px;text-align:center}
+    .badge-panel{background:rgba(0,207,255,.12);color:var(--blue);border:1px solid rgba(0,207,255,.2)}
+    .badge-workshop{background:rgba(255,230,0,.12);color:var(--yellow);border:1px solid rgba(255,230,0,.2)}
+    .badge-performance{background:rgba(255,45,107,.12);color:var(--pink);border:1px solid rgba(255,45,107,.2)}
+    .badge-expo{background:rgba(0,255,136,.12);color:var(--green);border:1px solid rgba(0,255,136,.2)}
+    .badge-screening{background:rgba(180,100,255,.12);color:#b464ff;border:1px solid rgba(180,100,255,.2)}
+    .event-info{}
+    .event-title{font-size:16px;font-weight:700;margin-bottom:4px;line-height:1.3}
+    .event-speaker{font-size:13px;color:rgba(255,255,255,.4)}
+    .event-location{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase}
+
+    /* KEYNOTE HIGHLIGHT */
+    .event-row.keynote{background:rgba(0,255,136,.03);border-bottom:1px solid rgba(0,255,136,.1)}
+    .event-row.keynote .event-title{font-size:18px;color:var(--green)}
+
+    /* NUMBERS STRIP */
+    .numbers-strip{background:#000;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+    .number-item{background:#000;padding:40px 32px;text-align:center}
+    .number-val{font-size:clamp(36px,4vw,60px);font-weight:900;color:var(--green);letter-spacing:-.03em;margin-bottom:8px}
+    .number-label{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.05em}
+
+    /* SPEAKERS SECTION */
+    .speakers-section{padding:80px 40px;background:var(--dark)}
+    .section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+    .section-title{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.02em;margin-bottom:48px}
+    .speakers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+    .speaker-card{background:var(--dark);padding:32px 28px;transition:background .2s}
+    .speaker-card:hover{background:#111}
+    .speaker-avatar{width:56px;height:56px;border-radius:50%;margin-bottom:20px;background:linear-gradient(135deg,rgba(0,255,136,.2),rgba(0,207,255,.2));display:flex;align-items:center;justify-content:center;font-size:22px}
+    .speaker-name{font-size:17px;font-weight:700;margin-bottom:4px}
+    .speaker-role{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:12px;line-height:1.4}
+    .speaker-country{font-family:'Space Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.1em;text-transform:uppercase}
+
+    /* CTA */
+    .cta-strip{background:var(--green);padding:80px 40px;text-align:center}
+    .cta-strip h2{font-size:clamp(32px,4vw,48px);font-weight:900;color:#000;letter-spacing:-.02em;margin-bottom:24px}
+    .cta-strip p{font-size:16px;color:rgba(0,0,0,.6);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
+    .btn-dark{background:#000;color:#fff;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block}
+
+    footer{background:#000;border-top:1px solid var(--border);padding:64px 40px 40px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
+    .footer-brand{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+    .footer-tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
+    .footer-heading{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .2s}
+    .footer-links a:hover{color:#fff}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'Space Mono',monospace;letter-spacing:.05em}
+
+    @media(max-width:900px){
+      nav{padding:16px 24px}.nav-links{display:none}
+      .page-hero{padding:120px 24px 60px}
+      .filters-bar{padding:20px 24px;top:61px}
+      .programme-section{padding:0 24px 60px}
+      .event-row{grid-template-columns:80px 1fr;gap:12px}
+      .event-cat-badge,.event-location{display:none}
+      .speakers-grid{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
 </head>
 <body>
-    <div id="custom-cursor"></div>
-    
-    <nav>
-        <div><span style="color:rgba(255,255,255,0.35); margin-right:6px;">+</span><a href="index.html" style="color:#fff; font-weight:800;">Home</a></div>
-        <ul class="nav-links">
-            <li><a href="immersive-africa.html">Immersive Africa</a></li>
-            <li><a href="awards.html">Awards</a></li>
-            <li><a href="programme.html" class="active">Programme</a></li>
-            <li><a href="tickets.html">Tickets</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="#" style="font-size:12px; color:#C8FF00;">fakugesi.co.za</a></div>
-    </nav>
-    
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-signia">
-            <div class="signia-text"><div class="s1">fak'<br>ugesi</div><div class="s2">PROGRAMME</div></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-eyebrow">Fak'ugesi Festival 2026</div>
-            <h1 class="hero-title">Programme</h1>
-        </div>
-    </section>
-    
-    <section class="programme-section">
-        <div class="container">
-            <div class="coming-soon">COMING SOON</div>
-            <div class="programme-date">13 — 17 October 2026 · Braamfontein, Johannesburg</div>
-            <p class="programme-desc">The full festival programme for Fak'ugesi 2026 — African Imaginaries — will be published here closer to the festival. Check back soon for artist announcements, session listings, and the complete schedule of events across all five days.</p>
-            <a href="tickets.html" class="btn-tickets">GET TICKETS →</a>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer-grid">
-            <div><div class="footer-brand">fakʼugesi</div><p style="font-size:13px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
-            <div><strong>Festival</strong><a href="programme.html">Programme</a><a href="tickets.html">Tickets</a></div>
-            <div><strong>Community</strong><a href="awards.html">Awards</a><a href="about.html">About</a></div>
-            <div><strong>Connect</strong><a href="#">Instagram</a><a href="#">X</a></div>
-        </div>
-    </footer>
-    
-    <script>
-        const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-        });
-    </script>
+
+<nav>
+  <a class="nav-logo" href="/">Fak'ugesi 2026</a>
+  <ul class="nav-links">
+    <li><a href="/programme" class="active">Programme</a></li>
+    <li><a href="/immersive-africa">Immersive Africa</a></li>
+    <li><a href="/awards">Awards</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="/tickets">Get Tickets</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow">→ Programme 2026</div>
+  <h1 class="page-title">10 Days.<br/>200+ Sessions.</h1>
+  <p class="page-subtitle">Panels, workshops, performances, screenings and keynotes from Africa's most important voices in digital culture and technology.</p>
+</div>
+
+<div class="filters-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="filter(this,'all')">All</button>
+  <button class="filter-btn" onclick="filter(this,'panel')">Panels</button>
+  <button class="filter-btn" onclick="filter(this,'workshop')">Workshops</button>
+  <button class="filter-btn" onclick="filter(this,'performance')">Performances</button>
+  <button class="filter-btn" onclick="filter(this,'screening')">Screenings</button>
+  <div class="filter-sep"></div>
+  <button class="filter-btn" onclick="filter(this,'expo')">Expo</button>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers-strip">
+  <div class="number-item"><div class="number-val">10</div><div class="number-label">Festival Days</div></div>
+  <div class="number-item"><div class="number-val">80+</div><div class="number-label">Speakers</div></div>
+  <div class="number-item"><div class="number-val">200+</div><div class="number-label">Sessions</div></div>
+  <div class="number-item"><div class="number-val">12</div><div class="number-label">Venues</div></div>
+</div>
+
+<div class="programme-section">
+
+  <!-- DAY 1 -->
+  <div class="day-header">
+    <div class="day-number">Day 01</div>
+    <div class="day-date">Friday, 4 September</div>
+    <div class="day-theme">Opening &amp; Keynotes</div>
+  </div>
+
+  <div class="event-row keynote" data-cat="panel">
+    <div class="event-time-col">09:00</div>
+    <div class="event-cat-badge badge-panel">Keynote</div>
+    <div class="event-info"><div class="event-title">Opening Address: Africa's Digital Decade</div><div class="event-speaker">Leila Ndambuki — Chief Digital Officer, African Union</div></div>
+    <div class="event-location">Main Stage</div>
+  </div>
+  <div class="event-row" data-cat="panel">
+    <div class="event-time-col">10:30</div>
+    <div class="event-cat-badge badge-panel">Panel</div>
+    <div class="event-info"><div class="event-title">AI &amp; African Languages: Building Models for the Continent</div><div class="event-speaker">Dr. Masego Sithole, Kwame Asante, Ife Olatunji</div></div>
+    <div class="event-location">Hall A</div>
+  </div>
+  <div class="event-row" data-cat="workshop">
+    <div class="event-time-col">11:00</div>
+    <div class="event-cat-badge badge-workshop">Workshop</div>
+    <div class="event-info"><div class="event-title">Generative AI for Visual Artists</div><div class="event-speaker">Kwabena Asante — Artist &amp; Researcher</div></div>
+    <div class="event-location">Studio Lab</div>
+  </div>
+  <div class="event-row" data-cat="performance">
+    <div class="event-time-col">14:00</div>
+    <div class="event-cat-badge badge-performance">Performance</div>
+    <div class="event-info"><div class="event-title">Afrofuturist Soundscapes — Live AV Set</div><div class="event-speaker">DJ Satellit &amp; VJ Cosmic</div></div>
+    <div class="event-location">Turbine Hall</div>
+  </div>
+  <div class="event-row" data-cat="panel">
+    <div class="event-time-col">15:30</div>
+    <div class="event-cat-badge badge-panel">Panel</div>
+    <div class="event-info"><div class="event-title">Women Shaping African Tech</div><div class="event-speaker">Amara Diallo, Nadia Mwangi, Zola Petersen</div></div>
+    <div class="event-location">Hall B</div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-header">
+    <div class="day-number">Day 02</div>
+    <div class="day-date">Saturday, 5 September</div>
+    <div class="day-theme">Immersive &amp; XR Day</div>
+  </div>
+
+  <div class="event-row keynote" data-cat="panel">
+    <div class="event-time-col">09:30</div>
+    <div class="event-cat-badge badge-panel">Keynote</div>
+    <div class="event-info"><div class="event-title">The Future of XR in Africa: Access, Infrastructure, Imagination</div><div class="event-speaker">Athanasius Johnson — AfriVerse Studios</div></div>
+    <div class="event-location">Main Stage</div>
+  </div>
+  <div class="event-row" data-cat="workshop">
+    <div class="event-time-col">11:00</div>
+    <div class="event-cat-badge badge-workshop">Workshop</div>
+    <div class="event-info"><div class="event-title">Building VR Experiences on a Budget</div><div class="event-speaker">Sipho Nkosi — Indie Developer</div></div>
+    <div class="event-location">Studio Lab</div>
+  </div>
+  <div class="event-row" data-cat="screening">
+    <div class="event-time-col">13:00</div>
+    <div class="event-cat-badge badge-screening">Screening</div>
+    <div class="event-info"><div class="event-title">African Short Film Programme: Digital Visions</div><div class="event-speaker">Curated by Zanele Mokoena</div></div>
+    <div class="event-location">Cinema Room</div>
+  </div>
+  <div class="event-row" data-cat="expo">
+    <div class="event-time-col">10:00</div>
+    <div class="event-cat-badge badge-expo">Expo</div>
+    <div class="event-info"><div class="event-title">Immersive Africa Exhibition — Open All Day</div><div class="event-speaker">80+ installations from 40+ artists</div></div>
+    <div class="event-location">Turbine Hall</div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-header">
+    <div class="day-number">Day 03</div>
+    <div class="day-date">Sunday, 6 September</div>
+    <div class="day-theme">Innovation &amp; Startups</div>
+  </div>
+
+  <div class="event-row" data-cat="panel">
+    <div class="event-time-col">09:00</div>
+    <div class="event-cat-badge badge-panel">Panel</div>
+    <div class="event-info"><div class="event-title">VC &amp; African Startups: The Funding Landscape 2026</div><div class="event-speaker">Fatima Al-Rashid, Tendai Chikwanda, Mark Eze</div></div>
+    <div class="event-location">Hall A</div>
+  </div>
+  <div class="event-row" data-cat="workshop">
+    <div class="event-time-col">11:00</div>
+    <div class="event-cat-badge badge-workshop">Workshop</div>
+    <div class="event-info"><div class="event-title">Designing for African Contexts: Beyond Western UX Paradigms</div><div class="event-speaker">Amara Diallo — Design Lead, Sankofa Studio</div></div>
+    <div class="event-location">Studio Lab</div>
+  </div>
+  <div class="event-row" data-cat="panel">
+    <div class="event-time-col">14:00</div>
+    <div class="event-cat-badge badge-panel">Panel</div>
+    <div class="event-info"><div class="event-title">FarmTech &amp; AgriAI: Feeding Africa with Data</div><div class="event-speaker">Nadia Mwangi, Dr. James Osei</div></div>
+    <div class="event-location">Hall B</div>
+  </div>
+
+</div><!-- /programme-section -->
+
+<!-- SPEAKERS -->
+<section class="speakers-section">
+  <div class="section-label">Speakers</div>
+  <div class="section-title">Featured Voices</div>
+  <div class="speakers-grid">
+    <div class="speaker-card"><div class="speaker-avatar">👩🏿</div><div class="speaker-name">Leila Ndambuki</div><div class="speaker-role">Chief Digital Officer, African Union</div><div class="speaker-country">🇰🇪 Kenya</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">🧑🏾</div><div class="speaker-name">Kwabena Asante</div><div class="speaker-role">Artist &amp; AI Researcher</div><div class="speaker-country">🇬🇭 Ghana</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">👩🏾</div><div class="speaker-name">Amara Diallo</div><div class="speaker-role">Design Lead, Sankofa Studio</div><div class="speaker-country">🇸🇳 Senegal</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">👩🏿</div><div class="speaker-name">Nadia Mwangi</div><div class="speaker-role">Founder, FarmLink Technologies</div><div class="speaker-country">🇰🇪 Kenya</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">🧑🏿</div><div class="speaker-name">Athanasius Johnson</div><div class="speaker-role">XR Director, AfriVerse Studios</div><div class="speaker-country">🇿🇦 South Africa</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">🧑🏾</div><div class="speaker-name">Sipho Nkosi</div><div class="speaker-role">Indie Game &amp; VR Developer</div><div class="speaker-country">🇿🇦 South Africa</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">👩🏾</div><div class="speaker-name">Zanele Mokoena</div><div class="speaker-role">Film Curator &amp; Director</div><div class="speaker-country">🇿🇦 South Africa</div></div>
+    <div class="speaker-card"><div class="speaker-avatar">🧑🏿</div><div class="speaker-name">Jopee Dairo</div><div class="speaker-role">Generative Artist &amp; Activist</div><div class="speaker-country">🇳🇬 Nigeria</div></div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <h2>Don't Miss a Session</h2>
+  <p>Full festival passes give you access to all 200+ sessions across 10 days.</p>
+  <a class="btn-dark" href="/tickets">Get Your Pass →</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand">Fak'ugesi Festival</div><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
+    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="/programme">Programme</a></li><li><a href="/immersive-africa">Immersive Africa</a></li><li><a href="/awards">Awards</a></li><li><a href="/tickets">Tickets</a></li></ul></div>
+    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="/about">About Us</a></li><li><a href="/about#partners">Partners</a></li><li><a href="/about#press">Press</a></li><li><a href="/about#contact">Contact</a></li></ul></div>
+    <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Fak'ugesi Festival. All rights reserved.</div><div class="footer-copy">Designed in Johannesburg</div></div>
+</footer>
+
+<script>
+  function filter(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.event-row').forEach(el => {
+      el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'grid' : 'none';
+    });
+  }
+</script>
 </body>
 </html>

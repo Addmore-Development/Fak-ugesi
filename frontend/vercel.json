@@ -1,0 +1,58 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/images/Fak_ugesi%202025-32.jpg",
+      "destination": "/images/Fak_ugesi_2025-32.jpg"
+    },
+    {
+      "source": "/images/Fak_ugesi 2025-32.jpg",
+      "destination": "/images/Fak_ugesi_2025-32.jpg"
+    },
+    {
+      "source": "/images/FP01%20Fak_ugesi%20Festival%20Poster.jpg",
+      "destination": "/images/FP01_Fak_ugesi_Festival_Poster.jpg"
+    },
+    {
+      "source": "/images/FP01 Fak_ugesi Festival Poster.jpg",
+      "destination": "/images/FP01_Fak_ugesi_Festival_Poster.jpg"
+    },
+    {
+      "source": "/images/Copy%20of%20_MGL3584.jpg",
+      "destination": "/images/Copy_of__MGL3584.jpg"
+    },
+    {
+      "source": "/images/Copy%20of%20_MGL4129.jpg",
+      "destination": "/images/Copy_of__MGL4129.jpg"
+    },
+    {
+      "source": "/images/Copy%20of%20_MGL0176.jpg",
+      "destination": "/images/Copy_of__MGL0176.jpg"
+    },
+    {
+      "source": "/images/IMG_8523%20-%20Athanasius%20Johnson.png",
+      "destination": "/images/IMG_8523_Athanasius_Johnson.png"
+    },
+    {
+      "source": "/images/IMG_8523 - Athanasius Johnson.png",
+      "destination": "/images/IMG_8523_Athanasius_Johnson.png"
+    },
+    {
+      "source": "/images/VOF%20Voices%20of%20fire%20print%20-%20Joseph%20Dairo.jpg",
+      "destination": "/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg"
+    },
+    {
+      "source": "/images/Screenshot-2024-05-21-at-21.36.37.webp",
+      "destination": "/images/Screenshot-2024-05-21-at-21.36.37.webp"
+    }
+  ]
+}

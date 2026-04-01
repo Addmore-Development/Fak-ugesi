@@ -1,8 +1,9 @@
 /**
- * Fak'ugesi Global Effects v3 — ULTRA EDITION
- * - Arrow crashes into standing lightning bolt
- * - MEGA water ripples
- * - Hilarious noodle text on hover
+ * Fak'ugesi Global Effects v5
+ * - Arrow moves right, crashes into stacked triple lightning bolt, explosion, new arrow enters from left — loops on hover
+ * - Clear/white water ripples (no color) — NOT on index.html hero
+ * - Star markers on crosshairs
+ * - Zipper effect improvements handled in awards.html
  */
 (function () {
   'use strict';
@@ -21,46 +22,36 @@
       100%{transform:rotate(360deg) scale(1);}
     }
 
-    /* ── ARROW BUTTON — wider for bolt ── */
+    /* ── ARROW BUTTON ── */
     .arrow-btn {
       display:inline-flex!important;align-items:center;justify-content:center;
-      position:relative;overflow:visible!important;
-      width:140px!important;height:52px!important;
-      background:rgba(255,255,255,.06);
-      border:1.5px solid rgba(255,255,255,.3);
+      position:relative;overflow:hidden!important;
       cursor:pointer;text-decoration:none;
       transition:border-color .2s,background .2s;
-      clip-path:none!important;
     }
-    .arrow-btn.dark{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.25);}
-    .arrow-btn canvas.kikk-canvas{
+    .arrow-btn canvas.fug-canvas{
       position:absolute;inset:0;width:100%;height:100%;
       pointer-events:none;z-index:1;
     }
     .arrow-btn .arr-icon{
       position:relative;z-index:2;
-      width:26px;height:16px;
-      fill:none;stroke:#fff;stroke-width:2;
+      fill:none;stroke-width:2;
       stroke-linecap:round;stroke-linejoin:round;
-      transition:opacity .15s;
+      opacity:0;/* hidden — canvas draws it */
     }
-    .arrow-btn.dark .arr-icon{stroke:#111;}
 
     /* ── RIPPLE CANVAS ── */
     #global-ripple-canvas{
       position:fixed;inset:0;width:100%;height:100%;
       pointer-events:none;z-index:99990;
-      mix-blend-mode:screen;
     }
 
-    /* ── NOODLE TEXT ── */
-    .noodle-active {
-      display:inline-block;
+    /* ── ZIPPER — faster ── */
+    .zip-curtain-left, .zip-curtain-right {
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1) !important;
     }
-    .noodle-char {
-      display:inline-block;
-      transition:transform 0.08s ease;
-      will-change:transform;
+    .winners-revealed {
+      transition: opacity 0.3s ease 0.42s !important;
     }
 
     /* ── SECTION DIVIDER ── */
@@ -129,237 +120,251 @@
   }
 
   /* ─────────────────────────────────────────────
-     ARROW BUTTON — arrow zooms right, CRASHES into standing bolt, explosion, new arrow enters
+     LIGHTNING BOLT SVG PATH (matches reference image)
+     Chunky 3-point bolt, tilted
+  ───────────────────────────────────────────── */
+  function drawBoltShape(ctx, cx, cy, w, h, color, alpha, glowSize) {
+    // The bolt from the image: top-right, notch left, notch right, bottom-left point
+    const s = Math.min(w, h);
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.translate(cx, cy);
+
+    // Glow
+    if(glowSize > 0) {
+      ctx.shadowColor = '#ffee00';
+      ctx.shadowBlur = glowSize;
+    }
+
+    ctx.beginPath();
+    // Scaled bolt path matching the reference image shape
+    // Top right corner → notch left → right ear → middle notch → right → bottom point
+    const W = s * 0.55, H = s * 1.0;
+    ctx.moveTo(W*0.15,  -H*0.5);       // top right
+    ctx.lineTo(-W*0.6,   H*0.02);      // notch left top
+    ctx.lineTo(-W*0.1,   H*0.02);      // notch inner
+    ctx.lineTo(-W*0.7,   H*0.5);       // bottom left
+    ctx.lineTo(W*0.6,   -H*0.05);      // notch right bottom  
+    ctx.lineTo(W*0.05,  -H*0.05);      // inner right
+    ctx.closePath();
+
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  /* Draw three stacked bolts (the "stack" that the arrow crashes into) */
+  function drawBoltStack(ctx, cx, cy, btnW, btnH, alpha) {
+    const boltH = btnH * 0.55;
+    const offsets = [-6, 0, 6];
+    const colors = ['rgba(255,238,0,0.3)', '#ffffff', 'rgba(255,238,0,0.5)'];
+    offsets.forEach((ox, i) => {
+      drawBoltShape(ctx, cx + ox, cy, btnW * 0.25, boltH, colors[i], alpha * (i===1?1:0.6), i===1?12:0);
+    });
+  }
+
+  /* Draw arrow pointing right at position x */
+  function drawArrow(ctx, x, cy, alpha, color) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 4;
+    ctx.beginPath();
+    ctx.moveTo(x - 10, cy);
+    ctx.lineTo(x + 6, cy);
+    ctx.moveTo(x, cy - 6);
+    ctx.lineTo(x + 7, cy);
+    ctx.lineTo(x, cy + 6);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────────
+     ARROW BUTTON — canvas-based crash animation
+     Arrow moves right → crashes into triple bolt stack →
+     explosion → new arrow enters from left → loops
   ───────────────────────────────────────────── */
   function initArrowBtn(btn) {
     if(btn.dataset.arrowDone) return;
     btn.dataset.arrowDone='1';
 
     const isDark = btn.classList.contains('dark');
-    const arrowColor = isDark ? '#111' : '#fff';
-    const boltColor = isDark ? '#333' : 'rgba(255,255,255,0.75)';
+    const arrowColor = isDark ? '#111111' : '#ffffff';
     const accentYellow = '#d4e600';
-    const accentOrange = '#ff7700';
-    const W_BTN = 140, H_BTN = 52;
 
-    /* canvas covers the full button */
     const canvas = document.createElement('canvas');
-    canvas.className = 'kikk-canvas';
-    canvas.width = W_BTN; canvas.height = H_BTN;
+    canvas.className = 'fug-canvas';
     btn.insertBefore(canvas, btn.firstChild);
 
-    /* hide original SVG icon — we draw it ourselves */
+    // Hide original SVG icon
     const origIcon = btn.querySelector('.arr-icon');
-    if(origIcon) origIcon.style.display = 'none';
+    if(origIcon) origIcon.style.opacity = '0';
+
+    let W, H;
+    function resizeCanvas() {
+      W = canvas.width = btn.offsetWidth || 140;
+      H = canvas.height = btn.offsetHeight || 52;
+    }
+    resizeCanvas();
 
     const ctx = canvas.getContext('2d');
+    const BOLT_X_RATIO = 0.72; // bolt stack position (right side)
+    const ARROW_START_X = 0.25; // arrow starts here (ratio of W)
 
-    /* ── draw bolt at X position ── */
-    function drawBolt(x, alpha, scale=1, color=boltColor) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.translate(x, H_BTN/2);
-      ctx.scale(scale, scale);
-      // chunky bolt path
-      ctx.beginPath();
-      ctx.moveTo(4, -14);
-      ctx.lineTo(-4, 0);
-      ctx.lineTo(2, 0);
-      ctx.lineTo(-4, 14);
-      ctx.lineTo(4, 0);
-      ctx.lineTo(-2, 0);
-      ctx.closePath();
-      ctx.fillStyle = color;
-      ctx.shadowColor = accentYellow;
-      ctx.shadowBlur = 10 * scale;
-      ctx.fill();
-      ctx.restore();
-    }
-
-    /* ── draw arrow at X ── */
-    function drawArrow(x, alpha) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = arrowColor;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.shadowColor = arrowColor;
-      ctx.shadowBlur = 3;
-      const y = H_BTN/2;
-      ctx.beginPath();
-      ctx.moveTo(x - 11, y);
-      ctx.lineTo(x + 5, y);
-      ctx.moveTo(x - 1, y - 6);
-      ctx.lineTo(x + 6, y);
-      ctx.lineTo(x - 1, y + 6);
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    /* ── explosion particles ── */
+    let raf = null;
+    let hovering = false;
+    let phase = 'idle'; // idle | travel | crash | explode | enter
+    let arrowX = 0;
+    let newArrowX = 0;
+    let crashTimer = 0;
     let particles = [];
-    const COLORS_EXP = ['#ff2200','#ff7700','#ffee00','#d4e600','#ffffff','#ff44cc','#44ffff'];
-    function spawnExplosion(x) {
-      for(let i=0;i<30;i++) {
-        const angle = Math.random()*Math.PI*2;
-        const speed = 2 + Math.random()*5;
+    let flashAlpha = 0;
+    let boltVisible = true;
+    let boltShakeX = 0;
+
+    function spawnExplosion(x, y) {
+      for(let i = 0; i < 18; i++) {
+        const angle = (i / 18) * Math.PI * 2 + Math.random() * 0.3;
+        const speed = 1.5 + Math.random() * 3.5;
         particles.push({
-          x, y: H_BTN/2,
-          vx: Math.cos(angle)*speed,
-          vy: Math.sin(angle)*speed,
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
           life: 1,
-          size: 2 + Math.random()*5,
-          color: COLORS_EXP[Math.floor(Math.random()*COLORS_EXP.length)]
+          size: 1.5 + Math.random() * 3,
+          color: Math.random() < 0.5 ? '#ffee00' : Math.random() < 0.5 ? '#ffffff' : accentYellow
         });
       }
+      flashAlpha = 0.8;
+      boltVisible = false;
+      setTimeout(() => { boltVisible = true; }, 200);
     }
 
     function updateParticles() {
-      particles = particles.filter(p => p.life > 0);
+      particles = particles.filter(p => p.life > 0.02);
       particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        p.vx *= 0.88; p.vy *= 0.88;
-        p.life -= 0.04;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vx *= 0.85;
+        p.vy *= 0.85;
+        p.life -= 0.06;
         ctx.save();
         ctx.globalAlpha = Math.max(0, p.life);
         ctx.fillStyle = p.color;
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 6;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI*2);
+        ctx.arc(p.x, p.y, Math.max(0.5, p.size * p.life), 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       });
     }
 
-    /* ── shockwave rings ── */
-    let shockwaves = [];
-    function spawnShockwave(x) {
-      shockwaves.push({ x, y: H_BTN/2, r: 4, life: 1 });
-      shockwaves.push({ x, y: H_BTN/2, r: 2, life: 1 });
-    }
-    function updateShockwaves() {
-      shockwaves = shockwaves.filter(s => s.life > 0);
-      shockwaves.forEach(s => {
-        s.r += 4; s.life -= 0.07;
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, s.life * 0.8);
-        ctx.strokeStyle = accentYellow;
-        ctx.lineWidth = 2;
-        ctx.shadowColor = accentYellow;
-        ctx.shadowBlur = 10;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        ctx.stroke();
-        ctx.restore();
-      });
-    }
+    function drawFrame() {
+      resizeCanvas();
+      ctx.clearRect(0, 0, W, H);
+      const cy = H / 2;
+      const boltX = W * BOLT_X_RATIO + boltShakeX;
 
-    /* ── flash overlay ── */
-    let flashAlpha = 0;
-    function triggerFlash() { flashAlpha = 1; }
-
-    /* ── STATE MACHINE ── */
-    // States: idle, travel, crash, settle, exit
-    let state = 'idle';
-    let arrowX = W_BTN * 0.35;   // arrow position
-    const BOLT_X = W_BTN * 0.75; // standing bolt position
-    let boltShake = 0;
-    let boltVisible = true;
-    let newArrowX = -20;
-    let raf = null;
-    let crashed = false;
-
-    function idle() {
-      canvas.width = W_BTN; canvas.height = H_BTN;
-      ctx.clearRect(0,0,W_BTN,H_BTN);
-      drawArrow(W_BTN*0.35, 1);
-      drawBolt(BOLT_X, 0.7, 1);
-    }
-
-    function tick() {
-      canvas.width = W_BTN; canvas.height = H_BTN;
-      ctx.clearRect(0,0,W_BTN,H_BTN);
-
-      /* flash */
+      // Flash overlay
       if(flashAlpha > 0) {
         ctx.save();
-        ctx.globalAlpha = flashAlpha * 0.5;
+        ctx.globalAlpha = flashAlpha * 0.4;
         ctx.fillStyle = '#ffee00';
-        ctx.fillRect(0,0,W_BTN,H_BTN);
+        ctx.fillRect(0, 0, W, H);
         ctx.restore();
-        flashAlpha = Math.max(0, flashAlpha - 0.12);
+        flashAlpha = Math.max(0, flashAlpha - 0.1);
       }
 
       updateParticles();
-      updateShockwaves();
 
-      if(state === 'travel') {
-        arrowX += 6;
-        drawArrow(arrowX, 1);
-        /* bolt pulses slightly */
-        drawBolt(BOLT_X + Math.sin(Date.now()*0.03)*1.5, 0.9, 1.0 + Math.sin(Date.now()*0.05)*0.08);
+      // Draw bolt stack (always visible unless just crashed)
+      if(boltVisible) {
+        drawBoltStack(ctx, boltX, cy, W, H, phase === 'idle' ? 0.5 : 0.85);
+      }
 
-        if(arrowX >= BOLT_X - 8) {
-          state = 'crash';
-          crashed = true;
-          spawnExplosion(BOLT_X);
-          spawnShockwave(BOLT_X);
-          triggerFlash();
-          boltVisible = false;
-          setTimeout(()=>{ boltVisible=true; }, 350);
+      if(phase === 'idle') {
+        // Static arrow at start position, bolt visible dimly
+        drawArrow(ctx, W * ARROW_START_X, cy, 0.9, arrowColor);
+
+      } else if(phase === 'travel') {
+        // Arrow moves right
+        arrowX += W * 0.045; // speed
+        drawArrow(ctx, arrowX, cy, 1, arrowColor);
+
+        if(arrowX >= boltX - 6) {
+          // CRASH
+          spawnExplosion(boltX, cy);
+          phase = 'explode';
+          crashTimer = 0;
         }
-      } else if(state === 'crash') {
-        /* bolt shatters — draw fragments flying */
-        if(boltVisible) drawBolt(BOLT_X, 0.8, 1.2, '#ffee00');
-        boltShake = (Math.random()-0.5)*8;
-        /* after crash, bring in new arrow from left */
-        setTimeout(()=>{
-          state = 'enter';
-          newArrowX = -20;
-        }, 180);
-        state = 'wait'; // prevent repeated timeout
-      } else if(state === 'wait') {
-        // just update particles
-      } else if(state === 'enter') {
-        newArrowX += 5.5;
-        drawArrow(newArrowX, Math.min(1, newArrowX/30));
-        /* bolt reassembles */
-        drawBolt(BOLT_X, Math.min(0.8, (newArrowX - 20)/80));
-        if(newArrowX >= W_BTN*0.35) {
-          arrowX = W_BTN*0.35;
-          state = 'settled';
+
+      } else if(phase === 'explode') {
+        crashTimer++;
+        boltShakeX = (Math.random() - 0.5) * 5;
+        if(crashTimer > 8) {
+          boltShakeX = 0;
+          // Start new arrow entering from left
+          newArrowX = -W * 0.1;
+          phase = 'enter';
         }
-      } else if(state === 'settled') {
-        drawArrow(arrowX, 1);
-        drawBolt(BOLT_X, 0.8);
-        if(particles.length === 0 && shockwaves.length === 0) {
-          /* idle animation - subtle bolt flicker */
+
+      } else if(phase === 'enter') {
+        newArrowX += W * 0.045;
+        drawArrow(ctx, newArrowX, cy, Math.min(1, newArrowX / (W * 0.15)), arrowColor);
+
+        if(newArrowX >= W * ARROW_START_X) {
+          arrowX = W * ARROW_START_X;
+          // If still hovering, loop again
+          if(hovering) {
+            phase = 'travel';
+          } else {
+            phase = 'idle';
+          }
         }
       }
 
-      raf = requestAnimationFrame(tick);
+      if(phase !== 'idle' || particles.length > 0 || flashAlpha > 0) {
+        raf = requestAnimationFrame(drawFrame);
+      } else {
+        raf = null;
+        // Draw idle state once
+        ctx.clearRect(0, 0, W, H);
+        const bx = W * BOLT_X_RATIO;
+        drawBoltStack(ctx, bx, H/2, W, H, 0.5);
+        drawArrow(ctx, W * ARROW_START_X, H/2, 0.9, arrowColor);
+      }
+    }
+
+    function startIdle() {
+      ctx.clearRect(0, 0, W, H);
+      drawBoltStack(ctx, W * BOLT_X_RATIO, H/2, W, H, 0.5);
+      drawArrow(ctx, W * ARROW_START_X, H/2, 0.9, arrowColor);
     }
 
     btn.addEventListener('mouseenter', () => {
-      if(state === 'idle' || state === 'settled') {
-        state = 'travel';
-        arrowX = W_BTN*0.35;
-        crashedOnce = false;
-        if(!raf) raf = requestAnimationFrame(tick);
+      hovering = true;
+      if(phase === 'idle') {
+        arrowX = W * ARROW_START_X;
+        phase = 'travel';
+        particles = [];
+        flashAlpha = 0;
+        boltShakeX = 0;
+        boltVisible = true;
+        if(!raf) raf = requestAnimationFrame(drawFrame);
       }
     });
 
     btn.addEventListener('mouseleave', () => {
-      cancelAnimationFrame(raf); raf = null;
-      particles = []; shockwaves = []; flashAlpha = 0;
-      state = 'idle';
-      boltVisible = true;
-      idle();
+      hovering = false;
+      // Let current animation finish, then return to idle
     });
 
-    idle();
+    startIdle();
   }
 
   function initAllArrows() {
@@ -367,9 +372,14 @@
   }
 
   /* ─────────────────────────────────────────────
-     MEGA WATER RIPPLES — extremely obvious
+     CLEAR WATER RIPPLES — white/transparent only
+     NOT applied to index.html hero section
   ───────────────────────────────────────────── */
-  function initMegaRipples() {
+  function initRipples() {
+    const isIndex = document.body.dataset.page === 'index' ||
+                    window.location.pathname === '/' ||
+                    window.location.pathname.endsWith('index.html');
+
     const canvas = document.createElement('canvas');
     canvas.id = 'global-ripple-canvas';
     document.body.appendChild(canvas);
@@ -381,169 +391,82 @@
 
     const drops = [];
 
-    function addDrop(x, y, big=false) {
-      const count = big ? 5 : 3;
-      for(let i=0;i<count;i++) {
+    function addDrop(x, y, big = false) {
+      const count = big ? 4 : 2;
+      for(let i = 0; i < count; i++) {
         drops.push({
-          x: x + (Math.random()-0.5)*(big?30:10),
-          y: y + (Math.random()-0.5)*(big?10:4),
+          x: x + (Math.random() - 0.5) * (big ? 20 : 8),
+          y: y + (Math.random() - 0.5) * (big ? 8 : 3),
           r: 0,
-          a: big ? 0.9 : 0.75,
-          speed: big ? (1.5+Math.random()*2) : (1+Math.random()*1.5),
-          delay: i*80,
+          a: big ? 0.7 : 0.5,
+          speed: big ? 1.8 + Math.random() * 1.5 : 1.2 + Math.random() * 1,
+          delay: i * 60,
           born: Date.now()
         });
       }
     }
 
     (function loop() {
-      ctx.clearRect(0,0,W,H);
+      ctx.clearRect(0, 0, W, H);
       const now = Date.now();
-      for(let i=drops.length-1;i>=0;i--) {
-        const d=drops[i];
+      for(let i = drops.length - 1; i >= 0; i--) {
+        const d = drops[i];
         const age = now - d.born - d.delay;
         if(age < 0) continue;
-        d.r += d.speed * 1.8;
-        d.a -= 0.018;
-        if(d.a<=0){drops.splice(i,1);continue;}
+        d.r += d.speed * 1.6;
+        d.a -= 0.022;
+        if(d.a <= 0) { drops.splice(i, 1); continue; }
 
-        /* Main big elliptical ripple */
+        // Outer ring
         ctx.save();
-        ctx.globalAlpha = d.a * 0.85;
-        ctx.strokeStyle = `rgba(0,180,255,0.9)`;
-        ctx.lineWidth = 3;
-        ctx.shadowColor = 'rgba(0,200,255,1)';
-        ctx.shadowBlur = 20;
-        ctx.beginPath();
-        ctx.ellipse(d.x, d.y, d.r * 1.5, d.r * 0.4, 0, 0, Math.PI*2);
-        ctx.stroke();
-        ctx.restore();
-
-        /* Second ring */
-        ctx.save();
-        ctx.globalAlpha = d.a * 0.5;
-        ctx.strokeStyle = `rgba(100,220,255,0.8)`;
+        ctx.globalAlpha = d.a * 0.6;
+        ctx.strokeStyle = 'rgba(255,255,255,0.9)';
         ctx.lineWidth = 1.5;
-        ctx.shadowColor = 'rgba(100,220,255,1)';
-        ctx.shadowBlur = 12;
         ctx.beginPath();
-        ctx.ellipse(d.x, d.y, d.r * 2.2, d.r * 0.6, 0, 0, Math.PI*2);
+        ctx.ellipse(d.x, d.y, d.r * 1.8, d.r * 0.45, 0, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
 
-        /* Bright splash highlight */
+        // Inner ring
         ctx.save();
-        ctx.globalAlpha = d.a * 0.3;
-        ctx.strokeStyle = `rgba(255,255,255,0.9)`;
-        ctx.lineWidth = 1;
+        ctx.globalAlpha = d.a * 0.35;
+        ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+        ctx.lineWidth = 0.8;
         ctx.beginPath();
-        ctx.ellipse(d.x, d.y, d.r * 0.6, d.r * 0.15, 0, 0, Math.PI*2);
+        ctx.ellipse(d.x, d.y, d.r * 0.9, d.r * 0.22, 0, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
       }
       requestAnimationFrame(loop);
     })();
 
-    /* Trigger on hover of text elements */
     function attachRipple(el) {
+      // Skip if this element is inside the hero of index.html
+      if(isIndex && el.closest('.hero')) return;
       if(el.dataset.ripple) return;
       el.dataset.ripple = '1';
+
       el.addEventListener('mouseenter', () => {
         const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width/2;
-        const cy = rect.top + rect.height/2;
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
         addDrop(cx, cy, true);
-        /* cascade drops along the element width */
-        for(let i=0;i<4;i++) {
-          setTimeout(()=>{
-            addDrop(rect.left + (rect.width*(i+1)/5), cy + (Math.random()-0.5)*rect.height*0.5);
-          }, i*60+30);
+        for(let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            addDrop(rect.left + (rect.width * (i + 1) / 4), cy + (Math.random() - 0.5) * rect.height * 0.4);
+          }, i * 50 + 20);
         }
       });
     }
 
     function scanRippleTargets() {
-      document.querySelectorAll('h1,h2,h3,h4,.section-title,.faq-q,.gi-card-title,.cat-name,.ticket-title,.spotlight-heading,.theme-heading,.happening-title,.partners-title,.venue-title,.oc-title,.premiere-title,.ia-intro-title,.team-name,.edition-name,nav .nav-links a,.ticker-item,.winner-card,.flip-card,.cat-card,.hero-title').forEach(attachRipple);
+      document.querySelectorAll('h1,h2,h3,.cat-name,.ticket-title,.spotlight-heading,.team-name,.edition-name,nav .nav-links a,.winner-card,.flip-card').forEach(el => {
+        if(isIndex && el.closest('.hero')) return;
+        attachRipple(el);
+      });
     }
     scanRippleTargets();
     setInterval(scanRippleTargets, 2000);
-  }
-
-  /* ─────────────────────────────────────────────
-     NOODLE TEXT — words wriggle like wet noodles on hover
-  ───────────────────────────────────────────── */
-  function initNoodleText() {
-    const NOODLE_SELECTORS = 'h1,h2,h3,h4,.gi-card-title,.cat-name,.ticket-title,.spotlight-heading,.theme-heading,.happening-title,.partners-title,.winner-card .wc-name,.cat-card .cat-name,.flip-front .gi-card-title,nav .nav-links a';
-
-    function wrapChars(el) {
-      if(el.dataset.noodled || el.querySelector('.noodle-char')) return;
-      el.dataset.noodled = '1';
-      const text = el.textContent;
-      if(!text.trim() || el.children.length > 2) return; // skip complex elements
-
-      const html = text.split('').map(ch =>
-        ch === ' ' ? ' ' : `<span class="noodle-char">${ch}</span>`
-      ).join('');
-
-      // preserve child elements like links by only wrapping text nodes
-      el.classList.add('noodle-active');
-      // For simple text elements only
-      if(el.tagName === 'A' || el.childElementCount === 0) {
-        el.innerHTML = html;
-      }
-    }
-
-    function noodleify(el) {
-      if(!el.dataset.noodled) wrapChars(el);
-      const chars = el.querySelectorAll('.noodle-char');
-      if(!chars.length) return;
-
-      let frame = 0;
-      let raf;
-
-      function wobble() {
-        frame++;
-        chars.forEach((ch, i) => {
-          const t = frame * 0.18 + i * 0.6;
-          const tx = Math.sin(t * 1.3) * 6;
-          const ty = Math.cos(t * 0.9 + i) * 8;
-          const rot = Math.sin(t + i * 0.4) * 18;
-          const scaleX = 1 + Math.sin(t * 2 + i) * 0.25;
-          const scaleY = 1 + Math.cos(t * 1.5 + i * 0.7) * 0.3;
-          ch.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
-          ch.style.color = `hsl(${(frame * 3 + i * 25) % 360}, 100%, 60%)`;
-          ch.style.textShadow = `0 0 12px hsl(${(frame*5+i*30)%360},100%,70%)`;
-        });
-        raf = requestAnimationFrame(wobble);
-      }
-
-      el.addEventListener('mouseenter', () => {
-        wobble();
-      });
-
-      el.addEventListener('mouseleave', () => {
-        cancelAnimationFrame(raf);
-        chars.forEach(ch => {
-          ch.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), color 0.4s, text-shadow 0.4s';
-          ch.style.transform = '';
-          ch.style.color = '';
-          ch.style.textShadow = '';
-          setTimeout(()=>{ ch.style.transition=''; }, 450);
-        });
-      });
-    }
-
-    function scanNoodles() {
-      document.querySelectorAll(NOODLE_SELECTORS).forEach(el => {
-        if(!el.dataset.noodleListened) {
-          el.dataset.noodleListened = '1';
-          noodleify(el);
-        }
-      });
-    }
-
-    scanNoodles();
-    setInterval(scanNoodles, 2500);
   }
 
   /* ─────────────────────────────────────────────
@@ -564,14 +487,100 @@
   }
 
   /* ─────────────────────────────────────────────
+     IMAGE ERROR INFINITE LOOP FIX
+     Prevents images with broken onerror handlers
+     from retrying thousands of times
+  ───────────────────────────────────────────── */
+  function fixImageErrors() {
+    function patchImg(img) {
+      if(img.dataset.errPatched) return;
+      img.dataset.errPatched = '1';
+      img.addEventListener('error', function onErr() {
+        if(img.dataset.errFired) {
+          // Already errored once — stop everything
+          img.removeEventListener('error', onErr);
+          img.removeAttribute('onerror');
+          img.src = '';
+          img.style.background = '#1a2332';
+          return;
+        }
+        img.dataset.errFired = '1';
+        // Remove inline onerror to prevent it re-firing
+        const inlineErr = img.getAttribute('onerror');
+        if(inlineErr) {
+          img.removeAttribute('onerror');
+          // Run inline handler once safely
+          try { (new Function(inlineErr)).call(img); } catch(e) {}
+        }
+      });
+    }
+
+    // Patch all current images
+    document.querySelectorAll('img').forEach(patchImg);
+
+    // Patch future images
+    const obs = new MutationObserver(muts => {
+      muts.forEach(m => m.addedNodes.forEach(n => {
+        if(n.tagName === 'IMG') patchImg(n);
+        if(n.querySelectorAll) n.querySelectorAll('img').forEach(patchImg);
+      }));
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+
+  /* ─────────────────────────────────────────────
+     FASTER ZIPPER (awards page)
+  ───────────────────────────────────────────── */
+  function patchZipper() {
+    const zipLeft = document.getElementById('zipLeft');
+    const zipRight = document.getElementById('zipRight');
+    if(!zipLeft || !zipRight) return;
+
+    // Override the transition to be faster
+    zipLeft.style.transition = 'transform 0.45s cubic-bezier(0.4,0,0.2,1)';
+    zipRight.style.transition = 'transform 0.45s cubic-bezier(0.4,0,0.2,1)';
+
+    // Also patch the openZipper timing
+    const origOpen = window.openZipper;
+    if(typeof origOpen === 'function') {
+      window.openZipper = function() {
+        if(window._zipOpen) return;
+        if(typeof window.renderWinners === 'function') window.renderWinners();
+        zipLeft.classList.add('open');
+        zipRight.classList.add('open');
+        const pull = document.getElementById('zipPull');
+        if(pull) pull.style.display = 'none';
+        window._zipOpen = true;
+        // Faster reveal — 500ms instead of 850ms
+        setTimeout(() => {
+          const wr = document.getElementById('winnersRevealed');
+          if(wr) {
+            wr.classList.add('visible');
+            document.querySelectorAll('.winner-card').forEach((card, i) => {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, i * 80 + 50);
+            });
+          }
+        }, 480);
+      };
+    }
+  }
+
+  /* ─────────────────────────────────────────────
      INIT
   ───────────────────────────────────────────── */
   function init() {
+    fixImageErrors();
     convertPluses();
     initAllArrows();
-    initMegaRipples();
-    initNoodleText();
+    initRipples();
     addDividers();
+    patchZipper();
     setInterval(() => { convertPluses(); initAllArrows(); }, 1500);
   }
 

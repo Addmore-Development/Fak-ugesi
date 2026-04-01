@@ -2,14 +2,15 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+    ssl: false
 });
 
-// We export a db object that mimics SQLite's interface
-// so we don't need to rewrite all the routes in server.js
+pool.on('error', (err) => {
+    console.error('❌ Unexpected pool error:', err);
+});
+
 const db = {
     all: (query, params, callback) => {
-        // Convert SQLite ? placeholders to PostgreSQL $1, $2...
         const pgQuery = convertPlaceholders(query);
         pool.query(pgQuery, params || [], (err, result) => {
             if (callback) callback(err, result ? result.rows : null);
@@ -25,7 +26,6 @@ const db = {
         const pgQuery = convertPgInsert(query);
         pool.query(pgQuery, params || [], function(err, result) {
             if (callback) {
-                // Mimic SQLite's `this.lastID`
                 const lastID = result && result.rows && result.rows[0] ? result.rows[0].id : null;
                 callback.call({ lastID, changes: result ? result.rowCount : 0 }, err);
             }
@@ -33,13 +33,11 @@ const db = {
     }
 };
 
-// Convert SQLite ? to PostgreSQL $1, $2, $3...
 function convertPlaceholders(query) {
     let i = 0;
     return query.replace(/\?/g, () => `$${++i}`);
 }
 
-// For INSERT statements, add RETURNING id so we get lastID
 function convertPgInsert(query) {
     let converted = convertPlaceholders(query);
     if (converted.trim().toUpperCase().startsWith('INSERT') && !converted.includes('RETURNING')) {
@@ -50,6 +48,10 @@ function convertPgInsert(query) {
 
 async function initDatabase() {
     try {
+        const client = await pool.connect();
+        console.log('✅ Connected to PostgreSQL');
+        client.release();
+
         await pool.query(`
             CREATE TABLE IF NOT EXISTS awards (
                 id SERIAL PRIMARY KEY,
@@ -115,7 +117,10 @@ async function initDatabase() {
 
         console.log('✅ PostgreSQL tables initialized');
     } catch (err) {
-        console.error('❌ Database init error:', err.message);
+        console.error('❌ Database init error:');
+        console.error('   Message:', err.message);
+        console.error('   Code:   ', err.code);
+        console.error('   Detail: ', err.detail || 'none');
     }
 }
 

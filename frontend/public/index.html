@@ -24,9 +24,9 @@
     .nav-right { display:flex;align-items:center;gap:16px; }
 
     /* HERO */
-    .hero { position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:#000; }
+    .hero { position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#000; }
     .hero-bg { position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,5,15,0.85) 0%,rgba(5,5,15,0.5) 50%,rgba(5,5,15,0.8) 100%); }
-    .hero-bg-img { position:absolute;inset:0;background:url('/images/_MGL2775.jpg') center/cover no-repeat;opacity:0.55; }
+    .hero-bg-img { position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1800&q=80') center/cover no-repeat;opacity:0.55; }
     #lightning-canvas { position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%; }
     .crosshair { position:absolute;color:rgba(255,255,255,0.3);font-size:18px;font-weight:300;line-height:1;pointer-events:none; }
 
@@ -38,11 +38,11 @@
     @keyframes cwJump { 0%{opacity:0;transform:translateX(80vw) scale(2.5)} 50%{opacity:1;transform:translateX(0) scale(1.2)} 70%{transform:translateX(0) scale(0.95)} 85%{transform:translateX(0) scale(1.08)} 100%{opacity:1;transform:translateX(0) scale(1)} }
 
     /* HERO CONTENT */
-    .hero-content { position:relative;z-index:4;padding:140px 60px 60px;max-width:700px;opacity:0;transition:opacity 0.9s ease; }
+    .hero-content { position:relative;z-index:4;padding:0 60px 60px;max-width:100%;width:100%;opacity:0;transition:opacity 0.9s ease;position:absolute;bottom:0;left:0;right:0; }
     .hero-content.visible { opacity:1; }
     .hero-eyebrow { font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;font-weight:500; }
-    .hero-title { font-size:clamp(42px,6vw,72px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px; }
-    .hero-desc { font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:440px;margin-bottom:28px; }
+    .hero-title { font-size:clamp(48px,7vw,86px);font-weight:800;line-height:0.95;letter-spacing:-0.03em;margin-bottom:20px; }
+    .hero-desc { font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:540px;margin-bottom:28px; }
     .hero-link-row { display:flex;align-items:center;gap:16px; }
     .hero-link { font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#fff;text-decoration:underline;text-underline-offset:3px; }
     .hero-combined-btn { width:auto !important; padding:0 20px 0 24px !important; gap:14px !important; height:52px !important; }
@@ -58,18 +58,16 @@
     .signia-divider { height:1.5px;background:#111;margin:4px 0; }
 
     /* KIKK ARROW BOX */
-    .arrow-btn { display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:68px;height:52px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);cursor:pointer;text-decoration:none;transition:background 0.25s,border-color 0.25s; }
-    .arrow-btn:hover { background:var(--yellow);border-color:var(--yellow);box-shadow:none;filter:none; }
+    .arrow-btn { display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:68px;height:52px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);cursor:pointer;text-decoration:none;transition:border-color 0.25s; }
+    .arrow-btn:hover { background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.5);box-shadow:none;filter:none; }
     .arrow-btn .arr-icon { width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;transition:stroke 0.25s;z-index:2;position:relative; }
-    .arrow-btn:hover .arr-icon { stroke:#000; }
+    .arrow-btn:hover .arr-icon { stroke:#fff; }
     .bolt-flash { position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0; }
-    .arrow-btn:hover .bolt-flash { animation:boltPulse 0.55s ease forwards; }
-    @keyframes boltPulse { 0%{opacity:0} 20%{opacity:1} 40%{opacity:0.2} 65%{opacity:0.9} 100%{opacity:0} }
     .bolt-flash svg { width:100%;height:100%; }
-    .arrow-btn.dark { background:rgba(0,0,0,0.08);border-color:rgba(0,0,0,0.25); }
+    .arrow-btn.dark { background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.25); }
     .arrow-btn.dark .arr-icon { stroke:#000; }
-    .arrow-btn.dark:hover { background:var(--text-dark);border-color:var(--text-dark); }
-    .arrow-btn.dark:hover .arr-icon { stroke:#fff; }
+    .arrow-btn.dark:hover { background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.5); }
+    .arrow-btn.dark:hover .arr-icon { stroke:#000; }
 
     /* TICKER */
     .ticker { background:var(--yellow);overflow:hidden;padding:10px 0;white-space:nowrap;position:relative;z-index:5; }
@@ -79,25 +77,25 @@
     @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
     /* THEME SECTION */
-    .theme-section { display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:linear-gradient(135deg,#2d3a6b 0%,#3d4f8a 40%,#4a5f9e 60%,#6b7fb0 100%);position:relative;overflow:hidden; }
-    .theme-left { padding:80px 60px;display:flex;flex-direction:column;justify-content:center;z-index:2; }
-    .theme-box { background:rgba(100,120,40,0.85);padding:40px;max-width:420px; }
-    .theme-year-label { font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;font-weight:600; }
-    .theme-heading { font-size:clamp(36px,4vw,52px);font-weight:800;letter-spacing:-0.02em;color:#fff; }
-    .theme-sub { font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;font-weight:600; }
-    .theme-subtext { font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin-top:16px; }
+    .theme-section { display:grid;grid-template-columns:1fr 1fr;min-height:600px;background:#ffffff;position:relative;overflow:hidden; }
+    .theme-left { padding:80px 80px 80px 80px;display:flex;flex-direction:column;justify-content:center;z-index:2; }
+    .theme-box { padding:0;max-width:480px; }
+    .theme-year-label { font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dark);margin-bottom:12px;font-weight:600; }
+    .theme-heading { font-size:clamp(36px,4vw,56px);font-weight:800;letter-spacing:-0.02em;color:var(--text-dark); }
+    .theme-sub { font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-bottom:8px;font-weight:600; }
+    .theme-subtext { font-size:13px;color:var(--text-mid);line-height:1.7;margin-top:16px; }
     .theme-btns { display:flex;gap:12px;margin-top:28px;align-items:center; }
-    .btn-dark-outline { background:rgba(0,0,0,0.6);color:#fff;padding:11px 24px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.3); }
-    .theme-date { font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-0.02em;margin-top:40px;opacity:0.9; }
-    .theme-right { position:relative;overflow:hidden;min-height:400px; }
-    .theme-right img { width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0; }
+    .btn-dark-outline { background:var(--text-dark);color:#fff;padding:11px 24px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--text-dark); }
+    .theme-date { font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--text-dark);letter-spacing:-0.02em;margin-top:40px; }
+    .theme-right { position:relative;overflow:hidden;min-height:500px; }
+    .theme-right img { width:100%;height:100%;object-fit:cover;object-position:center 20%;position:absolute;inset:0; }
     .section-crosshairs { display:flex;justify-content:space-between;padding:0 60px; }
     .section-crosshairs span { color:rgba(255,255,255,0.2);font-size:18px; }
     .section-crosshairs.dark span { color:rgba(0,0,0,0.2); }
 
     /* FLIP CARDS */
     .get-involved { position:relative;overflow:hidden;padding:100px 60px; }
-    .get-involved-bg { position:absolute;inset:0;background:url('/images/Copy_of__MGL4129.jpg') center/cover no-repeat;filter:brightness(0.22) saturate(0.6); }
+    .get-involved-bg { position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover no-repeat;filter:brightness(0.22) saturate(0.6); }
     .get-involved::before { content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1; }
     .gi-inner { position:relative;z-index:2; }
     .gi-header { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px; }
@@ -109,7 +107,7 @@
     .flip-card:hover .flip-card-inner { transform:rotateY(180deg); }
     .flip-front, .flip-back { position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px;border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(4px); }
     .flip-front { background:rgba(0,0,0,0.5); }
-    .flip-back { background:linear-gradient(135deg,#1a3a2a 0%,#0d2418 100%);border-color:var(--yellow);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center; }
+    .flip-back { background:linear-gradient(135deg,#2a2a2e 0%,#1a1a1e 100%);border-color:rgba(255,255,255,0.15);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center; }
     .gi-num { font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--yellow);line-height:1;margin-bottom:4px;float:right; }
     .gi-cat { font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;clear:both; }
     .gi-card-title { font-size:22px;font-weight:800;margin-bottom:12px;line-height:1.2; }
@@ -208,7 +206,7 @@
 
   <div class="hero-content" id="heroContent">
     <div class="hero-eyebrow">African Digital &amp; Innovation Festival</div>
-    <h1 class="hero-title">Fak'ugesi<br/>Festival</h1>
+    <h1 class="hero-title">Fak'ugesi African<br/>Digital &amp; Innovation Festival</h1>
     <p class="hero-desc">Africa's leading festival for digital art, culture and innovation. Join us for 10 days of immersive experiences, panels, workshops and performances at the heart of Johannesburg.</p>
     <div class="hero-link-row">
       <a class="arrow-btn hero-combined-btn" href="about.html" aria-label="What is Fak'ugesi?">
@@ -247,8 +245,8 @@
 </div>
 
 <div style="position:relative">
-  <div class="section-crosshairs" style="position:absolute;top:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
-  <div class="section-crosshairs" style="position:absolute;bottom:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
+  <div class="section-crosshairs dark" style="position:absolute;top:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
+  <div class="section-crosshairs dark" style="position:absolute;bottom:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
   <section class="theme-section">
     <div class="theme-left">
       <div class="theme-box">
@@ -267,7 +265,7 @@
       <div class="theme-date">07 — 12.10.2026</div>
     </div>
     <div class="theme-right">
-      <img src="/images/cyber1.png" alt="African Imaginaries 2026 Theme" onerror="this.src='/images/Fak_ugesi_2025-32.jpg'"/>
+      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1200&q=85" alt="African Imaginaries 2026 Theme"/>
     </div>
   </section>
 </div>
@@ -343,7 +341,7 @@
   <h2 class="spotlight-title">Spotlight</h2>
   <div class="spotlight-grid">
     <div>
-      <img class="spotlight-img" src="/images/IMG_8523_Athanasius_Johnson.png" alt="Awards at Fak'ugesi" onerror="this.src='https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80'"/>
+      <img class="spotlight-img" src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="Awards at Fak'ugesi"/>
     </div>
     <div>
       <div class="spotlight-cat">Fak'ugesi Awards</div>
@@ -370,16 +368,16 @@
     </div>
   </div>
   <div class="photos-scroll"><div class="photos-scroll-inner">
-    <div class="photo-item"><img src="/images/_C6A0500.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/_MGL2775.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/_MGL7139.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/Copy_of__MGL0176.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi 2025" onerror="this.src='https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/_C6A0500.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/_MGL2775.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/_MGL7139.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/Copy_of__MGL0176.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70'"/></div>
-    <div class="photo-item"><img src="/images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi 2025" onerror="this.src='https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70" alt="Fak'ugesi 2025"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70" alt="Festival"/></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70" alt="Fak'ugesi 2025"/></div>
   </div>
   </div></div>
   <p class="happening-caption">Follow us @fakugesi · Johannesburg · October 2026</p>
@@ -527,5 +525,5 @@
 })();
 </script>
 <script src="globalEffects.js"></script>
-<script src="/js/api.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/navigation.js"></script><script src="/js/forms.js"></script></body>
+</body>
 </html>

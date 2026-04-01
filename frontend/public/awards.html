@@ -20,12 +20,12 @@
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
     /* HERO */
-    .page-hero{padding:160px 60px 80px;background:url('/images/_MGL7139.jpg') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end}
+    .page-hero{padding:80px 60px 60px;background:url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1800&q=80') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden;min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end}
     .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.65);pointer-events:none;z-index:0}
     .page-hero>*{position:relative;z-index:1}
-    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
-    .page-title{font-size:clamp(52px,7vw,96px);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:24px}
-    .page-subtitle{font-size:18px;color:rgba(255,255,255,.55);max-width:560px;line-height:1.6}
+    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
+    .page-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:24px;font-family:'DM Sans',sans-serif}
+    .page-subtitle{font-size:14px;color:rgba(255,255,255,.55);max-width:520px;line-height:1.7}
     .hero-signia{position:absolute;top:120px;right:60px;z-index:10}
     .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
     .signia-top{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
@@ -87,7 +87,7 @@
     /* ══ FLIP-CARD CATEGORIES (matching index.html) ══ */
     .categories-section{
       padding:80px 60px;
-      background:#3a3a3a url('/images/IMG_8523_Athanasius_Johnson.png') center/cover no-repeat;
+      background:#2a2a2e url('https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=1800&q=80') center/cover no-repeat;
       background-blend-mode:multiply;
       position:relative;
     }
@@ -104,7 +104,7 @@
     .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
     .flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px)}
     .flip-front{background:rgba(0,0,0,.5)}
-    .flip-back{background:linear-gradient(135deg,#1a3a2a 0%,#0d2418 100%);border-color:var(--yellow);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center}
+    .flip-back{background:linear-gradient(135deg,#2a2a2e 0%,#1a1a1e 100%);border-color:rgba(255,255,255,.15);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center}
     .cat-num{font-size:clamp(36px,4vw,52px);font-weight:900;color:var(--yellow);line-height:1;margin-bottom:4px;float:right}
     .cat-medium{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px;clear:both;display:block}
     .cat-name{font-size:22px;font-weight:800;margin-bottom:12px;line-height:1.2;color:#fff}
@@ -186,7 +186,11 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">Fak'ugesi 2026</a>
+  <a href="index.html" style="display:inline-block;background:#fff;padding:7px 12px 6px;line-height:1;text-decoration:none">
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:900;color:#111;letter-spacing:-.03em;display:block">fak'</span>
+    <div style="height:1.5px;background:#111;margin:3px 0"></div>
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.03em;display:block"><span style="color:#111">u</span><span style="color:#8B1A1A">g</span><span style="color:#111">esi</span></span>
+  </a>
   <ul class="nav-links">
     <li><a href="programme.html">Programme</a></li>
     <li><a href="immersiveAfrica.html">Immersive Africa</a></li>

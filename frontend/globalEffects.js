@@ -25,7 +25,7 @@
       display:inline-flex!important;align-items:center;justify-content:center;
       position:relative;overflow:hidden!important;
       cursor:pointer;text-decoration:none;
-      transition:border-color .2s,background .2s;
+      transition:border-color .2s;
     }
     .arrow-btn canvas.fug-canvas{
       position:absolute;inset:0;width:100%;height:100%;

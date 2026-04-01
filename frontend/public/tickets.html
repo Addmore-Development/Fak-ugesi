@@ -19,13 +19,13 @@
     .nav-right{display:flex;align-items:center;gap:16px}
 
     /* HERO */
-    .page-hero{min-height:58vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 60px 60px;position:relative;overflow:hidden;background:url('/images/_C6A0500.jpg') center/cover no-repeat}
-    .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.72));z-index:0}
+    .page-hero{min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 60px 60px;position:relative;overflow:hidden;background:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover no-repeat}
+    .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.72));z-index:0}
     .page-hero>*{position:relative;z-index:1}
     .crosshair{position:absolute;color:rgba(255,255,255,.25);font-size:18px;font-weight:300;pointer-events:none}
-    .hero-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;font-weight:500}
-    .hero-title{font-size:clamp(44px,7vw,86px);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:18px}
-    .hero-desc{font-size:15px;color:rgba(255,255,255,.6);max-width:500px;line-height:1.65}
+    .hero-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px;font-weight:500}
+    .hero-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:18px}
+    .hero-desc{font-size:14px;color:rgba(255,255,255,.65);max-width:520px;line-height:1.7}
 
     /* TICKER */
     .ticker{background:var(--yellow);overflow:hidden;padding:10px 0;white-space:nowrap}
@@ -35,47 +35,42 @@
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* PASSES SECTION */
-    .passes-section{position:relative;overflow:hidden;padding:80px 0 100px}
-    .passes-bg{position:absolute;inset:0;background:url('/images/Fak_ugesi_2025-32.jpg') center/cover no-repeat}
-    .passes-bg::after{content:'';position:absolute;inset:0;background:rgba(10,12,22,.83)}
-    .passes-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 60px}
+    .passes-section{position:relative;overflow:hidden;padding:80px 0 100px;background:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover no-repeat}
+    .passes-section::before{content:'';position:absolute;inset:0;background:rgba(10,12,22,.82)}
+    .passes-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 60px}
     .passes-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
     .passes-crosshairs{display:flex;justify-content:space-between;padding:0 0 20px}
     .passes-crosshairs span,.passes-crosshairs-bot span{color:rgba(255,255,255,.2);font-size:18px}
     .passes-crosshairs-bot{display:flex;justify-content:space-between;padding:24px 0 0}
     .passes-heading{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.02em;margin-bottom:44px;color:#fff}
 
-    /* TICKET ROWS */
-    .passes-grid{display:flex;flex-direction:column;gap:2px}
-    .ticket-row{display:grid;grid-template-columns:260px 1fr;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);transition:background .2s;position:relative;overflow:hidden}
-    .ticket-row:hover{background:rgba(255,255,255,.065)}
-    .ticket-stub{position:relative;border-right:2px dashed rgba(255,255,255,.14);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:32px 24px;background:rgba(255,255,255,.03)}
-    .ticket-stub::after{content:'';position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(10,12,22,.95);border:2px dashed rgba(255,255,255,.14)}
-    .stub-type{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;text-align:center}
-    .stub-name{font-size:18px;font-weight:800;color:#fff;text-align:center;letter-spacing:-.01em;margin-bottom:12px}
-    .stub-barcode{width:96px;height:32px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.65) 0,rgba(255,255,255,.65) 2px,transparent 2px,transparent 5px);opacity:.35;margin:0 auto 10px}
-    .stub-event{font-size:8.5px;letter-spacing:.1em;color:rgba(255,255,255,.28);text-align:center;text-transform:uppercase;line-height:1.5}
-    .ticket-detail{padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
-    .ticket-info{}
-    .ticket-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px}
-    .ticket-title{font-size:clamp(20px,2.8vw,30px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:6px}
-    .ticket-desc{font-size:12.5px;color:rgba(255,255,255,.48);line-height:1.65;max-width:360px;margin-bottom:14px}
-    .ticket-features{list-style:none;display:flex;flex-direction:column;gap:6px}
-    .ticket-features li{font-size:12px;color:rgba(255,255,255,.52);display:flex;align-items:center;gap:8px}
-    .ticket-features li::before{content:'→';color:var(--yellow);font-size:10px;flex-shrink:0}
-    .ticket-price-block{flex-shrink:0;text-align:right}
-    .price-main{font-size:clamp(36px,5vw,58px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
-    .price-curr{font-size:18px;vertical-align:top;margin-top:8px;display:inline-block;margin-right:2px}
-    .price-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px;margin-bottom:10px}
-    .price-student{display:inline-flex;align-items:center;gap:8px;background:rgba(212,230,0,.08);border:1px solid rgba(212,230,0,.2);padding:6px 12px;margin-bottom:14px}
-    .price-stu-lbl{font-size:9px;letter-spacing:.1em;color:var(--yellow);text-transform:uppercase}
-    .price-stu-val{font-size:14px;font-weight:800;color:var(--yellow)}
-    .ticket-cta{display:block;background:var(--yellow);color:#000;border:none;padding:12px 28px;font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:opacity .2s;white-space:nowrap}
-    .ticket-cta:hover{opacity:.85}
-    .ticket-cta.outline{background:transparent;border:1.5px solid rgba(255,255,255,.28);color:#fff}
-    .ticket-cta.outline:hover{border-color:#fff;background:rgba(255,255,255,.06)}
-    .ticket-badge{position:absolute;top:14px;right:14px;z-index:5;background:#d4e600;color:#000;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:1px}
-    .ticket-badge.hot{background:#ff2d6b;color:#fff}
+    /* TICKET CARDS — white paper style like image 5 */
+    .passes-grid{display:flex;flex-direction:column;gap:20px}
+    .ticket-row{display:grid;grid-template-columns:1fr;background:#fff;color:#111;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+    .ticket-inner{display:grid;grid-template-columns:1fr auto;align-items:stretch}
+    .ticket-main{padding:36px 40px 36px 40px;border-right:2px dashed rgba(0,0,0,.15)}
+    .ticket-price-col{padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;min-width:200px;background:#fff}
+    .ticket-stub-hole{position:absolute;left:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(10,12,22,.85)}
+    .ticket-stub-hole-r{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(10,12,22,.85)}
+    .ticket-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#888;margin-bottom:8px}
+    .ticket-title{font-size:clamp(22px,3vw,34px);font-weight:900;color:#111;letter-spacing:-.02em;margin-bottom:8px}
+    .ticket-desc{font-size:12.5px;color:#555;line-height:1.65;max-width:380px;margin-bottom:16px}
+    .ticket-features{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .ticket-features li{font-size:12px;color:#444;display:flex;align-items:center;gap:8px}
+    .ticket-features li::before{content:'→';color:#888;font-size:10px;flex-shrink:0}
+    .ticket-price-block{text-align:right}
+    .price-main{font-size:clamp(40px,5vw,62px);font-weight:900;color:#111;letter-spacing:-.03em;line-height:1}
+    .price-curr{font-size:20px;vertical-align:top;margin-top:8px;display:inline-block;margin-right:2px}
+    .price-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-top:4px;margin-bottom:16px}
+    .price-student{display:block;font-size:13px;color:#555;margin-bottom:4px}
+    .price-student span{font-weight:700;color:#111}
+    .ticket-cta{display:block;background:#111;color:#fff;border:none;padding:13px 28px;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:opacity .2s;white-space:nowrap;margin-top:auto}
+    .ticket-cta:hover{opacity:.8}
+    .ticket-cta.outline{background:transparent;border:1.5px solid #111;color:#111}
+    .ticket-cta.outline:hover{background:#111;color:#fff}
+    .ticket-badge{position:absolute;top:0;right:0;z-index:5;background:#d4e600;color:#000;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px}
+    .ticket-badge.hot{background:#111;color:#fff}
+    .ticket-divider{width:100%;height:1px;background:rgba(0,0,0,.08);margin:16px 0}
 
     /* FAQ */
     .faq-section{background:var(--navy);padding:80px 60px;border-top:1px solid rgba(255,255,255,.06)}
@@ -105,8 +100,10 @@
     .partner-desc{font-size:11px;color:#5a6274;line-height:1.6;text-align:center}
 
     .arrow-btn{display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:100px;height:52px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;text-decoration:none;transition:border-color .2s}
+    .arrow-btn:hover{border-color:rgba(255,255,255,.7)}
     .arrow-btn .arr-icon{width:26px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:2}
     .arrow-btn.dark{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.25)}
+    .arrow-btn.dark:hover{border-color:rgba(0,0,0,.6)}
     .arrow-btn.dark .arr-icon{stroke:#111}
 
     .footer-socials{background:var(--navy);color:#fff;padding:14px 60px;text-align:center}
@@ -149,6 +146,13 @@
   <div class="crosshair" style="top:90px;right:200px;z-index:2">+</div>
   <div class="crosshair" style="bottom:40px;left:40px;z-index:2">+</div>
   <div class="crosshair" style="bottom:40px;right:40px;z-index:2">+</div>
+  <div style="position:absolute;top:100px;right:60px;z-index:10">
+    <div style="background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block">fak'</span>
+      <div style="height:1.5px;background:#111;margin:4px 0"></div>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block"><span style="color:#111">u</span><span style="color:#8B1A1A">g</span><span style="color:#111">esi</span></span>
+    </div>
+  </div>
   <div class="hero-eyebrow">Fak'ugesi Festival 2026 · 07 — 12 October</div>
   <h1 class="hero-title">Festival<br/>Passes</h1>
   <p class="hero-desc">Join 25,000+ attendees at Africa's leading digital innovation festival. Choose your pass below.</p>
@@ -168,7 +172,6 @@
 </div>
 
 <section class="passes-section">
-  <div class="passes-bg"></div>
   <div class="passes-inner">
     <div class="passes-crosshairs"><span>+</span><span>+</span><span>+</span></div>
     <h2 class="passes-heading">Festival Passes</h2>
@@ -176,76 +179,76 @@
 
       <!-- FULL PASS -->
       <div class="ticket-row">
-        <div class="ticket-stub">
-          <div class="stub-type">Pass Type 01</div>
-          <div class="stub-name">Full Pass</div>
-          <div class="stub-barcode"></div>
-          <div class="stub-event">07 — 12 OCT 2026<br/>JOHANNESBURG</div>
-        </div>
-        <div class="ticket-detail">
-          <div class="ticket-info">
+        <div class="ticket-stub-hole"></div>
+        <div class="ticket-stub-hole-r"></div>
+        <div class="ticket-inner">
+          <div class="ticket-main">
             <div class="ticket-label">Full Festival Access</div>
             <div class="ticket-title">Full Pass</div>
-            <p class="ticket-desc">All 10 days of panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
+            <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
             <ul class="ticket-features">
-              <li>All panels, workshops &amp; expo</li>
-              <li>Screenings &amp; performances</li>
-              <li>Awards ceremony access</li>
-              <li>10 full days of programming</li>
+              <li>Panels &amp; workshops</li>
+              <li>Access to Market</li>
+              <li>Performances (including invitation-only events)</li>
+              <li>75% off group purchases of 10–20 passes</li>
             </ul>
           </div>
-          <div class="ticket-price-block">
-            <div class="price-main"><span class="price-curr">R</span>750</div>
-            <div class="price-lbl">per person · early bird</div>
-            <div class="price-student"><span class="price-stu-lbl">Student</span><span class="price-stu-val">R200</span></div>
-            <a class="ticket-cta" href="#">Book Full Pass</a>
+          <div class="ticket-price-col">
+            <div class="ticket-price-block">
+              <div class="price-main"><span class="price-curr">R</span>200</div>
+              <div class="price-lbl">For Students*</div>
+              <div class="ticket-divider"></div>
+              <div class="price-main"><span class="price-curr">R</span>750</div>
+              <div class="price-lbl">For General Public</div>
+            </div>
+            <div>
+              <div style="font-size:9px;color:#999;margin-bottom:10px">*valid student ID required</div>
+              <a class="ticket-cta" href="#">GET FULL PASS</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- DAY PASS -->
       <div class="ticket-row">
-        <div class="ticket-badge hot">Popular</div>
-        <div class="ticket-stub">
-          <div class="stub-type">Pass Type 02</div>
-          <div class="stub-name">Day Pass</div>
-          <div class="stub-barcode"></div>
-          <div class="stub-event">YOUR CHOSEN DAY<br/>JOHANNESBURG</div>
-        </div>
-        <div class="ticket-detail">
-          <div class="ticket-info">
+        <div class="ticket-stub-hole"></div>
+        <div class="ticket-stub-hole-r"></div>
+        <div class="ticket-inner">
+          <div class="ticket-main">
             <div class="ticket-label">Single Day Access</div>
             <div class="ticket-title">Day Pass</div>
-            <p class="ticket-desc">Full access on your chosen day — all panels, workshops and expo.</p>
+            <p class="ticket-desc">Full access on your chosen day — all panels, workshops and expo included. Flexible, choose any day of the festival.</p>
             <ul class="ticket-features">
               <li>Full access on your chosen day</li>
               <li>All panels &amp; workshops that day</li>
               <li>Expo access included</li>
-              <li>Flexible — choose any day</li>
             </ul>
           </div>
-          <div class="ticket-price-block">
-            <div class="price-main"><span class="price-curr">R</span>340</div>
-            <div class="price-lbl">per day · early bird</div>
-            <div class="price-student"><span class="price-stu-lbl">Student</span><span class="price-stu-val">R135</span></div>
-            <a class="ticket-cta" href="#">Book Day Pass</a>
+          <div class="ticket-price-col">
+            <div class="ticket-price-block">
+              <div class="price-main"><span class="price-curr">R</span>135</div>
+              <div class="price-lbl">For Students*</div>
+              <div class="ticket-divider"></div>
+              <div class="price-main"><span class="price-curr">R</span>340</div>
+              <div class="price-lbl">For General Public</div>
+            </div>
+            <div>
+              <div style="font-size:9px;color:#999;margin-bottom:10px">*valid student ID required</div>
+              <a class="ticket-cta" href="#">GET DAY PASS</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- INDUSTRY PASS -->
       <div class="ticket-row">
-        <div class="ticket-stub">
-          <div class="stub-type">Pass Type 03</div>
-          <div class="stub-name">Industry</div>
-          <div class="stub-barcode"></div>
-          <div class="stub-event">07 — 12 OCT 2026<br/>JOHANNESBURG</div>
-        </div>
-        <div class="ticket-detail">
-          <div class="ticket-info">
+        <div class="ticket-stub-hole"></div>
+        <div class="ticket-stub-hole-r"></div>
+        <div class="ticket-inner">
+          <div class="ticket-main">
             <div class="ticket-label">Professional All-Access</div>
             <div class="ticket-title">Industry Pass</div>
-            <p class="ticket-desc">All Full Pass benefits plus exclusive networking sessions, VIP lounge and priority Awards seating.</p>
+            <p class="ticket-desc">All Full Pass benefits plus exclusive networking sessions, VIP lounge access and priority Awards ceremony seating.</p>
             <ul class="ticket-features">
               <li>All Full Pass benefits</li>
               <li>Exclusive networking sessions</li>
@@ -253,11 +256,12 @@
               <li>Awards ceremony priority seating</li>
             </ul>
           </div>
-          <div class="ticket-price-block">
-            <div class="price-main"><span class="price-curr">R</span>3500</div>
-            <div class="price-lbl">per person · all-access</div>
-            <br/>
-            <a class="ticket-cta outline" href="#">Apply for Industry Pass</a>
+          <div class="ticket-price-col">
+            <div class="ticket-price-block">
+              <div class="price-main" style="font-size:clamp(32px,4vw,52px)"><span class="price-curr">R</span>3,500</div>
+              <div class="price-lbl">For PROs</div>
+            </div>
+            <a class="ticket-cta outline" href="#">GET INDUSTRY PASS</a>
           </div>
         </div>
       </div>
@@ -361,7 +365,7 @@
 function toggleFaq(row){const item=row.closest('.faq-item');const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
 </script>
 <script src="globalEffects.js"></script>
-<script src="/js/api.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/navigation.js"></script><script src="/js/forms.js"></script><script src="/js/tickets.js"></script></body>
+</body>
 </html>
 
 

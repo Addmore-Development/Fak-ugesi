@@ -19,7 +19,7 @@
     .nav-right{display:flex;align-items:center;gap:16px}
 
     /* HERO */
-    .page-hero{min-height:58vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 60px 60px;position:relative;overflow:hidden;background:url('images/_C6A0500.JPG') center/cover no-repeat}
+    .page-hero{min-height:58vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 60px 60px;position:relative;overflow:hidden;background:url('/images/_C6A0500.JPG') center/cover no-repeat}
     .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.72));z-index:0}
     .page-hero>*{position:relative;z-index:1}
     .crosshair{position:absolute;color:rgba(255,255,255,.25);font-size:18px;font-weight:300;pointer-events:none}
@@ -36,7 +36,7 @@
 
     /* PASSES SECTION */
     .passes-section{position:relative;overflow:hidden;padding:80px 0 100px}
-    .passes-bg{position:absolute;inset:0;background:url('images/Fak_ugesi 2025-32.jpg') center/cover no-repeat}
+    .passes-bg{position:absolute;inset:0;background:url('/images/Fak_ugesi 2025-32.jpg') center/cover no-repeat}
     .passes-bg::after{content:'';position:absolute;inset:0;background:rgba(10,12,22,.83)}
     .passes-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 60px}
     .passes-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
@@ -324,21 +324,21 @@
   <div class="partners-grid">
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img class="partner-logo-img" src="images/tshimologong-logo.png" alt="Tshimologong" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img class="partner-logo-img" src="/images/tshimologong-logo.png" alt="Tshimologong" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-family:monospace;font-size:16px;font-weight:900;letter-spacing:.06em;color:#1a2332;line-height:1.15">TSHI<br/>MOLO<br/>GONG</div><div style="font-size:8px;letter-spacing:.2em;margin-top:5px;color:#1a2332">WITS UNIVERSITY</div></div>
       </div>
       <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013.</p>
     </div>
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img class="partner-logo-img" src="images/wits-logo.png" alt="Wits University" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img class="partner-logo-img" src="/images/wits-logo.png" alt="Wits University" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div style="display:none;flex-direction:column;align-items:center"><div style="font-size:30px;font-weight:900;color:#003087;letter-spacing:-.02em">WITS</div><div style="font-size:11px;letter-spacing:.12em;color:#003087">UNIVERSITY</div></div>
       </div>
       <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
     </div>
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img class="partner-logo-img" src="images/digital-dome-logo.png" alt="Digital Dome" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img class="partner-logo-img" src="/images/digital-dome-logo.png" alt="Digital Dome" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-size:9px;letter-spacing:.1em;color:#000;font-weight:600;margin-bottom:2px">WITS ANGLO AMERICAN</div><div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-.02em;line-height:1.1">DIGITAL<br/>DOME</div></div>
       </div>
       <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner.</p>
@@ -361,5 +361,6 @@
 function toggleFaq(row){const item=row.closest('.faq-item');const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
 </script>
 <script src="global-effects.js"></script>
-<script src="../js/api.js"></script><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/navigation.js"></script><script src="../js/forms.js"></script><script src="../js/tickets.js"></script></body>
+<script src="/js/api.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/navigation.js"></script><script src="/js/forms.js"></script><script src="/js/tickets.js"></script></body>
 </html>
+

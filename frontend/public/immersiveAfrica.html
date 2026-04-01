@@ -23,7 +23,7 @@
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
     /* HERO */
-    .ia-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 40px 80px;position:relative;overflow:hidden;background:url('images/digital-dome-image-inside.jpg') center/cover no-repeat}
+    .ia-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 40px 80px;position:relative;overflow:hidden;background:url('/images/digital-dome-image-inside.jpg') center/cover no-repeat}
     .ia-hero-bg{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.45) 100%),radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,207,255,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 70% 30%,rgba(180,100,255,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,255,136,.06) 0%,transparent 60%);animation:bgShift 12s ease-in-out infinite alternate;pointer-events:none}
     @keyframes bgShift{from{opacity:1;transform:scale(1)}to{opacity:.7;transform:scale(1.05)}}
     .ia-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
@@ -55,7 +55,7 @@
 
     /* PREMIERE */
     .premiere{position:relative;min-height:600px;background:#0a0a1a;display:flex;align-items:flex-end}
-    .premiere-bg{position:absolute;inset:0;background:url('images/8-Dotou-arbre-Fin.png') center/cover no-repeat,linear-gradient(135deg,#1a1a4a,#2a1a3a);background-blend-mode:multiply}
+    .premiere-bg{position:absolute;inset:0;background:url('/images/8-Dotou-arbre-Fin.png') center/cover no-repeat,linear-gradient(135deg,#1a1a4a,#2a1a3a);background-blend-mode:multiply}
     .premiere-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .premiere-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.35))}
     .premiere-content{position:relative;z-index:5;padding:60px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;color:#fff;width:100%}
@@ -278,7 +278,7 @@
 <section class="ongoing">
   <div class="ongoing-grid">
     <div class="ongoing-image">
-      <img src="images/Screenshot-2024-05-21-at-21.36.37.webp" alt="On-going exhibition"
+      <img src="/images/Screenshot-2024-05-21-at-21.36.37.webp" alt="On-going exhibition"
            onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80'"/>
     </div>
     <div>
@@ -295,7 +295,7 @@
 <section class="ia-intro">
   <div class="ia-intro-grid">
     <div style="grid-column:1/-1;margin-bottom:32px;overflow:hidden;max-height:320px">
-      <img src="images/Joburg-planetarium-1-2022.jpg" alt="Joburg Planetarium" onerror="this.style.display='none'" style="width:100%;height:320px;object-fit:cover;display:block"/>
+      <img src="/images/Joburg-planetarium-1-2022.jpg" alt="Joburg Planetarium" onerror="this.style.display='none'" style="width:100%;height:320px;object-fit:cover;display:block"/>
     </div>
     <div>
       <div class="ia-intro-title">Where African Imagination Meets the Digital Frontier</div>
@@ -429,5 +429,6 @@ document.querySelectorAll('a,button').forEach(el=>{
 });
 </script>
 <script src="global-effects.js"></script>
-<script src="../js/api.js"></script><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/navigation.js"></script><script src="../js/forms.js"></script></body>
+<script src="/js/api.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/navigation.js"></script><script src="/js/forms.js"></script></body>
 </html>
+

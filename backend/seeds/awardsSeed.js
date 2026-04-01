@@ -1,4 +1,4 @@
-const { db } = require('../config/database');
+﻿const { db } = require('../config/database');
 
 const awardsData = [
     {
@@ -8,7 +8,7 @@ const awardsData = [
         artist: 'Jopee Dairo',
         country: 'Nigeria',
         description: 'A striking generative art series exploring the intersection of protest culture and digital expression. Dairo\'s work draws on archival footage of youth movements across the continent, translating collective memory into vivid, algorithmically composed visual poetry.',
-        image_url: '/images/VOF Voices of fire print - Joseph Dairo.jpg'
+        image_url: '/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'
     },
     {
         year: 2025,
@@ -17,7 +17,7 @@ const awardsData = [
         artist: 'Athanasius Johnson',
         country: 'South Africa',
         description: 'An immersive dome experience that places African mythology at the centre of speculative futures. Screened at the Wits Anglo American Digital Dome to sold-out audiences.',
-        image_url: '/images/IMG_8523 - Athanasius Johnson.png'
+        image_url: '/images/IMG_8523_Athanasius_Johnson.png'
     },
     {
         year: 2025,

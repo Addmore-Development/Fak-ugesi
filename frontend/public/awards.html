@@ -44,55 +44,45 @@
     .wn-btn{width:40px;height:40px;background:transparent;border:1.5px solid rgba(0,0,0,.25);color:#0d1117;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
     .wn-btn:hover{background:#0d1117;border-color:#0d1117;color:#fff}
 
-    /* ZIPPER */
-    .zipper-wrap{position:relative;min-height:500px;overflow:hidden}
-    .zip-curtain-left,.zip-curtain-right{position:absolute;top:0;bottom:0;width:50%;background:#0d1117;z-index:10;transition:transform 1s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;}
-    .zip-curtain-left{left:0;justify-content:flex-end;border-right:3px solid rgba(255,255,255,.08)}
-    .zip-curtain-right{right:0;justify-content:flex-start;border-left:3px solid rgba(255,255,255,.08)}
-    .zip-curtain-left.open{transform:translateX(-100%)}
-    .zip-curtain-right.open{transform:translateX(100%)}
-    .zip-hint{color:rgba(255,255,255,.4);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:0 20px}
-    .zip-pull{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;cursor:pointer;text-align:center;}
-    .zip-pull-body{background:linear-gradient(145deg,#d8d8d8,#a0a0a0);border:2px solid #888;border-radius:3px;padding:16px 32px;box-shadow:0 6px 28px rgba(0,0,0,.7);transition:transform .15s,box-shadow .15s;}
-    .zip-pull-body:hover{transform:scale(1.06);box-shadow:0 10px 36px rgba(0,0,0,.85)}
-    .zip-pull-label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#000;display:block}
-    .zip-pull-sub{font-size:9px;color:rgba(0,0,0,.55);letter-spacing:.1em;display:block;margin-top:3px}
-    .zip-track{position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);z-index:9;pointer-events:none;background:repeating-linear-gradient(to bottom,#888 0,#888 8px,transparent 8px,transparent 16px)}
-    .zip-teeth{display:flex;flex-direction:column;gap:5px;padding:6px 4px;position:absolute;top:50%;transform:translateY(-50%)}
-    .zip-curtain-left .zip-teeth{right:-2px}
-    .zip-curtain-right .zip-teeth{left:-2px}
-    .tooth{width:10px;height:7px;background:#b0b0b0;border-radius:1px;border:1px solid #888}
-    .winners-revealed{opacity:0;transition:opacity .5s ease .8s;pointer-events:none;padding:0 60px;}
-    .winners-revealed.visible{opacity:1;pointer-events:auto}
+    /* WINNERS GRID — direct display, no zipper */
+    .winners-grid-wrap{padding:0 60px 20px}
     .winners-scroll-wrap{position:relative;overflow:hidden}
     .winners-scroll{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;}
     .winners-scroll::-webkit-scrollbar{display:none}
-    .winner-card{flex-shrink:0;width:calc(25% - 1px);border-right:1px solid rgba(0,0,0,.1);background:#fff;cursor:pointer;transition:transform .25s;scroll-snap-align:start;}
+    .winner-card{flex-shrink:0;width:calc(25% - 1px);border-right:1px solid rgba(0,0,0,.1);background:#fff;cursor:pointer;transition:transform .25s,box-shadow .25s;scroll-snap-align:start;}
     .winner-card:last-child{border-right:none}
-    .winner-card:hover{transform:translateY(-4px)}
+    .winner-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
     .wc-img{width:100%;height:260px;object-fit:cover;display:block;background:#dde}
     .wc-body{padding:20px 20px 24px}
     .wc-cat-label{font-size:11px;color:#888;letter-spacing:.06em;margin-bottom:6px}
     .wc-name{font-size:16px;font-weight:800;color:#0d1117;line-height:1.25;margin-bottom:6px}
     .wc-artist{font-size:13px;color:#666}
+    .wc-click-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-top:8px;font-family:'Space Mono',monospace}
 
     /* POPUP */
-    .winner-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+    .winner-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;padding:20px}
     .winner-popup-overlay.active{opacity:1;pointer-events:auto}
-    .winner-popup{background:#fff;color:#0d1117;max-width:560px;width:90%;padding:48px;position:relative;transform:translateY(40px) scale(.95);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+    .winner-popup{background:#fff;color:#0d1117;max-width:680px;width:100%;position:relative;transform:translateY(48px) scale(.93);transition:transform .45s cubic-bezier(.34,1.42,.64,1);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;max-height:90vh}
     .winner-popup-overlay.active .winner-popup{transform:translateY(0) scale(1)}
-    .wp-close{position:absolute;top:20px;right:20px;background:none;border:1.5px solid rgba(0,0,0,.2);color:#0d1117;width:36px;height:36px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
-    .wp-year{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.35);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
-    .wp-cat{font-size:12px;color:#0d1117;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
-    .wp-img{width:100%;height:200px;object-fit:cover;margin-bottom:24px;display:block;background:#dde}
-    .wp-name{font-size:26px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
-    .wp-artist{font-size:15px;color:#555;margin-bottom:4px}
-    .wp-country{font-family:'Space Mono',monospace;font-size:11px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
-    .wp-desc{font-size:14px;color:#555;line-height:1.7}
-    .wp-nav{display:flex;justify-content:space-between;margin-top:28px;gap:12px}
-    .wp-nav-btn{flex:1;background:#0d1117;border:none;color:#fff;padding:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:opacity .2s}
-    .wp-nav-btn:hover{opacity:.8}
-    .wp-counter{font-family:'Space Mono',monospace;font-size:11px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-align:center;margin-top:12px}
+    .wp-img-col{position:relative;min-height:380px;background:#e8eaf0;overflow:hidden}
+    .wp-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+    .wp-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;color:#999;letter-spacing:.1em;text-transform:uppercase}
+    .wp-year-badge{position:absolute;top:16px;left:16px;background:#0d1117;color:#fff;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px}
+    .wp-body{padding:36px 32px;display:flex;flex-direction:column;overflow-y:auto}
+    .wp-close{position:absolute;top:14px;right:14px;background:#0d1117;border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s}
+    .wp-close:hover{background:#333}
+    .wp-cat{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;border-left:2px solid #0d1117;padding-left:10px}
+    .wp-name{font-size:clamp(20px,2.5vw,28px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+    .wp-artist{font-size:15px;color:#0d1117;font-weight:600;margin-bottom:4px}
+    .wp-country{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+    .wp-divider{height:1px;background:rgba(0,0,0,.08);margin-bottom:20px}
+    .wp-desc{font-size:13px;color:#555;line-height:1.75;flex:1}
+    .wp-nav{display:flex;justify-content:space-between;margin-top:24px;gap:8px}
+    .wp-nav-btn{flex:1;background:#0d1117;border:none;color:#fff;padding:12px 8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+    .wp-nav-btn:hover:not(:disabled){background:#333}
+    .wp-nav-btn:disabled{background:rgba(0,0,0,.15);cursor:default}
+    .wp-counter{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-align:center;margin-top:12px}
+    @media(max-width:600px){.winner-popup{grid-template-columns:1fr}.wp-img-col{min-height:200px}.wp-body{padding:24px 20px}}
 
     /* ══ FLIP-CARD CATEGORIES (matching index.html) ══ */
     .categories-section{
@@ -243,26 +233,9 @@
     </div>
   </div>
 
-  <div class="zipper-wrap" id="zipperWrap">
-    <div class="zip-curtain-left" id="zipLeft">
-      <div class="zip-hint">View<br/>Winners</div>
-      <div class="zip-teeth" id="teethLeft"></div>
-    </div>
-    <div class="zip-curtain-right" id="zipRight">
-      <div class="zip-teeth" id="teethRight"></div>
-      <div class="zip-hint">View<br/>Winners</div>
-    </div>
-    <div class="zip-track"></div>
-    <div class="zip-pull" id="zipPull" onclick="openZipper()">
-      <div class="zip-pull-body">
-        <span class="zip-pull-label">View Winners</span>
-        <span class="zip-pull-sub">Click to reveal</span>
-      </div>
-    </div>
-    <div class="winners-revealed" id="winnersRevealed">
-      <div class="winners-scroll-wrap">
-        <div class="winners-scroll" id="winnersScroll"></div>
-      </div>
+  <div class="winners-grid-wrap">
+    <div class="winners-scroll-wrap">
+      <div class="winners-scroll" id="winnersScroll"></div>
     </div>
   </div>
 </section>
@@ -587,61 +560,89 @@
 <div class="winner-popup-overlay" id="popupOverlay">
   <div class="winner-popup" id="winnerPopup">
     <button class="wp-close" onclick="closePopup()">×</button>
-    <div class="wp-year" id="wpYear"></div>
-    <div class="wp-cat" id="wpCat"></div>
-    <img class="wp-img" id="wpImg" src="" alt=""/>
-    <div class="wp-name" id="wpName"></div>
-    <div class="wp-artist" id="wpArtist"></div>
-    <div class="wp-country" id="wpCountry"></div>
-    <div class="wp-desc" id="wpDesc"></div>
-    <div class="wp-nav">
-      <button class="wp-nav-btn" id="wpPrev" onclick="navPopup(-1)">← Previous</button>
-      <button class="wp-nav-btn" id="wpNext" onclick="navPopup(1)">Next →</button>
+    <div class="wp-img-col">
+      <img class="wp-img" id="wpImg" src="" alt=""/>
+      <div class="wp-img-placeholder" id="wpImgPlaceholder">No Image</div>
+      <div class="wp-year-badge" id="wpYear"></div>
     </div>
-    <div class="wp-counter" id="wpCounter"></div>
+    <div class="wp-body">
+      <div class="wp-cat" id="wpCat"></div>
+      <div class="wp-name" id="wpName"></div>
+      <div class="wp-artist" id="wpArtist"></div>
+      <div class="wp-country" id="wpCountry"></div>
+      <div class="wp-divider"></div>
+      <div class="wp-desc" id="wpDesc"></div>
+      <div class="wp-nav">
+        <button class="wp-nav-btn" id="wpPrev" onclick="navPopup(-1)">← Prev</button>
+        <button class="wp-nav-btn" id="wpNext" onclick="navPopup(1)">Next →</button>
+      </div>
+      <div class="wp-counter" id="wpCounter"></div>
+    </div>
   </div>
 </div>
 
 <script>
 const WINNERS = {
   2025: [
-    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'images/IMG_8523_Athanasius_Johnson.png'},
+    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'/images/IMG_8523_Athanasius_Johnson.png'},
     {category:'Tech for Social Impact',title:'Yebo Health',artist:'Thandi Ndaba',country:'South Africa',desc:'AI-powered community health diagnostics reaching 40,000 rural patients in its first year.',img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=70'},
-    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'/images/Fak_ugesi_2025-32.jpg'},
   ],
   2024: [
-    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'images/digital-dome-image-inside.jpg'},
-    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'images/Fak_ugesi_2025-32.jpg'},
-    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'images/_MGL7139.jpg'},
+    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'/images/digital-dome-image-inside.jpg'},
+    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'/images/Fak_ugesi_2025-32.jpg'},
+    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'/images/_MGL7139.jpg'},
   ],
   2023: [
-    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'images/IMG_8523_Athanasius_Johnson.png'},
-    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'images/Fak_ugesi_2025-32.jpg'},
-    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'images/digital-dome-image-inside.jpg'},
+    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'/images/IMG_8523_Athanasius_Johnson.png'},
+    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'/images/Fak_ugesi_2025-32.jpg'},
+    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'/images/digital-dome-image-inside.jpg'},
   ]
 };
 
-let currentYear=2025,zipOpen=false,popupIndex=0,currentWinners=[];
+let currentYear=2025,popupIndex=0,currentWinners=[];
 
-function buildTeeth(id,count){const el=document.getElementById(id);el.innerHTML='';for(let i=0;i<count;i++){const t=document.createElement('div');t.className='tooth';el.appendChild(t);}}
-buildTeeth('teethLeft',24);buildTeeth('teethRight',24);
+function setYear(btn,year){document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentYear=year;document.querySelector('.winners-title').textContent=year+' Winners';renderWinners();}
 
-function setYear(btn,year){document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentYear=year;document.querySelector('.winners-title').textContent=year+' Winners';if(zipOpen)renderWinners();}
-
-function renderWinners(){currentWinners=WINNERS[currentYear]||[];const scroll=document.getElementById('winnersScroll');scroll.innerHTML=currentWinners.map((w,i)=>`<div class="winner-card" onclick="openPopup(${i})"><img class="wc-img" src="${w.img}" alt="${w.title}" onerror="this.style.background='#ccd';this.removeAttribute('src')"/><div class="wc-body"><div class="wc-cat-label">${w.category}</div><div class="wc-name">${w.title}</div><div class="wc-artist">${w.artist} · ${w.country}</div></div></div>`).join('');}
-
-function openZipper(){if(zipOpen)return;renderWinners();document.getElementById('zipLeft').classList.add('open');document.getElementById('zipRight').classList.add('open');document.getElementById('zipPull').style.display='none';zipOpen=true;setTimeout(()=>{const wr=document.getElementById('winnersRevealed');wr.classList.add('visible');document.querySelectorAll('.winner-card').forEach((card,i)=>{card.style.opacity='0';card.style.transform='translateY(24px)';setTimeout(()=>{card.style.transition='opacity 0.45s ease, transform 0.45s ease';card.style.opacity='1';card.style.transform='translateY(0)';},i*150+80);});},850);}
+function renderWinners(){
+  currentWinners=WINNERS[currentYear]||[];
+  const scroll=document.getElementById('winnersScroll');
+  scroll.innerHTML=currentWinners.map((w,i)=>`<div class="winner-card" onclick="openPopup(${i})" style="opacity:0;transform:translateY(20px);transition:opacity 0.4s ease ${i*80}ms,transform 0.4s ease ${i*80}ms"><img class="wc-img" src="${w.img}" alt="${w.title}" onerror="this.style.background='#ccd';this.removeAttribute('src')"/><div class="wc-body"><div class="wc-cat-label">${w.category}</div><div class="wc-name">${w.title}</div><div class="wc-artist">${w.artist} · ${w.country}</div><div class="wc-click-hint">Click to view ↗</div></div></div>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.winner-card').forEach(c=>{c.style.opacity='1';c.style.transform='translateY(0)';});
+  }));
+}
 
 function scrollWinners(dir){const sc=document.getElementById('winnersScroll');sc.scrollBy({left:dir*(sc.offsetWidth*.55),behavior:'smooth'});}
 
 function openPopup(index){popupIndex=index;showPopup();}
-function showPopup(){const w=currentWinners[popupIndex];document.getElementById('wpYear').textContent=currentYear+' · Winner';document.getElementById('wpCat').textContent=w.category;document.getElementById('wpImg').src=w.img;document.getElementById('wpImg').onerror=function(){this.style.display='none';};document.getElementById('wpName').textContent=w.title;document.getElementById('wpArtist').textContent=w.artist;document.getElementById('wpCountry').textContent=w.country;document.getElementById('wpDesc').textContent=w.desc;document.getElementById('wpCounter').textContent=(popupIndex+1)+' / '+currentWinners.length;document.getElementById('wpPrev').disabled=popupIndex===0;document.getElementById('wpNext').disabled=popupIndex===currentWinners.length-1;document.getElementById('popupOverlay').classList.add('active');}
-function closePopup(){document.getElementById('popupOverlay').classList.remove('active');}
+function showPopup(){
+  const w=currentWinners[popupIndex];
+  document.getElementById('wpYear').textContent=currentYear+' · Winner';
+  document.getElementById('wpCat').textContent=w.category;
+  document.getElementById('wpName').textContent=w.title;
+  document.getElementById('wpArtist').textContent=w.artist;
+  document.getElementById('wpCountry').textContent='📍 '+w.country;
+  document.getElementById('wpDesc').textContent=w.desc;
+  document.getElementById('wpCounter').textContent=(popupIndex+1)+' / '+currentWinners.length;
+  document.getElementById('wpPrev').disabled=popupIndex===0;
+  document.getElementById('wpNext').disabled=popupIndex===currentWinners.length-1;
+  const img=document.getElementById('wpImg');
+  const placeholder=document.getElementById('wpImgPlaceholder');
+  img.style.display='block';
+  placeholder.style.display='none';
+  img.onerror=function(){this.style.display='none';placeholder.style.display='flex';};
+  img.src=w.img;
+  document.getElementById('popupOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closePopup(){document.getElementById('popupOverlay').classList.remove('active');document.body.style.overflow='';}
 function navPopup(dir){popupIndex=Math.max(0,Math.min(currentWinners.length-1,popupIndex+dir));showPopup();}
 document.getElementById('popupOverlay').addEventListener('click',e=>{if(e.target.id==='popupOverlay')closePopup();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();if(e.key==='ArrowLeft')navPopup(-1);if(e.key==='ArrowRight')navPopup(1);});
 
 function toggleFaq(row){const item=row.closest('.faq-item');const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
 

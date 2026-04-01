@@ -68,10 +68,7 @@
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     ctx.translate(cx, cy);
-    if(glow > 0) {
-      ctx.shadowColor = '#ffe600';
-      ctx.shadowBlur = glow;
-    }
+    /* glow removed */
     const s = size;
     ctx.beginPath();
     ctx.moveTo( s*0.28,  -s*0.52);   // top-right tip
@@ -104,8 +101,7 @@
     ctx.lineWidth   = 2;
     ctx.lineCap     = 'round';
     ctx.lineJoin    = 'round';
-    ctx.shadowColor = color;
-    ctx.shadowBlur  = 3;
+    /* no arrow glow */
     ctx.beginPath();
     ctx.moveTo(x - 12, cy);
     ctx.lineTo(x + 3,  cy);
@@ -401,37 +397,7 @@
     }).observe(document.body, {childList:true, subtree:true});
   }
 
-  /* ─────────────────────────────────────────────
-     FASTER ZIPPER (awards page)
-  ───────────────────────────────────────────── */
-  function patchZipper() {
-    const zL = document.getElementById('zipLeft');
-    const zR = document.getElementById('zipRight');
-    if(!zL||!zR) return;
-    zL.style.transition = 'transform 0.42s cubic-bezier(0.4,0,0.2,1)';
-    zR.style.transition = 'transform 0.42s cubic-bezier(0.4,0,0.2,1)';
-    const orig = window.openZipper;
-    if(typeof orig === 'function') {
-      window.openZipper = function() {
-        if(window._zipOpen) return;
-        if(typeof window.renderWinners==='function') window.renderWinners();
-        zL.classList.add('open'); zR.classList.add('open');
-        const pull = document.getElementById('zipPull');
-        if(pull) pull.style.display='none';
-        window._zipOpen = true;
-        setTimeout(()=>{
-          const wr = document.getElementById('winnersRevealed');
-          if(wr) {
-            wr.classList.add('visible');
-            document.querySelectorAll('.winner-card').forEach((c,i)=>{
-              c.style.opacity='0'; c.style.transform='translateY(18px)';
-              setTimeout(()=>{ c.style.transition='opacity 0.3s ease,transform 0.3s ease'; c.style.opacity='1'; c.style.transform='translateY(0)'; }, i*70+40);
-            });
-          }
-        }, 460);
-      };
-    }
-  }
+  /* patchZipper removed — zipper replaced with direct grid */
 
   /* ─────────────────────────────────────────────
      SECTION DIVIDERS
@@ -457,7 +423,7 @@
     initAllArrows();
     initRipples();
     addDividers();
-    patchZipper();
+    /* patchZipper() removed */
     setInterval(()=>{ convertPluses(); initAllArrows(); }, 1500);
   }
 

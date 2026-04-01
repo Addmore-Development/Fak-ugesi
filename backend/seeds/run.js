@@ -1,34 +1,36 @@
-const path = require('path');
+require('dotenv').config({ path: require('path').join(__dirname, '../../.env') });
+
 const { initDatabase, db } = require('../config/database');
 const { seedAwards } = require('./awardsSeed');
 const { seedTickets } = require('./ticketsSeed');
 
-// Initialize database first
-initDatabase();
+async function run() {
+    console.log('🌱 Seeding process started...');
+    console.log('🔌 DATABASE_URL:', process.env.DATABASE_URL ? '✅ Found' : '❌ MISSING!');
 
-// Wait a bit for database to be ready
-setTimeout(() => {
-    // Check if awards exist and seed
-    db.get("SELECT COUNT(*) as count FROM awards", (err, row) => {
-        if (err) {
-            console.error('Error checking awards:', err);
-        } else if (row && row.count === 0) {
-            seedAwards();
-        } else if (row) {
-            console.log(`Awards already seeded (${row.count} records)`);
-        }
-    });
+    await initDatabase();
 
-    // Check if tickets exist and seed
-    db.get("SELECT COUNT(*) as count FROM tickets", (err, row) => {
-        if (err) {
-            console.error('Error checking tickets:', err);
-        } else if (row && row.count === 0) {
-            seedTickets();
-        } else if (row) {
-            console.log(`Tickets already seeded (${row.count} records)`);
-        }
-    });
-}, 500);
+    setTimeout(() => {
+        db.get("SELECT COUNT(*) as count FROM awards", [], (err, row) => {
+            if (err) {
+                console.error('Error checking awards:', err.message);
+            } else if (row && row.count == 0) {
+                seedAwards();
+            } else {
+                console.log(`Awards already seeded (${row ? row.count : 0} records)`);
+            }
+        });
 
-console.log('🌱 Seeding process started...');
+        db.get("SELECT COUNT(*) as count FROM tickets", [], (err, row) => {
+            if (err) {
+                console.error('Error checking tickets:', err.message);
+            } else if (row && row.count == 0) {
+                seedTickets();
+            } else {
+                console.log(`Tickets already seeded (${row ? row.count : 0} records)`);
+            }
+        });
+    }, 1000);
+}
+
+run();

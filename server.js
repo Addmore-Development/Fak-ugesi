@@ -227,7 +227,8 @@ app.post('/api/newsletter/subscribe', (req, res) => {
         `INSERT INTO newsletter (email) VALUES (?)`,
         [email],
         function(err) {
-            if (err && err.message.includes('UNIQUE')) {
+            // NEW (PostgreSQL unique violation code):
+if (err && (err.code === '23505' || (err.message && err.message.includes('unique')))) {
                 res.status(400).json({ error: 'Email already subscribed' });
             } else if (err) {
                 res.status(500).json({ error: err.message });

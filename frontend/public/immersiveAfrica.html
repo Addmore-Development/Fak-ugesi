@@ -27,18 +27,18 @@
     .ia-hero-bg{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.45) 100%),radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,207,255,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 70% 30%,rgba(180,100,255,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,255,136,.06) 0%,transparent 60%);animation:bgShift 12s ease-in-out infinite alternate;pointer-events:none}
     @keyframes bgShift{from{opacity:1;transform:scale(1)}to{opacity:.7;transform:scale(1.05)}}
     .ia-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
-    .ia-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:24px}
-    .ia-title{font-size:clamp(56px,9vw,128px);font-weight:900;line-height:.9;letter-spacing:-.04em;margin-bottom:32px}
+    .ia-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:24px;position:relative;z-index:2}
+    .ia-title{font-size:clamp(56px,9vw,128px);font-weight:900;line-height:.9;letter-spacing:-.04em;margin-bottom:32px;position:relative;z-index:2}
     .ia-title span{display:block}
     .ia-title .accent{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3)}
-    .ia-meta{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-end}
+    .ia-meta{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-end;position:relative;z-index:2}
     .ia-meta-item{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
     .ia-meta-item strong{display:block;font-size:16px;color:#fff;letter-spacing:.02em;margin-bottom:4px}
     .ia-scroll-hint{position:absolute;bottom:40px;right:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
     .ia-scroll-hint span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
     .ia-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.2),transparent)}
 
-    /* SIGNIA — matches reference image */
+    /* SIGNIA */
     .hero-signia{position:absolute;bottom:80px;right:40px;z-index:10}
     .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
     .signia-top{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
@@ -55,7 +55,7 @@
 
     /* PREMIERE */
     .premiere{position:relative;min-height:600px;background:#0a0a1a;display:flex;align-items:flex-end}
-    .premiere-bg{position:absolute;inset:0;background:url('/images/8-Dotou-arbre-Fin.png') center/cover no-repeat,linear-gradient(135deg,#1a1a4a,#2a1a3a);background-blend-mode:multiply}
+    .premiere-bg{position:absolute;inset:0;background:url('/images/digital-dome-image-inside.jpg') center/cover no-repeat}
     .premiere-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .premiere-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.35))}
     .premiere-content{position:relative;z-index:5;padding:60px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;color:#fff;width:100%}
@@ -64,7 +64,6 @@
     .premiere-date{font-size:18px;color:rgba(255,255,255,.6);margin-bottom:20px}
     .premiere-desc{font-size:14px;line-height:1.7;margin-bottom:24px;color:rgba(255,255,255,.8)}
     .btn-white{padding:12px 28px;background:transparent;border:1.5px solid #fff;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
-    .btn-lime{padding:12px 28px;background:#C8FF00;color:#111;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
 
     /* ONGOING */
     .ongoing{background:#060612;padding:72px 56px;position:relative}
@@ -119,11 +118,6 @@
     .fa-work-title{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
     .fa-work-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
 
-    /* PARTNERS */
-    .partners-section{background:#0a0a10;padding:72px 56px;color:#fff}
-    .partners-scroll{display:flex;gap:20px;overflow-x:auto;margin-top:48px}
-    .partner-logo{background:rgba(255,255,255,.08);padding:24px 32px;min-width:160px;text-align:center;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.05em}
-
     /* VENUE */
     .venue-info{background:#000;border-top:1px solid var(--border);padding:80px 40px}
     .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -144,6 +138,25 @@
     .btn-outline{border:1px solid rgba(255,255,255,.25);color:#fff;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block}
     .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.05)}
 
+    /* PARTNERS */
+    .ia-partners-section{background:#0a0a10;padding:80px 0;border-top:1px solid rgba(255,255,255,0.06)}
+    .ia-partners-inner{max-width:1200px;margin:0 auto}
+    .ia-partners-header{padding:0 56px 48px}
+    .ia-partners-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px}
+    .ia-partners-title{font-size:38px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+    .ia-partners-desc{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:640px}
+    .ia-partners-marquee-wrap{position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .ia-partners-marquee-wrap::before,.ia-partners-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+    .ia-partners-marquee-wrap::before{left:0;background:linear-gradient(90deg,#0a0a10,transparent)}
+    .ia-partners-marquee-wrap::after{right:0;background:linear-gradient(-90deg,#0a0a10,transparent)}
+    .ia-partners-track{display:flex;gap:0;width:max-content;animation:partnerMarquee 28s linear infinite}
+    @keyframes partnerMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ia-partner-item{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:200px;padding:40px 32px;border-right:1px solid rgba(255,255,255,0.05);text-align:center}
+    .ia-partner-flag{font-size:24px;margin-bottom:8px}
+    .ia-partner-name{font-size:15px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px;letter-spacing:0.01em}
+    .ia-partner-sub{font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);text-transform:uppercase}
+    .ia-partners-note{padding:24px 56px 0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6}
+
     footer{background:#000;border-top:1px solid var(--border);padding:64px 40px 40px}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
     .footer-brand{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
@@ -154,35 +167,6 @@
     .footer-links a:hover{color:#fff}
     .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
     .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'Space Mono',monospace;letter-spacing:.05em}
-
-
-    /* IA PARTNERS MARQUEE */
-    .ia-partners-section { background:#0a0a10; padding:80px 0; border-top:1px solid rgba(255,255,255,0.06); }
-    .ia-partners-inner { max-width:1200px; margin:0 auto; }
-    .ia-partners-header { padding:0 56px 48px; }
-    .ia-partners-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px; }
-    .ia-partners-title { font-size:38px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
-    .ia-partners-desc { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.7; max-width:640px; }
-    .ia-partners-marquee-wrap { position:relative; overflow:hidden; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); }
-    .ia-partners-marquee-wrap::before, .ia-partners-marquee-wrap::after {
-      content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
-    }
-    .ia-partners-marquee-wrap::before { left:0; background:linear-gradient(90deg,#0a0a10,transparent); }
-    .ia-partners-marquee-wrap::after { right:0; background:linear-gradient(-90deg,#0a0a10,transparent); }
-    .ia-partners-track {
-      display:flex; gap:0; width:max-content;
-      animation: partnerMarquee 28s linear infinite;
-    }
-    @keyframes partnerMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .ia-partner-item {
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      min-width:200px; padding:40px 32px; border-right:1px solid rgba(255,255,255,0.05);
-      text-align:center;
-    }
-    .ia-partner-flag { font-size:24px; margin-bottom:8px; }
-    .ia-partner-name { font-size:15px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:4px; letter-spacing:0.01em; }
-    .ia-partner-sub { font-size:10px; letter-spacing:0.1em; color:rgba(255,255,255,0.3); text-transform:uppercase; }
-    .ia-partners-note { padding:24px 56px 0; font-size:11px; color:rgba(255,255,255,0.2); line-height:1.6; }
 
     @media(max-width:900px){
       nav{padding:16px 24px}.nav-links{display:none}
@@ -230,7 +214,6 @@
     <span>Scroll</span>
     <div class="ia-scroll-line"></div>
   </div>
-  <!-- SIGNIA -->
   <div class="hero-signia">
     <div class="signia-block">
       <span class="signia-top">fak'</span>
@@ -256,9 +239,7 @@
 <!-- PREMIERE -->
 <section class="premiere">
   <div class="premiere-bg">
-    <!-- Falls back to gradient if image missing -->
-    <img src="/images/digital-dome-image-inside.jpg" alt="Digital Dome interior"
-         onerror="this.style.display='none'"/>
+    <img src="/images/digital-dome-image-inside.jpg" alt="Digital Dome interior" onerror="this.style.display='none'"/>
   </div>
   <div class="premiere-overlay"></div>
   <div class="premiere-content">
@@ -367,35 +348,32 @@
 </section>
 
 <!-- PARTNERS -->
-<section class="partners-section ia-partners-section">
+<section class="ia-partners-section">
   <div class="ia-partners-inner">
     <div class="ia-partners-header">
       <div class="ia-partners-label">· Supported By</div>
       <h2 class="ia-partners-title">Our Immersive Africa Partners</h2>
       <p class="ia-partners-desc">Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC — EU National Institutes for Culture.</p>
     </div>
-    <!-- Marquee scroll — like fakugesi.co.za -->
     <div class="ia-partners-marquee-wrap">
-      <div class="ia-partners-marquee">
-        <div class="ia-partners-track">
-          <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
-          <!-- Duplicate for seamless loop -->
-          <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
-          <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
-        </div>
+      <div class="ia-partners-track">
+        <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
+        <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
       </div>
     </div>
     <p class="ia-partners-note">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes.</p>
@@ -421,15 +399,17 @@
 </footer>
 
 <script>
-const cursor=document.getElementById('custom-cursor');
-document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
+// Custom cursor
+const cursor = document.getElementById('custom-cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
 });
 </script>
 <script src="globalEffects.js"></script>
-<script src="/js/api.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/navigation.js"></script><script src="/js/forms.js"></script></body>
+</body>
 </html>
-
-

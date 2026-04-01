@@ -18,13 +18,28 @@
     .nav-links a:hover,.nav-links a.active{color:#fff}
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
-    .page-hero{padding:160px 40px 80px;background:#000;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-    .page-hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,230,0,.07) 0%,transparent 70%);pointer-events:none}
-    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
-    .page-title{font-size:clamp(48px,7vw,96px);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:24px}
-    .page-subtitle{font-size:18px;color:rgba(255,255,255,.55);max-width:560px;line-height:1.6}
+    /* ARROW BOX */
+    .arrow-btn{display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:68px;height:52px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);cursor:pointer;text-decoration:none;transition:background .25s,border-color .25s}
+    .arrow-btn:hover{background:var(--yellow);border-color:var(--yellow)}
+    .arrow-btn .arr-icon{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;transition:stroke .25s;z-index:2;position:relative}
+    .arrow-btn:hover .arr-icon{stroke:#000}
+    .bolt-flash{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0}
+    .arrow-btn:hover .bolt-flash{animation:boltPulse .55s ease forwards}
+    @keyframes boltPulse{0%{opacity:0}20%{opacity:1}40%{opacity:.2}65%{opacity:.9}100%{opacity:0}}
+    .bolt-flash svg{width:100%;height:100%}
 
-    /* OPEN CALL BANNER */
+    .page-hero{padding:160px 40px 80px;background:url('images/_MGL7139.jpg') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.6);pointer-events:none;z-index:0}
+    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px;position:relative;z-index:1}
+    .page-title{font-size:clamp(48px,7vw,96px);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:24px;position:relative;z-index:1}
+    .page-subtitle{font-size:18px;color:rgba(255,255,255,.55);max-width:560px;line-height:1.6;position:relative;z-index:1}
+    .hero-signia{position:absolute;top:120px;right:60px;z-index:10}
+    .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
+    .signia-top{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
+    .signia-divider{height:1.5px;background:#111;margin:4px 0}
+    .signia-bottom{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block}
+    .signia-bottom .u{color:#111}.signia-bottom .g{color:#8B1A1A}.signia-bottom .esi{color:#111}
+
     .open-call{background:rgba(255,230,0,.06);border-top:3px solid var(--yellow);border-bottom:1px solid rgba(255,230,0,.15);padding:48px 40px}
     .open-call-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
     .oc-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px}
@@ -35,37 +50,133 @@
     .btn-yellow{background:var(--yellow);color:#000;padding:16px 36px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;display:inline-block;transition:opacity .2s}
     .btn-yellow:hover{opacity:.85}
 
-    /* CATEGORIES */
-    .categories-section{padding:80px 40px;background:var(--dark)}
+    /* CATEGORIES — flip cards */
+    .categories-section{padding:80px 40px;background:var(--dark);position:relative}.categories-section::before{content:'';position:absolute;inset:0;background:url('images/IMG_8523 - Athanasius Johnson.png') center/cover no-repeat;opacity:0.08;pointer-events:none}
     .section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
     .section-title{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.02em;margin-bottom:48px}
-    .categories-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-    .cat-card{background:var(--dark);padding:32px;transition:background .2s;cursor:default}
-    .cat-card:hover{background:#111}
+    .categories-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    
+    /* FLIP CARD for categories */
+    .cat-flip{height:220px;perspective:1000px;cursor:pointer}
+    .cat-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1)}
+    .cat-flip:hover .cat-flip-inner{transform:rotateY(180deg)}
+    .cat-front,.cat-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px;background:var(--dark);border:1px solid var(--border)}
+    .cat-back{background:linear-gradient(135deg,#0d2a1a,#0a1a10);border-color:var(--green);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center}
     .cat-num{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.15em;margin-bottom:16px}
-    .cat-icon{font-size:28px;margin-bottom:16px}
+    .cat-icon{font-size:28px;margin-bottom:16px;display:block}
     .cat-name{font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.2}
     .cat-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6}
+    .cat-back-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+    .cat-back-prize{font-size:28px;font-weight:900;color:var(--yellow);letter-spacing:-.02em;margin-bottom:6px}
+    .cat-back-detail{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5}
 
-    /* PAST WINNERS — API DRIVEN */
-    .winners-section{padding:80px 40px;background:#000;border-top:1px solid var(--border)}
-    .winners-filter{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+    /* ══════════════════════════════════════════
+       ZIPPER WINNERS SECTION
+    ══════════════════════════════════════════ */
+    .winners-section{padding:80px 40px;background:#000;border-top:1px solid var(--border);position:relative;overflow:hidden}
+    .winners-section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+    .winners-controls{display:flex;gap:12px;flex-wrap:wrap}
     .year-btn{background:none;border:1px solid var(--border);color:rgba(255,255,255,.5);padding:8px 20px;border-radius:2px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .2s}
     .year-btn.active,.year-btn:hover{background:var(--green);border-color:var(--green);color:#000}
-    .winners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
-    .winner-card{background:#000;padding:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;transition:background .2s}
-    .winner-card:hover{background:#050505}
-    .winner-img{width:80px;height:80px;border-radius:4px;object-fit:cover;background:linear-gradient(135deg,rgba(0,255,136,.15),rgba(0,207,255,.15));display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
-    .winner-year-badge{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase}
-    .winner-cat{font-size:11px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-    .winner-title{font-size:19px;font-weight:800;line-height:1.2;margin-bottom:6px}
-    .winner-artist{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:8px}
-    .winner-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.6}
 
-    /* SUBMIT FORM */
+    /* ZIPPER */
+    .zipper-container{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .zipper-svg-wrap{position:absolute;inset:0;pointer-events:none;z-index:10}
+    .zipper-left,.zipper-right{
+      position:absolute;top:0;bottom:0;width:50%;
+      background:#000;
+      z-index:5;
+      transition:transform .9s cubic-bezier(.4,0,.2,1);
+      display:flex;align-items:center;
+    }
+    .zipper-left{left:0;border-right:2px solid rgba(255,255,255,.1);justify-content:flex-end}
+    .zipper-right{right:0;border-left:2px solid rgba(255,255,255,.1);justify-content:flex-start}
+    .zipper-left.open{transform:translateX(-100%)}
+    .zipper-right.open{transform:translateX(100%)}
+
+    /* Zipper teeth on edges */
+    .zipper-teeth{display:flex;flex-direction:column;gap:6px;padding:8px;position:absolute}
+    .zipper-left .zipper-teeth{right:-1px}
+    .zipper-right .zipper-teeth{left:-1px}
+    .tooth{width:12px;height:8px;background:#c0c0c0;border-radius:2px;border:1px solid #888}
+    .zipper-tab{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:15;cursor:pointer;text-align:center}
+    .zipper-tab-body{
+      background:linear-gradient(135deg,#d0d0d0,#a0a0a0);
+      padding:18px 28px;border-radius:4px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.8);
+      border:2px solid #888;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .zipper-tab-body:hover{transform:scale(1.05);box-shadow:0 8px 32px rgba(0,0,0,0.9)}
+    .zipper-tab-body::after{content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:3px;height:14px;background:#888}
+    .zipper-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#000;font-weight:700;display:block}
+    .zipper-sublabel{font-size:10px;color:rgba(0,0,0,.6);letter-spacing:.1em;display:block;margin-top:3px}
+    /* the dashed zipper track */
+    .zipper-track{position:absolute;top:0;bottom:0;left:50%;width:4px;transform:translateX(-50%);z-index:6;pointer-events:none;background:repeating-linear-gradient(to bottom,#888 0,#888 10px,transparent 10px,transparent 18px)}
+
+    /* view winners button INSIDE closed zipper */
+    .zipper-view-btn{
+      color:#fff;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+      opacity:.8;pointer-events:none;padding:0 24px;
+      white-space:nowrap;text-align:center;
+    }
+
+    /* WINNERS CONTENT — hidden behind zipper */
+    .winners-reveal{
+      width:100%;padding:60px 0 20px;
+      opacity:0;transition:opacity .5s ease .7s;
+      pointer-events:none;
+    }
+    .winners-reveal.visible{opacity:1;pointer-events:auto}
+
+    /* 4 winners in a row */
+    .winners-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
+    .winner-card{
+      background:#050510;padding:32px 24px;cursor:pointer;
+      transition:transform .3s,background .2s;
+      position:relative;overflow:hidden;
+    }
+    .winner-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+    .winner-card:hover::before{transform:scaleX(1)}
+    .winner-card:hover{background:#080820}
+    .winner-card.pop-active{transform:scale(1) translateY(0)}
+    .wc-year{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+    .wc-cat{font-size:11px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+    .wc-img{width:100%;height:140px;object-fit:cover;margin-bottom:16px;display:block;background:#1a1a2e}
+    .wc-name{font-size:17px;font-weight:800;line-height:1.2;margin-bottom:6px}
+    .wc-artist{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:4px}
+    .wc-country{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase}
+
+    /* POPUP */
+    .winner-popup-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .3s;
+    }
+    .winner-popup-overlay.active{opacity:1;pointer-events:auto}
+    .winner-popup{
+      background:#0a0a16;border:1px solid var(--green);
+      max-width:560px;width:90%;padding:48px;position:relative;
+      transform:translateY(40px) scale(0.95);
+      transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .winner-popup-overlay.active .winner-popup{transform:translateY(0) scale(1)}
+    .wp-close{position:absolute;top:20px;right:20px;background:none;border:1px solid var(--border);color:#fff;width:36px;height:36px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
+    .wp-year{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+    .wp-cat{font-size:12px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+    .wp-img{width:100%;height:200px;object-fit:cover;margin-bottom:24px;display:block;background:#1a1a2e}
+    .wp-name{font-size:28px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
+    .wp-artist{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:6px}
+    .wp-country{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+    .wp-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7}
+    .wp-nav{display:flex;justify-content:space-between;margin-top:28px;gap:12px}
+    .wp-nav-btn{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);color:#fff;padding:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .2s}
+    .wp-nav-btn:hover{background:var(--green);border-color:var(--green);color:#000}
+    .wp-counter{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-align:center;margin-top:12px}
+
+    /* SUBMIT */
     .submit-section{padding:80px 40px;background:var(--dark);border-top:1px solid var(--border)}
     .submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .submit-info .section-title{margin-bottom:24px}
     .submit-info p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px}
     .submit-info ul{list-style:none;display:flex;flex-direction:column;gap:12px}
     .submit-info li{display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.6)}
@@ -94,39 +205,33 @@
     .footer-links a:hover{color:#fff}
     .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
     .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'Space Mono',monospace;letter-spacing:.05em}
-
-    @media(max-width:900px){
-      nav{padding:16px 24px}.nav-links{display:none}
-      .page-hero{padding:120px 24px 60px}
-      .open-call{padding:40px 24px}.open-call-inner{grid-template-columns:1fr}
-      .categories-grid{grid-template-columns:1fr 1fr}
-      .winners-grid{grid-template-columns:1fr}
-      .submit-grid{grid-template-columns:1fr}
-      .categories-section,.winners-section,.submit-section{padding:60px 24px}
-      .footer-grid{grid-template-columns:1fr 1fr}
-    }
   </style>
 </head>
 <body>
-
 <nav>
-  <a class="nav-logo" href="/">Fak'ugesi 2026</a>
+  <a class="nav-logo" href="index.html">Fak'ugesi 2026</a>
   <ul class="nav-links">
-    <li><a href="/programme">Programme</a></li>
-    <li><a href="/immersive-africa">Immersive Africa</a></li>
-    <li><a href="/awards" class="active">Awards</a></li>
-    <li><a href="/about">About</a></li>
+    <li><a href="programme.html">Programme</a></li>
+    <li><a href="immersiveAfrica.html">Immersive Africa</a></li>
+    <li><a href="awards.html" class="active">Awards</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
-  <a class="nav-cta" href="/tickets">Get Tickets</a>
+  <a class="nav-cta" href="tickets.html">Get Tickets</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-eyebrow">→ Awards 2026</div>
   <h1 class="page-title">Recognising<br/>African Digital<br/>Excellence</h1>
   <p class="page-subtitle">Submissions now open across 8 categories. Win prizes, residencies, and global exposure for your work.</p>
+  <div class="hero-signia">
+    <div class="signia-block">
+      <span class="signia-top">fak'</span>
+      <div class="signia-divider"></div>
+      <span class="signia-bottom"><span class="u">u</span><span class="g">g</span><span class="esi">esi</span></span>
+    </div>
+  </div>
 </div>
 
-<!-- OPEN CALL -->
 <div class="open-call">
   <div class="open-call-inner">
     <div>
@@ -135,38 +240,94 @@
       <div class="oc-desc">We're looking for groundbreaking digital work from African artists, designers, developers and innovators. Submit across 8 categories.</div>
       <div class="oc-deadline">Submission deadline: <strong>31 July 2026 at 23:59 SAST</strong></div>
     </div>
-    <a class="btn-yellow" href="#submit">Submit Your Work</a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="btn-yellow" href="#submit">Submit Your Work</a>
+      <a class="arrow-btn" href="#submit" aria-label="Submit" style="height:52px">
+        <span class="bolt-flash"><svg viewBox="0 0 68 52" preserveAspectRatio="none"><polyline points="42,4 26,26 40,26 26,48" fill="rgba(0,0,0,.2)" stroke="rgba(0,0,0,.4)" stroke-width="2"/></svg></span>
+        <svg class="arr-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
-<!-- CATEGORIES -->
+<!-- CATEGORIES — FLIP CARDS -->
 <section class="categories-section">
   <div class="section-label">Categories</div>
   <div class="section-title">8 Award Categories</div>
   <div class="categories-grid">
-    <div class="cat-card"><div class="cat-num">01</div><div class="cat-icon">🎨</div><div class="cat-name">Digital Art</div><div class="cat-desc">Generative art, digital painting, computational aesthetics, NFT work, and digital illustration.</div></div>
-    <div class="cat-card"><div class="cat-num">02</div><div class="cat-icon">🥽</div><div class="cat-name">Immersive Media</div><div class="cat-desc">VR, AR, mixed reality experiences, immersive installations, and spatial computing.</div></div>
-    <div class="cat-card"><div class="cat-num">03</div><div class="cat-icon">📱</div><div class="cat-name">Interactive Design</div><div class="cat-desc">UI/UX, human-computer interaction, physical computing, and interactive experiences.</div></div>
-    <div class="cat-card"><div class="cat-num">04</div><div class="cat-icon">🌱</div><div class="cat-name">Tech for Social Impact</div><div class="cat-desc">Technology solutions addressing health, agriculture, education, climate, and access.</div></div>
-    <div class="cat-card"><div class="cat-num">05</div><div class="cat-icon">🎮</div><div class="cat-name">Game Design</div><div class="cat-desc">Video games, mobile games, serious games, and interactive narrative experiences.</div></div>
-    <div class="cat-card"><div class="cat-num">06</div><div class="cat-icon">🎬</div><div class="cat-name">Digital Film &amp; Animation</div><div class="cat-desc">Short films, animated works, motion graphics, and experimental moving image.</div></div>
-    <div class="cat-card"><div class="cat-num">07</div><div class="cat-icon">🤖</div><div class="cat-name">AI &amp; Machine Learning</div><div class="cat-desc">Innovative applications of AI/ML in creative, social, scientific, or business contexts.</div></div>
-    <div class="cat-card"><div class="cat-num">08</div><div class="cat-icon">🔊</div><div class="cat-name">Sound &amp; Music Tech</div><div class="cat-desc">Music technology, generative audio, sonic art, and digital music production.</div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">01</div><div class="cat-icon">🎨</div><div class="cat-name">Digital Art</div><div class="cat-desc">Generative art, digital painting, computational aesthetics.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R25 000</div><div class="cat-back-detail">Plus international residency at a partner digital arts centre.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">02</div><div class="cat-icon">🥽</div><div class="cat-name">Immersive Media</div><div class="cat-desc">VR, AR, mixed reality, immersive installations.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R30 000</div><div class="cat-back-detail">Plus commission to show work at the Digital Dome.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">03</div><div class="cat-icon">📱</div><div class="cat-name">Interactive Design</div><div class="cat-desc">UI/UX, physical computing, interactive experiences.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R20 000</div><div class="cat-back-detail">Plus mentorship with a leading African design studio.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">04</div><div class="cat-icon">🌱</div><div class="cat-name">Tech for Social Impact</div><div class="cat-desc">Health, agriculture, education, climate solutions.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R40 000</div><div class="cat-back-detail">Plus investor pitch opportunity at Fak'ugesi Invest Day.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">05</div><div class="cat-icon">🎮</div><div class="cat-name">Game Design</div><div class="cat-desc">Video games, mobile games, interactive narrative.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R25 000</div><div class="cat-back-detail">Plus showcase at the Pan-African Games Expo.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">06</div><div class="cat-icon">🎬</div><div class="cat-name">Digital Film &amp; Animation</div><div class="cat-desc">Short films, animated works, experimental moving image.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R20 000</div><div class="cat-back-detail">Plus screening at the Fak'ugesi closing ceremony.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">07</div><div class="cat-icon">🤖</div><div class="cat-name">AI &amp; Machine Learning</div><div class="cat-desc">Innovative AI/ML in creative, social or scientific contexts.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R35 000</div><div class="cat-back-detail">Plus 3-month developer fellowship at Tshimologong.</div></div>
+    </div></div>
+    <div class="cat-flip"><div class="cat-flip-inner">
+      <div class="cat-front"><div class="cat-num">08</div><div class="cat-icon">🔊</div><div class="cat-name">Sound &amp; Music Tech</div><div class="cat-desc">Music technology, generative audio, sonic art.</div></div>
+      <div class="cat-back"><div class="cat-back-label">Prize</div><div class="cat-back-prize">R20 000</div><div class="cat-back-detail">Plus performance slot at the Fak'ugesi closing concert.</div></div>
+    </div></div>
   </div>
 </section>
 
-<!-- PAST WINNERS — API POWERED -->
+<!-- PAST WINNERS — ZIPPER -->
 <section class="winners-section">
-  <div class="section-label">Past Winners</div>
-  <div class="section-title">Award Archive</div>
-  <div class="winners-filter" id="yearFilter">
-    <button class="year-btn active" onclick="filterYear(this,'all')">All Years</button>
-    <button class="year-btn" onclick="filterYear(this,'2025')">2025</button>
-    <button class="year-btn" onclick="filterYear(this,'2024')">2024</button>
-    <button class="year-btn" onclick="filterYear(this,'2023')">2023</button>
+  <div class="winners-section-header">
+    <div>
+      <div class="section-label">Past Winners</div>
+      <div class="section-title" style="margin-bottom:0">Award Archive</div>
+    </div>
+    <div class="winners-controls" id="yearFilter">
+      <button class="year-btn active" onclick="setYear(this,'2025')">2025</button>
+      <button class="year-btn" onclick="setYear(this,'2024')">2024</button>
+      <button class="year-btn" onclick="setYear(this,'2023')">2023</button>
+    </div>
   </div>
-  <div class="winners-grid" id="winnersGrid">
-    <div style="padding:48px;text-align:center;color:rgba(255,255,255,.3);font-family:'Space Mono',monospace;font-size:12px;grid-column:1/-1">Loading winners...</div>
+
+  <div class="zipper-container" id="zipperContainer">
+    <!-- Left curtain -->
+    <div class="zipper-left" id="zipLeft">
+      <div class="zipper-view-btn">View<br/>Winners</div>
+      <div class="zipper-teeth" id="teethLeft"></div>
+    </div>
+    <!-- Right curtain -->
+    <div class="zipper-right" id="zipRight">
+      <div class="zipper-view-btn">View<br/>Winners</div>
+      <div class="zipper-teeth" id="teethRight"></div>
+    </div>
+    <!-- Zipper track -->
+    <div class="zipper-track"></div>
+    <!-- Zipper pull tab -->
+    <div class="zipper-tab" id="zipperTab" onclick="openZipper()">
+      <div class="zipper-tab-body">
+        <span class="zipper-label">View Winners</span>
+        <span class="zipper-sublabel">Click to reveal</span>
+      </div>
+    </div>
+    <!-- Winners revealed -->
+    <div class="winners-reveal" id="winnersReveal">
+      <div class="winners-row" id="winnersRow"></div>
+    </div>
   </div>
 </section>
 
@@ -175,14 +336,14 @@
   <div class="submit-grid">
     <div class="submit-info">
       <div class="section-label">Submit</div>
-      <div class="section-title">Enter the Awards</div>
-      <p>Submit your work for consideration in the 2026 Fak'ugesi Awards. Our panel of expert judges evaluate submissions across creativity, technical excellence, cultural resonance, and impact.</p>
+      <div class="section-title" style="margin-bottom:24px">Enter the Awards</div>
+      <p>Submit your work for consideration in the 2026 Fak'ugesi Awards. Our panel of expert judges evaluate across creativity, technical excellence, cultural resonance and impact.</p>
       <ul>
         <li>Open to African artists, designers and technologists worldwide</li>
         <li>Multiple category submissions are welcome</li>
         <li>Winners receive cash prizes, residencies, and global press</li>
         <li>Shortlist announced 15 August 2026</li>
-        <li>Winners revealed at the Awards Ceremony, 12 September 2026</li>
+        <li>Winners revealed at the Awards Ceremony, 12 October 2026</li>
       </ul>
     </div>
     <div class="form-card">
@@ -194,14 +355,9 @@
         <label class="form-label">Award Category</label>
         <select class="form-select" id="fCategory">
           <option value="">Select a category...</option>
-          <option>Digital Art</option>
-          <option>Immersive Media</option>
-          <option>Interactive Design</option>
-          <option>Technology for Social Impact</option>
-          <option>Game Design</option>
-          <option>Digital Film &amp; Animation</option>
-          <option>AI &amp; Machine Learning</option>
-          <option>Sound &amp; Music Tech</option>
+          <option>Digital Art</option><option>Immersive Media</option><option>Interactive Design</option>
+          <option>Technology for Social Impact</option><option>Game Design</option>
+          <option>Digital Film &amp; Animation</option><option>AI &amp; Machine Learning</option><option>Sound &amp; Music Tech</option>
         </select>
       </div>
       <div class="form-group">
@@ -210,11 +366,11 @@
       </div>
       <div class="form-group">
         <label class="form-label">Project Description</label>
-        <textarea class="form-textarea" id="fDesc" placeholder="Describe your project, its concept, and its impact (max 500 words)..."></textarea>
+        <textarea class="form-textarea" id="fDesc" placeholder="Describe your project..."></textarea>
       </div>
       <button class="submit-btn" onclick="submitAward()">Submit Entry →</button>
       <div class="form-success" id="formSuccess">
-        <p>✓ Submission Received!</p>
+        <p>Submission Received!</p>
         <small>We'll be in touch by 15 August 2026 with shortlist results.</small>
       </div>
     </div>
@@ -224,66 +380,165 @@
 <footer>
   <div class="footer-grid">
     <div><div class="footer-brand">Fak'ugesi Festival</div><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
-    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="/programme">Programme</a></li><li><a href="/immersive-africa">Immersive Africa</a></li><li><a href="/awards">Awards</a></li><li><a href="/tickets">Tickets</a></li></ul></div>
-    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="/about">About Us</a></li><li><a href="/about#partners">Partners</a></li><li><a href="/about#press">Press</a></li><li><a href="/about#contact">Contact</a></li></ul></div>
+    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="programme.html">Programme</a></li><li><a href="immersiveAfrica.html">Immersive Africa</a></li><li><a href="awards.html">Awards</a></li><li><a href="tickets.html">Tickets</a></li></ul></div>
+    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="about.html#partners">Partners</a></li><li><a href="about.html#press">Press</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
     <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
   </div>
   <div class="footer-bottom"><div class="footer-copy">© 2026 Fak'ugesi Festival. All rights reserved.</div><div class="footer-copy">Designed in Johannesburg</div></div>
 </footer>
 
+<!-- WINNER POPUP -->
+<div class="winner-popup-overlay" id="popupOverlay">
+  <div class="winner-popup" id="winnerPopup">
+    <button class="wp-close" onclick="closePopup()">×</button>
+    <div class="wp-year" id="wpYear"></div>
+    <div class="wp-cat" id="wpCat"></div>
+    <img class="wp-img" id="wpImg" src="" alt=""/>
+    <div class="wp-name" id="wpName"></div>
+    <div class="wp-artist" id="wpArtist"></div>
+    <div class="wp-country" id="wpCountry"></div>
+    <div class="wp-desc" id="wpDesc"></div>
+    <div class="wp-nav">
+      <button class="wp-nav-btn" id="wpPrev" onclick="navPopup(-1)">← Previous</button>
+      <button class="wp-nav-btn" id="wpNext" onclick="navPopup(1)">Next →</button>
+    </div>
+    <div class="wp-counter" id="wpCounter"></div>
+  </div>
+</div>
+
 <script>
-  let allWinners = [];
+const WINNERS={
+  2025:[
+    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:'A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.',img:'images/VOF Voices of fire print - Joseph Dairo.jpg'},
+    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Tech for Social Impact',title:'Yebo Health',artist:'Thandi Ndaba',country:'South Africa',desc:'AI-powered community health diagnostics reaching 40,000 rural patients in its first year.',img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=70'},
+    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'images/Fak_ugesi 2025-32.jpg'},
+  ],
+  2024:[
+    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'images/digital-dome-image-inside.jpg'},
+    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'images/VOF Voices of fire print - Joseph Dairo.jpg'},
+    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'images/Fak_ugesi 2025-32.jpg'},
+    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'images/_MGL7139.jpg'},
+  ],
+  2023:[
+    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'images/VOF Voices of fire print - Joseph Dairo.jpg'},
+    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'images/Fak_ugesi 2025-32.jpg'},
+    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'images/digital-dome-image-inside.jpg'},
+  ]
+};
 
-  const emojis = ['🎨','🥽','📱','🌱','🎮','🎬','🤖','🔊'];
+let currentYear=2025;
+let zipOpen=false;
+let popupIndex=0;
+let currentWinners=[];
 
-  function renderWinners(winners) {
-    const grid = document.getElementById('winnersGrid');
-    if (!winners.length) { grid.innerHTML = '<div style="padding:48px;text-align:center;color:rgba(255,255,255,.3);font-family:Space Mono,monospace;font-size:12px;grid-column:1/-1">No winners found.</div>'; return; }
-    grid.innerHTML = winners.map(w => `
-      <div class="winner-card">
-        <div class="winner-img">${emojis[Math.floor(Math.random()*emojis.length)]}</div>
-        <div>
-          <div class="winner-year-badge">${w.year} · Winner</div>
-          <div class="winner-cat">${w.category}</div>
-          <div class="winner-title">${w.title}</div>
-          <div class="winner-artist">${w.artist} — ${w.country}</div>
-          <div class="winner-desc">${w.description || ''}</div>
-        </div>
-      </div>
-    `).join('');
+// Build zipper teeth
+function buildTeeth(id,count){
+  const el=document.getElementById(id);
+  el.innerHTML='';
+  for(let i=0;i<count;i++){const t=document.createElement('div');t.className='tooth';el.appendChild(t);}
+}
+buildTeeth('teethLeft',28);buildTeeth('teethRight',28);
+
+function setYear(btn,year){
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentYear=parseInt(year);
+  // Reset zipper if open
+  if(zipOpen){
+    document.getElementById('zipLeft').classList.remove('open');
+    document.getElementById('zipRight').classList.remove('open');
+    document.getElementById('winnersReveal').classList.remove('visible');
+    document.getElementById('zipperTab').style.display='';
+    zipOpen=false;
+    setTimeout(()=>renderWinners(),300);
+  } else {
+    renderWinners();
   }
+}
 
-  function filterYear(btn, year) {
-    document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filtered = year === 'all' ? allWinners : allWinners.filter(w => String(w.year) === year);
-    renderWinners(filtered);
-  }
+function renderWinners(){
+  currentWinners=WINNERS[currentYear]||[];
+  const row=document.getElementById('winnersRow');
+  row.innerHTML=currentWinners.map((w,i)=>`
+    <div class="winner-card" onclick="openPopup(${i})" style="animation-delay:${i*0.15}s">
+      <img class="wc-img" src="${w.img}" alt="${w.title}" onerror="this.style.background='#1a1a2e';this.style.display='block'"/>
+      <div class="wc-year">${currentYear} · Winner</div>
+      <div class="wc-cat">${w.category}</div>
+      <div class="wc-name">${w.title}</div>
+      <div class="wc-artist">${w.artist}</div>
+      <div class="wc-country">${w.country}</div>
+    </div>
+  `).join('');
+}
 
-  fetch('/api/awards').then(r => r.json()).then(data => {
-    allWinners = data;
-    renderWinners(data);
-  }).catch(() => {
-    document.getElementById('winnersGrid').innerHTML = '<div style="padding:48px;text-align:center;color:rgba(255,255,255,.3);font-family:Space Mono,monospace;font-size:12px;grid-column:1/-1">Could not load winners.</div>';
-  });
-
-  function submitAward() {
-    const name = document.getElementById('fName').value;
-    const email = document.getElementById('fEmail').value;
-    const category = document.getElementById('fCategory').value;
-    const project_title = document.getElementById('fTitle').value;
-    const description = document.getElementById('fDesc').value;
-    if (!name || !email || !category || !project_title) { alert('Please fill in all required fields.'); return; }
-    fetch('/api/submit-award', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({name,email,category,project_title,description})
-    }).then(r => r.json()).then(() => {
-      document.getElementById('formSuccess').style.display = 'block';
-    }).catch(() => {
-      document.getElementById('formSuccess').style.display = 'block';
+function openZipper(){
+  if(zipOpen)return;
+  renderWinners();
+  document.getElementById('zipLeft').classList.add('open');
+  document.getElementById('zipRight').classList.add('open');
+  document.getElementById('zipperTab').style.display='none';
+  zipOpen=true;
+  setTimeout(()=>{
+    document.getElementById('winnersReveal').classList.add('visible');
+    // Sequential card entrance
+    document.querySelectorAll('.winner-card').forEach((card,i)=>{
+      card.style.opacity='0';card.style.transform='translateY(30px) scale(0.9)';
+      setTimeout(()=>{
+        card.style.transition='opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        card.style.opacity='1';card.style.transform='translateY(0) scale(1)';
+      },i*180+50);
     });
-  }
+  },700);
+}
+
+function openPopup(index){
+  popupIndex=index;
+  showPopup();
+}
+function showPopup(){
+  const w=currentWinners[popupIndex];
+  document.getElementById('wpYear').textContent=currentYear+' · Winner';
+  document.getElementById('wpCat').textContent=w.category;
+  document.getElementById('wpImg').src=w.img;
+  document.getElementById('wpImg').onerror=function(){this.style.display='none'};
+  document.getElementById('wpName').textContent=w.title;
+  document.getElementById('wpArtist').textContent=w.artist;
+  document.getElementById('wpCountry').textContent=w.country;
+  document.getElementById('wpDesc').textContent=w.desc;
+  document.getElementById('wpCounter').textContent=(popupIndex+1)+' / '+currentWinners.length;
+  document.getElementById('wpPrev').disabled=popupIndex===0;
+  document.getElementById('wpNext').disabled=popupIndex===currentWinners.length-1;
+  document.getElementById('popupOverlay').classList.add('active');
+}
+function closePopup(){document.getElementById('popupOverlay').classList.remove('active');}
+function navPopup(dir){
+  popupIndex=Math.max(0,Math.min(currentWinners.length-1,popupIndex+dir));
+  // Brief exit animation
+  const popup=document.getElementById('winnerPopup');
+  popup.style.transform=`translateX(${dir>0?'-30px':'30px'}) scale(0.97)`;
+  popup.style.opacity='0.5';
+  setTimeout(()=>{
+    showPopup();
+    popup.style.transition='transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s';
+    popup.style.transform='translateX(0) scale(1)';popup.style.opacity='1';
+  },200);
+}
+document.getElementById('popupOverlay').addEventListener('click',function(e){if(e.target===this)closePopup();});
+
+// Init
+renderWinners();
+
+function submitAward(){
+  const name=document.getElementById('fName').value;
+  const email=document.getElementById('fEmail').value;
+  const cat=document.getElementById('fCategory').value;
+  const title=document.getElementById('fTitle').value;
+  if(!name||!email||!cat||!title){alert('Please fill in all required fields.');return;}
+  document.getElementById('formSuccess').style.display='block';
+}
 </script>
+<script src="global-effects.js"></script>
 </body>
 </html>

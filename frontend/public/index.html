@@ -8,244 +8,241 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --yellow: #d4e600;
-      --dark-navy: #0d1117;
-      --navy: #1a2332;
-      --light-bg: #e8eaf0;
-      --light-mid: #d4d7e3;
-      --text-dark: #1a1f2e;
-      --text-mid: #4a5568;
-      --border: rgba(255,255,255,0.15);
-      --border-dark: rgba(0,0,0,0.1);
+      --yellow: #d4e600; --dark-navy: #0d1117; --navy: #1a2332;
+      --light-bg: #e8eaf0; --light-mid: #d4d7e3; --text-dark: #1a1f2e;
+      --text-mid: #4a5568; --border: rgba(255,255,255,0.15); --border-dark: rgba(0,0,0,0.1);
     }
     html { scroll-behavior: smooth; }
     body { background: #0d1117; color: #fff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(13,17,23,0.7); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-plus { color: rgba(255,255,255,0.5); font-size: 20px; font-weight: 300; line-height: 1; }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-ticket-btn {
-      background: var(--yellow); color: #000; padding: 9px 22px;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; text-decoration: none; border-radius: 2px;
-    }
-    .nav-right { display: flex; align-items: center; gap: 16px; }
+    nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(13,17,23,0.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06); }
+    .nav-plus { color:rgba(255,255,255,0.5);font-size:20px;font-weight:300;line-height:1; }
+    .nav-links { display:flex;gap:40px;list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:color 0.2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-ticket-btn { background:var(--yellow);color:#000;padding:9px 22px;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:2px; }
+    .nav-right { display:flex;align-items:center;gap:16px; }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(13,17,23,0.45) 50%, rgba(13,17,23,0.7) 100%),
-                  url('https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=1600&q=80') center/cover no-repeat;
-    }
-    .hero-content { position: relative; z-index: 2; padding: 140px 60px 60px; max-width: 700px; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; font-weight: 500; }
-    .hero-title { font-size: clamp(42px, 6vw, 72px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
-    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 440px; margin-bottom: 28px; }
-    .hero-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-    .hero-logo-badge {
-      position: absolute; top: 140px; right: 60px; z-index: 2;
-      background: #fff; color: #000; padding: 16px 20px;
-      font-size: 28px; font-weight: 900; line-height: 1;
-      font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;
-    }
-    .hero-logo-badge span { display: block; }
-    .hero-logo-badge .accent { color: #c0392b; }
+    /* HERO */
+    .hero { position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:#000; }
+    .hero-bg { position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,5,15,0.85) 0%,rgba(5,5,15,0.5) 50%,rgba(5,5,15,0.8) 100%); }
+    .hero-bg-img { position:absolute;inset:0;background:url('images/_MGL2775.jpg') center/cover no-repeat;opacity:0.55; }
+    #lightning-canvas { position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%; }
+    .crosshair { position:absolute;color:rgba(255,255,255,0.3);font-size:18px;font-weight:300;line-height:1;pointer-events:none; }
 
-    /* ── TICKER ── */
-    .ticker {
-      background: var(--yellow); overflow: hidden;
-      padding: 10px 0; white-space: nowrap;
-    }
-    .ticker-inner { display: inline-flex; gap: 0; animation: ticker 25s linear infinite; }
-    .ticker-item {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #000; padding: 0 32px;
-      display: flex; align-items: center; gap: 16px;
-    }
-    .ticker-item::after { content: '→'; opacity: 0.5; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* CAROUSEL */
+    .hero-carousel { position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;pointer-events:none; }
+    .carousel-word { position:absolute;font-size:clamp(60px,8vw,110px);font-weight:900;letter-spacing:-0.03em;white-space:nowrap;color:rgba(255,255,255,0.9);text-transform:uppercase;opacity:0;transform:translateX(120vw); }
+    @keyframes cwIn { from{opacity:0;transform:translateX(110vw) scale(0.8)} to{opacity:1;transform:translateX(0) scale(1)} }
+    @keyframes cwOut { from{opacity:1;transform:translateX(0)} to{opacity:0;transform:translateX(-100vw) scale(0.85)} }
+    @keyframes cwJump { 0%{opacity:0;transform:translateX(80vw) scale(2.5)} 50%{opacity:1;transform:translateX(0) scale(1.2)} 70%{transform:translateX(0) scale(0.95)} 85%{transform:translateX(0) scale(1.08)} 100%{opacity:1;transform:translateX(0) scale(1)} }
 
-    /* ── THEME SECTION ── */
-    .theme-section {
-      display: grid; grid-template-columns: 1fr 1fr; min-height: 560px;
-      background: linear-gradient(135deg, #2d3a6b 0%, #3d4f8a 40%, #4a5f9e 60%, #6b7fb0 100%);
-      position: relative; overflow: hidden;
-    }
-    .theme-left { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; z-index: 2; }
-    .theme-box { background: rgba(100,120,40,0.85); padding: 40px; max-width: 420px; }
-    .theme-year-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; font-weight: 600; }
-    .theme-heading { font-size: clamp(36px, 4vw, 52px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0; color: #fff; }
-    .theme-sub { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; font-weight: 600; }
-    .theme-subtext { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-top: 16px; }
-    .theme-btns { display: flex; gap: 12px; margin-top: 28px; }
-    .btn-dark-outline { background: rgba(0,0,0,0.6); color: #fff; padding: 11px 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); }
-    .theme-date { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-top: 40px; opacity: 0.9; }
-    .theme-right { position: relative; overflow: hidden; }
-    .theme-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .theme-right-overlay {
-      position: absolute; top: 0; right: 0; bottom: 0;
-      width: 80px;
-      background: linear-gradient(90deg, transparent, #4a7a2a);
-    }
-    .crosshair {
-      position: absolute; color: rgba(255,255,255,0.3); font-size: 18px; font-weight: 300;
-      line-height: 1; pointer-events: none;
-    }
-    .theme-section .crosshair { color: rgba(255,255,255,0.25); }
+    /* HERO CONTENT */
+    .hero-content { position:relative;z-index:4;padding:140px 60px 60px;max-width:700px;opacity:0;transition:opacity 0.9s ease; }
+    .hero-content.visible { opacity:1; }
+    .hero-eyebrow { font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;font-weight:500; }
+    .hero-title { font-size:clamp(42px,6vw,72px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px; }
+    .hero-desc { font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:440px;margin-bottom:28px; }
+    .hero-link-row { display:flex;align-items:center;gap:16px; }
+    .hero-link { font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#fff;text-decoration:underline;text-underline-offset:3px; }
 
-    /* ── GET INVOLVED ── */
-    .get-involved {
-      position: relative; overflow: hidden;
-      background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover no-repeat;
-      padding: 100px 60px;
-    }
-    .get-involved::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
-    .gi-inner { position: relative; z-index: 2; }
-    .gi-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
-    .gi-title { font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; }
-    .gi-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; margin-top: 8px; }
-    .gi-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .gi-card {
-      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
-      padding: 28px; backdrop-filter: blur(4px);
-    }
-    .gi-num { font-size: clamp(36px, 4vw, 52px); font-weight: 800; color: var(--yellow); line-height: 1; margin-bottom: 4px; float: right; }
-    .gi-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; clear: both; }
-    .gi-card-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
-    .gi-card-desc { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
-    .gi-btn { background: #fff; color: #000; padding: 10px 0; width: 100%; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; display: block; text-decoration: none; }
+    /* SIGNIA */
+    .hero-signia { position:absolute;top:120px;right:60px;z-index:10; }
+    .signia-block { background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1; }
+    .signia-top { font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:900;color:#111;letter-spacing:-0.03em;display:block; }
+    .signia-bottom { font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:900;letter-spacing:-0.03em;display:block; }
+    .signia-bottom .u{color:#111}.signia-bottom .g{color:#8B1A1A}.signia-bottom .esi{color:#111}
+    .signia-divider { height:1.5px;background:#111;margin:4px 0; }
 
-    /* ── SPOTLIGHT ── */
-    .spotlight-section { background: var(--light-bg); padding: 80px 60px; }
-    .spotlight-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 48px; }
-    .spotlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .spotlight-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; max-height: 440px; }
-    .spotlight-cat { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; }
-    .spotlight-heading { font-size: clamp(28px, 3vw, 40px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.1; }
-    .spotlight-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
-    .spotlight-btn {
-      display: inline-block; border: 1px solid var(--text-dark); color: var(--text-dark);
-      padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; text-decoration: none;
-    }
+    /* KIKK ARROW BOX */
+    .arrow-btn { display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:68px;height:52px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);cursor:pointer;text-decoration:none;transition:background 0.25s,border-color 0.25s; }
+    .arrow-btn:hover { background:var(--yellow);border-color:var(--yellow); }
+    .arrow-btn .arr-icon { width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;transition:stroke 0.25s;z-index:2;position:relative; }
+    .arrow-btn:hover .arr-icon { stroke:#000; }
+    .bolt-flash { position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0; }
+    .arrow-btn:hover .bolt-flash { animation:boltPulse 0.55s ease forwards; }
+    @keyframes boltPulse { 0%{opacity:0} 20%{opacity:1} 40%{opacity:0.2} 65%{opacity:0.9} 100%{opacity:0} }
+    .bolt-flash svg { width:100%;height:100%; }
+    .arrow-btn.dark { background:rgba(0,0,0,0.08);border-color:rgba(0,0,0,0.25); }
+    .arrow-btn.dark .arr-icon { stroke:#000; }
+    .arrow-btn.dark:hover { background:var(--text-dark);border-color:var(--text-dark); }
+    .arrow-btn.dark:hover .arr-icon { stroke:#fff; }
 
-    /* ── WHAT'S HAPPENING ── */
-    .happening-section { background: #fff; padding: 80px 60px; }
-    .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-    .happening-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
-    .social-icons { display: flex; gap: 12px; align-items: center; }
-    .social-icon { width: 28px; height: 28px; background: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; text-decoration: none; }
-    .photos-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
-    .photos-scroll::-webkit-scrollbar { display: none; }
-    .photo-item { flex-shrink: 0; width: 300px; height: 320px; background: #ddd; overflow: hidden; }
-    .photo-item img { width: 100%; height: 100%; object-fit: cover; }
-    .happening-caption { font-size: 11px; color: var(--text-mid); margin-top: 16px; }
+    /* TICKER */
+    .ticker { background:var(--yellow);overflow:hidden;padding:10px 0;white-space:nowrap;position:relative;z-index:5; }
+    .ticker-inner { display:inline-flex;animation:ticker 28s linear infinite; }
+    .ticker-item { font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;padding:0 32px;display:flex;align-items:center;gap:16px; }
+    .ticker-item::after { content:'→';opacity:0.5; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* ── PARTNERS ── */
-    .partners-section { background: var(--light-bg); padding: 80px 60px; }
-    .partners-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-    .partners-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
-    .partners-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; }
-    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .partner-card { background: #fff; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 0; }
-    .partner-logo-area { height: 120px; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 16px; }
-    .partner-logo-area img { max-width: 160px; max-height: 90px; object-fit: contain; }
-    .partner-desc { font-size: 11px; color: var(--text-mid); line-height: 1.6; text-align: center; }
+    /* THEME SECTION */
+    .theme-section { display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:linear-gradient(135deg,#2d3a6b 0%,#3d4f8a 40%,#4a5f9e 60%,#6b7fb0 100%);position:relative;overflow:hidden; }
+    .theme-left { padding:80px 60px;display:flex;flex-direction:column;justify-content:center;z-index:2; }
+    .theme-box { background:rgba(100,120,40,0.85);padding:40px;max-width:420px; }
+    .theme-year-label { font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;font-weight:600; }
+    .theme-heading { font-size:clamp(36px,4vw,52px);font-weight:800;letter-spacing:-0.02em;color:#fff; }
+    .theme-sub { font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;font-weight:600; }
+    .theme-subtext { font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin-top:16px; }
+    .theme-btns { display:flex;gap:12px;margin-top:28px;align-items:center; }
+    .btn-dark-outline { background:rgba(0,0,0,0.6);color:#fff;padding:11px 24px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.3); }
+    .theme-date { font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-0.02em;margin-top:40px;opacity:0.9; }
+    .theme-right { position:relative;overflow:hidden;min-height:400px; }
+    .theme-right img { width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0; }
+    .section-crosshairs { display:flex;justify-content:space-between;padding:0 60px; }
+    .section-crosshairs span { color:rgba(255,255,255,0.2);font-size:18px; }
+    .section-crosshairs.dark span { color:rgba(0,0,0,0.2); }
 
-    /* ── FOOTER ── */
-    footer { background: var(--light-bg); border-top: 1px solid var(--light-mid); padding: 48px 60px 40px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: start; }
-    .footer-address { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
-    .footer-address strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; }
-    .footer-contact strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; font-size: 12px; }
-    .footer-contact a { font-size: 12px; color: var(--text-dark); display: block; text-decoration: none; margin-bottom: 4px; border-bottom: 1px solid var(--text-dark); width: fit-content; }
-    .footer-logo-area { display: flex; align-items: flex-start; justify-content: flex-end; gap: 16px; }
-    .footer-logo-badge { background: var(--text-dark); color: #fff; padding: 12px 14px; font-size: 20px; font-weight: 900; line-height: 1; font-family: 'Space Grotesk', sans-serif; }
-    .footer-copy { font-size: 11px; color: var(--text-mid); line-height: 1.5; }
-    .footer-copy strong { display: block; color: var(--text-dark); font-weight: 600; }
-    .footer-socials { background: var(--navy); color: #fff; margin: 0 -60px; padding: 14px 60px; text-align: center; }
-    .footer-socials p { font-size: 12px; letter-spacing: 0.08em; }
-    .footer-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; padding: 0; }
-    .footer-crosshairs span { color: rgba(0,0,0,0.2); font-size: 18px; }
-    .footer-bottom-line { display: flex; justify-content: space-between; padding-top: 16px; }
+    /* FLIP CARDS */
+    .get-involved { position:relative;overflow:hidden;padding:100px 60px; }
+    .get-involved-bg { position:absolute;inset:0;background:url('images/Copy of _MGL4129.jpg') center/cover no-repeat;filter:brightness(0.22) saturate(0.6); }
+    .get-involved::before { content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1; }
+    .gi-inner { position:relative;z-index:2; }
+    .gi-header { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px; }
+    .gi-title { font-size:clamp(36px,4vw,56px);font-weight:800;letter-spacing:-0.02em; }
+    .gi-link { font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;margin-top:8px; }
+    .gi-cards { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+    .flip-card { height:360px;perspective:1200px;cursor:pointer; }
+    .flip-card-inner { position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .flip-card:hover .flip-card-inner { transform:rotateY(180deg); }
+    .flip-front, .flip-back { position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px;border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(4px); }
+    .flip-front { background:rgba(0,0,0,0.5); }
+    .flip-back { background:linear-gradient(135deg,#1a3a2a 0%,#0d2418 100%);border-color:var(--yellow);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center; }
+    .gi-num { font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--yellow);line-height:1;margin-bottom:4px;float:right; }
+    .gi-cat { font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;clear:both; }
+    .gi-card-title { font-size:22px;font-weight:800;margin-bottom:12px;line-height:1.2; }
+    .gi-card-desc { font-size:12px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:20px; }
+    .gi-btn { background:#fff;color:#000;padding:10px 0;width:100%;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;display:block;text-decoration:none; }
+    .flip-fact-label { font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;font-weight:700; }
+    .flip-fact-text { font-size:17px;font-weight:700;line-height:1.4;color:#fff;margin-bottom:20px; }
+    .flip-fact-stat { font-size:48px;font-weight:900;color:var(--yellow);letter-spacing:-0.03em;line-height:1;margin-bottom:8px; }
+    .flip-fact-sub { font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5; }
+    .flip-hint { position:absolute;bottom:14px;right:16px;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.25);text-transform:uppercase; }
 
-    /* Crosshairs decorative */
-    .section-crosshairs { display: flex; justify-content: space-between; padding: 0 60px; }
-    .section-crosshairs span { color: rgba(255,255,255,0.2); font-size: 18px; }
-    .section-crosshairs.dark span { color: rgba(0,0,0,0.2); }
+    /* SPOTLIGHT */
+    .spotlight-section { background:var(--light-bg);padding:80px 60px; }
+    .spotlight-title { font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--text-dark);letter-spacing:-0.02em;margin-bottom:48px; }
+    .spotlight-grid { display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; }
+    .spotlight-img { width:100%;aspect-ratio:3/4;object-fit:cover;max-height:440px; }
+    .spotlight-cat { font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-bottom:16px; }
+    .spotlight-heading { font-size:clamp(28px,3vw,40px);font-weight:800;color:var(--text-dark);letter-spacing:-0.02em;margin-bottom:16px;line-height:1.1; }
+    .spotlight-desc { font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:28px; }
+    .spotlight-btn-row { display:flex;align-items:center;gap:16px; }
+    .spotlight-btn { display:inline-block;border:1px solid var(--text-dark);color:var(--text-dark);padding:11px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none; }
+
+    /* HAPPENING */
+    .happening-section { background:#fff;padding:80px 60px; }
+    .happening-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:40px; }
+    .happening-title { font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--text-dark);letter-spacing:-0.02em; }
+    .social-icons { display:flex;gap:12px;align-items:center; }
+    .social-icon { width:28px;height:28px;background:var(--text-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;text-decoration:none; }
+    .photos-scroll { display:flex;gap:8px;overflow:hidden;scrollbar-width:none; }
+    .photos-scroll-inner { display:flex;gap:8px;animation:photoScroll 20s linear infinite; }
+    @keyframes photoScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .photos-scroll::-webkit-scrollbar { display:none; }
+    .photo-item { flex-shrink:0;width:300px;height:320px;background:#ddd;overflow:hidden; }
+    .photo-item img { width:100%;height:100%;object-fit:cover; }
+    .happening-caption { font-size:11px;color:var(--text-mid);margin-top:16px; }
+
+    /* PARTNERS */
+    .partners-section { background:var(--light-bg);padding:80px 60px; }
+    .partners-header { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px; }
+    .partners-title { font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--text-dark);letter-spacing:-0.02em; }
+    .partners-link { font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);text-decoration:underline;text-underline-offset:3px; }
+    .partners-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+    .partner-card { background:#fff;padding:32px;display:flex;flex-direction:column;align-items:center; }
+    .partner-logo-area { height:120px;display:flex;align-items:center;justify-content:center;width:100%;margin-bottom:16px; }
+    .partner-desc { font-size:11px;color:var(--text-mid);line-height:1.6;text-align:center; }
+
+    /* FOOTER */
+    .footer-socials { background:#1a2332;color:#fff;padding:14px 60px;text-align:center; }
+    .footer-socials p { font-size:13px;font-weight:500; }
+    footer { background:var(--light-bg);border-top:1px solid var(--light-mid);padding:48px 60px 40px; }
+    .footer-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:48px;align-items:start; }
+    .footer-address { font-size:12px;color:var(--text-mid);line-height:1.7; }
+    .footer-address strong { display:block;color:var(--text-dark);font-weight:700;margin-bottom:6px; }
+    .footer-contact strong { display:block;color:var(--text-dark);font-weight:700;margin-bottom:6px;font-size:12px; }
+    .footer-contact a { font-size:12px;color:var(--text-dark);display:block;text-decoration:none;margin-bottom:4px;border-bottom:1px solid var(--text-dark);width:fit-content; }
+    .footer-logo-area { display:flex;align-items:flex-start;justify-content:flex-end;gap:16px; }
+    .footer-logo-badge { background:var(--text-dark);color:#fff;padding:12px 14px;font-size:13px;font-weight:900;line-height:1.2;font-family:'Space Grotesk',sans-serif; }
+    .footer-copy { font-size:11px;color:var(--text-mid);line-height:1.5; }
+    .footer-copy strong { display:block;color:var(--text-dark);font-weight:600; }
+    .footer-crosshairs { display:flex;justify-content:space-between;margin-bottom:32px; }
+    .footer-crosshairs span { color:rgba(0,0,0,0.2);font-size:18px; }
+    @keyframes thunderFlash { 0%,100%{opacity:0}5%,15%{opacity:1}10%,20%{opacity:0.2}25%{opacity:1}30%{opacity:0} }
+    .thunder-flash { position:absolute;inset:0;background:rgba(180,200,255,0.12);pointer-events:none;z-index:3;animation:thunderFlash 0.4s ease-out forwards; }
   </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <span class="nav-plus">+</span>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/immersive-africa.html">Immersive Africa</a></li>
-    <li><a href="/awards.html">Awards</a></li>
-    <li><a href="/programme.html">Programme</a></li>
-    <li><a href="/tickets.html">Tickets</a></li>
-    <li><a href="/about.html">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="immersiveAfrica.html">Immersive Africa</a></li>
+    <li><a href="awards.html">Awards</a></li>
+    <li><a href="programme.html">Programme</a></li>
+    <li><a href="tickets.html">Tickets</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-right">
-    <a class="nav-ticket-btn" href="/tickets.html">Get Tickets</a>
+    <a class="nav-ticket-btn" href="tickets.html">Get Tickets</a>
     <span class="nav-plus">+</span>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+  <div class="hero-bg-img"></div>
   <div class="hero-bg"></div>
-  <!-- Crosshairs -->
-  <div class="crosshair" style="top:90px;left:40px">+</div>
-  <div class="crosshair" style="top:90px;left:50%;transform:translateX(-50%)">+</div>
-  <div class="crosshair" style="top:90px;right:40px">+</div>
-  <div class="crosshair" style="bottom:40px;left:40px">+</div>
-  <div class="crosshair" style="bottom:40px;right:40px">+</div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">African Digital & Innovation Festival</div>
+  <canvas id="lightning-canvas"></canvas>
+
+  <div class="hero-carousel" id="heroCarousel">
+    <span class="carousel-word" id="cw0">African Digital</span>
+    <span class="carousel-word" id="cw1">Innovation</span>
+    <span class="carousel-word" id="cw2">Festival</span>
+    <span class="carousel-word" id="cw3">Culture</span>
+    <span class="carousel-word" id="cw4">Johannesburg</span>
+    <span class="carousel-word" id="cw5" style="color:var(--yellow);font-size:clamp(70px,10vw,130px)">Fak'ugesi</span>
+  </div>
+
+  <div class="hero-content" id="heroContent">
+    <div class="hero-eyebrow">African Digital &amp; Innovation Festival</div>
     <h1 class="hero-title">Fak'ugesi<br/>Festival</h1>
     <p class="hero-desc">Africa's leading festival for digital art, culture and innovation. Join us for 10 days of immersive experiences, panels, workshops and performances at the heart of Johannesburg.</p>
-    <a class="hero-link" href="/about.html">What is Fak'ugesi?</a>
+    <div class="hero-link-row">
+      <a class="hero-link" href="about.html">What is Fak'ugesi?</a>
+      <a class="arrow-btn" href="about.html" aria-label="Learn more">
+        <span class="bolt-flash"><svg viewBox="0 0 68 52" preserveAspectRatio="none"><polyline points="42,4 26,26 40,26 26,48" fill="rgba(212,230,0,0.3)" stroke="rgba(212,230,0,0.7)" stroke-width="2"/></svg></span>
+        <svg class="arr-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+      </a>
+    </div>
   </div>
-  <div class="hero-logo-badge">
-    <span>fak'</span>
-    <span class="accent">ugesi</span>
+
+  <div class="crosshair" style="top:90px;left:40px;z-index:2">+</div>
+  <div class="crosshair" style="top:90px;right:200px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;left:40px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;right:40px;z-index:2">+</div>
+
+  <div class="hero-signia">
+    <div class="signia-block">
+      <span class="signia-top">fak'</span>
+      <div class="signia-divider"></div>
+      <span class="signia-bottom"><span class="u">u</span><span class="g">g</span><span class="esi">esi</span></span>
+    </div>
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 — 12 October 2026 · Johannesburg</span>
+    <span class="ticker-item">African Imaginaries · 2026 Theme</span>
     <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 — 12 October 2026 · Johannesburg</span>
+    <span class="ticker-item">African Imaginaries · 2026 Theme</span>
     <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
-    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 — 12 October 2026 · Johannesburg</span>
   </div>
 </div>
 
-<!-- 2026 THEME -->
 <div style="position:relative">
   <div class="section-crosshairs" style="position:absolute;top:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
   <div class="section-crosshairs" style="position:absolute;bottom:20px;left:0;right:0;padding:0 40px;z-index:5"><span>+</span><span>+</span></div>
@@ -255,76 +252,111 @@
         <div class="theme-year-label">· 2026 Theme</div>
         <div class="theme-sub">Africa's creative energy unleashed</div>
         <h2 class="theme-heading">African<br/>Imaginaries</h2>
-        <p class="theme-subtext">Africa's digital future is being built now — by artists, coders, makers and dreamers across the continent. This year's theme explores what it means to imagine Africa anew.</p>
+        <p class="theme-subtext">Africa's digital future is being built now — by artists, coders, makers and dreamers across the continent.</p>
         <div class="theme-btns">
-          <a class="btn-dark-outline" href="/programme.html">VIEW PROGRAMME</a>
-          <a class="btn-dark-outline" href="/tickets.html">GET TICKETS</a>
+          <a class="btn-dark-outline" href="programme.html">VIEW PROGRAMME</a>
+          <a class="arrow-btn" href="programme.html" aria-label="Programme" style="width:58px;height:44px;">
+            <span class="bolt-flash"><svg viewBox="0 0 58 44" preserveAspectRatio="none"><polyline points="36,4 22,22 34,22 22,40" fill="rgba(212,230,0,0.3)" stroke="rgba(212,230,0,0.7)" stroke-width="2"/></svg></span>
+            <svg class="arr-icon" viewBox="0 0 24 24" style="width:18px;height:18px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+          </a>
         </div>
       </div>
       <div class="theme-date">07 — 12.10.2026</div>
     </div>
     <div class="theme-right">
-      <img src="https://images.unsplash.com/photo-1598127034007-18e4786c8d34?w=900&q=80" alt="Afrofuturist portrait" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
+      <img src="images/cyber1.png" alt="African Imaginaries 2026 Theme" onerror="this.src='images/Fak_ugesi 2025-32.jpg'"/>
     </div>
   </section>
 </div>
 
-<!-- GET INVOLVED -->
 <section class="get-involved">
-  <div class="crosshair" style="top:24px;left:40px">+</div>
-  <div class="crosshair" style="top:24px;left:50%;transform:translateX(-50%)">+</div>
-  <div class="crosshair" style="top:24px;right:40px">+</div>
-  <div class="crosshair" style="bottom:24px;left:40px">+</div>
-  <div class="crosshair" style="bottom:24px;left:50%;transform:translateX(-50%)">+</div>
-  <div class="crosshair" style="bottom:24px;right:40px">+</div>
+  <div class="get-involved-bg"></div>
+  <div class="crosshair" style="top:24px;left:40px;z-index:3">+</div>
+  <div class="crosshair" style="top:24px;right:40px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;left:40px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;right:40px;z-index:3">+</div>
   <div class="gi-inner">
     <div class="gi-header">
       <h2 class="gi-title">Get involved</h2>
-      <a class="gi-link" href="/about.html">What is Fak'ugesi?</a>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a class="gi-link" href="about.html">What is Fak'ugesi?</a>
+        <a class="arrow-btn" href="about.html" aria-label="More info" style="width:58px;height:44px;">
+          <span class="bolt-flash"><svg viewBox="0 0 58 44" preserveAspectRatio="none"><polyline points="36,4 22,22 34,22 22,40" fill="rgba(212,230,0,0.3)" stroke="rgba(212,230,0,0.7)" stroke-width="2"/></svg></span>
+          <svg class="arr-icon" viewBox="0 0 24 24" style="width:18px;height:18px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+        </a>
+      </div>
     </div>
     <div class="gi-cards">
-      <div class="gi-card">
-        <div class="gi-num">01</div>
-        <div class="gi-cat">Festival Collaboration</div>
-        <h3 class="gi-card-title">Investors & Funders</h3>
-        <p class="gi-card-desc">Partner with Africa's leading digital festival. Your investment powers the artists, innovators and ideas that will shape the continent's digital future.</p>
-        <a class="gi-btn" href="/about.html#contact">LEARN MORE</a>
-      </div>
-      <div class="gi-card">
-        <div class="gi-num">02</div>
-        <div class="gi-cat">Curated Festival Experiences</div>
-        <h3 class="gi-card-title">Expo & Showcases</h3>
-        <p class="gi-card-desc">Showcase your work, product or innovation at one of Africa's most watched festivals. Reach audiences from 80+ countries at the Turbine Hall.</p>
-        <a class="gi-btn" href="/programme.html">LEARN MORE</a>
-      </div>
-      <div class="gi-card">
-        <div class="gi-num">03</div>
-        <div class="gi-cat">Lend a Hand</div>
-        <h3 class="gi-card-title">Volunteers</h3>
-        <p class="gi-card-desc">Be part of the team that makes it all happen. Volunteer at Fak'ugesi 2026 and get free festival access, training and unforgettable experience.</p>
-        <a class="gi-btn" href="/about.html#contact">LEARN MORE</a>
-      </div>
+      <div class="flip-card"><div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="gi-num">01</div><div class="gi-cat">Festival Collaboration</div>
+          <h3 class="gi-card-title">Investors &amp; Funders</h3>
+          <p class="gi-card-desc">Partner with Africa's leading digital festival. Your investment powers the artists, innovators and ideas shaping the continent's digital future.</p>
+          <a class="gi-btn" href="about.html#contact">LEARN MORE</a>
+          <div class="flip-hint">Hover to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-fact-label">Did you know?</div>
+          <div class="flip-fact-stat">80+</div>
+          <div class="flip-fact-text">Countries represented at Fak'ugesi in 2025</div>
+          <div class="flip-fact-sub">From Cape Town to Cairo, Seoul to São Paulo — Fak'ugesi draws a truly global audience to Johannesburg.</div>
+        </div>
+      </div></div>
+      <div class="flip-card"><div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="gi-num">02</div><div class="gi-cat">Curated Festival Experiences</div>
+          <h3 class="gi-card-title">Expo &amp; Showcases</h3>
+          <p class="gi-card-desc">Showcase your work, product or innovation at one of Africa's most watched festivals. Reach audiences at the Turbine Hall.</p>
+          <a class="gi-btn" href="programme.html">LEARN MORE</a>
+          <div class="flip-hint">Hover to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-fact-label">Festival Fact</div>
+          <div class="flip-fact-stat">10</div>
+          <div class="flip-fact-text">Days of non-stop digital creativity and innovation</div>
+          <div class="flip-fact-sub">Over 200 events, workshops, performances and exhibitions across Johannesburg's creative precinct.</div>
+        </div>
+      </div></div>
+      <div class="flip-card"><div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="gi-num">03</div><div class="gi-cat">Lend a Hand</div>
+          <h3 class="gi-card-title">Volunteers</h3>
+          <p class="gi-card-desc">Be part of the team that makes it all happen. Volunteer at Fak'ugesi 2026 and get free festival access, training and unforgettable experience.</p>
+          <a class="gi-btn" href="about.html#contact">LEARN MORE</a>
+          <div class="flip-hint">Hover to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-fact-label">Impact</div>
+          <div class="flip-fact-stat">25K+</div>
+          <div class="flip-fact-text">Attendees across 10 days each year</div>
+          <div class="flip-fact-sub">Every volunteer helps bring together the largest digital art and innovation gathering on the African continent.</div>
+        </div>
+      </div></div>
     </div>
   </div>
 </section>
 
-<!-- SPOTLIGHT -->
 <section class="spotlight-section">
   <h2 class="spotlight-title">Spotlight</h2>
   <div class="spotlight-grid">
     <div>
-      <img class="spotlight-img" src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="VR experience at Fak'ugesi"/>
+      <img class="spotlight-img" src="images/IMG_8523 - Athanasius Johnson.png" alt="Awards at Fak'ugesi" onerror="this.src='https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80'"/>
     </div>
     <div>
       <div class="spotlight-cat">Fak'ugesi Awards</div>
       <h3 class="spotlight-heading">Awards applications<br/>now open</h3>
-      <p class="spotlight-desc">The Fak'ugesi Awards recognise excellence across eight categories of African digital creativity. Submit your work for a chance at prizes, international residencies, and exposure to a global audience of curators, collectors and collaborators.</p>
-      <a class="spotlight-btn" href="/awards.html">LEARN MORE</a>
+      <p class="spotlight-desc">The Fak'ugesi Awards recognise excellence across eight categories of African digital creativity. Submit your work for prizes, international residencies, and global exposure.</p>
+      <div class="spotlight-btn-row">
+        <a class="spotlight-btn" href="awards.html">LEARN MORE</a>
+        <a class="arrow-btn dark" href="awards.html" aria-label="Awards" style="width:58px;height:44px;">
+          <span class="bolt-flash"><svg viewBox="0 0 58 44" preserveAspectRatio="none"><polyline points="36,4 22,22 34,22 22,40" fill="rgba(0,0,0,0.15)" stroke="rgba(0,0,0,0.3)" stroke-width="2"/></svg></span>
+          <svg class="arr-icon" viewBox="0 0 24 24" style="width:18px;height:18px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT'S HAPPENING -->
 <section class="happening-section">
   <div class="happening-header">
     <h2 class="happening-title">What's happening</h2>
@@ -334,87 +366,163 @@
       <a class="social-icon" href="#" style="background:#000;border-radius:4px;font-size:10px;font-weight:700">FB</a>
     </div>
   </div>
-  <div class="photos-scroll">
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70" alt="Festival"/></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival"/></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Festival"/></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70" alt="Digital art"/></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70" alt="Panel"/></div>
+  <div class="photos-scroll"><div class="photos-scroll-inner">
+    <div class="photo-item"><img src="images/_C6A0500.JPG" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/_MGL2775.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/_MGL7139.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/Copy of _MGL0176.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/Fak_ugesi 2025-32.jpg" alt="Fak'ugesi 2025" onerror="this.src='https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/_C6A0500.JPG" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/_MGL2775.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/_MGL7139.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/Copy of _MGL0176.jpg" alt="Festival" onerror="this.src='https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&q=70'"/></div>
+    <div class="photo-item"><img src="images/Fak_ugesi 2025-32.jpg" alt="Fak'ugesi 2025" onerror="this.src='https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=70'"/></div>
   </div>
-  <p class="happening-caption">Follow us @fakugesi · Johannesburg · September 2026</p>
+  </div></div>
+  <p class="happening-caption">Follow us @fakugesi · Johannesburg · October 2026</p>
 </section>
 
-<!-- PARTNERS -->
 <section class="partners-section">
   <div class="section-crosshairs dark" style="margin-bottom:24px"><span>+</span><span>+</span><span>+</span></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
-    <a class="partners-link" href="/about.html#partners">View all partners</a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="partners-link" href="about.html#partners">View all partners</a>
+      <a class="arrow-btn dark" href="about.html#partners" aria-label="Partners" style="width:58px;height:44px;">
+        <span class="bolt-flash"><svg viewBox="0 0 58 44" preserveAspectRatio="none"><polyline points="36,4 22,22 34,22 22,40" fill="rgba(0,0,0,0.15)" stroke="rgba(0,0,0,0.3)" stroke-width="2"/></svg></span>
+        <svg class="arr-icon" viewBox="0 0 24 24" style="width:18px;height:18px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg>
+      </a>
+    </div>
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-family:monospace;font-size:18px;font-weight:900;letter-spacing:0.08em;color:#1a2332;line-height:1.1">TSHI<br/>MOLO<br/>GONG</div>
-          <div style="font-size:9px;letter-spacing:0.2em;margin-top:6px;color:#1a2332">WITS UNIVERSITY</div>
-        </div>
-      </div>
+      <div class="partner-logo-area"><div style="text-align:center"><div style="font-family:monospace;font-size:18px;font-weight:900;letter-spacing:0.08em;color:#1a2332;line-height:1.1">TSHI<br/>MOLO<br/>GONG</div><div style="font-size:9px;letter-spacing:0.2em;margin-top:6px;color:#1a2332">WITS UNIVERSITY</div></div></div>
       <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-size:28px;font-weight:900;color:#003087;letter-spacing:-0.02em">WITS</div>
-          <div style="font-size:11px;letter-spacing:0.12em;color:#003087">UNIVERSITY</div>
-        </div>
-      </div>
+      <div class="partner-logo-area"><div style="text-align:center"><div style="font-size:28px;font-weight:900;color:#003087;letter-spacing:-0.02em">WITS</div><div style="font-size:11px;letter-spacing:0.12em;color:#003087">UNIVERSITY</div></div></div>
       <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-size:11px;letter-spacing:0.1em;color:#000;margin-bottom:2px">WITS ANGLO AMERICAN</div>
-          <div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-0.02em">DIGITAL<br/>DOME</div>
-        </div>
-      </div>
-      <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner for Fak'ugesi.</p>
+      <div class="partner-logo-area"><div style="text-align:center"><div style="font-size:11px;letter-spacing:0.1em;color:#000;margin-bottom:2px">WITS ANGLO AMERICAN</div><div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-0.02em">DIGITAL<br/>DOME</div></div></div>
+      <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner.</p>
     </div>
   </div>
   <div class="section-crosshairs dark" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
 </section>
 
-<!-- FOOTER SOCIAL BAR -->
-<div class="footer-socials" style="background:#1a2332;color:#fff;padding:14px 60px;text-align:center">
-  <p style="font-size:13px;font-weight:500">Follow us on socials <strong>@fakugesi</strong></p>
-</div>
-
-<!-- FOOTER -->
+<div class="footer-socials"><p>Follow us on socials <strong>@fakugesi</strong></p></div>
 <footer>
   <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
   <div class="footer-grid">
-    <div class="footer-address">
-      <strong>Fak'ugesi Festival</strong>
-      41 Juta Street, Braamfontein<br/>
-      Johannesburg, South Africa
-    </div>
-    <div class="footer-contact">
-      <strong>Contact us</strong>
-      <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
-      <a href="tel:+27117178156">+27 11 717 8156</a>
-    </div>
-    <div class="footer-logo-area">
-      <div class="footer-logo-badge">
-        <div style="font-size:13px">fak'</div>
-        <div style="font-size:13px">ugesi</div>
-      </div>
-      <div class="footer-copy">
-        <strong>© 2026</strong>
-        Fak'ugesi Festival<br/>All Rights Reserved
-      </div>
-    </div>
+    <div class="footer-address"><strong>Fak'ugesi Festival</strong>41 Juta Street, Braamfontein<br/>Johannesburg, South Africa</div>
+    <div class="footer-contact"><strong>Contact us</strong><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div>
+    <div class="footer-logo-area"><div class="footer-logo-badge"><div>fak'</div><div>ugesi</div></div><div class="footer-copy"><strong>© 2026</strong>Fak'ugesi Festival<br/>All Rights Reserved</div></div>
   </div>
   <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
 </footer>
 
+<script>
+/* CAROUSEL */
+(function(){
+  const seq=['cw0','cw1','cw2','cw3','cw4','cw5'];
+  let i=0;
+  function next(){
+    if(i>=seq.length){document.getElementById('heroContent').style.opacity='1';return;}
+    const el=document.getElementById(seq[i]);
+    el.style.opacity='1';el.style.transform='translateX(0)';
+    el.style.animation='none';
+    // Force reflow
+    void el.offsetWidth;
+    if(i===seq.length-1){
+      // FAKUGESI — big jump then settle
+      el.style.fontSize='clamp(80px,12vw,160px)';
+      el.style.fontWeight='900';
+      el.style.color='var(--yellow)';
+      el.style.transition='all 0.8s cubic-bezier(0.34,1.56,0.64,1)';
+      el.style.opacity='0';el.style.transform='translateX(80vw) scale(2)';
+      setTimeout(()=>{
+        el.style.opacity='1';el.style.transform='translateX(0) scale(1)';
+        setTimeout(()=>{
+          // pulse bigger
+          el.style.fontSize='clamp(90px,14vw,180px)';
+          setTimeout(()=>{
+            el.style.fontSize='clamp(80px,12vw,160px)';
+            setTimeout(()=>{
+              el.style.opacity='0';el.style.transform='translateX(0) scale(0.5)';
+              setTimeout(()=>{document.getElementById('heroContent').style.opacity='1';},400);
+            },600);
+          },300);
+        },800);
+      },50);
+      i++;
+    } else {
+      // Normal words slide in from right
+      el.style.opacity='0';el.style.transform='translateX(110vw)';
+      el.style.transition='none';
+      setTimeout(()=>{
+        el.style.transition='opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+        el.style.opacity='1';el.style.transform='translateX(0)';
+        setTimeout(()=>{
+          el.style.transition='opacity 0.4s ease, transform 0.4s ease';
+          el.style.opacity='0';el.style.transform='translateX(-80vw)';
+          setTimeout(()=>{el.style.transform='translateX(110vw)';i++;next();},350);
+        },700);
+      },20);
+    }
+  }
+  setTimeout(next,500);
+})();
+
+/* LIGHTNING */
+(function(){
+  const canvas=document.getElementById('lightning-canvas');
+  const hero=document.getElementById('hero');
+  const ctx=canvas.getContext('2d');
+  const RC=['#ff0000','#ff7700','#ffee00','#00ff44','#00aaff','#6644ff','#cc00ff'];
+  let W,H;
+  function resize(){W=canvas.width=hero.offsetWidth;H=canvas.height=hero.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  function disp(x1,y1,x2,y2,r,d){
+    if(d<=0)return[[x1,y1],[x2,y2]];
+    const mx=(x1+x2)/2+(Math.random()-0.5)*r,my=(y1+y2)/2+(Math.random()-0.5)*r;
+    return[...disp(x1,y1,mx,my,r*0.6,d-1),...disp(mx,my,x2,y2,r*0.6,d-1).slice(1)];
+  }
+  function bolt(sx,sy,ex,ey){
+    const pts=disp(sx,sy,ex,ey,H*0.18,7);
+    const br=[];
+    for(let i=2;i<pts.length-2;i+=Math.floor(2+Math.random()*3)){
+      if(Math.random()<0.45){const[bx,by]=pts[i],a=Math.atan2(pts[i+1][1]-pts[i-1][1],pts[i+1][0]-pts[i-1][0])+(Math.random()-0.5)*1.2,l=40+Math.random()*100;br.push(disp(bx,by,bx+Math.cos(a)*l,by+Math.sin(a)*l,l*0.4,4));}
+    }
+    return{pts,br};
+  }
+  function draw(b,c,a){
+    ctx.save();
+    [[60,c,a*0.15],[20,c,a*0.4],[10,c,a*0.75],[5,'#fff',a*0.95]].forEach(([bl,col,al])=>{
+      ctx.globalAlpha=al;ctx.shadowBlur=bl;ctx.shadowColor=col;ctx.strokeStyle=col;
+      ctx.lineWidth=bl>40?16:bl>15?6:bl>7?2.5:1;ctx.lineCap='round';
+      ctx.beginPath();b.pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();
+    });
+    b.br.forEach(br=>{ctx.globalAlpha=a*0.5;ctx.strokeStyle=c;ctx.lineWidth=3;ctx.shadowColor=c;ctx.shadowBlur=15;ctx.beginPath();br.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();});
+    ctx.restore();
+  }
+  let fEl=null;
+  function flash(){if(fEl)return;fEl=document.createElement('div');fEl.className='thunder-flash';hero.appendChild(fEl);setTimeout(()=>{if(fEl){fEl.remove();fEl=null;}},400);}
+  function strike(){
+    const bs=RC.map((c,i)=>{const f=(i+0.5)/7,sx=W*f+(Math.random()-0.5)*W*0.12;return{b:bolt(sx,-10,sx+(Math.random()-0.5)*W*0.2,H*0.5+Math.random()*H*0.4),c};});
+    flash();const t0=performance.now();let ph='r';
+    (function fr(now){
+      const e=now-t0;ctx.clearRect(0,0,W,H);
+      if(ph==='r'){const t=Math.min(e/600,1);bs.forEach(({b,c},i)=>{const bt=Math.max(0,Math.min((t*7-i*0.3)*1.2,1));if(bt>0)draw(b,c,bt*0.9);});if(t>=1)ph='h';}
+      else if(ph==='h'){bs.forEach(({b,c})=>draw(b,c,0.9));if(e>720)ph='f';}
+      else{const ft=(e-720)/300,al=Math.max(0,1-ft)*0.9;bs.forEach(({b,c})=>draw(b,c,al));if(ft>=1){ctx.clearRect(0,0,W,H);return;}}
+      requestAnimationFrame(fr);
+    })(performance.now());
+  }
+  function sched(){strike();setTimeout(sched,3000+Math.random()*5000);}
+  setTimeout(sched,1400);
+})();
+</script>
+<script src="global-effects.js"></script>
 </body>
 </html>

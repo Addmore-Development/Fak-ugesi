@@ -1,108 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immersive Africa • Fak'ugesi Festival 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; cursor: none; }
-        #custom-cursor { width: 12px; height: 12px; background: #C8FF00; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
-        #custom-cursor.big { width: 36px; height: 36px; background: rgba(200,255,0,0.25); border: 1.5px solid #C8FF00; }
-        nav { position: sticky; top: 0; z-index: 600; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; letter-spacing: 0.04em; padding: 0 18px; line-height: 52px; transition: color 0.2s; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { color: #C8FF00; }
-        .hero { position: relative; min-height: 500px; background: #060614; display: flex; align-items: flex-end; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a2a, #1a1a3a); }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(4,4,20,0.8), rgba(4,4,20,0.4)); }
-        .hero-signia { position: absolute; bottom: 30px; right: 36px; z-index: 10; }
-        .signia-text { background: #fff; padding: 10px 16px 8px; text-align: center; }
-        .signia-text .s1 { font-weight: 900; font-size: 24px; color: #111; line-height: 1; }
-        .signia-text .s2 { font-size: 10px; font-weight: 700; color: #111; letter-spacing: 0.12em; text-transform: uppercase; border-top: 1px solid #111; padding-top: 3px; margin-top: 3px; }
-        .hero-content { position: relative; z-index: 5; padding: 40px; max-width: 700px; }
-        .hero-eyebrow { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
-        .hero-title { font-weight: 900; font-size: clamp(42px, 7vw, 80px); color: #fff; line-height: 1; }
-        .hero-title span { color: #C8FF00; }
-        .ticker { background: #C8FF00; padding: 12px 0; overflow: hidden; white-space: nowrap; }
-        .ticker-content { display: inline-block; animation: tickerScroll 20s linear infinite; }
-        .ticker-content span { font-size: 12px; font-weight: 700; color: #111; padding: 0 24px; }
-        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .premiere { position: relative; min-height: 600px; background: #0a0a1a; display: flex; align-items: flex-end; }
-        .premiere-bg { position: absolute; inset: 0; background: url('/images/digital-dome-image-inside.jpg') center/cover no-repeat; }
-        .premiere-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4)); }
-        .premiere-content { position: relative; z-index: 5; padding: 60px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; color: #fff; }
-        .premiere-label { font-size: 10px; color: #C8FF00; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
-        .premiere-title { font-size: 48px; font-weight: 900; margin-bottom: 16px; }
-        .premiere-date { font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
-        .premiere-desc { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
-        .btn-white { padding: 12px 28px; background: transparent; border: 1.5px solid #fff; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-block; }
-        .btn-lime { padding: 12px 28px; background: #C8FF00; color: #111; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-block; }
-        .ongoing { background: #060612; padding: 72px 56px; position: relative; }
-        .ongoing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .ongoing-image img { width: 100%; border-radius: 8px; }
-        .partners-section { background: #0a0a10; padding: 72px 56px; color: #fff; }
-        .partners-scroll { display: flex; gap: 20px; overflow-x: auto; margin-top: 48px; }
-        .partner-logo { background: rgba(255,255,255,0.08); padding: 24px 32px; min-width: 160px; text-align: center; }
-        footer { background: #0a0a10; padding: 48px 56px 28px; border-top: 1px solid #1a1a22; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; }
-        .footer-brand { font-weight: 900; font-size: 28px; color: #C8FF00; }
-        @media (max-width: 768px) { .premiere-content, .ongoing-grid, .footer-grid { grid-template-columns: 1fr; } .premiere, .ongoing, .partners-section { padding: 40px 20px; } }
-    </style>
-</head>
-<body>
-    <div id="custom-cursor"></div>
-    <nav>
-        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="/" style="color:#fff; font-weight:800;">Home</a></div>
-        <ul class="nav-links">
-            <li><a href="/immersive-africa" class="active">Immersive Africa</a></li>
-            <li><a href="/awards">Awards</a></li>
-            <li><a href="/programme">Programme</a></li>
-            <li><a href="/tickets">Tickets</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-        <div><span style="color:rgba(255,255,255,0.35);">+</span><a href="#" style="font-size:12px; color:#C8FF00;">fakugesi.co.za</a></div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-signia"><div class="signia-text"><div class="s1">IMMERSIVE</div><div class="s2">AFRICA</div></div></div>
-        <div class="hero-content"><div class="hero-eyebrow">Fak'ugesi Festival 2026</div><h1 class="hero-title">Explore the<br><span>AfriVerse</span></h1><a href="/tickets" class="btn-lime" style="margin-top:20px;">GET YOUR TICKETS →</a></div>
-    </section>
-
-    <div class="ticker"><div class="ticker-content"><span>Don't miss out on the South African Dome Premiere of Kancica →</span><span>Premiering 07 — 21.04.2026</span><span>GET YOUR TICKETS</span></div></div>
-
-    <section class="premiere">
-        <div class="premiere-bg"></div>
-        <div class="premiere-overlay"></div>
-        <div class="premiere-content">
-            <div><div class="premiere-label">Premiering</div><div class="premiere-date">07 — 21.04.2026</div><div class="premiere-title">Kancica<br>Kwasukasukela</div></div>
-            <div><p class="premiere-desc">A breathtaking dome film that weaves together ancestral mythology and digital innovation, Kancica Kwasukasukela takes audiences on an immersive journey through African cosmologies reimagined for the 21st century. Premiering in South Africa exclusively at the Wits Anglo American Digital Dome as part of Immersive Africa.</p><a href="/tickets" class="btn-white">GET YOUR TICKETS →</a></div>
-        </div>
-    </section>
-
-    <section class="ongoing">
-        <div class="ongoing-grid">
-            <div><img src="/images/Joburg-planetarium-1-2022.jpg" alt="Digital Dome" style="width:100%; border-radius:8px;"></div>
-            <div><div class="premiere-label">On-going</div><div class="premiere-date">07 — 21.04.2026</div><h2 style="font-size:42px; font-weight:900; color:#fff; margin-bottom:20px;">Kwasukasukela</h2><p style="color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:24px;">An ongoing dome screening programme drawing from the rich archive of African digital art and moving image. Kwasukasukela — meaning "once upon a time" — presents a curated anthology of short films that centre African stories in immersive formats.</p><a href="/tickets" class="btn-white">GET YOUR TICKETS →</a></div>
-        </div>
-    </section>
-
-    <section class="partners-section">
-        <div class="container" style="max-width:1200px; margin:0 auto;"><h2 style="font-size:42px; margin-bottom:24px;">Our Immersive Africa Partners</h2><p style="color:rgba(255,255,255,0.5); margin-bottom:48px;">Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC — EU National Institutes for Culture.</p>
-        <div class="partners-scroll"><div class="partner-logo">EUNIC</div><div class="partner-logo">Institut Français</div><div class="partner-logo">Goethe-Institut</div><div class="partner-logo">British Council</div><div class="partner-logo">Wits Digital Dome</div></div>
-        <p style="font-size:11px; color:rgba(255,255,255,0.3); margin-top:48px;">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes.</p></div>
-    </section>
-
-    <footer><div class="footer-grid"><div><div class="footer-brand">fakʼugesi</div><p style="font-size:13px; color:#555;">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div><div><strong>Contact us</strong><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div><div><strong>Festival</strong><a href="/programme">Programme</a><a href="/tickets">Tickets</a></div><div><div style="display:flex; gap:10px;"><div style="background:#fff; padding:8px 12px;"><div>fak'<br>ugesi</div></div><div>© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</div></div></div></div></footer>
-
-    <script>const cursor=document.getElementById('custom-cursor');document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('big'));el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));});</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Immersive Africa • Fak'ugesi Festival 2026</title>
@@ -111,7 +9,11 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#00ff88;--pink:#ff2d6b;--yellow:#ffe600;--blue:#00cfff;--purple:#b464ff;--dark:#0a0a0a;--card:#111;--border:rgba(255,255,255,.08)}
-    body{background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+    body{background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+
+    /* Custom cursor */
+    #custom-cursor{width:12px;height:12px;background:#C8FF00;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+    #custom-cursor.big{width:36px;height:36px;background:rgba(200,255,0,0.25);border:1.5px solid #C8FF00}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
     .nav-logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none}
@@ -120,9 +22,9 @@
     .nav-links a:hover,.nav-links a.active{color:#fff}
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
-    /* IMMERSIVE HERO — FULL BLEED WITH ANIMATED GRADIENT */
-    .ia-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 40px 80px;position:relative;overflow:hidden;background:#000}
-    .ia-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,207,255,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 70% 30%,rgba(180,100,255,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,255,136,.06) 0%,transparent 60%);animation:bgShift 12s ease-in-out infinite alternate;pointer-events:none}
+    /* HERO */
+    .ia-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 40px 80px;position:relative;overflow:hidden;background:url('images/digital-dome-image-inside.jpg') center/cover no-repeat}
+    .ia-hero-bg{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.45) 100%),radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,207,255,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 70% 30%,rgba(180,100,255,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,255,136,.06) 0%,transparent 60%);animation:bgShift 12s ease-in-out infinite alternate;pointer-events:none}
     @keyframes bgShift{from{opacity:1;transform:scale(1)}to{opacity:.7;transform:scale(1.05)}}
     .ia-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
     .ia-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:24px}
@@ -136,6 +38,39 @@
     .ia-scroll-hint span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
     .ia-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.2),transparent)}
 
+    /* SIGNIA — matches reference image */
+    .hero-signia{position:absolute;bottom:80px;right:40px;z-index:10}
+    .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
+    .signia-top{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
+    .signia-divider{height:1.5px;background:#111;margin:4px 0}
+    .signia-bottom{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block}
+    .signia-bottom .u{color:#111}.signia-bottom .g{color:#8B1A1A}.signia-bottom .esi{color:#111}
+    .signia-sub{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#555;display:block;margin-top:4px;font-family:'DM Sans',sans-serif}
+
+    /* TICKER */
+    .ticker{background:#C8FF00;padding:12px 0;overflow:hidden;white-space:nowrap}
+    .ticker-content{display:inline-block;animation:tickerScroll 20s linear infinite}
+    .ticker-content span{font-size:12px;font-weight:700;color:#111;padding:0 24px}
+    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* PREMIERE */
+    .premiere{position:relative;min-height:600px;background:#0a0a1a;display:flex;align-items:flex-end}
+    .premiere-bg{position:absolute;inset:0;background:url('images/8-Dotou-arbre-Fin.png') center/cover no-repeat,linear-gradient(135deg,#1a1a4a,#2a1a3a);background-blend-mode:multiply}
+    .premiere-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .premiere-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.35))}
+    .premiere-content{position:relative;z-index:5;padding:60px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;color:#fff;width:100%}
+    .premiere-label{font-size:10px;color:#C8FF00;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+    .premiere-title{font-size:48px;font-weight:900;margin-bottom:16px;line-height:1}
+    .premiere-date{font-size:18px;color:rgba(255,255,255,.6);margin-bottom:20px}
+    .premiere-desc{font-size:14px;line-height:1.7;margin-bottom:24px;color:rgba(255,255,255,.8)}
+    .btn-white{padding:12px 28px;background:transparent;border:1.5px solid #fff;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+    .btn-lime{padding:12px 28px;background:#C8FF00;color:#111;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+
+    /* ONGOING */
+    .ongoing{background:#060612;padding:72px 56px;position:relative}
+    .ongoing-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1200px;margin:0 auto}
+    .ongoing-image img{width:100%;border-radius:8px}
+
     /* INTRO */
     .ia-intro{padding:80px 40px;background:var(--dark);border-bottom:1px solid var(--border)}
     .ia-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -148,12 +83,12 @@
     .ia-quote{font-size:17px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.7;padding-left:24px;border-left:2px solid var(--blue);margin-bottom:32px}
     .ia-quote-attr{font-size:12px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
 
-    /* INSTALLATIONS GRID */
+    /* INSTALLATIONS */
     .installations-section{padding:80px 40px;background:#000}
     .section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
     .section-title{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.02em;margin-bottom:48px}
     .inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
-    .inst-card{background:#000;position:relative;overflow:hidden;cursor:default;group:true}
+    .inst-card{background:#000;position:relative;overflow:hidden}
     .inst-visual{height:240px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative}
     .inst-card:nth-child(1) .inst-visual{background:linear-gradient(135deg,rgba(0,207,255,.15),rgba(0,207,255,.03))}
     .inst-card:nth-child(2) .inst-visual{background:linear-gradient(135deg,rgba(180,100,255,.15),rgba(180,100,255,.03))}
@@ -184,7 +119,12 @@
     .fa-work-title{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
     .fa-work-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
 
-    /* VENUE INFO */
+    /* PARTNERS */
+    .partners-section{background:#0a0a10;padding:72px 56px;color:#fff}
+    .partners-scroll{display:flex;gap:20px;overflow-x:auto;margin-top:48px}
+    .partner-logo{background:rgba(255,255,255,.08);padding:24px 32px;min-width:160px;text-align:center;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.05em}
+
+    /* VENUE */
     .venue-info{background:#000;border-top:1px solid var(--border);padding:80px 40px}
     .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
     .venue-title{font-size:32px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
@@ -200,9 +140,8 @@
     .cta-strip::before{content:'';position:absolute;inset:0;background:var(--dark);z-index:-1}
     .cta-strip h2{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
     .cta-strip p{font-size:16px;color:rgba(255,255,255,.55);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
-    .btn-blue{background:var(--blue);color:#000;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;margin-right:12px;transition:opacity .2s}
-    .btn-blue:hover{opacity:.85}
-    .btn-outline{border:1px solid rgba(255,255,255,.25);color:#fff;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s}
+    .btn-blue{background:var(--blue);color:#000;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;margin-right:12px}
+    .btn-outline{border:1px solid rgba(255,255,255,.25);color:#fff;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block}
     .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.05)}
 
     footer{background:#000;border-top:1px solid var(--border);padding:64px 40px 40px}
@@ -211,34 +150,68 @@
     .footer-tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
     .footer-heading{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
     .footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .2s}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px}
     .footer-links a:hover{color:#fff}
     .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
     .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'Space Mono',monospace;letter-spacing:.05em}
+
+
+    /* IA PARTNERS MARQUEE */
+    .ia-partners-section { background:#0a0a10; padding:80px 0; border-top:1px solid rgba(255,255,255,0.06); }
+    .ia-partners-inner { max-width:1200px; margin:0 auto; }
+    .ia-partners-header { padding:0 56px 48px; }
+    .ia-partners-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px; }
+    .ia-partners-title { font-size:38px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+    .ia-partners-desc { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.7; max-width:640px; }
+    .ia-partners-marquee-wrap { position:relative; overflow:hidden; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); }
+    .ia-partners-marquee-wrap::before, .ia-partners-marquee-wrap::after {
+      content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+    }
+    .ia-partners-marquee-wrap::before { left:0; background:linear-gradient(90deg,#0a0a10,transparent); }
+    .ia-partners-marquee-wrap::after { right:0; background:linear-gradient(-90deg,#0a0a10,transparent); }
+    .ia-partners-track {
+      display:flex; gap:0; width:max-content;
+      animation: partnerMarquee 28s linear infinite;
+    }
+    @keyframes partnerMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ia-partner-item {
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      min-width:200px; padding:40px 32px; border-right:1px solid rgba(255,255,255,0.05);
+      text-align:center;
+    }
+    .ia-partner-flag { font-size:24px; margin-bottom:8px; }
+    .ia-partner-name { font-size:15px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:4px; letter-spacing:0.01em; }
+    .ia-partner-sub { font-size:10px; letter-spacing:0.1em; color:rgba(255,255,255,0.3); text-transform:uppercase; }
+    .ia-partners-note { padding:24px 56px 0; font-size:11px; color:rgba(255,255,255,0.2); line-height:1.6; }
 
     @media(max-width:900px){
       nav{padding:16px 24px}.nav-links{display:none}
       .ia-hero{padding:100px 24px 60px}
       .ia-intro,.installations-section,.featured-artist,.venue-info{padding:60px 24px}
-      .ia-intro-grid,.fa-grid,.venue-grid{grid-template-columns:1fr}
+      .ia-intro-grid,.fa-grid,.venue-grid,.ongoing-grid{grid-template-columns:1fr}
       .inst-grid{grid-template-columns:1fr 1fr}
+      .premiere-content{grid-template-columns:1fr;padding:40px 24px}
+      .ongoing{padding:40px 24px}
       .footer-grid{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
 <body>
 
+<div id="custom-cursor"></div>
+
 <nav>
   <a class="nav-logo" href="/">Fak'ugesi 2026</a>
   <ul class="nav-links">
-    <li><a href="/programme">Programme</a></li>
-    <li><a href="/immersive-africa" class="active">Immersive Africa</a></li>
-    <li><a href="/awards">Awards</a></li>
-    <li><a href="/about">About</a></li>
+    <li><a href="/programme.html">Programme</a></li>
+    <li><a href="/immersive-africa.html" class="active">Immersive Africa</a></li>
+    <li><a href="/awards.html">Awards</a></li>
+    <li><a href="/about.html">About</a></li>
   </ul>
-  <a class="nav-cta" href="/tickets">Get Tickets</a>
+  <a class="nav-cta" href="/tickets.html">Get Tickets</a>
 </nav>
 
+<!-- HERO -->
 <div class="ia-hero">
   <div class="ia-hero-bg"></div>
   <div class="ia-hero-grid"></div>
@@ -257,11 +230,73 @@
     <span>Scroll</span>
     <div class="ia-scroll-line"></div>
   </div>
+  <!-- SIGNIA -->
+  <div class="hero-signia">
+    <div class="signia-block">
+      <span class="signia-top">fak'</span>
+      <div class="signia-divider"></div>
+      <span class="signia-bottom"><span class="u">u</span><span class="g">g</span><span class="esi">esi</span></span>
+      <span class="signia-sub">Immersive Africa</span>
+    </div>
+  </div>
 </div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-content">
+    <span>Don't miss the South African Dome Premiere of Kancica →</span>
+    <span>Premiering 07 — 21.04.2026</span>
+    <span>GET YOUR TICKETS</span>
+    <span>Don't miss the South African Dome Premiere of Kancica →</span>
+    <span>Premiering 07 — 21.04.2026</span>
+    <span>GET YOUR TICKETS</span>
+  </div>
+</div>
+
+<!-- PREMIERE -->
+<section class="premiere">
+  <div class="premiere-bg">
+    <!-- Falls back to gradient if image missing -->
+    <img src="/images/digital-dome-image-inside.jpg" alt="Digital Dome interior"
+         onerror="this.style.display='none'"/>
+  </div>
+  <div class="premiere-overlay"></div>
+  <div class="premiere-content">
+    <div>
+      <div class="premiere-label">Premiering</div>
+      <div class="premiere-date">07 — 21.04.2026</div>
+      <div class="premiere-title">Kancica<br>Kwasukasukela</div>
+    </div>
+    <div>
+      <p class="premiere-desc">A breathtaking dome film that weaves together ancestral mythology and digital innovation, Kancica Kwasukasukela takes audiences on an immersive journey through African cosmologies reimagined for the 21st century. Premiering in South Africa exclusively at the Wits Anglo American Digital Dome as part of Immersive Africa.</p>
+      <a href="/tickets.html" class="btn-white">GET YOUR TICKETS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ONGOING -->
+<section class="ongoing">
+  <div class="ongoing-grid">
+    <div class="ongoing-image">
+      <img src="images/Screenshot-2024-05-21-at-21.36.37.webp" alt="On-going exhibition"
+           onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80'"/>
+    </div>
+    <div>
+      <div class="premiere-label">On-going</div>
+      <div class="premiere-date">07 — 21.04.2026</div>
+      <h2 style="font-size:42px;font-weight:900;color:#fff;margin-bottom:20px">Kwasukasukela</h2>
+      <p style="color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px">An ongoing dome screening programme drawing from the rich archive of African digital art and moving image. Kwasukasukela — meaning "once upon a time" — presents a curated anthology of short films that centre African stories in immersive formats.</p>
+      <a href="/tickets.html" class="btn-white">GET YOUR TICKETS →</a>
+    </div>
+  </div>
+</section>
 
 <!-- INTRO -->
 <section class="ia-intro">
   <div class="ia-intro-grid">
+    <div style="grid-column:1/-1;margin-bottom:32px;overflow:hidden;max-height:320px">
+      <img src="images/Joburg-planetarium-1-2022.jpg" alt="Joburg Planetarium" onerror="this.style.display='none'" style="width:100%;height:320px;object-fit:cover;display:block"/>
+    </div>
     <div>
       <div class="ia-intro-title">Where African Imagination Meets the Digital Frontier</div>
       <div class="ia-stats">
@@ -275,8 +310,8 @@
       <div class="ia-quote">"Immersive Africa is not just an exhibition — it is a portal. A space where the ancestors speak in code, and the future looks like home."</div>
       <div class="ia-quote-attr">— Zanele Mokoena, Curator, Immersive Africa 2026</div>
       <div style="margin-top:32px">
-        <div class="ia-intro-body">Immersive Africa is the flagship exhibition of Fak'ugesi Festival — a curated gathering of the most boundary-pushing immersive works from African artists working in VR, augmented reality, projection mapping, installation art, and interactive digital media.</div>
-        <div class="ia-intro-body" style="margin-top:16px">Held in the iconic Turbine Hall in Newtown, Johannesburg, the 2026 edition brings together 80+ works from 40+ artists across 25 African nations, creating a unified space where digital technology and African cultural heritage converge.</div>
+        <div class="ia-intro-body">Immersive Africa is the flagship exhibition of Fak'ugesi Festival — a curated gathering of boundary-pushing immersive works from African artists working in VR, augmented reality, projection mapping, installation art, and interactive digital media.</div>
+        <div class="ia-intro-body" style="margin-top:16px">Held in the iconic Turbine Hall in Newtown, Johannesburg, the 2026 edition brings together 80+ works from 40+ artists across 25 African nations.</div>
       </div>
     </div>
   </div>
@@ -287,66 +322,12 @@
   <div class="section-label">Selected Works</div>
   <div class="section-title">2026 Programme</div>
   <div class="inst-grid">
-    <div class="inst-card">
-      <div class="inst-visual">🌌</div>
-      <div class="inst-info">
-        <div class="inst-medium">VR Installation</div>
-        <div class="inst-title">Ancestral Frequencies</div>
-        <div class="inst-artist">Athanasius Johnson — South Africa</div>
-        <div class="inst-desc">A fully immersive dome experience blending oral tradition, spatial audio, and generative visuals to recreate sacred African soundscapes.</div>
-        <div class="inst-tag tag-vr">VR · 20 min</div>
-      </div>
-    </div>
-    <div class="inst-card">
-      <div class="inst-visual">🎭</div>
-      <div class="inst-info">
-        <div class="inst-medium">Projection Mapping</div>
-        <div class="inst-title">Sankofa: Looking Back to Move Forward</div>
-        <div class="inst-artist">Amara Diallo — Senegal</div>
-        <div class="inst-desc">A 30-metre projection mapping installation on the Turbine Hall walls, animating Adinkra symbols and African proverbs in response to viewer movement.</div>
-        <div class="inst-tag tag-projection">Projection · Interactive</div>
-      </div>
-    </div>
-    <div class="inst-card">
-      <div class="inst-visual">🌿</div>
-      <div class="inst-info">
-        <div class="inst-medium">Interactive Installation</div>
-        <div class="inst-title">Ubuntu: I Am Because We Are</div>
-        <div class="inst-artist">Collective Zim Digital — Zimbabwe</div>
-        <div class="inst-desc">A networked light installation where each visitor's heartbeat becomes a data point, visualising the Ubuntu philosophy of collective interconnection.</div>
-        <div class="inst-tag tag-interactive">Interactive · Biometric</div>
-      </div>
-    </div>
-    <div class="inst-card">
-      <div class="inst-visual">🔮</div>
-      <div class="inst-info">
-        <div class="inst-medium">Mixed Reality</div>
-        <div class="inst-title">Market Women: Invisible Economies</div>
-        <div class="inst-artist">Nneka Okonkwo — Nigeria</div>
-        <div class="inst-desc">AR glasses overlay the hidden economic networks of West African market women onto the visible world, making the invisible labour of millions visible.</div>
-        <div class="inst-tag tag-ar">AR · Documentary</div>
-      </div>
-    </div>
-    <div class="inst-card">
-      <div class="inst-visual">⚡</div>
-      <div class="inst-info">
-        <div class="inst-medium">Sound Installation</div>
-        <div class="inst-title">Unmuted: 54 Voices</div>
-        <div class="inst-artist">Jopee Dairo — Nigeria</div>
-        <div class="inst-desc">54 speakers, one per African nation, simultaneously broadcasting voices of activists, artists and everyday people — an acoustic portrait of a continent.</div>
-        <div class="inst-tag tag-installation">Sound · Spatial</div>
-      </div>
-    </div>
-    <div class="inst-card">
-      <div class="inst-visual">🚀</div>
-      <div class="inst-info">
-        <div class="inst-medium">Generative Digital Art</div>
-        <div class="inst-title">FutureLand: Speculative Cartographies</div>
-        <div class="inst-artist">Masego Sithole — Botswana</div>
-        <div class="inst-desc">AI-generated maps of African futures, shifting in real time based on live data feeds of climate, population, and technological development across the continent.</div>
-        <div class="inst-tag tag-interactive">AI-Generative · Live Data</div>
-      </div>
-    </div>
+    <div class="inst-card"><div class="inst-visual">🌌</div><div class="inst-info"><div class="inst-medium">VR Installation</div><div class="inst-title">Ancestral Frequencies</div><div class="inst-artist">Athanasius Johnson — South Africa</div><div class="inst-desc">A fully immersive dome experience blending oral tradition, spatial audio, and generative visuals to recreate sacred African soundscapes.</div><div class="inst-tag tag-vr">VR · 20 min</div></div></div>
+    <div class="inst-card"><div class="inst-visual">🎭</div><div class="inst-info"><div class="inst-medium">Projection Mapping</div><div class="inst-title">Sankofa: Looking Back to Move Forward</div><div class="inst-artist">Amara Diallo — Senegal</div><div class="inst-desc">A 30-metre projection mapping installation on the Turbine Hall walls, animating Adinkra symbols in response to viewer movement.</div><div class="inst-tag tag-projection">Projection · Interactive</div></div></div>
+    <div class="inst-card"><div class="inst-visual">🌿</div><div class="inst-info"><div class="inst-medium">Interactive Installation</div><div class="inst-title">Ubuntu: I Am Because We Are</div><div class="inst-artist">Collective Zim Digital — Zimbabwe</div><div class="inst-desc">A networked light installation where each visitor's heartbeat becomes a data point, visualising the Ubuntu philosophy of collective interconnection.</div><div class="inst-tag tag-interactive">Interactive · Biometric</div></div></div>
+    <div class="inst-card"><div class="inst-visual">🔮</div><div class="inst-info"><div class="inst-medium">Mixed Reality</div><div class="inst-title">Market Women: Invisible Economies</div><div class="inst-artist">Nneka Okonkwo — Nigeria</div><div class="inst-desc">AR glasses overlay the hidden economic networks of West African market women onto the visible world.</div><div class="inst-tag tag-ar">AR · Documentary</div></div></div>
+    <div class="inst-card"><div class="inst-visual">⚡</div><div class="inst-info"><div class="inst-medium">Sound Installation</div><div class="inst-title">Unmuted: 54 Voices</div><div class="inst-artist">Jopee Dairo — Nigeria</div><div class="inst-desc">54 speakers, one per African nation, simultaneously broadcasting voices of activists, artists and everyday people.</div><div class="inst-tag tag-installation">Sound · Spatial</div></div></div>
+    <div class="inst-card"><div class="inst-visual">🚀</div><div class="inst-info"><div class="inst-medium">Generative Digital Art</div><div class="inst-title">FutureLand: Speculative Cartographies</div><div class="inst-artist">Masego Sithole — Botswana</div><div class="inst-desc">AI-generated maps of African futures, shifting in real time based on live data feeds of climate, population, and technological development.</div><div class="inst-tag tag-interactive">AI-Generative · Live Data</div></div></div>
   </div>
 </section>
 
@@ -385,21 +366,68 @@
   </div>
 </section>
 
+<!-- PARTNERS -->
+<section class="partners-section ia-partners-section">
+  <div class="ia-partners-inner">
+    <div class="ia-partners-header">
+      <div class="ia-partners-label">· Supported By</div>
+      <h2 class="ia-partners-title">Our Immersive Africa Partners</h2>
+      <p class="ia-partners-desc">Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC — EU National Institutes for Culture.</p>
+    </div>
+    <!-- Marquee scroll — like fakugesi.co.za -->
+    <div class="ia-partners-marquee-wrap">
+      <div class="ia-partners-marquee">
+        <div class="ia-partners-track">
+          <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ia-partner-item"><div class="ia-partner-name">EUNIC</div><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Institut Français</div><div class="ia-partner-sub">France</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Goethe-Institut</div><div class="ia-partner-sub">Germany</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Austrian Embassy</div><div class="ia-partner-sub">Pretoria</div></div>
+          <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="ia-partners-note">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes.</p>
+  </div>
+</section>
+
+<!-- CTA -->
 <div class="cta-strip">
   <h2>Experience Immersive Africa</h2>
   <p>Included with all festival passes. Open daily 10:00–22:00, 4–13 September 2026.</p>
-  <a class="btn-blue" href="/tickets">Get Your Pass</a>
-  <a class="btn-outline" href="/programme">View Full Programme</a>
+  <a class="btn-blue" href="/tickets.html">Get Your Pass</a>
+  <a class="btn-outline" href="/programme.html">View Full Programme</a>
 </div>
 
 <footer>
   <div class="footer-grid">
     <div><div class="footer-brand">Fak'ugesi Festival</div><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
-    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="/programme">Programme</a></li><li><a href="/immersive-africa">Immersive Africa</a></li><li><a href="/awards">Awards</a></li><li><a href="/tickets">Tickets</a></li></ul></div>
-    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="/about">About Us</a></li><li><a href="/about#partners">Partners</a></li><li><a href="/about#press">Press</a></li><li><a href="/about#contact">Contact</a></li></ul></div>
+    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="/programme.html">Programme</a></li><li><a href="/immersive-africa.html">Immersive Africa</a></li><li><a href="/awards.html">Awards</a></li><li><a href="/tickets.html">Tickets</a></li></ul></div>
+    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="/about.html">About Us</a></li><li><a href="/about.html#partners">Partners</a></li><li><a href="/about.html#press">Press</a></li><li><a href="/about.html#contact">Contact</a></li></ul></div>
     <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
   </div>
   <div class="footer-bottom"><div class="footer-copy">© 2026 Fak'ugesi Festival. All rights reserved.</div><div class="footer-copy">Designed in Johannesburg</div></div>
 </footer>
+
+<script>
+const cursor=document.getElementById('custom-cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
+});
+</script>
+<script src="global-effects.js"></script>
 </body>
 </html>

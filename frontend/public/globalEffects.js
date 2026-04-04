@@ -290,20 +290,14 @@
   }
 
   function upgradePlus(el) {
+    /* Keep + signs as per mockup design — no star conversion */
     if(el.dataset.starDone) return;
     el.dataset.starDone = '1';
-    const dark   = el.closest('nav,.get-involved,footer,.hero,.page-hero,.ia-hero,.faq-section,.winners-section,.categories-section,.premiere,.ongoing,.installations-section,.theme-section');
-    const color  = dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.25)';
-    const accent = dark ? '#d4e600' : '#1a2332';
-    el.classList.add('star-marker');
-    el.innerHTML = makeStar(color);
-    el.addEventListener('mouseenter', () => shootBabyStars(el, accent));
+    /* Just ensure the + text remains, no innerHTML replacement */
   }
 
   function convertPluses() {
-    document.querySelectorAll('.crosshair,.nav-plus,.section-crosshairs span,.footer-crosshairs span,.team-crosshairs span,.partners-crosshairs span,.footer-bottom-crosshairs span,.passes-crosshairs span,.passes-crosshairs-bot span').forEach(el => {
-      if(el.textContent.trim() === '+' && !el.dataset.starDone) upgradePlus(el);
-    });
+    /* No conversion — + signs stay as + signs per mockup */
   }
 
   /* ─────────────────────────────────────────────
@@ -411,7 +405,7 @@
       const col = isLight?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.2)';
       const div = document.createElement('div');
       div.className = 'section-divider-line';
-      div.innerHTML = `<span class="star-marker">${makeStar(col)}</span><div class="section-divider-rule"></div><span class="star-marker">${makeStar(col)}</span><div class="section-divider-rule"></div><span class="star-marker">${makeStar(col)}</span>`;
+      div.innerHTML = `<span style="color:${col};font-size:18px;font-weight:300;line-height:1">+</span><div class="section-divider-rule"></div><span style="color:${col};font-size:18px;font-weight:300;line-height:1">+</span><div class="section-divider-rule"></div><span style="color:${col};font-size:18px;font-weight:300;line-height:1">+</span>`;
       sec.insertBefore(div, sec.firstChild);
     });
   }

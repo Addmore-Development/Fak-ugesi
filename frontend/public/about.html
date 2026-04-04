@@ -4,8 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>About • Fak'ugesi African Digital & Innovation Festival</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --yellow: #d4e600;
@@ -19,7 +24,7 @@
       --border: rgba(0,0,0,0.08);
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--light-bg); color: var(--text-dark); font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    body { padding-top:56px; background: var(--light-bg); color: var(--text-dark); font-family: 'InterDisplay', sans-serif; overflow-x: hidden; }
 
     /* ── NAV ── */
     nav {
@@ -44,7 +49,7 @@
     .hero {
       position: relative; overflow: hidden; min-height: 72vh;
       display: flex; flex-direction: column; justify-content: flex-end;
-      background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1800&q=80') center/cover no-repeat;
+      background: url('images/Copy_of__MGL0176.jpg') center/cover no-repeat;
     }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
     .hero-content { position: relative; z-index: 2; padding: 80px 60px 60px; }
@@ -55,7 +60,7 @@
       position: absolute; top: 100px; right: 60px; z-index: 3;
       background: #fff; color: #000; padding: 16px 20px;
       font-size: 28px; font-weight: 900; line-height: 1;
-      font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;
+      font-family: 'InterDisplay', sans-serif; letter-spacing: -0.02em;
     }
     .hero-logo-badge span { display: block; }
     .hero-logo-badge .accent { color: #c0392b; }
@@ -130,7 +135,7 @@
     .form-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 6px; display: block; font-weight: 600; }
     .form-input, .form-select, .form-textarea {
       width: 100%; background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.12);
-      padding: 12px 14px; color: var(--text-dark); font-family: 'Manrope', sans-serif;
+      padding: 12px 14px; color: var(--text-dark); font-family: 'InterDisplay', sans-serif;
       font-size: 13px; outline: none; border-radius: 0;
     }
     .form-input::placeholder, .form-textarea::placeholder { color: rgba(0,0,0,0.3); }
@@ -144,7 +149,7 @@
     .form-check label { font-size: 11px; color: var(--text-mid); }
     .submit-btn {
       background: var(--text-dark); color: #fff; border: none;
-      padding: 13px 32px; font-family: 'Manrope', sans-serif;
+      padding: 13px 32px; font-family: 'InterDisplay', sans-serif;
       font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; cursor: pointer; float: right;
     }
@@ -176,31 +181,101 @@
     .footer-contact strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; font-size: 12px; }
     .footer-contact a { font-size: 12px; color: var(--text-dark); display: block; text-decoration: none; margin-bottom: 4px; border-bottom: 1px solid var(--text-dark); width: fit-content; }
     .footer-logo-area { display: flex; align-items: flex-start; justify-content: flex-end; gap: 16px; }
-    .footer-logo-badge { background: var(--text-dark); color: #fff; padding: 12px 14px; font-size: 13px; font-weight: 900; line-height: 1.2; font-family: 'Space Grotesk', sans-serif; }
+    .footer-logo-badge { background: var(--text-dark); color: #fff; padding: 12px 14px; font-size: 13px; font-weight: 900; line-height: 1.2; font-family: 'InterDisplay', sans-serif; }
     .footer-copy { font-size: 11px; color: var(--text-mid); line-height: 1.5; }
     .footer-copy strong { display: block; color: var(--text-dark); font-weight: 600; }
     .footer-bottom-crosshairs { display: flex; justify-content: space-between; margin-top: 32px; }
     .footer-bottom-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
   </style>
+<style id="fug-nav-styles">
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700}
+  @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype');font-weight:400}
+  #fug-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(13,17,23,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.07);font-family:'InterDisplay',sans-serif}
+  #fug-nav .nav-left{display:flex;align-items:center;gap:8px}
+  #fug-nav .nav-plus-sym{color:rgba(255,255,255,0.4);font-size:18px;font-weight:300;line-height:1;margin-right:8px}
+  #fug-nav .nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+  #fug-nav .nav-links>li{position:relative}
+  #fug-nav .nav-links a,#fug-nav .nav-links .nav-drop-trigger{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer;display:flex;align-items:center;gap:4px;background:none;border:none;padding:0;font-family:inherit;line-height:56px;white-space:nowrap}
+  #fug-nav .nav-links a:hover,#fug-nav .nav-links .nav-drop-trigger:hover,#fug-nav .nav-links a.active,#fug-nav .nav-links .nav-drop-trigger.active{color:#fff}
+  #fug-nav .nav-drop-trigger .chevron{display:inline-block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform 0.2s}
+  #fug-nav .nav-links li.open .nav-drop-trigger .chevron{transform:rotate(-135deg) translateY(-1px)}
+  #fug-nav .nav-dropdown{position:absolute;top:100%;left:0;background:#0d1117;border:1px solid rgba(255,255,255,0.1);min-width:180px;padding:8px 0;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;z-index:200}
+  #fug-nav .nav-links li.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
+  #fug-nav .nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:rgba(255,255,255,0.7);text-decoration:none;font-weight:500;transition:color 0.15s,background 0.15s;line-height:1.4;white-space:nowrap}
+  #fug-nav .nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+  #fug-nav .nav-dropdown a.active{color:#fff}
+  #fug-nav .nav-right{display:flex;align-items:center;gap:20px}
+  #fug-nav .nav-search-btn{background:none;border:none;cursor:pointer;padding:4px;color:rgba(255,255,255,0.55);transition:color 0.2s}
+  #fug-nav .nav-search-btn:hover{color:#fff}
+  #fug-nav .nav-ticket-btn{background:#fff;color:#000;padding:8px 20px;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;border-radius:2px;font-family:'InterDisplay',sans-serif;transition:background 0.2s}
+  #fug-nav .nav-ticket-btn:hover{background:#d4e600}
+  #fug-nav .nav-right-plus{color:rgba(255,255,255,0.35);font-size:18px;font-weight:300}
+  #fug-ticker-wrap{position:relative;z-index:90}
+  #fug-premiere-bar{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:9px 40px;display:flex;align-items:center;gap:48px;white-space:nowrap;overflow:hidden}
+  #fug-premiere-bar .pb-left,#fug-premiere-bar .pb-right{opacity:0.55;flex-shrink:0}
+  #fug-premiere-bar .pb-cta{font-weight:800;letter-spacing:0.12em;flex-shrink:0}
+  #fug-ticker{background:#d4e600;overflow:hidden;padding:10px 0;white-space:nowrap}
+  #fug-ticker .ticker-inner{display:inline-flex;animation:fugTicker 28s linear infinite}
+  #fug-ticker .ticker-item{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;padding:0 32px;display:flex;align-items:center;gap:16px;font-family:'InterDisplay',sans-serif}
+  #fug-ticker .ticker-item::after{content:'\2192';opacity:0.5}
+  @keyframes fugTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <span class="nav-plus">+</span>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/immersive-africa.html">Immersive Africa</a></li>
-    <li><a href="/awards.html">Awards</a></li>
-    <li><a href="/programme.html">Programme</a></li>
-    <li><a href="/tickets.html">Tickets</a></li>
-    <li><a href="/about.html" class="active">About</a></li>
-  </ul>
+<nav id="fug-nav">
+  <div class="nav-left">
+    <span class="nav-plus-sym">+</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="programme.html">Festival Programme</a></li>
+      <li class="drop-li">
+        <button class="nav-drop-trigger">Signature Programmes <span class="chevron"></span></button>
+        <div class="nav-dropdown">
+          <a href="immersiveAfrica.html">Immersive Africa</a>
+          <a href="awards.html">Awards</a>
+        </div>
+      </li>
+      <li class="drop-li">
+        <button class="nav-drop-trigger">Discover <span class="chevron"></span></button>
+        <div class="nav-dropdown"><a href="about.html">About Us</a></div>
+      </li>
+      <li><a href="tickets.html">Tickets</a></li>
+    </ul>
+  </div>
   <div class="nav-right">
-    <a class="nav-ticket-btn" href="/tickets.html">Get Tickets</a>
-    <span class="nav-plus">+</span>
+    <button class="nav-search-btn" aria-label="Search">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><line x1="12" y1="12" x2="16" y2="16"/></svg>
+    </button>
+    <a class="nav-ticket-btn" href="tickets.html">Get Tickets</a>
+    <span class="nav-right-plus">+</span>
   </div>
 </nav>
+<div id="fug-ticker-wrap">
+  <div id="fug-premiere-bar" style="background:#0d1b35;color:#fff;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <span class="pb-left">Premiering 07 — 21.04.2026</span>
+    <span class="pb-cta">GET YOUR TICKETS</span>
+    <span class="pb-right">Don&#39;t miss the South African Dome Premiere</span>
+  </div>
+  <div id="fug-ticker"><div class="ticker-inner">
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+  </div></div>
+</div>
+
+<!-- NAV -->
+
 
 <!-- HERO -->
 <section class="hero">
@@ -220,19 +295,6 @@
 </section>
 
 <!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-  </div>
 </div>
 
 <!-- WHO WE ARE -->
@@ -251,12 +313,12 @@
     </div>
   </div>
   <div class="photos-row">
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1578496479530-e5f09e4e30c0?w=600&q=70" alt="Fak'ugesi Festival"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=70" alt="Team collaboration"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival crowd"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Performance"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=70" alt="Workshop"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="Innovation"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi Festival"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Team collaboration"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Festival crowd"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Performance"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Workshop"/></div>
+    <div class="photo-thumb"><img src="images/Copy_of__MGL3584.jpg" alt="Innovation"/></div>
   </div>
   <div class="section-crosshairs" style="margin-top:32px;margin-bottom:0"><span>+</span><span>+</span><span>+</span></div>
 </section>
@@ -266,7 +328,7 @@
   <h2 class="editions-title">Previous Editions</h2>
   <div class="editions-scroll">
     <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#8b1a1a,#c0392b,#e67e22)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2024 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(0deg) saturate(1.2) brightness(0.7)"/>
+      <div class="edition-poster" style="background:linear-gradient(135deg,#8b1a1a,#c0392b,#e67e22)"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2024 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(0deg) saturate(1.2) brightness(0.7)"/>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
           <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
           <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">UN<br/>LOCKED</div>
@@ -281,7 +343,7 @@
       </div>
     </div>
     <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#1a3a6b,#2d6ba8,#00a8d4)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2023 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(200deg) saturate(1.4) brightness(0.65)"/>
+      <div class="edition-poster" style="background:linear-gradient(135deg,#1a3a6b,#2d6ba8,#00a8d4)"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2023 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(200deg) saturate(1.4) brightness(0.65)"/>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
           <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
           <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">UN<br/>LOCKED</div>
@@ -296,7 +358,7 @@
       </div>
     </div>
     <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#2d1a6b,#6b2d8a,#a040c0)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2022 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(270deg) saturate(1.5) brightness(0.6)"/>
+      <div class="edition-poster" style="background:linear-gradient(135deg,#2d1a6b,#6b2d8a,#a040c0)"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2022 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(270deg) saturate(1.5) brightness(0.6)"/>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
           <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
           <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">RE<br/>IMAGINE</div>
@@ -311,7 +373,7 @@
       </div>
     </div>
     <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#1a6b2d,#2d8a4a,#40c060)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2021 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(120deg) saturate(1.3) brightness(0.65)"/>
+      <div class="edition-poster" style="background:linear-gradient(135deg,#1a6b2d,#2d8a4a,#40c060)"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2021 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(120deg) saturate(1.3) brightness(0.65)"/>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
           <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
           <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">ROOT<br/>ED</div>
@@ -326,7 +388,7 @@
       </div>
     </div>
     <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#6b4a1a,#8a6a2d,#c09040)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2020 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(40deg) saturate(1.2) brightness(0.6) sepia(0.3)"/>
+      <div class="edition-poster" style="background:linear-gradient(135deg,#6b4a1a,#8a6a2d,#c09040)"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2020 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(40deg) saturate(1.2) brightness(0.6) sepia(0.3)"/>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
           <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
           <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">HYPER<br/>LOCAL</div>
@@ -349,7 +411,7 @@
   <h2 class="team-title">The Team</h2>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop&crop=face" alt="Alby Michaels"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Alby Michaels"/></div>
       <div class="team-info">
         <div class="team-name">Alby Michaels</div>
         <div class="team-role">Festival Director</div>
@@ -357,7 +419,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80&fit=crop&crop=face" alt="Nomsa Dlamini"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Nomsa Dlamini"/></div>
       <div class="team-info">
         <div class="team-name">Nomsa Dlamini</div>
         <div class="team-role">Programme Curator</div>
@@ -365,7 +427,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop&crop=face" alt="Kwame Asante"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Kwame Asante"/></div>
       <div class="team-info">
         <div class="team-name">Kwame Asante</div>
         <div class="team-role">Technology Director</div>
@@ -373,7 +435,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80&fit=crop&crop=face" alt="Thandi Mthembu"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Thandi Mthembu"/></div>
       <div class="team-info">
         <div class="team-name">Thandi Mthembu</div>
         <div class="team-role">Awards Coordinator</div>
@@ -381,7 +443,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop&crop=face" alt="Sipho Ndlovu"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Sipho Ndlovu"/></div>
       <div class="team-info">
         <div class="team-name">Sipho Ndlovu</div>
         <div class="team-role">Immersive Africa Lead</div>
@@ -389,7 +451,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&fit=crop&crop=face" alt="Amara Osei"/></div>
+      <div class="team-photo"><img src="images/Copy_of__MGL3584.jpg" alt="Amara Osei"/></div>
       <div class="team-info">
         <div class="team-name">Amara Osei</div>
         <div class="team-role">Communications Manager</div>
@@ -479,10 +541,7 @@
   <div class="partners-grid">
     <div class="partner-card">
       <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-family:monospace;font-size:18px;font-weight:900;letter-spacing:0.08em;color:#1a2332;line-height:1.1">TSHI<br/>MOLO<br/>GONG</div>
-          <div style="font-size:9px;letter-spacing:0.2em;margin-top:6px;color:#1a2332">WITS UNIVERSITY</div>
-        </div>
+        <img src="logos/main/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" style="max-width:150px;max-height:90px;object-fit:contain"/>
       </div>
       <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013. Africa's leading digital innovation hub.</p>
     </div>
@@ -497,10 +556,7 @@
     </div>
     <div class="partner-card">
       <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-size:9px;letter-spacing:0.1em;color:#000;margin-bottom:3px;font-weight:600">WITS ANGLO AMERICAN</div>
-          <div style="font-size:22px;font-weight:900;color:#000;letter-spacing:-0.02em;line-height:1.1">DIGITAL<br/>DOME</div>
-        </div>
+        <img src="logos/partners/immersive-africa/digitaldome.svg" alt="Digital Dome" style="max-width:150px;max-height:90px;object-fit:contain"/>
       </div>
       <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner for Fak'ugesi.</p>
     </div>
@@ -528,8 +584,7 @@
       <a href="tel:+27117178156">+27 11 717 8156</a>
     </div>
     <div class="footer-logo-area">
-      <div class="footer-logo-badge">
-        <div>fak'</div>
+      <img src="logos/main/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi" style="height:44px;display:block"/>
         <div>ugesi</div>
       </div>
       <div class="footer-copy">
@@ -547,7 +602,20 @@
   }
 </script>
 <script src="globalEffects.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('#fug-nav .drop-li').forEach(function(li){
+    li.querySelector('.nav-drop-trigger').addEventListener('click',function(e){
+      e.stopPropagation();
+      var was=li.classList.contains('open');
+      document.querySelectorAll('#fug-nav .drop-li.open').forEach(function(o){o.classList.remove('open');});
+      if(!was) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('#fug-nav .drop-li.open').forEach(function(o){o.classList.remove('open');});
+  });
+})();
+</script>
 </body>
 </html>
-
-

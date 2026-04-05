@@ -4,33 +4,37 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Awards • Fak'ugesi Festival 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#00ff88;--pink:#ff2d6b;--yellow:#ffe600;--blue:#00cfff;--dark:#0a0a0a;--card:#111;--border:rgba(255,255,255,.08);--navy:#0d1117}
-    body{background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+    body{ padding-top:56px;background:var(--dark);color:#fff;font-family:'InterDisplay',sans-serif;overflow-x:hidden}
 
     /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .nav-logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none}
+    .nav-logo{font-family:'InterDisplay',sans-serif;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
     .nav-links a:hover,.nav-links a.active{color:#fff}
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
     /* HERO */
-    .page-hero{padding:80px 60px 60px;background:url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1800&q=80') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden;min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end}
+    .page-hero{padding:80px 60px 60px;background:url('images/_MGL7139.jpg') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden;min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end}
     .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.65);pointer-events:none;z-index:0}
     .page-hero>*{position:relative;z-index:1}
-    .page-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
-    .page-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:24px;font-family:'DM Sans',sans-serif}
+    .page-eyebrow{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
+    .page-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:24px;font-family:'InterDisplay',sans-serif}
     .page-subtitle{font-size:14px;color:rgba(255,255,255,.55);max-width:520px;line-height:1.7}
     .hero-signia{position:absolute;top:120px;right:60px;z-index:10}
     .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
-    .signia-top{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
+    .signia-top{font-family:'InterDisplay',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
     .signia-divider{height:1.5px;background:#111;margin:4px 0}
-    .signia-bottom{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block}
+    .signia-bottom{font-family:'InterDisplay',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block}
     .signia-bottom .u{color:#111}.signia-bottom .g{color:#8B1A1A}.signia-bottom .esi{color:#111}
 
     /* ══ PAST WINNERS ══ */
@@ -38,7 +42,7 @@
     .winners-header{padding:0 60px;display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px}
     .winners-title{font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-.02em;color:#0d1117;line-height:1}
     .winners-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .year-btn{background:none;border:1.5px solid rgba(0,0,0,.25);color:rgba(0,0,0,.55);padding:8px 22px;border-radius:2px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .2s}
+    .year-btn{background:none;border:1.5px solid rgba(0,0,0,.25);color:rgba(0,0,0,.55);padding:8px 22px;border-radius:2px;font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .2s}
     .year-btn.active,.year-btn:hover{background:#0d1117;border-color:#0d1117;color:#fff}
     .winners-nav{display:flex;gap:8px;margin-left:16px}
     .wn-btn{width:40px;height:40px;background:transparent;border:1.5px solid rgba(0,0,0,.25);color:#0d1117;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
@@ -57,7 +61,7 @@
     .wc-cat-label{font-size:11px;color:#888;letter-spacing:.06em;margin-bottom:6px}
     .wc-name{font-size:16px;font-weight:800;color:#0d1117;line-height:1.25;margin-bottom:6px}
     .wc-artist{font-size:13px;color:#666}
-    .wc-click-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-top:8px;font-family:'Space Mono',monospace}
+    .wc-click-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-top:8px;font-family:'InterDisplay',sans-serif}
 
     /* POPUP */
     .winner-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;padding:20px}
@@ -66,28 +70,28 @@
     .winner-popup-overlay.active .winner-popup{transform:translateY(0) scale(1)}
     .wp-img-col{position:relative;min-height:380px;background:#e8eaf0;overflow:hidden}
     .wp-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-    .wp-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;color:#999;letter-spacing:.1em;text-transform:uppercase}
-    .wp-year-badge{position:absolute;top:16px;left:16px;background:#0d1117;color:#fff;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px}
+    .wp-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'InterDisplay',sans-serif;font-size:11px;color:#999;letter-spacing:.1em;text-transform:uppercase}
+    .wp-year-badge{position:absolute;top:16px;left:16px;background:#0d1117;color:#fff;font-family:'InterDisplay',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px}
     .wp-body{padding:36px 32px;display:flex;flex-direction:column;overflow-y:auto}
     .wp-close{position:absolute;top:14px;right:14px;background:#0d1117;border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s}
     .wp-close:hover{background:#333}
-    .wp-cat{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;border-left:2px solid #0d1117;padding-left:10px}
+    .wp-cat{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;border-left:2px solid #0d1117;padding-left:10px}
     .wp-name{font-size:clamp(20px,2.5vw,28px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
     .wp-artist{font-size:15px;color:#0d1117;font-weight:600;margin-bottom:4px}
-    .wp-country{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+    .wp-country{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
     .wp-divider{height:1px;background:rgba(0,0,0,.08);margin-bottom:20px}
     .wp-desc{font-size:13px;color:#555;line-height:1.75;flex:1}
     .wp-nav{display:flex;justify-content:space-between;margin-top:24px;gap:8px}
-    .wp-nav-btn{flex:1;background:#0d1117;border:none;color:#fff;padding:12px 8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+    .wp-nav-btn{flex:1;background:#0d1117;border:none;color:#fff;padding:12px 8px;font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
     .wp-nav-btn:hover:not(:disabled){background:#333}
     .wp-nav-btn:disabled{background:rgba(0,0,0,.15);cursor:default}
-    .wp-counter{font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-align:center;margin-top:12px}
+    .wp-counter{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-align:center;margin-top:12px}
     @media(max-width:600px){.winner-popup{grid-template-columns:1fr}.wp-img-col{min-height:200px}.wp-body{padding:24px 20px}}
 
     /* ══ FLIP-CARD CATEGORIES (matching index.html) ══ */
     .categories-section{
       padding:80px 60px;
-      background:#2a2a2e url('https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=1800&q=80') center/cover no-repeat;
+      background:#2a2a2e url('images/IMG_8523 - Athanasius Johnson.png') center/cover no-repeat;
       background-blend-mode:multiply;
       position:relative;
     }
@@ -126,12 +130,12 @@
     .req-col-title{font-size:11px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase}
     .req-list{list-style:none;display:flex;flex-direction:column;gap:8px}
     .req-list li{font-size:12px;color:rgba(255,255,255,.45);display:flex;gap:8px;line-height:1.45}
-    .req-list li::before{content:'→';color:var(--green);font-family:'Space Mono',monospace;font-size:10px;margin-top:1px;flex-shrink:0}
+    .req-list li::before{content:'→';color:var(--green);font-family:'InterDisplay',sans-serif;font-size:10px;margin-top:1px;flex-shrink:0}
 
     /* ══ FAQ ══ */
     .faq-section{background:#0d1117;padding:80px 60px;border-top:1px solid rgba(255,255,255,.06)}
     .faq-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
-    .faq-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;font-family:'Space Mono',monospace}
+    .faq-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;font-family:'InterDisplay',sans-serif}
     .faq-title{font-size:clamp(36px,4vw,52px);font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.05;margin-bottom:24px}
     .faq-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7}
     .faq-list{display:flex;flex-direction:column;gap:1px}
@@ -155,19 +159,19 @@
     .partners-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:#1a2332;letter-spacing:-.02em}
 
     /* SECTION UTILS */
-    .section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+    .section-label{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
     .crosshair{position:absolute;color:rgba(255,255,255,.25);font-size:18px;font-weight:300;pointer-events:none}
 
     footer{background:#000;border-top:1px solid var(--border);padding:64px 40px 40px}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
-    .footer-brand{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+    .footer-brand{font-family:'InterDisplay',sans-serif;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
     .footer-tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
-    .footer-heading{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+    .footer-heading{font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
     .footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
     .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .2s}
     .footer-links a:hover{color:#fff}
     .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'Space Mono',monospace;letter-spacing:.05em}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'InterDisplay',sans-serif;letter-spacing:.05em}
 
     @media(max-width:900px){
       nav{padding:16px 24px}.nav-links{display:none}
@@ -182,23 +186,94 @@
       .faq-section,.categories-section{padding:60px 24px}
     }
   </style>
+<style id="fug-nav-styles">
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600}
+  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700}
+  @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype');font-weight:400}
+  #fug-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(13,17,23,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.07);font-family:'InterDisplay',sans-serif}
+  #fug-nav .nav-left{display:flex;align-items:center;gap:8px}
+  #fug-nav .nav-plus-sym{color:rgba(255,255,255,0.4);font-size:18px;font-weight:300;line-height:1;margin-right:8px}
+  #fug-nav .nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+  #fug-nav .nav-links>li{position:relative}
+  #fug-nav .nav-links a,#fug-nav .nav-links .nav-drop-trigger{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer;display:flex;align-items:center;gap:4px;background:none;border:none;padding:0;font-family:inherit;line-height:56px;white-space:nowrap}
+  #fug-nav .nav-links a:hover,#fug-nav .nav-links .nav-drop-trigger:hover,#fug-nav .nav-links a.active,#fug-nav .nav-links .nav-drop-trigger.active{color:#fff}
+  #fug-nav .nav-drop-trigger .chevron{display:inline-block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform 0.2s}
+  #fug-nav .nav-links li.open .nav-drop-trigger .chevron{transform:rotate(-135deg) translateY(-1px)}
+  #fug-nav .nav-dropdown{position:absolute;top:100%;left:0;background:#0d1117;border:1px solid rgba(255,255,255,0.1);min-width:180px;padding:8px 0;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;z-index:200}
+  #fug-nav .nav-links li.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
+  #fug-nav .nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:rgba(255,255,255,0.7);text-decoration:none;font-weight:500;transition:color 0.15s,background 0.15s;line-height:1.4;white-space:nowrap}
+  #fug-nav .nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+  #fug-nav .nav-dropdown a.active{color:#fff}
+  #fug-nav .nav-right{display:flex;align-items:center;gap:20px}
+  #fug-nav .nav-search-btn{background:none;border:none;cursor:pointer;padding:4px;color:rgba(255,255,255,0.55);transition:color 0.2s}
+  #fug-nav .nav-search-btn:hover{color:#fff}
+  #fug-nav .nav-ticket-btn{background:#fff;color:#000;padding:8px 20px;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;border-radius:2px;font-family:'InterDisplay',sans-serif;transition:background 0.2s}
+  #fug-nav .nav-ticket-btn:hover{background:#d4e600}
+  #fug-nav .nav-right-plus{color:rgba(255,255,255,0.35);font-size:18px;font-weight:300}
+  #fug-ticker-wrap{position:relative;z-index:90}
+  #fug-premiere-bar{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:9px 40px;display:flex;align-items:center;gap:48px;white-space:nowrap;overflow:hidden}
+  #fug-premiere-bar .pb-left,#fug-premiere-bar .pb-right{opacity:0.55;flex-shrink:0}
+  #fug-premiere-bar .pb-cta{font-weight:800;letter-spacing:0.12em;flex-shrink:0}
+  #fug-ticker{background:#d4e600;overflow:hidden;padding:10px 0;white-space:nowrap}
+  #fug-ticker .ticker-inner{display:inline-flex;animation:fugTicker 28s linear infinite}
+  #fug-ticker .ticker-item{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;padding:0 32px;display:flex;align-items:center;gap:16px;font-family:'InterDisplay',sans-serif}
+  #fug-ticker .ticker-item::after{content:'\2192';opacity:0.5}
+  @keyframes fugTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" style="display:inline-block;background:#fff;padding:7px 12px 6px;line-height:1;text-decoration:none">
-    <span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:900;color:#111;letter-spacing:-.03em;display:block">fak'</span>
-    <div style="height:1.5px;background:#111;margin:3px 0"></div>
-    <span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.03em;display:block"><span style="color:#111">u</span><span style="color:#8B1A1A">g</span><span style="color:#111">esi</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="programme.html">Programme</a></li>
-    <li><a href="immersiveAfrica.html">Immersive Africa</a></li>
-    <li><a href="awards.html" class="active">Awards</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-  <a class="nav-cta" href="tickets.html">Get Tickets</a>
+<nav id="fug-nav">
+  <div class="nav-left">
+    <span class="nav-plus-sym">+</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="programme.html">Festival Programme</a></li>
+      <li class="drop-li">
+        <button class="nav-drop-trigger">Signature Programmes <span class="chevron"></span></button>
+        <div class="nav-dropdown">
+          <a href="immersiveAfrica.html">Immersive Africa</a>
+          <a href="awards.html">Awards</a>
+        </div>
+      </li>
+      <li class="drop-li">
+        <button class="nav-drop-trigger">Discover <span class="chevron"></span></button>
+        <div class="nav-dropdown"><a href="about.html">About Us</a></div>
+      </li>
+      <li><a href="tickets.html">Tickets</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <button class="nav-search-btn" aria-label="Search">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><line x1="12" y1="12" x2="16" y2="16"/></svg>
+    </button>
+    <a class="nav-ticket-btn" href="tickets.html">Get Tickets</a>
+    <span class="nav-right-plus">+</span>
+  </div>
 </nav>
+<div id="fug-ticker-wrap">
+  <div id="fug-premiere-bar" style="background:#0d1b35;color:#fff;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <span class="pb-left">Premiering 07 — 21.04.2026</span>
+    <span class="pb-cta">GET YOUR TICKETS</span>
+    <span class="pb-right">Don&#39;t miss the South African Dome Premiere</span>
+  </div>
+  <div id="fug-ticker"><div class="ticker-inner">
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+    <span class="ticker-item">African Imaginaries &middot; 2026 Theme</span>
+    <span class="ticker-item">Awards applications now open. Learn more</span>
+    <span class="ticker-item">07 &#8212; 12 October 2026 &middot; Johannesburg</span>
+  </div></div>
+</div>
+
+
 
 <!-- HERO -->
 <div class="page-hero">
@@ -209,13 +284,7 @@
   <div class="page-eyebrow">→ Awards 2026</div>
   <h1 class="page-title">Recognising<br/>African Digital<br/>Excellence</h1>
   <p class="page-subtitle">Submissions now open across 8 categories. Win prizes, residencies, and global exposure for your work.</p>
-  <div class="hero-signia">
-    <div class="signia-block">
-      <span class="signia-top">fak'</span>
-      <div class="signia-divider"></div>
-      <span class="signia-bottom"><span class="u">u</span><span class="g">g</span><span class="esi">esi</span></span>
-    </div>
-  </div>
+  <div class="hero-signia"><div class="signia-block"><img src="logos/main/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi" style="height:52px;display:block"/></div></div>
 </div>
 
 
@@ -527,22 +596,22 @@
   <div class="partners-grid">
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img src="/images/tshimologong-logo.png" alt="Tshimologong" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-family:monospace;font-size:16px;font-weight:900;letter-spacing:.06em;color:#1a2332;line-height:1.15">TSHI<br/>MOLO<br/>GONG</div><div style="font-size:8px;letter-spacing:.2em;margin-top:5px;color:#1a2332">WITS UNIVERSITY</div></div>
+        <img src="logos/main/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="logos/main/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" style="max-width:150px;max-height:90px;object-fit:contain"/>
       </div>
       <p class="partner-desc">Tshimologong Digital Innovation Precinct — awards host and convener since 2013.</p>
     </div>
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img src="/images/wits-logo.png" alt="Wits University" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="logos/main/wits/logo_wits_dark_colloquial_extended.svg" alt="Wits University" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div style="display:none;flex-direction:column;align-items:center"><div style="font-size:30px;font-weight:900;color:#003087;letter-spacing:-.02em">WITS</div><div style="font-size:11px;letter-spacing:.12em;color:#003087">UNIVERSITY</div></div>
       </div>
       <p class="partner-desc">The University of the Witwatersrand — judging panel partner and academic anchor.</p>
     </div>
     <div class="partner-card">
       <div class="partner-logo-area">
-        <img src="/images/digital-dome-logo.png" alt="Digital Dome" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-size:9px;letter-spacing:.1em;color:#000;font-weight:600;margin-bottom:2px">WITS ANGLO AMERICAN</div><div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-.02em;line-height:1.1">DIGITAL<br/>DOME</div></div>
+        <img src="logos/partners/immersive-africa/digitaldome.svg" alt="Digital Dome" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="logos/partners/immersive-africa/digitaldome.svg" alt="Digital Dome" style="max-width:150px;max-height:90px;object-fit:contain"/>
       </div>
       <p class="partner-desc">The Wits Anglo American Digital Dome — screening venue for shortlisted immersive works.</p>
     </div>
@@ -552,7 +621,7 @@
 
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-brand">Fak'ugesi Festival</div><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
+    <div><img src="logos/main/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi" style="height:36px;display:block;filter:brightness(0) invert(1);margin-bottom:12px"/><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
     <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="programme.html">Programme</a></li><li><a href="immersiveAfrica.html">Immersive Africa</a></li><li><a href="awards.html">Awards</a></li><li><a href="tickets.html">Tickets</a></li></ul></div>
     <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="about.html#partners">Partners</a></li><li><a href="about.html#press">Press</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
     <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
@@ -588,22 +657,22 @@
 <script>
 const WINNERS = {
   2025: [
-    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'/images/IMG_8523_Athanasius_Johnson.png'},
-    {category:'Tech for Social Impact',title:'Yebo Health',artist:'Thandi Ndaba',country:'South Africa',desc:'AI-powered community health diagnostics reaching 40,000 rural patients in its first year.',img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=70'},
-    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'/images/Fak_ugesi_2025-32.jpg'},
+    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Tech for Social Impact',title:'Yebo Health',artist:'Thandi Ndaba',country:'South Africa',desc:'AI-powered community health diagnostics reaching 40,000 rural patients in its first year.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'images/Fak_ugesi_2025-32.jpg'},
   ],
   2024: [
-    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'/images/digital-dome-image-inside.jpg'},
-    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'/images/Fak_ugesi_2025-32.jpg'},
-    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'/images/_MGL7139.jpg'},
+    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'images/digital-dome-image-inside.jpg'},
+    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'images/_MGL7139.jpg'},
   ],
   2023: [
-    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'/images/IMG_8523_Athanasius_Johnson.png'},
-    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'/images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
-    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'/images/Fak_ugesi_2025-32.jpg'},
-    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'/images/digital-dome-image-inside.jpg'},
+    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'images/digital-dome-image-inside.jpg'},
   ]
 };
 
@@ -652,7 +721,21 @@ function toggleFaq(row){const item=row.closest('.faq-item');const was=item.class
 
 renderWinners();
 </script>
-
 <script src="globalEffects.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('#fug-nav .drop-li').forEach(function(li){
+    li.querySelector('.nav-drop-trigger').addEventListener('click',function(e){
+      e.stopPropagation();
+      var was=li.classList.contains('open');
+      document.querySelectorAll('#fug-nav .drop-li.open').forEach(function(o){o.classList.remove('open');});
+      if(!was) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('#fug-nav .drop-li.open').forEach(function(o){o.classList.remove('open');});
+  });
+})();
+</script>
 </body>
 </html>

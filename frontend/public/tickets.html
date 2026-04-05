@@ -4,368 +4,1008 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Tickets • Fak'ugesi Festival 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--yellow:#d4e600;--dark:#0d1117;--navy:#1a2332;--light-bg:#e4e7ef;--border:rgba(255,255,255,.1)}
-    html{scroll-behavior:smooth}
-    body{background:var(--dark);color:#fff;font-family:'Manrope',sans-serif;overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(13,17,23,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-plus{color:rgba(255,255,255,.4);font-size:20px;font-weight:300}
-    .nav-links{display:flex;gap:40px;list-style:none}
-    .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:#fff}
-    .nav-ticket-btn{background:var(--yellow);color:#000;padding:9px 22px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:2px}
-    .nav-right{display:flex;align-items:center;gap:16px}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* HERO */
-    .page-hero{min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 60px 60px;position:relative;overflow:hidden;background:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover no-repeat}
-    .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.72));z-index:0}
-    .page-hero>*{position:relative;z-index:1}
-    .crosshair{position:absolute;color:rgba(255,255,255,.25);font-size:18px;font-weight:300;pointer-events:none}
-    .hero-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px;font-weight:500}
-    .hero-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:18px}
-    .hero-desc{font-size:14px;color:rgba(255,255,255,.65);max-width:520px;line-height:1.7}
+    :root {
+      --navy:      #1a2744;
+      --blue-mid:  #2a3f72;
+      --lavender:  #dde3f0;
+      --white:     #ffffff;
+      --dark-text: #0d1b3e;
+      --body-gray: #3a4060;
+    }
 
-    /* TICKER */
-    .ticker{background:var(--yellow);overflow:hidden;padding:10px 0;white-space:nowrap}
-    .ticker-inner{display:inline-flex;animation:ticker 24s linear infinite}
-    .ticker-item{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#000;padding:0 32px;display:flex;align-items:center;gap:16px}
-    .ticker-item::after{content:'→';opacity:.5}
-    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--white);
+      overflow-x: hidden;
+    }
 
-    /* PASSES SECTION */
-    .passes-section{position:relative;overflow:hidden;padding:80px 0 100px;background:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover no-repeat}
-    .passes-section::before{content:'';position:absolute;inset:0;background:rgba(10,12,22,.82)}
-    .passes-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 60px}
-    .passes-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-    .passes-crosshairs{display:flex;justify-content:space-between;padding:0 0 20px}
-    .passes-crosshairs span,.passes-crosshairs-bot span{color:rgba(255,255,255,.2);font-size:18px}
-    .passes-crosshairs-bot{display:flex;justify-content:space-between;padding:24px 0 0}
-    .passes-heading{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.02em;margin-bottom:44px;color:#fff}
+    /* ── CROSS ICONS ── */
+    .cross-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      position: absolute;
+      z-index: 6;
+      animation: crossPulse 3s ease-in-out infinite;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
 
-    /* TICKET CARDS — white paper style like image 5 */
-    .passes-grid{display:flex;flex-direction:column;gap:20px}
-    .ticket-row{display:grid;grid-template-columns:1fr;background:#fff;color:#111;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-    .ticket-inner{display:grid;grid-template-columns:1fr auto;align-items:stretch}
-    .ticket-main{padding:36px 40px 36px 40px;border-right:2px dashed rgba(0,0,0,.15)}
-    .ticket-price-col{padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;min-width:200px;background:#fff}
-    .ticket-stub-hole{position:absolute;left:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(10,12,22,.85)}
-    .ticket-stub-hole-r{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(10,12,22,.85)}
-    .ticket-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#888;margin-bottom:8px}
-    .ticket-title{font-size:clamp(22px,3vw,34px);font-weight:900;color:#111;letter-spacing:-.02em;margin-bottom:8px}
-    .ticket-desc{font-size:12.5px;color:#555;line-height:1.65;max-width:380px;margin-bottom:16px}
-    .ticket-features{list-style:none;display:flex;flex-direction:column;gap:5px}
-    .ticket-features li{font-size:12px;color:#444;display:flex;align-items:center;gap:8px}
-    .ticket-features li::before{content:'→';color:#888;font-size:10px;flex-shrink:0}
-    .ticket-price-block{text-align:right}
-    .price-main{font-size:clamp(40px,5vw,62px);font-weight:900;color:#111;letter-spacing:-.03em;line-height:1}
-    .price-curr{font-size:20px;vertical-align:top;margin-top:8px;display:inline-block;margin-right:2px}
-    .price-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-top:4px;margin-bottom:16px}
-    .price-student{display:block;font-size:13px;color:#555;margin-bottom:4px}
-    .price-student span{font-weight:700;color:#111}
-    .ticket-cta{display:block;background:#111;color:#fff;border:none;padding:13px 28px;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:opacity .2s;white-space:nowrap;margin-top:auto}
-    .ticket-cta:hover{opacity:.8}
-    .ticket-cta.outline{background:transparent;border:1.5px solid #111;color:#111}
-    .ticket-cta.outline:hover{background:#111;color:#fff}
-    .ticket-badge{position:absolute;top:0;right:0;z-index:5;background:#d4e600;color:#000;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px}
-    .ticket-badge.hot{background:#111;color:#fff}
-    .ticket-divider{width:100%;height:1px;background:rgba(0,0,0,.08);margin:16px 0}
+    /* ── NAV ── */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      padding: 18px 48px;
+      background: transparent;
+    }
+    .nav-links { display: flex; gap: 0; list-style: none; margin: 0 auto; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      padding: 0 22px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); font-weight: 600; }
+    .nav-search { color: var(--white); cursor: pointer; opacity: 0.85; }
 
-    /* FAQ */
-    .faq-section{background:var(--navy);padding:80px 60px;border-top:1px solid rgba(255,255,255,.06)}
-    .faq-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
-    .faq-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-.02em}
-    .faq-dash{width:48px;height:3px;background:var(--yellow);margin-top:10px}
-    .faq-grid{display:flex;flex-direction:column;gap:1px}
-    .faq-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);overflow:hidden}
-    .faq-q-row{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;user-select:none;transition:background .2s}
-    .faq-q-row:hover{background:rgba(255,255,255,.06)}
-    .faq-q{font-size:15px;font-weight:600;color:#fff}
-    .faq-toggle{width:22px;height:22px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;transition:transform .3s,background .2s,border-color .2s}
-    .faq-item.open .faq-toggle{transform:rotate(45deg);background:var(--yellow);color:#000;border-color:var(--yellow)}
-    .faq-a{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;padding:0 24px 20px;display:none}
-    .faq-item.open .faq-a{display:block}
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--navy);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: tickerScroll 35s linear infinite;
+    }
+    .ticker-track span {
+      padding: 0 32px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.02em;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
 
-    /* PARTNERS */
-    .partners-section{background:var(--light-bg);padding:80px 60px}
-    .partners-crosshairs{display:flex;justify-content:space-between;margin-bottom:24px}
-    .partners-crosshairs span{color:rgba(0,0,0,.15);font-size:18px}
-    .partners-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
-    .partners-title{font-size:clamp(24px,3vw,38px);font-weight:800;color:#1a2332;letter-spacing:-.02em}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .partner-card{background:#fff;padding:32px;display:flex;flex-direction:column;align-items:center;border:1px solid rgba(0,0,0,.06)}
-    .partner-logo-area{height:120px;display:flex;align-items:center;justify-content:center;width:100%;margin-bottom:16px}
-    .partner-logo-img{max-width:160px;max-height:90px;object-fit:contain;display:block}
-    .partner-desc{font-size:11px;color:#5a6274;line-height:1.6;text-align:center}
+    /* ════════════════════════
+       HERO
+    ════════════════════════ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../images/_C6A0500.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.55) scaleX(-1);
+      animation: kenBurns 18s ease-in-out infinite alternate;
+      transform: scaleX(-1);
+    }
+    @keyframes kenBurns {
+      from { transform: scaleX(-1) scale(1); }
+      to   { transform: scaleX(-1) scale(1.06); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.65) 40%, transparent 78%);
+    }
+    /* Blue tint overlay - very low opacity */
+    .hero-blue-tint {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 60, 160, 0.18);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 48px 44px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.0;
+      margin-bottom: 18px;
+    }
+    .hero-body {
+      font-size: 12.5px;
+      line-height: 1.7;
+      max-width: 420px;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .btn-tickets {
+      display: inline-block;
+      border: 1.5px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      padding: 11px 28px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s;
+    }
+    .btn-tickets:hover { background: var(--white); color: var(--navy); }
 
-    .arrow-btn{display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:100px;height:52px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;text-decoration:none;transition:border-color .2s}
-    .arrow-btn:hover{border-color:rgba(255,255,255,.7)}
-    .arrow-btn .arr-icon{width:26px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:2}
-    .arrow-btn.dark{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.25)}
-    .arrow-btn.dark:hover{border-color:rgba(0,0,0,.6)}
-    .arrow-btn.dark .arr-icon{stroke:#111}
+    /* Logo box top right */
+    .hero-logo-box {
+      position: absolute;
+      right: 72px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--white);
+      padding: 20px 24px;
+      z-index: 4;
+      animation: fadeUp 1.1s ease both;
+    }
+    .hero-logo-box img {
+      width: 120px;
+      height: auto;
+      display: block;
+    }
 
-    .footer-socials{background:var(--navy);color:#fff;padding:14px 60px;text-align:center}
-    .footer-socials p{font-size:13px;font-weight:500}
-    footer{background:var(--light-bg);border-top:1px solid #c8ccd8;padding:48px 60px 40px}
-    .footer-crosshairs{display:flex;justify-content:space-between;margin-bottom:32px}
-    .footer-crosshairs span{color:rgba(0,0,0,.15);font-size:18px}
-    .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
-    .footer-address{font-size:12px;color:#5a6274;line-height:1.7}
-    .footer-address strong{display:block;color:#1a2332;font-weight:700;margin-bottom:6px}
-    .footer-contact strong{display:block;color:#1a2332;font-weight:700;margin-bottom:6px;font-size:12px}
-    .footer-contact a{font-size:12px;color:#1a2332;display:block;text-decoration:none;margin-bottom:4px;border-bottom:1px solid #1a2332;width:fit-content}
-    .footer-logo-area{display:flex;align-items:flex-start;justify-content:flex-end;gap:16px}
-    .footer-logo-badge{background:#1a2332;color:#fff;padding:12px 14px;font-size:13px;font-weight:900;line-height:1.2;font-family:'Space Grotesk',sans-serif}
-    .footer-copy{font-size:11px;color:#5a6274;line-height:1.5}
-    .footer-copy strong{display:block;color:#1a2332;font-weight:600}
-    .footer-bottom-crosshairs{display:flex;justify-content:space-between;margin-top:32px}
-    .footer-bottom-crosshairs span{color:rgba(0,0,0,.15);font-size:18px}
+    /* ════════════════════════
+       FESTIVAL PASSES SECTION
+    ════════════════════════ */
+    .passes-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .passes-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../images/0A9A3304.JPG');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35);
+    }
+    .passes-content {
+      position: relative;
+      z-index: 3;
+      padding: 60px 48px 72px;
+    }
+
+    /* crosses */
+    .crosses-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .crosses-row svg { width: 18px; height: 18px; }
+    .crosses-row-bot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .crosses-row-bot svg { width: 18px; height: 18px; }
+
+    /* 2-col layout: text left, tickets right */
+    .passes-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .passes-left {}
+    .passes-title {
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .passes-intro {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* ── TICKET CARDS — stacked on right half ── */
+    .passes-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ticket-card {
+      position: relative;
+      overflow: visible;
+      color: var(--dark-text);
+    }
+
+    /* Full Pass — white background */
+    .ticket-card.full-pass {
+      background: var(--white);
+    }
+
+    /* Day Pass & Industry Pass — transparent with white border */
+    .ticket-card.day-pass,
+    .ticket-card.industry-pass {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.55);
+      color: var(--white);
+    }
+
+    .ticket-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: stretch;
+    }
+    .ticket-main {
+      padding: 28px 32px;
+    }
+
+    /* Dashed divider only on white card */
+    .ticket-card.full-pass .ticket-main {
+      border-right: 2px dashed rgba(0,0,0,0.12);
+    }
+    .ticket-card.day-pass .ticket-main,
+    .ticket-card.industry-pass .ticket-main {
+      border-right: 2px dashed rgba(255,255,255,0.3);
+    }
+
+    .ticket-price-col {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      min-width: 180px;
+    }
+    /* perforated holes */
+    .ticket-hole-l {
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(10,18,40,0.8);
+      z-index: 5;
+    }
+    .ticket-hole-r {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(10,18,40,0.8);
+      z-index: 5;
+    }
+    /* bottom arch cutout on last ticket */
+    .ticket-arch-bot {
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px; height: 14px;
+      background: rgba(10,18,40,0.8);
+      border-radius: 14px 14px 0 0;
+      z-index: 5;
+    }
+
+    /* text colors per card type */
+    .ticket-card.full-pass .ticket-label { color: var(--body-gray); }
+    .ticket-card.full-pass .ticket-title { color: var(--dark-text); }
+    .ticket-card.full-pass .ticket-desc  { color: var(--body-gray); }
+    .ticket-card.full-pass .ticket-features li { color: var(--dark-text); }
+    .ticket-card.full-pass .ticket-features li::before { color: var(--body-gray); }
+
+    .ticket-card.day-pass .ticket-label,
+    .ticket-card.industry-pass .ticket-label { color: rgba(255,255,255,0.6); }
+    .ticket-card.day-pass .ticket-title,
+    .ticket-card.industry-pass .ticket-title { color: var(--white); }
+    .ticket-card.day-pass .ticket-desc,
+    .ticket-card.industry-pass .ticket-desc  { color: rgba(255,255,255,0.78); }
+    .ticket-card.day-pass .ticket-features li,
+    .ticket-card.industry-pass .ticket-features li { color: rgba(255,255,255,0.9); }
+    .ticket-card.day-pass .ticket-features li::before,
+    .ticket-card.industry-pass .ticket-features li::before { color: rgba(255,255,255,0.5); }
+
+    .ticket-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .ticket-title {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .ticket-desc {
+      font-size: 12px;
+      line-height: 1.65;
+      max-width: 340px;
+      margin-bottom: 14px;
+    }
+    .ticket-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .ticket-features li {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ticket-features li::before {
+      content: '→';
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* price col */
+    .price-block { text-align: right; }
+    .price-amount {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .ticket-card.full-pass .price-amount { color: var(--dark-text); }
+    .ticket-card.day-pass .price-amount,
+    .ticket-card.industry-pass .price-amount { color: var(--white); }
+
+    .price-curr {
+      font-size: 18px;
+      vertical-align: top;
+      margin-top: 8px;
+      display: inline-block;
+      margin-right: 2px;
+    }
+    .price-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 3px;
+      margin-bottom: 4px;
+    }
+    .ticket-card.full-pass .price-label { color: var(--body-gray); }
+    .ticket-card.day-pass .price-label,
+    .ticket-card.industry-pass .price-label { color: rgba(255,255,255,0.6); }
+
+    .price-divider {
+      width: 100%;
+      height: 1px;
+      margin: 12px 0;
+    }
+    .ticket-card.full-pass .price-divider { background: rgba(0,0,0,0.1); }
+    .ticket-card.day-pass .price-divider,
+    .ticket-card.industry-pass .price-divider { background: rgba(255,255,255,0.2); }
+
+    .student-note {
+      font-size: 10px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    .ticket-card.full-pass .student-note { color: var(--body-gray); }
+    .ticket-card.day-pass .student-note,
+    .ticket-card.industry-pass .student-note { color: rgba(255,255,255,0.55); }
+
+    .btn-get-pass {
+      display: block;
+      padding: 12px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+      white-space: nowrap;
+      border: 1.5px solid transparent;
+    }
+    /* Full Pass CTA — dark on white */
+    .ticket-card.full-pass .btn-get-pass {
+      background: transparent;
+      border-color: var(--dark-text);
+      color: var(--dark-text);
+    }
+    .ticket-card.full-pass .btn-get-pass:hover {
+      background: var(--dark-text);
+      color: var(--white);
+    }
+    /* Day & Industry — white outline on dark */
+    .ticket-card.day-pass .btn-get-pass,
+    .ticket-card.industry-pass .btn-get-pass {
+      background: transparent;
+      border-color: rgba(255,255,255,0.75);
+      color: var(--white);
+    }
+    .ticket-card.day-pass .btn-get-pass:hover,
+    .ticket-card.industry-pass .btn-get-pass:hover {
+      background: var(--white);
+      color: var(--dark-text);
+    }
+
+    /* ════════════════════════
+       FAQ
+    ════════════════════════ */
+    .faq-section {
+      background: var(--white);
+      padding: 64px 48px 72px;
+      position: relative;
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 64px;
+      align-items: flex-start;
+    }
+    .faq-title {
+      font-size: 50px;
+      font-weight: 900;
+      color: var(--dark-text);
+      margin-bottom: 20px;
+    }
+    .faq-intro {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--body-gray);
+      max-width: 280px;
+    }
+    .faq-items { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border: 1px solid rgba(26,39,68,0.15);
+      border-bottom: none;
+      background: #f0f3f9;
+    }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 22px;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .faq-question span:first-child {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark-text);
+      line-height: 1.35;
+    }
+    .faq-toggle {
+      font-size: 20px;
+      color: var(--dark-text);
+      flex-shrink: 0;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 22px 22px;
+      font-size: 13px;
+      line-height: 1.72;
+      color: var(--body-gray);
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ════════════════════════
+       PARTNERS
+    ════════════════════════ */
+    .partners-section {
+      background: var(--lavender);
+      padding: 64px 48px 72px;
+      position: relative;
+    }
+    .partners-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+    .partners-title { font-size: 42px; font-weight: 900; color: var(--dark-text); }
+    .partners-link {
+      font-size: 12px;
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: underline;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+    .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 860px; }
+    .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-box {
+      background: var(--white);
+      border: 1px solid rgba(26,39,68,0.12);
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .partner-card:hover .partner-logo-box {
+      box-shadow: 0 10px 32px rgba(26,39,68,0.13);
+      transform: translateY(-5px);
+    }
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+
+    /* ── SOCIAL BAND ── */
+    .social-band {
+      background: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+    }
+    .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+    .social-band-icons { display: flex; gap: 18px; }
+    .social-band-icons a { color: var(--white); text-decoration: none; transition: opacity 0.2s; }
+    .social-band-icons a:hover { opacity: 0.55; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid rgba(26,39,68,0.1);
+      padding: 0 48px;
+      color: var(--dark-text);
+      position: relative;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      padding: 52px 0;
+      position: relative;
+    }
+    .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
+    .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
+    .footer-col-title { font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 12px; }
+    footer a { color: var(--navy); font-size: 13px; display: block; line-height: 2; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-right { display: flex; align-items: flex-start; gap: 20px; }
+    .footer-logo-img { height: 64px; width: auto; display: block; }
+    .footer-copy { font-size: 12px; color: #555; line-height: 1.65; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
-<nav>
-  <span class="nav-plus">+</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="immersiveAfrica.html">Immersive Africa</a></li>
-    <li><a href="awards.html">Awards</a></li>
-    <li><a href="programme.html">Programme</a></li>
-    <li><a href="tickets.html" class="active">Tickets</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-ticket-btn" href="tickets.html">Get Tickets</a>
-    <span class="nav-plus">+</span>
+
+<!-- ═══════════════════════════
+     HERO
+═══════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-blue-tint"></div>
+
+  <div class="cross-icon" style="top:16px;left:48px;animation-delay:0s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
   </div>
-</nav>
-
-<div class="page-hero">
-  <div class="crosshair" style="top:90px;left:40px;z-index:2">+</div>
-  <div class="crosshair" style="top:90px;right:200px;z-index:2">+</div>
-  <div class="crosshair" style="bottom:40px;left:40px;z-index:2">+</div>
-  <div class="crosshair" style="bottom:40px;right:40px;z-index:2">+</div>
-  <div style="position:absolute;top:100px;right:60px;z-index:10">
-    <div style="background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block">fak'</span>
-      <div style="height:1.5px;background:#111;margin:4px 0"></div>
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block"><span style="color:#111">u</span><span style="color:#8B1A1A">g</span><span style="color:#111">esi</span></span>
-    </div>
+  <div class="cross-icon" style="top:16px;right:48px;animation-delay:0.7s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
   </div>
-  <div class="hero-eyebrow">Fak'ugesi Festival 2026 · 07 — 12 October</div>
-  <h1 class="hero-title">Festival<br/>Passes</h1>
-  <p class="hero-desc">Join 25,000+ attendees at Africa's leading digital innovation festival. Choose your pass below.</p>
-</div>
-
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Full Pass — R750 · Student R200</span>
-    <span class="ticker-item">Day Pass — R340 · Student R135</span>
-    <span class="ticker-item">Industry Pass — R3500</span>
-    <span class="ticker-item">07 — 12 October 2026 · Johannesburg</span>
-    <span class="ticker-item">Full Pass — R750 · Student R200</span>
-    <span class="ticker-item">Day Pass — R340 · Student R135</span>
-    <span class="ticker-item">Industry Pass — R3500</span>
-    <span class="ticker-item">07 — 12 October 2026 · Johannesburg</span>
+  <div class="cross-icon" style="bottom:16px;left:48px;animation-delay:1.4s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
   </div>
-</div>
+  <div class="cross-icon" style="bottom:16px;right:48px;animation-delay:2.1s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
+  </div>
 
-<section class="passes-section">
-  <div class="passes-inner">
-    <div class="passes-crosshairs"><span>+</span><span>+</span><span>+</span></div>
-    <h2 class="passes-heading">Festival Passes</h2>
-    <div class="passes-grid">
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="immersiveAfrica.html">Festival Programme</a></li>
+      <li><a href="programme.html">Signature Programmes</a></li>
+      <li><a href="about.html">Discover</a></li>
+      <li><a href="tickets.html" class="active">Tickets</a></li>
+    </ul>
+    <span class="nav-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+  </nav>
 
-      <!-- FULL PASS -->
-      <div class="ticket-row">
-        <div class="ticket-stub-hole"></div>
-        <div class="ticket-stub-hole-r"></div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Full Festival Access</div>
-            <div class="ticket-title">Full Pass</div>
-            <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
-            <ul class="ticket-features">
-              <li>Panels &amp; workshops</li>
-              <li>Access to Market</li>
-              <li>Performances (including invitation-only events)</li>
-              <li>75% off group purchases of 10–20 passes</li>
-            </ul>
-          </div>
-          <div class="ticket-price-col">
-            <div class="ticket-price-block">
-              <div class="price-main"><span class="price-curr">R</span>200</div>
-              <div class="price-lbl">For Students*</div>
-              <div class="ticket-divider"></div>
-              <div class="price-main"><span class="price-curr">R</span>750</div>
-              <div class="price-lbl">For General Public</div>
-            </div>
-            <div>
-              <div style="font-size:9px;color:#999;margin-bottom:10px">*valid student ID required</div>
-              <a class="ticket-cta" href="#">GET FULL PASS</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fak'ugesi Festival 2026 · 13 — 17 October</p>
+    <h1 class="hero-title">Join us between<br>13 and 17 October 2026</h1>
+    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+    <a class="btn-tickets" href="#passes">GET YOUR TICKETS</a>
+  </div>
 
-      <!-- DAY PASS -->
-      <div class="ticket-row">
-        <div class="ticket-stub-hole"></div>
-        <div class="ticket-stub-hole-r"></div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Single Day Access</div>
-            <div class="ticket-title">Day Pass</div>
-            <p class="ticket-desc">Full access on your chosen day — all panels, workshops and expo included. Flexible, choose any day of the festival.</p>
-            <ul class="ticket-features">
-              <li>Full access on your chosen day</li>
-              <li>All panels &amp; workshops that day</li>
-              <li>Expo access included</li>
-            </ul>
-          </div>
-          <div class="ticket-price-col">
-            <div class="ticket-price-block">
-              <div class="price-main"><span class="price-curr">R</span>135</div>
-              <div class="price-lbl">For Students*</div>
-              <div class="ticket-divider"></div>
-              <div class="price-main"><span class="price-curr">R</span>340</div>
-              <div class="price-lbl">For General Public</div>
-            </div>
-            <div>
-              <div style="font-size:9px;color:#999;margin-bottom:10px">*valid student ID required</div>
-              <a class="ticket-cta" href="#">GET DAY PASS</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- INDUSTRY PASS -->
-      <div class="ticket-row">
-        <div class="ticket-stub-hole"></div>
-        <div class="ticket-stub-hole-r"></div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Professional All-Access</div>
-            <div class="ticket-title">Industry Pass</div>
-            <p class="ticket-desc">All Full Pass benefits plus exclusive networking sessions, VIP lounge access and priority Awards ceremony seating.</p>
-            <ul class="ticket-features">
-              <li>All Full Pass benefits</li>
-              <li>Exclusive networking sessions</li>
-              <li>VIP lounge access</li>
-              <li>Awards ceremony priority seating</li>
-            </ul>
-          </div>
-          <div class="ticket-price-col">
-            <div class="ticket-price-block">
-              <div class="price-main" style="font-size:clamp(32px,4vw,52px)"><span class="price-curr">R</span>3,500</div>
-              <div class="price-lbl">For PROs</div>
-            </div>
-            <a class="ticket-cta outline" href="#">GET INDUSTRY PASS</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="passes-crosshairs-bot"><span>+</span><span>+</span><span>+</span></div>
+  <div class="hero-logo-box">
+    <img src="../images/logos/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-head">
-    <div><h2 class="faq-title">FAQ</h2><div class="faq-dash"></div></div>
-    <a class="arrow-btn" href="#" aria-label="FAQ">
-      <svg class="arr-icon" viewBox="0 0 26 16"><line x1="2" y1="8" x2="22" y2="8"/><polyline points="16,2 22,8 16,14"/></svg>
-    </a>
+<!-- TICKER -->
+<div class="ticker-wrapper">
+  <div class="ticker-track">
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>View venues and map &nbsp;→&nbsp;</span>
   </div>
-  <div class="faq-grid">
-    <div class="faq-item open">
-      <div class="faq-q-row" onclick="toggleFaq(this)">
-        <span class="faq-q">Are tickets refundable?</span><span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Full refunds available up to 30 days before the festival. Within 30 days, tickets can be transferred to another person.</div>
+</div>
+
+<!-- ═══════════════════════════
+     FESTIVAL PASSES
+═══════════════════════════ -->
+<section class="passes-section reveal" id="passes">
+  <div class="passes-bg"></div>
+  <div class="passes-content">
+    <div class="crosses-row">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
     </div>
-    <div class="faq-item">
-      <div class="faq-q-row" onclick="toggleFaq(this)">
-        <span class="faq-q">How do I prove student status?</span><span class="faq-toggle">+</span>
+
+    <div class="passes-layout">
+      <!-- LEFT: title + intro text -->
+      <div class="passes-left">
+        <h2 class="passes-title">Festival<br>Passes</h2>
+        <p class="passes-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
       </div>
-      <div class="faq-a">A valid student card or letter from your institution is required at registration. Student tickets are available at the door or via email application.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q-row" onclick="toggleFaq(this)">
-        <span class="faq-q">Is the venue accessible?</span><span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Yes. The Newtown Cultural Precinct is fully wheelchair accessible. Please contact us in advance if you require specific accommodations.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q-row" onclick="toggleFaq(this)">
-        <span class="faq-q">Can I attend online?</span><span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Selected keynotes and panels will be livestreamed. A digital access pass will be available closer to the festival.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q-row" onclick="toggleFaq(this)">
-        <span class="faq-q">Is there group booking?</span><span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-a">Groups of 10+ receive a 15% discount. Contact groups@fakugesi.co.za for group booking arrangements.</div>
+
+      <!-- RIGHT: ticket cards -->
+      <div class="passes-right">
+
+        <!-- FULL PASS — white background -->
+        <div class="ticket-card full-pass">
+          <div class="ticket-hole-l"></div>
+          <div class="ticket-hole-r"></div>
+          <div class="ticket-inner">
+            <div class="ticket-main">
+              <div class="ticket-label">Full Festival Access</div>
+              <div class="ticket-title">Full Pass</div>
+              <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
+              <ul class="ticket-features">
+                <li>Panels &amp; workshops</li>
+                <li>Expo &amp; showcases</li>
+                <li>Access to Market</li>
+                <li>Performances (excluding invitation-only events)</li>
+                <li>15% off group purchases of 10 – 20 passes</li>
+              </ul>
+            </div>
+            <div class="ticket-price-col">
+              <div>
+                <div class="price-block">
+                  <div class="price-amount"><span class="price-curr">R</span>200</div>
+                  <div class="price-label">For Students*</div>
+                </div>
+                <div class="price-divider"></div>
+                <div class="price-block">
+                  <div class="price-amount"><span class="price-curr">R</span>750</div>
+                  <div class="price-label">For General Public</div>
+                </div>
+              </div>
+              <div>
+                <div class="student-note">*valid student ID required</div>
+                <a class="btn-get-pass" href="#">GET FULL PASS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY PASS — transparent/outlined -->
+        <div class="ticket-card day-pass">
+          <div class="ticket-hole-l"></div>
+          <div class="ticket-hole-r"></div>
+          <div class="ticket-inner">
+            <div class="ticket-main">
+              <div class="ticket-label">Single Day Access</div>
+              <div class="ticket-title">Day Pass</div>
+              <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
+              <ul class="ticket-features">
+                <li>Full access on your chosen day</li>
+                <li>All panels &amp; workshops that day</li>
+                <li>Expo access included</li>
+              </ul>
+            </div>
+            <div class="ticket-price-col">
+              <div>
+                <div class="price-block">
+                  <div class="price-amount"><span class="price-curr">R</span>135</div>
+                  <div class="price-label">For Students*</div>
+                </div>
+                <div class="price-divider"></div>
+                <div class="price-block">
+                  <div class="price-amount"><span class="price-curr">R</span>340</div>
+                  <div class="price-label">For General Public</div>
+                </div>
+              </div>
+              <div>
+                <div class="student-note">*valid student ID required</div>
+                <a class="btn-get-pass" href="#">GET DAY PASS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INDUSTRY PASS — transparent/outlined -->
+        <div class="ticket-card industry-pass">
+          <div class="ticket-hole-l"></div>
+          <div class="ticket-hole-r"></div>
+          <div class="ticket-arch-bot"></div>
+          <div class="ticket-inner">
+            <div class="ticket-main">
+              <div class="ticket-label">Professional All-Access</div>
+              <div class="ticket-title">Industry Pass</div>
+              <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
+              <ul class="ticket-features">
+                <li>All Full Pass benefits</li>
+                <li>Exclusive networking sessions</li>
+                <li>VIP lounge access</li>
+                <li>Awards ceremony priority seating</li>
+              </ul>
+            </div>
+            <div class="ticket-price-col">
+              <div>
+                <div class="price-block">
+                  <div class="price-amount"><span class="price-curr" style="font-size:14px">R</span>3,500</div>
+                  <div class="price-label">For VIPs</div>
+                </div>
+              </div>
+              <div>
+                <a class="btn-get-pass" href="#">GET INDUSTRY PASS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end passes-right -->
+    </div><!-- end passes-layout -->
+
+    <div class="crosses-row-bot">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
     </div>
   </div>
 </section>
 
-<!-- PARTNERS -->
-<section class="partners-section">
-  <div class="partners-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+<!-- ═══════════════════════════
+     FAQ
+═══════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:20px;right:0;animation-delay:0.7s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title">FAQ</h2>
+      <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">−</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     PARTNERS
+═══════════════════════════ -->
+<section class="partners-section reveal">
+  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:0.6s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:20px;right:0;animation-delay:1.2s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
-    <div style="display:flex;align-items:center;gap:14px">
-      <a style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6274;text-decoration:underline;text-underline-offset:3px" href="about.html#partners">View all partners</a>
-      <a class="arrow-btn dark" href="about.html#partners" aria-label="Partners">
-        <svg class="arr-icon" viewBox="0 0 26 16"><line x1="2" y1="8" x2="22" y2="8"/><polyline points="16,2 22,8 16,14"/></svg>
-      </a>
-    </div>
+    <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <img class="partner-logo-img" src="/images/tshimologong-logo.png" alt="Tshimologong" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-family:monospace;font-size:16px;font-weight:900;letter-spacing:.06em;color:#1a2332;line-height:1.15">TSHI<br/>MOLO<br/>GONG</div><div style="font-size:8px;letter-spacing:.2em;margin-top:5px;color:#1a2332">WITS UNIVERSITY</div></div>
+      <div class="partner-logo-box">
+        <img src="../images/tshimologong.png" alt="Tshimologong – Wits University" onerror="this.style.display='none'" />
       </div>
       <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <img class="partner-logo-img" src="/images/wits-logo.png" alt="Wits University" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;flex-direction:column;align-items:center"><div style="font-size:30px;font-weight:900;color:#003087;letter-spacing:-.02em">WITS</div><div style="font-size:11px;letter-spacing:.12em;color:#003087">UNIVERSITY</div></div>
+      <div class="partner-logo-box">
+        <img src="../images/wits.png" alt="Wits University" onerror="this.style.display='none'" />
       </div>
       <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-area">
-        <img class="partner-logo-img" src="/images/digital-dome-logo.png" alt="Digital Dome" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;flex-direction:column;align-items:center;text-align:center"><div style="font-size:9px;letter-spacing:.1em;color:#000;font-weight:600;margin-bottom:2px">WITS ANGLO AMERICAN</div><div style="font-size:20px;font-weight:900;color:#000;letter-spacing:-.02em;line-height:1.1">DIGITAL<br/>DOME</div></div>
+      <div class="partner-logo-box">
+        <img src="../images/digital-dome.png" alt="Wits Anglo American Digital Dome" onerror="this.style.display='none'" />
       </div>
       <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner.</p>
     </div>
   </div>
-  <div class="partners-crosshairs" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
+
+  <div style="display:flex;justify-content:space-between;margin-top:32px;">
+    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
 </section>
 
-<div class="footer-socials"><p>Follow us on socials <strong>@fakugesi</strong></p></div>
-<footer>
-  <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
-  <div class="footer-grid">
-    <div class="footer-address"><strong>Fak'ugesi Festival</strong>41 Juta Street, Braamfontein<br/>Johannesburg, South Africa</div>
-    <div class="footer-contact"><strong>Contact us</strong><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div>
-    <div class="footer-logo-area"><div class="footer-logo-badge"><div>fak'</div><div>ugesi</div></div><div class="footer-copy"><strong>© 2026</strong>Fak'ugesi Festival<br/>All Rights Reserved</div></div>
+<!-- SOCIAL BAND -->
+<div class="social-band">
+  <p>Follow us on socials <strong>@fakugesi</strong></p>
+  <div class="social-band-icons">
+    <a href="#" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+    </a>
+    <a href="#" aria-label="X">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
   </div>
-  <div class="footer-bottom-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:0.5s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:20px;right:0;animation-delay:1s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:20px;left:0;animation-delay:0.3s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:20px;right:0;animation-delay:0.8s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand-name">Fak'ugesi Festival</p>
+      <p class="footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact us</p>
+      <a href="/cdn-cgi/l/email-protection#a9c1ccc5c5c6e9cfc8c2dcceccdac087cac687d3c8"><span class="__cf_email__" data-cfemail="abc3cec7c7c4ebcdcac0deccced8c285c8c485d1ca">[email&#160;protected]</span></a>
+      <a href="tel:+27117178156">+27 11 717 8156</a>
+    </div>
+    <div class="footer-right">
+      <img class="footer-logo-img" src="../images/logos/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" onerror="this.style.display='none'" />
+      <div>
+        <p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
 </footer>
+
 <script>
-function toggleFaq(row){const item=row.closest('.faq-item');const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-toggle').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-toggle').textContent = '−';
+    }
+  }
 </script>
-<script src="globalEffects.js"></script>
 </body>
 </html>
-
-

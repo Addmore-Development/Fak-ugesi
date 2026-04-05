@@ -1,553 +1,348 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>About • Fak'ugesi African Digital & Innovation Festival</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover • Fak'ugesi Festival 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --yellow: #d4e600;
-      --dark-navy: #0d1117;
-      --navy: #1a2332;
-      --light-bg: #e4e7ef;
-      --light-mid: #c8ccd8;
-      --light-card: #f0f2f7;
-      --text-dark: #1a1f2e;
-      --text-mid: #5a6274;
-      --border: rgba(0,0,0,0.08);
+      --navy:      #1a2744;
+      --lavender:  #dde3f0;
+      --white:     #ffffff;
+      --dark-text: #0d1b3e;
+      --body-gray: #3a4060;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--light-bg); color: var(--text-dark); font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(13,17,23,0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .cross-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
+      animation: crossPulse 3s ease-in-out infinite;
     }
-    .nav-plus { color: rgba(255,255,255,0.5); font-size: 20px; font-weight: 300; line-height: 1; }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: #fff; }
-    .nav-ticket-btn {
-      background: var(--yellow); color: #000; padding: 9px 22px;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; text-decoration: none; border-radius: 2px;
+    .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse { 0%,100% { opacity: 0.45; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
+
+    nav { position: absolute; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; padding: 18px 48px; background: transparent; }
+    .nav-links { display: flex; gap: 0; list-style: none; margin: 0 auto; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.03em; padding: 0 22px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); font-weight: 600; }
+    .nav-search { color: var(--white); cursor: pointer; opacity: 0.85; }
+
+    .ticker-wrapper { background: var(--dark-text); overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10; }
+    .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* HERO */
+    .hero { position: relative; width: 100%; height: 400px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('../images/Copy_of__MGL3584.jpg'); background-size: cover; background-position: center 30%; filter: brightness(0.5); animation: kenBurns 18s ease-in-out infinite alternate; }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(10,18,48,0.68) 45%, transparent 80%); }
+    .hero-content { position: relative; z-index: 3; padding: 0 48px 44px; animation: fadeUp 0.9s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; }
+    .hero-title { font-size: 52px; font-weight: 900; line-height: 1.0; margin-bottom: 18px; max-width: 750px; }
+    .hero-body { font-size: 12.5px; line-height: 1.7; max-width: 430px; opacity: 0.85; margin-bottom: 26px; }
+    .hero-dates { font-size: 30px; font-weight: 700; letter-spacing: 0.02em; }
+    .hero-logo-box { position: absolute; right: 72px; top: 50%; transform: translateY(-50%); background: var(--white); padding: 20px 24px; z-index: 4; animation: fadeUp 1.1s ease both; }
+    .hero-logo-box img { width: 110px; height: auto; display: block; }
+
+    /* WHO WE ARE */
+    .who-section { background: var(--white); padding: 0 0 0; position: relative; }
+    .crosses-bar { display: flex; justify-content: space-between; padding: 22px 48px; }
+    .crosses-bar svg { width: 18px; height: 18px; }
+    .who-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: flex-start; padding: 0 48px 60px; gap: 64px; }
+    .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
+    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
+    .who-body p + p { margin-top: 24px; }
+
+    /* IMAGE STRIP */
+    .img-strip-section { background: var(--white); overflow: hidden; position: relative; }
+    .img-strip { display: flex; gap: 16px; width: max-content; animation: stripScroll 30s linear infinite; }
+    .img-strip:hover { animation-play-state: paused; }
+    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .strip-img-item { flex: 0 0 380px; height: 380px; overflow: hidden; }
+    .strip-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .strip-img-item:hover img { transform: scale(1.04); }
+    .crosses-bar-3 { display: flex; justify-content: space-between; padding: 22px 48px; }
+    .crosses-bar-3 svg { width: 18px; height: 18px; }
+
+    /* PREVIOUS EDITIONS */
+    .editions-section { background: var(--lavender); padding: 0 0 60px; position: relative; overflow: hidden; }
+    .editions-header { padding: 52px 48px 36px; }
+    .editions-title { font-size: 46px; font-weight: 900; color: var(--dark-text); }
+    .editions-strip-outer { overflow: hidden; }
+    .editions-strip { display: flex; gap: 0; width: max-content; }
+    .edition-card { flex: 0 0 380px; cursor: pointer; }
+    .edition-img { width: 380px; height: 340px; overflow: hidden; }
+    .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.45s; }
+    .edition-card:hover .edition-img img { transform: scale(1.04); }
+    .edition-meta { padding: 16px 16px 0; background: var(--lavender); }
+    .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .edition-dates, .edition-year { font-size: 12px; color: var(--body-gray); }
+    .edition-name { font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 10px; }
+    .edition-desc { font-size: 12.5px; color: var(--body-gray); line-height: 1.65; }
+
+    /* THE TEAM */
+    .team-section { background: var(--white); padding: 0 48px 72px; position: relative; }
+    .team-crosses-top { display: flex; justify-content: space-between; padding: 22px 0; }
+    .team-crosses-top svg { width: 18px; height: 18px; }
+    .team-title { font-size: 46px; font-weight: 900; color: var(--dark-text); margin-bottom: 36px; }
+    .team-grid, .team-grid-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .team-grid-row2 { margin-top: 20px; }
+    .team-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
+    .team-img { width: 100%; aspect-ratio: 3/2.8; overflow: hidden; }
+    .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .team-info { background: var(--lavender); padding: 18px 20px 22px; }
+    .team-name { font-size: 22px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 10px; }
+    .team-role { font-size: 14px; font-weight: 500; color: var(--dark-text); margin-bottom: 10px; }
+    .team-email { font-size: 12px; color: var(--body-gray); }
+
+    /* GET IN TOUCH */
+    .contact-section { background: var(--navy); padding: 64px 48px 72px; position: relative; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: flex-start; }
+    .contact-title { font-size: 46px; font-weight: 900; color: var(--white); margin-bottom: 40px; }
+    .contact-info-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
+    .contact-info-val { font-size: 20px; font-weight: 500; color: var(--white); margin-bottom: 28px; line-height: 1.4; }
+    .contact-socials-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; margin-bottom: 12px; }
+    .contact-social-icons { display: flex; gap: 14px; align-items: center; }
+    .contact-social-icons a { color: var(--white); text-decoration: none; transition: opacity 0.2s; }
+    .contact-social-icons a:hover { opacity: 0.55; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; color: var(--white); }
+    .form-input, .form-select, .form-textarea { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: var(--white); padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.45); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(255,255,255,0.8); }
+    .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 14px; }
+    .form-select option { background: var(--navy); color: var(--white); }
+    .form-textarea { min-height: 160px; resize: vertical; }
+    .form-full { margin-bottom: 14px; }
+    .form-check { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+    .form-check input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--white); cursor: pointer; flex-shrink: 0; }
+    .form-check label { font-size: 13px; color: rgba(255,255,255,0.75); cursor: pointer; }
+
+    /* PARTNERS */
+    .partners-section { background: var(--lavender); padding: 64px 48px 72px; position: relative; }
+    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .partners-title { font-size: 42px; font-weight: 900; color: var(--dark-text); }
+    .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
+    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; }
+    .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-box {
+      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
+      aspect-ratio: 3 / 4;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 24px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
     }
-    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative; overflow: hidden; min-height: 72vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1800&q=80') center/cover no-repeat;
-    }
-    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-    .hero-content { position: relative; z-index: 2; padding: 80px 60px 60px; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; font-weight: 500; }
-    .hero-title { font-size: clamp(42px, 6vw, 72px); font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 16px; }
-    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
-    .hero-logo-badge {
-      position: absolute; top: 100px; right: 60px; z-index: 3;
-      background: #fff; color: #000; padding: 16px 20px;
-      font-size: 28px; font-weight: 900; line-height: 1;
-      font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;
-    }
-    .hero-logo-badge span { display: block; }
-    .hero-logo-badge .accent { color: #c0392b; }
-    .crosshair {
-      position: absolute; color: rgba(255,255,255,0.3); font-size: 18px;
-      font-weight: 300; line-height: 1; pointer-events: none;
-    }
+    .social-band { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; }
+    .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+    .social-band-icons { display: flex; gap: 18px; }
+    .social-band-icons a { color: var(--white); text-decoration: none; transition: opacity 0.2s; }
+    .social-band-icons a:hover { opacity: 0.55; }
 
-    /* ── TICKER ── */
-    .ticker { background: var(--yellow); overflow: hidden; padding: 10px 0; white-space: nowrap; }
-    .ticker-inner { display: inline-flex; gap: 0; animation: ticker 22s linear infinite; }
-    .ticker-item { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #000; padding: 0 32px; display: flex; align-items: center; gap: 16px; }
-    .ticker-item::after { content: '→'; opacity: 0.5; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    footer { background: var(--white); border-top: 1px solid rgba(26,39,68,0.1); padding: 0 48px; color: var(--dark-text); position: relative; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding: 52px 0; position: relative; }
+    .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
+    .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
+    .footer-col-title { font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 12px; }
+    footer a { color: var(--navy); font-size: 13px; display: block; line-height: 2; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-right { display: flex; align-items: flex-start; gap: 20px; }
+    .footer-logo-img { height: 64px; width: auto; display: block; }
+    .footer-copy { font-size: 12px; color: #555; line-height: 1.65; }
 
-    /* ── WHO WE ARE ── */
-    .who-section { background: var(--light-bg); padding: 80px 60px; }
-    .section-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; }
-    .section-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
-    .who-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 16px; font-weight: 600; }
-    .who-title { font-size: clamp(36px, 5vw, 60px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 0; }
-    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 48px; }
-    .who-body { font-size: 13px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
-    .photos-row { display: flex; gap: 8px; overflow-x: auto; margin-top: 48px; scrollbar-width: none; }
-    .photos-row::-webkit-scrollbar { display: none; }
-    .photo-thumb { flex-shrink: 0; width: 220px; height: 260px; overflow: hidden; background: #ccc; }
-    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ── PREVIOUS EDITIONS ── */
-    .editions-section { background: var(--light-bg); padding: 0 60px 80px; }
-    .editions-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 32px; }
-    .editions-scroll { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; padding-bottom: 8px; }
-    .editions-scroll::-webkit-scrollbar { display: none; }
-    .edition-card { flex-shrink: 0; width: 220px; background: var(--light-card); border: 1px solid var(--border); }
-    .edition-poster { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1a2332, #c0392b); display: flex; align-items: flex-end; padding: 16px; overflow: hidden; position: relative; }
-    .edition-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .edition-info { padding: 12px; }
-    .edition-dates { font-family: 'Space Grotesk', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--text-mid); margin-bottom: 4px; }
-    .edition-year { font-size: 10px; color: var(--text-mid); margin-bottom: 6px; }
-    .edition-name { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-    .edition-desc { font-size: 11px; color: var(--text-mid); line-height: 1.6; }
-
-    /* ── THE TEAM ── */
-    .team-section { background: var(--light-bg); padding: 0 60px 80px; }
-    .team-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; }
-    .team-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
-    .team-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 32px; }
-    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .team-card { background: var(--light-card); padding: 0; overflow: hidden; }
-    .team-photo { width: 100%; aspect-ratio: 1; overflow: hidden; background: #ccc; }
-    .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-    .team-info { padding: 16px; }
-    .team-name { font-size: 17px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
-    .team-role { font-size: 12px; color: var(--text-mid); margin-bottom: 6px; }
-    .team-email { font-size: 11px; color: var(--text-mid); font-style: italic; }
-
-    /* ── CONTACT ── */
-    .contact-section { background: #bec3d4; padding: 80px 60px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
-    .contact-info-col {}
-    .contact-heading { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 32px; }
-    .contact-detail { margin-bottom: 16px; }
-    .contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); font-weight: 600; margin-bottom: 4px; }
-    .contact-val { font-size: 13px; color: var(--text-dark); line-height: 1.5; }
-    .contact-val a { color: var(--text-dark); text-decoration: none; border-bottom: 1px solid currentColor; }
-    .contact-socials { display: flex; gap: 10px; margin-top: 16px; }
-    .contact-social { width: 28px; height: 28px; border-radius: 50%; background: var(--text-dark); display: flex; align-items: center; justify-content: center; }
-    .contact-social svg { width: 13px; height: 13px; fill: #fff; }
-    .form-col { grid-column: span 2; }
-    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .form-group { margin-bottom: 16px; }
-    .form-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 6px; display: block; font-weight: 600; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.12);
-      padding: 12px 14px; color: var(--text-dark); font-family: 'Manrope', sans-serif;
-      font-size: 13px; outline: none; border-radius: 0;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(0,0,0,0.3); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--text-dark); background: rgba(255,255,255,0.7); }
-    .form-select { appearance: none; cursor: pointer; }
-    .form-select-wrap { position: relative; }
-    .form-select-wrap::after { content: '+'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-dark); font-size: 16px; pointer-events: none; }
-    .form-textarea { resize: vertical; min-height: 100px; }
-    .form-check { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .form-check input { width: 14px; height: 14px; cursor: pointer; }
-    .form-check label { font-size: 11px; color: var(--text-mid); }
-    .submit-btn {
-      background: var(--text-dark); color: #fff; border: none;
-      padding: 13px 32px; font-family: 'Manrope', sans-serif;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; cursor: pointer; float: right;
-    }
-    .submit-btn:hover { opacity: 0.85; }
-
-    /* ── PARTNERS ── */
-    .partners-section { background: var(--light-bg); padding: 80px 60px; }
-    .partners-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; }
-    .partners-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
-    .partners-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-    .partners-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
-    .partners-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; }
-    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .partner-card { background: #fff; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; }
-    .partner-logo-area { height: 110px; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 14px; }
-    .partner-desc { font-size: 11px; color: var(--text-mid); line-height: 1.6; text-align: left; width: 100%; }
-
-    /* ── FOOTER SOCIAL BAR ── */
-    .footer-social-bar { background: var(--navy); color: #fff; padding: 14px 60px; text-align: center; }
-    .footer-social-bar p { font-size: 13px; font-weight: 500; }
-
-    /* ── FOOTER ── */
-    footer { background: var(--light-bg); border-top: 1px solid var(--light-mid); padding: 48px 60px 40px; }
-    .footer-crosshairs { display: flex; justify-content: space-between; margin-bottom: 32px; }
-    .footer-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
-    .footer-address { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
-    .footer-address strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; }
-    .footer-contact strong { display: block; color: var(--text-dark); font-weight: 700; margin-bottom: 6px; font-size: 12px; }
-    .footer-contact a { font-size: 12px; color: var(--text-dark); display: block; text-decoration: none; margin-bottom: 4px; border-bottom: 1px solid var(--text-dark); width: fit-content; }
-    .footer-logo-area { display: flex; align-items: flex-start; justify-content: flex-end; gap: 16px; }
-    .footer-logo-badge { background: var(--text-dark); color: #fff; padding: 12px 14px; font-size: 13px; font-weight: 900; line-height: 1.2; font-family: 'Space Grotesk', sans-serif; }
-    .footer-copy { font-size: 11px; color: var(--text-mid); line-height: 1.5; }
-    .footer-copy strong { display: block; color: var(--text-dark); font-weight: 600; }
-    .footer-bottom-crosshairs { display: flex; justify-content: space-between; margin-top: 32px; }
-    .footer-bottom-crosshairs span { color: rgba(0,0,0,0.15); font-size: 18px; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-plus">+</span>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/immersive-africa.html">Immersive Africa</a></li>
-    <li><a href="/awards.html">Awards</a></li>
-    <li><a href="/programme.html">Programme</a></li>
-    <li><a href="/tickets.html">Tickets</a></li>
-    <li><a href="/about.html" class="active">About</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-ticket-btn" href="/tickets.html">Get Tickets</a>
-    <span class="nav-plus">+</span>
-  </div>
-</nav>
-
-<!-- HERO -->
 <section class="hero">
-  <div class="crosshair" style="top:90px;left:40px">+</div>
-  <div class="crosshair" style="top:90px;right:40px">+</div>
-  <div class="crosshair" style="bottom:40px;left:40px">+</div>
-  <div class="crosshair" style="bottom:40px;right:40px">+</div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="cross-icon" style="top:16px;left:48px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:48px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:48px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:48px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="immersiveAfrica.html">Festival Programme</a></li>
+      <li><a href="programme.html">Signature Programmes</a></li>
+      <li><a href="about.html" class="active">Discover</a></li>
+      <li><a href="tickets.html">Tickets</a></li>
+    </ul>
+    <span class="nav-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+  </nav>
+
   <div class="hero-content">
-    <div class="hero-eyebrow">Who we are</div>
-    <h1 class="hero-title">Fak'ugesi African Digital<br/>& Innovation Festival</h1>
-    <p class="hero-desc">Africa's longest-running festival celebrating the intersection of technology, digital culture and African creativity. For over a decade, we've gathered artists, technologists, entrepreneurs and dreamers in Johannesburg to imagine, build, and celebrate Africa's digital future.</p>
+    <p class="hero-eyebrow">Who we are</p>
+    <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
+    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+    <p class="hero-dates">07 — 12.10.2026</p>
   </div>
-  <div class="hero-logo-badge">
-    <span>fak'</span>
-    <span class="accent">ugesi</span>
-  </div>
+  <div class="hero-logo-box"><img src="../images/logos/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" /></div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
-    <span class="ticker-item">Get your tickets now</span>
+<div class="ticker-wrapper">
+  <div class="ticker-track">
+    <span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span><span>Get your tickets now &nbsp;→&nbsp;</span>
   </div>
 </div>
 
-<!-- WHO WE ARE -->
-<section class="who-section" id="about">
-  <div class="section-crosshairs"><span>+</span><span>+</span><span>+</span></div>
-  <div class="who-eyebrow">Who we are</div>
-  <h2 class="who-title" style="max-width:600px">Fak'ugesi African Digital & Innovation Festival</h2>
-  <div class="who-grid">
-    <div>
-      <p class="who-body">Fak'ugesi — a Zulu word meaning "plug in" or "connect" — has been the heartbeat of African digital culture since 2013. For a decade, it has gathered artists, technologists, entrepreneurs, and dreamers in Johannesburg to imagine, build, and celebrate Africa's digital future.</p>
-      <p class="who-body">The 2026 edition marks our 10th anniversary — a milestone we celebrate not with nostalgia, but with ambition. This year's festival is our most expansive yet: 10 days, 200+ sessions, 80 countries represented, and a flagship immersive exhibition at the iconic Turbine Hall.</p>
-    </div>
-    <div>
-      <p class="who-body">We believe that Africa's digital future is not something that will happen to us — it is something we will build ourselves. Fak'ugesi is a space to showcase that work, to challenge, to learn, to fail, to celebrate, and to connect.</p>
-      <p class="who-body">Fak'ugesi is produced by The Innovation Hub, Gauteng's premier innovation agency, in partnership with cultural and technology institutions across the continent. In 2026, we ask: What does Africa's digital decade look like?</p>
-    </div>
+<section class="who-section reveal">
+  <div class="crosses-bar">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
-  <div class="photos-row">
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1578496479530-e5f09e4e30c0?w=600&q=70" alt="Fak'ugesi Festival"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=70" alt="Team collaboration"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70" alt="Festival crowd"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70" alt="Performance"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=70" alt="Workshop"/></div>
-    <div class="photo-thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="Innovation"/></div>
-  </div>
-  <div class="section-crosshairs" style="margin-top:32px;margin-bottom:0"><span>+</span><span>+</span><span>+</span></div>
-</section>
-
-<!-- PREVIOUS EDITIONS -->
-<section class="editions-section">
-  <h2 class="editions-title">Previous Editions</h2>
-  <div class="editions-scroll">
-    <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#8b1a1a,#c0392b,#e67e22)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2024 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(0deg) saturate(1.2) brightness(0.7)"/>
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
-          <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
-          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">UN<br/>LOCKED</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:6px">02→05 OCTOBER</div>
-        </div>
-      </div>
-      <div class="edition-info">
-        <div class="edition-dates">02/10 — 05/10</div>
-        <div class="edition-year">2024</div>
-        <div class="edition-name">UntilUnlocked</div>
-        <p class="edition-desc">A festival exploring Africa's creative potential in the digital age.</p>
-      </div>
-    </div>
-    <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#1a3a6b,#2d6ba8,#00a8d4)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2023 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(200deg) saturate(1.4) brightness(0.65)"/>
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
-          <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
-          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">UN<br/>LOCKED</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:6px">02→05 OCTOBER</div>
-        </div>
-      </div>
-      <div class="edition-info">
-        <div class="edition-dates">02/10 — 05/10</div>
-        <div class="edition-year">2024</div>
-        <div class="edition-name">UntilUnlocked</div>
-        <p class="edition-desc">Hybrid digital-physical format reaching 45,000 online attendees.</p>
-      </div>
-    </div>
-    <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#2d1a6b,#6b2d8a,#a040c0)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2022 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(270deg) saturate(1.5) brightness(0.6)"/>
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
-          <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
-          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">RE<br/>IMAGINE</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:6px">06→10 OCTOBER</div>
-        </div>
-      </div>
-      <div class="edition-info">
-        <div class="edition-dates">06/10 — 10/10</div>
-        <div class="edition-year">2023</div>
-        <div class="edition-name">Reimagine</div>
-        <p class="edition-desc">Partner events in Lagos, Nairobi, Accra and Cairo for the first time.</p>
-      </div>
-    </div>
-    <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#1a6b2d,#2d8a4a,#40c060)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2021 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(120deg) saturate(1.3) brightness(0.65)"/>
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
-          <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
-          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">ROOT<br/>ED</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:6px">04→08 OCTOBER</div>
-        </div>
-      </div>
-      <div class="edition-info">
-        <div class="edition-dates">04/10 — 08/10</div>
-        <div class="edition-year">2022</div>
-        <div class="edition-name">Rooted</div>
-        <p class="edition-desc">Celebrating the roots of African digital culture and innovation.</p>
-      </div>
-    </div>
-    <div class="edition-card">
-      <div class="edition-poster" style="background:linear-gradient(135deg,#6b4a1a,#8a6a2d,#c09040)"><img src="/images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2020 Poster" onerror="this.style.display='none'" style="filter:hue-rotate(40deg) saturate(1.2) brightness(0.6) sepia(0.3)"/>
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
-          <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:4px">AFRICAN DIGITAL INNOVATION FESTIVAL</div>
-          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">HYPER<br/>LOCAL</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:6px">02→06 OCT</div>
-        </div>
-      </div>
-      <div class="edition-info">
-        <div class="edition-dates">02/10 — 06/10</div>
-        <div class="edition-year">2021</div>
-        <div class="edition-name">HyperLocal</div>
-        <p class="edition-desc">Going hybrid during the pandemic, reaching global audiences.</p>
+  <div class="who-layout">
+    <div class="who-left"><h2 class="who-title">Who we are</h2></div>
+    <div class="who-right">
+      <div class="who-body">
+        <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+        <p>Pellentesque tincidunt, dolor eu dignissim mollis, justo sapien iaculis pede, vel tincidunt lacus nisl sit amet metus. Fusce ac est vitae purus varius tristique. Phasellus mattis ornare ligula. Donec id nibh. Vestibulum metus quam, ultrices in, sagittis tincidunt, gravida et, sapien. Sed bibendum, lectus vitae tincidunt dapibus, sem felis posuere est, id ornare augue lorem in purus.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE TEAM -->
-<section class="team-section" id="team">
-  <div class="team-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+<section class="img-strip-section reveal">
+  <div class="img-strip">
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+    <div class="strip-img-item"><img src="../images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
+  </div>
+  <div class="crosses-bar-3">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<section class="editions-section reveal">
+  <div class="editions-header"><h2 class="editions-title">Previous Editions</h2></div>
+  <div class="editions-strip-outer">
+    <div class="editions-strip">
+      <div class="edition-card"><div class="edition-img"><img src="../images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="UntilUnlocked 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">02.10 — 05.10</span><span class="edition-year">2024</span></div><div class="edition-name">UntilUnlocked</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="../images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="UntilUnlocked 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">02.10 — 05.10</span><span class="edition-year">2023</span></div><div class="edition-name">UntilUnlocked</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="../images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="UntilUnlocked 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">02.10 — 05.10</span><span class="edition-year">2022</span></div><div class="edition-name">UntilUnlocked</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="../images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="UntilUnlocked 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">02.10 — 05.10</span><span class="edition-year">2021</span></div><div class="edition-name">UntilUnlocked</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section reveal">
+  <div class="team-crosses-top">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
   <h2 class="team-title">The Team</h2>
   <div class="team-grid">
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop&crop=face" alt="Alby Michaels"/></div>
-      <div class="team-info">
-        <div class="team-name">Alby Michaels</div>
-        <div class="team-role">Festival Director</div>
-        <div class="team-email">alby@tshimologong.joburg</div>
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Alby Michaels" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Team member" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Team member" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+  </div>
+  <div class="team-grid-row2">
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Team member" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Team member" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+    <div class="team-card"><div class="team-img"><img src="../images/Alby 2.png" alt="Team member" /></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+  </div>
+</section>
+
+<section class="contact-section reveal">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <h2 class="contact-title">Get in touch</h2>
+      <p class="contact-info-label">Email</p>
+      <p class="contact-info-val">hello@fakugesi.co.za</p>
+      <p class="contact-info-label">Phone</p>
+      <p class="contact-info-val">+27 11 717 8156</p>
+      <p class="contact-info-label">Address</p>
+      <p class="contact-info-val" style="font-size:18px;">41 Juta Street<br>Braamfontein<br>Johannesburg<br>South Africa</p>
+      <div style="margin-top:40px;">
+        <p class="contact-socials-label">Follow us</p>
+        <div class="contact-social-icons">
+          <a href="#" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
       </div>
     </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80&fit=crop&crop=face" alt="Nomsa Dlamini"/></div>
-      <div class="team-info">
-        <div class="team-name">Nomsa Dlamini</div>
-        <div class="team-role">Programme Curator</div>
-        <div class="team-email">nomsa@tshimologong.joburg</div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="Your Name" /></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="Your Email Address" /></div>
       </div>
-    </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop&crop=face" alt="Kwame Asante"/></div>
-      <div class="team-info">
-        <div class="team-name">Kwame Asante</div>
-        <div class="team-role">Technology Director</div>
-        <div class="team-email">kwame@tshimologong.joburg</div>
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80&fit=crop&crop=face" alt="Thandi Mthembu"/></div>
-      <div class="team-info">
-        <div class="team-name">Thandi Mthembu</div>
-        <div class="team-role">Awards Coordinator</div>
-        <div class="team-email">thandi@tshimologong.joburg</div>
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop&crop=face" alt="Sipho Ndlovu"/></div>
-      <div class="team-info">
-        <div class="team-name">Sipho Ndlovu</div>
-        <div class="team-role">Immersive Africa Lead</div>
-        <div class="team-email">sipho@tshimologong.joburg</div>
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&fit=crop&crop=face" alt="Amara Osei"/></div>
-      <div class="team-info">
-        <div class="team-name">Amara Osei</div>
-        <div class="team-role">Communications Manager</div>
-        <div class="team-email">amara@tshimologong.joburg</div>
-      </div>
+      <div class="form-full form-group"><label class="form-label">Subject</label><select class="form-select form-input"><option value="" disabled selected>Please select a subject</option><option>General Inquiry</option><option>Partnership</option><option>Media</option><option>Tickets</option></select></div>
+      <div class="form-full form-group"><label class="form-label">Message</label><textarea class="form-textarea form-input" placeholder="Type your message"></textarea></div>
+      <div class="form-check"><input type="checkbox" id="newsletter" /><label for="newsletter">Subscribe to Fak'ugesi Newsletter</label></div>
     </div>
   </div>
 </section>
 
-<!-- GET IN TOUCH -->
-<section class="contact-section" id="contact">
-  <h2 class="contact-heading">Get in touch</h2>
-  <div class="contact-grid">
-    <div class="contact-info-col">
-      <div class="contact-detail">
-        <div class="contact-label">Email</div>
-        <div class="contact-val"><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a></div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-label">Phone</div>
-        <div class="contact-val">+27 11 717 8156</div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-label">Address</div>
-        <div class="contact-val">41 Juta Street<br/>Braamfontein<br/>Johannesburg<br/>South Africa</div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-label">Follow us</div>
-        <div class="contact-socials">
-          <div class="contact-social">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </div>
-          <div class="contact-social">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </div>
-          <div class="contact-social">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-col">
-      <div class="form-row-2">
-        <div class="form-group">
-          <label class="form-label">Your Name</label>
-          <input class="form-input" type="text" placeholder="Your Name"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="Your Email Address"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Subject</label>
-        <div class="form-select-wrap">
-          <select class="form-select">
-            <option value="">Please select a subject</option>
-            <option>General Enquiry</option>
-            <option>Press & Media</option>
-            <option>Partnership & Sponsorship</option>
-            <option>Awards</option>
-            <option>Group Bookings</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Type your message"></textarea>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" id="subscribe"/>
-        <label for="subscribe">Subscribe to Fak'ugesi Newsletter</label>
-      </div>
-      <button class="submit-btn" onclick="submitForm()">Send →</button>
-    </div>
-  </div>
-</section>
-
-<!-- PARTNERS -->
-<section class="partners-section" id="partners">
-  <div class="partners-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+<section class="partners-section reveal" id="partners">
+  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:0;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
     <a class="partners-link" href="#">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-family:monospace;font-size:18px;font-weight:900;letter-spacing:0.08em;color:#1a2332;line-height:1.1">TSHI<br/>MOLO<br/>GONG</div>
-          <div style="font-size:9px;letter-spacing:0.2em;margin-top:6px;color:#1a2332">WITS UNIVERSITY</div>
-        </div>
-      </div>
-      <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013. Africa's leading digital innovation hub.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-size:32px;font-weight:900;color:#003087;letter-spacing:-0.02em">WITS</div>
-          <div style="font-size:12px;letter-spacing:0.12em;color:#003087">UNIVERSITY</div>
-        </div>
-      </div>
-      <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the Fak'ugesi Festival.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-area">
-        <div style="text-align:center">
-          <div style="font-size:9px;letter-spacing:0.1em;color:#000;margin-bottom:3px;font-weight:600">WITS ANGLO AMERICAN</div>
-          <div style="font-size:22px;font-weight:900;color:#000;letter-spacing:-0.02em;line-height:1.1">DIGITAL<br/>DOME</div>
-        </div>
-      </div>
-      <p class="partner-desc">The Wits Anglo American Digital Dome — immersive venue and technology partner for Fak'ugesi.</p>
-    </div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/tshimologong.png" alt="Tshimologong – Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/wits.png" alt="Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/digital-dome.png" alt="Wits Anglo American Digital Dome" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
-  <div class="partners-crosshairs" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
 </section>
 
-<!-- FOOTER SOCIAL BAR -->
-<div class="footer-social-bar">
-  <p>Follow us on socials <strong>@fakugesi</strong></p>
+<div class="social-band">
+  <p>Follow us on socials @fakugesi</p>
+  <div class="social-band-icons">
+    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+    <a href="#" aria-label="X"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+  </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-crosshairs"><span>+</span><span>+</span><span>+</span></div>
-  <div class="footer-grid">
-    <div class="footer-address">
-      <strong>Fak'ugesi Festival</strong>
-      41 Juta Street, Braamfontein<br/>
-      Johannesburg, South Africa
-    </div>
-    <div class="footer-contact">
-      <strong>Contact us</strong>
-      <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
-      <a href="tel:+27117178156">+27 11 717 8156</a>
-    </div>
-    <div class="footer-logo-area">
-      <div class="footer-logo-badge">
-        <div>fak'</div>
-        <div>ugesi</div>
-      </div>
-      <div class="footer-copy">
-        <strong>© 2026</strong>
-        Fak'ugesi Festival<br/>All Rights Reserved
-      </div>
-    </div>
+  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:0;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:0;animation-delay:0.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:0;animation-delay:0.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="footer-inner">
+    <div><p class="footer-brand-name">Fak'ugesi Festival</p><p class="footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
+    <div><p class="footer-col-title">Contact us</p><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div>
+    <div class="footer-right"><img class="footer-logo-img" src="../images/logos/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" /><div><p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p></div></div>
   </div>
-  <div class="footer-bottom-crosshairs"><span>+</span><span>+</span><span>+</span></div>
 </footer>
 
 <script>
-  function submitForm() {
-    alert('Thank you! We\'ll be in touch within 2 working days.');
-  }
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  revealEls.forEach(el => io.observe(el));
 </script>
-<script src="globalEffects.js"></script>
 </body>
 </html>
-
-

@@ -44,7 +44,7 @@
     .hero-bg { position: absolute; inset: 0; background-image: url('../images/Copy_of__MGL3584.jpg'); background-size: cover; background-position: center 30%; filter: brightness(0.5); animation: kenBurns 18s ease-in-out infinite alternate; }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(10,18,48,0.68) 45%, transparent 80%); }
-    .hero-content { position: relative; z-index: 3; padding: 0 48px 44px; animation: fadeUp 0.9s ease both; }
+    .hero-content { position: relative; z-index: 3; padding: 0 120px 44px; animation: fadeUp 0.9s ease both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; }
     .hero-title { font-size: 52px; font-weight: 900; line-height: 1.0; margin-bottom: 18px; max-width: 750px; }
@@ -55,9 +55,9 @@
 
     /* WHO WE ARE */
     .who-section { background: var(--white); padding: 0 0 0; position: relative; }
-    .crosses-bar { display: flex; justify-content: space-between; padding: 22px 48px; }
+    .crosses-bar { display: flex; justify-content: space-between; padding: 22px 120px; }
     .crosses-bar svg { width: 18px; height: 18px; }
-    .who-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: flex-start; padding: 0 48px 60px; gap: 64px; }
+    .who-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: flex-start; padding: 0 120px 60px; gap: 64px; }
     .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
     .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
     .who-body p + p { margin-top: 24px; }
@@ -70,12 +70,12 @@
     .strip-img-item { flex: 0 0 380px; height: 380px; overflow: hidden; }
     .strip-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
     .strip-img-item:hover img { transform: scale(1.04); }
-    .crosses-bar-3 { display: flex; justify-content: space-between; padding: 22px 48px; }
+    .crosses-bar-3 { display: flex; justify-content: space-between; padding: 22px 120px; }
     .crosses-bar-3 svg { width: 18px; height: 18px; }
 
     /* PREVIOUS EDITIONS */
     .editions-section { background: var(--lavender); padding: 0 0 60px; position: relative; overflow: hidden; }
-    .editions-header { padding: 52px 48px 36px; }
+    .editions-header { padding: 52px 120px 36px; }
     .editions-title { font-size: 46px; font-weight: 900; color: var(--dark-text); }
     .editions-strip-outer { overflow: hidden; }
     .editions-strip { display: flex; gap: 0; width: max-content; }
@@ -90,7 +90,7 @@
     .edition-desc { font-size: 12.5px; color: var(--body-gray); line-height: 1.65; }
 
     /* THE TEAM */
-    .team-section { background: var(--white); padding: 0 48px 72px; position: relative; }
+    .team-section { background: var(--white); padding: 0 120px 72px; position: relative; }
     .team-crosses-top { display: flex; justify-content: space-between; padding: 22px 0; }
     .team-crosses-top svg { width: 18px; height: 18px; }
     .team-title { font-size: 46px; font-weight: 900; color: var(--dark-text); margin-bottom: 36px; }
@@ -105,7 +105,7 @@
     .team-email { font-size: 12px; color: var(--body-gray); }
 
     /* GET IN TOUCH */
-    .contact-section { background: var(--navy); padding: 64px 48px 72px; position: relative; }
+    .contact-section { background: var(--navy); padding: 64px 120px 72px; position: relative; }
     .contact-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: flex-start; }
     .contact-title { font-size: 46px; font-weight: 900; color: var(--white); margin-bottom: 40px; }
     .contact-info-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
@@ -129,29 +129,29 @@
     .form-check label { font-size: 13px; color: rgba(255,255,255,0.75); cursor: pointer; }
 
     /* PARTNERS */
-    .partners-section { background: var(--lavender); padding: 64px 48px 72px; position: relative; }
+    .partners-section { background: var(--lavender); padding: 64px 120px 72px; position: relative; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
     .partners-title { font-size: 42px; font-weight: 900; color: var(--dark-text); }
     .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
-    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
       background: var(--white); border: 1px solid rgba(26,39,68,0.12);
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1;
       display: flex; align-items: center; justify-content: center;
-      padding: 32px 24px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
+      padding: 40px 32px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .partner-logo-box img { max-width: 100%; max-height: 160px; object-fit: contain; display: block; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
-    .social-band { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; }
+    .social-band { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 22px 120px; }
     .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
     .social-band-icons { display: flex; gap: 18px; }
     .social-band-icons a { color: var(--white); text-decoration: none; transition: opacity 0.2s; }
     .social-band-icons a:hover { opacity: 0.55; }
 
-    footer { background: var(--white); border-top: 1px solid rgba(26,39,68,0.1); padding: 0 48px; color: var(--dark-text); position: relative; }
+    footer { background: var(--white); border-top: 1px solid rgba(26,39,68,0.1); padding: 0 120px; color: var(--dark-text); position: relative; }
     .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding: 52px 0; position: relative; }
     .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
     .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
@@ -165,42 +165,9 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
-<style id="fug-nav-styles">
-  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400}
-  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500}
-  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600}
-  @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700}
-  @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype');font-weight:400}
-  #fug-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(13,17,23,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.07);font-family:'InterDisplay',sans-serif}
-  #fug-nav .nav-left{display:flex;align-items:center;gap:8px}
-  #fug-nav .nav-plus-sym{color:rgba(255,255,255,0.4);font-size:18px;font-weight:300;line-height:1;margin-right:8px}
-  #fug-nav .nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0}
-  #fug-nav .nav-links>li{position:relative}
-  #fug-nav .nav-links a,#fug-nav .nav-links .nav-drop-trigger{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer;display:flex;align-items:center;gap:4px;background:none;border:none;padding:0;font-family:inherit;line-height:56px;white-space:nowrap}
-  #fug-nav .nav-links a:hover,#fug-nav .nav-links .nav-drop-trigger:hover,#fug-nav .nav-links a.active,#fug-nav .nav-links .nav-drop-trigger.active{color:#fff}
-  #fug-nav .nav-drop-trigger .chevron{display:inline-block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform 0.2s}
-  #fug-nav .nav-links li.open .nav-drop-trigger .chevron{transform:rotate(-135deg) translateY(-1px)}
-  #fug-nav .nav-dropdown{position:absolute;top:100%;left:0;background:#0d1117;border:1px solid rgba(255,255,255,0.1);min-width:180px;padding:8px 0;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;z-index:200}
-  #fug-nav .nav-links li.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
-  #fug-nav .nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:rgba(255,255,255,0.7);text-decoration:none;font-weight:500;transition:color 0.15s,background 0.15s;line-height:1.4;white-space:nowrap}
-  #fug-nav .nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05)}
-  #fug-nav .nav-dropdown a.active{color:#fff}
-  #fug-nav .nav-right{display:flex;align-items:center;gap:20px}
-  #fug-nav .nav-search-btn{background:none;border:none;cursor:pointer;padding:4px;color:rgba(255,255,255,0.55);transition:color 0.2s}
-  #fug-nav .nav-search-btn:hover{color:#fff}
-  #fug-nav .nav-ticket-btn{background:#fff;color:#000;padding:8px 20px;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;border-radius:2px;font-family:'InterDisplay',sans-serif;transition:background 0.2s}
-  #fug-nav .nav-ticket-btn:hover{background:#d4e600}
-  #fug-nav .nav-right-plus{color:rgba(255,255,255,0.35);font-size:18px;font-weight:300}
-  #fug-ticker-wrap{position:relative;z-index:90}
-  #fug-premiere-bar{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:9px 40px;display:flex;align-items:center;gap:48px;white-space:nowrap;overflow:hidden}
-  #fug-premiere-bar .pb-left,#fug-premiere-bar .pb-right{opacity:0.55;flex-shrink:0}
-  #fug-premiere-bar .pb-cta{font-weight:800;letter-spacing:0.12em;flex-shrink:0}
-  #fug-ticker{background:#d4e600;overflow:hidden;padding:10px 0;white-space:nowrap}
-  #fug-ticker .ticker-inner{display:inline-flex;animation:fugTicker 28s linear infinite}
-  #fug-ticker .ticker-item{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;padding:0 32px;display:flex;align-items:center;gap:16px;font-family:'InterDisplay',sans-serif}
-  #fug-ticker .ticker-item::after{content:'\2192';opacity:0.5}
-  @keyframes fugTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-</style>
+  <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
 </head>
 <body>
 <section class="hero">
@@ -211,16 +178,7 @@
   <div class="cross-icon" style="bottom:16px;left:48px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;right:48px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="immersiveAfrica.html">Festival Programme</a></li>
-      <li><a href="programme.html">Signature Programmes</a></li>
-      <li><a href="about.html" class="active">Discover</a></li>
-      <li><a href="tickets.html">Tickets</a></li>
-    </ul>
-    <span class="nav-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-  </nav>
+  <!-- nav injected by nav.js -->
 
   <div class="hero-content">
     <p class="hero-eyebrow">Who we are</p>
@@ -228,7 +186,7 @@
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <p class="hero-dates">07 — 12.10.2026</p>
   </div>
-  <div class="hero-logo-box"><img src="../images/logos/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" /></div>
+  <div class="hero-logo-box"><img src="../images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" /></div>
 </section>
 
 <div class="ticker-wrapper">
@@ -344,9 +302,9 @@
     <a class="partners-link" href="#">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/tshimologong.png" alt="Tshimologong – Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/wits.png" alt="Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/digital-dome.png" alt="Wits Anglo American Digital Dome" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 
@@ -368,7 +326,7 @@
   <div class="footer-inner">
     <div><p class="footer-brand-name">Fak'ugesi Festival</p><p class="footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
     <div><p class="footer-col-title">Contact us</p><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div>
-    <div class="footer-right"><img class="footer-logo-img" src="../images/logos/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" /><div><p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p></div></div>
+    <div class="footer-right"><img class="footer-logo-img" src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" /><div><p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p></div></div>
   </div>
 </footer>
 
@@ -379,5 +337,8 @@
   }, { threshold: 0.05 });
   revealEls.forEach(el => io.observe(el));
 </script>
+<script src="nav.js"></script>
+<script src="globalEffects.js"></script>
+<script src="starArrows.js"></script>
 </body>
 </html>

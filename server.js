@@ -69,11 +69,19 @@ for (const p of possibleFrontendPaths) {
 }
 
 if (frontendPath) {
+    // Serve the frontend root (e.g. frontend/)
     app.use(express.static(frontendPath));
-    app.use('/css', express.static(path.join(frontendPath, 'css')));
-    app.use('/js', express.static(path.join(frontendPath, 'js')));
+    // Also serve frontend/public/ directly so nav.js, globalEffects.js, starArrows.js etc. are found at /
+    app.use(express.static(path.join(frontendPath, 'public')));
+    // Subdirectory aliases
+    app.use('/css',    express.static(path.join(frontendPath, 'public', 'css')));
+    app.use('/js',     express.static(path.join(frontendPath, 'public', 'js')));
+    app.use('/images', express.static(path.join(frontendPath, 'public', 'images')));
+    app.use('/assets', express.static(path.join(frontendPath, 'public', 'assets')));
+    app.use('/fonts',  express.static(path.join(frontendPath, 'public', 'fonts')));
+    // Also check non-public subdirs as fallback
     app.use('/images', express.static(path.join(frontendPath, 'images')));
-    app.use('/assets', express.static(path.join(frontendPath, 'assets')));
+    app.use('/fonts',  express.static(path.join(frontendPath, 'fonts')));
 } else {
     console.error('❌ Frontend directory not found!');
 }
@@ -227,8 +235,7 @@ app.post('/api/newsletter/subscribe', (req, res) => {
         `INSERT INTO newsletter (email) VALUES (?)`,
         [email],
         function(err) {
-            // NEW (PostgreSQL unique violation code):
-if (err && (err.code === '23505' || (err.message && err.message.includes('unique')))) {
+            if (err && (err.code === '23505' || (err.message && err.message.includes('unique')))) {
                 res.status(400).json({ error: 'Email already subscribed' });
             } else if (err) {
                 res.status(500).json({ error: err.message });
@@ -271,8 +278,8 @@ app.get('/api/health', (req, res) => {
 // Function to find HTML files in possible locations
 function findHTMLFile(filename) {
     const possiblePaths = [
-        path.join(__dirname, 'frontend', filename),
         path.join(__dirname, 'frontend', 'public', filename),
+        path.join(__dirname, 'frontend', filename),
         path.join(__dirname, 'public', filename),
         path.join(__dirname, filename)
     ];
@@ -287,19 +294,26 @@ function findHTMLFile(filename) {
 
 // Serve HTML pages
 const pages = [
-    { route: '/', file: 'index.html' },
-    { route: '/index', file: 'index.html' },
-    { route: '/index.html', file: 'index.html' },
-    { route: '/immersive-africa', file: 'immersiveAfrica.html' },
-    { route: '/immersive-africa.html', file: 'immersiveAfrica.html' },
-    { route: '/awards', file: 'awards.html' },
-    { route: '/awards.html', file: 'awards.html' },
-    { route: '/tickets', file: 'tickets.html' },
-    { route: '/tickets.html', file: 'tickets.html' },
-    { route: '/programme', file: 'programme.html' },
-    { route: '/programme.html', file: 'programme.html' },
-    { route: '/about', file: 'about.html' },
-    { route: '/about.html', file: 'about.html' }
+    { route: '/',                    file: 'index.html' },
+    { route: '/index',               file: 'index.html' },
+    { route: '/index.html',          file: 'index.html' },
+    { route: '/immersiveAfrica',     file: 'immersiveAfrica.html' },
+    { route: '/immersiveAfrica.html',file: 'immersiveAfrica.html' },
+    { route: '/immersive-africa',    file: 'immersiveAfrica.html' },
+    { route: '/awards',              file: 'awards.html' },
+    { route: '/awards.html',         file: 'awards.html' },
+    { route: '/tickets',             file: 'tickets.html' },
+    { route: '/tickets.html',        file: 'tickets.html' },
+    { route: '/programme',           file: 'programme.html' },
+    { route: '/programme.html',      file: 'programme.html' },
+    { route: '/about',               file: 'about.html' },
+    { route: '/about.html',          file: 'about.html' },
+    { route: '/sig-awards',          file: 'sig-awards.html' },
+    { route: '/sig-immersive',       file: 'sig-immersive.html' },
+    { route: '/sig-fakugesipro',     file: 'sig-fakugesipro.html' },
+    { route: '/sig-jamz',            file: 'sig-jamz.html' },
+    { route: '/sig-pitchathon',      file: 'sig-pitchathon.html' },
+    { route: '/sig-dalakhona',       file: 'sig-dalakhona.html' },
 ];
 
 pages.forEach(({ route, file }) => {
@@ -308,12 +322,11 @@ pages.forEach(({ route, file }) => {
         if (filePath) {
             res.sendFile(filePath);
         } else {
-            // Try to serve 404
             const notFoundPath = findHTMLFile('404.html');
             if (notFoundPath) {
                 res.status(404).sendFile(notFoundPath);
             } else {
-                res.status(404).send('<h1>404 - Page Not Found</h1><p>The requested page could not be found.</p>');
+                res.status(404).send('<h1>404 - Page Not Found</h1>');
             }
         }
     });
@@ -325,7 +338,7 @@ app.get('*', (req, res) => {
     if (notFoundPath) {
         res.status(404).sendFile(notFoundPath);
     } else {
-        res.status(404).send('<h1>404 - Page Not Found</h1><p>The requested page could not be found.</p>');
+        res.status(404).send('<h1>404 - Page Not Found</h1>');
     }
 });
 
@@ -348,12 +361,12 @@ app.listen(PORT, () => {
     📁 Frontend path: ${frontendPath || 'Not found'}
     
     📄 Available Pages:
-       • Home: http://localhost:${PORT}
-       • Immersive Africa: http://localhost:${PORT}/immersive-africa
-       • Awards: http://localhost:${PORT}/awards
-       • Tickets: http://localhost:${PORT}/tickets
-       • Programme: http://localhost:${PORT}/programme
-       • About: http://localhost:${PORT}/about
+       • Home:             http://localhost:${PORT}
+       • Immersive Africa: http://localhost:${PORT}/immersiveAfrica
+       • Awards:           http://localhost:${PORT}/awards
+       • Tickets:          http://localhost:${PORT}/tickets
+       • Programme:        http://localhost:${PORT}/programme
+       • About:            http://localhost:${PORT}/about
     
     🔌 API Endpoints:
        • GET  /api/awards

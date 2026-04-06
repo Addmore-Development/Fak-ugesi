@@ -5,63 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dala Khona • Fak'ugesi Festival 2026</title>
   <style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;
       --dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#7ed321;
     }
     html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
+    body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;animation:crossPulse 3s ease-in-out infinite}
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
     /* HERO */
-    .hero{position:relative;width:100%;min-height:420px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
+    .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
     .hero-bg{position:absolute;inset:0;background-image:url('../images/Copy_of__MGL3584.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
     .hero-content{position:relative;z-index:3;padding:0 80px 52px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
-    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;transition:background .22s,color .22s}
+    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;font-family:'InterDisplay',sans-serif}
+    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px;font-family:'InterDisplay',sans-serif}
+    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px;font-family:'InterDisplay',sans-serif}
+    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em;font-family:'InterDisplay',sans-serif}
+    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .hero-cta:hover{background:#fff;color:var(--navy)}
     .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:20px 24px;z-index:4}
-    .hero-signia img{height:52px;display:block}
-
-    /* TICKER */
-    .ticker-wrapper{background:var(--accent);overflow:hidden;white-space:nowrap;padding:10px 0;position:relative;z-index:10}
-    .ticker-track{display:inline-flex;animation:tickerScroll 32s linear infinite}
-    .ticker-track span{padding:0 32px;font-size:12px;font-weight:700;color:#000;letter-spacing:.08em;text-transform:uppercase}
-    @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .hero-signia img{display:block}
 
     /* INTRO */
     .intro-section{background:var(--white);padding:72px 80px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;margin-bottom:0}
-    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
+    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif}
+    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .intro-body p+p{margin-top:20px}
-    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
+    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .intro-cta:hover{background:var(--navy);color:#fff}
 
     /* CONTENT SECTIONS */
     .content-section{padding:72px 80px;position:relative}
     .content-section.dark{background:var(--navy);color:#fff}
     .content-section.light{background:var(--lavender);color:var(--dark-text)}
-    .section-title{font-size:38px;font-weight:900;margin-bottom:36px}
+    .section-title{font-size:38px;font-weight:900;margin-bottom:36px;font-family:'InterDisplay',sans-serif}
     .section-title.light-text{color:#fff}
     .section-title.dark-text{color:var(--dark-text)}
     .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px;position:relative}
     .info-card.light-bg{border-color:rgba(26,39,68,.15);background:#fff}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82}
+    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px;font-family:'InterDisplay',sans-serif}
+    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px;font-family:'InterDisplay',sans-serif}
+    .card-head{font-size:18px;font-weight:700;margin-bottom:10px;font-family:'InterDisplay',sans-serif}
+    .card-body{font-size:13px;line-height:1.65;opacity:.82;font-family:'InterDisplay',sans-serif}
 
     /* IMAGE STRIP */
     .img-strip-section{overflow:hidden;position:relative;padding:0}
@@ -75,63 +75,45 @@
     /* PARTNERS */
     .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .partners-title{font-size:38px;font-weight:900;color:var(--dark-text)}
-    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer}
+    .partners-title{font-size:38px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
+    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
     .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px}
     .partner-card{display:flex;flex-direction:column}
     .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
     .partner-logo-box img{max-width:100%;max-height:120px;object-fit:contain;display:block}
-    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65}
+    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
 
-    /* FOOTER */
-    .social-band{background:var(--navy);display:flex;justify-content:space-between;align-items:center;padding:22px 80px}
-    .social-band p{font-size:15px;font-weight:500;color:#fff;letter-spacing:.02em}
-    .social-band-icons{display:flex;gap:18px}
-    .social-band-icons a{color:#fff;text-decoration:none;transition:opacity .2s}
-    .social-band-icons a:hover{opacity:.55}
-    footer{background:#fff;border-top:1px solid rgba(26,39,68,.1);padding:0 80px;color:var(--dark-text);position:relative}
-    .footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;padding:52px 0}
-    .footer-brand-name{font-weight:900;font-size:14px;color:var(--dark-text);margin-bottom:8px}
-    .footer-addr{font-size:13px;line-height:1.75;color:#5a6070}
-    .footer-col-title{font-size:13px;font-weight:700;color:var(--dark-text);margin-bottom:12px}
-    footer a{color:var(--navy);font-size:13px;display:block;line-height:2;text-decoration:none}
-    footer a:hover{text-decoration:underline}
-    .footer-right{display:flex;align-items:flex-start;gap:20px}
-    .footer-logo-img{height:64px;width:auto;display:block}
-    .footer-copy{font-size:12px;color:#555;line-height:1.65}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
-    .reveal.visible{opacity:1;transform:none}
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
 
+<!-- nav injected by nav.js -->
+
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:80px;animation-delay:.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:80px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg></div>
-
   <div class="hero-content">
     <p class="hero-eyebrow">Signature Programme</p>
     <h1 class="hero-title">Dala Khona</h1>
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
     <p class="hero-dates">07 — 12.10.2026</p>
+    <a class="hero-cta" href="tickets.html">Get Tickets</a>
   </div>
   <div class="hero-signia">
-    <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
+    <img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:48px;width:auto;margin-bottom:8px;"/>
+    <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" style="height:36px;width:auto;"/>
   </div>
 </section>
 
-<div class="ticker-wrapper">
-  <div class="ticker-track">
-    <span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span><span>Get your tickets now →</span>
-  </div>
-</div>
+<!-- ticker injected by ticker.js -->
 
 <section class="intro-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="intro-grid">
     <h2 class="intro-title">African Gaming Arcade</h2>
     <div class="intro-body">
@@ -142,28 +124,42 @@
   </div>
 </section>
 
-
 <section class="content-section dark reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <h2 class="section-title light-text">What is Dala Khona</h2>
   <div class="cards-grid">
-      <div class="info-card ">
+      <div class="info-card">
         <div class="card-num">01</div>
         <div class="card-label">Intermediaries & Policymakers</div>
         <div class="card-head">African Gaming Arcade</div>
         <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       </div>
-      <div class="info-card ">
+      <div class="info-card">
         <div class="card-num">02</div>
         <div class="card-label">Entrepreneurs & Investors</div>
         <div class="card-head">Live Play Sessions</div>
         <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       </div>
-      <div class="info-card ">
+      <div class="info-card">
         <div class="card-num">03</div>
         <div class="card-label">Creatives & Technologists</div>
         <div class="card-head">Game Showcases</div>
         <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       </div>
+  </div>
+</section>
+
+<section class="img-strip-section">
+  <div class="img-strip">
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
   </div>
 </section>
 
@@ -184,48 +180,23 @@
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
+      <div class="partner-logo-box"><img src="frontend/images/digital-dome.png" alt="Wits Anglo American Digital Dome"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
 </section>
 
-<div class="social-band">
-  <p>Follow us on socials @fakugesi</p>
-  <div class="social-band-icons">
-    <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-    <a href="https://twitter.com/fakugesi" target="_blank" rel="noopener" aria-label="X"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <p class="footer-brand-name">Fak'ugesi Festival</p>
-      <p class="footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
-    </div>
-    <div>
-      <p class="footer-col-title">Contact us</p>
-      <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
-      <a href="tel:+27117178156">+27 11 717 8156</a>
-    </div>
-    <div class="footer-right">
-      <img class="footer-logo-img" src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival"/>
-      <div><p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p></div>
-    </div>
-  </div>
-</footer>
-
+<script src="nav.js"></script>
+<script src="ticker.js"></script>
+<script src="footer.js"></script>
+<script src="globalEffects.js"></script>
+<script src="starArrows.js"></script>
 <script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold: 0.08});
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 </script>
-<script src="nav.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
 </body>
 </html>

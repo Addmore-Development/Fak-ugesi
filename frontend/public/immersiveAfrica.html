@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Immersive Africa • Fak'ugesi Festival 2026</title>
+  <title>Awards • Fak'ugesi Festival 2026</title>
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
@@ -12,14 +12,11 @@
     @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--green:#00ff88;--pink:#ff2d6b;--yellow:#ffe600;--blue:#00cfff;--purple:#b464ff;--dark:#0a0a0a;--card:#111;--border:rgba(255,255,255,.08)}
-    body{ background:var(--dark);color:#fff;font-family:'InterDisplay',sans-serif;overflow-x:hidden;cursor:none}
+    :root{--green:#00ff88;--pink:#ff2d6b;--yellow:#ffe600;--blue:#00cfff;--dark:#0a0a0a;--card:#111;--border:rgba(255,255,255,.08);--navy:#0d1117}
+    body{ background:var(--dark);color:#fff;font-family:'InterDisplay',sans-serif;overflow-x:hidden}
 
-    /* Custom cursor */
-    #custom-cursor{width:12px;height:12px;background:#C8FF00;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
-    #custom-cursor.big{width:36px;height:36px;background:rgba(200,255,0,0.25);border:1.5px solid #C8FF00}
-
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
     .nav-logo{font-family:'InterDisplay',sans-serif;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
@@ -27,139 +24,143 @@
     .nav-cta{background:var(--green);color:#000;padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 
     /* HERO */
-    .ia-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 40px 80px;position:relative;overflow:hidden;background:url('images/Joburg-planetarium-1-2022.jpg') center/cover no-repeat}
-    .ia-hero-bg{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.45) 100%),radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,207,255,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 70% 30%,rgba(180,100,255,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,255,136,.06) 0%,transparent 60%);animation:bgShift 12s ease-in-out infinite alternate;pointer-events:none}
-    @keyframes bgShift{from{opacity:1;transform:scale(1)}to{opacity:.7;transform:scale(1.05)}}
-    .ia-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
-    .ia-eyebrow{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:24px;position:relative;z-index:2}
-    .ia-title{font-size:clamp(56px,9vw,128px);font-weight:900;line-height:.9;letter-spacing:-.04em;margin-bottom:32px;position:relative;z-index:2}
-    .ia-title span{display:block}
-    .ia-title .accent{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3)}
-    .ia-meta{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-end;position:relative;z-index:2}
-    .ia-meta-item{font-family:'InterDisplay',sans-serif;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
-    .ia-meta-item strong{display:block;font-size:16px;color:#fff;letter-spacing:.02em;margin-bottom:4px}
-    .ia-scroll-hint{position:absolute;bottom:40px;right:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
-    .ia-scroll-hint span{font-family:'InterDisplay',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-    .ia-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.2),transparent)}
-
-    /* SIGNIA */
-    .hero-signia{position:absolute;bottom:80px;right:40px;z-index:10}
+    .page-hero{padding:80px 60px 60px;background:url('images/_MGL7139.jpg') center/cover no-repeat;border-bottom:1px solid var(--border);position:relative;overflow:hidden;min-height:68vh;display:flex;flex-direction:column;justify-content:flex-end}
+    .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.65);pointer-events:none;z-index:0}
+    .page-hero>*{position:relative;z-index:1}
+    .page-eyebrow{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
+    .page-title{font-size:clamp(48px,7vw,86px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:24px;font-family:'InterDisplay',sans-serif}
+    .page-subtitle{font-size:14px;color:rgba(255,255,255,.55);max-width:520px;line-height:1.7}
+    .hero-signia{position:absolute;top:120px;right:60px;z-index:10}
     .signia-block{background:#fff;display:inline-block;padding:10px 16px 8px;line-height:1}
     .signia-top{font-family:'InterDisplay',sans-serif;font-size:24px;font-weight:900;color:#111;letter-spacing:-.03em;display:block}
     .signia-divider{height:1.5px;background:#111;margin:4px 0}
     .signia-bottom{font-family:'InterDisplay',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;display:block}
     .signia-bottom .u{color:#111}.signia-bottom .g{color:#8B1A1A}.signia-bottom .esi{color:#111}
-    .signia-sub{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#555;display:block;margin-top:4px;font-family:'InterDisplay',sans-serif}
 
-    /* TICKER */
-    .ticker{background:#C8FF00;padding:12px 0;overflow:hidden;white-space:nowrap}
-    .ticker-content{display:inline-block;animation:tickerScroll 20s linear infinite}
-    .ticker-content span{font-size:12px;font-weight:700;color:#111;padding:0 24px}
-    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* ══ PAST WINNERS ══ */
+    .winners-section{padding:80px 0;background:#e8eaf0;border-top:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden}
+    .winners-header{padding:0 60px;display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+    .winners-title{font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-.02em;color:#0d1117;line-height:1}
+    .winners-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .year-btn{background:none;border:1.5px solid rgba(0,0,0,.25);color:rgba(0,0,0,.55);padding:8px 22px;border-radius:2px;font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .2s}
+    .year-btn.active,.year-btn:hover{background:#0d1117;border-color:#0d1117;color:#fff}
+    .winners-nav{display:flex;gap:8px;margin-left:16px}
+    .wn-btn{width:40px;height:40px;background:transparent;border:1.5px solid rgba(0,0,0,.25);color:#0d1117;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .wn-btn:hover{background:#0d1117;border-color:#0d1117;color:#fff}
 
-    /* PREMIERE */
-    .premiere{position:relative;min-height:600px;background:#0a0a1a;display:flex;align-items:flex-end}
-    .premiere-bg{position:absolute;inset:0;background:url('images/Joburg-planetarium-1-2022.jpg') center/cover no-repeat}
-    .premiere-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .premiere-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.35))}
-    .premiere-content{position:relative;z-index:5;padding:60px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;color:#fff;width:100%}
-    .premiere-label{font-size:10px;color:#C8FF00;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
-    .premiere-title{font-size:48px;font-weight:900;margin-bottom:16px;line-height:1}
-    .premiere-date{font-size:18px;color:rgba(255,255,255,.6);margin-bottom:20px}
-    .premiere-desc{font-size:14px;line-height:1.7;margin-bottom:24px;color:rgba(255,255,255,.8)}
-    .btn-white{padding:12px 28px;background:transparent;border:1.5px solid #fff;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+    /* WINNERS GRID — direct display, no zipper */
+    .winners-grid-wrap{padding:0 60px 20px}
+    .winners-scroll-wrap{position:relative;overflow:hidden}
+    .winners-scroll{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;}
+    .winners-scroll::-webkit-scrollbar{display:none}
+    .winner-card{flex-shrink:0;width:calc(25% - 1px);border-right:1px solid rgba(0,0,0,.1);background:#fff;cursor:pointer;transition:transform .25s,box-shadow .25s;scroll-snap-align:start;}
+    .winner-card:last-child{border-right:none}
+    .winner-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
+    .wc-img{width:100%;height:260px;object-fit:cover;display:block;background:#dde}
+    .wc-body{padding:20px 20px 24px}
+    .wc-cat-label{font-size:11px;color:#888;letter-spacing:.06em;margin-bottom:6px}
+    .wc-name{font-size:16px;font-weight:800;color:#0d1117;line-height:1.25;margin-bottom:6px}
+    .wc-artist{font-size:13px;color:#666}
+    .wc-click-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-top:8px;font-family:'InterDisplay',sans-serif}
 
-    /* ONGOING */
-    .ongoing{background:#060612;padding:72px 56px;position:relative}
-    .ongoing-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1200px;margin:0 auto}
-    .ongoing-image img{width:100%;border-radius:8px}
+    /* POPUP */
+    .winner-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;padding:20px}
+    .winner-popup-overlay.active{opacity:1;pointer-events:auto}
+    .winner-popup{background:#fff;color:#0d1117;max-width:680px;width:100%;position:relative;transform:translateY(48px) scale(.93);transition:transform .45s cubic-bezier(.34,1.42,.64,1);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;max-height:90vh}
+    .winner-popup-overlay.active .winner-popup{transform:translateY(0) scale(1)}
+    .wp-img-col{position:relative;min-height:380px;background:#e8eaf0;overflow:hidden}
+    .wp-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+    .wp-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'InterDisplay',sans-serif;font-size:11px;color:#999;letter-spacing:.1em;text-transform:uppercase}
+    .wp-year-badge{position:absolute;top:16px;left:16px;background:#0d1117;color:#fff;font-family:'InterDisplay',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px}
+    .wp-body{padding:36px 32px;display:flex;flex-direction:column;overflow-y:auto}
+    .wp-close{position:absolute;top:14px;right:14px;background:#0d1117;border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s}
+    .wp-close:hover{background:#333}
+    .wp-cat{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;border-left:2px solid #0d1117;padding-left:10px}
+    .wp-name{font-size:clamp(20px,2.5vw,28px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+    .wp-artist{font-size:15px;color:#0d1117;font-weight:600;margin-bottom:4px}
+    .wp-country{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+    .wp-divider{height:1px;background:rgba(0,0,0,.08);margin-bottom:20px}
+    .wp-desc{font-size:13px;color:#555;line-height:1.75;flex:1}
+    .wp-nav{display:flex;justify-content:space-between;margin-top:24px;gap:8px}
+    .wp-nav-btn{flex:1;background:#0d1117;border:none;color:#fff;padding:12px 8px;font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+    .wp-nav-btn:hover:not(:disabled){background:#333}
+    .wp-nav-btn:disabled{background:rgba(0,0,0,.15);cursor:default}
+    .wp-counter{font-family:'InterDisplay',sans-serif;font-size:10px;color:rgba(0,0,0,.35);letter-spacing:.1em;text-align:center;margin-top:12px}
+    @media(max-width:600px){.winner-popup{grid-template-columns:1fr}.wp-img-col{min-height:200px}.wp-body{padding:24px 20px}}
 
-    /* INTRO */
-    .ia-intro{padding:80px 40px;background:var(--dark);border-bottom:1px solid var(--border)}
-    .ia-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .ia-intro-title{font-size:clamp(28px,3vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px}
-    .ia-intro-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8}
-    .ia-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:48px}
-    .ia-stat{background:var(--dark);padding:32px 24px}
-    .ia-stat-val{font-size:clamp(36px,4vw,56px);font-weight:900;color:var(--blue);letter-spacing:-.03em;margin-bottom:4px}
-    .ia-stat-label{font-size:13px;color:rgba(255,255,255,.4)}
-    .ia-quote{font-size:17px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.7;padding-left:24px;border-left:2px solid var(--blue);margin-bottom:32px}
-    .ia-quote-attr{font-size:12px;color:rgba(255,255,255,.35);font-family:'InterDisplay',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    /* ══ FLIP-CARD CATEGORIES (matching index.html) ══ */
+    .categories-section{
+      padding:80px 60px;
+      background:#2a2a2e url('images/IMG_8523 - Athanasius Johnson.png') center/cover no-repeat;
+      background-blend-mode:multiply;
+      position:relative;
+    }
+    .categories-section::before{content:'';position:absolute;inset:0;background:rgba(50,50,50,.7);pointer-events:none}
+    .categories-section>*{position:relative;z-index:1}
+    .cat-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+    .cat-title{font-size:clamp(36px,4vw,56px);font-weight:900;color:#fff;letter-spacing:-.02em}
+    .cat-link{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+    .categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    /* INSTALLATIONS */
-    .installations-section{padding:80px 40px;background:#000}
-    .section-label{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
-    .section-title{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.02em;margin-bottom:48px}
-    .inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
-    .inst-card{background:#000;position:relative;overflow:hidden}
-    .inst-visual{height:240px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative}
-    .inst-card:nth-child(1) .inst-visual{background:linear-gradient(135deg,rgba(0,207,255,.15),rgba(0,207,255,.03))}
-    .inst-card:nth-child(2) .inst-visual{background:linear-gradient(135deg,rgba(180,100,255,.15),rgba(180,100,255,.03))}
-    .inst-card:nth-child(3) .inst-visual{background:linear-gradient(135deg,rgba(0,255,136,.15),rgba(0,255,136,.03))}
-    .inst-card:nth-child(4) .inst-visual{background:linear-gradient(135deg,rgba(255,45,107,.15),rgba(255,45,107,.03))}
-    .inst-card:nth-child(5) .inst-visual{background:linear-gradient(135deg,rgba(255,230,0,.15),rgba(255,230,0,.03))}
-    .inst-card:nth-child(6) .inst-visual{background:linear-gradient(135deg,rgba(0,207,255,.08),rgba(180,100,255,.08))}
-    .inst-info{padding:28px}
-    .inst-medium{font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px}
-    .inst-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
-    .inst-artist{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:12px}
-    .inst-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.6}
-    .inst-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:2px;font-family:'InterDisplay',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-top:12px}
-    .tag-vr{background:rgba(0,207,255,.1);color:var(--blue)}
-    .tag-projection{background:rgba(180,100,255,.1);color:var(--purple)}
-    .tag-interactive{background:rgba(0,255,136,.1);color:var(--green)}
-    .tag-installation{background:rgba(255,45,107,.1);color:var(--pink)}
-    .tag-ar{background:rgba(255,230,0,.1);color:var(--yellow)}
+    /* FLIP CARDS — same as index.html */
+    .flip-card{height:360px;perspective:1200px;cursor:pointer}
+    .flip-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1)}
+    .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+    .flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px)}
+    .flip-front{background:rgba(0,0,0,.5)}
+    .flip-back{background:linear-gradient(135deg,#2a2a2e 0%,#1a1a1e 100%);border-color:rgba(255,255,255,.15);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center}
+    .cat-num{font-size:clamp(36px,4vw,52px);font-weight:900;color:var(--yellow);line-height:1;margin-bottom:4px;float:right}
+    .cat-medium{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px;clear:both;display:block}
+    .cat-name{font-size:22px;font-weight:800;margin-bottom:12px;line-height:1.2;color:#fff}
+    .cat-features{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+    .cat-features li{font-size:12px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
+    .cat-features li::before{content:'→';color:var(--yellow);font-size:10px;flex-shrink:0}
+    .cat-prize-badge{display:inline-block;background:var(--yellow);color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;text-transform:uppercase;clear:both}
+    /* Flip back fun fact styles */
+    .flip-fact-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;font-weight:700}
+    .flip-fact-stat{font-size:48px;font-weight:900;color:var(--yellow);letter-spacing:-.03em;line-height:1;margin-bottom:8px}
+    .flip-fact-text{font-size:17px;font-weight:700;line-height:1.4;color:#fff;margin-bottom:16px}
+    .flip-fact-sub{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+    .flip-hint{position:absolute;bottom:14px;right:16px;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.25);text-transform:uppercase}
 
-    /* FEATURED ARTIST */
-    .featured-artist{padding:80px 40px;background:var(--dark);border-top:1px solid var(--border)}
-    .fa-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .fa-visual{height:400px;background:linear-gradient(135deg,rgba(0,207,255,.12),rgba(180,100,255,.12),rgba(0,255,136,.08));border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:80px}
-    .fa-label{font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
-    .fa-name{font-size:40px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
-    .fa-origin{font-family:'InterDisplay',sans-serif;font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
-    .fa-bio{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:24px}
-    .fa-work-title{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
-    .fa-work-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
+    /* ══ REQUIREMENTS — compact ══ */
+    .requirements-section{background:#0d1117;padding:48px 60px;border-top:1px solid rgba(255,255,255,.06)}
+    .req-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start}
+    .req-title{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:20px;grid-column:1/-1}
+    .req-col-title{font-size:11px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase}
+    .req-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .req-list li{font-size:12px;color:rgba(255,255,255,.45);display:flex;gap:8px;line-height:1.45}
+    .req-list li::before{content:'→';color:var(--green);font-family:'InterDisplay',sans-serif;font-size:10px;margin-top:1px;flex-shrink:0}
 
-    /* VENUE */
-    .venue-info{background:#000;border-top:1px solid var(--border);padding:80px 40px}
-    .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .venue-title{font-size:32px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
-    .venue-desc{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px}
-    .venue-details{display:flex;flex-direction:column;gap:16px}
-    .vd-item{display:flex;gap:16px}
-    .vd-key{font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);min-width:100px;padding-top:2px}
-    .vd-val{font-size:14px;color:rgba(255,255,255,.7);line-height:1.5}
-    .venue-map-placeholder{height:320px;background:var(--card);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'InterDisplay',sans-serif;font-size:12px;color:rgba(255,255,255,.2);letter-spacing:.1em}
+    /* ══ FAQ ══ */
+    .faq-section{background:#0d1117;padding:80px 60px;border-top:1px solid rgba(255,255,255,.06)}
+    .faq-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+    .faq-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;font-family:'InterDisplay',sans-serif}
+    .faq-title{font-size:clamp(36px,4vw,52px);font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.05;margin-bottom:24px}
+    .faq-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7}
+    .faq-list{display:flex;flex-direction:column;gap:1px}
+    .faq-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);overflow:hidden}
+    .faq-q-row{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;user-select:none}
+    .faq-q-row:hover{background:rgba(255,255,255,.04)}
+    .faq-q{font-size:15px;font-weight:600;color:#fff;padding-right:16px}
+    .faq-toggle{width:24px;height:24px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:transform .3s,background .2s;color:#fff}
+    .faq-item.open .faq-toggle{transform:rotate(45deg);background:var(--yellow);color:#000;border-color:var(--yellow)}
+    .faq-a{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75;padding:0 24px 20px;display:none}
+    .faq-item.open .faq-a{display:block}
 
-    /* CTA */
-    .cta-strip{background:linear-gradient(135deg,rgba(0,207,255,.15),rgba(180,100,255,.1));border-top:1px solid rgba(0,207,255,.2);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
-    .cta-strip::before{content:'';position:absolute;inset:0;background:var(--dark);z-index:-1}
-    .cta-strip h2{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
-    .cta-strip p{font-size:16px;color:rgba(255,255,255,.55);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
-    .btn-blue{background:var(--blue);color:#000;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;margin-right:12px}
-    .btn-outline{border:1px solid rgba(255,255,255,.25);color:#fff;padding:16px 40px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block}
-    .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.05)}
+    /* ══ PARTNERS ══ */
+    .partners-section{background:#e8eaf0;padding:80px 120px}
+    .partners-crosshairs{display:flex;justify-content:space-between;margin-bottom:20px}
+    .partners-crosshairs span{color:rgba(0,0,0,.15);font-size:18px}
+    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .partner-card{background:#fff;padding:32px;display:flex;flex-direction:column;align-items:center;border:1px solid rgba(0,0,0,.06)}
+    .partner-logo-area{height:110px;display:flex;align-items:center;justify-content:center;width:100%;margin-bottom:16px}
+    .partner-desc{font-size:11px;color:#5a6274;line-height:1.6;text-align:center}
+    .partners-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:#1a2332;letter-spacing:-.02em}
 
-    /* PARTNERS */
-    .ia-partners-section{background:#0a0a10;padding:80px 0;border-top:1px solid rgba(255,255,255,0.06)}
-    .ia-partners-inner{max-width:1200px;margin:0 auto}
-    .ia-partners-header{padding:0 56px 48px}
-    .ia-partners-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px}
-    .ia-partners-title{font-size:38px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
-    .ia-partners-desc{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:640px}
-    .ia-partners-marquee-wrap{position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
-    .ia-partners-marquee-wrap::before,.ia-partners-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-    .ia-partners-marquee-wrap::before{left:0;background:linear-gradient(90deg,#0a0a10,transparent)}
-    .ia-partners-marquee-wrap::after{right:0;background:linear-gradient(-90deg,#0a0a10,transparent)}
-    .ia-partners-track{display:flex;gap:0;width:max-content;animation:partnerMarquee 28s linear infinite}
-    @keyframes partnerMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .ia-partner-item{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:200px;padding:40px 32px;border-right:1px solid rgba(255,255,255,0.05);text-align:center}
-    .ia-partner-flag{font-size:24px;margin-bottom:8px}
-    .ia-partner-name{font-size:15px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px;letter-spacing:0.01em}
-    .ia-partner-sub{font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);text-transform:uppercase}
-    .ia-partners-note{padding:24px 56px 0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6}
+    /* SECTION UTILS */
+    .section-label{font-family:'InterDisplay',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+    .crosshair{position:absolute;color:rgba(255,255,255,.25);font-size:18px;font-weight:300;pointer-events:none}
 
     footer{background:#000;border-top:1px solid var(--border);padding:64px 40px 40px}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
@@ -167,20 +168,22 @@
     .footer-tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
     .footer-heading{font-family:'InterDisplay',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
     .footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .2s}
     .footer-links a:hover{color:#fff}
     .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
     .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-family:'InterDisplay',sans-serif;letter-spacing:.05em}
 
     @media(max-width:900px){
       nav{padding:16px 24px}.nav-links{display:none}
-      .ia-hero{padding:100px 24px 60px}
-      .ia-intro,.installations-section,.featured-artist,.venue-info{padding:60px 24px}
-      .ia-intro-grid,.fa-grid,.venue-grid,.ongoing-grid{grid-template-columns:1fr}
-      .inst-grid{grid-template-columns:1fr 1fr}
-      .premiere-content{grid-template-columns:1fr;padding:40px 24px}
-      .ongoing{padding:40px 24px}
-      .footer-grid{grid-template-columns:1fr 1fr}
+      .page-hero{padding:120px 24px 60px}
+      .categories-grid{grid-template-columns:1fr 1fr}
+      .faq-inner{grid-template-columns:1fr}
+      .req-grid{grid-template-columns:1fr 1fr}
+      .winners-header{padding:0 24px}.winners-revealed{padding:0 24px}
+      .winner-card{width:80%}
+      footer{padding:40px 24px}.footer-grid{grid-template-columns:1fr 1fr}
+      .requirements-section{padding:40px 24px}
+      .faq-section,.categories-section{padding:60px 24px}
     }
   </style>
   <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -209,211 +212,446 @@
   </div></div>
 </div>
 
-<div id="custom-cursor"></div>
-
 
 
 <!-- HERO -->
-<div class="ia-hero">
-  <div class="ia-hero-bg"></div>
-  <div class="ia-hero-grid"></div>
-  <div class="ia-eyebrow">→ Immersive Africa Exhibition 2026</div>
-  <h1 class="ia-title">
-    <span>Immersive</span>
-    <span class="accent">Africa</span>
-  </h1>
-  <div class="ia-meta">
-    <div class="ia-meta-item"><strong>Turbine Hall</strong>Newtown, Johannesburg</div>
-    <div class="ia-meta-item"><strong>4–13 Sep 2026</strong>Open Daily 10:00–22:00</div>
-    <div class="ia-meta-item"><strong>80+ Works</strong>40+ African Artists</div>
-    <div class="ia-meta-item"><strong>Free Entry</strong>With Festival Pass</div>
-  </div>
-  <div class="ia-scroll-hint">
-    <span>Scroll</span>
-    <div class="ia-scroll-line"></div>
-  </div>
-  <div class="hero-signia"><div class="signia-block"><img src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi" style="height:52px;display:block"/></div></div>
+<div class="page-hero">
+  <div class="crosshair" style="top:90px;left:40px;z-index:2">+</div>
+  <div class="crosshair" style="top:90px;right:200px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;left:40px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;right:40px;z-index:2">+</div>
+  <div class="page-eyebrow">→ Awards 2026</div>
+  <h1 class="page-title">Recognising<br/>African Digital<br/>Excellence</h1>
+  <p class="page-subtitle">Submissions now open across 8 categories. Win prizes, residencies, and global exposure for your work.</p>
+  <div class="hero-signia" style="position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:16px 20px;z-index:5;"><img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak\'ugesi Festival" style="height:52px;width:auto;display:block;"/></div>
 </div>
 
-<!-- TICKER -->
-</div>
 
-<!-- PREMIERE -->
-<section class="premiere">
-  <div class="premiere-bg">
-    <img src="images/digital-dome-image-inside.jpg" alt="Digital Dome interior"/>
-  </div>
-  <div class="premiere-overlay"></div>
-  <div class="premiere-content">
+<!-- ══ PAST WINNERS ══ -->
+<section class="winners-section">
+  <div class="winners-header">
     <div>
-      <div class="premiere-label">Premiering</div>
-      <div class="premiere-date">07 — 21.04.2026</div>
-      <div class="premiere-title">Kancica<br>Kwasukasukela</div>
+      <div class="section-label" style="color:#555">Past Winners</div>
+      <h2 class="winners-title">2025 Winners</h2>
     </div>
-    <div>
-      <p class="premiere-desc">A breathtaking dome film that weaves together ancestral mythology and digital innovation, Kancica Kwasukasukela takes audiences on an immersive journey through African cosmologies reimagined for the 21st century. Premiering in South Africa exclusively at the Wits Anglo American Digital Dome as part of Immersive Africa.</p>
-      <a href="tickets.html" class="btn-white">GET YOUR TICKETS →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ONGOING -->
-<section class="ongoing">
-  <div class="ongoing-grid">
-    <div class="ongoing-image">
-      <img src="images/Screenshot-2024-05-21-at-21.36.37.webp" alt="On-going exhibition"/>
-    </div>
-    <div>
-      <div class="premiere-label">On-going</div>
-      <div class="premiere-date">07 — 21.04.2026</div>
-      <h2 style="font-size:42px;font-weight:900;color:#fff;margin-bottom:20px">Kwasukasukela</h2>
-      <p style="color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px">An ongoing dome screening programme drawing from the rich archive of African digital art and moving image. Kwasukasukela — meaning "once upon a time" — presents a curated anthology of short films that centre African stories in immersive formats.</p>
-      <a href="tickets.html" class="btn-white">GET YOUR TICKETS →</a>
-    </div>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="ia-intro">
-  <div class="ia-intro-grid">
-    <div style="grid-column:1/-1;margin-bottom:32px;overflow:hidden;max-height:320px">
-      <img src="images/Joburg-planetarium-1-2022.jpg" alt="Joburg Planetarium" style="width:100%;height:320px;object-fit:cover;display:block"/>
-    </div>
-    <div>
-      <div class="ia-intro-title">Where African Imagination Meets the Digital Frontier</div>
-      <div class="ia-stats">
-        <div class="ia-stat"><div class="ia-stat-val">80+</div><div class="ia-stat-label">Installations &amp; Works</div></div>
-        <div class="ia-stat"><div class="ia-stat-val">40+</div><div class="ia-stat-label">Artists from Africa</div></div>
-        <div class="ia-stat"><div class="ia-stat-val">10</div><div class="ia-stat-label">Days of Exhibition</div></div>
-        <div class="ia-stat"><div class="ia-stat-val">3</div><div class="ia-stat-label">Exhibition Spaces</div></div>
-      </div>
-    </div>
-    <div>
-      <div class="ia-quote">"Immersive Africa is not just an exhibition — it is a portal. A space where the ancestors speak in code, and the future looks like home."</div>
-      <div class="ia-quote-attr">— Zanele Mokoena, Curator, Immersive Africa 2026</div>
-      <div style="margin-top:32px">
-        <div class="ia-intro-body">Immersive Africa is the flagship exhibition of Fak'ugesi Festival — a curated gathering of boundary-pushing immersive works from African artists working in VR, augmented reality, projection mapping, installation art, and interactive digital media.</div>
-        <div class="ia-intro-body" style="margin-top:16px">Held in the iconic Turbine Hall in Newtown, Johannesburg, the 2026 edition brings together 80+ works from 40+ artists across 25 African nations.</div>
+    <div class="winners-controls">
+      <button class="year-btn active" onclick="setYear(this,2025)">2025</button>
+      <button class="year-btn" onclick="setYear(this,2024)">2024</button>
+      <button class="year-btn" onclick="setYear(this,2023)">2023</button>
+      <div class="winners-nav">
+        <button class="wn-btn" onclick="scrollWinners(-1)">←</button>
+        <button class="wn-btn" onclick="scrollWinners(1)">→</button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- INSTALLATIONS -->
-<section class="installations-section">
-  <div class="section-label">Selected Works</div>
-  <div class="section-title">2026 Programme</div>
-  <div class="inst-grid">
-    <div class="inst-card"><div class="inst-visual">🌌</div><div class="inst-info"><div class="inst-medium">VR Installation</div><div class="inst-title">Ancestral Frequencies</div><div class="inst-artist">Athanasius Johnson — South Africa</div><div class="inst-desc">A fully immersive dome experience blending oral tradition, spatial audio, and generative visuals to recreate sacred African soundscapes.</div><div class="inst-tag tag-vr">VR · 20 min</div></div></div>
-    <div class="inst-card"><div class="inst-visual">🎭</div><div class="inst-info"><div class="inst-medium">Projection Mapping</div><div class="inst-title">Sankofa: Looking Back to Move Forward</div><div class="inst-artist">Amara Diallo — Senegal</div><div class="inst-desc">A 30-metre projection mapping installation on the Turbine Hall walls, animating Adinkra symbols in response to viewer movement.</div><div class="inst-tag tag-projection">Projection · Interactive</div></div></div>
-    <div class="inst-card"><div class="inst-visual">🌿</div><div class="inst-info"><div class="inst-medium">Interactive Installation</div><div class="inst-title">Ubuntu: I Am Because We Are</div><div class="inst-artist">Collective Zim Digital — Zimbabwe</div><div class="inst-desc">A networked light installation where each visitor's heartbeat becomes a data point, visualising the Ubuntu philosophy of collective interconnection.</div><div class="inst-tag tag-interactive">Interactive · Biometric</div></div></div>
-    <div class="inst-card"><div class="inst-visual">🔮</div><div class="inst-info"><div class="inst-medium">Mixed Reality</div><div class="inst-title">Market Women: Invisible Economies</div><div class="inst-artist">Nneka Okonkwo — Nigeria</div><div class="inst-desc">AR glasses overlay the hidden economic networks of West African market women onto the visible world.</div><div class="inst-tag tag-ar">AR · Documentary</div></div></div>
-    <div class="inst-card"><div class="inst-visual">⚡</div><div class="inst-info"><div class="inst-medium">Sound Installation</div><div class="inst-title">Unmuted: 54 Voices</div><div class="inst-artist">Jopee Dairo — Nigeria</div><div class="inst-desc">54 speakers, one per African nation, simultaneously broadcasting voices of activists, artists and everyday people.</div><div class="inst-tag tag-installation">Sound · Spatial</div></div></div>
-    <div class="inst-card"><div class="inst-visual">🚀</div><div class="inst-info"><div class="inst-medium">Generative Digital Art</div><div class="inst-title">FutureLand: Speculative Cartographies</div><div class="inst-artist">Masego Sithole — Botswana</div><div class="inst-desc">AI-generated maps of African futures, shifting in real time based on live data feeds of climate, population, and technological development.</div><div class="inst-tag tag-interactive">AI-Generative · Live Data</div></div></div>
-  </div>
-</section>
-
-<!-- FEATURED ARTIST -->
-<section class="featured-artist">
-  <div class="section-label">Featured Artist</div>
-  <div class="fa-grid">
-    <div class="fa-visual">🌌</div>
-    <div>
-      <div class="fa-label">2026 Featured Artist</div>
-      <div class="fa-name">Athanasius Johnson</div>
-      <div class="fa-origin">🇿🇦 Johannesburg, South Africa</div>
-      <div class="fa-bio">Athanasius Johnson is a Johannesburg-based XR director and digital artist whose work sits at the intersection of African oral tradition and immersive technology. His studio, AfriVerse, has produced landmark works exhibited from Davos to the Venice Biennale.</div>
-      <div class="fa-bio">His Fak'ugesi 2025 work, AfriVerse: Ancestral Futures, won the Immersive Media Award and toured 12 cities across Africa and Europe. For 2026, Johnson debuts Ancestral Frequencies — his most ambitious work yet.</div>
-      <div class="fa-work-title">Featured Work: Ancestral Frequencies</div>
-      <div class="fa-work-desc">A 20-minute fully immersive VR dome experience for up to 30 simultaneous viewers, blending spatial audio recordings from 8 African nations with generative visuals derived from traditional textile patterns.</div>
+  <div class="winners-grid-wrap">
+    <div class="winners-scroll-wrap">
+      <div class="winners-scroll" id="winnersScroll"></div>
     </div>
   </div>
 </section>
 
-<!-- VENUE -->
-<section class="venue-info">
-  <div class="section-label">Venue</div>
-  <div class="venue-grid">
+
+<!-- ══ ELIGIBLE CATEGORIES — FLIP CARDS ══ -->
+<section class="categories-section">
+  <div class="crosshair" style="top:24px;left:40px;z-index:3">+</div>
+  <div class="crosshair" style="top:24px;right:40px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;left:40px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;right:40px;z-index:3">+</div>
+  <div class="cat-header">
+    <h2 class="cat-title">Eligible Categories</h2>
+    <a class="cat-link" href="mailto:awards@fakugesi.co.za">Submit your application</a>
+  </div>
+  <div class="categories-grid">
+
+    <!-- 01 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">01</div>
+        <span class="cat-medium">Digital Art</span>
+        <div class="cat-name">Generative, Computational & Digital Painting</div>
+        <ul class="cat-features">
+          <li>Generative Art</li><li>Digital Painting</li><li>Computational Aesthetics</li>
+        </ul>
+        <div class="cat-prize-badge">R25 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Did you know?</div>
+        <div class="flip-fact-stat">340+</div>
+        <div class="flip-fact-text">Digital art submissions received in 2025</div>
+        <div class="flip-fact-sub">From generative code art to AI-assisted painting, the category grows every year with new techniques pioneered on the continent.</div>
+      </div>
+    </div></div>
+
+    <!-- 02 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">02</div>
+        <span class="cat-medium">Immersive Media</span>
+        <div class="cat-name">VR, AR & Mixed Reality Installations</div>
+        <ul class="cat-features">
+          <li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li>
+        </ul>
+        <div class="cat-prize-badge">R30 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Impact Stat</div>
+        <div class="flip-fact-stat">12</div>
+        <div class="flip-fact-text">Countries where past winners have toured their immersive works</div>
+        <div class="flip-fact-sub">Winning here opens doors from Cape Town to Venice — previous works have toured the Biennale, Sundance, and festivals across Africa.</div>
+      </div>
+    </div></div>
+
+    <!-- 03 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">03</div>
+        <span class="cat-medium">Interactive Design</span>
+        <div class="cat-name">UI/UX, Physical Computing & Interactive Experiences</div>
+        <ul class="cat-features">
+          <li>User Interface Design</li><li>Physical Computing</li><li>Interactive Installations</li>
+        </ul>
+        <div class="cat-prize-badge">R20 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Festival Fact</div>
+        <div class="flip-fact-stat">25K+</div>
+        <div class="flip-fact-text">Attendees who interact with winning designs at the festival each year</div>
+        <div class="flip-fact-sub">Your interactive work doesn't just win — it gets experienced, touched, and remembered by tens of thousands of visitors.</div>
+      </div>
+    </div></div>
+
+    <!-- 04 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">04</div>
+        <span class="cat-medium">Tech for Social Impact</span>
+        <div class="cat-name">Health, Agriculture, Education & Climate Solutions</div>
+        <ul class="cat-features">
+          <li>Community Technology</li><li>AgriTech & HealthTech</li><li>Climate Innovation</li>
+        </ul>
+        <div class="cat-prize-badge">R40 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Real Impact</div>
+        <div class="flip-fact-stat">40K</div>
+        <div class="flip-fact-text">People reached by the 2025 winning Social Impact submission</div>
+        <div class="flip-fact-sub">Yebo Health, last year's winner, deployed AI-assisted diagnostics to rural communities across South Africa within months of winning.</div>
+      </div>
+    </div></div>
+
+    <!-- 05 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">05</div>
+        <span class="cat-medium">Game Design</span>
+        <div class="cat-name">Video Games, Mobile Games & Interactive Narrative</div>
+        <ul class="cat-features">
+          <li>Video & Mobile Games</li><li>Interactive Narrative</li><li>Serious Games</li>
+        </ul>
+        <div class="cat-prize-badge">R25 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Industry Snapshot</div>
+        <div class="flip-fact-stat">3x</div>
+        <div class="flip-fact-text">Growth of African game studios since Fak'ugesi introduced this category</div>
+        <div class="flip-fact-sub">The African gaming industry is exploding. Fak'ugesi winners have gone on to secure international publishing deals and global distribution.</div>
+      </div>
+    </div></div>
+
+    <!-- 06 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">06</div>
+        <span class="cat-medium">AI & Machine Learning</span>
+        <div class="cat-name">Innovative AI/ML in Creative, Social or Scientific Contexts</div>
+        <ul class="cat-features">
+          <li>Creative AI</li><li>Language Models</li><li>Data for Social Good</li>
+        </ul>
+        <div class="cat-prize-badge">R35 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Trend Watch</div>
+        <div class="flip-fact-stat">+180%</div>
+        <div class="flip-fact-text">Increase in AI category submissions from 2023 to 2025</div>
+        <div class="flip-fact-sub">African practitioners are building AI models rooted in local languages, indigenous knowledge systems, and continent-specific challenges.</div>
+      </div>
+    </div></div>
+
+    <!-- 07 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">07</div>
+        <span class="cat-medium">Digital Film & Animation</span>
+        <div class="cat-name">Short Films, Animated Works & Experimental Moving Image</div>
+        <ul class="cat-features">
+          <li>Short Film</li><li>Animation</li><li>Experimental Video</li>
+        </ul>
+        <div class="cat-prize-badge">R20 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Screening Reach</div>
+        <div class="flip-fact-stat">18</div>
+        <div class="flip-fact-text">International film festivals that have screened Fak'ugesi winning films</div>
+        <div class="flip-fact-sub">Past winners have screened at TIFF, the Berlinale, and African film festivals from Lagos to Nairobi. The platform is global.</div>
+      </div>
+    </div></div>
+
+    <!-- 08 -->
+    <div class="flip-card"><div class="flip-card-inner">
+      <div class="flip-front">
+        <div class="cat-num">08</div>
+        <span class="cat-medium">Sound & Music Tech</span>
+        <div class="cat-name">Music Technology, Generative Audio & Sonic Art</div>
+        <ul class="cat-features">
+          <li>Music Technology</li><li>Generative Audio</li><li>Sonic Installation</li>
+        </ul>
+        <div class="cat-prize-badge">R20 000</div>
+        <div class="flip-hint">Hover to reveal</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-fact-label">Sonic Fact</div>
+        <div class="flip-fact-stat">54</div>
+        <div class="flip-fact-text">African nations represented in past Sound category submissions</div>
+        <div class="flip-fact-sub">From Malian kora run through modular synthesizers to Congolese rhythms in generative code — African sonic innovation is limitless.</div>
+      </div>
+    </div></div>
+
+  </div>
+</section>
+
+
+<!-- ══ REQUIREMENTS — compact 3 column ══ -->
+<section class="requirements-section">
+  <div class="req-grid">
+    <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <h2 class="req-title" style="margin-bottom:0">Requirements</h2>
+      <a style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:underline;text-underline-offset:3px" href="mailto:awards@fakugesi.co.za">Submit your application</a>
+    </div>
     <div>
-      <div class="venue-title">The Turbine Hall</div>
-      <div class="venue-desc">One of Johannesburg's most iconic spaces, the Turbine Hall is a former coal-fired power station turned cultural powerhouse. Its vast industrial interiors — 4,500 square metres of raw steel, concrete and glass — provide the perfect canvas for the large-scale immersive works of Immersive Africa.</div>
-      <div class="venue-details">
-        <div class="vd-item"><span class="vd-key">Address</span><span class="vd-val">Turbine Hall, 1 President St, Newtown, Johannesburg, 2001</span></div>
-        <div class="vd-item"><span class="vd-key">Hours</span><span class="vd-val">Daily 10:00 – 22:00 during Festival (4–13 September 2026)</span></div>
-        <div class="vd-item"><span class="vd-key">Access</span><span class="vd-val">Included with all festival passes. Students: R50 door entry.</span></div>
-        <div class="vd-item"><span class="vd-key">Transport</span><span class="vd-val">Rea Vaya BRT: Newtown Junction · Uber/Bolt recommended · On-site parking available</span></div>
+      <div class="req-col-title">Eligibility</div>
+      <ul class="req-list">
+        <li>Open to African artists worldwide</li>
+        <li>Work completed after Jan 2024</li>
+        <li>Primarily digital in nature</li>
+        <li>Multiple submissions allowed</li>
+        <li>No entry fee</li>
+      </ul>
+    </div>
+    <div>
+      <div class="req-col-title">What to Submit</div>
+      <ul class="req-list">
+        <li>Portfolio or work documentation</li>
+        <li>Written project description</li>
+        <li>Video documentation encouraged</li>
+        <li>Collaborator contact details</li>
+        <li>Proof of African connection</li>
+      </ul>
+    </div>
+    <div>
+      <div class="req-col-title">Key Dates</div>
+      <ul class="req-list">
+        <li>Deadline: 31 July 2026 · 23:59 SAST</li>
+        <li>Shortlist announced: 15 Aug 2026</li>
+        <li>Winners: 12 Oct 2026</li>
+        <li>Travel bursaries available</li>
+        <li>Work remains your property</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div>
+      <div class="faq-label">FAQ</div>
+      <h2 class="faq-title">Frequently<br/>Asked<br/>Questions</h2>
+      <p class="faq-desc">Everything you need to know about submitting to the Fak'ugesi Awards 2026. More questions? Email awards@fakugesi.co.za</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">Who can enter the Fak'ugesi Awards?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">The awards are open to African digital artists, designers and technologists based anywhere in the world. Entries must be primarily digital in nature and completed after January 2024.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">When is the submission deadline?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">The submission deadline is 31 July 2026. Shortlist announced 15 August. Winners revealed at the Awards Ceremony on 12 October 2026.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">Can I submit to multiple categories?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes, multiple category submissions are welcome. Each category requires a separate submission form and entry materials.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">What are the prizes?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Cash prizes range from R20,000 to R40,000 per category. Winners also receive international residencies, commissions, fellowships and global press coverage.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">Do I need to attend the festival?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Shortlisted artists are strongly encouraged to attend the festival and Awards Ceremony in Johannesburg (7–12 October 2026). Travel bursaries may be available for international finalists.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-row" onclick="toggleFaq(this)">
+          <span class="faq-q">Is there an entry fee?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">No. Submissions are completely free. There is no cost to enter the Fak'ugesi Awards in any category.</div>
       </div>
     </div>
-    <div class="venue-map-placeholder">[ Turbine Hall, Newtown ]</div>
   </div>
 </section>
+
 
 <!-- PARTNERS -->
-<section class="ia-partners-section">
-  <div class="ia-partners-inner">
-    <div class="ia-partners-header">
-      <div class="ia-partners-label">· Supported By</div>
-      <h2 class="ia-partners-title">Our Immersive Africa Partners</h2>
-      <p class="ia-partners-desc">Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC — EU National Institutes for Culture.</p>
-    </div>
-    <div class="ia-partners-marquee-wrap">
-      <div class="ia-partners-track">
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/eunic.svg" alt="EUNIC" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/ifas.png" alt="Institut Français" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">France</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/goethe.svg" alt="Goethe-Institut" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">Germany</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/austrianembassy.svg" alt="Austrian Embassy" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">Pretoria</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
-        <!-- Duplicate for seamless loop -->
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/eunic.svg" alt="EUNIC" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">EU National Institutes for Culture</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-flag">🇪🇺</div><div class="ia-partner-name">EU Delegation</div><div class="ia-partner-sub">South Africa</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/ifas.png" alt="Institut Français" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">France</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/goethe.svg" alt="Goethe-Institut" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">Germany</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">British Council</div><div class="ia-partner-sub">United Kingdom</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">NIFCA</div><div class="ia-partner-sub">Nordic Culture Point</div></div>
-        <div class="ia-partner-item"><img src="logos/partners/immersive-africa/austrianembassy.svg" alt="Austrian Embassy" style="max-height:32px;object-fit:contain"/><div class="ia-partner-sub">Pretoria</div></div>
-        <div class="ia-partner-item"><div class="ia-partner-name">Wits Digital Dome</div><div class="ia-partner-sub">Johannesburg</div></div>
-      </div>
-    </div>
-    <p class="ia-partners-note">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes.</p>
+<section class="partners-section">
+  <div class="partners-crosshairs"><span>+</span><span>+</span><span>+</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0">
+    <h2 class="partners-title">Our Awards Partners</h2>
   </div>
+  <div class="partners-grid">
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" style="max-width:150px;max-height:90px;object-fit:contain"/>
+      </div>
+      <p class="partner-desc">Tshimologong Digital Innovation Precinct — awards host and convener since 2013.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <img src="../images/logos/wits/logo_wits_dark_colloquial_extended.svg" alt="Wits University" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div style="display:none;flex-direction:column;align-items:center"><div style="font-size:30px;font-weight:900;color:#003087;letter-spacing:-.02em">WITS</div><div style="font-size:11px;letter-spacing:.12em;color:#003087">UNIVERSITY</div></div>
+      </div>
+      <p class="partner-desc">The University of the Witwatersrand — judging panel partner and academic anchor.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-area">
+        <img src="logos/partners/immersive-africa/digitaldome.svg" alt="Digital Dome" style="max-width:160px;max-height:90px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="logos/partners/immersive-africa/digitaldome.svg" alt="Digital Dome" style="max-width:150px;max-height:90px;object-fit:contain"/>
+      </div>
+      <p class="partner-desc">The Wits Anglo American Digital Dome — screening venue for shortlisted immersive works.</p>
+    </div>
+  </div>
+  <div class="partners-crosshairs" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
 </section>
 
-<!-- CTA -->
-<div class="cta-strip">
-  <h2>Experience Immersive Africa</h2>
-  <p>Included with all festival passes. Open daily 10:00–22:00, 4–13 September 2026.</p>
-  <a class="btn-blue" href="tickets.html">Get Your Pass</a>
-  <a class="btn-outline" href="programme.html">View Full Programme</a>
+
+
+<!-- POPUP -->
+<div class="winner-popup-overlay" id="popupOverlay">
+  <div class="winner-popup" id="winnerPopup">
+    <button class="wp-close" onclick="closePopup()">×</button>
+    <div class="wp-img-col">
+      <img class="wp-img" id="wpImg" src="" alt=""/>
+      <div class="wp-img-placeholder" id="wpImgPlaceholder">No Image</div>
+      <div class="wp-year-badge" id="wpYear"></div>
+    </div>
+    <div class="wp-body">
+      <div class="wp-cat" id="wpCat"></div>
+      <div class="wp-name" id="wpName"></div>
+      <div class="wp-artist" id="wpArtist"></div>
+      <div class="wp-country" id="wpCountry"></div>
+      <div class="wp-divider"></div>
+      <div class="wp-desc" id="wpDesc"></div>
+      <div class="wp-nav">
+        <button class="wp-nav-btn" id="wpPrev" onclick="navPopup(-1)">← Prev</button>
+        <button class="wp-nav-btn" id="wpNext" onclick="navPopup(1)">Next →</button>
+      </div>
+      <div class="wp-counter" id="wpCounter"></div>
+    </div>
+  </div>
 </div>
 
-<footer>
-  <div class="footer-grid">
-    <div><img src="../images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi" style="height:36px;display:block;filter:brightness(0) invert(1);margin-bottom:12px"/><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
-    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="programme.html">Programme</a></li><li><a href="immersiveAfrica.html">Immersive Africa</a></li><li><a href="awards.html">Awards</a></li><li><a href="tickets.html">Tickets</a></li></ul></div>
-    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="about.html#partners">Partners</a></li><li><a href="about.html#press">Press</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
-    <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Fak'ugesi Festival. All rights reserved.</div><div class="footer-copy">Designed in Johannesburg</div></div>
-</footer>
-
 <script>
-// Custom cursor
-const cursor = document.getElementById('custom-cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-});
+const WINNERS = {
+  2025: [
+    {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Immersive Media',title:'Ancestral Frequencies',artist:'Athanasius Johnson',country:'South Africa',desc:'A 20-min VR dome experience blending oral tradition, spatial audio and generative visuals from 8 African nations.',img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Tech for Social Impact',title:'Yebo Health',artist:'Thandi Ndaba',country:'South Africa',desc:'AI-powered community health diagnostics reaching 40,000 rural patients in its first year.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'Game Design',title:'Ubuntu: The Game',artist:'Collective Zim Digital',country:'Zimbabwe',desc:'A co-operative storytelling game where players navigate African community decision-making.',img:'images/Fak_ugesi_2025-32.jpg'},
+  ],
+  2024: [
+    {category:'Digital Film',title:'Nile Futures',artist:'Layla Hassan',country:'Egypt',desc:'A speculative short film about climate futures in the Nile Delta, animated with AI-generated imagery.',img:'images/digital-dome-image-inside.jpg'},
+    {category:'Sound & Music Tech',title:'54 Voices',artist:'Jopee Dairo',country:'Nigeria',desc:'A spatial audio installation broadcasting voices from every African nation simultaneously.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Interactive Design',title:'Market Women AR',artist:'Nneka Okonkwo',country:'Nigeria',desc:'AR overlay making the invisible economic networks of West African market women visible.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'AI & Machine Learning',title:'FutureLand',artist:'Masego Sithole',country:'Botswana',desc:'Real-time AI-generated maps of African futures based on live climate and population data feeds.',img:'images/_MGL7139.jpg'},
+  ],
+  2023: [
+    {category:'Immersive Media',title:'AfriVerse Ancestral',artist:'Athanasius Johnson',country:'South Africa',desc:"The first Fak'ugesi work to tour internationally, shown at the Venice Biennale and 12 African cities.",img:'images/IMG_8523 - Athanasius Johnson.png'},
+    {category:'Digital Art',title:'Invisible Cities',artist:'Yaw Darko',country:'Ghana',desc:'A photographic and data-driven portrait of informal settlements across West Africa.',img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
+    {category:'Game Design',title:'Shona Quest',artist:'Takudzwa Moyo',country:'Zimbabwe',desc:'An educational adventure game teaching Shona language and culture through interactive narrative.',img:'images/Fak_ugesi_2025-32.jpg'},
+    {category:'Tech for Social Impact',title:'GridFree',artist:'Amahle Dlamini',country:'eSwatini',desc:'Peer-to-peer solar energy sharing platform, connecting 12,000 households across rural eSwatini.',img:'images/digital-dome-image-inside.jpg'},
+  ]
+};
+
+let currentYear=2025,popupIndex=0,currentWinners=[];
+
+function setYear(btn,year){document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentYear=year;document.querySelector('.winners-title').textContent=year+' Winners';renderWinners();}
+
+function renderWinners(){
+  currentWinners=WINNERS[currentYear]||[];
+  const scroll=document.getElementById('winnersScroll');
+  scroll.innerHTML=currentWinners.map((w,i)=>`<div class="winner-card" onclick="openPopup(${i})" style="opacity:0;transform:translateY(20px);transition:opacity 0.4s ease ${i*80}ms,transform 0.4s ease ${i*80}ms"><img class="wc-img" src="${w.img}" alt="${w.title}" onerror="this.style.background='#ccd';this.removeAttribute('src')"/><div class="wc-body"><div class="wc-cat-label">${w.category}</div><div class="wc-name">${w.title}</div><div class="wc-artist">${w.artist} · ${w.country}</div><div class="wc-click-hint">Click to view ↗</div></div></div>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.winner-card').forEach(c=>{c.style.opacity='1';c.style.transform='translateY(0)';});
+  }));
+}
+
+function scrollWinners(dir){const sc=document.getElementById('winnersScroll');sc.scrollBy({left:dir*(sc.offsetWidth*.55),behavior:'smooth'});}
+
+function openPopup(index){popupIndex=index;showPopup();}
+function showPopup(){
+  const w=currentWinners[popupIndex];
+  document.getElementById('wpYear').textContent=currentYear+' · Winner';
+  document.getElementById('wpCat').textContent=w.category;
+  document.getElementById('wpName').textContent=w.title;
+  document.getElementById('wpArtist').textContent=w.artist;
+  document.getElementById('wpCountry').textContent='📍 '+w.country;
+  document.getElementById('wpDesc').textContent=w.desc;
+  document.getElementById('wpCounter').textContent=(popupIndex+1)+' / '+currentWinners.length;
+  document.getElementById('wpPrev').disabled=popupIndex===0;
+  document.getElementById('wpNext').disabled=popupIndex===currentWinners.length-1;
+  const img=document.getElementById('wpImg');
+  const placeholder=document.getElementById('wpImgPlaceholder');
+  img.style.display='block';
+  placeholder.style.display='none';
+  img.onerror=function(){this.style.display='none';placeholder.style.display='flex';};
+  img.src=w.img;
+  document.getElementById('popupOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closePopup(){document.getElementById('popupOverlay').classList.remove('active');document.body.style.overflow='';}
+function navPopup(dir){popupIndex=Math.max(0,Math.min(currentWinners.length-1,popupIndex+dir));showPopup();}
+document.getElementById('popupOverlay').addEventListener('click',e=>{if(e.target.id==='popupOverlay')closePopup();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();if(e.key==='ArrowLeft')navPopup(-1);if(e.key==='ArrowRight')navPopup(1);});
+
+function toggleFaq(row){const item=row.closest('.faq-item');const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+
+renderWinners();
 </script>
-<script src="nav.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
 <script>
 (function(){
   document.querySelectorAll('#fug-nav .drop-li').forEach(function(li){
@@ -429,5 +667,10 @@ document.querySelectorAll('a, button').forEach(el => {
   });
 })();
 </script>
+<script src="nav.js"></script>
+<script src="ticker.js"></script>
+<script src="footer.js"></script>
+<script src="globalEffects.js"></script>
+<script src="starArrows.js"></script>
 </body>
 </html>

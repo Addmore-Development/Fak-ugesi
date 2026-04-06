@@ -223,7 +223,7 @@
   <div class="page-eyebrow">→ Awards 2026</div>
   <h1 class="page-title">Recognising<br/>African Digital<br/>Excellence</h1>
   <p class="page-subtitle">Submissions now open across 8 categories. Win prizes, residencies, and global exposure for your work.</p>
-  <div class="hero-signia"><div class="signia-block"><img src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi" style="height:52px;display:block"/></div></div>
+  <div class="hero-signia" style="position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:16px 20px;z-index:5;"><img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak\'ugesi Festival" style="height:52px;width:auto;display:block;"/></div>
 </div>
 
 
@@ -558,15 +558,7 @@
   <div class="partners-crosshairs" style="margin-top:32px"><span>+</span><span>+</span><span>+</span></div>
 </section>
 
-<footer>
-  <div class="footer-grid">
-    <div><img src="../images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi" style="height:36px;display:block;filter:brightness(0) invert(1);margin-bottom:12px"/><div class="footer-tagline">Africa's leading festival for digital art, culture and innovation. Johannesburg, South Africa.</div></div>
-    <div><div class="footer-heading">Festival</div><ul class="footer-links"><li><a href="programme.html">Programme</a></li><li><a href="immersiveAfrica.html">Immersive Africa</a></li><li><a href="awards.html">Awards</a></li><li><a href="tickets.html">Tickets</a></li></ul></div>
-    <div><div class="footer-heading">About</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="about.html#partners">Partners</a></li><li><a href="about.html#press">Press</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
-    <div><div class="footer-heading">Connect</div><ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Fak'ugesi Festival. All rights reserved.</div><div class="footer-copy">Designed in Johannesburg</div></div>
-</footer>
+
 
 <!-- POPUP -->
 <div class="winner-popup-overlay" id="popupOverlay">
@@ -660,9 +652,6 @@ function toggleFaq(row){const item=row.closest('.faq-item');const was=item.class
 
 renderWinners();
 </script>
-<script src="nav.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
 <script>
 (function(){
   document.querySelectorAll('#fug-nav .drop-li').forEach(function(li){
@@ -678,5 +667,10 @@ renderWinners();
   });
 })();
 </script>
+<script src="nav.js"></script>
+<script src="ticker.js"></script>
+<script src="footer.js"></script>
+<script src="globalEffects.js"></script>
+<script src="starArrows.js"></script>
 </body>
 </html>

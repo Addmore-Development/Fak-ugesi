@@ -16,5 +16,8 @@
     "frontend"
   ],
   "author": "Fak'ugesi Festival",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

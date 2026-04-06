@@ -38,8 +38,8 @@ var css = `
 }
 
 .fug-star { display:inline-block; position:absolute; pointer-events:auto !important; cursor:pointer; }
-.fug-star svg { display:block; animation:starSpin 4s linear infinite; transform-origin:center; overflow:visible; }
-.fug-star:hover svg { animation-duration:0.35s !important; }
+.fug-star svg { display:block; animation:starSpin 12s linear infinite; transform-origin:center; overflow:visible; }
+.fug-star:hover svg { animation-duration:0.5s !important; }
 .fug-baby { position:absolute; border-radius:50%; pointer-events:none; animation:babyFly 0.6s ease-out forwards; }
 
 .arrow-btn { position:relative !important; overflow:visible !important; }

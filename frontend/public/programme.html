@@ -22,7 +22,7 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
+    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
@@ -87,13 +87,15 @@
     /* WINNERS */
     .winners-section { background: var(--white); padding: 60px 0 0; position: relative; overflow: hidden; }
     .winners-header { display: flex; justify-content: space-between; align-items: center; padding: 0 120px 36px; }
-    .winners-title { font-size: 50px; font-weight: 900; color: var(--dark-text); }
+    .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
     .winners-nav button { background: none; border: none; cursor: pointer; font-size: 22px; color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s; }
     .winners-nav button:hover { opacity: 0.5; }
     .winners-strip-outer { overflow: hidden; }
-    .winners-strip { display: flex; gap: 0; width: max-content; transition: transform 0.45s ease; }
-    .winner-card { flex: 0 0 380px; cursor: pointer; padding: 0 0 24px; }
+    .winners-strip { display: flex; gap: 16px; width: max-content; animation: winnersScroll 34s linear infinite; }
+    .winners-strip:hover { animation-play-state: paused; }
+    @keyframes winnersScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .winner-card { flex: 0 0 360px; cursor: pointer; padding: 0 8px 24px; }
     .winner-img { width: 380px; height: 360px; overflow: hidden; }
     .winner-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
     .winner-card:hover .winner-img img { transform: scale(1.04); }
@@ -114,7 +116,7 @@
     }
     .categories-content { position: relative; z-index: 3; padding: 64px 120px 72px; }
     .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
-    .cat-title { font-size: 50px; font-weight: 900; color: var(--white); }
+    .cat-title { font-size: 50px; font-weight: 600; color: var(--white); }
     .cat-apply-link { color: var(--white); font-size: 12px; text-decoration: underline; letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .cat-card { border: 1px solid rgba(255,255,255,0.5); padding: 22px 20px 24px; position: relative; transition: border-color 0.28s, background 0.28s; }
@@ -130,7 +132,7 @@
     /* JURY */
     .jury-section { background: var(--white); padding: 60px 120px 72px; position: relative; }
     .jury-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-    .jury-title { font-size: 46px; font-weight: 900; color: var(--dark-text); }
+    .jury-title { font-size: 46px; font-weight: 600; color: var(--dark-text); }
     .jury-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .jury-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .jury-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
@@ -144,7 +146,7 @@
     /* REQUIREMENTS */
     .requirements-section { background: var(--navy); padding: 64px 120px 72px; position: relative; }
     .req-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; }
-    .req-title { font-size: 50px; font-weight: 900; color: var(--white); }
+    .req-title { font-size: 50px; font-weight: 600; color: var(--white); }
     .req-apply-link { color: var(--white); font-size: 12px; text-decoration: underline; letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; }
     .req-list { list-style: decimal; padding-left: 18px; max-width: 760px; }
     .req-list li { font-size: 13px; line-height: 1.75; opacity: 0.85; margin-bottom: 20px; }
@@ -152,7 +154,7 @@
     /* FAQ */
     .faq-section { background: var(--white); padding: 64px 120px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-    .faq-title { font-size: 50px; font-weight: 900; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
     .faq-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
     .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
@@ -168,7 +170,7 @@
     /* PARTNERS */
     .partners-section { background: var(--lavender); padding: 64px 120px 72px; position: relative; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
-    .partners-title { font-size: 42px; font-weight: 900; color: var(--dark-text); }
+    .partners-title { font-size: 42px; font-weight: 600; color: var(--dark-text); }
     .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .partner-card { display: flex; flex-direction: column; }
@@ -202,6 +204,7 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
   <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -247,13 +250,15 @@
   <div class="cross-icon" style="top:20px;right:48px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
-    <div class="winners-nav">
-      <button onclick="scrollWinners(-1)" aria-label="Previous">←</button>
-      <button onclick="scrollWinners(1)" aria-label="Next">→</button>
-    </div>
   </div>
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+    
       <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork" /></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
@@ -359,27 +364,6 @@
   </div>
 </section>
 
-<div class="social-band">
-  <p>Follow us on socials @fakugesi</p>
-  <div class="social-band-icons">
-    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-    <a href="#" aria-label="X"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-  </div>
-</div>
-
-<footer>
-  <div class="cross-icon" style="top:20px;left:0;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:0;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:0;animation-delay:0.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:0;animation-delay:0.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="footer-inner">
-    <div><p class="footer-brand-name">Fak'ugesi Festival</p><p class="footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p></div>
-    <div><p class="footer-col-title">Contact us</p><a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a><a href="tel:+27117178156">+27 11 717 8156</a></div>
-    <div class="footer-right"><img class="footer-logo-img" src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" /><div><p class="footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p></div></div>
-  </div>
-</footer>
 
 <script>
   const revealEls = document.querySelectorAll('.reveal');
@@ -387,15 +371,6 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.06 });
   revealEls.forEach(el => io.observe(el));
-
-  let winnerOffset = 0;
-  function scrollWinners(dir) {
-    const strip = document.getElementById('winnersStrip');
-    const cardW = 380;
-    const maxOffset = (strip.children.length - 3) * cardW;
-    winnerOffset = Math.max(0, Math.min(maxOffset, winnerOffset + dir * cardW));
-    strip.style.transform = `translateX(-${winnerOffset}px)`;
-  }
 
   function toggleFaq(btn) {
     const item = btn.parentElement;
@@ -406,12 +381,13 @@
     });
     if (!isOpen) {
       item.classList.add('open');
-      item.querySelector('.faq-toggle').textContent = '−';
+      btn.querySelector('.faq-toggle').textContent = '−';
     }
   }
 </script>
 <script src="nav.js"></script>
 <script src="globalEffects.js"></script>
 <script src="starArrows.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>

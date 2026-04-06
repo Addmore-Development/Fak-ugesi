@@ -4,14 +4,18 @@
  */
 (function() {
   const path = window.location.pathname;
-  const page = path.replace(/^\//, '') || 'index';
+  // Normalise: strip leading slash and .html extension for comparison
+  const page = path.replace(/^\//, '').replace(/\.html$/, '') || 'index';
 
   function isActive(href) {
-    const h = href.replace(/^\//, '');
+    // Normalise href the same way: strip leading slash and .html
+    const h = href.replace(/^\//, '').replace(/\.html$/, '');
     if (h === 'index' && (page === '' || page === 'index')) return true;
     if (h !== 'index' && page === h) return true;
     return false;
   }
+
+  const sigPages = ['immersiveAfrica','awards','sig-awards','sig-immersive','sig-fakugesipro','sig-jamz','sig-pitchathon','sig-dalakhona'];
 
   const navHTML = `
   <style>
@@ -87,30 +91,44 @@
     <div class="nav-left">
       <span class="nav-plus-sym">+</span>
       <ul class="nav-links">
-        <li><a href="/" ${isActive('index') ? 'class="active"' : ''}>Home</a></li>
-        <li><a href="/programme" ${isActive('programme') ? 'class="active"' : ''}>Festival Programme</a></li>
+
+        <li>
+          <a href="/index.html" ${isActive('index') ? 'class="active"' : ''}>Home</a>
+        </li>
+
+        <li>
+          <a href="/programme.html" ${isActive('programme') ? 'class="active"' : ''}>Festival Programme</a>
+        </li>
+
         <li class="drop-li">
-          <button class="nav-drop-trigger ${(['immersiveAfrica','awards','sig-awards','sig-immersive','sig-fakugesipro','sig-jamz','sig-pitchathon','sig-dalakhona'].includes(page)) ? 'active' : ''}">
+          <button class="nav-drop-trigger ${sigPages.includes(page) ? 'active' : ''}">
             Signature Programmes <span class="chevron"></span>
           </button>
           <div class="nav-dropdown">
-            <a href="/sig-awards"      ${isActive('sig-awards')      ? 'class="active"' : ''}>Awards</a>
-            <a href="/sig-immersive"   ${isActive('sig-immersive')   ? 'class="active"' : ''}>Immersive Africa</a>
-            <a href="/sig-fakugesipro" ${isActive('sig-fakugesipro') ? 'class="active"' : ''}>Fak'ugesiPRO</a>
-            <a href="/sig-jamz"        ${isActive('sig-jamz')        ? 'class="active"' : ''}>Jamz</a>
-            <a href="/sig-pitchathon"  ${isActive('sig-pitchathon')  ? 'class="active"' : ''}>Pitchathon</a>
-            <a href="/sig-dalakhona"   ${isActive('sig-dalakhona')   ? 'class="active"' : ''}>Dala Khona</a>
+            <a href="/sig-awards.html"      ${isActive('sig-awards')      ? 'class="active"' : ''}>Awards</a>
+            <a href="/sig-immersive.html"   ${isActive('sig-immersive')   ? 'class="active"' : ''}>Immersive Africa</a>
+            <a href="/sig-fakugesipro.html" ${isActive('sig-fakugesipro') ? 'class="active"' : ''}>Fak'ugesiPRO</a>
+            <a href="/sig-jamz.html"        ${isActive('sig-jamz')        ? 'class="active"' : ''}>Jamz</a>
+            <a href="/sig-pitchathon.html"  ${isActive('sig-pitchathon')  ? 'class="active"' : ''}>Pitchathon</a>
+            <a href="/sig-dalakhona.html"   ${isActive('sig-dalakhona')   ? 'class="active"' : ''}>Dala Khona</a>
           </div>
         </li>
+
         <li class="drop-li">
-          <button class="nav-drop-trigger ${(page === 'about') ? 'active' : ''}">
+          <button class="nav-drop-trigger ${page === 'about' ? 'active' : ''}">
             Discover <span class="chevron"></span>
           </button>
           <div class="nav-dropdown">
-            <a href="/about" ${isActive('about') ? 'class="active"' : ''}>About Us</a>
+            <a href="/about.html"           ${isActive('about')           ? 'class="active"' : ''}>About Us</a>
+            <a href="/immersiveAfrica.html" ${isActive('immersiveAfrica') ? 'class="active"' : ''}>Immersive Africa</a>
+            <a href="/awards.html"          ${isActive('awards')          ? 'class="active"' : ''}>Awards</a>
           </div>
         </li>
-        <li><a href="/tickets" ${isActive('tickets') ? 'class="active"' : ''}>Tickets</a></li>
+
+        <li>
+          <a href="/tickets.html" ${isActive('tickets') ? 'class="active"' : ''}>Tickets</a>
+        </li>
+
       </ul>
     </div>
     <div class="nav-right">

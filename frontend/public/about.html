@@ -42,7 +42,7 @@
 
     /* HERO */
     .hero { position: relative; width: 100%; height: 400px; overflow: hidden; display: flex; align-items: flex-end; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('../images/Copy_of__MGL3584.jpg'); background-size: 80%; background-position: center 40%; background-repeat: no-repeat; filter: brightness(0.5); animation: kenBurns 18s ease-in-out infinite alternate; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('../images/Copy_of__MGL3584.jpg'); background-size: cover; background-position: center 40%; background-repeat: no-repeat; filter: brightness(0.5); animation: kenBurns 18s ease-in-out infinite alternate; }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.04); } }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(10,18,48,0.68) 45%, transparent 80%); }
     .hero-content { position: relative; z-index: 3; padding: 0 120px 44px; animation: fadeUp 0.9s ease both; }
@@ -78,13 +78,14 @@
     .editions-section { background: var(--lavender); padding: 0 0 60px; position: relative; overflow: hidden; }
     .editions-header { padding: 52px 120px 36px; }
     .editions-title { font-size: 46px; font-weight: 900; color: var(--dark-text); }
-    .editions-strip-outer { overflow: hidden; }
-    .editions-strip { display: flex; gap: 0; width: max-content; }
-    .edition-card { flex: 0 0 380px; cursor: pointer; }
-    .edition-img { width: 380px; height: 340px; overflow: hidden; }
+    .editions-strip-outer { overflow-x: auto; padding: 0 120px; scrollbar-width: none; }
+    .editions-strip-outer::-webkit-scrollbar { display: none; }
+    .editions-strip { display: flex; gap: 20px; width: max-content; }
+    .edition-card { flex: 0 0 300px; cursor: pointer; border: 1px solid rgba(26,39,68,0.1); background: #fff; }
+    .edition-img { width: 300px; height: 260px; overflow: hidden; }
     .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.45s; }
     .edition-card:hover .edition-img img { transform: scale(1.04); }
-    .edition-meta { padding: 16px 16px 0; background: var(--lavender); }
+    .edition-meta { padding: 16px 16px 20px; background: #fff; }
     .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
     .edition-dates, .edition-year { font-size: 12px; color: var(--body-gray); }
     .edition-name { font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 10px; }
@@ -95,15 +96,15 @@
     .team-crosses-top { display: flex; justify-content: space-between; padding: 22px 0; }
     .team-crosses-top svg { width: 18px; height: 18px; }
     .team-title { font-size: 46px; font-weight: 900; color: var(--dark-text); margin-bottom: 36px; }
-    .team-grid, .team-grid-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .team-grid-row2 { margin-top: 20px; }
+    .team-grid, .team-grid-row2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .team-grid-row2 { margin-top: 16px; }
     .team-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
-    .team-img { width: 100%; aspect-ratio: 3/2.8; overflow: hidden; }
+    .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; }
     .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-    .team-info { background: var(--lavender); padding: 18px 20px 22px; }
-    .team-name { font-size: 22px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 10px; }
-    .team-role { font-size: 14px; font-weight: 500; color: var(--dark-text); margin-bottom: 10px; }
-    .team-email { font-size: 12px; color: var(--body-gray); }
+    .team-info { background: var(--lavender); padding: 12px 14px 16px; }
+    .team-name { font-size: 16px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
+    .team-role { font-size: 12px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
+    .team-email { font-size: 11px; color: var(--body-gray); }
 
     /* GET IN TOUCH */
     .contact-section { background: var(--navy); padding: 64px 120px 72px; position: relative; }
@@ -189,6 +190,8 @@
   </div>
   <div class="hero-logo-box" style="position:absolute;right:72px;top:50%;transform:translateY(-50%);background:#fff;padding:16px 20px;z-index:5;"><img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:52px;width:auto;display:block;"/></div>
 </section>
+
+<!-- ticker injected by ticker.js -->
 
 
 

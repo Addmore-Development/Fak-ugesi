@@ -2,6 +2,7 @@
  * Fak'ugesi Shared Announcement Ticker
  * Injects the yellow ticker bar + "Premiering" banner on every page.
  * On index.html the page bg is white; all other pages get dark navy bg.
+ * The ticker is always inserted BELOW the hero section.
  */
 (function () {
   const path = window.location.pathname;
@@ -92,21 +93,25 @@
       </div>
     </div>`;
 
-  /* ── Insert after nav (nav.js inserts #fug-nav first) ── */
+  /* ── Insert AFTER the .hero section ── */
   function insertTicker() {
-    const nav = document.getElementById('fug-nav');
-    if (nav) {
-      nav.insertAdjacentHTML('afterend', html);
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.insertAdjacentHTML('afterend', html);
     } else {
-      // Fallback: insert at top of body
-      document.body.insertAdjacentHTML('afterbegin', html);
+      // Fallback: insert after nav or at top of body
+      const nav = document.getElementById('fug-nav');
+      if (nav) {
+        nav.insertAdjacentHTML('afterend', html);
+      } else {
+        document.body.insertAdjacentHTML('afterbegin', html);
+      }
     }
   }
 
-  // nav.js runs before this, but just in case use a tiny delay
-  if (document.getElementById('fug-nav')) {
-    insertTicker();
-  } else {
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', insertTicker);
+  } else {
+    insertTicker();
   }
 })();

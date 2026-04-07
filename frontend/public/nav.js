@@ -119,9 +119,7 @@
             Discover <span class="chevron"></span>
           </button>
           <div class="nav-dropdown">
-            <a href="/about.html"           ${isActive('about')           ? 'class="active"' : ''}>About Us</a>
-            <a href="/immersiveAfrica.html" ${isActive('immersiveAfrica') ? 'class="active"' : ''}>Immersive Africa</a>
-            <a href="/awards.html"          ${isActive('awards')          ? 'class="active"' : ''}>Awards</a>
+            <a href="/about.html" ${isActive('about') ? 'class="active"' : ''}>About Us</a>
           </div>
         </li>
 

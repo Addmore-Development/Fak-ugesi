@@ -25,43 +25,98 @@
 
     /* HERO */
     .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
-    .hero-bg{position:absolute;inset:0;background-image:url('../images/Copy_of__MGL0176.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('../images/image00044.jpeg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
     .hero-content{position:relative;z-index:3;padding:0 80px 52px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;font-family:'InterDisplay',sans-serif}
-    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px;font-family:'InterDisplay',sans-serif}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px;font-family:'InterDisplay',sans-serif}
-    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em;font-family:'InterDisplay',sans-serif}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
+    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
+    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
+    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
+    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em}
+    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s}
     .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:20px 24px;z-index:4}
-    .hero-signia img{display:block}
+    /* Signia box — white bg, right-aligned, FAK'UGESI label + Pitchathon SVG */
+    .hero-signia{
+      position:absolute;right:80px;top:50%;transform:translateY(-50%);
+      background:#fff;padding:18px 24px;z-index:4;
+      display:flex;flex-direction:column;align-items:center;gap:10px;min-width:200px;
+    }
+    .hero-signia-label{
+      font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--navy);
+      padding-bottom:8px;border-bottom:1px solid rgba(26,39,68,.25);
+      width:100%;text-align:center;
+    }
+    .hero-signia img{display:block;max-height:44px;width:auto;max-width:180px}
 
     /* INTRO */
     .intro-section{background:var(--white);padding:72px 80px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif}
-    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
+    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
+    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
     .intro-body p+p{margin-top:20px}
-    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
+    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
     .intro-cta:hover{background:var(--navy);color:#fff}
 
     /* CONTENT SECTIONS */
     .content-section{padding:72px 80px;position:relative}
     .content-section.dark{background:var(--navy);color:#fff}
     .content-section.light{background:var(--lavender);color:var(--dark-text)}
-    .section-title{font-size:38px;font-weight:900;margin-bottom:36px;font-family:'InterDisplay',sans-serif}
+    .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+    .section-title{font-size:38px;font-weight:900;font-family:'InterDisplay',sans-serif}
     .section-title.light-text{color:#fff}
     .section-title.dark-text{color:var(--dark-text)}
+    .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;color:inherit;opacity:.7;font-family:'InterDisplay',sans-serif}
     .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px;position:relative}
+    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px}
     .info-card.light-bg{border-color:rgba(26,39,68,.15);background:#fff}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px;font-family:'InterDisplay',sans-serif}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px;font-family:'InterDisplay',sans-serif}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px;font-family:'InterDisplay',sans-serif}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82;font-family:'InterDisplay',sans-serif}
+    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px}
+    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+    .card-head{font-size:18px;font-weight:700;margin-bottom:10px}
+    .card-body{font-size:13px;line-height:1.65;opacity:.82}
+
+    /* WINNERS */
+    .winners-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .winners-rail-wrapper{overflow:hidden}
+    .winners-rail{display:flex;transition:transform .5s ease}
+    .winner-slide{flex:0 0 33.333%;min-width:0;padding-right:1px}
+    .winner-slide img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
+    .winner-slide:hover img{transform:scale(1.04)}
+    .winner-info{padding:14px 0 0}
+    .winner-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-right:12px;font-family:'InterDisplay',sans-serif}
+    .winner-name{font-size:22px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-top:4px}
+    .winners-nav button{background:none;border:none;cursor:pointer;font-size:24px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s;font-family:sans-serif}
+    .winners-nav button:hover{opacity:.4}
+
+    /* JURY */
+    .jury-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .jury-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .jury-card{border:1px solid rgba(26,39,68,.12);overflow:hidden}
+    .jury-card img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
+    .jury-info{padding:16px 18px 20px;background:#fff}
+    .jury-name{font-size:18px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-bottom:4px}
+    .jury-role{font-size:12px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;margin-bottom:6px}
+    .jury-country{font-size:11px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;opacity:.7}
+
+    /* PRIZES */
+    .prizes-section{background:var(--navy);color:#fff;padding:72px 80px;position:relative}
+    .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .prize-card{border:1px solid rgba(255,255,255,.25);padding:28px 24px}
+    .prize-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
+    .prize-amount{font-size:36px;font-weight:900;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
+    .prize-desc{font-size:13px;line-height:1.65;opacity:.8;font-family:'InterDisplay',sans-serif}
+
+    /* FAQ */
+    .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
+    .faq-intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif;margin-bottom:16px}
+    .faq-intro-body{font-size:14px;line-height:1.78;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
+    .faq-item{border:1px solid rgba(26,39,68,.15);margin-bottom:-1px}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;gap:16px}
+    .faq-toggle{flex-shrink:0;font-size:20px;font-weight:300;color:var(--navy);line-height:1;user-select:none}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:13px;line-height:1.75;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
+    .faq-item.open .faq-answer{max-height:300px;padding:0 22px 20px}
 
     /* IMAGE STRIP */
     .img-strip-section{overflow:hidden;position:relative;padding:0}
@@ -72,20 +127,20 @@
     .strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
     .strip-item:hover img{transform:scale(1.04)}
 
-    /* PARTNERS */
-    .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
+    /* PARTNERS — identical to index.html (full-width, centered grid) */
+    .partners-section{background:var(--lavender);padding:80px 120px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .partners-title{font-size:38px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
+    .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px}
+    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .partner-card{display:flex;flex-direction:column}
-    .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
-    .partner-logo-box img{max-width:100%;max-height:120px;object-fit:contain;display:block}
+    .partner-logo-box img{max-width:100%;max-height:160px;object-fit:contain;display:block}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
 
     /* REVEAL */
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
@@ -93,94 +148,309 @@
 
 <!-- nav injected by nav.js -->
 
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Signature Programme</p>
-    <h1 class="hero-title">Pitchathon</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+    <p class="hero-eyebrow">Pitchathon</p>
+    <h1 class="hero-title">High stakes, shark<br>tank style pitches</h1>
+    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <p class="hero-dates">07 — 12.10.2026</p>
-    <a class="hero-cta" href="tickets.html">Get Tickets</a>
+    <a class="hero-cta" href="/tickets">Get Tickets</a>
+    <a class="hero-cta" href="/programme">View Programme</a>
   </div>
   <div class="hero-signia">
-    <img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:48px;width:auto;margin-bottom:8px;"/>
-    <img src="images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon" style="height:36px;width:auto;"/>
+    <span class="hero-signia-label">FAK'UGESI</span>
+    <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg"
+         alt="Pitchathon"
+         onerror="this.style.display='none'"/>
   </div>
 </section>
 
 <!-- ticker injected by ticker.js -->
 
+<!-- ══ INTRO ══ -->
 <section class="intro-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="intro-grid">
     <h2 class="intro-title">High stakes, shark tank style pitches</h2>
     <div class="intro-body">
       <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-      <a class="intro-cta" href="tickets.html">Get Tickets</a>
+      <a class="intro-cta" href="/tickets">Get Tickets</a>
     </div>
   </div>
 </section>
 
+<!-- ══ HOW IT WORKS ══ -->
 <section class="content-section dark reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <h2 class="section-title light-text">How It Works</h2>
+  <h2 class="section-title light-text" style="margin-bottom:36px">How It Works</h2>
   <div class="cards-grid">
-      <div class="info-card">
-        <div class="card-num">01</div>
-        <div class="card-label">Open Applications</div>
-        <div class="card-head">Submit Your Idea</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-      </div>
-      <div class="info-card">
-        <div class="card-num">02</div>
-        <div class="card-label">Judging Panel</div>
-        <div class="card-head">Live Pitching</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-      </div>
-      <div class="info-card">
-        <div class="card-num">03</div>
-        <div class="card-label">Prize Pool</div>
-        <div class="card-head">Winner Takes All</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-      </div>
+    <div class="info-card">
+      <div class="card-num">01</div>
+      <div class="card-label">Open Applications</div>
+      <div class="card-head">Submit Your Idea</div>
+      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
+    </div>
+    <div class="info-card">
+      <div class="card-num">02</div>
+      <div class="card-label">Judging Panel</div>
+      <div class="card-head">Live Pitching</div>
+      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
+    </div>
+    <div class="info-card">
+      <div class="card-num">03</div>
+      <div class="card-label">Prize Pool</div>
+      <div class="card-head">Winner Takes All</div>
+      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
+    </div>
   </div>
 </section>
 
+<!-- ══ 2025 WINNERS ══ -->
+<section class="winners-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="section-header">
+    <h2 class="section-title dark-text">2025 Winners</h2>
+    <div class="winners-nav">
+      <button id="winners-prev">&#8592;</button>
+      <button id="winners-next">&#8594;</button>
+    </div>
+  </div>
+  <div class="winners-rail-wrapper">
+    <div class="winners-rail" id="winnersRail">
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
+             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span><span class="winner-badge">Runner-up</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
+             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
+             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
+             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 2026 JURY ══ -->
+<section class="jury-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="section-header">
+    <h2 class="section-title dark-text">2026 Pitchathon Jury</h2>
+    <a class="section-link" style="color:var(--navy)" href="/programme">View 2026 programme</a>
+  </div>
+  <div class="jury-grid">
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+    <div class="jury-card">
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
+           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info">
+        <div class="jury-name">Adam Pantanowitz</div>
+        <div class="jury-role">Director at Wits Innovation Centre</div>
+        <div class="jury-country">South Africa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 2026 PRIZES ══ -->
+<section class="prizes-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="section-header">
+    <h2 class="section-title light-text">2026 Prizes</h2>
+    <a class="section-link" style="color:#fff" href="/programme">View 2026 programme</a>
+  </div>
+  <div class="prizes-grid">
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+    <div class="prize-card">
+      <div class="prize-label">WIC PGDIP Winner</div>
+      <div class="prize-amount">R20,000</div>
+      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-intro-title">FAQ</h2>
+      <p class="faq-intro-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="section-link" href="/programme" style="display:inline-block;margin-top:16px;color:var(--navy)">View 2026 programme</a>
+    </div>
+    <div id="faqList">
+      <div class="faq-item open">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">&#8722;</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMAGE STRIP ══ -->
 <section class="img-strip-section">
   <div class="img-strip">
-    <div class="strip-item"><img src="../images/Copy_of__MGL0176.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL0176.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
+    <div class="strip-item"><img src="../images/image00044.jpeg" alt="" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/image00084.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1515169067868-5387ec356754?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/image00044.jpeg" alt="" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/image00084.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1515169067868-5387ec356754?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=80'"/></div>
+    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=80'"/></div>
   </div>
 </section>
 
+<!-- ══ PARTNERS (matching index.html — full width, centered grid) ══ -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
-    <h2 class="partners-title">Our Main Partners</h2>
-    <a class="partners-link" href="about.html#partners">View all partners</a>
+    <h2 class="partners-title">Our Pitchathon Partners</h2>
+    <a class="partners-link" href="/about#partners">View all partners</a>
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"
+             onerror="this.src='https://placehold.co/180x80?text=Tshimologong'"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"
+             onerror="this.src='https://placehold.co/180x80?text=Wits+University'"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="frontend/images/digital-dome.png" alt="Wits Anglo American Digital Dome"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/logos/digital-dome.png" alt="Wits Anglo American Digital Dome"
+             onerror="this.src='https://placehold.co/180x80?text=Digital+Dome'"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
@@ -192,11 +462,45 @@
 <script src="globalEffects.js"></script>
 <script src="starArrows.js"></script>
 <script>
+  // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.10 });
   revealEls.forEach(el => io.observe(el));
+
+  // Winners carousel
+  const rail = document.getElementById('winnersRail');
+  const slides = rail ? Array.from(rail.querySelectorAll('.winner-slide')) : [];
+  let winnerIdx = 0;
+  function updateWinnersRail() {
+    if (!rail || !slides.length) return;
+    const slideW = slides[0].offsetWidth;
+    rail.style.transform = 'translateX(-' + (winnerIdx * slideW) + 'px)';
+  }
+  document.getElementById('winners-next')?.addEventListener('click', () => {
+    if (winnerIdx < slides.length - 3) winnerIdx++;
+    updateWinnersRail();
+  });
+  document.getElementById('winners-prev')?.addEventListener('click', () => {
+    if (winnerIdx > 0) winnerIdx--;
+    updateWinnersRail();
+  });
+
+  // FAQ accordion
+  document.getElementById('faqList')?.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-toggle').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-toggle').innerHTML = '&#8722;';
+      }
+    });
+  });
 </script>
 </body>
 </html>

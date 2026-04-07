@@ -1,8 +1,9 @@
 /**
- * Fak'ugesi Shared Nav v2
- * - White background always, clear/frosted on scroll
- * - Links centred in grid layout
- * - Tickets button far right
+ * Fak'ugesi Shared Nav v3
+ * - Transparent background by default (no solid white)
+ * - White frosted low-opacity on scroll
+ * - Rounded corners on GET TICKETS button
+ * - Search button removed
  * - Plus sign spins 360° and shoots baby pluses on hover
  */
 (function() {
@@ -25,20 +26,21 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       padding: 0 32px; height: 58px;
-      background: rgba(255,255,255,1);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
+      background: transparent;
+      border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
-      transition: background 0.35s ease, box-shadow 0.35s ease;
+      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
     #fug-nav.scrolled {
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.06);
     }
     #fug-nav .nav-left { display:flex; align-items:center; }
     #fug-nav .nav-plus-sym {
-      color: #1a2744; font-size: 24px; font-weight: 300; line-height:1;
+      color: rgba(255,255,255,0.85); font-size: 24px; font-weight: 300; line-height:1;
       cursor: pointer; display:inline-block; user-select:none;
       margin-right: 4px;
       transition: color 0.2s;
@@ -55,7 +57,7 @@
     #fug-nav .nav-links { display:flex; gap:26px; list-style:none; margin:0; padding:0; }
     #fug-nav .nav-links > li { position:relative; }
     #fug-nav .nav-links a, #fug-nav .nav-links .nav-drop-trigger {
-      color:rgba(13,27,62,0.68); text-decoration:none;
+      color:rgba(255,255,255,0.82); text-decoration:none;
       font-size:13px; font-weight:500; letter-spacing:0.01em;
       transition:color 0.2s; cursor:pointer;
       display:flex; align-items:center; gap:4px;
@@ -65,7 +67,7 @@
     #fug-nav .nav-links a:hover,
     #fug-nav .nav-links .nav-drop-trigger:hover,
     #fug-nav .nav-links a.active,
-    #fug-nav .nav-links .nav-drop-trigger.active { color:#0d1b3e; }
+    #fug-nav .nav-links .nav-drop-trigger.active { color:#ffffff; }
     #fug-nav .nav-drop-trigger .chevron {
       display:inline-block; width:7px; height:7px;
       border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
@@ -75,12 +77,13 @@
     #fug-nav .nav-dropdown {
       position:absolute; top:100%; left:50%;
       transform:translateX(-50%) translateY(-6px);
-      background:#fff; border:1px solid rgba(0,0,0,0.09);
-      box-shadow:0 8px 32px rgba(0,0,0,0.09);
+      background:rgba(255,255,255,0.96); border:1px solid rgba(0,0,0,0.09);
+      box-shadow:0 8px 32px rgba(0,0,0,0.12);
       min-width:190px; padding:8px 0;
       opacity:0; pointer-events:none;
       transition:opacity 0.18s, transform 0.18s;
       z-index:200;
+      backdrop-filter: blur(12px);
     }
     #fug-nav .nav-links li.open .nav-dropdown {
       opacity:1; pointer-events:auto;
@@ -88,19 +91,14 @@
     }
     #fug-nav .nav-dropdown a {
       display:block; padding:10px 20px;
-      font-size:13px; color:rgba(13,27,62,0.7);
+      font-size:13px; color:rgba(13,27,62,0.75);
       text-decoration:none; font-weight:500;
       transition:color 0.15s, background 0.15s;
       line-height:1.4; white-space:nowrap;
     }
-    #fug-nav .nav-dropdown a:hover { color:#0d1b3e; background:rgba(0,0,0,0.03); }
+    #fug-nav .nav-dropdown a:hover { color:#0d1b3e; background:rgba(0,0,0,0.04); }
     #fug-nav .nav-dropdown a.active { color:#0d1b3e; font-weight:600; }
     #fug-nav .nav-right { display:flex; align-items:center; gap:12px; justify-content:flex-end; }
-    #fug-nav .nav-search-btn {
-      background:none; border:none; cursor:pointer; padding:4px;
-      color:rgba(13,27,62,0.4); transition:color 0.2s;
-    }
-    #fug-nav .nav-search-btn:hover { color:#0d1b3e; }
     #fug-nav .nav-tickets-btn {
       background:#1a2744; color:#fff; border:none; cursor:pointer;
       padding:9px 20px; font-size:11px; font-weight:700;
@@ -109,6 +107,7 @@
       transition:background 0.22s, transform 0.15s;
       white-space:nowrap; text-decoration:none;
       display:inline-flex; align-items:center;
+      border-radius: 100px;
     }
     #fug-nav .nav-tickets-btn:hover { background:#e05a1e; transform:translateY(-1px); }
     .fug-baby-plus {
@@ -152,19 +151,13 @@
       </ul>
     </div>
     <div class="nav-right">
-      <button class="nav-search-btn" aria-label="Search">
-        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <circle cx="7.5" cy="7.5" r="5.5"/>
-          <line x1="12" y1="12" x2="16" y2="16"/>
-        </svg>
-      </button>
       <a class="nav-tickets-btn" href="/tickets.html">GET TICKETS</a>
     </div>
   </nav>`;
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Scroll behaviour
+  // Scroll behaviour — transparent by default, frosted white on scroll
   const nav = document.getElementById('fug-nav');
   function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', updateNav, { passive: true });

@@ -26,17 +26,17 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       padding: 0 32px; height: 58px;
-      background: transparent;
-      border-bottom: 1px solid transparent;
+      background: #000000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       font-family: 'InterDisplay', sans-serif;
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
     #fug-nav.scrolled {
-      background: rgba(255,255,255,0.12);
+      background: #000000;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 2px 32px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.18);
     }
     #fug-nav .nav-left { display:flex; align-items:center; }
     #fug-nav .nav-plus-sym {
@@ -100,16 +100,16 @@
     #fug-nav .nav-dropdown a.active { color:#0d1b3e; font-weight:600; }
     #fug-nav .nav-right { display:flex; align-items:center; gap:12px; justify-content:flex-end; }
     #fug-nav .nav-tickets-btn {
-      background:#1a2744; color:#fff; border:none; cursor:pointer;
+      background:#ffffff; color:#000000; border:none; cursor:pointer;
       padding:9px 20px; font-size:11px; font-weight:700;
       letter-spacing:0.1em; text-transform:uppercase;
       font-family:'InterDisplay',sans-serif;
-      transition:background 0.22s, transform 0.15s;
+      transition:background 0.22s, color 0.22s, transform 0.15s;
       white-space:nowrap; text-decoration:none;
       display:inline-flex; align-items:center;
       border-radius: 100px;
     }
-    #fug-nav .nav-tickets-btn:hover { background:#e05a1e; transform:translateY(-1px); }
+    #fug-nav .nav-tickets-btn:hover { background:#e05a1e; color:#ffffff; transform:translateY(-1px); }
     .fug-baby-plus {
       position:fixed; pointer-events:none; z-index:99999;
       font-weight:700; line-height:1;

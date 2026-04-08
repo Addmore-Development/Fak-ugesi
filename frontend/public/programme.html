@@ -159,13 +159,14 @@
     .faq-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
     .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .faq-items { display: flex; flex-direction: column; gap: 0; }
-    .faq-item { border: 1px solid rgba(26,39,68,0.15); border-bottom: none; background: #f0f3f9; }
-    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
-    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; cursor: pointer; gap: 16px; }
-    .faq-question span:first-child { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; }
-    .faq-toggle { font-size: 20px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; }
-    .faq-answer { display: none; padding: 0 22px 22px; font-size: 13px; line-height: 1.72; color: var(--body-gray); }
-    .faq-item.open .faq-answer { display: block; }
+    .faq-item { border-bottom: 1px solid rgba(26,39,68,0.12); overflow: hidden; background: transparent; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; cursor: pointer; gap: 16px; transition: color 0.2s; }
+    .faq-question:hover { color: var(--navy); }
+    .faq-question span:first-child { font-size: 16px; font-weight: 600; color: var(--dark-text); line-height: 1.35; }
+    .faq-toggle { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1.5px solid var(--dark-text); border-radius: 50%; font-size: 16px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0; }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
     /* PARTNERS */
     .partners-section { background: var(--lavender); padding: 64px 120px 72px; position: relative; }
@@ -233,16 +234,7 @@
   </div>
 </section>
 
-<div class="ticker-wrapper">
-  <div class="ticker-track">
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-  </div>
-</div>
+
 
 <section class="winners-section reveal">
   <div class="cross-icon" style="top:20px;left:48px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
@@ -338,7 +330,7 @@
     <div>
       <div class="faq-header"><a class="faq-apply-link" href="#">Submit your application</a></div>
       <div class="faq-items">
-        <div class="faq-item open"><div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-toggle">−</span></div><div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div></div>
+        <div class="faq-item open"><div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-toggle">+</span></div><div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div></div>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-toggle">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-toggle">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-toggle">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
@@ -385,6 +377,7 @@
   }
 </script>
 <script src="nav.js"></script>
+<script src="ticker.js"></script>
 <script src="globalEffects.js"></script>
 <script src="starArrows.js"></script>
 <script src="footer.js"></script>

@@ -37,9 +37,9 @@
     #fug-premiere-bar .pb-cta   { color: ${isIndex ? '#111' : '#fff'}; font-weight: 800; letter-spacing: 0.12em; flex-shrink: 0; }
     #fug-premiere-bar .pb-right { opacity: ${isIndex ? '0.6' : '0.55'}; }
 
-    /* Yellow scrolling ticker */
+    /* Navy scrolling ticker */
     #fug-ticker {
-      background: #d4e600;
+      background: #1a2744;
       overflow: hidden;
       padding: 10px 0;
       white-space: nowrap;
@@ -55,7 +55,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #000;
+      color: #ffffff;
       padding: 0 32px;
       display: flex;
       align-items: center;
@@ -93,13 +93,12 @@
       </div>
     </div>`;
 
-  /* ── Insert AFTER the .hero section ── */
+  /* ── Insert AFTER the .hero or .page-hero section ── */
   function insertTicker() {
-    const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero, .page-hero');
     if (hero) {
       hero.insertAdjacentHTML('afterend', html);
     } else {
-      // Fallback: insert after nav or at top of body
       const nav = document.getElementById('fug-nav');
       if (nav) {
         nav.insertAdjacentHTML('afterend', html);

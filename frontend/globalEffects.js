@@ -420,6 +420,199 @@
   }
 
   /* ═══════════════════════════════════════
+     KIKK FEATURED-SPEAKERS EXPAND EFFECT
+     Applied to .faq-items, .faq-list, .req-list
+     Items sit collapsed side-by-side (flex row);
+     hovered item expands, others compress.
+  ═══════════════════════════════════════ */
+  const KIKK_CSS = `
+    /* ── KIKK expand rows ── */
+    .kikk-expand-row {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 0 !important;
+      align-items: stretch;
+      overflow: hidden;
+      width: 100%;
+    }
+    .kikk-expand-item {
+      flex: 1 1 0;
+      min-width: 0;
+      overflow: hidden;
+      position: relative;
+      border-right: 1px solid rgba(0,0,0,0.1);
+      transition: flex 0.52s cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer;
+    }
+    .kikk-expand-row.dark-bg .kikk-expand-item {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .kikk-expand-item:last-child { border-right: none; }
+    .kikk-expand-item.kikk-active { flex: 4 1 0; }
+    .kikk-expand-item.kikk-inactive { flex: 0.5 1 0; }
+
+    /* collapsed state: show only the number/label vertically */
+    .kikk-item-collapsed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 12px;
+      height: 100%;
+      min-height: 110px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      font-family: 'InterDisplay', sans-serif;
+    }
+    .kikk-expand-item.kikk-active .kikk-item-collapsed { opacity: 0; pointer-events: none; position: absolute; }
+    .kikk-expand-item:not(.kikk-active) .kikk-item-expanded { opacity: 0; pointer-events: none; position: absolute; top:0; left:0; }
+
+    /* expanded state */
+    .kikk-item-expanded {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 24px;
+      min-height: 110px;
+      height: 100%;
+      opacity: 1;
+      transition: opacity 0.35s ease 0.15s;
+      font-family: 'InterDisplay', sans-serif;
+    }
+    .kikk-item-q {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .kikk-item-a {
+      font-size: 12px;
+      line-height: 1.7;
+      opacity: 0.72;
+    }
+    /* dark bg variant */
+    .kikk-expand-row.dark-bg .kikk-item-collapsed,
+    .kikk-expand-row.dark-bg .kikk-item-q { color: #fff; }
+    .kikk-expand-row.dark-bg .kikk-item-a { color: rgba(255,255,255,0.65); }
+    /* light bg variant */
+    .kikk-expand-row:not(.dark-bg) .kikk-item-collapsed,
+    .kikk-expand-row:not(.dark-bg) .kikk-item-q { color: var(--dark-text, #0d1b3e); }
+    .kikk-expand-row:not(.dark-bg) .kikk-item-a { color: var(--body-gray, #3a4060); }
+  `;
+
+  const kikkStyle = document.createElement('style');
+  kikkStyle.textContent = KIKK_CSS;
+  document.head.appendChild(kikkStyle);
+
+  function buildKikkRow(container, isDark) {
+    if (container.dataset.kikkDone) return;
+    container.dataset.kikkDone = '1';
+
+    // Collect items — support faq-item, faq-q-row+faq-a, req-list li
+    let items = [];
+    const faqItems = container.querySelectorAll(':scope > .faq-item');
+    const reqItems = container.tagName === 'UL' ? container.querySelectorAll(':scope > li') : [];
+
+    if (faqItems.length >= 2) {
+      faqItems.forEach((item, i) => {
+        // Extract question text
+        const qEl = item.querySelector('.faq-question span:first-child, .faq-q-row .faq-q, .faq-q');
+        const aEl = item.querySelector('.faq-answer, .faq-a');
+        const q = qEl ? qEl.textContent.trim() : `Item ${i+1}`;
+        const a = aEl ? aEl.textContent.trim() : '';
+        items.push({ q, a, num: String(i+1).padStart(2,'0') });
+      });
+    } else if (reqItems.length >= 2) {
+      reqItems.forEach((li, i) => {
+        items.push({ q: li.textContent.trim(), a: '', num: String(i+1).padStart(2,'0') });
+      });
+    }
+
+    if (items.length < 2) return;
+
+    // Build new KIKK row
+    const row = document.createElement('div');
+    row.className = 'kikk-expand-row' + (isDark ? ' dark-bg' : '');
+
+    items.forEach((data, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'kikk-expand-item' + (i === 0 ? ' kikk-active' : '');
+
+      const collapsed = document.createElement('div');
+      collapsed.className = 'kikk-item-collapsed';
+      collapsed.textContent = data.q.length > 22 ? data.q.slice(0,22)+'…' : data.q;
+
+      const expanded = document.createElement('div');
+      expanded.className = 'kikk-item-expanded';
+      expanded.innerHTML = `<div class="kikk-item-q">${data.q}</div>${data.a ? `<div class="kikk-item-a">${data.a}</div>` : ''}`;
+
+      cell.appendChild(collapsed);
+      cell.appendChild(expanded);
+
+      cell.addEventListener('mouseenter', () => {
+        row.querySelectorAll('.kikk-expand-item').forEach(c => {
+          c.classList.remove('kikk-active','kikk-inactive');
+          c.classList.add('kikk-inactive');
+        });
+        cell.classList.remove('kikk-inactive');
+        cell.classList.add('kikk-active');
+      });
+
+      row.appendChild(cell);
+    });
+
+    // Add mouseleave on row to reset to first
+    row.addEventListener('mouseleave', () => {
+      row.querySelectorAll('.kikk-expand-item').forEach((c, i) => {
+        c.classList.remove('kikk-active','kikk-inactive');
+        if (i === 0) c.classList.add('kikk-active');
+      });
+    });
+
+    // Replace original container content with new row
+    container.innerHTML = '';
+    container.appendChild(row);
+  }
+
+  function isDarkSection(el) {
+    let node = el;
+    while (node && node !== document.body) {
+      const bg = getComputedStyle(node).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        // parse rgb
+        const m = bg.match(/\d+/g);
+        if (m) {
+          const brightness = (parseInt(m[0])*299 + parseInt(m[1])*587 + parseInt(m[2])*114) / 1000;
+          return brightness < 100;
+        }
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  function initKikkEffect() {
+    // Apply to .faq-items containers
+    document.querySelectorAll('.faq-items:not([data-kikkDone])').forEach(el => {
+      buildKikkRow(el, isDarkSection(el));
+    });
+    // Apply to .faq-list containers (awards/immersive pages)
+    document.querySelectorAll('.faq-list:not([data-kikkDone])').forEach(el => {
+      buildKikkRow(el, isDarkSection(el));
+    });
+    // Apply to req-list (requirements)
+    document.querySelectorAll('.req-list:not([data-kikkDone])').forEach(el => {
+      buildKikkRow(el, isDarkSection(el));
+    });
+  }
+
+  /* ═══════════════════════════════════════
      INIT
   ═══════════════════════════════════════ */
   function init() {
@@ -430,10 +623,12 @@
     initCardFlips();
     initHeroLetterDrop();
     initNoodleText();
+    initKikkEffect();
     setInterval(()=>{
       initAllArrows();
       initCardFlips();
       initNoodleText();
+      initKikkEffect();
     }, 1800);
   }
 

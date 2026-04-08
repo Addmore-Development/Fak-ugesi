@@ -201,14 +201,10 @@
     .passes-section {
       position: relative;
       overflow: hidden;
+      background: #ffffff;
     }
     .passes-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('../images/0A9A3304.JPG');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.35);
+      display: none;
     }
     .passes-content {
       position: relative;
@@ -248,7 +244,7 @@
     .passes-intro {
       font-size: 13px;
       line-height: 1.75;
-      color: rgba(255,255,255,0.78);
+      color: var(--body-gray);
     }
 
     /* ── TICKET CARDS — stacked on right half ── */
@@ -504,40 +500,48 @@
     }
     .faq-items { display: flex; flex-direction: column; gap: 0; }
     .faq-item {
-      border: 1px solid rgba(26,39,68,0.15);
-      border-bottom: none;
-      background: #f0f3f9;
+      border-bottom: 1px solid rgba(26,39,68,0.12);
+      overflow: hidden;
+      background: transparent;
     }
-    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
     .faq-question {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 22px;
+      padding: 22px 0;
       cursor: pointer;
       gap: 16px;
+      transition: color 0.2s;
     }
+    .faq-question:hover { color: var(--navy); }
     .faq-question span:first-child {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--dark-text);
       line-height: 1.35;
     }
     .faq-toggle {
-      font-size: 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; flex-shrink: 0;
+      border: 1.5px solid var(--dark-text); border-radius: 50%;
+      font-size: 18px; font-weight: 300; line-height: 1;
       color: var(--dark-text);
-      flex-shrink: 0;
-      font-weight: 300;
-      line-height: 1;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
     }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
     .faq-answer {
-      display: none;
-      padding: 0 22px 22px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
       font-size: 13px;
-      line-height: 1.72;
+      line-height: 1.75;
       color: var(--body-gray);
+      padding: 0;
     }
-    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 22px;
+    }
 
     /* ════════════════════════
        PARTNERS
@@ -825,7 +829,7 @@
       <div class="faq-item open">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-toggle">−</span>
+          <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
       </div>

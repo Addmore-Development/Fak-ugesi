@@ -1,7 +1,6 @@
 /**
  * Fak'ugesi Signature Programmes Sub-Navigation
- * Styled to match main nav.js (frosted glass, scrolled behaviour, navy palette)
- * No dropdowns — clean horizontal links only
+ * Centered header with Home tab, frosted glass, navy palette
  */
 (function () {
   const path = window.location.pathname;
@@ -15,15 +14,15 @@
   const sigCSS = `
     #sig-nav {
       position: fixed;
-      top: 58px;
+      top: 0;
       left: 0;
       right: 0;
-      z-index: 999;
-      display: grid;
-      grid-template-columns: 1fr auto;
+      z-index: 1000;
+      display: flex;
       align-items: center;
+      justify-content: center;
       padding: 0 32px;
-      height: 48px;
+      height: 58px;
       background: transparent;
       border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
@@ -31,17 +30,17 @@
     }
 
     #sig-nav.scrolled {
-      background: rgba(26, 39, 68, 0.92);
+      background: rgba(26, 39, 68, 0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 2px 32px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
 
     #sig-nav .sig-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 32px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -54,9 +53,10 @@
       letter-spacing: 0.01em;
       text-transform: none;
       text-decoration: none;
-      line-height: 48px;
+      line-height: 58px;
       white-space: nowrap;
       transition: color 0.2s;
+      position: relative;
     }
 
     #sig-nav .sig-links a:hover,
@@ -64,11 +64,24 @@
       color: #ffffff;
     }
 
-    #sig-nav .sig-links a.active {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+    #sig-nav .sig-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    #sig-nav .sig-links a.home-link {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
     }
 
     #sig-nav .sig-tickets {
+      position: absolute;
+      right: 32px;
       background: #1a2744;
       color: #ffffff;
       border: none;
@@ -98,6 +111,7 @@
   document.head.appendChild(style);
 
   const links = [
+    { label: 'Home',             href: '/index.html',           home: true },
     { label: 'Awards',           href: '/sig-awards.html' },
     { label: 'Immersive Africa', href: '/sig-immersive.html' },
     { label: "Fak'ugesiPRO",     href: '/sig-fakugesipro.html' },
@@ -111,7 +125,7 @@
       <ul class="sig-links">
         ${links.map(link => `
           <li>
-            <a href="${link.href}" ${isActive(link.href) ? 'class="active"' : ''}>
+            <a href="${link.href}" ${isActive(link.href) ? 'class="active"' : ''} ${link.home ? 'class="home-link"' : ''}>
               ${link.label}
             </a>
           </li>

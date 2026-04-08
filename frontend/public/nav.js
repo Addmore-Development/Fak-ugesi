@@ -1,9 +1,9 @@
 /**
- * Fak'ugesi Shared Nav v3
- * - Transparent background by default (no solid white)
- * - White frosted low-opacity on scroll
+ * Fak'ugesi Shared Nav v4
+ * - Transparent background by default (no background at all)
+ * - White frosted very low-opacity on scroll
+ * - GET TICKETS button has blue background
  * - Rounded corners on GET TICKETS button
- * - Search button removed
  * - Plus sign spins 360° and shoots baby pluses on hover
  */
 (function() {
@@ -26,17 +26,17 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       padding: 0 32px; height: 58px;
-      background: #000000;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: transparent;
+      border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
     #fug-nav.scrolled {
-      background: #000000;
+      background: rgba(255,255,255,0.08);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 2px 32px rgba(0,0,0,0.18);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.10);
     }
     #fug-nav .nav-left { display:flex; align-items:center; }
     #fug-nav .nav-plus-sym {
@@ -100,7 +100,7 @@
     #fug-nav .nav-dropdown a.active { color:#0d1b3e; font-weight:600; }
     #fug-nav .nav-right { display:flex; align-items:center; gap:12px; justify-content:flex-end; }
     #fug-nav .nav-tickets-btn {
-      background:#ffffff; color:#000000; border:none; cursor:pointer;
+      background:#2a3f72; color:#ffffff; border:none; cursor:pointer;
       padding:9px 20px; font-size:11px; font-weight:700;
       letter-spacing:0.1em; text-transform:uppercase;
       font-family:'InterDisplay',sans-serif;
@@ -157,7 +157,7 @@
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Scroll behaviour — transparent by default, frosted white on scroll
+  // Scroll behaviour — transparent by default, frosted white very low opacity on scroll
   const nav = document.getElementById('fug-nav');
   function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', updateNav, { passive: true });

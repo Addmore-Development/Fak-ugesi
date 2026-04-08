@@ -86,25 +86,20 @@
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase;
       opacity: 0.8; margin-bottom: 10px;
-      font-family: 'InterDisplay', sans-serif;
     }
     .hero-title {
       font-size: 40px; font-weight: 600;
       line-height: 1.02; margin-bottom: 14px;
-      font-family: 'InterDisplay', sans-serif;
     }
     .hero-body {
       font-size: 12px; line-height: 1.7;
       max-width: 360px; opacity: 0.85; margin-bottom: 16px;
-      font-family: 'InterDisplay', sans-serif;
     }
     .hero-link {
       color: var(--white); font-size: 12px; font-weight: 600;
       text-decoration: underline; letter-spacing: 0.06em; cursor: pointer;
-      font-family: 'InterDisplay', sans-serif;
     }
 
-    /* Hero logo — centered SVG replacing the white box */
     .hero-logo-centered {
       position: absolute;
       right: 80px;
@@ -120,7 +115,6 @@
       height: 80px;
       width: auto;
       display: block;
-      /* invert dark SVG to white for hero visibility */
       filter: brightness(0) invert(1);
       opacity: 0.9;
     }
@@ -134,14 +128,13 @@
     .ticker-track span {
       padding: 0 32px; font-size: 12.5px; font-weight: 500;
       color: var(--navy); letter-spacing: 0.02em;
-      font-family: 'InterDisplay', sans-serif;
     }
     @keyframes tickerScroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
 
-    /* ── SECTION WRAPPER — max-width + centered ── */
+    /* ── SECTION WRAPPER ── */
     .section-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -172,9 +165,9 @@
       padding: 48px 80px; max-width: 520px;
     }
     .theme-year  { font-family: 'DxWideground', sans-serif; font-size: 44px; font-weight: 400; margin-bottom: 16px; letter-spacing: 0.01em; }
-    .theme-sub   { font-family: 'InterDisplay', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; opacity: 0.75; margin-bottom: 12px; }
-    .theme-head  { font-family: 'InterDisplay', sans-serif; font-size: 32px; font-weight: 600; line-height: 1.08; margin-bottom: 18px; }
-    .theme-body  { font-family: 'InterDisplay', sans-serif; font-size: 13px; line-height: 1.72; opacity: 0.84; max-width: 360px; margin-bottom: 24px; }
+    .theme-sub   { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; opacity: 0.75; margin-bottom: 12px; }
+    .theme-head  { font-size: 32px; font-weight: 600; line-height: 1.08; margin-bottom: 18px; }
+    .theme-body  { font-size: 13px; line-height: 1.72; opacity: 0.84; max-width: 360px; margin-bottom: 24px; }
     .btn-row     { display: flex; gap: 14px; margin-bottom: 28px; }
     .btn-outline-white {
       border: 1.5px solid var(--white); color: var(--white); background: transparent;
@@ -184,7 +177,7 @@
       font-family: 'InterDisplay', sans-serif;
     }
     .btn-outline-white:hover { background: var(--white); color: var(--navy); }
-    .theme-dates { font-family: 'InterDisplay', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.02em; }
+    .theme-dates { font-size: 28px; font-weight: 700; letter-spacing: 0.02em; }
 
     /* ── GET INVOLVED ── */
     .involved-section {
@@ -200,18 +193,19 @@
     }
     .involved-content { position: relative; z-index: 3; padding: 48px 0; width: 100%; }
     .involved-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
-    .involved-title { font-size: 38px; font-weight: 600; font-family: 'InterDisplay', sans-serif; }
+    .involved-title { font-size: 38px; font-weight: 600; }
     .involved-link  { color: var(--white); font-size: 12px; font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; }
     .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .inv-card {
       border: 1px solid rgba(255,255,255,0.45);
       position: relative; backdrop-filter: blur(2px);
       aspect-ratio: 1 / 1.05;
-      perspective: 900px;
+      padding: 20px;
+      display: flex; flex-direction: column;
     }
     .card-num   { position: absolute; top: 14px; right: 14px; font-size: 20px; font-weight: 700; opacity: 0.65; }
     .card-tag   { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
-    .card-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; font-family: 'InterDisplay', sans-serif; }
+    .card-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
     .card-body  { font-size: 11.5px; line-height: 1.65; opacity: 0.82; margin-bottom: 20px; flex: 1; }
     .btn-learn {
       display: flex; align-items: center; gap: 10px;
@@ -225,13 +219,13 @@
 
     /* ── SPOTLIGHT ── */
     .spotlight-section { background: var(--lavender); padding: 64px 0; position: relative; }
-    .spotlight-title { font-size: 42px; font-weight: 600; color: var(--dark-text); margin-bottom: 36px; font-family: 'InterDisplay', sans-serif; }
+    .spotlight-title { font-size: 42px; font-weight: 600; color: var(--dark-text); margin-bottom: 36px; }
     .spotlight-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .spotlight-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
     .spotlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; display: block; }
     .spotlight-img-wrap:hover img { transform: scale(1.05); }
     .spotlight-tag  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
-    .spotlight-head { font-size: 28px; font-weight: 600; color: var(--dark-text); line-height: 1.12; margin-bottom: 18px; font-family: 'InterDisplay', sans-serif; }
+    .spotlight-head { font-size: 28px; font-weight: 600; color: var(--dark-text); line-height: 1.12; margin-bottom: 18px; }
     .spotlight-body { font-size: 13px; line-height: 1.72; color: var(--body-gray); margin-bottom: 28px; }
     .btn-outline-dark {
       display: inline-flex; align-items: center; gap: 10px;
@@ -243,14 +237,37 @@
     }
     .btn-outline-dark:hover { background: var(--navy); color: var(--white); }
 
-    /* ── WHAT'S HAPPENING ── */
+    /* ── WHAT'S HAPPENING — SOCIAL FEED ── */
     .happening-section { background: var(--white); padding: 64px 0; overflow: hidden; position: relative; }
-    .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    .happening-title { font-size: 42px; font-weight: 600; color: var(--dark-text); font-family: 'InterDisplay', sans-serif; }
-    .soc-icons { display: flex; gap: 16px; align-items: center; }
-    .soc-icons a { color: var(--dark-text); text-decoration: none; transition: opacity 0.2s; display: flex; align-items: center; }
-    .soc-icons a svg { width: 24px; height: 24px; }
-    .soc-icons a:hover { opacity: 0.45; }
+    .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .happening-title { font-size: 42px; font-weight: 600; color: var(--dark-text); }
+
+    /* Social platform tabs */
+    .soc-tabs { display: flex; gap: 8px; align-items: center; }
+    .soc-tab {
+      display: flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: 100px;
+      border: 1.5px solid rgba(26,39,68,0.15);
+      background: transparent; cursor: pointer;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 12px; font-weight: 600; color: var(--body-gray);
+      letter-spacing: 0.04em; transition: all 0.22s;
+    }
+    .soc-tab svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .soc-tab:hover { border-color: var(--navy); color: var(--navy); }
+    .soc-tab.active {
+      background: var(--navy); color: var(--white);
+      border-color: var(--navy);
+    }
+    .soc-tab.active svg { stroke: var(--white); fill: none; }
+    .soc-tab.active.x-tab svg { fill: var(--white); }
+    .soc-tab.active.fb-tab svg { stroke: var(--white); }
+
+    /* Feed panels */
+    .soc-feed-panel { display: none; }
+    .soc-feed-panel.active { display: block; }
+
+    /* Instagram / general image strip */
     .happening-strip-outer { overflow: hidden; margin: 0 -20px; }
     .happening-strip { display: flex; gap: 14px; width: max-content; animation: stripScroll 28s linear infinite; }
     .happening-strip:hover { animation-play-state: paused; }
@@ -258,12 +275,60 @@
     .strip-img { flex: 0 0 300px; height: 260px; overflow: hidden; }
     .strip-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
     .strip-img:hover img { transform: scale(1.04); }
+
+    /* Twitter/X feed mockup */
+    .tweet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .tweet-card {
+      border: 1px solid rgba(26,39,68,0.1);
+      padding: 20px;
+      background: var(--white);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .tweet-card:hover { box-shadow: 0 8px 28px rgba(26,39,68,0.1); transform: translateY(-3px); }
+    .tweet-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .tweet-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: var(--white);
+      flex-shrink: 0;
+    }
+    .tweet-name { font-size: 13px; font-weight: 700; color: var(--dark-text); }
+    .tweet-handle { font-size: 12px; color: var(--body-gray); }
+    .tweet-x-icon { margin-left: auto; }
+    .tweet-x-icon svg { width: 16px; height: 16px; }
+    .tweet-text { font-size: 13px; line-height: 1.65; color: var(--dark-text); margin-bottom: 14px; }
+    .tweet-text a { color: var(--blue-mid); text-decoration: none; }
+    .tweet-meta { font-size: 11px; color: var(--body-gray); display: flex; gap: 16px; }
+
+    /* Facebook feed mockup */
+    .fb-feed { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .fb-card {
+      border: 1px solid rgba(26,39,68,0.1);
+      background: var(--white);
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .fb-card:hover { box-shadow: 0 8px 28px rgba(26,39,68,0.1); transform: translateY(-3px); }
+    .fb-card-img { width: 100%; height: 200px; overflow: hidden; }
+    .fb-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .fb-card:hover .fb-card-img img { transform: scale(1.04); }
+    .fb-card-body { padding: 16px 20px; }
+    .fb-card-date { font-size: 11px; color: var(--body-gray); letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase; }
+    .fb-card-text { font-size: 13px; line-height: 1.65; color: var(--dark-text); }
+    .fb-card-actions { display: flex; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(26,39,68,0.07); }
+    .fb-card-actions span { font-size: 12px; color: var(--body-gray); display: flex; align-items: center; gap: 4px; }
+
     .happening-caption { text-align: right; margin-top: 16px; font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px 0; position: relative; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
-    .partners-title { font-size: 36px; font-weight: 600; color: var(--dark-text); font-family: 'InterDisplay', sans-serif; }
+    .partners-title { font-size: 36px; font-weight: 600; color: var(--dark-text); }
     .partners-link  { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .partners-grid  { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
     .partner-card { display: flex; flex-direction: column; }
@@ -312,9 +377,8 @@
     <a class="hero-link" href="about.html">What is Fak'ugesi?</a>
   </div>
 
-  <!-- Logo SVG centered on right side, replacing the white box -->
   <div class="hero-logo-centered">
-    <img src="images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
+    <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
   </div>
 </section>
 
@@ -433,6 +497,7 @@
   </div>
 </section>
 
+<!-- ── WHAT'S HAPPENING ── -->
 <section class="happening-section reveal">
   <div class="cross-icon" style="top:20px;left:48px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
@@ -443,32 +508,124 @@
   <div class="section-inner" style="padding:0 20px;">
     <div class="happening-header">
       <h2 class="happening-title">What's happening</h2>
-      <div class="soc-icons">
-        <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-        <a href="https://x.com/fakugesi" target="_blank" rel="noopener" aria-label="X"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <!-- Social platform switcher tabs -->
+      <div class="soc-tabs">
+        <button class="soc-tab active" data-feed="instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          Instagram
+        </button>
+        <button class="soc-tab x-tab" data-feed="twitter" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </button>
+        <button class="soc-tab fb-tab" data-feed="facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Facebook
+        </button>
       </div>
     </div>
   </div>
-  <div class="happening-strip-outer">
-    <div class="happening-strip" id="happeningStrip">
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <!-- duplicated for seamless loop -->
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+
+  <!-- INSTAGRAM FEED -->
+  <div class="soc-feed-panel active" id="feed-instagram">
+    <div class="happening-strip-outer">
+      <div class="happening-strip">
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <!-- duplicated for seamless loop -->
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+      </div>
+    </div>
+    <div class="section-inner" style="padding:0 20px;">
+      <p class="happening-caption">Follow <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" style="color:var(--navy)">@fakugesi</a> on Instagram for live festival updates</p>
     </div>
   </div>
-  <div class="section-inner" style="padding:0 20px;">
-    <p class="happening-caption">Follow @fakugesi on Instagram for live festival updates</p>
+
+  <!-- TWITTER / X FEED -->
+  <div class="soc-feed-panel" id="feed-twitter">
+    <div class="section-inner" style="padding:0 20px;">
+      <div class="tweet-grid">
+        <div class="tweet-card">
+          <div class="tweet-header">
+            <div class="tweet-avatar">F</div>
+            <div>
+              <div class="tweet-name">Fak'ugesi Festival</div>
+              <div class="tweet-handle">@fakugesi</div>
+            </div>
+            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
+          </div>
+          <p class="tweet-text">🎉 Awards applications are now OPEN! Submit your project and be part of Africa's most celebrated digital innovation awards. <a href="#">#FakugesiAwards</a> <a href="#">#AfricanTech</a></p>
+          <div class="tweet-meta"><span>2h ago</span><span>💬 12</span><span>🔁 34</span><span>❤️ 98</span></div>
+        </div>
+        <div class="tweet-card">
+          <div class="tweet-header">
+            <div class="tweet-avatar">F</div>
+            <div>
+              <div class="tweet-name">Fak'ugesi Festival</div>
+              <div class="tweet-handle">@fakugesi</div>
+            </div>
+            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
+          </div>
+          <p class="tweet-text">The 2026 theme is "African Imaginaries" — a celebration of Africa's speculative futures and creative visions. Join us 07–12 October in Johannesburg. <a href="#">#Fakugesi2026</a></p>
+          <div class="tweet-meta"><span>1d ago</span><span>💬 28</span><span>🔁 71</span><span>❤️ 210</span></div>
+        </div>
+        <div class="tweet-card">
+          <div class="tweet-header">
+            <div class="tweet-avatar">F</div>
+            <div>
+              <div class="tweet-name">Fak'ugesi Festival</div>
+              <div class="tweet-handle">@fakugesi</div>
+            </div>
+            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
+          </div>
+          <p class="tweet-text">Immersive Africa returns 🌍 Experience cutting-edge XR, VR and dome installations at the Wits Anglo American Digital Dome. Tickets available now. <a href="#">#ImmersiveAfrica</a></p>
+          <div class="tweet-meta"><span>3d ago</span><span>💬 19</span><span>🔁 55</span><span>❤️ 174</span></div>
+        </div>
+      </div>
+      <p class="happening-caption">Follow <a href="https://x.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">@fakugesi</a> on X for real-time updates</p>
+    </div>
+  </div>
+
+  <!-- FACEBOOK FEED -->
+  <div class="soc-feed-panel" id="feed-facebook">
+    <div class="section-inner" style="padding:0 20px;">
+      <div class="fb-feed">
+        <div class="fb-card">
+          <div class="fb-card-img"><img src="images/Copy_of__MGL4129.jpg" alt="Festival post" /></div>
+          <div class="fb-card-body">
+            <div class="fb-card-date">April 7, 2026</div>
+            <p class="fb-card-text">Awards applications are now open! Submit your project before the deadline and join Africa's most exciting digital innovation celebration.</p>
+            <div class="fb-card-actions">
+              <span>👍 142 Likes</span>
+              <span>💬 23 Comments</span>
+              <span>↗ 18 Shares</span>
+            </div>
+          </div>
+        </div>
+        <div class="fb-card">
+          <div class="fb-card-img"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival post" /></div>
+          <div class="fb-card-body">
+            <div class="fb-card-date">March 28, 2026</div>
+            <p class="fb-card-text">2026 Theme Announcement: African Imaginaries. Explore speculative futures, Afrofuturism, and African creative visions across 6 days of programming.</p>
+            <div class="fb-card-actions">
+              <span>👍 287 Likes</span>
+              <span>💬 41 Comments</span>
+              <span>↗ 93 Shares</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="happening-caption">Follow <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">Fak'ugesi Festival</a> on Facebook for news and updates</p>
+    </div>
   </div>
 </section>
 
@@ -513,6 +670,17 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   revealEls.forEach(el => io.observe(el));
+
+  // Social feed switcher
+  document.querySelectorAll('.soc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const feed = tab.dataset.feed;
+      document.querySelectorAll('.soc-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.soc-feed-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('feed-' + feed).classList.add('active');
+    });
+  });
 </script>
 <script src="nav.js"></script>
 <script src="globalEffects.js"></script>

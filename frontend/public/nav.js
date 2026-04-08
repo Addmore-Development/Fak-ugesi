@@ -1,10 +1,9 @@
 /**
  * Fak'ugesi Shared Nav v4
- * - Transparent background by default (no background at all)
- * - White frosted very low-opacity on scroll
- * - GET TICKETS button has blue background
- * - Rounded corners on GET TICKETS button
+ * - Black background always (not transparent)
+ * - GET TICKETS: white background, black text
  * - Plus sign spins 360° and shoots baby pluses on hover
+ * - Corner plus signs on all sections spin + shoot on hover
  */
 (function() {
   const path = window.location.pathname;
@@ -26,17 +25,14 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       padding: 0 32px; height: 58px;
-      background: transparent;
-      border-bottom: 1px solid transparent;
+      background: #000000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       font-family: 'InterDisplay', sans-serif;
-      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      transition: box-shadow 0.35s ease;
     }
     #fug-nav.scrolled {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 2px 32px rgba(0,0,0,0.10);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.35);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
     #fug-nav .nav-left { display:flex; align-items:center; }
     #fug-nav .nav-plus-sym {
@@ -77,13 +73,12 @@
     #fug-nav .nav-dropdown {
       position:absolute; top:100%; left:50%;
       transform:translateX(-50%) translateY(-6px);
-      background:rgba(255,255,255,0.96); border:1px solid rgba(0,0,0,0.09);
-      box-shadow:0 8px 32px rgba(0,0,0,0.12);
+      background:rgba(0,0,0,0.96); border:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 8px 32px rgba(0,0,0,0.35);
       min-width:190px; padding:8px 0;
       opacity:0; pointer-events:none;
       transition:opacity 0.18s, transform 0.18s;
       z-index:200;
-      backdrop-filter: blur(12px);
     }
     #fug-nav .nav-links li.open .nav-dropdown {
       opacity:1; pointer-events:auto;
@@ -91,16 +86,16 @@
     }
     #fug-nav .nav-dropdown a {
       display:block; padding:10px 20px;
-      font-size:13px; color:rgba(13,27,62,0.75);
+      font-size:13px; color:rgba(255,255,255,0.75);
       text-decoration:none; font-weight:500;
       transition:color 0.15s, background 0.15s;
       line-height:1.4; white-space:nowrap;
     }
-    #fug-nav .nav-dropdown a:hover { color:#0d1b3e; background:rgba(0,0,0,0.04); }
-    #fug-nav .nav-dropdown a.active { color:#0d1b3e; font-weight:600; }
+    #fug-nav .nav-dropdown a:hover { color:#fff; background:rgba(255,255,255,0.07); }
+    #fug-nav .nav-dropdown a.active { color:#fff; font-weight:600; }
     #fug-nav .nav-right { display:flex; align-items:center; gap:12px; justify-content:flex-end; }
     #fug-nav .nav-tickets-btn {
-      background:#2a3f72; color:#ffffff; border:none; cursor:pointer;
+      background:#ffffff; color:#000000; border:none; cursor:pointer;
       padding:9px 20px; font-size:11px; font-weight:700;
       letter-spacing:0.1em; text-transform:uppercase;
       font-family:'InterDisplay',sans-serif;
@@ -109,12 +104,25 @@
       display:inline-flex; align-items:center;
       border-radius: 100px;
     }
-    #fug-nav .nav-tickets-btn:hover { background:#e05a1e; color:#ffffff; transform:translateY(-1px); }
+    #fug-nav .nav-tickets-btn:hover { background:#e05a1e; color:#fff; transform:translateY(-1px); }
     .fug-baby-plus {
       position:fixed; pointer-events:none; z-index:99999;
       font-weight:700; line-height:1;
       transform:translate(-50%,-50%);
       transition:transform 0.52s ease-out, opacity 0.52s ease-out;
+    }
+
+    /* Corner plus hover effect */
+    .cross-icon {
+      cursor: pointer;
+    }
+    .cross-icon.spinning {
+      animation: crossSpin360 0.55s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes crossSpin360 {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(210deg) scale(1.6); }
+      100% { transform: rotate(360deg) scale(1); }
     }
   `;
 
@@ -157,13 +165,11 @@
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Scroll behaviour — transparent by default, frosted white very low opacity on scroll
   const nav = document.getElementById('fug-nav');
   function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  // Dropdown toggle
   document.querySelectorAll('#fug-nav .drop-li').forEach(li => {
     li.querySelector('.nav-drop-trigger').addEventListener('click', e => {
       e.stopPropagation();
@@ -176,7 +182,6 @@
     document.querySelectorAll('#fug-nav .drop-li.open').forEach(o => o.classList.remove('open'));
   });
 
-  // Plus: spin + shoot baby pluses
   const plusEl = document.getElementById('nav-plus-main');
   if (plusEl) {
     plusEl.addEventListener('mouseenter', () => {
@@ -192,21 +197,45 @@
     const rect = el.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const colours = ['#e05a1e','#1a2744','#4a6fa5','#ff8c42','#2a3f72'];
-    for (let i = 0; i < 9; i++) {
-      const angle = (i / 9) * Math.PI * 2 - Math.PI / 2;
-      const dist = 32 + Math.random() * 30;
-      const size = 11 + Math.random() * 9;
+    const colours = ['#e05a1e','#ffffff','#4a6fa5','#ff8c42','#2a3f72','#ffcc00'];
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
+      const dist = 36 + Math.random() * 40;
+      const size = 10 + Math.random() * 10;
       const baby = document.createElement('span');
       baby.className = 'fug-baby-plus';
       baby.textContent = '+';
-      baby.style.cssText = `left:${cx}px;top:${cy}px;font-size:${size}px;color:${colours[i % colours.length]};`;
+      baby.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;font-size:' + size + 'px;color:' + colours[i % colours.length] + ';';
       document.body.appendChild(baby);
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        baby.style.transform = `translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px)) rotate(${Math.random()*360}deg) scale(0.3)`;
+        baby.style.transform = 'translate(calc(-50% + ' + (Math.cos(angle)*dist) + 'px),calc(-50% + ' + (Math.sin(angle)*dist) + 'px)) rotate(' + (Math.random()*360) + 'deg) scale(0.3)';
         baby.style.opacity = '0';
       }));
       setTimeout(() => baby.remove(), 600);
     }
   }
+
+  // Expose shootBabyPluses globally for corner icons
+  window._fugShootBabyPluses = shootBabyPluses;
+
+  function attachCrossIcons() {
+    document.querySelectorAll('.cross-icon').forEach(cross => {
+      if (cross.dataset.plusReady) return;
+      cross.dataset.plusReady = '1';
+      cross.addEventListener('mouseenter', () => {
+        cross.classList.remove('spinning');
+        void cross.offsetWidth;
+        cross.classList.add('spinning');
+        if (window._fugShootBabyPluses) window._fugShootBabyPluses(cross);
+      });
+      cross.addEventListener('animationend', () => cross.classList.remove('spinning'));
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachCrossIcons);
+  } else {
+    attachCrossIcons();
+  }
+  setTimeout(attachCrossIcons, 600);
 })();

@@ -12,18 +12,20 @@
     @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;
-      --dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#7ed321;
-    }
+    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#7ed321;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
+
+    /* ── Suppress any announcement/promo bar from globalEffects.js ── */
+    .announcement-bar,.global-announcement,.site-announcement,
+    .promo-bar,.premiere-bar,.festival-bar,
+    [data-announcement],[data-promo]{display:none!important}
 
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;animation:crossPulse 3s ease-in-out infinite}
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
-    /* HERO */
+    /* ── HERO ── */
     .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
     .hero-bg{position:absolute;inset:0;background-image:url('../images/image00038.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
@@ -36,61 +38,81 @@
     .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em;font-family:'InterDisplay',sans-serif}
     .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:20px 24px;z-index:4}
-    .hero-signia img{display:block}
 
-    /* INTRO */
+    /* Logo right — no background */
+    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;}
+    .hero-signia img{display:block;height:120px;width:auto;}
+
+    /* ── TICKER ── */
+    .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
+    .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
+    .ticker-track:hover{animation-play-state:paused}
+    @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px;font-family:'InterDisplay',sans-serif}
+    .ticker-sep{opacity:.4;margin-left:4px}
+
+    /* ── INTRO / WHAT IS ── */
     .intro-section{background:var(--white);padding:72px 80px;position:relative}
-    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
     .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif}
-    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
-    .intro-body p+p{margin-top:20px}
     .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .intro-cta:hover{background:var(--navy);color:#fff}
 
-    /* CONTENT SECTIONS */
-    .content-section{padding:72px 80px;position:relative}
-    .content-section.dark{background:var(--navy);color:#fff}
-    .content-section.light{background:var(--lavender);color:var(--dark-text)}
-    .section-title{font-size:38px;font-weight:900;margin-bottom:36px;font-family:'InterDisplay',sans-serif}
-    .section-title.light-text{color:#fff}
-    .section-title.dark-text{color:var(--dark-text)}
+    /* ── INFO CARDS ── */
     .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px;position:relative}
-    .info-card.light-bg{border-color:rgba(26,39,68,.15);background:#fff}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px;font-family:'InterDisplay',sans-serif}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px;font-family:'InterDisplay',sans-serif}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px;font-family:'InterDisplay',sans-serif}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82;font-family:'InterDisplay',sans-serif}
+    .info-card{border:1px solid rgba(26,39,68,.15);padding:28px 24px;background:#fff;position:relative}
+    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.6;margin-bottom:8px;font-family:'InterDisplay',sans-serif}
+    .card-num{font-size:36px;font-weight:900;color:var(--dark-text);opacity:.25;line-height:1;font-family:'InterDisplay',sans-serif}
+    .card-head{font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:12px;line-height:1.2;font-family:'InterDisplay',sans-serif}
+    .card-body{font-size:13px;line-height:1.65;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
 
-    /* IMAGE STRIP */
-    .img-strip-section{overflow:hidden;position:relative;padding:0}
-    .img-strip{display:flex;gap:12px;width:max-content;animation:stripScroll 30s linear infinite}
-    .img-strip:hover{animation-play-state:paused}
-    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .strip-item{flex:0 0 360px;height:320px;overflow:hidden}
-    .strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-    .strip-item:hover img{transform:scale(1.04)}
+    /* ── DEVELOPER NETWORK ── */
+    .dev-network-section{position:relative;min-height:500px;overflow:hidden;display:flex;align-items:flex-end;}
+    .dev-network-bg{position:absolute;inset:0;background-image:url('../images/0A9A8876.jpg');background-size:cover;background-position:center;filter:brightness(0.55);}
+    .dev-network-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.75) 55%,transparent 85%);}
+    .dev-network-inner{position:relative;z-index:3;padding:52px 80px;width:100%;display:flex;justify-content:space-between;align-items:flex-end;}
 
-    /* PARTNERS */
+    /* ── 2025 HIGHLIGHTS ── */
+    .highlights-section{background:var(--white);padding:72px 80px 0;position:relative;color:var(--dark-text)}
+    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:44px;position:relative}
+    .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif}
+    .highlights-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
+
+    /* Full-width scrolling strip matching screenshot */
+    .highlights-scroll-wrap{overflow:hidden;position:relative;margin:0 -0px;padding-bottom:72px}
+    .highlights-scroll-track{display:flex;width:max-content;animation:highlightsScroll 40s linear infinite}
+    .highlights-scroll-track:hover{animation-play-state:paused}
+    @keyframes highlightsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Each card: photo on top, text below — matching screenshot proportions */
+    .hl-card{flex:0 0 370px;display:flex;flex-direction:column;background:var(--white)}
+    .hl-card-img{width:370px;height:370px;overflow:hidden;flex-shrink:0}
+    .hl-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
+    .hl-card:hover .hl-card-img img{transform:scale(1.04)}
+    .hl-card-body{padding:20px 24px 32px;border-top:1px solid rgba(26,39,68,.08)}
+    .hl-card-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--body-gray);margin-bottom:8px;font-family:'InterDisplay',sans-serif}
+    .hl-card-title{font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;line-height:1.2;font-family:'InterDisplay',sans-serif}
+    .hl-card-desc{font-size:13px;line-height:1.65;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
+
+    /* ── FAQ ── */
+    .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+    .faq-item{border-bottom:1px solid rgba(26,39,68,.15)}
+    .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 0;background:none;border:none;cursor:pointer;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;text-align:left;gap:16px}
+    .faq-icon{flex-shrink:0;font-size:20px;font-weight:300;color:var(--navy)}
+    .faq-body{padding:0 0 18px;font-size:13px;line-height:1.72;color:var(--body-gray);font-family:'InterDisplay',sans-serif;display:none}
+    .faq-item.open .faq-body{display:block}
+
+    /* ── PARTNERS (centred) ── */
     .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
     .partners-title{font-size:38px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px}
-    .partner-card{display:flex;flex-direction:column}
+    .partners-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+    .partner-card{display:flex;flex-direction:column;width:calc(33.333% - 16px);max-width:320px}
     .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
     .partner-logo-box img{max-width:100%;max-height:120px;object-fit:contain;display:block}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
-
-    /* FAQ */
-    .faq-item{border-bottom:1px solid rgba(26,39,68,.15);margin-bottom:0}
-    .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 0;background:none;border:none;cursor:pointer;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;text-align:left;gap:16px}
-    .faq-btn.faq-open{background:rgba(26,39,68,.04);padding:18px 16px;margin:-0px}
-    .faq-icon{flex-shrink:0;font-size:20px;font-weight:300;color:var(--navy)}
-    .faq-body{padding:0 0 18px;font-size:13px;line-height:1.72;color:var(--navy);font-family:'InterDisplay',sans-serif}
-    .faq-btn.faq-open .faq-body{}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -99,8 +121,9 @@
 </head>
 <body>
 
-<!-- nav injected by nav.js -->
+<script src="sig-nav.js"></script>
 
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -112,15 +135,31 @@
     <a class="hero-cta" href="tickets.html">Get Tickets</a>
   </div>
   <div class="hero-signia">
-    <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" style="height:120px;width:auto;"/>
+    <img src="../images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
   </div>
 </section>
 
-<!-- ticker injected by ticker.js -->
+<!-- ── TICKER ── -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>
+  </div>
+</div>
 
-<!-- WHAT IS DALA KHONA -->
-<section class="intro-section reveal" style="background:#fff;">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+<!-- ── WHAT IS DALA KHONA ── -->
+<section class="intro-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;">
     <h2 class="intro-title">What is Dala Khona</h2>
@@ -128,39 +167,39 @@
   </div>
   <p style="font-size:14px;line-height:1.78;color:var(--dark-text);max-width:900px;margin-bottom:40px;font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
   <div class="cards-grid">
-    <div class="info-card light-bg">
+    <div class="info-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-        <div class="card-label" style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.6;">Nam sit amet</div>
-        <div style="font-size:36px;font-weight:900;color:var(--dark-text);opacity:.25;line-height:1;font-family:'InterDisplay',sans-serif;">01</div>
+        <div class="card-label">Nam sit amet</div>
+        <div class="card-num">01</div>
       </div>
-      <div class="card-head" style="color:var(--dark-text);font-size:20px;line-height:1.2;margin-bottom:20px;">Intermediaries<br>&amp; Policymakers</div>
-      <p class="card-body" style="color:var(--dark-text);">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+      <div class="card-head">Intermediaries<br>&amp; Policymakers</div>
+      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
     </div>
-    <div class="info-card light-bg">
+    <div class="info-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-        <div class="card-label" style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.6;">Nam sit amet</div>
-        <div style="font-size:36px;font-weight:900;color:var(--dark-text);opacity:.25;line-height:1;font-family:'InterDisplay',sans-serif;">02</div>
+        <div class="card-label">Nam sit amet</div>
+        <div class="card-num">02</div>
       </div>
-      <div class="card-head" style="color:var(--dark-text);font-size:20px;line-height:1.2;margin-bottom:20px;">Entrepreneurs<br>&amp; Investors</div>
-      <p class="card-body" style="color:var(--dark-text);">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+      <div class="card-head">Entrepreneurs<br>&amp; Investors</div>
+      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
     </div>
-    <div class="info-card light-bg">
+    <div class="info-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-        <div class="card-label" style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.6;">Nam sit amet</div>
-        <div style="font-size:36px;font-weight:900;color:var(--dark-text);opacity:.25;line-height:1;font-family:'InterDisplay',sans-serif;">03</div>
+        <div class="card-label">Nam sit amet</div>
+        <div class="card-num">03</div>
       </div>
-      <div class="card-head" style="color:var(--dark-text);font-size:20px;line-height:1.2;margin-bottom:20px;">Creative<br>Organisations</div>
-      <p class="card-body" style="color:var(--dark-text);">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+      <div class="card-head">Creative<br>Organisations</div>
+      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
     </div>
   </div>
 </section>
 
-<!-- JOIN OUR DEVELOPER NETWORK -->
-<section class="dev-network-section reveal" style="position:relative;min-height:500px;overflow:hidden;display:flex;align-items:flex-end;">
-  <div style="position:absolute;inset:0;background-image:url('../images/0A9A8876.jpg');background-size:cover;background-position:center;filter:brightness(0.55);"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.75) 55%,transparent 85%);"></div>
+<!-- ── JOIN OUR DEVELOPER NETWORK ── -->
+<section class="dev-network-section reveal">
+  <div class="dev-network-bg"></div>
+  <div class="dev-network-overlay"></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-  <div style="position:relative;z-index:3;padding:52px 80px;width:100%;display:flex;justify-content:space-between;align-items:flex-end;">
+  <div class="dev-network-inner">
     <div style="max-width:520px;">
       <h2 style="font-size:48px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:24px;font-family:'InterDisplay',sans-serif;">Join our developer<br>network</h2>
       <p style="font-size:13px;line-height:1.72;color:rgba(255,255,255,.85);margin-bottom:28px;font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
@@ -170,131 +209,129 @@
   </div>
 </section>
 
-<!-- 2025 HIGHLIGHTS -->
-<section class="intro-section reveal" style="background:#fff;padding-bottom:0;">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+<!-- ── 2025 HIGHLIGHTS ── -->
+<section class="highlights-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;">
-    <h2 class="intro-title">2025 Highlights</h2>
-    <a href="programme.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;white-space:nowrap;margin-top:8px;">View 2026 programme</a>
+  <div class="highlights-header">
+    <h2 class="highlights-title">2025 Highlights</h2>
+    <a class="highlights-link" href="programme.html">View 2026 programme</a>
+  </div>
+  <!-- Full-width auto-scrolling strip: photo on top, text below -->
+  <div class="highlights-scroll-wrap">
+    <div class="highlights-scroll-track">
+      <!-- 4 unique items -->
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless infinite loop -->
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div>
+        <div class="hl-card-body">
+          <div class="hl-card-tag">Activation</div>
+          <div class="hl-card-title">Joburg Games Fest Pop-up</div>
+          <p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- HIGHLIGHTS IMAGE STRIP -->
-<section class="img-strip-section">
-  <div class="img-strip">
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-    <div class="strip-item"><img src="../images/image00057.jpeg" alt="2025 Highlights"/></div>
-  </div>
-</section>
-
-<!-- HIGHLIGHTS CARDS -->
-<section style="background:#fff;padding:0 80px 72px;position:relative;overflow:hidden;">
-  <div style="display:flex;gap:24px;overflow-x:auto;padding-top:20px;scrollbar-width:none;">
-    <div style="flex:0 0 340px;">
-      <div style="height:220px;overflow:hidden;margin-bottom:14px;"><img src="../images/image00057.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
-      <p style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.55;margin-bottom:6px;font-family:'InterDisplay',sans-serif;">Activation</p>
-      <h3 style="font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;font-family:'InterDisplay',sans-serif;">Joburg Games Fest Pop-up</h3>
-      <p style="font-size:13px;line-height:1.65;color:var(--dark-text);font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-    </div>
-    <div style="flex:0 0 340px;">
-      <div style="height:220px;overflow:hidden;margin-bottom:14px;"><img src="../images/image00057.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
-      <p style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.55;margin-bottom:6px;font-family:'InterDisplay',sans-serif;">Activation</p>
-      <h3 style="font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;font-family:'InterDisplay',sans-serif;">Joburg Games Fest Pop-up</h3>
-      <p style="font-size:13px;line-height:1.65;color:var(--dark-text);font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-    </div>
-    <div style="flex:0 0 340px;">
-      <div style="height:220px;overflow:hidden;margin-bottom:14px;"><img src="../images/image00057.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
-      <p style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.55;margin-bottom:6px;font-family:'InterDisplay',sans-serif;">Activation</p>
-      <h3 style="font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;font-family:'InterDisplay',sans-serif;">Joburg Games Fest Pop-up</h3>
-      <p style="font-size:13px;line-height:1.65;color:var(--dark-text);font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-    </div>
-    <div style="flex:0 0 340px;">
-      <div style="height:220px;overflow:hidden;margin-bottom:14px;"><img src="../images/image00057.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
-      <p style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.55;margin-bottom:6px;font-family:'InterDisplay',sans-serif;">Activation</p>
-      <h3 style="font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;font-family:'InterDisplay',sans-serif;">Joburg Games Fest Pop-up</h3>
-      <p style="font-size:13px;line-height:1.65;color:var(--dark-text);font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="intro-section reveal" style="background:#fff;">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+<!-- ── FAQ ── -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+  <div class="faq-grid">
     <div>
       <h2 style="font-size:72px;font-weight:900;color:var(--dark-text);line-height:1;margin-bottom:24px;font-family:'InterDisplay',sans-serif;">FAQ</h2>
       <p style="font-size:14px;line-height:1.78;color:var(--dark-text);font-family:'InterDisplay',sans-serif;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
       <a href="programme.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;display:block;margin-top:12px;font-family:'InterDisplay',sans-serif;">View 2026 programme</a>
     </div>
     <div>
-      <div class="faq-item">
-        <button class="faq-btn faq-open" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">−</span>
-        </button>
-        <div class="faq-body" style="display:block;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</p>
-        </div>
+      <div class="faq-item open">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">−</span></button>
+        <div class="faq-body" style="display:block;">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body" style="display:none;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</p>
-        </div>
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></button>
+        <div class="faq-body">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body" style="display:none;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</p>
-        </div>
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></button>
+        <div class="faq-body">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body" style="display:none;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</p>
-        </div>
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></button>
+        <div class="faq-body">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body" style="display:none;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</p>
-        </div>
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></button>
+        <div class="faq-body">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-body" style="display:none;">
-          <p>In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</p>
-        </div>
+        <button class="faq-btn" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></button>
+        <div class="faq-body">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla dui quis ante fermentum interdum.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ── OUR MAIN PARTNERS (centred) ── -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
@@ -302,45 +339,51 @@
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-box">
-        <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box">
-        <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" />
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box">
-        <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
 </section>
 
-<script src="nav.js"></script>
-<script src="ticker.js"></script>
 <script src="footer.js"></script>
 <script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
 <script>
+  // Remove any announcement/premiere bar injected by globalEffects at runtime
+  (function removeAnnouncementBars() {
+    const selectors = ['.announcement-bar','.global-announcement','.site-announcement','.promo-bar','.premiere-bar','.festival-bar','[data-announcement]','[data-promo]'];
+    function purge() { selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove())); }
+    purge();
+    window.addEventListener('load', purge);
+    setTimeout(purge, 500);
+  })();
+
+  // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 
+  // FAQ accordion
   function toggleFaq(btn) {
-    const body = btn.nextElementSibling;
-    const icon = btn.querySelector('.faq-icon');
-    const isOpen = body.style.display === 'block';
-    body.style.display = isOpen ? 'none' : 'block';
-    icon.textContent = isOpen ? '+' : '−';
-    btn.classList.toggle('faq-open', !isOpen);
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-icon').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.querySelector('.faq-icon').textContent = '−';
+    }
   }
 </script>
 </body>

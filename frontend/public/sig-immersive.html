@@ -33,16 +33,16 @@
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
     /* ══════════════════════════════════════════════
-       HERO
+       HERO — reduced height (was 100vh, now ~60vh)
     ══════════════════════════════════════════════ */
     .hero{
-      position:relative;width:100%;min-height:100vh;
+      position:relative;width:100%;min-height:60vh;
       overflow:hidden;display:flex;align-items:flex-end;
-      padding-top:110px; /* space for both navs */
+      padding-top:58px;
     }
     .hero-bg{
       position:absolute;inset:0;
-      background-image:url('images/digital-dome-image-inside.jpg');
+      background-image:url('../images/digital-dome-image-inside.jpg');
       background-size:cover;background-position:center 35%;
       filter:brightness(0.52);
       animation:kenBurns 18s ease-in-out infinite alternate
@@ -54,7 +54,7 @@
     }
     .hero-content{
       position:relative;z-index:3;
-      padding:0 80px 72px;
+      padding:0 80px 64px;
       animation:fadeUp .9s ease both
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -63,7 +63,7 @@
       text-transform:uppercase;opacity:.75;margin-bottom:14px
     }
     .hero-title{
-      font-size:72px;font-weight:900;line-height:1.0;
+      font-size:64px;font-weight:900;line-height:1.0;
       margin-bottom:20px;max-width:700px
     }
     .hero-body{
@@ -79,8 +79,6 @@
       transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif
     }
     .hero-cta:hover{background:#fff;color:var(--navy)}
-
-    /* cross icons in hero */
     .hero .cross-icon{position:absolute}
 
     /* ══════════════════════════════════════════════
@@ -105,7 +103,7 @@
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
 
     /* ══════════════════════════════════════════════
-       PREMIERING SECTION (full-bleed dark image)
+       PREMIERING SECTION
     ══════════════════════════════════════════════ */
     .premiering-section{
       position:relative;width:100%;min-height:100vh;
@@ -113,7 +111,7 @@
     }
     .premiering-bg{
       position:absolute;inset:0;
-      background-image:url('images/8-Dotou-arbre-Fin.png');
+      background-image:url('../images/8-Dotou-arbre-Fin.png');
       background-size:cover;background-position:center top;
       filter:brightness(0.45)
     }
@@ -153,10 +151,10 @@
       opacity:.8;cursor:pointer;transition:opacity .2s
     }
     .premiere-links a:hover{opacity:1}
+    /* co-presenter row — text removed, logos only */
     .premiere-co{
-      display:flex;align-items:center;gap:12px;
-      margin-bottom:32px;font-size:12px;font-weight:700;
-      letter-spacing:.08em;text-transform:uppercase;opacity:.9
+      display:flex;align-items:center;gap:16px;
+      margin-bottom:32px;
     }
     .premiere-co img{height:28px;width:auto;filter:invert(1) brightness(2)}
     .section-cta{
@@ -170,7 +168,7 @@
     .section-cta:hover{background:#fff;color:var(--navy);border-color:#fff}
 
     /* ══════════════════════════════════════════════
-       ON-GOING SECTION
+       ON-GOING SECTION — image flipped horizontally
     ══════════════════════════════════════════════ */
     .ongoing-section{
       position:relative;width:100%;min-height:100vh;
@@ -178,9 +176,11 @@
     }
     .ongoing-bg{
       position:absolute;inset:0;
-      background-image:url('images/Screenshot-2024-05-21-at-21.36.37.webp');
+      background-image:url('../images/Screenshot-2024-05-21-at-21.36.37.webp');
       background-size:cover;background-position:center;
-      filter:brightness(0.40)
+      filter:brightness(0.40);
+      /* flip image so subject faces right instead of left */
+      transform:scaleX(-1)
     }
     .ongoing-overlay{
       position:absolute;inset:0;
@@ -192,84 +192,107 @@
     }
 
     /* ══════════════════════════════════════════════
-       PARTNERS SECTION
+       PARTNERS — scrolling logo strip
     ══════════════════════════════════════════════ */
     .partners-section{
-      background:#fff;padding:80px 80px;
-      position:relative;
+      background:#fff;padding:72px 0 56px;
+      position:relative;overflow:hidden;
     }
     .partners-title{
-      font-size:48px;font-weight:900;
+      font-size:44px;font-weight:900;
       color:var(--dark-text);text-align:center;
-      margin-bottom:56px;font-family:'InterDisplay',sans-serif
+      margin-bottom:52px;font-family:'InterDisplay',sans-serif;
+      padding:0 80px;
     }
-    .partners-logos{
+
+    /* Cross icons inside partners */
+    .partners-section .cross-icon{position:absolute}
+
+    /* Scrolling strip wrapper */
+    .partners-strip-outer{
+      overflow:hidden;
+      width:100%;
+      padding:16px 0;
+      border-top:1px solid rgba(26,39,68,.08);
+      border-bottom:1px solid rgba(26,39,68,.08);
+    }
+    .partners-strip{
+      display:flex;
+      align-items:center;
+      gap:64px;
+      width:max-content;
+      animation:logoScroll 30s linear infinite;
+    }
+    .partners-strip:hover{animation-play-state:paused}
+    @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    .partner-logo-item{
+      flex:0 0 auto;
       display:flex;align-items:center;justify-content:center;
-      gap:40px;flex-wrap:nowrap;overflow-x:auto;
-      padding-bottom:8px
+      height:56px;
     }
-    .partners-logos::-webkit-scrollbar{height:3px}
-    .partners-logos::-webkit-scrollbar-thumb{background:rgba(26,39,68,.2)}
-    .partner-logo{
-      flex:0 0 auto;display:flex;align-items:center;justify-content:center;
-      height:60px
-    }
-    .partner-logo img{
-      max-height:52px;max-width:160px;
+    .partner-logo-item img{
+      max-height:48px;max-width:180px;
       object-fit:contain;display:block;
-      filter:none
     }
+
     .partners-disclaimer{
       font-size:11px;line-height:1.7;
       color:var(--body-gray);text-align:center;
-      max-width:840px;margin:40px auto 0
+      max-width:840px;margin:36px auto 0;
+      padding:0 80px;
     }
 
     /* ══════════════════════════════════════════════
-       FOOTER
+       FOOTER (matches screenshot — no footer.js)
     ══════════════════════════════════════════════ */
-    .footer{
+    .footer-crosses{
       background:#fff;
-      border-top:1px solid rgba(26,39,68,.1);
-      padding:48px 80px;position:relative
+      display:flex;justify-content:space-between;align-items:center;
+      padding:0 80px;height:44px;position:relative;
     }
-    .footer-grid{
+
+    footer{
+      background:#fff;
+      padding:0 80px;
+      border-top:1px solid rgba(26,39,68,.08);
+    }
+    .footer-inner{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
-      gap:40px;align-items:center
+      gap:32px;
+      padding:48px 0;
+      align-items:start;
     }
     .footer-address{
       font-size:13px;color:var(--dark-text);line-height:1.8;
-      font-family:'InterDisplay',sans-serif
+      font-family:'InterDisplay',sans-serif;
     }
     .footer-address strong{
-      font-weight:700;display:block;margin-bottom:8px
+      font-weight:700;display:block;margin-bottom:8px;color:var(--dark-text);
     }
+    .footer-address span{color:#5a6070;}
     .footer-contact{
-      font-size:13px;color:var(--dark-text);line-height:1.8;
+      font-size:13px;line-height:1.8;
       font-family:'InterDisplay',sans-serif;
-      display:flex;flex-direction:column;gap:4px
     }
     .footer-contact strong{
-      font-weight:700;display:block;margin-bottom:8px
+      font-weight:700;display:block;margin-bottom:8px;color:var(--dark-text);
     }
-    .footer-contact a{color:var(--dark-text);text-decoration:underline}
+    .footer-contact a{
+      color:var(--navy);text-decoration:underline;
+      display:block;font-size:13px;
+    }
     .footer-brand{
-      display:flex;align-items:center;gap:16px;justify-content:flex-end
+      display:flex;align-items:flex-start;gap:16px;justify-content:flex-end;
     }
-    .footer-brand-logo{
-      width:52px;height:52px;display:flex;align-items:center;justify-content:center
+    .footer-brand-logo img{
+      height:52px;width:auto;display:block;
     }
-    .footer-brand-logo img{width:100%;height:auto}
-    .footer-brand-text{
-      font-size:13px;color:var(--dark-text);line-height:1.6;
-      font-family:'InterDisplay',sans-serif
+    .footer-copy{
+      font-size:12px;color:#555;line-height:1.7;
     }
-    .footer-brand-text strong{font-weight:700;display:block}
-    .footer-copyright{
-      font-size:13px;color:var(--dark-text);
-      font-family:'InterDisplay',sans-serif
-    }
+    .footer-copy strong{color:var(--dark-text);display:block;font-size:13px;font-weight:700;}
 
     /* ══════════════════════════════════════════════
        REVEAL
@@ -277,40 +300,36 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* ══════════════════════════════════════════════
-       RESPONSIVE TWEAKS
-    ══════════════════════════════════════════════ */
     @media(max-width:900px){
       .hero-title{font-size:44px}
-      .hero-content,.premiering-content,.ongoing-content,.partners-section,.footer{padding-left:32px;padding-right:32px}
+      .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
+      .partners-title,.partners-disclaimer{padding-left:32px;padding-right:32px}
+      footer,.footer-crosses{padding-left:32px;padding-right:32px}
       .section-header-label{font-size:36px}
-      .partners-logos{gap:24px}
-      .footer-grid{grid-template-columns:1fr;gap:28px}
+      .footer-inner{grid-template-columns:1fr;gap:28px}
       .footer-brand{justify-content:flex-start}
     }
   </style>
 </head>
 <body>
 
-
-<!-- ══ SUB-NAV: Signature Programmes ══ -->
+<!-- ══ SUB-NAV ══ -->
 <script src="sig-nav.js"></script>
 
 <!-- ══════════════════════════════════════════════
-     HERO
+     HERO — reduced height
 ══════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- cross decorations -->
-  <div class="cross-icon" style="top:130px;left:80px;animation-delay:0s;">
+  <div class="cross-icon" style="top:80px;left:80px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:130px;right:80px;animation-delay:1.4s;">
+  <div class="cross-icon" style="top:80px;right:80px;animation-delay:1.4s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:160px;right:80px;animation-delay:.7s;">
+  <div class="cross-icon" style="bottom:120px;right:80px;animation-delay:.7s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
 
@@ -325,14 +344,13 @@
 <!-- ══ TICKER ══ -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <!-- duplicated for infinite scroll -->
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <!-- duplicate set -->
+    <!-- duplicate for seamless loop -->
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
@@ -343,7 +361,7 @@
 </div>
 
 <!-- ══════════════════════════════════════════════
-     PREMIERING SECTION
+     PREMIERING
 ══════════════════════════════════════════════ -->
 <section class="premiering-section">
   <div class="premiering-bg"></div>
@@ -373,10 +391,10 @@
       <a href="#">More about MansA</a>
     </div>
 
+    <!-- Logos only — "DREAM FEEL FACTORY" text removed -->
     <div class="premiere-co">
-      <span>DREAM FEEL FACTORY</span>
-      <img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/>
-      <img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;filter:invert(1) brightness(2)"/>
+      <img src="../images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/>
+      <img src="../images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;"/>
     </div>
 
     <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
@@ -384,7 +402,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     ON-GOING SECTION
+     ON-GOING — background flipped to face right
 ══════════════════════════════════════════════ -->
 <section class="ongoing-section">
   <div class="ongoing-bg"></div>
@@ -413,7 +431,7 @@
     </div>
 
     <div class="premiere-co">
-      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="habitatx3" style="height:28px;filter:invert(1) brightness(2)"/>
+      <img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" style="height:28px;filter:invert(1) brightness(2)"/>
     </div>
 
     <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
@@ -421,7 +439,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     PARTNERS SECTION
+     PARTNERS — scrolling logo strip
 ══════════════════════════════════════════════ -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:24px;left:80px;animation-delay:0s;">
@@ -439,30 +457,27 @@
 
   <h2 class="partners-title">Our Immersive Africa Partners</h2>
 
-  <div class="partners-logos">
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC – EU National Institutes for Culture"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Ambassade de France"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Austrian Cultural Forum"/>
-    </div>
-    <div class="partner-logo">
-      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+  <!-- Scrolling strip — all 8 SVGs duplicated for seamless loop -->
+  <div class="partners-strip-outer">
+    <div class="partners-strip">
+      <!-- set 1 -->
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia / Ambassade de France"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+      <!-- set 2 — duplicate for seamless loop -->
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia / Ambassade de France"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
+      <div class="partner-logo-item"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
     </div>
   </div>
 
@@ -471,14 +486,50 @@
   </p>
 </section>
 
+<!-- ══════════════════════════════════════════════
+     FOOTER — matches screenshot exactly, no footer.js
+══════════════════════════════════════════════ -->
 
-<!-- Scripts -->
-<script src="ticker.js"></script>
-<script src="footer.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
+<!-- top cross row -->
+<div class="footer-crosses">
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <!-- col 1: address -->
+    <div class="footer-address">
+      <strong>Fak'ugesi Festival</strong>
+      <span>41 Juta Street, Braamfontein<br>Johannesburg, South Africa</span>
+    </div>
+    <!-- col 2: contact -->
+    <div class="footer-contact">
+      <strong>Contact us</strong>
+      <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
+      <a href="tel:+27117178156">+27 11 717 8156</a>
+    </div>
+    <!-- col 3: brand + copyright -->
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <img src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival"/>
+      </div>
+      <div class="footer-copy">
+        <strong>© 2026</strong>
+        Fak'ugesi Festival<br>All Rights Reserved
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- bottom cross row -->
+<div class="footer-crosses">
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+</div>
+
 <script>
-  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {

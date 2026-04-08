@@ -10,81 +10,62 @@
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
     @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#d4e600;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
+
+    /* ── Suppress any announcement/promo bar from globalEffects.js ── */
+    .announcement-bar,.global-announcement,.site-announcement,
+    .promo-bar,.premiere-bar,.festival-bar,
+    [data-announcement],[data-promo]{display:none!important}
+
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;animation:crossPulse 3s ease-in-out infinite}
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
-    .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
-    .hero-bg{position:absolute;inset:0;background-image:url('images/Copy_of__MGL0176.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
+
+    /* ── HERO ── */
+    .hero{position:relative;width:100%;min-height:340px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
     .hero-bg{position:absolute;inset:0;background-image:url('../images/image00044.jpeg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 80px 52px;animation:fadeUp .9s ease both}
+    .hero-content{position:relative;z-index:3;padding:0 80px 44px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
-    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
-    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s}
+    .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
+    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:20px}
+    .hero-dates{font-size:24px;font-weight:700;letter-spacing:.02em;margin-bottom:20px}
+    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;transition:background .22s,color .22s}
     .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:20px 24px;z-index:4}
-    .hero-signia img{display:block}
-    /* Signia box — white bg, right-aligned, FAK'UGESI label + Pitchathon SVG */
-    .hero-signia{
-      position:absolute;right:80px;top:50%;transform:translateY(-50%);
-      background:#fff;padding:18px 24px;z-index:4;
-      display:flex;flex-direction:column;align-items:center;gap:10px;min-width:200px;
-    }
-    .hero-signia-label{
-      font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:.2em;text-transform:uppercase;color:var(--navy);
-      padding-bottom:8px;border-bottom:1px solid rgba(26,39,68,.25);
-      width:100%;text-align:center;
-    }
-    .hero-signia img{display:block;max-height:44px;width:auto;max-width:180px}
+    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;display:flex;flex-direction:column;align-items:flex-end;}
+    .hero-signia img{display:block;height:90px;width:auto;}
 
-    /* INTRO */
+    /* ── TICKER ── */
+    .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
+    .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
+    .ticker-track:hover{animation-play-state:paused}
+    @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px;font-family:'InterDisplay',sans-serif}
+    .ticker-sep{opacity:.4;margin-left:4px}
+
+    /* ── INTRO ── */
     .intro-section{background:var(--white);padding:72px 80px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
     .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
     .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
-    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
-    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
     .intro-body p+p{margin-top:20px}
     .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
-    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
     .intro-cta:hover{background:var(--navy);color:#fff}
-    .content-section{padding:72px 80px;position:relative}
-    .content-section.dark{background:var(--navy);color:#fff}
-    .section-title{font-size:38px;font-weight:900;margin-bottom:36px}
-    .content-section.light{background:var(--lavender);color:var(--dark-text)}
+
+    /* ── SECTION SHARED ── */
     .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
     .section-title{font-size:38px;font-weight:900;font-family:'InterDisplay',sans-serif}
     .section-title.light-text{color:#fff}
     .section-title.dark-text{color:var(--dark-text)}
     .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;color:inherit;opacity:.7;font-family:'InterDisplay',sans-serif}
-    .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82}
-    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px}
-    .info-card.light-bg{border-color:rgba(26,39,68,.15);background:#fff}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82}
 
-    /* WINNERS */
+    /* ── 2025 WINNERS ── */
     .winners-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
     .winners-rail-wrapper{overflow:hidden}
     .winners-rail{display:flex;transition:transform .5s ease}
@@ -94,10 +75,10 @@
     .winner-info{padding:14px 0 0}
     .winner-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-right:12px;font-family:'InterDisplay',sans-serif}
     .winner-name{font-size:22px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-top:4px}
-    .winners-nav button{background:none;border:none;cursor:pointer;font-size:24px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s;font-family:sans-serif}
+    .winners-nav button{background:none;border:none;cursor:pointer;font-size:24px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s}
     .winners-nav button:hover{opacity:.4}
 
-    /* JURY */
+    /* ── JURY ── */
     .jury-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
     .jury-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .jury-card{border:1px solid rgba(26,39,68,.12);overflow:hidden}
@@ -107,7 +88,7 @@
     .jury-role{font-size:12px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;margin-bottom:6px}
     .jury-country{font-size:11px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;opacity:.7}
 
-    /* PRIZES */
+    /* ── PRIZES ── */
     .prizes-section{background:var(--navy);color:#fff;padding:72px 80px;position:relative}
     .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .prize-card{border:1px solid rgba(255,255,255,.25);padding:28px 24px}
@@ -115,7 +96,7 @@
     .prize-amount{font-size:36px;font-weight:900;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
     .prize-desc{font-size:13px;line-height:1.65;opacity:.8;font-family:'InterDisplay',sans-serif}
 
-    /* FAQ */
+    /* ── FAQ ── */
     .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
     .faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
     .faq-intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif;margin-bottom:16px}
@@ -126,32 +107,15 @@
     .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:13px;line-height:1.75;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
     .faq-item.open .faq-answer{max-height:300px;padding:0 22px 20px}
 
-    /* IMAGE STRIP */
-    .img-strip-section{overflow:hidden;position:relative;padding:0}
-    .img-strip{display:flex;gap:12px;width:max-content;animation:stripScroll 30s linear infinite}
-    .img-strip:hover{animation-play-state:paused}
-    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .strip-item{flex:0 0 360px;height:320px;overflow:hidden}
-    .strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-    .strip-item:hover img{transform:scale(1.04)}
+    /* ── PARTNERS ── */
     .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
-
-    /* PARTNERS — identical to index.html (full-width, centered grid) */
-    .partners-section{background:var(--lavender);padding:80px 120px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .partners-title{font-size:38px;font-weight:600;color:var(--dark-text)}
-    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
     .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .partner-card{display:flex;flex-direction:column}
-    .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
-    .partner-logo-box img{max-width:100%;max-height:160px;object-fit:contain;display:block}
-    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .partner-logo-box img{max-width:100%;max-height:160px;object-fit:contain;display:block}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
 
@@ -161,9 +125,10 @@
   </style>
 </head>
 <body>
-<!-- nav injected by nav.js -->
 
-<!-- ══ HERO ══ -->
+<script src="sig-nav.js"></script>
+
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -176,17 +141,29 @@
     <a class="hero-cta" href="/programme">View Programme</a>
   </div>
   <div class="hero-signia">
-    <img src="images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:48px;width:auto;margin-bottom:8px;"/>
-    <img src="images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon" style="height:36px;width:auto;"/>
-    <span class="hero-signia-label">FAK'UGESI</span>
-    <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg"
-         alt="Pitchathon"
-         onerror="this.style.display='none'"/>
+    <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
   </div>
 </section>
-<!-- ticker injected by ticker.js -->
 
-<!-- ══ INTRO ══ -->
+<!-- ── TICKER ── -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
 <section class="intro-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -200,37 +177,7 @@
   </div>
 </section>
 
-<!-- ══ HOW IT WORKS ══ -->
-<section class="content-section dark reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <h2 class="section-title light-text" style="margin-bottom:36px">How It Works</h2>
-  <div class="cards-grid">
-    <div class="info-card"><div class="card-num">01</div><div class="card-label">Open Applications</div><div class="card-head">Submit Your Idea</div><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div>
-    <div class="info-card"><div class="card-num">02</div><div class="card-label">Judging Panel</div><div class="card-head">Live Pitching</div><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div>
-    <div class="info-card"><div class="card-num">03</div><div class="card-label">Prize Pool</div><div class="card-head">Winner Takes All</div><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div>
-    <div class="info-card">
-      <div class="card-num">01</div>
-      <div class="card-label">Open Applications</div>
-      <div class="card-head">Submit Your Idea</div>
-      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
-    </div>
-    <div class="info-card">
-      <div class="card-num">02</div>
-      <div class="card-label">Judging Panel</div>
-      <div class="card-head">Live Pitching</div>
-      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
-    </div>
-    <div class="info-card">
-      <div class="card-num">03</div>
-      <div class="card-label">Prize Pool</div>
-      <div class="card-head">Winner Takes All</div>
-      <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 2025 WINNERS ══ -->
+<!-- ── 2025 WINNERS ── -->
 <section class="winners-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -244,32 +191,28 @@
   <div class="winners-rail-wrapper">
     <div class="winners-rail" id="winnersRail">
       <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
-             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
         <div class="winner-info">
           <span class="winner-badge">Winner</span><span class="winner-badge">Runner-up</span>
           <div class="winner-name">Neo Shingenwana</div>
         </div>
       </div>
       <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
-             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
         <div class="winner-info">
           <span class="winner-badge">Winner</span>
           <div class="winner-name">Neo Shingenwana</div>
         </div>
       </div>
       <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
-             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
         <div class="winner-info">
           <span class="winner-badge">Winner</span>
           <div class="winner-name">Neo Shingenwana</div>
         </div>
       </div>
       <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana"
-             onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
         <div class="winner-info">
           <span class="winner-badge">Winner</span>
           <div class="winner-name">Neo Shingenwana</div>
@@ -279,7 +222,7 @@
   </div>
 </section>
 
-<!-- ══ 2026 JURY ══ -->
+<!-- ── 2026 JURY ── -->
 <section class="jury-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -289,63 +232,33 @@
   </div>
   <div class="jury-grid">
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
     <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz"
-           onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info">
-        <div class="jury-name">Adam Pantanowitz</div>
-        <div class="jury-role">Director at Wits Innovation Centre</div>
-        <div class="jury-country">South Africa</div>
-      </div>
+      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
+      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ 2026 PRIZES ══ -->
+<!-- ── 2026 PRIZES ── -->
 <section class="prizes-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -354,40 +267,16 @@
     <a class="section-link" style="color:#fff" href="/programme">View 2026 programme</a>
   </div>
   <div class="prizes-grid">
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <div class="prize-label">WIC PGDIP Winner</div>
-      <div class="prize-amount">R20,000</div>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
   </div>
 </section>
 
-<!-- ══ FAQ ══ -->
+<!-- ── FAQ ── -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -428,29 +317,7 @@
   </div>
 </section>
 
-<!-- ══ IMAGE STRIP ══ -->
-<section class="img-strip-section">
-  <div class="img-strip">
-    <div class="strip-item"><img src="images/Copy_of__MGL0176.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/_MGL7139.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/Copy_of__MGL0176.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="images/_MGL7139.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/image00044.jpeg" alt="" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/image00084.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1515169067868-5387ec356754?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/image00044.jpeg" alt="" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/image00084.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1515169067868-5387ec356754?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=80'"/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=80'"/></div>
-  </div>
-</section>
-
-<!-- ══ PARTNERS (matching index.html — full width, centered grid) ══ -->
+<!-- ── PARTNERS ── -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -460,37 +327,39 @@
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
-      <div class="partner-logo-box">
-        <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"
-             onerror="this.src='https://placehold.co/180x80?text=Tshimologong'"/>
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" onerror="this.src='https://placehold.co/180x80?text=Tshimologong'"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"/></div>
-      <div class="partner-logo-box">
-        <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"
-             onerror="this.src='https://placehold.co/180x80?text=Wits+University'"/>
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" onerror="this.src='https://placehold.co/180x80?text=Wits+University'"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
-      <div class="partner-logo-box">
-        <img src="../images/logos/digital-dome.png" alt="Wits Anglo American Digital Dome"
-             onerror="this.src='https://placehold.co/180x80?text=Digital+Dome'"/>
-      </div>
+      <div class="partner-logo-box"><img src="../images/logos/digital-dome.png" alt="Wits Anglo American Digital Dome" onerror="this.src='https://placehold.co/180x80?text=Digital+Dome'"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
 </section>
-<script src="nav.js"></script>
-<script src="ticker.js"></script>
+
 <script src="footer.js"></script>
 <script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
 <script>
+  // Remove any announcement/premiere bar injected by globalEffects at runtime
+  (function removeAnnouncementBars() {
+    const selectors = [
+      '.announcement-bar','.global-announcement','.site-announcement',
+      '.promo-bar','.premiere-bar','.festival-bar',
+      '[data-announcement]','[data-promo]'
+    ];
+    function purge() {
+      selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
+    }
+    purge();
+    // Also run after scripts have loaded
+    window.addEventListener('load', purge);
+    setTimeout(purge, 500);
+  })();
+
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
@@ -504,8 +373,7 @@
   let winnerIdx = 0;
   function updateWinnersRail() {
     if (!rail || !slides.length) return;
-    const slideW = slides[0].offsetWidth;
-    rail.style.transform = 'translateX(-' + (winnerIdx * slideW) + 'px)';
+    rail.style.transform = 'translateX(-' + (winnerIdx * slides[0].offsetWidth) + 'px)';
   }
   document.getElementById('winners-next')?.addEventListener('click', () => {
     if (winnerIdx < slides.length - 3) winnerIdx++;

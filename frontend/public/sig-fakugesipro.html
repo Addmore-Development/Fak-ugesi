@@ -23,9 +23,9 @@
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
-    /* HERO */
+    /* ── HERO ── */
     .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
-    .hero-bg{position:absolute;inset:0;background-image:url('../images/_MGL2775.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('../images/_DMC6809.JPG');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
     .hero-content{position:relative;z-index:3;padding:0 80px 52px;animation:fadeUp .9s ease both}
@@ -39,49 +39,79 @@
     .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:#fff;padding:20px 24px;z-index:4}
     .hero-signia img{display:block}
 
-    /* INTRO */
-    .intro-section{background:var(--white);padding:72px 80px;position:relative}
-    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-    .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif}
-    .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
-    .intro-body p+p{margin-top:20px}
-    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
-    .intro-cta:hover{background:var(--navy);color:#fff}
+    /* ── WHAT IS FAK'UGESI PRO ── */
+    .what-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .what-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
+    .what-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif;max-width:600px}
+    .what-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
+    .what-body{font-size:15px;line-height:1.75;color:var(--dark-text);margin-bottom:40px;max-width:900px;font-family:'InterDisplay',sans-serif}
+    .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .audience-card{background:var(--lavender);padding:28px 24px 36px;position:relative}
+    .audience-num{font-size:28px;font-weight:900;color:var(--dark-text);text-align:right;margin-bottom:20px;font-family:'InterDisplay',sans-serif}
+    .audience-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.55;margin-bottom:10px;font-family:'InterDisplay',sans-serif}
+    .audience-head{font-size:22px;font-weight:900;color:var(--dark-text);margin-bottom:20px;line-height:1.15;font-family:'InterDisplay',sans-serif}
+    .audience-body{font-size:12px;line-height:1.7;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
 
-    /* CONTENT SECTIONS */
-    .content-section{padding:72px 80px;position:relative}
-    .content-section.dark{background:var(--navy);color:#fff}
-    .content-section.light{background:var(--lavender);color:var(--dark-text)}
-    .section-title{font-size:38px;font-weight:900;margin-bottom:36px;font-family:'InterDisplay',sans-serif}
-    .section-title.light-text{color:#fff}
-    .section-title.dark-text{color:var(--dark-text)}
-    .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .info-card{border:1px solid rgba(255,255,255,.3);padding:28px 24px;position:relative}
-    .info-card.light-bg{border-color:rgba(26,39,68,.15);background:#fff}
-    .card-num{font-size:32px;font-weight:900;opacity:.25;margin-bottom:12px;font-family:'InterDisplay',sans-serif}
-    .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px;font-family:'InterDisplay',sans-serif}
-    .card-head{font-size:18px;font-weight:700;margin-bottom:10px;font-family:'InterDisplay',sans-serif}
-    .card-body{font-size:13px;line-height:1.65;opacity:.82;font-family:'InterDisplay',sans-serif}
+    /* ── JOIN INDUSTRY NETWORK (full-width image) ── */
+    .network-section{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:stretch}
+    .network-bg{position:absolute;inset:0;background-image:url('../images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55)}
+    .network-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:space-between;padding:52px 80px}
+    .network-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .network-title{font-size:52px;font-weight:900;color:#fff;line-height:1.0;max-width:600px;font-family:'InterDisplay',sans-serif}
+    .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px;opacity:.85}
+    .network-bottom{max-width:420px;margin-top:auto;padding-top:80px}
+    .network-body{font-size:13px;line-height:1.72;color:#fff;opacity:.88;margin-bottom:24px;font-family:'InterDisplay',sans-serif}
+    .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
+    .network-cta:hover{background:#fff;color:var(--navy)}
 
-    /* IMAGE STRIP */
-    .img-strip-section{overflow:hidden;position:relative;padding:0}
-    .img-strip{display:flex;gap:12px;width:max-content;animation:stripScroll 30s linear infinite}
-    .img-strip:hover{animation-play-state:paused}
-    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .strip-item{flex:0 0 360px;height:320px;overflow:hidden}
-    .strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-    .strip-item:hover img{transform:scale(1.04)}
+    /* ── 2025 HIGHLIGHTS ── */
+    .highlights-section{background:var(--white);padding:72px 0 0;position:relative;color:var(--dark-text)}
+    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 80px 44px;position:relative}
+    .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif}
+    .highlights-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
 
-    /* PARTNERS */
-    .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
-    .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .partners-title{font-size:38px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
+    /* Scrolling highlights strip */
+    .highlights-strip-wrap{overflow:hidden;position:relative;padding:0}
+    .highlights-strip{display:flex;gap:0;width:max-content;animation:highlightsScroll 40s linear infinite}
+    .highlights-strip:hover{animation-play-state:paused}
+    @keyframes highlightsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .highlight-item{flex:0 0 340px;display:flex;flex-direction:column}
+    .highlight-img{width:340px;height:320px;overflow:hidden;flex-shrink:0}
+    .highlight-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+    .highlight-item:hover .highlight-img img{transform:scale(1.04)}
+    .highlight-info{padding:20px 24px 32px;background:var(--white);border-top:1px solid rgba(26,39,68,.1)}
+    .highlight-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--body-gray);margin-bottom:10px;font-family:'InterDisplay',sans-serif}
+    .highlight-head{font-size:18px;font-weight:700;color:var(--dark-text);margin-bottom:12px;line-height:1.2;font-family:'InterDisplay',sans-serif}
+    .highlight-desc{font-size:12px;line-height:1.65;color:var(--body-gray);margin-bottom:16px;font-family:'InterDisplay',sans-serif}
+    .highlight-speakers{font-size:11px;color:var(--dark-text);line-height:1.6;font-family:'InterDisplay',sans-serif}
+
+    /* ── FAQ ── */
+    .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .faq-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px}
+    .faq-left{flex:0 0 380px}
+    .faq-title{font-size:52px;font-weight:900;color:var(--dark-text);margin-bottom:24px;font-family:'InterDisplay',sans-serif}
+    .faq-intro{font-size:13px;line-height:1.75;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
+    .faq-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
+    .faq-items{flex:1;margin-left:64px}
+    .faq-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0}
+    .faq-item{border:1.5px solid var(--lavender);margin-bottom:8px;background:var(--lavender);cursor:pointer;transition:background .2s}
+    .faq-item.open{background:var(--lavender)}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;gap:16px}
+    .faq-icon{flex-shrink:0;font-size:20px;font-weight:300;color:var(--dark-text);line-height:1;width:20px;text-align:center}
+    .faq-answer{display:none;padding:0 24px 20px;font-size:13px;line-height:1.72;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
+    .faq-item.open .faq-answer{display:block}
+    .faq-wrap{display:flex;gap:64px;align-items:flex-start}
+
+    /* ── PARTNERS ── */
+    .partners-section{background:var(--lavender);padding:64px 80px;position:relative}
+    .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+    .partners-title{font-size:36px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px}
+    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .partner-card{display:flex;flex-direction:column}
-    .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:36px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:14px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
-    .partner-logo-box img{max-width:100%;max-height:120px;object-fit:contain;display:block}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
 
     /* REVEAL */
@@ -93,76 +123,219 @@
 
 <!-- nav injected by nav.js -->
 
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Signature Programme</p>
-    <h1 class="hero-title">Fak'ugesiPro</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+    <p class="hero-eyebrow">Fak'ugesiPRO</p>
+    <h1 class="hero-title">Our dedicated industry platform</h1>
+    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <p class="hero-dates">07 — 12.10.2026</p>
-    <a class="hero-cta" href="tickets.html">Get Tickets</a>
   </div>
   <div class="hero-signia">
-    <img src="frontend/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:48px;width:auto;margin-bottom:8px;"/>
-    <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:36px;width:auto;"/>
+    <img src="../images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" style="height:48px;width:auto;margin-bottom:8px;display:block"/>
+    <img src="../images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:36px;width:auto;display:block"/>
   </div>
 </section>
 
 <!-- ticker injected by ticker.js -->
 
-<section class="intro-section reveal">
+<!-- ── WHAT IS FAK'UGESI PRO ── -->
+<section class="what-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="intro-grid">
-    <h2 class="intro-title">Our dedicated industry platform</h2>
-    <div class="intro-body">
-      <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-      <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-      <a class="intro-cta" href="tickets.html">Get Tickets</a>
+  <div class="what-header">
+    <h2 class="what-title">What is Fak'ugesiPRO</h2>
+    <a class="what-link" href="#">View 2026 programme</a>
+  </div>
+  <p class="what-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-num" style="display:flex;justify-content:space-between;align-items:flex-start"><span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:4px">Nam sit amet</span><span>01</span></div>
+      <div class="audience-head">Intermediaries<br>&amp; Policymakers</div>
+      <p class="audience-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-num" style="display:flex;justify-content:space-between;align-items:flex-start"><span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:4px">Nam sit amet</span><span>02</span></div>
+      <div class="audience-head">Entrepreneurs<br>&amp; Investors</div>
+      <p class="audience-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-num" style="display:flex;justify-content:space-between;align-items:flex-start"><span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:4px">Nam sit amet</span><span>03</span></div>
+      <div class="audience-head">Creative<br>Organisations</div>
+      <p class="audience-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+    </div>
+  </div>
+  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:calc(50% - 9px);animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- ── JOIN OUR INDUSTRY NETWORK ── -->
+<section class="network-section reveal">
+  <div class="network-bg"></div>
+  <div class="network-inner">
+    <div class="network-top">
+      <h2 class="network-title">Join our industry network</h2>
+      <a class="network-link" href="#">View 2026 programme</a>
+    </div>
+    <div class="network-bottom">
+      <p class="network-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
+      <a class="network-cta" href="#">GET INVOLVED</a>
     </div>
   </div>
 </section>
 
-<section class="content-section dark reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <h2 class="section-title light-text">Programme Highlights</h2>
-  <div class="cards-grid">
-      <div class="info-card">
-        <div class="card-num">01</div>
-        <div class="card-label">Industry Professionals</div>
-        <div class="card-head">Masterclasses</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+<!-- ── 2025 HIGHLIGHTS ── -->
+<section class="highlights-section reveal">
+  <div class="highlights-header">
+    <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <h2 class="highlights-title">2025 Highlights</h2>
+    <a class="highlights-link" href="#">View 2026 programme</a>
+  </div>
+  <div class="highlights-strip-wrap">
+    <div class="highlights-strip">
+      <!-- First set -->
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="card-num">02</div>
-        <div class="card-label">Networking</div>
-        <div class="card-head">Meet & Greet Sessions</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="card-num">03</div>
-        <div class="card-label">Market Access</div>
-        <div class="card-head">Opportunity Pitches</div>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
       </div>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div>
+        <div class="highlight-info">
+          <div class="highlight-tag">Panel</div>
+          <div class="highlight-head">A Seat at the Table of Change</div>
+          <p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="img-strip-section">
-  <div class="img-strip">
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL2775.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/Copy_of__MGL3584.jpg" alt=""/></div>
-    <div class="strip-item"><img src="../images/_MGL7139.jpg" alt=""/></div>
+<!-- ── FAQ ── -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:calc(50% - 9px);animation-delay:.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="faq-wrap">
+    <div class="faq-left">
+      <h2 class="faq-title">FAQ</h2>
+      <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="faq-link" href="#">View 2026 programme</a>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">−</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Nulla gravida, arcu eget dictum eleifend, velit</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.</div>
+      </div>
+    </div>
   </div>
+  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
+<!-- ── OUR MAIN PARTNERS ── -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -172,15 +345,21 @@
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="frontend/images/digital-dome.png" alt="Wits Anglo American Digital Dome"/></div>
+      <div class="partner-logo-box">
+        <img src="../images/digital-dome.png" alt="Wits Anglo American Digital Dome"/>
+      </div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
@@ -192,11 +371,26 @@
 <script src="globalEffects.js"></script>
 <script src="starArrows.js"></script>
 <script>
+  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.08 });
   revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-icon').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.querySelector('.faq-icon').textContent = '−';
+    }
+  }
 </script>
 </body>
 </html>

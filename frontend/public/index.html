@@ -200,13 +200,13 @@
     .involved-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
     .involved-title { font-size: 38px; font-weight: 600; }
     .involved-link  { color: var(--white); font-size: 12px; font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; }
-    .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
     .inv-card {
       border: 1px solid rgba(255,255,255,0.45);
       position: relative; backdrop-filter: blur(2px);
-      aspect-ratio: 1 / 1.05;
       padding: 20px;
       display: flex; flex-direction: column;
+      height: 100%;
     }
     .card-num   { position: absolute; top: 14px; right: 14px; font-size: 20px; font-weight: 700; opacity: 0.65; }
     .card-tag   { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }

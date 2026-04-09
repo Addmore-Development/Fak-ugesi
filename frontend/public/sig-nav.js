@@ -1,10 +1,10 @@
 /**
- * Fak'ugesi Signature Programmes Sub-Navigation v2
- * - Cross indicator ABOVE active tab (not between words)
- * - Bouncy spring transition between tabs
- * - Triple bounce on click
- * - GET TICKETS: hover → white bg, dark text
- * - No water/ripple canvas effect
+ * Fak'ugesi Signature Programmes Sub-Navigation v3
+ * Changes from v2:
+ *  - Cross indicator now CONTINUOUSLY bounces up and down over the active tab
+ *  - On hover: smoothly slides to hovered tab (pauses bounce, resumes on leave)
+ *  - On click: triple-bounce then resumes continuous bounce
+ *  - No water/ripple canvas effect
  */
 (function () {
   const path = window.location.pathname;
@@ -40,22 +40,27 @@
       box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
 
-    /* Cross indicator that slides ABOVE tabs */
+    /* ── Cross indicator — continuously bounces above active tab ── */
     #sig-nav-indicator {
       position: absolute;
       top: 6px;
       pointer-events: none;
       z-index: 10;
-      /* Spring-like transition for the horizontal slide */
       transition: left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     #sig-nav-indicator svg {
       display: block;
     }
-    /* Vertical bounce animation on click */
-    #sig-nav-indicator.jumping {
-      animation: sigIndicatorBounce 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Continuous float/bob */
+    @keyframes sigIndicatorFloat {
+      0%   { transform: translateY(0px) scale(1); }
+      30%  { transform: translateY(-7px) scale(1.28); }
+      60%  { transform: translateY(0px) scale(1); }
+      80%  { transform: translateY(-3px) scale(1.1); }
+      100% { transform: translateY(0px) scale(1); }
     }
+    /* Click-burst triple bounce */
     @keyframes sigIndicatorBounce {
       0%   { transform: translateY(0) scale(1); }
       16%  { transform: translateY(-10px) scale(1.6); }
@@ -64,6 +69,12 @@
       64%  { transform: translateY(0) scale(1); }
       80%  { transform: translateY(-4px) scale(1.15); }
       100% { transform: translateY(0) scale(1); }
+    }
+    #sig-nav-indicator.floating {
+      animation: sigIndicatorFloat 1.8s ease-in-out infinite;
+    }
+    #sig-nav-indicator.jumping {
+      animation: sigIndicatorBounce 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
     }
 
     #sig-nav .sig-links {
@@ -173,45 +184,59 @@
   const indicator = document.getElementById('sig-nav-indicator');
   const sigLinksList = document.getElementById('sig-links-list');
 
-  // Position indicator centred above a given element
   function positionIndicator(el) {
     const navRect = sigNav.getBoundingClientRect();
     const elRect = el.getBoundingClientRect();
-    const centerX = elRect.left - navRect.left + elRect.width / 2 - 8; // 8 = half of 16px icon
+    const centerX = elRect.left - navRect.left + elRect.width / 2 - 8;
     indicator.style.left = centerX + 'px';
   }
 
-  // Trigger triple-bounce vertical animation
-  function jumpIndicator() {
+  function startFloat() {
     indicator.classList.remove('jumping');
-    void indicator.offsetWidth; // reflow
-    indicator.classList.add('jumping');
-    indicator.addEventListener('animationend', () => indicator.classList.remove('jumping'), { once: true });
+    indicator.classList.add('floating');
   }
 
-  // Find active tab and position indicator on load
+  function pauseFloat() {
+    indicator.classList.remove('floating', 'jumping');
+  }
+
+  function jumpIndicator() {
+    indicator.classList.remove('floating', 'jumping');
+    void indicator.offsetWidth;
+    indicator.classList.add('jumping');
+    indicator.addEventListener('animationend', () => {
+      indicator.classList.remove('jumping');
+      startFloat();
+    }, { once: true });
+  }
+
   function initIndicator() {
     const activeLink = sigLinksList.querySelector('a.active');
     const targetEl = activeLink || sigLinksList.querySelector('a');
-    if (targetEl) positionIndicator(targetEl);
+    if (targetEl) {
+      positionIndicator(targetEl);
+      startFloat();
+    }
   }
 
-  // Event listeners
   sigLinksList.querySelectorAll('li').forEach(li => {
     const a = li.querySelector('a');
     if (!a) return;
 
-    // Hover: slide indicator to this tab
-    li.addEventListener('mouseenter', () => positionIndicator(a));
+    li.addEventListener('mouseenter', () => {
+      pauseFloat();
+      positionIndicator(a);
+    });
 
-    // Mouse leave: return to active tab
     li.addEventListener('mouseleave', () => {
       const activeLink = sigLinksList.querySelector('a.active');
       const fallback = activeLink || sigLinksList.querySelector('a');
-      if (fallback) positionIndicator(fallback);
+      if (fallback) {
+        positionIndicator(fallback);
+        startFloat();
+      }
     });
 
-    // Click: set active + bounce
     li.addEventListener('click', () => {
       sigLinksList.querySelectorAll('a').forEach(el => el.classList.remove('active'));
       a.classList.add('active');
@@ -220,14 +245,15 @@
     });
   });
 
-  // Scroll behaviour
-  function handleScroll() {
+  window.addEventListener('scroll', () => {
     sigNav.classList.toggle('scrolled', window.scrollY > 40);
-  }
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  }, { passive: true });
+  sigNav.classList.toggle('scrolled', window.scrollY > 40);
 
-  // Init after layout paint
   requestAnimationFrame(() => requestAnimationFrame(initIndicator));
-  window.addEventListener('resize', initIndicator);
+  window.addEventListener('resize', () => {
+    const activeLink = sigLinksList.querySelector('a.active');
+    const fallback = activeLink || sigLinksList.querySelector('a');
+    if (fallback) positionIndicator(fallback);
+  });
 })();

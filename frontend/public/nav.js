@@ -1,11 +1,10 @@
 /**
- * Fak'ugesi Shared Nav v5
- * - Transparent background by default
- * - Blue frosted low-opacity on scroll
- * - GET TICKETS button has blue background + rounded corners
- * - Cross indicator above active tab, bounces between nav items
- * - Plus sign spins 360° and shoots baby pluses on hover
- * - No water/ripple canvas effect
+ * Fak'ugesi Shared Nav v6
+ * Changes from v5:
+ *  - Cross indicator now CONTINUOUSLY bounces up and down over the active tab
+ *  - On hover: smoothly slides to hovered tab (pauses bounce, resumes on leave)
+ *  - On click: triple-bounce then resumes continuous bounce
+ *  - No water/ripple canvas effect
  */
 
 (function() {
@@ -56,7 +55,7 @@
     }
     .plus-spinning { animation: nav-plusSpin 0.55s cubic-bezier(.4,0,.2,1) forwards !important; }
 
-    /* Cross indicator above nav links */
+    /* ── Cross indicator — continuously bounces above active tab ── */
     #fug-nav-indicator {
       position: absolute;
       top: 6px;
@@ -65,17 +64,30 @@
       transition: left 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     #fug-nav-indicator svg { display: block; }
-    #fug-nav-indicator.jumping {
-      animation: navIndicatorBounce 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Continuous float/bob animation */
+    @keyframes navIndicatorFloat {
+      0%   { transform: translateY(0px) scale(1); }
+      30%  { transform: translateY(-7px) scale(1.25); }
+      60%  { transform: translateY(0px) scale(1); }
+      80%  { transform: translateY(-3px) scale(1.1); }
+      100% { transform: translateY(0px) scale(1); }
     }
+    /* Click-burst triple bounce (overrides float temporarily) */
     @keyframes navIndicatorBounce {
       0%   { transform: translateY(0) scale(1); }
-      18%  { transform: translateY(-8px) scale(1.5); }
+      18%  { transform: translateY(-10px) scale(1.6); }
       36%  { transform: translateY(0) scale(1); }
-      54%  { transform: translateY(-5px) scale(1.3); }
+      54%  { transform: translateY(-7px) scale(1.35); }
       72%  { transform: translateY(0) scale(1); }
-      86%  { transform: translateY(-3px) scale(1.15); }
+      86%  { transform: translateY(-4px) scale(1.15); }
       100% { transform: translateY(0) scale(1); }
+    }
+    #fug-nav-indicator.floating {
+      animation: navIndicatorFloat 1.8s ease-in-out infinite;
+    }
+    #fug-nav-indicator.jumping {
+      animation: navIndicatorBounce 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
     }
 
     #fug-nav .nav-centre { display:flex; align-items:center; justify-content:center; position:relative; }
@@ -193,55 +205,76 @@
   const navLinks = document.getElementById('fug-nav-links');
 
   // Position indicator above a given element
-  function positionIndicator(el, animate) {
+  function positionIndicator(el) {
     const navRect = nav.getBoundingClientRect();
     const elRect = el.getBoundingClientRect();
     const centerX = elRect.left - navRect.left + elRect.width / 2 - 8;
     indicator.style.left = centerX + 'px';
   }
 
-  function jumpIndicator() {
+  // Start continuous float bounce on active tab
+  function startFloat() {
     indicator.classList.remove('jumping');
+    indicator.classList.add('floating');
+  }
+
+  // Pause float (on hover away from active)
+  function pauseFloat() {
+    indicator.classList.remove('floating');
+    indicator.classList.remove('jumping');
+  }
+
+  // Triple-bounce click burst, then resume float
+  function jumpIndicator() {
+    indicator.classList.remove('floating', 'jumping');
     void indicator.offsetWidth;
     indicator.classList.add('jumping');
-    indicator.addEventListener('animationend', () => indicator.classList.remove('jumping'), { once: true });
+    indicator.addEventListener('animationend', () => {
+      indicator.classList.remove('jumping');
+      startFloat();
+    }, { once: true });
   }
 
   function initIndicator() {
     const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
     const targetEl = activeEl || navLinks.querySelector('a');
-    if (targetEl) positionIndicator(targetEl, false);
+    if (targetEl) {
+      positionIndicator(targetEl);
+      startFloat();
+    }
   }
 
-  // Hover: move indicator to hovered item
+  // Hover: slide indicator to hovered item, pause bounce
   navLinks.querySelectorAll('li').forEach(li => {
     const trigger = li.querySelector('a, .nav-drop-trigger');
     if (!trigger) return;
 
-    li.addEventListener('mouseenter', () => positionIndicator(trigger, true));
+    li.addEventListener('mouseenter', () => {
+      pauseFloat();
+      positionIndicator(trigger);
+    });
     li.addEventListener('mouseleave', () => {
       const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
       const fallback = activeEl || navLinks.querySelector('a');
-      if (fallback) positionIndicator(fallback, true);
+      if (fallback) {
+        positionIndicator(fallback);
+        startFloat();
+      }
     });
 
     li.addEventListener('click', () => {
       navLinks.querySelectorAll('a, .nav-drop-trigger').forEach(el => el.classList.remove('active'));
       trigger.classList.add('active');
-      positionIndicator(trigger, true);
+      positionIndicator(trigger);
       jumpIndicator();
     });
   });
 
   // Scroll behaviour
-  let lastScrollY = window.scrollY;
-  function updateNav() {
-    const currentScrollY = window.scrollY;
-    nav.classList.toggle('scrolled', currentScrollY > 40);
-    lastScrollY = currentScrollY;
-  }
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 
   // Dropdown toggle
   document.querySelectorAll('#fug-nav .drop-li').forEach(li => {
@@ -291,5 +324,9 @@
   }
 
   requestAnimationFrame(() => requestAnimationFrame(initIndicator));
-  window.addEventListener('resize', initIndicator);
+  window.addEventListener('resize', () => {
+    const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
+    const targetEl = activeEl || navLinks.querySelector('a');
+    if (targetEl) positionIndicator(targetEl);
+  });
 })();

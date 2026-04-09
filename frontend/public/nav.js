@@ -1,10 +1,11 @@
 /**
- * Fak'ugesi Shared Nav v4
- * - Transparent background by default (no background at all)
- * - Blue frosted low-opacity on scroll UP
- * - GET TICKETS button has blue background
- * - Rounded corners on GET TICKETS button
+ * Fak'ugesi Shared Nav v5
+ * - Transparent background by default
+ * - Blue frosted low-opacity on scroll
+ * - GET TICKETS button has blue background + rounded corners
+ * - Cross indicator above active tab, bounces between nav items
  * - Plus sign spins 360° and shoots baby pluses on hover
+ * - No water/ripple canvas effect
  */
 
 (function() {
@@ -31,6 +32,7 @@
       border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      overflow: visible;
     }
     #fug-nav.scrolled {
       background: rgba(26, 55, 120, 0.18);
@@ -54,7 +56,29 @@
     }
     .plus-spinning { animation: nav-plusSpin 0.55s cubic-bezier(.4,0,.2,1) forwards !important; }
 
-    #fug-nav .nav-centre { display:flex; align-items:center; justify-content:center; }
+    /* Cross indicator above nav links */
+    #fug-nav-indicator {
+      position: absolute;
+      top: 6px;
+      pointer-events: none;
+      z-index: 20;
+      transition: left 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #fug-nav-indicator svg { display: block; }
+    #fug-nav-indicator.jumping {
+      animation: navIndicatorBounce 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes navIndicatorBounce {
+      0%   { transform: translateY(0) scale(1); }
+      18%  { transform: translateY(-8px) scale(1.5); }
+      36%  { transform: translateY(0) scale(1); }
+      54%  { transform: translateY(-5px) scale(1.3); }
+      72%  { transform: translateY(0) scale(1); }
+      86%  { transform: translateY(-3px) scale(1.15); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    #fug-nav .nav-centre { display:flex; align-items:center; justify-content:center; position:relative; }
     #fug-nav .nav-links { display:flex; gap:26px; list-style:none; margin:0; padding:0; }
     #fug-nav .nav-links > li { position:relative; }
     #fug-nav .nav-links a, #fug-nav .nav-links .nav-drop-trigger {
@@ -129,7 +153,13 @@
       <span class="nav-plus-sym" id="nav-plus-main">+</span>
     </div>
     <div class="nav-centre">
-      <ul class="nav-links">
+      <div id="fug-nav-indicator">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+          <line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.9)" stroke-width="1.8"/>
+          <line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.9)" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <ul class="nav-links" id="fug-nav-links">
         <li><a href="/index.html" ${isActive('index') ? 'class="active"' : ''}>Home</a></li>
         <li><a href="/programme.html" ${isActive('programme') ? 'class="active"' : ''}>Festival Programme</a></li>
         <li class="drop-li">
@@ -158,13 +188,55 @@
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Scroll behaviour — transparent by default, blue frosted low opacity on scroll
   const nav = document.getElementById('fug-nav');
-  let lastScrollY = window.scrollY;
+  const indicator = document.getElementById('fug-nav-indicator');
+  const navLinks = document.getElementById('fug-nav-links');
 
+  // Position indicator above a given element
+  function positionIndicator(el, animate) {
+    const navRect = nav.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const centerX = elRect.left - navRect.left + elRect.width / 2 - 8;
+    indicator.style.left = centerX + 'px';
+  }
+
+  function jumpIndicator() {
+    indicator.classList.remove('jumping');
+    void indicator.offsetWidth;
+    indicator.classList.add('jumping');
+    indicator.addEventListener('animationend', () => indicator.classList.remove('jumping'), { once: true });
+  }
+
+  function initIndicator() {
+    const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
+    const targetEl = activeEl || navLinks.querySelector('a');
+    if (targetEl) positionIndicator(targetEl, false);
+  }
+
+  // Hover: move indicator to hovered item
+  navLinks.querySelectorAll('li').forEach(li => {
+    const trigger = li.querySelector('a, .nav-drop-trigger');
+    if (!trigger) return;
+
+    li.addEventListener('mouseenter', () => positionIndicator(trigger, true));
+    li.addEventListener('mouseleave', () => {
+      const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
+      const fallback = activeEl || navLinks.querySelector('a');
+      if (fallback) positionIndicator(fallback, true);
+    });
+
+    li.addEventListener('click', () => {
+      navLinks.querySelectorAll('a, .nav-drop-trigger').forEach(el => el.classList.remove('active'));
+      trigger.classList.add('active');
+      positionIndicator(trigger, true);
+      jumpIndicator();
+    });
+  });
+
+  // Scroll behaviour
+  let lastScrollY = window.scrollY;
   function updateNav() {
     const currentScrollY = window.scrollY;
-    // Show blue bg whenever scrolled past threshold (both up and down)
     nav.classList.toggle('scrolled', currentScrollY > 40);
     lastScrollY = currentScrollY;
   }
@@ -217,4 +289,7 @@
       setTimeout(() => baby.remove(), 600);
     }
   }
+
+  requestAnimationFrame(() => requestAnimationFrame(initIndicator));
+  window.addEventListener('resize', initIndicator);
 })();

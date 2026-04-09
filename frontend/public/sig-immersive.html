@@ -191,7 +191,7 @@
     }
 
     /* ══════════════════════════════════════════════
-       PARTNERS SECTION — CHANGED: now a scrolling carousel
+       PARTNERS SECTION — scrolling carousel
     ══════════════════════════════════════════════ */
     .partners-section{
       background:#fff;padding:80px 0 80px;
@@ -204,7 +204,6 @@
       padding:0 80px;
     }
 
-    /* Carousel track — no padding so logos scroll edge-to-edge */
     .partners-carousel-outer{
       overflow:hidden;
       width:100%;
@@ -234,7 +233,6 @@
       max-width:180px;
       object-fit:contain;
       display:block;
-      /* All logos rendered at natural colour — SVG must be black/dark */
     }
 
     .partners-disclaimer{
@@ -250,9 +248,6 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* ══════════════════════════════════════════════
-       RESPONSIVE TWEAKS
-    ══════════════════════════════════════════════ */
     @media(max-width:900px){
       .hero-title{font-size:44px}
       .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
@@ -300,7 +295,6 @@
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <!-- duplicate set -->
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
@@ -381,7 +375,6 @@
     </div>
 
     <div class="premiere-co">
-      <!-- CHANGED: removed filter:invert(1) brightness(2) — digitaldome.svg is now black -->
       <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Digital Dome" style="height:28px;"/>
     </div>
 
@@ -408,10 +401,8 @@
 
   <h2 class="partners-title">Our Immersive Africa Partners</h2>
 
-  <!-- Scrolling carousel — duplicate set for seamless loop -->
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track">
-      <!-- Set 1 -->
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
@@ -419,9 +410,8 @@
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
-      <!-- CHANGED: no filter — digitaldome.svg is now black -->
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
-      <!-- Set 2 — duplicate for seamless loop -->
+      <!-- duplicate for seamless loop -->
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
       <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
@@ -438,14 +428,10 @@
   </p>
 </section>
 
-
-<!-- Scripts -->
-<script src="ticker.js"></script>
 <script src="footer.js"></script>
 <script src="globalEffects.js"></script>
 <script src="starArrows.js"></script>
 <script>
-  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {

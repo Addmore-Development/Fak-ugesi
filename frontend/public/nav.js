@@ -1,7 +1,7 @@
 /**
  * Fak'ugesi Shared Nav v4
  * - Transparent background by default (no background at all)
- * - White frosted very low-opacity on scroll
+ * - Blue frosted low-opacity on scroll UP
  * - GET TICKETS button has blue background
  * - Rounded corners on GET TICKETS button
  * - Plus sign spins 360° and shoots baby pluses on hover
@@ -32,11 +32,11 @@
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
     #fug-nav.scrolled {
-      background: rgba(255,255,255,0.08);
+      background: rgba(26, 55, 120, 0.18);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 2px 32px rgba(0,0,0,0.10);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.12);
     }
     #fug-nav .nav-left { display:flex; align-items:center; }
     #fug-nav .nav-plus-sym {
@@ -157,9 +157,16 @@
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Scroll behaviour — transparent by default, frosted white very low opacity on scroll
+  // Scroll behaviour — transparent by default, blue frosted low opacity on scroll
   const nav = document.getElementById('fug-nav');
-  function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+  let lastScrollY = window.scrollY;
+
+  function updateNav() {
+    const currentScrollY = window.scrollY;
+    // Show blue bg whenever scrolled past threshold (both up and down)
+    nav.classList.toggle('scrolled', currentScrollY > 40);
+    lastScrollY = currentScrollY;
+  }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 

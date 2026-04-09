@@ -82,7 +82,6 @@
     }
     .btn-apply:hover { background: var(--white); color: var(--navy); }
 
-    /* Awards logo — right side, no background */
     .hero-awards-logo {
       position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
       z-index: 4; display: flex; align-items: center; justify-content: center;
@@ -113,8 +112,15 @@
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
     .winners-nav button {
-      background: none; border: none; cursor: pointer; font-size: 22px;
-      color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s;
+      background: none;
+      border: 1px solid var(--dark-text);
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--dark-text);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.2s;
+      font-family: 'InterDisplay', sans-serif;
     }
     .winners-nav button:hover { opacity: 0.5; }
 
@@ -136,7 +142,6 @@
     .winner-bottom { display: flex; justify-content: space-between; }
     .winner-author, .winner-country { font-size: 13px; color: var(--body-gray); }
 
-    /* Cross row below winners */
     .crosses-row {
       display: flex; justify-content: space-between; padding: 20px 80px;
     }
@@ -146,7 +151,7 @@
     .categories-section { position: relative; overflow: hidden; }
     .categories-bg {
       position: absolute; inset: 0;
-      background-image: url('../images/signature/Poster - Akende Muyumbana.png');
+      background-image: url('../images/Poster - Akende Muyumbana.png');
       background-size: cover; background-position: center;
       filter: brightness(0.28);
     }
@@ -157,9 +162,10 @@
     }
     .cat-title { font-size: 52px; font-weight: 600; color: var(--white); }
     .cat-apply-link {
-      color: var(--white); font-size: 12px; text-decoration: underline;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; text-decoration: none;
+      color: var(--white); font-size: 12px;
+      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer;
       border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap;
+      text-decoration: none;
     }
     .cat-apply-link:hover { opacity: 1; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -213,8 +219,30 @@
       color: var(--white); font-size: 12px; text-decoration: underline;
       letter-spacing: 0.06em; opacity: 0.8; cursor: pointer;
     }
-    .req-list { list-style: decimal; padding-left: 18px; max-width: 900px; }
-    .req-list li { font-size: 13px; line-height: 1.78; opacity: 0.85; margin-bottom: 20px; color: #fff; }
+    /* The req-items container — global effects JS will transform its .faq-item children
+       into the horizontal KIKK row (navy → light on hover).
+       The ol/li fallback below is shown until JS runs. */
+    #req-items { display: flex; flex-direction: column; }
+    #req-items .faq-item {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: none;
+      background: rgba(255,255,255,0.04);
+    }
+    #req-items .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    #req-items .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 22px; cursor: pointer; gap: 16px;
+      background: none; border: none; width: 100%; text-align: left;
+      font-family: 'InterDisplay', sans-serif;
+    }
+    #req-items .faq-question-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.35; }
+    #req-items .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.7);
+      padding: 0 22px;
+    }
+    #req-items .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
 
     /* ── FAQ ── */
     .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
@@ -226,6 +254,7 @@
       font-size: 12px; color: var(--dark-text); text-decoration: underline;
       letter-spacing: 0.06em; cursor: pointer;
     }
+    /* Fallback styles before JS converts to KIKK row */
     .faq-items { display: flex; flex-direction: column; }
     .faq-item {
       border: 1px solid rgba(26,39,68,0.15); border-bottom: none;
@@ -268,7 +297,7 @@
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color {filter: none; }
+    .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
     /* ── SOCIAL BAR ── */
@@ -332,7 +361,6 @@
     <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
   </div>
 
-  <!-- Awards logo — no background -->
   <div class="hero-awards-logo">
     <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
   </div>
@@ -349,7 +377,6 @@
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <!-- duplicate for seamless loop -->
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
@@ -377,17 +404,17 @@
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
       <!-- original set -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <!-- duplicate for seamless loop -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
     </div>
   </div>
 
@@ -458,7 +485,7 @@
 
   <div class="jury-grid">
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Mickael Newton"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Mickael Newton"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -466,7 +493,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -474,7 +501,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -482,7 +509,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -490,7 +517,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -498,7 +525,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
+      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
       <div class="jury-info">
         <div class="jury-name">Mickael<br>Newton</div>
         <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
@@ -516,6 +543,8 @@
 
 <!-- ═══════════════════════════════════════
      REQUIREMENTS
+     #req-items holds .faq-item children so the global effects script
+     converts them into the KIKK horizontal row (navy → light on hover).
 ═══════════════════════════════════════ -->
 <section class="requirements-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
@@ -525,16 +554,45 @@
     <h2 class="req-title">Requirements</h2>
     <a class="req-apply-link" href="#">Submit your application</a>
   </div>
-  <ol class="req-list">
-    <li>Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede. Aenean congue pede in nisi tristique interdum. Sed commodo, ipsum ac dignissim ullamcorper, odio nulla venenatis nisi, in porta dolor neque venenatis lacus. Pellentesque fermentum. Mauris sit amet ligula ut tellus gravida mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices cubilia Curae;</li>
-    <li>Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl, suscipit at, rhoncus sit amet, porttitor sit amet, leo. Aenean hendrerit est. Etiam ac augue. Morbi tincidunt neque ut lacus. Duis vulputate cursus orci. Mauris justo lorem, scelerisque sit amet, placerat sed, condimentum in, leo. Donec urna est, semper quis, auctor eget, ultrices in, purus. Etiam rutrum. Aliquam blandit dui a libero. Praesent tortor tortor, bibendum vehicula, accumsan sed, adipiscing a, pede. Nullam et tortor. Suspendisse tempor leo quis nunc fringilla volutpat. Donec rutrum ullamcorper lorem. Nunc tincidunt sagittis augue. Quisque lacinia. Phasellus sollicitudin.</li>
-    <li>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus purus, elementum ac, luctus ullamcorper, ornare vitae, massa. Nullam posuere sem ut mauris. Nullam velit. Quisque sodales. Donec suscipit suscipit erat. Nam blandit. Praesent congue lorem non dolor. Maecenas vitae erat. Ut ac purus vel purus dapibus gravida.</li>
-    <li>Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus. Duis molestie pede. Vivamus quis odio sit amet libero sodales tincidunt. Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus</li>
-  </ol>
+
+  <!--
+    Each .faq-item MUST have:
+      • a .faq-question-text  (becomes the panel heading + collapsed label)
+      • a .faq-answer         (becomes the panel body text)
+    The global effects JS reads these and builds the horizontal KIKK row.
+  -->
+  <div id="req-items">
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span class="faq-question-text">African origin or diaspora connection</span>
+      </button>
+      <div class="faq-answer">Work must be created by an African national or diaspora artist with demonstrable ties to the continent. Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span class="faq-question-text">Digital or technology-led medium</span>
+      </button>
+      <div class="faq-answer">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Vestibulum semper enim non eros. Sed vitae arcu.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span class="faq-question-text">Completed within the past 24 months</span>
+      </button>
+      <div class="faq-answer">Works older than two years from the submission date are ineligible. Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span class="faq-question-text">Complete submission package required</span>
+      </button>
+      <div class="faq-answer">Portfolio PDF, artist statement, high-resolution images, and an optional video link are all required. Incomplete submissions will not be reviewed by the jury.</div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════
      FAQ
+     #faq-items is populated by JS below, then the global effects
+     script converts it to the KIKK horizontal row (light → navy on hover).
 ═══════════════════════════════════════ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
@@ -552,7 +610,7 @@
         <a class="faq-apply-link" href="#">Submit your application</a>
       </div>
       <div class="faq-items" id="faq-items">
-        <!-- injected by JS -->
+        <!-- injected by the script block below, then converted by global effects JS -->
       </div>
     </div>
   </div>
@@ -596,17 +654,37 @@
   }, { threshold: 0.06 });
   revealEls.forEach(el => io.observe(el));
 
-  /* ── FAQ accordion ── */
+  /* ── FAQ data — inject as .faq-item elements so global effects JS
+        can parse and convert them to the KIKK horizontal row ── */
   const faqData = [
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
+    {
+      q: 'Who can apply to the Fak\'ugesi Awards?',
+      a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.'
+    },
+    {
+      q: 'What is the submission deadline?',
+      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat.'
+    },
+    {
+      q: 'How many categories can I enter?',
+      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
+    },
+    {
+      q: 'What does a winner receive?',
+      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
+    },
+    {
+      q: 'How is the jury selected?',
+      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
+    },
+    {
+      q: 'Can I submit work in progress?',
+      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
+    },
   ];
 
   const faqContainer = document.getElementById('faq-items');
+
   faqData.forEach((faq, i) => {
     const item = document.createElement('div');
     item.className = 'faq-item' + (i === 0 ? ' open' : '');
@@ -617,6 +695,7 @@
       </button>
       <div class="faq-answer">${faq.a}</div>
     `;
+    /* Fallback accordion (active before global effects JS converts it) */
     item.querySelector('.faq-question').addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
       faqContainer.querySelectorAll('.faq-item').forEach(el => {
@@ -633,6 +712,9 @@
     faqContainer.appendChild(item);
   });
 </script>
+
+<!-- Global Effects — must come AFTER page content is rendered -->
+<script src="fak-ugesi-global-effects-v8.js"></script>
 
 </body>
 </html>

@@ -62,18 +62,9 @@
       max-width: 760px;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-eyebrow {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff;
-    }
-    .hero-title {
-      font-size: 52px; font-weight: 900; line-height: 1.05;
-      margin-bottom: 20px; color: #fff; max-width: 640px;
-    }
-    .hero-body {
-      font-size: 13px; line-height: 1.72; max-width: 440px;
-      opacity: 0.85; margin-bottom: 28px; color: #fff;
-    }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
+    .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
+    .hero-body { font-size: 13px; line-height: 1.72; max-width: 440px; opacity: 0.85; margin-bottom: 28px; color: #fff; }
     .btn-apply {
       display: inline-block; border: 1.5px solid var(--white); color: var(--white);
       background: transparent; padding: 11px 28px; font-size: 11px; font-weight: 700;
@@ -81,7 +72,6 @@
       text-decoration: none; transition: background 0.22s, color 0.22s;
     }
     .btn-apply:hover { background: var(--white); color: var(--navy); }
-
     .hero-awards-logo {
       position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
       z-index: 4; display: flex; align-items: center; justify-content: center;
@@ -89,49 +79,54 @@
     .hero-awards-logo img { display: block; height: 160px; width: auto; }
 
     /* ── TICKER ── */
-    .ticker-wrapper {
-      background: var(--navy); overflow: hidden; white-space: nowrap;
-      padding: 10px 0; position: relative; z-index: 10;
-    }
+    .ticker-wrapper { background: var(--navy); overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10; }
     .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
-    .ticker-track span {
-      padding: 0 32px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,0.85); letter-spacing: 0.02em;
-    }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── 2025 WINNERS ── */
-    .winners-section {
-      background: var(--white); padding: 60px 0 0;
-      position: relative; overflow: hidden;
-    }
-    .winners-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px 36px;
-    }
+    .winners-section { background: var(--white); padding: 60px 0 0; position: relative; overflow: hidden; }
+    .winners-header { display: flex; justify-content: space-between; align-items: center; padding: 0 80px 36px; }
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
-    .winners-nav button {
-      background: none;
-      border: 1px solid var(--dark-text);
-      cursor: pointer;
-      font-size: 20px;
-      color: var(--dark-text);
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.2s;
-      font-family: 'InterDisplay', sans-serif;
-    }
-    .winners-nav button:hover { opacity: 0.5; }
 
-    /* Auto-scrolling strip */
-    .winners-strip-outer { overflow: hidden; }
-    .winners-strip {
-      display: flex; gap: 16px; width: max-content;
-      animation: winnersScroll 34s linear infinite;
+    .winners-nav button {
+      background: none; border: 1px solid var(--dark-text); cursor: pointer;
+      font-size: 20px; color: var(--dark-text); width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+      font-family: 'InterDisplay', sans-serif;
+      transition: background 0.22s, color 0.22s;
     }
+    .winners-nav button:hover { background: var(--dark-text); color: var(--white); }
+
+    /* Arrow travels in the direction it points */
+    .winners-nav button .arrow-inner {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%;
+    }
+    /* Right arrow: exits right, enters from left */
+    #next-winner:hover .arrow-inner { animation: arrowRight 0.42s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes arrowRight {
+      0%  { transform: translateX(0);     opacity: 1; }
+      45% { transform: translateX(150%);  opacity: 0; }
+      46% { transform: translateX(-150%); opacity: 0; }
+      100%{ transform: translateX(0);     opacity: 1; }
+    }
+    /* Left arrow: exits left, enters from right */
+    #prev-winner:hover .arrow-inner { animation: arrowLeft 0.42s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes arrowLeft {
+      0%  { transform: translateX(0);     opacity: 1; }
+      45% { transform: translateX(-150%); opacity: 0; }
+      46% { transform: translateX(150%);  opacity: 0; }
+      100%{ transform: translateX(0);     opacity: 1; }
+    }
+
+    .winners-strip-outer { overflow: hidden; }
+    .winners-strip { display: flex; gap: 16px; width: max-content; animation: winnersScroll 34s linear infinite; }
     .winners-strip:hover { animation-play-state: paused; }
     @keyframes winnersScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
     .winner-card { flex: 0 0 380px; cursor: pointer; }
     .winner-img { width: 380px; height: 380px; overflow: hidden; }
     .winner-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
@@ -142,63 +137,77 @@
     .winner-bottom { display: flex; justify-content: space-between; }
     .winner-author, .winner-country { font-size: 13px; color: var(--body-gray); }
 
-    .crosses-row {
-      display: flex; justify-content: space-between; padding: 20px 80px;
-    }
+    .crosses-row { display: flex; justify-content: space-between; padding: 20px 80px; }
     .crosses-row svg { width: 18px; height: 18px; }
 
     /* ── ELIGIBLE CATEGORIES ── */
     .categories-section { position: relative; overflow: hidden; }
-    .categories-bg {
+
+    .cat-bg-base {
       position: absolute; inset: 0;
       background-image: url('../images/Poster - Akende Muyumbana.png');
       background-size: cover; background-position: center;
       filter: brightness(0.28);
     }
-    .categories-content { position: relative; z-index: 3; padding: 64px 80px 80px; }
-    .cat-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 40px;
+    .cat-bg-layer {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      filter: brightness(0.28);
+      opacity: 0;
+      transition: opacity 0.7s ease;
     }
+    .cat-bg-layer.active { opacity: 1; }
+
+    .categories-content { position: relative; z-index: 3; padding: 64px 80px 80px; }
+    .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
     .cat-title { font-size: 52px; font-weight: 600; color: var(--white); }
     .cat-apply-link {
-      color: var(--white); font-size: 12px;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer;
-      border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap;
-      text-decoration: none;
+      color: var(--white); font-size: 12px; letter-spacing: 0.06em; opacity: 0.8;
+      cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap; text-decoration: none;
     }
     .cat-apply-link:hover { opacity: 1; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .cat-card {
+
+    /* Flip card */
+    .cat-card-wrapper { perspective: 1000px; cursor: pointer; min-height: 220px; }
+    .cat-card-inner {
+      position: relative; width: 100%; height: 100%; min-height: 220px;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+    .cat-card-wrapper.flipped .cat-card-inner { transform: rotateY(180deg); }
+
+    .cat-card-front, .cat-card-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
       border: 1px solid rgba(255,255,255,0.45); padding: 22px 20px 24px;
-      position: relative; transition: border-color 0.28s, background 0.28s;
     }
-    .cat-card:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
-    .cat-card-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 14px;
+    .cat-card-front { background: transparent; transition: border-color 0.28s, background 0.28s; }
+    .cat-card-wrapper:hover .cat-card-front { border-color: var(--white); background: rgba(255,255,255,0.06); }
+    .cat-card-back {
+      transform: rotateY(180deg);
+      background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.8);
+      display: flex; flex-direction: column; justify-content: center;
     }
+
+    .cat-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
     .cat-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; color: #fff; }
     .cat-num { font-size: 36px; font-weight: 700; opacity: 0.75; color: #fff; }
     .cat-name { font-size: 20px; font-weight: 700; line-height: 1.25; margin-bottom: 20px; color: #fff; }
     .cat-items { list-style: none; }
-    .cat-items li {
-      font-size: 12px; opacity: 0.8; line-height: 1.9;
-      padding-left: 18px; position: relative; color: #fff;
-    }
+    .cat-items li { font-size: 12px; opacity: 0.8; line-height: 1.9; padding-left: 18px; position: relative; color: #fff; }
     .cat-items li::before { content: '→'; position: absolute; left: 0; }
+
+    .cat-back-num { font-size: 48px; font-weight: 700; color: #fff; opacity: 0.35; margin-bottom: 8px; }
+    .cat-back-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+    .cat-back-body { font-size: 12px; color: rgba(255,255,255,0.78); line-height: 1.8; }
+    .cat-back-hint { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 14px; }
 
     /* ── JURY ── */
     .jury-section { background: var(--white); padding: 64px 80px 0; position: relative; }
-    .jury-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 40px;
-    }
+    .jury-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .jury-title { font-size: 46px; font-weight: 600; color: var(--dark-text); }
-    .jury-apply-link {
-      font-size: 12px; color: var(--dark-text); text-decoration: underline;
-      letter-spacing: 0.06em; cursor: pointer;
-    }
+    .jury-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .jury-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .jury-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
     .jury-img { width: 100%; aspect-ratio: 3/2.8; overflow: hidden; }
@@ -208,86 +217,105 @@
     .jury-role { font-size: 14px; color: var(--body-gray); line-height: 1.4; margin-bottom: 10px; }
     .jury-country { font-size: 12px; color: var(--body-gray); }
 
-    /* ── REQUIREMENTS ── */
+    /* ══════════════════════════════════════
+       REQUIREMENTS
+       Section bg = navy  →  hover inverts to white
+    ══════════════════════════════════════ */
     .requirements-section { background: var(--navy); padding: 64px 80px 72px; position: relative; }
-    .req-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 36px;
-    }
+    .req-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; }
     .req-title { font-size: 50px; font-weight: 600; color: var(--white); }
-    .req-apply-link {
-      color: var(--white); font-size: 12px; text-decoration: underline;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer;
-    }
-    /* The req-items container — global effects JS will transform its .faq-item children
-       into the horizontal KIKK row (navy → light on hover).
-       The ol/li fallback below is shown until JS runs. */
+    .req-apply-link { color: var(--white); font-size: 12px; text-decoration: underline; letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; }
+
     #req-items { display: flex; flex-direction: column; }
     #req-items .faq-item {
-      border: 1px solid rgba(255,255,255,0.12);
-      border-bottom: none;
-      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.18);
+      background: transparent;
+      transition: background 0.2s ease;
     }
-    #req-items .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    #req-items .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
+
+    /* Hover: invert to white bg, navy text */
+    #req-items .faq-item:hover { background: var(--white); }
+    #req-items .faq-item:hover .faq-question-text { color: var(--navy); }
+    #req-items .faq-item:hover .faq-toggle-icon   { color: var(--navy); }
+    #req-items .faq-item:hover .faq-answer        { color: var(--body-gray); }
+
     #req-items .faq-question {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 22px; cursor: pointer; gap: 16px;
+      padding: 22px 0; cursor: pointer; gap: 16px;
       background: none; border: none; width: 100%; text-align: left;
       font-family: 'InterDisplay', sans-serif;
     }
-    #req-items .faq-question-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.35; }
+    #req-items .faq-question-text {
+      font-size: 16px; font-weight: 600; color: #fff; line-height: 1.35;
+      transition: color 0.2s ease;
+    }
+    #req-items .faq-toggle-icon {
+      font-size: 22px; color: #fff; flex-shrink: 0; font-weight: 300; line-height: 1;
+      transition: color 0.2s ease, transform 0.3s ease;
+    }
+    #req-items .faq-item.open .faq-toggle-icon { transform: rotate(45deg); }
+
     #req-items .faq-answer {
       max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.7);
-      padding: 0 22px;
+      transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease;
+      font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.7); padding: 0;
     }
-    #req-items .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
+    #req-items .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
-    /* ── FAQ ── */
+    /* ══════════════════════════════════════
+       FAQ
+       Section bg = white  →  hover inverts to navy
+    ══════════════════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
     .faq-right-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-link {
-      font-size: 12px; color: var(--dark-text); text-decoration: underline;
-      letter-spacing: 0.06em; cursor: pointer;
-    }
-    /* Fallback styles before JS converts to KIKK row */
+    .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
+
     .faq-items { display: flex; flex-direction: column; }
-    .faq-item {
-      border: 1px solid rgba(26,39,68,0.15); border-bottom: none;
-      background: #f0f3f9;
+    .faq-items .faq-item {
+      border-top: 1px solid rgba(26,39,68,0.15);
+      background: transparent;
+      transition: background 0.2s ease;
     }
-    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
-    .faq-question {
+    .faq-items .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
+
+    /* Hover: invert to navy bg, white text */
+    .faq-items .faq-item:hover { background: var(--navy); }
+    .faq-items .faq-item:hover .faq-question-text { color: var(--white); }
+    .faq-items .faq-item:hover .faq-toggle-icon   { color: var(--white); }
+    .faq-items .faq-item:hover .faq-answer        { color: rgba(255,255,255,0.75); }
+
+    .faq-items .faq-question {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 22px; cursor: pointer; gap: 16px;
+      padding: 22px 0; cursor: pointer; gap: 16px;
       background: none; border: none; width: 100%; text-align: left;
       font-family: 'InterDisplay', sans-serif;
     }
-    .faq-question-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; }
-    .faq-toggle { font-size: 20px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      font-size: 13px; line-height: 1.72; color: var(--body-gray);
-      padding: 0 22px;
+    .faq-items .faq-question-text {
+      font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35;
+      transition: color 0.2s ease;
     }
-    .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
+    .faq-items .faq-toggle-icon {
+      font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1;
+      transition: color 0.2s ease, transform 0.3s ease;
+    }
+    .faq-items .faq-item.open .faq-toggle-icon { transform: rotate(45deg); }
+
+    .faq-items .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease;
+      font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0;
+    }
+    .faq-items .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px 80px 72px; position: relative; }
-    .partners-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 44px;
-    }
+    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
     .partners-title { font-size: 42px; font-weight: 600; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px; color: var(--navy); font-weight: 600;
-      text-decoration: underline; letter-spacing: 0.06em; cursor: pointer;
-    }
+    .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
@@ -301,28 +329,16 @@
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
     /* ── SOCIAL BAR ── */
-    .social-band {
-      background: var(--navy); display: flex; justify-content: space-between;
-      align-items: center; padding: 22px 80px;
-    }
+    .social-band { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 22px 80px; }
     .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
     .social-band-icons { display: flex; gap: 18px; }
     .social-band-icons a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity 0.2s; }
     .social-band-icons a:hover { opacity: 0.55; }
 
     /* ── FOOTER ── */
-    .footer-crosses {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px; height: 44px; background: #fff;
-    }
-    footer {
-      background: var(--white); padding: 0 80px;
-      color: var(--dark-text); position: relative;
-    }
-    .footer-inner {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
-      padding: 48px 0;
-    }
+    .footer-crosses { display: flex; justify-content: space-between; align-items: center; padding: 0 80px; height: 44px; background: #fff; }
+    footer { background: var(--white); padding: 0 80px; color: var(--dark-text); position: relative; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding: 48px 0; }
     .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
     .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
     .footer-col-title { font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 12px; }
@@ -342,33 +358,26 @@
 
 <!-- sig-nav injected by sig-nav.js -->
 
-<!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
   <div class="cross-icon" style="top:16px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:16px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;left:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;right:80px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Awards</p>
     <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
   </div>
-
   <div class="hero-awards-logo">
     <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     TICKER
-═══════════════════════════════════════ -->
+<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
@@ -386,30 +395,25 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     2025 WINNERS
-═══════════════════════════════════════ -->
+<!-- 2025 WINNERS -->
 <section class="winners-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
     <div class="winners-nav">
-      <button id="prev-winner" aria-label="Previous">←</button>
-      <button id="next-winner" aria-label="Next">→</button>
+      <button id="prev-winner" aria-label="Previous"><span class="arrow-inner">←</span></button>
+      <button id="next-winner" aria-label="Next"><span class="arrow-inner">→</span></button>
     </div>
   </div>
-
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <!-- original set -->
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <!-- duplicate for seamless loop -->
+      <!-- duplicate set for seamless loop -->
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
@@ -417,7 +421,6 @@
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
     </div>
   </div>
-
   <div class="crosses-row">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
@@ -425,115 +428,140 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     ELIGIBLE CATEGORIES
-═══════════════════════════════════════ -->
+<!-- ELIGIBLE CATEGORIES -->
 <section class="categories-section reveal">
-  <div class="categories-bg"></div>
+  <div class="cat-bg-base"></div>
+  <div class="cat-bg-layer" data-layer="0" style="background-image:url('../images/Poster - Akende Muyumbana.png');"></div>
+  <div class="cat-bg-layer" data-layer="1" style="background-image:url('../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg');"></div>
+  <div class="cat-bg-layer" data-layer="2" style="background-image:url('../images/_MGL7139.jpg');"></div>
+  <div class="cat-bg-layer" data-layer="3" style="background-image:url('../images/Mickael Newton.png');"></div>
+  <div class="cat-bg-layer" data-layer="4" style="background-image:url('../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg');"></div>
+  <div class="cat-bg-layer" data-layer="5" style="background-image:url('../images/_MGL7139.jpg');"></div>
+
   <div class="categories-content">
     <div class="cat-header">
       <h2 class="cat-title">Eligible Categories</h2>
       <a class="cat-apply-link" href="#">Submit your application</a>
     </div>
     <div class="cat-grid">
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">01</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="0">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">01</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">01</div>
+            <div class="cat-back-title">Immersive Media</div>
+            <div class="cat-back-body">Immersive experiences that push the boundary between physical and digital space. VR, AR, and XR works that tell African stories through spatial computing.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">02</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="1">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">Digital Art</span><span class="cat-num">02</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Generative Art</li><li>Digital Illustration</li><li>NFT & Blockchain Art</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">02</div>
+            <div class="cat-back-title">Digital Art</div>
+            <div class="cat-back-body">Original artworks created through digital mediums — generative systems, AI collaboration, digital painting, and blockchain-native work from African creators.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">03</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="2">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">Game Design</span><span class="cat-num">03</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Indie Games</li><li>Serious Games</li><li>Interactive Narrative</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">03</div>
+            <div class="cat-back-title">Game Design</div>
+            <div class="cat-back-body">Games rooted in African culture, mythology, and contemporary life. From indie titles to interactive narrative experiences and educational simulations.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">04</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="3">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">Digital Film</span><span class="cat-num">04</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Short Film</li><li>Animation</li><li>Motion Graphics</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">04</div>
+            <div class="cat-back-title">Digital Film</div>
+            <div class="cat-back-body">Short films, animations, and motion graphics that use digital tools as a core part of production — from 2D animation to CGI-driven storytelling.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">05</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="4">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">Creative Technology</span><span class="cat-num">05</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Interactive Installations</li><li>Sound & Music Tech</li><li>Wearable Tech</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">05</div>
+            <div class="cat-back-title">Creative Technology</div>
+            <div class="cat-back-body">Hardware, installations, and wearables that merge craft with code. Work that opens new conversations between technology, body, and African creative tradition.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">06</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+
+      <div class="cat-card-wrapper" data-card="5">
+        <div class="cat-card-inner">
+          <div class="cat-card-front">
+            <div class="cat-card-top"><span class="cat-tag">UX & Design</span><span class="cat-num">06</span></div>
+            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
+            <ul class="cat-items"><li>Web & App Design</li><li>Graphic Design</li><li>Brand Identity</li></ul>
+          </div>
+          <div class="cat-card-back">
+            <div class="cat-back-num">06</div>
+            <div class="cat-back-title">UX & Design</div>
+            <div class="cat-back-body">Digital products, interfaces, and visual identities that centre African aesthetics and users. Work that challenges global design defaults with local vision.</div>
+            <div class="cat-back-hint">Click to flip back</div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     2026 AWARDS JURY
-═══════════════════════════════════════ -->
+<!-- 2026 AWARDS JURY -->
 <section class="jury-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;left:50%;animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
   <div class="jury-header">
     <h2 class="jury-title">2026 Awards Jury</h2>
     <a class="jury-apply-link" href="#">Submit your application</a>
   </div>
-
   <div class="jury-grid">
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Mickael Newton"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Mickael Newton"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
   </div>
-
   <div style="display:flex;justify-content:space-between;padding-top:40px;padding-bottom:16px;">
     <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
     <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
@@ -541,65 +569,52 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     REQUIREMENTS
-     #req-items holds .faq-item children so the global effects script
-     converts them into the KIKK horizontal row (navy → light on hover).
-═══════════════════════════════════════ -->
+<!-- REQUIREMENTS -->
 <section class="requirements-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-
   <div class="req-header">
     <h2 class="req-title">Requirements</h2>
     <a class="req-apply-link" href="#">Submit your application</a>
   </div>
-
-  <!--
-    Each .faq-item MUST have:
-      • a .faq-question-text  (becomes the panel heading + collapsed label)
-      • a .faq-answer         (becomes the panel body text)
-    The global effects JS reads these and builds the horizontal KIKK row.
-  -->
   <div id="req-items">
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         <span class="faq-question-text">African origin or diaspora connection</span>
+        <span class="faq-toggle-icon">+</span>
       </button>
       <div class="faq-answer">Work must be created by an African national or diaspora artist with demonstrable ties to the continent. Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         <span class="faq-question-text">Digital or technology-led medium</span>
+        <span class="faq-toggle-icon">+</span>
       </button>
       <div class="faq-answer">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Vestibulum semper enim non eros. Sed vitae arcu.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         <span class="faq-question-text">Completed within the past 24 months</span>
+        <span class="faq-toggle-icon">+</span>
       </button>
       <div class="faq-answer">Works older than two years from the submission date are ineligible. Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         <span class="faq-question-text">Complete submission package required</span>
+        <span class="faq-toggle-icon">+</span>
       </button>
       <div class="faq-answer">Portfolio PDF, artist statement, high-resolution images, and an optional video link are all required. Incomplete submissions will not be reviewed by the jury.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     FAQ
-     #faq-items is populated by JS below, then the global effects
-     script converts it to the KIKK horizontal row (light → navy on hover).
-═══════════════════════════════════════ -->
+<!-- FAQ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
   <div class="faq-layout">
     <div class="faq-left">
       <h2 class="faq-title">FAQ</h2>
@@ -609,27 +624,22 @@
       <div class="faq-right-header">
         <a class="faq-apply-link" href="#">Submit your application</a>
       </div>
-      <div class="faq-items" id="faq-items">
-        <!-- injected by the script block below, then converted by global effects JS -->
-      </div>
+      <div class="faq-items" id="faq-items"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     PARTNERS
-═══════════════════════════════════════ -->
+<!-- PARTNERS -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
   <div class="partners-header">
     <h2 class="partners-title">Our Awards Partners</h2>
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University"/></div>
+      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
@@ -637,7 +647,7 @@
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
+      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
       <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
     </div>
   </div>
@@ -654,66 +664,125 @@
   }, { threshold: 0.06 });
   revealEls.forEach(el => io.observe(el));
 
-  /* ── FAQ data — inject as .faq-item elements so global effects JS
-        can parse and convert them to the KIKK horizontal row ── */
-  const faqData = [
-    {
-      q: 'Who can apply to the Fak\'ugesi Awards?',
-      a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.'
-    },
-    {
-      q: 'What is the submission deadline?',
-      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat.'
-    },
-    {
-      q: 'How many categories can I enter?',
-      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
-    },
-    {
-      q: 'What does a winner receive?',
-      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
-    },
-    {
-      q: 'How is the jury selected?',
-      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
-    },
-    {
-      q: 'Can I submit work in progress?',
-      a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.'
-    },
-  ];
+  /* ── WINNERS: directional arrow nudge ── */
+  (function () {
+    const strip = document.getElementById('winnersStrip');
+    const CARD  = 380 + 16; // card width + gap
+    let paused  = false;
 
-  const faqContainer = document.getElementById('faq-items');
+    function nudge(dir) {
+      if (paused) return;
+      paused = true;
 
-  faqData.forEach((faq, i) => {
-    const item = document.createElement('div');
-    item.className = 'faq-item' + (i === 0 ? ' open' : '');
-    item.innerHTML = `
-      <button class="faq-question" aria-expanded="${i === 0}">
-        <span class="faq-question-text">${faq.q}</span>
-        <span class="faq-toggle">${i === 0 ? '−' : '+'}</span>
-      </button>
-      <div class="faq-answer">${faq.a}</div>
-    `;
-    /* Fallback accordion (active before global effects JS converts it) */
-    item.querySelector('.faq-question').addEventListener('click', () => {
+      // Grab current rendered translateX
+      const mat = new DOMMatrix(getComputedStyle(strip).transform);
+      const curX = mat.m41;
+
+      strip.style.animation  = 'none';
+      strip.style.transition = 'transform 0.52s cubic-bezier(0.4,0,0.2,1)';
+      strip.style.transform  = `translateX(${curX + dir * CARD}px)`;
+
+      setTimeout(() => {
+        strip.style.transition = '';
+        strip.style.transform  = '';
+        strip.style.animation  = 'winnersScroll 34s linear infinite';
+        paused = false;
+      }, 1800);
+    }
+
+    document.getElementById('prev-winner').addEventListener('click', () => nudge(1));  // left = slide right
+    document.getElementById('next-winner').addEventListener('click', () => nudge(-1)); // right = slide left
+  })();
+
+  /* ── CATEGORIES: flip + background swap ── */
+  (function () {
+    const wrappers = document.querySelectorAll('.cat-card-wrapper');
+    const layers   = document.querySelectorAll('.cat-bg-layer');
+
+    wrappers.forEach(wrapper => {
+      wrapper.addEventListener('click', () => {
+        const idx      = parseInt(wrapper.dataset.card, 10);
+        const flipping = !wrapper.classList.contains('flipped');
+
+        wrapper.classList.toggle('flipped');
+
+        // Deactivate all layers
+        layers.forEach(l => l.classList.remove('active'));
+
+        // If flipping to back face, activate matching layer
+        if (flipping) {
+          const target = document.querySelector(`.cat-bg-layer[data-layer="${idx}"]`);
+          if (target) target.classList.add('active');
+        }
+        // If flipping back to front, base layer shows through (all layers deactivated above)
+      });
+    });
+  })();
+
+  /* ── REQUIREMENTS accordion ── */
+  (function () {
+    const items = document.querySelectorAll('#req-items .faq-item');
+    items.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        items.forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-toggle-icon').textContent = '+';
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          item.querySelector('.faq-toggle-icon').textContent = '×';
+          item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+
+  /* ── FAQ: inject + accordion ── */
+  (function () {
+    const faqData = [
+      { q: "Who can apply to the Fak'ugesi Awards?", a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.' },
+      { q: 'What is the submission deadline?',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat.' },
+      { q: 'How many categories can I enter?',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
+      { q: 'What does a winner receive?',             a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
+      { q: 'How is the jury selected?',               a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
+      { q: 'Can I submit work in progress?',          a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
+    ];
+
+    const container = document.getElementById('faq-items');
+
+    faqData.forEach((faq, i) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item' + (i === 0 ? ' open' : '');
+      item.innerHTML = `
+        <button class="faq-question" aria-expanded="${i === 0}">
+          <span class="faq-question-text">${faq.q}</span>
+          <span class="faq-toggle-icon">${i === 0 ? '×' : '+'}</span>
+        </button>
+        <div class="faq-answer">${faq.a}</div>
+      `;
+      container.appendChild(item);
+    });
+
+    container.addEventListener('click', e => {
+      const item = e.target.closest('.faq-item');
+      if (!item) return;
       const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-toggle').textContent = '+';
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      container.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-toggle-icon').textContent = '+';
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
         item.classList.add('open');
-        item.querySelector('.faq-toggle').textContent = '−';
+        item.querySelector('.faq-toggle-icon').textContent = '×';
         item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
       }
     });
-    faqContainer.appendChild(item);
-  });
+  })();
 </script>
 
-<!-- Global Effects — must come AFTER page content is rendered -->
 <script src="fak-ugesi-global-effects-v8.js"></script>
 
 </body>

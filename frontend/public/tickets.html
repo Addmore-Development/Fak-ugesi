@@ -104,11 +104,11 @@
     }
     .passes-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(10,18,48,0.78) 0%, rgba(10,18,48,0.60) 100%);
+      background: rgba(0, 0, 0, 0.50);
     }
     .passes-content {
       position: relative; z-index: 3;
-      padding: 44px 120px 52px;
+      padding: 52px 80px 64px;
     }
 
     .crosses-row { display: flex; justify-content: space-between; margin-bottom: 20px; }
@@ -116,109 +116,186 @@
     .crosses-row-bot { display: flex; justify-content: space-between; margin-top: 28px; }
     .crosses-row-bot svg { width: 18px; height: 18px; }
 
+    /* ── passes-left: heading block above all cards ── */
+    .passes-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .passes-left {
+      margin-bottom: 36px;
+      padding-right: 0;
+      position: static;
+      top: auto;
+    }
+
     /* Section heading */
     .passes-heading {
-      font-size: 48px; font-weight: 900; color: var(--white);
-      line-height: 1.0; margin-bottom: 36px;
+      font-size: 40px; font-weight: 900; color: var(--white);
+      line-height: 1.05; margin-bottom: 16px;
     }
 
-    /* ── Each ticket row: left blurb | ticket card ── */
+    .passes-subtext {
+      font-size: 11px; line-height: 1.75; color: rgba(255,255,255,0.55);
+    }
+
+    /* ── Tickets stack, each row is blurb + card side by side ── */
+    .passes-right {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      padding-left: 0;
+    }
+
+    /* Each row: blurb on left, card on right */
     .ticket-row {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 0;
+      display: flex;
+      align-items: flex-start;
     }
-    .ticket-row + .ticket-row { margin-top: 28px; }
 
+    /* Blurb text — visible, left of card */
     .ticket-blurb {
-      font-size: 12.5px; line-height: 1.72; color: rgba(255,255,255,0.72);
+      display: block;
+      width: 240px;
+      flex-shrink: 0;
+      font-size: 11px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      padding-right: 28px;
+      padding-top: 8px;
     }
 
-    /* ── TICKET CARDS ── */
+    /* ══════════════════════════════════════
+       TICKET CARDS
+       --perf: px from card left to split
+       --hole-w / --hole-h: notch ellipse size
+    ══════════════════════════════════════ */
     .ticket-card {
       position: relative;
-      overflow: visible;
+      overflow: hidden;
+      --perf: 340px;
+      --hole-w: 96px;
+      --hole-h: 70px;
+      flex: 1;
+      max-width: none;
+      min-width: 0;
     }
 
-    /* Full Pass — white */
+    /* ── Full Pass — white ── */
     .ticket-card.full-pass {
       background: var(--white);
     }
-    /* Day & Industry — dark glass */
+
+    /* Punch-hole ellipses sit half-outside card top/bottom, clipped cleanly */
+    .ticket-card.full-pass::before,
+    .ticket-card.full-pass::after {
+      content: '';
+      position: absolute;
+      left: var(--perf);
+      width: var(--hole-w);
+      height: var(--hole-h);
+      border-radius: 50%;
+      background: #131c35;
+      z-index: 10;
+      transform: translateX(-50%);
+    }
+    .ticket-card.full-pass::before { top: calc(var(--hole-h) / -2); }
+    .ticket-card.full-pass::after  { bottom: calc(var(--hole-h) / -2); }
+
+    /* ── Day & Industry Pass — dark glass ── */
     .ticket-card.day-pass,
     .ticket-card.industry-pass {
-      background: rgba(10,18,48,0.50);
-      border: 1px solid rgba(255,255,255,0.30);
-      backdrop-filter: blur(8px);
+      background: rgba(8, 14, 36, 0.55);
+      backdrop-filter: blur(10px);
     }
 
+    .ticket-card.day-pass::before,
+    .ticket-card.day-pass::after,
+    .ticket-card.industry-pass::before,
+    .ticket-card.industry-pass::after {
+      content: '';
+      position: absolute;
+      left: var(--perf);
+      width: var(--hole-w);
+      height: var(--hole-h);
+      border-radius: 50%;
+      background: #0d1525;
+      z-index: 10;
+      transform: translateX(-50%);
+    }
+    .ticket-card.day-pass::before,
+    .ticket-card.industry-pass::before { top: calc(var(--hole-h) / -2); }
+    .ticket-card.day-pass::after,
+    .ticket-card.industry-pass::after  { bottom: calc(var(--hole-h) / -2); }
+
+    /* SVG border overlay — drawn by JS to trace the notched outline */
+    .ticket-border-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 20;
+      overflow: visible;
+    }
+    .ticket-border-svg path {
+      fill: none;
+      stroke: rgba(255,255,255,0.95);
+      stroke-width: 2;
+    }
+
+    /* ── Inner layout split at --perf ── */
     .ticket-inner {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: var(--perf) 1fr;
       align-items: stretch;
-    }
-    .ticket-main { padding: 22px 28px; }
-
-    .ticket-card.full-pass .ticket-main {
-      border-right: 2px dashed rgba(0,0,0,0.13);
-    }
-    .ticket-card.day-pass .ticket-main,
-    .ticket-card.industry-pass .ticket-main {
-      border-right: 2px dashed rgba(255,255,255,0.22);
+      min-height: 175px;
     }
 
-    .ticket-price-col {
-      padding: 22px 26px;
-      display: flex; flex-direction: column;
-      justify-content: space-between; align-items: flex-end;
-      min-width: 175px;
+    .ticket-main {
+      padding: 20px 40px 20px 22px;
     }
 
-    /* Round punch holes on sides */
-    .ticket-hole-l, .ticket-hole-r {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 24px; height: 24px; border-radius: 50%; z-index: 5;
-    }
-    .ticket-card.full-pass .ticket-hole-l,
-    .ticket-card.full-pass .ticket-hole-r {
-      background: rgba(210,222,240,0.95);
-    }
-    .ticket-card.day-pass .ticket-hole-l,
-    .ticket-card.day-pass .ticket-hole-r,
-    .ticket-card.industry-pass .ticket-hole-l,
-    .ticket-card.industry-pass .ticket-hole-r {
-      background: rgba(8,14,40,0.9);
-      border: 1px solid rgba(255,255,255,0.22);
-    }
-    .ticket-hole-l { left: -12px; }
-    .ticket-hole-r { right: -12px; }
-
-    /* Dot perforations on divider */
-    .ticket-dots {
+    /* Dots pinned to --perf */
+    .ticket-dots-col {
       position: absolute;
       top: 0; bottom: 0;
-      left: calc(100% * 0.715);
-      display: flex; flex-direction: column; justify-content: space-evenly;
+      left: var(--perf);
+      transform: translateX(-50%);
+      width: 10px;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
       align-items: center;
-      pointer-events: none; z-index: 4;
+      pointer-events: none;
     }
-    .ticket-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .ticket-card.full-pass .ticket-dot { background: rgba(210,222,240,0.95); }
+    .ticket-dot {
+      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .ticket-card.full-pass .ticket-dot {
+      background: rgba(140, 160, 200, 0.65);
+    }
     .ticket-card.day-pass .ticket-dot,
     .ticket-card.industry-pass .ticket-dot {
-      background: rgba(8,14,40,0.9);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.45);
     }
 
-    /* Text colors — full pass (dark on white) */
+    /* Price stub on right */
+    .ticket-price-col {
+      padding: 20px 22px 20px 20px;
+      display: flex; flex-direction: column;
+      justify-content: space-between; align-items: flex-end;
+    }
+
+    /* ── Text colors — full pass (dark on white) ── */
     .ticket-card.full-pass .ticket-label { color: var(--body-gray); }
     .ticket-card.full-pass .ticket-title { color: var(--dark-text); }
     .ticket-card.full-pass .ticket-desc  { color: var(--body-gray); }
     .ticket-card.full-pass .ticket-features li { color: var(--dark-text); }
     .ticket-card.full-pass .ticket-features li::before { color: var(--body-gray); }
-    /* Text colors — dark passes */
+    /* ── Text colors — dark passes ── */
     .ticket-card.day-pass .ticket-label,
     .ticket-card.industry-pass .ticket-label { color: rgba(255,255,255,0.52); }
     .ticket-card.day-pass .ticket-title,
@@ -230,36 +307,36 @@
     .ticket-card.day-pass .ticket-features li::before,
     .ticket-card.industry-pass .ticket-features li::before { color: rgba(255,255,255,0.42); }
 
-    .ticket-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
-    .ticket-title { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; }
-    .ticket-desc { font-size: 12px; line-height: 1.65; max-width: 380px; margin-bottom: 12px; }
-    .ticket-features { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-    .ticket-features li { font-size: 12px; display: flex; align-items: center; gap: 8px; }
-    .ticket-features li::before { content: '→'; font-size: 10px; flex-shrink: 0; }
+    .ticket-label { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+    .ticket-title { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 7px; }
+    .ticket-desc { font-size: 10px; line-height: 1.6; max-width: 380px; margin-bottom: 9px; }
+    .ticket-features { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    .ticket-features li { font-size: 10px; display: flex; align-items: center; gap: 6px; }
+    .ticket-features li::before { content: '→'; font-size: 9px; flex-shrink: 0; }
 
     /* Price column */
     .price-block { text-align: right; }
-    .price-amount { font-size: 42px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+    .price-amount { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
     .ticket-card.full-pass .price-amount { color: var(--dark-text); }
     .ticket-card.day-pass .price-amount,
     .ticket-card.industry-pass .price-amount { color: var(--white); }
-    .price-curr { font-size: 18px; vertical-align: top; margin-top: 8px; display: inline-block; margin-right: 1px; }
-    .price-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; margin-bottom: 4px; }
+    .price-curr { font-size: 14px; vertical-align: top; margin-top: 5px; display: inline-block; margin-right: 1px; }
+    .price-label { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; margin-bottom: 3px; }
     .ticket-card.full-pass .price-label { color: var(--body-gray); }
     .ticket-card.day-pass .price-label,
     .ticket-card.industry-pass .price-label { color: rgba(255,255,255,0.52); }
-    .price-divider { width: 100%; height: 1px; margin: 14px 0; }
+    .price-divider { width: 100%; height: 1px; margin: 10px 0; }
     .ticket-card.full-pass .price-divider { background: rgba(0,0,0,0.10); }
     .ticket-card.day-pass .price-divider,
     .ticket-card.industry-pass .price-divider { background: rgba(255,255,255,0.18); }
-    .student-note { font-size: 10px; text-align: right; margin-bottom: 10px; }
+    .student-note { font-size: 8px; text-align: right; margin-bottom: 8px; }
     .ticket-card.full-pass .student-note { color: var(--body-gray); }
     .ticket-card.day-pass .student-note,
     .ticket-card.industry-pass .student-note { color: rgba(255,255,255,0.45); }
 
     .btn-get-pass {
-      display: block; padding: 11px 20px;
-      font-family: 'InterDisplay', sans-serif; font-size: 10.5px; font-weight: 700;
+      display: block; padding: 8px 16px;
+      font-family: 'InterDisplay', sans-serif; font-size: 9px; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
       text-align: center; text-decoration: none;
       transition: background 0.22s, color 0.22s, border-color 0.22s;
@@ -304,7 +381,7 @@
     .faq-items { display: flex; flex-direction: column; gap: 0; }
     .faq-item {
       border: 1px solid rgba(26,39,68,0.14);
-      margin-bottom: -1px; /* overlap borders */
+      margin-bottom: -1px;
       overflow: hidden;
       background: var(--white);
       transition: background 0.2s;
@@ -371,8 +448,6 @@
   <div class="cross-icon" style="bottom:16px;left:48px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;right:48px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
 
-  <!-- nav injected by nav.js -->
-
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Festival 2026 · 07 — 12 October</p>
     <h1 class="hero-title">Join us between<br>13 and 17 October 2026</h1>
@@ -411,136 +486,160 @@
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
     </div>
 
-    <h2 class="passes-heading">Festival Passes</h2>
+    <div class="passes-body">
 
-    <!-- FULL PASS ROW -->
-    <div class="ticket-row">
-      <div class="ticket-blurb">
-        Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
+      <!-- Heading above all cards -->
+      <div class="passes-left">
+        <h2 class="passes-heading">Festival Passes</h2>
+        <p class="passes-subtext">Choose the pass that works for you. All passes include access to the main festival programme.</p>
       </div>
-      <div class="ticket-card full-pass">
-        <div class="ticket-hole-l"></div>
-        <div class="ticket-hole-r"></div>
-        <div class="ticket-dots">
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-        </div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Full Festival Access</div>
-            <div class="ticket-title">Full Pass</div>
-            <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
-            <ul class="ticket-features">
-              <li>Panels &amp; workshops</li>
-              <li>Expo &amp; showcases</li>
-              <li>Access to Market</li>
-              <li>Performances (excluding invitation-only events)</li>
-              <li>15% off group purchases of 10 – 20 passes</li>
-            </ul>
-          </div>
-          <div class="ticket-price-col">
-            <div>
-              <div class="price-block">
-                <div class="price-amount"><span class="price-curr">R</span>200</div>
-                <div class="price-label">For Students*</div>
-              </div>
-              <div class="price-divider"></div>
-              <div class="price-block">
-                <div class="price-amount"><span class="price-curr">R</span>750</div>
-                <div class="price-label">For General Public</div>
-              </div>
-            </div>
-            <div>
-              <div class="student-note">*valid student ID required</div>
-              <a class="btn-get-pass" href="#">GET FULL PASS</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- DAY PASS ROW -->
-    <div class="ticket-row">
-      <div class="ticket-blurb">
-        Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.
-      </div>
-      <div class="ticket-card day-pass">
-        <div class="ticket-hole-l"></div>
-        <div class="ticket-hole-r"></div>
-        <div class="ticket-dots">
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-        </div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Single Day Access</div>
-            <div class="ticket-title">Day Pass</div>
-            <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
-            <ul class="ticket-features">
-              <li>Full access on your chosen day</li>
-              <li>All panels &amp; workshops that day</li>
-              <li>Expo access included</li>
-            </ul>
-          </div>
-          <div class="ticket-price-col">
-            <div>
-              <div class="price-block">
-                <div class="price-amount"><span class="price-curr">R</span>135</div>
-                <div class="price-label">For Students*</div>
-              </div>
-              <div class="price-divider"></div>
-              <div class="price-block">
-                <div class="price-amount"><span class="price-curr">R</span>340</div>
-                <div class="price-label">For General Public</div>
-              </div>
-            </div>
-            <div>
-              <div class="student-note">*valid student ID required</div>
-              <a class="btn-get-pass" href="#">GET DAY PASS</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!-- RIGHT: ticket cards stacked -->
+      <div class="passes-right">
 
-    <!-- INDUSTRY PASS ROW -->
-    <div class="ticket-row">
-      <div class="ticket-blurb">
-        Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
-      </div>
-      <div class="ticket-card industry-pass">
-        <div class="ticket-hole-l"></div>
-        <div class="ticket-hole-r"></div>
-        <div class="ticket-dots">
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-          <div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div>
-        </div>
-        <div class="ticket-inner">
-          <div class="ticket-main">
-            <div class="ticket-label">Professional All-Access</div>
-            <div class="ticket-title">Industry Pass</div>
-            <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
-            <ul class="ticket-features">
-              <li>All Full Pass benefits</li>
-              <li>Exclusive networking sessions</li>
-              <li>VIP lounge access</li>
-              <li>Awards ceremony priority seating</li>
-            </ul>
+        <!-- FULL PASS ROW -->
+        <div class="ticket-row">
+          <div class="ticket-blurb">
+            Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
           </div>
-          <div class="ticket-price-col">
-            <div>
-              <div class="price-block">
-                <div class="price-amount"><span class="price-curr" style="font-size:16px">R</span>3,500</div>
-                <div class="price-label">For VIPs</div>
+          <div class="ticket-card full-pass">
+            <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
+            <div class="ticket-dots-col">
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+            </div>
+            <div class="ticket-inner">
+              <div class="ticket-main">
+                <div class="ticket-label">Full Festival Access</div>
+                <div class="ticket-title">Full Pass</div>
+                <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
+                <ul class="ticket-features">
+                  <li>Panels &amp; workshops</li>
+                  <li>Expo &amp; showcases</li>
+                  <li>Access to Market</li>
+                  <li>Performances (excluding invitation-only events)</li>
+                  <li>15% off group purchases of 10 – 20 passes</li>
+                </ul>
+              </div>
+              <div class="ticket-price-col">
+                <div>
+                  <div class="price-block">
+                    <div class="price-amount"><span class="price-curr">R</span>200</div>
+                    <div class="price-label">For Students*</div>
+                  </div>
+                  <div class="price-divider"></div>
+                  <div class="price-block">
+                    <div class="price-amount"><span class="price-curr">R</span>750</div>
+                    <div class="price-label">For General Public</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="student-note">*valid student ID required</div>
+                  <a class="btn-get-pass" href="#">GET FULL PASS</a>
+                </div>
               </div>
             </div>
-            <div>
-              <a class="btn-get-pass" href="#">GET INDUSTRY PASS</a>
+          </div>
+        </div>
+
+        <!-- DAY PASS ROW -->
+        <div class="ticket-row">
+          <div class="ticket-blurb">
+            Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.
+          </div>
+          <div class="ticket-card day-pass">
+            <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
+            <div class="ticket-dots-col">
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+            </div>
+            <div class="ticket-inner">
+              <div class="ticket-main">
+                <div class="ticket-label">Single Day Access</div>
+                <div class="ticket-title">Day Pass</div>
+                <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
+                <ul class="ticket-features">
+                  <li>Full access on your chosen day</li>
+                  <li>All panels &amp; workshops that day</li>
+                  <li>Expo access included</li>
+                </ul>
+              </div>
+              <div class="ticket-price-col">
+                <div>
+                  <div class="price-block">
+                    <div class="price-amount"><span class="price-curr">R</span>135</div>
+                    <div class="price-label">For Students*</div>
+                  </div>
+                  <div class="price-divider"></div>
+                  <div class="price-block">
+                    <div class="price-amount"><span class="price-curr">R</span>340</div>
+                    <div class="price-label">For General Public</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="student-note">*valid student ID required</div>
+                  <a class="btn-get-pass" href="#">GET DAY PASS</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
+        <!-- INDUSTRY PASS ROW -->
+        <div class="ticket-row">
+          <div class="ticket-blurb">
+            Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
+          </div>
+          <div class="ticket-card industry-pass">
+            <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
+            <div class="ticket-dots-col">
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+              <div class="ticket-dot"></div>
+            </div>
+            <div class="ticket-inner">
+              <div class="ticket-main">
+                <div class="ticket-label">Professional All-Access</div>
+                <div class="ticket-title">Industry Pass</div>
+                <p class="ticket-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec</p>
+                <ul class="ticket-features">
+                  <li>All Full Pass benefits</li>
+                  <li>Exclusive networking sessions</li>
+                  <li>VIP lounge access</li>
+                  <li>Awards ceremony priority seating</li>
+                </ul>
+              </div>
+              <div class="ticket-price-col">
+                <div>
+                  <div class="price-block">
+                    <div class="price-amount"><span class="price-curr" style="font-size:16px">R</span>3,500</div>
+                    <div class="price-label">For VIPs</div>
+                  </div>
+                </div>
+                <div>
+                  <a class="btn-get-pass" href="#">GET INDUSTRY PASS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.passes-right -->
+    </div><!-- /.passes-body -->
 
     <div class="crosses-row-bot">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
@@ -645,6 +744,44 @@
       item.querySelector('.faq-toggle').textContent = '−';
     }
   }
+
+  // ── Draw notched SVG border on each ticket card ──
+  function drawTicketBorder(card) {
+    const svg = card.querySelector('.ticket-border-svg');
+    const path = card.querySelector('.ticket-outline');
+    if (!svg || !path) return;
+
+    const W = card.offsetWidth;
+    const H = card.offsetHeight;
+
+    const style = getComputedStyle(card);
+    const perf = parseFloat(style.getPropertyValue('--perf')) || 340;
+    const hw   = parseFloat(style.getPropertyValue('--hole-w')) || 96;
+    const hh   = parseFloat(style.getPropertyValue('--hole-h')) || 70;
+
+    const rx = hw / 2;
+    const ry = hh / 2;
+    const cx = perf;
+
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    const x1 = cx - rx;
+    const x2 = cx + rx;
+
+    const topArc    = `L ${x1} 0 A ${rx} ${ry} 0 0 0 ${x2} 0`;
+    const bottomArc = `L ${x2} ${H} A ${rx} ${ry} 0 0 0 ${x1} ${H}`;
+
+    const d = `M 0 0 ${topArc} L ${W} 0 L ${W} ${H} ${bottomArc} L 0 ${H} Z`;
+    path.setAttribute('d', d);
+  }
+
+  function drawAllTicketBorders() {
+    document.querySelectorAll('.ticket-card').forEach(drawTicketBorder);
+  }
+
+  window.addEventListener('load', drawAllTicketBorders);
+  window.addEventListener('resize', drawAllTicketBorders);
+  drawAllTicketBorders();
 </script>
 <script src="nav.js"></script>
 

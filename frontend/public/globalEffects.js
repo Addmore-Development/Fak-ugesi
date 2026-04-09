@@ -1,33 +1,23 @@
 /**
- * Fak'ugesi Global Effects v8
- * ─────────────────────────────────────────────────────────────────
- * Merged from v7 + new effects:
- *  A. KIKK FAQ horizontal-expand (Featured Speakers style)
- *     — FAQ section: light/blue bg → navy on hover
- *     — Requirements section: navy bg → light on hover
- *     — active item widens, others compress
- *  B. Arrow conveyor (Aurélia / KIKK style)
- *     — winners-nav ← → buttons: arrow exits, re-enters in
- *       a continuous looping conveyor on hover
- *  C. Hero simultaneous word-drop
- *     — ALL hero-content children drop in together at page load, fast
- *
- * Preserved from v7:
- *  - Card flip (inv-card, winner-card, prog-card, cat-card)
- *  - Hero letter-by-letter drop-in + bounce (index page)
- *  - Noodle/liquid text on section headings
- *  - Section divider plus-spin + baby plus burst
- *  - Arrow crash canvas animation (.arrow-btn)
- *  - Clear white water ripples (not on index hero)
- *  - Image onerror fix
- * ─────────────────────────────────────────────────────────────────
+ * Fak'ugesi Global Effects v9
+ * Changes from v8:
+ *  - REMOVED: water/ripple canvas effect
+ *  - ADDED: Lightning text effect on hover (non-hero sections only)
+ *    Background goes dark, lightning bolt flashes through text on hover
+ *  - KEPT: all other v8 effects
+ *    A. KIKK FAQ horizontal-expand
+ *    B. Arrow conveyor (winners-nav buttons)
+ *    C. Hero simultaneous word-drop
+ *    - Card flip
+ *    - Hero letter-by-letter drop-in
+ *    - Noodle/liquid text on section headings
+ *    - Section divider plus-spin + baby plus burst
+ *    - Arrow crash canvas animation
+ *    - Image onerror fix
  */
 (function () {
   'use strict';
 
-  /* ═══════════════════════════════════════════════════════════════
-     SHARED CSS
-  ═══════════════════════════════════════════════════════════════ */
   const CSS = `
     /* ── Arrow btn canvas ── */
     .star-marker{display:inline-flex;align-items:center;justify-content:center;position:relative;cursor:default;line-height:1;}
@@ -37,7 +27,6 @@
     .arrow-btn{display:inline-flex!important;align-items:center;justify-content:center;position:relative;overflow:hidden!important;cursor:pointer;text-decoration:none;transition:border-color .2s;}
     .arrow-btn canvas.fug-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
     .arrow-btn .arr-icon{opacity:0!important;}
-    #global-ripple-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99990;}
 
     /* ── Section dividers ── */
     .section-divider-line{display:flex;align-items:center;gap:14px;padding:18px 40px;position:relative;z-index:2;}
@@ -79,8 +68,61 @@
     .noodle-letter.noodling{animation:noodleWave 0.7s ease forwards;filter:blur(0.4px);color:inherit;}
 
     /* ══════════════════════════════════════════════════════
+       LIGHTNING TEXT EFFECT
+       Applied to text elements outside .hero sections
+       On hover: bg goes dark, lightning flashes through
+    ══════════════════════════════════════════════════════ */
+    .fug-lightning-wrap {
+      position: relative;
+      display: inline-block;
+      cursor: default;
+      overflow: visible;
+    }
+    .fug-lightning-wrap .fug-lightning-bg {
+      position: absolute;
+      inset: -6px -12px;
+      background: transparent;
+      border-radius: 2px;
+      transition: background 0.22s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .fug-lightning-wrap:hover .fug-lightning-bg {
+      background: rgba(5, 10, 35, 0.88);
+    }
+    .fug-lightning-wrap .fug-lightning-text {
+      position: relative;
+      z-index: 1;
+      transition: color 0.15s;
+    }
+    .fug-lightning-wrap:hover .fug-lightning-text {
+      color: rgba(255,255,255,0.0);
+    }
+    .fug-lightning-wrap.lightning-flash .fug-lightning-text {
+      color: #ffffff !important;
+      text-shadow:
+        0 0 8px rgba(180, 220, 255, 0.9),
+        0 0 20px rgba(120, 180, 255, 0.7),
+        0 0 40px rgba(80, 140, 255, 0.5);
+    }
+    /* SVG lightning canvas overlay */
+    .fug-lightning-canvas {
+      position: absolute;
+      inset: -6px -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 12px);
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.1s;
+    }
+    .fug-lightning-wrap:hover .fug-lightning-canvas {
+      opacity: 1;
+    }
+
+    /* ══════════════════════════════════════════════════════
        A. KIKK FAQ / REQUIREMENTS HORIZONTAL EXPAND
-       ══════════════════════════════════════════════════════ */
+    ══════════════════════════════════════════════════════ */
     .faq-kikk-row {
       display: flex !important;
       flex-direction: row !important;
@@ -107,7 +149,6 @@
     .faq-kikk-cell.fkk-active  { flex: 5 1 0; }
     .faq-kikk-cell.fkk-inactive { flex: 0.4 1 0; }
 
-    /* Left-bar accent */
     .faq-kikk-cell::before {
       content: '';
       position: absolute; left: 0; top: 0;
@@ -118,7 +159,6 @@
     }
     .faq-kikk-cell.fkk-active::before { transform: scaleY(1); }
 
-    /* Collapsed label — rotated vertical */
     .fkk-collapsed {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
@@ -135,7 +175,6 @@
     }
     .faq-kikk-cell.fkk-active .fkk-collapsed { opacity: 0; }
 
-    /* Expanded content */
     .fkk-expanded {
       padding: 24px 20px 28px 22px;
       display: flex; flex-direction: column; justify-content: flex-end;
@@ -163,50 +202,24 @@
       opacity: 0.78;
     }
 
-    /* ── FAQ theme: light/blue bg → navy on hover ── */
-    .faq-kikk-row.faq-theme {
-      border-color: rgba(26,39,68,0.15);
-    }
-    .faq-kikk-row.faq-theme .faq-kikk-cell {
-      background: #f0f3f9;
-      color: #0d1b3e;
-      border-right-color: rgba(26,39,68,0.1);
-    }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active {
-      background: #1a2744;
-      color: #ffffff;
-    }
-    .faq-kikk-row.faq-theme .faq-kikk-cell::before {
-      background: #1a2744;
-    }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active::before {
-      background: rgba(255,255,255,0.4);
-    }
+    /* FAQ theme: light/blue bg → navy on hover */
+    .faq-kikk-row.faq-theme { border-color: rgba(26,39,68,0.15); }
+    .faq-kikk-row.faq-theme .faq-kikk-cell { background: #f0f3f9; color: #0d1b3e; border-right-color: rgba(26,39,68,0.1); }
+    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active { background: #1a2744; color: #ffffff; }
+    .faq-kikk-row.faq-theme .faq-kikk-cell::before { background: #1a2744; }
+    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active::before { background: rgba(255,255,255,0.4); }
     .faq-kikk-row.faq-theme .fkk-collapsed { color: #0d1b3e; }
     .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active .fkk-collapsed { color: #fff; }
     .faq-kikk-row.faq-theme .fkk-q { color: inherit; }
     .faq-kikk-row.faq-theme .fkk-a { color: inherit; }
     .faq-kikk-row.faq-theme .fkk-num { color: inherit; }
 
-    /* ── Requirements theme: navy bg → light on hover ── */
-    .faq-kikk-row.req-theme {
-      border-color: rgba(255,255,255,0.12);
-    }
-    .faq-kikk-row.req-theme .faq-kikk-cell {
-      background: #1a2744;
-      color: rgba(255,255,255,0.82);
-      border-right-color: rgba(255,255,255,0.08);
-    }
-    .faq-kikk-row.req-theme .faq-kikk-cell.fkk-active {
-      background: #f0f3f9;
-      color: #0d1b3e;
-    }
-    .faq-kikk-row.req-theme .faq-kikk-cell::before {
-      background: rgba(255,255,255,0.4);
-    }
-    .faq-kikk-row.req-theme .faq-kikk-cell.fkk-active::before {
-      background: #1a2744;
-    }
+    /* Requirements theme: navy bg → light on hover */
+    .faq-kikk-row.req-theme { border-color: rgba(255,255,255,0.12); }
+    .faq-kikk-row.req-theme .faq-kikk-cell { background: #1a2744; color: rgba(255,255,255,0.82); border-right-color: rgba(255,255,255,0.08); }
+    .faq-kikk-row.req-theme .faq-kikk-cell.fkk-active { background: #f0f3f9; color: #0d1b3e; }
+    .faq-kikk-row.req-theme .faq-kikk-cell::before { background: rgba(255,255,255,0.4); }
+    .faq-kikk-row.req-theme .faq-kikk-cell.fkk-active::before { background: #1a2744; }
     .faq-kikk-row.req-theme .fkk-collapsed { color: rgba(255,255,255,0.7); }
     .faq-kikk-row.req-theme .faq-kikk-cell.fkk-active .fkk-collapsed { color: #0d1b3e; }
     .faq-kikk-row.req-theme .fkk-q { color: inherit; }
@@ -214,8 +227,8 @@
     .faq-kikk-row.req-theme .fkk-num { color: inherit; }
 
     /* ══════════════════════════════════════════════════════
-       B. ARROW CONVEYOR (Aurélia / KIKK style)
-       ══════════════════════════════════════════════════════ */
+       B. ARROW CONVEYOR
+    ══════════════════════════════════════════════════════ */
     .fug-conveyor-btn {
       position: relative;
       overflow: hidden !important;
@@ -230,16 +243,10 @@
       white-space: nowrap;
       will-change: transform;
     }
-    .fug-conveyor-btn.conveying-fwd .fug-conv-track {
-      animation: conveyorFwd 0.45s linear infinite;
-    }
-    .fug-conveyor-btn.conveying-rev .fug-conv-track {
-      animation: conveyorRev 0.45s linear infinite;
-    }
 
     /* ══════════════════════════════════════════════════════
        C. HERO SIMULTANEOUS WORD-DROP
-       ══════════════════════════════════════════════════════ */
+    ══════════════════════════════════════════════════════ */
     @keyframes heroSimDrop {
       0%   { opacity: 0; transform: translateY(-22px); }
       65%  { opacity: 1; transform: translateY(3px); }
@@ -414,6 +421,135 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
+     LIGHTNING TEXT EFFECT
+     Wraps body text (p, li, .hero-body, etc.) OUTSIDE .hero
+     On hover: dark background overlay + lightning SVG flash
+  ═══════════════════════════════════════════════════════════════ */
+  const LIGHTNING_COLORS = [
+    'rgba(160, 210, 255, 0.95)',
+    'rgba(200, 230, 255, 0.85)',
+    'rgba(100, 180, 255, 0.9)',
+    'rgba(220, 240, 255, 1.0)',
+  ];
+
+  function generateLightningPath(w, h) {
+    // Generate a jagged lightning bolt path across the element
+    const segments = 6 + Math.floor(Math.random() * 5);
+    const startX = Math.random() * w * 0.3;
+    const startY = 0;
+    let x = startX;
+    let y = startY;
+    let d = `M ${x} ${y}`;
+    for (let i = 1; i <= segments; i++) {
+      const progress = i / segments;
+      x = startX + (Math.random() - 0.3) * w * 0.8 + progress * w * 0.4;
+      y = progress * h;
+      x = Math.max(0, Math.min(w, x));
+      d += ` L ${x} ${y}`;
+    }
+    return d;
+  }
+
+  function fireLightning(wrap) {
+    const canvas = wrap.querySelector('.fug-lightning-canvas');
+    if (!canvas) return;
+
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    canvas.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    canvas.innerHTML = '';
+
+    // Draw 2-3 lightning bolts
+    const count = 2 + Math.floor(Math.random() * 2);
+    for (let i = 0; i < count; i++) {
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', generateLightningPath(w, h));
+      path.setAttribute('stroke', LIGHTNING_COLORS[Math.floor(Math.random() * LIGHTNING_COLORS.length)]);
+      path.setAttribute('stroke-width', (1 + Math.random() * 1.5).toFixed(1));
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke-linecap', 'round');
+      path.style.opacity = '0';
+      path.style.transition = `opacity ${60 + i * 30}ms ease`;
+      canvas.appendChild(path);
+
+      // Flash on
+      setTimeout(() => { path.style.opacity = '1'; }, i * 40);
+      // Flash off
+      setTimeout(() => { path.style.opacity = '0'; }, 120 + i * 40);
+    }
+
+    // Text flash
+    wrap.classList.add('lightning-flash');
+    setTimeout(() => wrap.classList.remove('lightning-flash'), 180);
+  }
+
+  const LIGHTNING_TEXT_SELECTORS = [
+    '.hero-body', '.hero-eyebrow',
+    '.spotlight-body', '.theme-body',
+    '.partner-desc', '.faq-intro', '.faq-left-body',
+    '.card-body', '.audience-body', '.winner-cat',
+    '.network-body', '.intro-body',
+    '.what-body', '.cat-back-body',
+    '.highlight-desc', '.highlight-speakers',
+    '.jury-role', '.jury-country',
+    '.footer-addr', '.footer-copy',
+    'p:not(.hero-title):not(.hero-body)',
+  ].join(',');
+
+  function wrapLightningEl(el) {
+    if (el.dataset.lightning) return;
+    if (el.closest('.hero')) return; // Never in hero
+    if (el.closest('.faq-kikk-row')) return;
+    if (el.closest('.inv-card')) return;
+    if (el.closest('#sig-nav, #fug-nav')) return;
+    el.dataset.lightning = '1';
+
+    // Create wrapper preserving existing content
+    const wrapper = document.createElement('span');
+    wrapper.className = 'fug-lightning-wrap';
+    wrapper.style.display = 'block';
+
+    const bg = document.createElement('span');
+    bg.className = 'fug-lightning-bg';
+
+    const textSpan = document.createElement('span');
+    textSpan.className = 'fug-lightning-text';
+
+    // Create SVG canvas
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('xmlns', svgNS);
+    svg.classList.add('fug-lightning-canvas');
+    svg.style.cssText = 'position:absolute;inset:-6px -12px;pointer-events:none;z-index:2;overflow:visible;';
+
+    // Move el's children into textSpan
+    while (el.firstChild) textSpan.appendChild(el.firstChild);
+
+    wrapper.appendChild(bg);
+    wrapper.appendChild(textSpan);
+    wrapper.appendChild(svg);
+    el.appendChild(wrapper);
+
+    let lightningTimer = null;
+    wrapper.addEventListener('mouseenter', () => {
+      fireLightning(wrapper);
+      lightningTimer = setInterval(() => fireLightning(wrapper), 400);
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      if (lightningTimer) { clearInterval(lightningTimer); lightningTimer = null; }
+      svg.innerHTML = '';
+    });
+  }
+
+  function initLightningText() {
+    try {
+      document.querySelectorAll(LIGHTNING_TEXT_SELECTORS).forEach(el => {
+        if (!el.closest('.hero')) wrapLightningEl(el);
+      });
+    } catch(e) {}
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
      ARROW CRASH CANVAS (.arrow-btn)
   ═══════════════════════════════════════════════════════════════ */
   function drawBolt(ctx, cx, cy, size, color, alpha) {
@@ -475,9 +611,6 @@
 
   /* ═══════════════════════════════════════════════════════════════
      B. ARROW CONVEYOR (winners-nav ← / → plain buttons)
-        KIKK / Aurélia de Azambuja style:
-        Arrow loops out one side and re-enters from the other
-        continuously while hovered.
   ═══════════════════════════════════════════════════════════════ */
   function initArrowConveyor() {
     const SEL = '#prev-winner, #next-winner, #winners-prev, #winners-next';
@@ -489,11 +622,8 @@
       if (!char) return;
 
       const isRight = char === '→' || char.charCodeAt(0) === 8594;
-
-      // Detect button dimensions for keyframe pixel value
       const btnSize = btn.offsetWidth || btn.offsetHeight || 52;
 
-      // Inject per-button keyframes so the travel distance matches the button width
       const kfId = 'kf-conv-' + (isRight ? 'fwd' : 'rev') + '-' + btnSize;
       if (!document.getElementById(kfId)) {
         const kfEl = document.createElement('style');
@@ -506,7 +636,6 @@
         document.head.appendChild(kfEl);
       }
 
-      // Build repeating track: enough copies to cover travel
       const track = document.createElement('span');
       track.className = 'fug-conv-track';
       track.style.cssText = `
@@ -520,7 +649,6 @@
 
       btn.style.position = 'relative';
       btn.style.overflow = 'hidden';
-      // Clear original text and insert track
       btn.textContent = '';
       btn.appendChild(track);
       btn.classList.add('fug-conveyor-btn');
@@ -535,43 +663,6 @@
         void track.offsetWidth;
       });
     });
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     RIPPLES
-  ═══════════════════════════════════════════════════════════════ */
-  function initRipples() {
-    const path = window.location.pathname;
-    const isIndex = path === '/' || path.endsWith('index.html');
-    const canvas = document.createElement('canvas');
-    canvas.id = 'global-ripple-canvas'; document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    let W, H;
-    const resize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
-    resize(); window.addEventListener('resize', resize);
-    const drops = [];
-    function addDrop(x, y, big) {
-      const n = big ? 3 : 2;
-      for (let i = 0; i < n; i++) {
-        drops.push({x:x+(Math.random()-.5)*(big?18:5),y:y+(Math.random()-.5)*(big?5:2),r:0,a:big?.62:.42,spd:big?1.5+Math.random()*1.3:1+Math.random()*.8,delay:i*50,born:Date.now()});
-      }
-    }
-    (function loop() {
-      ctx.clearRect(0,0,W,H);const now=Date.now();
-      for(let i=drops.length-1;i>=0;i--){const d=drops[i];if(now-d.born<d.delay)continue;d.r+=d.spd*1.5;d.a-=0.02;if(d.a<=0){drops.splice(i,1);continue;}
-        ctx.save();ctx.globalAlpha=d.a*.5;ctx.strokeStyle='rgba(255,255,255,0.85)';ctx.lineWidth=1.4;ctx.beginPath();ctx.ellipse(d.x,d.y,d.r*1.8,d.r*.42,0,0,Math.PI*2);ctx.stroke();ctx.restore();
-        ctx.save();ctx.globalAlpha=d.a*.25;ctx.strokeStyle='rgba(255,255,255,0.6)';ctx.lineWidth=.7;ctx.beginPath();ctx.ellipse(d.x,d.y,d.r*.85,d.r*.2,0,0,Math.PI*2);ctx.stroke();ctx.restore();}
-      requestAnimationFrame(loop);
-    })();
-    function attach(el) {
-      if(isIndex&&el.closest&&el.closest('.hero'))return;
-      if(el.dataset.ripple)return;el.dataset.ripple='1';
-      el.addEventListener('mouseenter',()=>{const r=el.getBoundingClientRect();addDrop(r.left+r.width/2,r.top+r.height/2,true);for(let i=0;i<2;i++)setTimeout(()=>addDrop(r.left+r.width*(i+1)/3,r.top+r.height/2),i*45+15);});
-    }
-    function scan() {
-      document.querySelectorAll('h1,h2,h3,.cat-name,.ticket-title,.spotlight-heading,.team-name,.edition-name,nav .nav-links a,.winner-card,.flip-card').forEach(el=>{if(isIndex&&el.closest&&el.closest('.hero'))return;attach(el);});
-    }
-    scan(); setInterval(scan, 2000);
   }
 
   /* ═══════════════════════════════════════════════════════════════
@@ -631,9 +722,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     A. KIKK HORIZONTAL EXPAND — shared builder
-        theme: 'faq'  → light bg (#f0f3f9) → navy (#1a2744) on hover
-               'req'  → navy bg (#1a2744) → light (#f0f3f9) on hover
+     A. KIKK HORIZONTAL EXPAND
   ═══════════════════════════════════════════════════════════════ */
   function isDarkBg(el) {
     let node = el;
@@ -651,11 +740,6 @@
     return false;
   }
 
-  /**
-   * buildKikkRow
-   * @param {Element} container  - element whose direct .faq-item children are consumed
-   * @param {string}  theme      - 'faq' | 'req' | 'auto'
-   */
   function buildKikkRow(container, theme) {
     if (container.dataset.kikkDone) return;
 
@@ -663,14 +747,12 @@
     if (items.length < 2) return;
     container.dataset.kikkDone = '1';
 
-    // Resolve theme
     let resolvedTheme = theme;
     if (!resolvedTheme || resolvedTheme === 'auto') {
       resolvedTheme = isDarkBg(container) ? 'req' : 'faq';
     }
     const themeClass = resolvedTheme === 'req' ? 'req-theme' : 'faq-theme';
 
-    // Extract Q+A pairs
     const data = [];
     items.forEach((item, i) => {
       const qEl = item.querySelector(
@@ -685,7 +767,6 @@
       data.push({ q: rawQ, a: rawA, shortLabel, num: String(i+1).padStart(2,'0') });
     });
 
-    // Build row
     const row = document.createElement('div');
     row.className = `faq-kikk-row ${themeClass}`;
 
@@ -713,7 +794,6 @@
       row.appendChild(cell);
     });
 
-    // Reset to first on mouse-leave
     row.addEventListener('mouseleave', () => {
       row.querySelectorAll('.faq-kikk-cell').forEach((c, i) => {
         c.classList.remove('fkk-active', 'fkk-inactive');
@@ -726,7 +806,6 @@
   }
 
   function initKikkFaq() {
-    // ── FAQ sections: light → navy on hover ──
     const FAQ_SEL = [
       '#faq-items', '.faq-items',
       '#faq-list',  '.faq-list',
@@ -737,7 +816,6 @@
       if (!el.dataset.kikkDone) buildKikkRow(el, 'faq');
     });
 
-    // ── Requirements sections: navy → light on hover ──
     const REQ_SEL = [
       '#req-items', '.req-items',
       '#requirements-items', '.requirements-items',
@@ -754,13 +832,14 @@
     fixImageErrors();
     initAllArrows();
     initArrowConveyor();
-    initRipples();
     addDividers();
     initCardFlips();
     initHeroLetterDrop();
     initHeroSimDrop();
     initNoodleText();
     initKikkFaq();
+    // Lightning runs after a short delay to let DOM settle
+    setTimeout(initLightningText, 300);
 
     setInterval(() => {
       initAllArrows();
@@ -768,7 +847,8 @@
       initCardFlips();
       initNoodleText();
       initKikkFaq();
-    }, 1800);
+      initLightningText();
+    }, 2000);
   }
 
   if (document.readyState === 'loading') {

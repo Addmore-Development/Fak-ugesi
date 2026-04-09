@@ -1,6 +1,9 @@
 /**
  * Fak'ugesi Signature Programmes Sub-Navigation
- * Centered header with Home tab, frosted glass, navy palette
+ * - Centered tabs with animated cross (+) indicator that follows active tab
+ * - Cross jumps 3× on tab click
+ * - GET TICKETS: hover → white bg, dark text (NOT orange)
+ * - No water ripple effect
  */
 (function () {
   const path = window.location.pathname;
@@ -14,19 +17,18 @@
   const sigCSS = `
     #sig-nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 32px;
+      padding: 0 140px 0 32px;
       height: 58px;
       background: transparent;
       border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      overflow: visible;
     }
 
     #sig-nav.scrolled {
@@ -37,56 +39,75 @@
       box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
 
+    /* Cross indicator that slides between tabs */
+    #sig-nav-indicator {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 10;
+      transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #sig-nav-indicator svg {
+      display: block;
+    }
+    #sig-nav-indicator.jumping {
+      animation: indicatorJump 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes indicatorJump {
+      0%   { transform: translateY(-50%) scale(1); }
+      18%  { transform: translateY(calc(-50% - 10px)) scale(1.5); }
+      36%  { transform: translateY(-50%) scale(1); }
+      54%  { transform: translateY(calc(-50% - 7px)) scale(1.3); }
+      72%  { transform: translateY(-50%) scale(1); }
+      86%  { transform: translateY(calc(-50% - 4px)) scale(1.15); }
+      100% { transform: translateY(-50%) scale(1); }
+    }
+
     #sig-nav .sig-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
       margin: 0;
       padding: 0;
+      position: relative;
+    }
+
+    #sig-nav .sig-links li {
+      position: relative;
     }
 
     #sig-nav .sig-links a {
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 13px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12.5px;
       font-weight: 500;
       letter-spacing: 0.01em;
-      text-transform: none;
       text-decoration: none;
       line-height: 58px;
       white-space: nowrap;
       transition: color 0.2s;
-      position: relative;
+      display: block;
+      padding: 0 4px;
     }
 
-    #sig-nav .sig-links a:hover,
-    #sig-nav .sig-links a.active {
+    #sig-nav .sig-links a:hover {
       color: #ffffff;
     }
 
-    #sig-nav .sig-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    #sig-nav .sig-links a.home-link {
-      color: rgba(255,255,255,0.9);
+    #sig-nav .sig-links a.active {
+      color: #ffffff;
       font-weight: 600;
     }
 
     #sig-nav .sig-tickets {
       position: absolute;
       right: 32px;
-      background: #1a2744;
+      background: rgba(26, 55, 120, 0.85);
       color: #ffffff;
-      border: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
       cursor: pointer;
-      padding: 9px 20px;
+      padding: 8px 18px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -97,11 +118,13 @@
       align-items: center;
       border-radius: 100px;
       white-space: nowrap;
-      transition: background 0.22s, transform 0.15s;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
     }
 
     #sig-nav .sig-tickets:hover {
-      background: #e05a1e;
+      background: #ffffff;
+      color: #1a2744;
+      border-color: #ffffff;
       transform: translateY(-1px);
     }
   `;
@@ -111,7 +134,7 @@
   document.head.appendChild(style);
 
   const links = [
-    { label: 'Home',             href: '/index.html',           home: true },
+    { label: 'Home',             href: '/index.html' },
     { label: 'Awards',           href: '/sig-awards.html' },
     { label: 'Immersive Africa', href: '/sig-immersive.html' },
     { label: "Fak'ugesiPRO",     href: '/sig-fakugesipro.html' },
@@ -120,16 +143,23 @@
     { label: 'Dala Khona',       href: '/sig-dalakhona.html' },
   ];
 
+  const listItems = links.map((link, i) => {
+    const active = isActive(link.href);
+    return `<li data-idx="${i}">
+      <a href="${link.href}" ${active ? 'class="active"' : ''}>${link.label}</a>
+    </li>`;
+  }).join('');
+
   const navHTML = `
     <nav id="sig-nav">
+      <div id="sig-nav-indicator">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.9)" stroke-width="1.8"/>
+          <line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.9)" stroke-width="1.8"/>
+        </svg>
+      </div>
       <ul class="sig-links">
-        ${links.map(link => `
-          <li>
-            <a href="${link.href}" ${isActive(link.href) ? 'class="active"' : ''} ${link.home ? 'class="home-link"' : ''}>
-              ${link.label}
-            </a>
-          </li>
-        `).join('')}
+        ${listItems}
       </ul>
       <a class="sig-tickets" href="/tickets.html">GET TICKETS</a>
     </nav>
@@ -138,9 +168,66 @@
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
   const sigNav = document.getElementById('sig-nav');
+  const indicator = document.getElementById('sig-nav-indicator');
+  const sigLinks = document.querySelector('#sig-nav .sig-links');
+
+  // Position indicator over a given list item
+  function positionIndicator(li, animate) {
+    const navRect = sigNav.getBoundingClientRect();
+    const liRect = li.getBoundingClientRect();
+    const centerX = liRect.left - navRect.left + liRect.width / 2 - 9; // 9 = half of 18px
+    indicator.style.left = centerX + 'px';
+  }
+
+  // Jump animation
+  function jumpIndicator() {
+    indicator.classList.remove('jumping');
+    void indicator.offsetWidth; // reflow
+    indicator.classList.add('jumping');
+    indicator.addEventListener('animationend', () => {
+      indicator.classList.remove('jumping');
+    }, { once: true });
+  }
+
+  // Find active tab on load
+  function initIndicator() {
+    const activeLink = sigLinks.querySelector('a.active');
+    const targetLi = activeLink ? activeLink.parentElement : sigLinks.querySelector('li');
+    if (targetLi) {
+      positionIndicator(targetLi, false);
+    }
+  }
+
+  // Click handlers
+  sigLinks.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', (e) => {
+      sigLinks.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+      const a = li.querySelector('a');
+      if (a) a.classList.add('active');
+      positionIndicator(li, true);
+      jumpIndicator();
+    });
+
+    li.addEventListener('mouseenter', () => {
+      positionIndicator(li, true);
+    });
+
+    // Return to active on mouse leave
+    li.addEventListener('mouseleave', () => {
+      const activeLink = sigLinks.querySelector('a.active');
+      const activeLi = activeLink ? activeLink.parentElement : sigLinks.querySelector('li');
+      if (activeLi) positionIndicator(activeLi, true);
+    });
+  });
+
+  // Scroll behaviour
   function handleScroll() {
     sigNav.classList.toggle('scrolled', window.scrollY > 40);
   }
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
+
+  // Init after layout
+  requestAnimationFrame(() => requestAnimationFrame(initIndicator));
+  window.addEventListener('resize', initIndicator);
 })();

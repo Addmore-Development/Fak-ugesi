@@ -72,11 +72,13 @@
       text-decoration: none; transition: background 0.22s, color 0.22s;
     }
     .btn-apply:hover { background: var(--white); color: var(--navy); }
+
+    /* BIGGER logo — right side */
     .hero-awards-logo {
       position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
       z-index: 4; display: flex; align-items: center; justify-content: center;
     }
-    .hero-awards-logo img { display: block; height: 160px; width: auto; }
+    .hero-awards-logo img { display: block; height: 220px; width: auto; }
 
     /* ── TICKER ── */
     .ticker-wrapper { background: var(--navy); overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10; }
@@ -89,7 +91,6 @@
     .winners-header { display: flex; justify-content: space-between; align-items: center; padding: 0 80px 36px; }
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
-
     .winners-nav button {
       background: none; border: 1px solid var(--dark-text); cursor: pointer;
       font-size: 20px; color: var(--dark-text); width: 48px; height: 48px;
@@ -99,34 +100,16 @@
       transition: background 0.22s, color 0.22s;
     }
     .winners-nav button:hover { background: var(--dark-text); color: var(--white); }
-
-    /* Arrow travels in the direction it points */
-    .winners-nav button .arrow-inner {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 100%;
-    }
-    /* Right arrow: exits right, enters from left */
+    .winners-nav button .arrow-inner { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
     #next-winner:hover .arrow-inner { animation: arrowRight 0.42s cubic-bezier(0.4,0,0.2,1) forwards; }
-    @keyframes arrowRight {
-      0%  { transform: translateX(0);     opacity: 1; }
-      45% { transform: translateX(150%);  opacity: 0; }
-      46% { transform: translateX(-150%); opacity: 0; }
-      100%{ transform: translateX(0);     opacity: 1; }
-    }
-    /* Left arrow: exits left, enters from right */
+    @keyframes arrowRight { 0% { transform: translateX(0); opacity: 1; } 45% { transform: translateX(150%); opacity: 0; } 46% { transform: translateX(-150%); opacity: 0; } 100%{ transform: translateX(0); opacity: 1; } }
     #prev-winner:hover .arrow-inner { animation: arrowLeft 0.42s cubic-bezier(0.4,0,0.2,1) forwards; }
-    @keyframes arrowLeft {
-      0%  { transform: translateX(0);     opacity: 1; }
-      45% { transform: translateX(-150%); opacity: 0; }
-      46% { transform: translateX(150%);  opacity: 0; }
-      100%{ transform: translateX(0);     opacity: 1; }
-    }
+    @keyframes arrowLeft { 0% { transform: translateX(0); opacity: 1; } 45% { transform: translateX(-150%); opacity: 0; } 46% { transform: translateX(150%); opacity: 0; } 100%{ transform: translateX(0); opacity: 1; } }
 
     .winners-strip-outer { overflow: hidden; }
     .winners-strip { display: flex; gap: 16px; width: max-content; animation: winnersScroll 34s linear infinite; }
     .winners-strip:hover { animation-play-state: paused; }
     @keyframes winnersScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
     .winner-card { flex: 0 0 380px; cursor: pointer; }
     .winner-img { width: 380px; height: 380px; overflow: hidden; }
     .winner-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
@@ -140,9 +123,8 @@
     .crosses-row { display: flex; justify-content: space-between; padding: 20px 80px; }
     .crosses-row svg { width: 18px; height: 18px; }
 
-    /* ── ELIGIBLE CATEGORIES ── */
+    /* ── ELIGIBLE CATEGORIES (FLIP CARDS) ── */
     .categories-section { position: relative; overflow: hidden; }
-
     .cat-bg-base {
       position: absolute; inset: 0;
       background-image: url('../images/Poster - Akende Muyumbana.png');
@@ -217,10 +199,7 @@
     .jury-role { font-size: 14px; color: var(--body-gray); line-height: 1.4; margin-bottom: 10px; }
     .jury-country { font-size: 12px; color: var(--body-gray); }
 
-    /* ══════════════════════════════════════
-       REQUIREMENTS
-       Section bg = navy  →  hover inverts to white
-    ══════════════════════════════════════ */
+    /* ── REQUIREMENTS — KIKK style via globalEffects ── */
     .requirements-section { background: var(--navy); padding: 64px 80px 72px; position: relative; }
     .req-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; }
     .req-title { font-size: 50px; font-weight: 600; color: var(--white); }
@@ -233,83 +212,51 @@
       transition: background 0.2s ease;
     }
     #req-items .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
-
-    /* Hover: invert to white bg, navy text */
     #req-items .faq-item:hover { background: var(--white); }
     #req-items .faq-item:hover .faq-question-text { color: var(--navy); }
     #req-items .faq-item:hover .faq-toggle-icon   { color: var(--navy); }
     #req-items .faq-item:hover .faq-answer        { color: var(--body-gray); }
-
     #req-items .faq-question {
       display: flex; justify-content: space-between; align-items: center;
       padding: 22px 0; cursor: pointer; gap: 16px;
       background: none; border: none; width: 100%; text-align: left;
       font-family: 'InterDisplay', sans-serif;
     }
-    #req-items .faq-question-text {
-      font-size: 16px; font-weight: 600; color: #fff; line-height: 1.35;
-      transition: color 0.2s ease;
-    }
-    #req-items .faq-toggle-icon {
-      font-size: 22px; color: #fff; flex-shrink: 0; font-weight: 300; line-height: 1;
-      transition: color 0.2s ease, transform 0.3s ease;
-    }
+    #req-items .faq-question-text { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.35; transition: color 0.2s ease; }
+    #req-items .faq-toggle-icon { font-size: 22px; color: #fff; flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.2s ease, transform 0.3s ease; }
     #req-items .faq-item.open .faq-toggle-icon { transform: rotate(45deg); }
-
-    #req-items .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease;
-      font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.7); padding: 0;
-    }
+    #req-items .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease; font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.7); padding: 0; }
     #req-items .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
-    /* ══════════════════════════════════════
-       FAQ
-       Section bg = white  →  hover inverts to navy
-    ══════════════════════════════════════ */
+    /* ── FAQ — KIKK style via globalEffects ── */
     .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
     .faq-right-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
     .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
-
     .faq-items { display: flex; flex-direction: column; }
-    .faq-items .faq-item {
+    .faq-item {
       border-top: 1px solid rgba(26,39,68,0.15);
       background: transparent;
       transition: background 0.2s ease;
     }
-    .faq-items .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
-
-    /* Hover: invert to navy bg, white text */
-    .faq-items .faq-item:hover { background: var(--navy); }
-    .faq-items .faq-item:hover .faq-question-text { color: var(--white); }
-    .faq-items .faq-item:hover .faq-toggle-icon   { color: var(--white); }
-    .faq-items .faq-item:hover .faq-answer        { color: rgba(255,255,255,0.75); }
-
-    .faq-items .faq-question {
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-question-text { color: var(--white); }
+    .faq-item:hover .faq-toggle-icon   { color: var(--white); }
+    .faq-item:hover .faq-answer        { color: rgba(255,255,255,0.75); }
+    .faq-question {
       display: flex; justify-content: space-between; align-items: center;
       padding: 22px 0; cursor: pointer; gap: 16px;
       background: none; border: none; width: 100%; text-align: left;
       font-family: 'InterDisplay', sans-serif;
     }
-    .faq-items .faq-question-text {
-      font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35;
-      transition: color 0.2s ease;
-    }
-    .faq-items .faq-toggle-icon {
-      font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1;
-      transition: color 0.2s ease, transform 0.3s ease;
-    }
-    .faq-items .faq-item.open .faq-toggle-icon { transform: rotate(45deg); }
-
-    .faq-items .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease;
-      font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0;
-    }
-    .faq-items .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
+    .faq-question-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.2s ease; }
+    .faq-toggle-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.2s ease, transform 0.3s ease; }
+    .faq-item.open .faq-toggle-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0; }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px 80px 72px; position: relative; }
@@ -327,27 +274,6 @@
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
     .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
-
-    /* ── SOCIAL BAR ── */
-    .social-band { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 22px 80px; }
-    .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
-    .social-band-icons { display: flex; gap: 18px; }
-    .social-band-icons a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity 0.2s; }
-    .social-band-icons a:hover { opacity: 0.55; }
-
-    /* ── FOOTER ── */
-    .footer-crosses { display: flex; justify-content: space-between; align-items: center; padding: 0 80px; height: 44px; background: #fff; }
-    footer { background: var(--white); padding: 0 80px; color: var(--dark-text); position: relative; }
-    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding: 48px 0; }
-    .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
-    .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
-    .footer-col-title { font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 12px; }
-    footer a { color: var(--navy); font-size: 13px; display: block; line-height: 2; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-right { display: flex; align-items: flex-start; gap: 20px; }
-    .footer-logo-img { height: 56px; width: auto; display: block; }
-    .footer-copy { font-size: 12px; color: #555; line-height: 1.65; }
-    .footer-copy strong { color: var(--dark-text); display: block; }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
@@ -372,6 +298,7 @@
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
   </div>
+  <!-- BIGGER logo -->
   <div class="hero-awards-logo">
     <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
   </div>
@@ -413,7 +340,6 @@
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <!-- duplicate set for seamless loop -->
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
@@ -655,6 +581,7 @@
 
 <script src="sig-nav.js"></script>
 <script src="footer.js"></script>
+<script src="fak-ugesi-global-effects-v9.js"></script>
 
 <script>
   /* ── Reveal on scroll ── */
@@ -667,21 +594,16 @@
   /* ── WINNERS: directional arrow nudge ── */
   (function () {
     const strip = document.getElementById('winnersStrip');
-    const CARD  = 380 + 16; // card width + gap
+    const CARD  = 380 + 16;
     let paused  = false;
-
     function nudge(dir) {
       if (paused) return;
       paused = true;
-
-      // Grab current rendered translateX
       const mat = new DOMMatrix(getComputedStyle(strip).transform);
       const curX = mat.m41;
-
       strip.style.animation  = 'none';
       strip.style.transition = 'transform 0.52s cubic-bezier(0.4,0,0.2,1)';
       strip.style.transform  = `translateX(${curX + dir * CARD}px)`;
-
       setTimeout(() => {
         strip.style.transition = '';
         strip.style.transform  = '';
@@ -689,32 +611,24 @@
         paused = false;
       }, 1800);
     }
-
-    document.getElementById('prev-winner').addEventListener('click', () => nudge(1));  // left = slide right
-    document.getElementById('next-winner').addEventListener('click', () => nudge(-1)); // right = slide left
+    document.getElementById('prev-winner').addEventListener('click', () => nudge(1));
+    document.getElementById('next-winner').addEventListener('click', () => nudge(-1));
   })();
 
   /* ── CATEGORIES: flip + background swap ── */
   (function () {
     const wrappers = document.querySelectorAll('.cat-card-wrapper');
     const layers   = document.querySelectorAll('.cat-bg-layer');
-
     wrappers.forEach(wrapper => {
       wrapper.addEventListener('click', () => {
         const idx      = parseInt(wrapper.dataset.card, 10);
         const flipping = !wrapper.classList.contains('flipped');
-
         wrapper.classList.toggle('flipped');
-
-        // Deactivate all layers
         layers.forEach(l => l.classList.remove('active'));
-
-        // If flipping to back face, activate matching layer
         if (flipping) {
           const target = document.querySelector(`.cat-bg-layer[data-layer="${idx}"]`);
           if (target) target.classList.add('active');
         }
-        // If flipping back to front, base layer shows through (all layers deactivated above)
       });
     });
   })();
@@ -742,7 +656,7 @@
   /* ── FAQ: inject + accordion ── */
   (function () {
     const faqData = [
-      { q: "Who can apply to the Fak'ugesi Awards?", a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.' },
+      { q: "Who can apply to the Fak'ugesi Awards?", a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt' },
       { q: 'What is the submission deadline?',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat.' },
       { q: 'How many categories can I enter?',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
       { q: 'What does a winner receive?',             a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros. Sed vitae arcu.' },
@@ -751,7 +665,6 @@
     ];
 
     const container = document.getElementById('faq-items');
-
     faqData.forEach((faq, i) => {
       const item = document.createElement('div');
       item.className = 'faq-item' + (i === 0 ? ' open' : '');
@@ -782,8 +695,6 @@
     });
   })();
 </script>
-
-<script src="fak-ugesi-global-effects-v8.js"></script>
 
 </body>
 </html>

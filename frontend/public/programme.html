@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fak'ugesi Awards 2026</title>
+  <title>Festival Programme 2026 • Fak'ugesi Festival</title>
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; }
@@ -11,628 +11,540 @@
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:      #1a2744;
-      --blue-mid:  #2a3f72;
-      --lavender:  #dde3f0;
-      --white:     #ffffff;
-      --orange:    #e05a1e;
+      --navy: #1a2744;
+      --lavender: #dde3f0;
+      --white: #ffffff;
       --dark-text: #0d1b3e;
       --body-gray: #3a4060;
+      --orange: #e05a1e;
     }
-
     html { scroll-behavior: smooth; }
-    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
+    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--dark-text); overflow-x: hidden; }
 
-    /* ── Cross icons ── */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
       animation: crossPulse 3s ease-in-out infinite;
     }
     .cross-icon svg { width: 100%; height: 100%; }
-    @keyframes crossPulse {
-      0%,100% { opacity: 0.45; transform: scale(1); }
-      50%      { opacity: 1;   transform: scale(1.4); }
-    }
+    @keyframes crossPulse { 0%,100% { opacity: 0.45; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
 
     /* ── HERO ── */
     .hero {
-      position: relative; width: 100%; min-height: 420px;
+      position: relative; width: 100%; min-height: 440px;
       overflow: hidden; display: flex; align-items: flex-end;
       padding-top: 58px;
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('../images/_MGL7139.jpg');
+      background-image: url('images/Copy_of__MGL4129.jpg');
       background-size: cover; background-position: center 30%;
-      filter: brightness(0.45);
+      filter: brightness(0.48);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
+      background: linear-gradient(105deg, rgba(10,18,48,0.75) 45%, transparent 82%);
     }
     .hero-content {
       position: relative; z-index: 3;
       padding: 0 80px 52px;
       animation: fadeUp 0.9s ease both;
-      max-width: 760px;
+      color: #fff;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-eyebrow {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff;
-    }
-    .hero-title {
-      font-size: 52px; font-weight: 900; line-height: 1.05;
-      margin-bottom: 20px; color: #fff; max-width: 640px;
-    }
-    .hero-body {
-      font-size: 13px; line-height: 1.72; max-width: 440px;
-      opacity: 0.85; margin-bottom: 28px; color: #fff;
-    }
-    .btn-apply {
-      display: inline-block; border: 1.5px solid var(--white); color: var(--white);
-      background: transparent; padding: 11px 28px; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
-      text-decoration: none; transition: background 0.22s, color 0.22s;
-    }
-    .btn-apply:hover { background: var(--white); color: var(--navy); }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; }
+    .hero-title { font-size: 56px; font-weight: 900; line-height: 1.0; margin-bottom: 16px; max-width: 700px; }
+    .hero-dates { font-size: 28px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    .hero-body { font-size: 13px; line-height: 1.72; max-width: 460px; opacity: 0.85; }
 
-    /* Awards logo — right side, no background */
-    .hero-awards-logo {
+    .hero-logo {
       position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
-      z-index: 4; display: flex; align-items: center; justify-content: center;
+      z-index: 4;
     }
-    .hero-awards-logo img { display: block; height: 160px; width: auto; }
+    .hero-logo img { height: 80px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.85; }
 
     /* ── TICKER ── */
-    .ticker-wrapper {
-      background: var(--navy); overflow: hidden; white-space: nowrap;
-      padding: 10px 0; position: relative; z-index: 10;
-    }
-    .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
-    .ticker-track span {
-      padding: 0 32px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,0.85); letter-spacing: 0.02em;
-    }
+    .ticker-bar { background: var(--navy); overflow: hidden; padding: 10px 0; }
+    .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; white-space: nowrap; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-track span { padding: 0 32px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
 
-    /* ── 2025 WINNERS ── */
-    .winners-section {
-      background: var(--white); padding: 60px 0 0;
+    /* ── SIGNATURE PROGRAMMES INTRO ── */
+    .sig-intro { background: var(--white); padding: 64px 80px 56px; position: relative; }
+    .sig-intro-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+    .sig-intro-title { font-size: 48px; font-weight: 900; color: var(--dark-text); line-height: 1.0; }
+    .sig-intro-body { font-size: 14px; line-height: 1.78; color: var(--body-gray); max-width: 680px; }
+
+    /* ── PROGRAMME GRID ── */
+    .programme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #e8ecf4; }
+
+    .prog-card {
+      background: var(--white);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .prog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,39,68,0.16); z-index: 2; }
+
+    .prog-card-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; position: relative; }
+    .prog-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.55s; }
+    .prog-card:hover .prog-card-img img { transform: scale(1.06); }
+
+    /* Signature badge */
+    .prog-card-badge {
+      position: absolute; top: 14px; left: 14px; z-index: 3;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #fff; background: rgba(26,39,68,0.75); backdrop-filter: blur(4px);
+      padding: 4px 10px; border-radius: 2px;
+    }
+
+    /* Logo overlay — bottom right of image */
+    .prog-card-logo {
+      position: absolute; bottom: 12px; right: 14px; z-index: 3;
+    }
+    .prog-card-logo img { height: 36px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.9; }
+
+    .prog-card-body { padding: 20px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+    .prog-card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body-gray); margin-bottom: 8px; }
+    .prog-card-title { font-size: 22px; font-weight: 900; color: var(--dark-text); line-height: 1.15; margin-bottom: 10px; }
+    .prog-card-desc { font-size: 13px; line-height: 1.65; color: var(--body-gray); flex: 1; margin-bottom: 18px; }
+    .prog-card-dates { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .prog-card-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--navy);
+      padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+      align-self: flex-start;
+    }
+    .prog-card-link:hover { color: var(--orange); border-color: var(--orange); }
+
+    /* ── FULL-PROGRAMME FEATURED ROW ── */
+    .featured-row {
+      background: var(--navy); padding: 64px 80px; position: relative;
+    }
+    .featured-row-title { font-size: 44px; font-weight: 900; color: #fff; margin-bottom: 36px; }
+    .featured-events { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .featured-event {
+      display: flex; gap: 20px; align-items: flex-start;
+      border: 1px solid rgba(255,255,255,0.15); padding: 22px 20px;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.25s;
+    }
+    .featured-event:hover { background: rgba(255,255,255,0.10); }
+    .fe-num { font-size: 28px; font-weight: 900; color: rgba(255,255,255,0.18); flex-shrink: 0; width: 40px; line-height: 1; }
+    .fe-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+    .fe-title { font-size: 17px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 8px; }
+    .fe-desc { font-size: 12px; line-height: 1.65; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+    .fe-meta { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .fe-meta strong { color: rgba(255,255,255,0.7); }
+
+    /* ── DAILY SCHEDULE ── */
+    .schedule-section { background: var(--lavender); padding: 64px 80px; position: relative; }
+    .schedule-title { font-size: 44px; font-weight: 900; color: var(--dark-text); margin-bottom: 36px; }
+    .schedule-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 2px solid rgba(26,39,68,0.15); }
+    .sched-tab {
+      padding: 12px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--body-gray); cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sched-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+    .sched-tab:hover { color: var(--navy); }
+    .sched-panel { display: none; }
+    .sched-panel.active { display: block; }
+    .sched-row {
+      display: grid; grid-template-columns: 100px 1fr; gap: 16px; align-items: start;
+      padding: 18px 0; border-bottom: 1px solid rgba(26,39,68,0.1);
+    }
+    .sched-row:last-child { border-bottom: none; }
+    .sched-time { font-size: 12px; font-weight: 700; color: var(--navy); padding-top: 2px; }
+    .sched-event-title { font-size: 15px; font-weight: 700; color: var(--dark-text); margin-bottom: 4px; }
+    .sched-event-sub { font-size: 12px; color: var(--body-gray); }
+    .sched-event-tag {
+      display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 8px; margin-top: 6px;
+      background: rgba(26,39,68,0.1); color: var(--navy);
+    }
+
+    /* ── APPLY CTA ── */
+    .apply-cta {
+      background: var(--dark-text); padding: 64px 80px; text-align: center;
       position: relative; overflow: hidden;
     }
-    .winners-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px 36px;
-    }
-    .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
-    .winners-nav { display: flex; gap: 16px; align-items: center; }
-    .winners-nav button {
-      background: none; border: none; cursor: pointer; font-size: 22px;
-      color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s;
-    }
-    .winners-nav button:hover { opacity: 0.5; }
-
-    /* Auto-scrolling strip */
-    .winners-strip-outer { overflow: hidden; }
-    .winners-strip {
-      display: flex; gap: 16px; width: max-content;
-      animation: winnersScroll 34s linear infinite;
-    }
-    .winners-strip:hover { animation-play-state: paused; }
-    @keyframes winnersScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .winner-card { flex: 0 0 380px; cursor: pointer; }
-    .winner-img { width: 380px; height: 380px; overflow: hidden; }
-    .winner-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
-    .winner-card:hover .winner-img img { transform: scale(1.04); }
-    .winner-meta { padding: 18px 0 0; }
-    .winner-cat { font-size: 11px; color: var(--body-gray); margin-bottom: 6px; }
-    .winner-name { font-size: 18px; font-weight: 700; color: var(--dark-text); line-height: 1.3; margin-bottom: 10px; }
-    .winner-bottom { display: flex; justify-content: space-between; }
-    .winner-author, .winner-country { font-size: 13px; color: var(--body-gray); }
-
-    /* Cross row below winners */
-    .crosses-row {
-      display: flex; justify-content: space-between; padding: 20px 80px;
-    }
-    .crosses-row svg { width: 18px; height: 18px; }
-
-    /* ── ELIGIBLE CATEGORIES ── */
-    .categories-section { position: relative; overflow: hidden; }
-    .categories-bg {
+    .apply-cta::before {
+      content: '';
       position: absolute; inset: 0;
-      background-image: url('../images/signature/Poster - Akende Muyumbana.png');
-      background-size: cover; background-position: center;
-      filter: brightness(0.28);
+      background: radial-gradient(ellipse at center, rgba(42,63,114,0.6) 0%, transparent 70%);
     }
-    .categories-content { position: relative; z-index: 3; padding: 64px 80px 80px; }
-    .cat-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 40px;
-    }
-    .cat-title { font-size: 52px; font-weight: 600; color: var(--white); }
-    .cat-apply-link {
-      color: var(--white); font-size: 12px; text-decoration: underline;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap;
-    }
-    .cat-apply-link:hover { opacity: 1; }
-    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .cat-card {
-      border: 1px solid rgba(255,255,255,0.45); padding: 22px 20px 24px;
-      position: relative; transition: border-color 0.28s, background 0.28s;
-    }
-    .cat-card:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
-    .cat-card-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 14px;
-    }
-    .cat-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; color: #fff; }
-    .cat-num { font-size: 36px; font-weight: 700; opacity: 0.75; color: #fff; }
-    .cat-name { font-size: 20px; font-weight: 700; line-height: 1.25; margin-bottom: 20px; color: #fff; }
-    .cat-items { list-style: none; }
-    .cat-items li {
-      font-size: 12px; opacity: 0.8; line-height: 1.9;
-      padding-left: 18px; position: relative; color: #fff;
-    }
-    .cat-items li::before { content: '→'; position: absolute; left: 0; }
-
-    /* ── JURY ── */
-    .jury-section { background: var(--white); padding: 64px 80px 0; position: relative; }
-    .jury-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 40px;
-    }
-    .jury-title { font-size: 46px; font-weight: 600; color: var(--dark-text); }
-    .jury-apply-link {
-      font-size: 12px; color: var(--dark-text); text-decoration: underline;
-      letter-spacing: 0.06em; cursor: pointer;
-    }
-    .jury-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .jury-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
-    .jury-img { width: 100%; aspect-ratio: 3/2.8; overflow: hidden; }
-    .jury-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-    .jury-info { background: var(--lavender); padding: 18px 20px 22px; }
-    .jury-name { font-size: 22px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 8px; }
-    .jury-role { font-size: 14px; color: var(--body-gray); line-height: 1.4; margin-bottom: 10px; }
-    .jury-country { font-size: 12px; color: var(--body-gray); }
-
-    /* ── REQUIREMENTS ── */
-    .requirements-section { background: var(--navy); padding: 64px 80px 72px; position: relative; }
-    .req-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 36px;
-    }
-    .req-title { font-size: 50px; font-weight: 600; color: var(--white); }
-    .req-apply-link {
-      color: var(--white); font-size: 12px; text-decoration: underline;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer;
-    }
-    .req-list { list-style: decimal; padding-left: 18px; max-width: 900px; }
-    .req-list li { font-size: 13px; line-height: 1.78; opacity: 0.85; margin-bottom: 20px; color: #fff; }
-
-    /* ── FAQ ── */
-    .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
-    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-    .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-    .faq-right-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-link {
-      font-size: 12px; color: var(--dark-text); text-decoration: underline;
-      letter-spacing: 0.06em; cursor: pointer;
-    }
-    .faq-items { display: flex; flex-direction: column; }
-    .faq-item {
-      border: 1px solid rgba(26,39,68,0.15); border-bottom: none;
-      background: #f0f3f9;
-    }
-    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
-    .faq-question {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 22px; cursor: pointer; gap: 16px;
-      background: none; border: none; width: 100%; text-align: left;
+    .apply-cta h2 { font-size: 48px; font-weight: 900; color: #fff; margin-bottom: 16px; position: relative; z-index: 2; }
+    .apply-cta p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 32px; position: relative; z-index: 2; }
+    .apply-cta-btns { display: flex; gap: 16px; justify-content: center; position: relative; z-index: 2; }
+    .btn-cta-white {
+      display: inline-flex; align-items: center;
+      border: 1.5px solid #fff; color: #fff; background: transparent;
+      padding: 12px 30px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
       font-family: 'InterDisplay', sans-serif;
+      transition: background 0.22s, color 0.22s;
     }
-    .faq-question-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; }
-    .faq-toggle { font-size: 20px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      font-size: 13px; line-height: 1.72; color: var(--body-gray);
-      padding: 0 22px;
+    .btn-cta-white:hover { background: #fff; color: var(--dark-text); }
+    .btn-cta-filled {
+      display: inline-flex; align-items: center;
+      background: #fff; color: var(--dark-text);
+      border: 1.5px solid #fff;
+      padding: 12px 30px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      font-family: 'InterDisplay', sans-serif;
+      transition: background 0.22s, color 0.22s;
     }
-    .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
-
-    /* ── PARTNERS ── */
-    .partners-section { background: var(--lavender); padding: 64px 80px 72px; position: relative; }
-    .partners-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 44px;
-    }
-    .partners-title { font-size: 42px; font-weight: 600; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px; color: var(--navy); font-weight: 600;
-      text-decoration: underline; letter-spacing: 0.06em; cursor: pointer;
-    }
-    .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-    .partner-card { display: flex; flex-direction: column; }
-    .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
-      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color {filter: none; }
-    .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
-
-    /* ── SOCIAL BAR ── */
-    .social-band {
-      background: var(--navy); display: flex; justify-content: space-between;
-      align-items: center; padding: 22px 80px;
-    }
-    .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
-    .social-band-icons { display: flex; gap: 18px; }
-    .social-band-icons a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity 0.2s; }
-    .social-band-icons a:hover { opacity: 0.55; }
-
-    /* ── FOOTER ── */
-    .footer-crosses {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px; height: 44px; background: #fff;
-    }
-    footer {
-      background: var(--white); padding: 0 80px;
-      color: var(--dark-text); position: relative;
-    }
-    .footer-inner {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
-      padding: 48px 0;
-    }
-    .footer-brand-name { font-weight: 900; font-size: 14px; color: var(--dark-text); margin-bottom: 8px; }
-    .footer-addr { font-size: 13px; line-height: 1.75; color: #5a6070; }
-    .footer-col-title { font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 12px; }
-    footer a { color: var(--navy); font-size: 13px; display: block; line-height: 2; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-right { display: flex; align-items: flex-start; gap: 20px; }
-    .footer-logo-img { height: 56px; width: auto; display: block; }
-    .footer-copy { font-size: 12px; color: #555; line-height: 1.65; }
-    .footer-copy strong { color: var(--dark-text); display: block; }
+    .btn-cta-filled:hover { background: transparent; color: #fff; }
 
     /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* Crosses row */
+    .crosses-row { display: flex; justify-content: space-between; padding: 20px 80px; }
+    .crosses-row svg { width: 18px; height: 18px; }
   </style>
 </head>
 <body>
 
-<!-- sig-nav injected by sig-nav.js -->
-
-<!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
-  <div class="cross-icon" style="top:16px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:80px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:48px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:48px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:48px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:48px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Fak'ugesi Awards</p>
-    <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-    <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
+    <p class="hero-eyebrow">Fak'ugesi Festival 2026</p>
+    <h1 class="hero-title">Festival Programme</h1>
+    <p class="hero-dates">07 — 12.10.2026</p>
+    <p class="hero-body">Six days of panels, workshops, exhibitions, competitions, immersive screenings, and networking across Braamfontein, Johannesburg. Theme: <strong>African Imaginaries</strong>.</p>
   </div>
-
-  <!-- Awards logo — no background -->
-  <div class="hero-awards-logo">
-    <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
+  <div class="hero-logo">
+    <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     TICKER
-═══════════════════════════════════════ -->
-<div class="ticker-wrapper">
+<!-- ── TICKER ── -->
+<div class="ticker-bar">
   <div class="ticker-track">
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <!-- duplicate for seamless loop -->
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Festival runs 07 – 12 October 2026 &nbsp;→&nbsp;</span>
+    <span>Awards submissions close in 3 days &nbsp;→&nbsp;</span>
+    <span>JAMZ Animation Challenge: Apply now &nbsp;→&nbsp;</span>
+    <span>Pitchathon 2026: Applications open &nbsp;→&nbsp;</span>
+    <span>Kancícà — South African Digital Dome Premiere &nbsp;→&nbsp;</span>
+    <span>Festival runs 07 – 12 October 2026 &nbsp;→&nbsp;</span>
+    <span>Awards submissions close in 3 days &nbsp;→&nbsp;</span>
+    <span>JAMZ Animation Challenge: Apply now &nbsp;→&nbsp;</span>
+    <span>Pitchathon 2026: Applications open &nbsp;→&nbsp;</span>
+    <span>Kancícà — South African Digital Dome Premiere &nbsp;→&nbsp;</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     2025 WINNERS
-═══════════════════════════════════════ -->
-<section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
-  <div class="winners-header">
-    <h2 class="winners-title">2025 Winners</h2>
-    <div class="winners-nav">
-      <button id="prev-winner" aria-label="Previous">←</button>
-      <button id="next-winner" aria-label="Next">→</button>
-    </div>
+<!-- ── SIGNATURE PROGRAMMES INTRO ── -->
+<section class="sig-intro reveal">
+  <div class="cross-icon" style="top:20px;left:48px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:48px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="sig-intro-header">
+    <h2 class="sig-intro-title">2026 Signature Programmes</h2>
+    <a href="tickets.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:0.06em;white-space:nowrap;margin-top:8px;">Get your tickets</a>
   </div>
+  <p class="sig-intro-body">Fak'ugesi 2026 is structured around six flagship signature programmes, each targeting a distinct creative community. From award-winning digital art to gaming arcades, immersive dome experiences, industry networking, shark-tank pitches, and high-energy animation hackathons — every programme is a world unto itself.</p>
+</section>
 
-  <div class="winners-strip-outer">
-    <div class="winners-strip" id="winnersStrip">
-      <!-- original set -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <!-- duplicate for seamless loop -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+<!-- ── PROGRAMME CARDS GRID ── -->
+<section class="reveal" style="background:var(--white);padding-bottom:2px;">
+  <div class="programme-grid">
+
+    <!-- AWARDS -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/_MGL7139.jpg" alt="Fak'ugesi Awards" />
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo">
+          <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Awards" />
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">Awards</div>
+        <div class="prog-card-title">Fak'ugesi Awards 2026</div>
+        <div class="prog-card-dates">07 — 12 Oct 2026 · Closing Ceremony 12 Oct</div>
+        <p class="prog-card-desc">Africa's premier celebration of digital creative excellence. Six categories spanning Immersive Media, Digital Art, Game Design, Digital Film, Creative Technology, and UX & Design. Submissions now open — deadline 3 days.</p>
+        <a class="prog-card-link" href="sig-awards.html">Learn More →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="crosses-row">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <!-- IMMERSIVE AFRICA -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/digital-dome-image-inside.jpg" alt="Immersive Africa" onerror="this.src='images/_MGL7139.jpg'"/>
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo" style="display:flex;align-items:center;gap:6px;">
+          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" style="height:28px;filter:invert(1) brightness(2);"/>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">Immersive Media</div>
+        <div class="prog-card-title">Immersive Africa</div>
+        <div class="prog-card-dates">07 — 21 Apr 2026 (Extended Season)</div>
+        <p class="prog-card-desc">Explore the AfriVerse at the Wits Anglo American Digital Dome. This season features the South African Dome Premiere of <em>Kancícà</em> by Dream Feel Factory, and ongoing screenings of <em>Kwasukasukela</em>. XR, VR, and full-dome experiences rooted in African storytelling.</p>
+        <a class="prog-card-link" href="sig-immersive.html">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- FAK'UGESI PRO -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/_DMC6610.JPG" alt="Fak'ugesiPRO" onerror="this.src='images/Copy_of__MGL4129.jpg'" />
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo">
+          <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="FakugesiPRO" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">Industry Platform</div>
+        <div class="prog-card-title">Fak'ugesiPRO</div>
+        <div class="prog-card-dates">07 — 12 Oct 2026</div>
+        <p class="prog-card-desc">Our dedicated industry platform for intermediaries, policymakers, entrepreneurs, and creative organisations. Curated panels, masterclasses, and a developer network connecting African tech talent with global stakeholders. Join the industry network.</p>
+        <a class="prog-card-link" href="sig-fakugesipro.html">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- JAMZ -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/0A9A0222.JPG" alt="JAMZ" onerror="this.src='images/Copy_of__MGL4129.jpg'" />
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo">
+          <img src="images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" style="height:40px;" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">Animation & Gaming Hackathon</div>
+        <div class="prog-card-title">JAMZ 2026</div>
+        <div class="prog-card-dates">07 — 12 Oct 2026</div>
+        <p class="prog-card-desc">High-octane animation and video game hackathon. Two parallel tracks: the 2026 Animation Challenge — a single-elimination tournament of power — and the Video Game Challenge esports league. Prizes up to R20,000 per category. Applications close in 3 days.</p>
+        <a class="prog-card-link" href="sig-jamz.html">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- PITCHATHON -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/image00044.jpeg" alt="Pitchathon" onerror="this.src='images/Copy_of__MGL4129.jpg'" />
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo">
+          <img src="images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">Startup Pitching</div>
+        <div class="prog-card-title">Pitchathon 2026</div>
+        <div class="prog-card-dates">07 — 12 Oct 2026</div>
+        <p class="prog-card-desc">High-stakes, shark tank-style pitches for African digital innovation startups. Jury led by Adam Pantanowitz (Wits Innovation Centre). Six prize categories including WIC PGDIP placement. Open to early-stage and scaling African ventures. Applications now open.</p>
+        <a class="prog-card-link" href="sig-pitchathon.html">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- DALA KHONA -->
+    <div class="prog-card">
+      <div class="prog-card-img">
+        <img src="images/image00038.jpg" alt="Dala Khona" onerror="this.src='images/Copy_of__MGL4129.jpg'" />
+        <span class="prog-card-badge">Signature Programme</span>
+        <div class="prog-card-logo">
+          <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <div class="prog-card-tag">African Gaming Arcade</div>
+        <div class="prog-card-title">Dala Khona</div>
+        <div class="prog-card-dates">07 — 12 Oct 2026</div>
+        <p class="prog-card-desc">Africa's biggest gaming arcade — playable indie games, developer showcases, esports, and community activations. 2025 highlights included the Joburg Games Fest Pop-up. Join the developer network and showcase your work to thousands of visitors.</p>
+        <a class="prog-card-link" href="sig-dalakhona.html">Learn More →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     ELIGIBLE CATEGORIES
-═══════════════════════════════════════ -->
-<section class="categories-section reveal">
-  <div class="categories-bg"></div>
-  <div class="categories-content">
-    <div class="cat-header">
-      <h2 class="cat-title">Eligible Categories</h2>
-      <a class="cat-apply-link" href="#">Submit your application</a>
-    </div>
-    <div class="cat-grid">
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">01</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">02</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">03</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">04</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">05</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">06</span></div>
-        <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-        <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+<!-- ── FEATURED EVENTS ── -->
+<section class="featured-row reveal">
+  <div class="cross-icon" style="top:20px;left:48px;animation-delay:0.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:48px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <h2 class="featured-row-title">Featured Events</h2>
+  <div class="featured-events">
+
+    <div class="featured-event">
+      <div class="fe-num">01</div>
+      <div>
+        <div class="fe-tag">Immersive Africa · Dome Premiere</div>
+        <div class="fe-title">Kancícà — South African Digital Dome Premiere</div>
+        <p class="fe-desc">An immersive full-dome experience by Dream Feel Factory in co-production with Maison des Mondes Africains. Rooted in Central African cosmology and visual poetry, Kancícà takes audiences on a journey through ancestral memory and speculative future.</p>
+        <div class="fe-meta"><strong>Dates:</strong> 07 – 21 Apr 2026 · <strong>Venue:</strong> Wits Digital Dome, Braamfontein</div>
       </div>
     </div>
+
+    <div class="featured-event">
+      <div class="fe-num">02</div>
+      <div>
+        <div class="fe-tag">Fak'ugesi Awards · Ceremony</div>
+        <div class="fe-title">Awards Ceremony &amp; Exhibition</div>
+        <p class="fe-desc">The culmination of the festival — a celebration of Africa's best digital creative work across six categories. Works shortlisted by the 2026 international jury are exhibited throughout the festival week before winners are announced at the closing ceremony.</p>
+        <div class="fe-meta"><strong>Ceremony:</strong> 12 Oct 2026 · <strong>Venue:</strong> Tshimologong, Braamfontein</div>
+      </div>
+    </div>
+
+    <div class="featured-event">
+      <div class="fe-num">03</div>
+      <div>
+        <div class="fe-tag">JAMZ · Animation Challenge</div>
+        <div class="fe-title">Tournament of Power — Animation Final</div>
+        <p class="fe-desc">The single-elimination animation tournament reaches its climax on Day 5. Teams that have survived three rounds of live judging face off in a final showdown. Audience votes combine with jury scores. R20,000 prize pool for the winning team.</p>
+        <div class="fe-meta"><strong>Final Day:</strong> 11 Oct 2026 · <strong>Venue:</strong> Main Stage, Tshimologong</div>
+      </div>
+    </div>
+
+    <div class="featured-event">
+      <div class="fe-num">04</div>
+      <div>
+        <div class="fe-tag">Pitchathon · Main Event</div>
+        <div class="fe-title">Pitchathon Grand Finale</div>
+        <p class="fe-desc">Six shortlisted African digital startups face a panel of six industry jurors in a high-stakes, live pitch event. The winner takes home a R20,000 cash prize and a WIC Post-Graduate Diploma placement. The audience selects the People's Choice award.</p>
+        <div class="fe-meta"><strong>Date:</strong> 10 Oct 2026 · <strong>Venue:</strong> Wits Innovation Centre</div>
+      </div>
+    </div>
+
+    <div class="featured-event">
+      <div class="fe-num">05</div>
+      <div>
+        <div class="fe-tag">Fak'ugesiPRO · Panel</div>
+        <div class="fe-title">A Seat at the Table of Change</div>
+        <p class="fe-desc">Returning from the 2025 highlights: this landmark panel brings together Thobile Chittenden, Samukelisiwe Dube, Masentle Nzimande, Tadeo Lopez-Sendon, Meghna Singh, and Daniel Getachew to discuss power, representation, and funding in Africa's creative tech economy.</p>
+        <div class="fe-meta"><strong>Date:</strong> 08 Oct 2026 · <strong>Venue:</strong> Tshimologong Auditorium</div>
+      </div>
+    </div>
+
+    <div class="featured-event">
+      <div class="fe-num">06</div>
+      <div>
+        <div class="fe-tag">Dala Khona · Arcade</div>
+        <div class="fe-title">Joburg Games Fest Pop-up</div>
+        <p class="fe-desc">The beloved Joburg Games Fest returns as a curated activation within Dala Khona. Playable demos from 20+ African-made indie games, developer Q&amp;As, retro arcade stations, and live speedrun competitions. Free with full festival pass.</p>
+        <div class="fe-meta"><strong>Dates:</strong> 07 – 12 Oct 2026 · <strong>Venue:</strong> Tshimologong Courtyard</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     2026 AWARDS JURY
-═══════════════════════════════════════ -->
-<section class="jury-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;left:50%;animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
-  <div class="jury-header">
-    <h2 class="jury-title">2026 Awards Jury</h2>
-    <a class="jury-apply-link" href="#">Submit your application</a>
+<!-- ── DAILY SCHEDULE ── -->
+<section class="schedule-section reveal">
+  <div class="cross-icon" style="top:20px;left:48px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:48px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <h2 class="schedule-title">Sample Daily Schedule</h2>
+  <div class="schedule-tabs">
+    <div class="sched-tab active" data-day="0">Day 1 — Wed 7</div>
+    <div class="sched-tab" data-day="1">Day 2 — Thu 8</div>
+    <div class="sched-tab" data-day="2">Day 3 — Fri 9</div>
+    <div class="sched-tab" data-day="3">Day 4 — Sat 10</div>
+    <div class="sched-tab" data-day="4">Day 5 — Sun 11</div>
+    <div class="sched-tab" data-day="5">Day 6 — Mon 12</div>
   </div>
 
-  <div class="jury-grid">
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Mickael Newton"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
+  <div class="sched-panel active" id="day-0">
+    <div class="sched-row"><div class="sched-time">09:00</div><div><div class="sched-event-title">Festival Opening & Welcome</div><div class="sched-event-sub">Tshimologong Main Stage · All attendees</div><span class="sched-event-tag">Opening</span></div></div>
+    <div class="sched-row"><div class="sched-time">10:30</div><div><div class="sched-event-title">Dala Khona Arcade Opens</div><div class="sched-event-sub">Tshimologong Courtyard · African indie games playable all day</div><span class="sched-event-tag">Dala Khona</span></div></div>
+    <div class="sched-row"><div class="sched-time">11:00</div><div><div class="sched-event-title">JAMZ Animation Challenge — Round 1</div><div class="sched-event-sub">Workshop Space B · 12 teams compete in timed animation brief</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">13:00</div><div><div class="sched-event-title">Fak'ugesiPRO: African Digital Economy — State of Play</div><div class="sched-event-sub">Tshimologong Auditorium · Industry keynote + panel</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">15:00</div><div><div class="sched-event-title">Immersive Africa: Kancícà Premiere Screening</div><div class="sched-event-sub">Wits Anglo American Digital Dome · Full-dome experience (ticketed)</div><span class="sched-event-tag">Immersive Africa</span></div></div>
+    <div class="sched-row"><div class="sched-time">17:30</div><div><div class="sched-event-title">Awards Exhibition Opens</div><div class="sched-event-sub">Tshimologong Gallery · 2026 shortlisted works on display</div><span class="sched-event-tag">Awards</span></div></div>
+    <div class="sched-row"><div class="sched-time">19:00</div><div><div class="sched-event-title">Opening Night Networking</div><div class="sched-event-sub">Tshimologong Rooftop · All pass holders welcome</div><span class="sched-event-tag">Networking</span></div></div>
   </div>
 
-  <div style="display:flex;justify-content:space-between;padding-top:40px;padding-bottom:16px;">
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <div class="sched-panel" id="day-1">
+    <div class="sched-row"><div class="sched-time">09:30</div><div><div class="sched-event-title">Fak'ugesiPRO: A Seat at the Table of Change</div><div class="sched-event-sub">Tshimologong Auditorium · Chittenden, Dube, Nzimande, Lopez-Sendon, Singh, Getachew</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">11:00</div><div><div class="sched-event-title">Pitchathon: Open Workshops — Pitch Coaching</div><div class="sched-event-sub">Workshop Room A · Limited spots, register in advance</div><span class="sched-event-tag">Pitchathon</span></div></div>
+    <div class="sched-row"><div class="sched-time">12:00</div><div><div class="sched-event-title">JAMZ Video Game Challenge — League Day 1</div><div class="sched-event-sub">Gaming Arena, Ground Floor · African esports titles</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">14:00</div><div><div class="sched-event-title">Immersive Africa: Kwasukasukela Screening</div><div class="sched-event-sub">Wits Digital Dome · Ongoing digital dome screening</div><span class="sched-event-tag">Immersive Africa</span></div></div>
+    <div class="sched-row"><div class="sched-time">16:00</div><div><div class="sched-event-title">Awards: Jury Q&A — Meet the 2026 Jury</div><div class="sched-event-sub">Main Stage · Open to all pass holders</div><span class="sched-event-tag">Awards</span></div></div>
+    <div class="sched-row"><div class="sched-time">18:00</div><div><div class="sched-event-title">Dala Khona: Developer Showcase Mixer</div><div class="sched-event-sub">Courtyard · Meet the developers behind the games</div><span class="sched-event-tag">Dala Khona</span></div></div>
+  </div>
+
+  <div class="sched-panel" id="day-2">
+    <div class="sched-row"><div class="sched-time">09:00</div><div><div class="sched-event-title">PRO: Entrepreneurs & Investors Breakfast</div><div class="sched-event-sub">PRO Lounge (Industry Pass only) · Curated investor matching</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">10:30</div><div><div class="sched-event-title">JAMZ Animation Challenge — Quarterfinals</div><div class="sched-event-sub">Main Stage · 8 teams compete, 4 advance</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">13:00</div><div><div class="sched-event-title">Awards: Digital Art Masterclass</div><div class="sched-event-sub">Workshop Room B · Led by 2025 Awards winner</div><span class="sched-event-tag">Awards</span></div></div>
+    <div class="sched-row"><div class="sched-time">15:00</div><div><div class="sched-event-title">Pitchathon: Semifinal Pitches</div><div class="sched-event-sub">Tshimologong Auditorium · 10 startups pitch to jury</div><span class="sched-event-tag">Pitchathon</span></div></div>
+    <div class="sched-row"><div class="sched-time">17:30</div><div><div class="sched-event-title">Immersive Africa: VR Open Lab</div><div class="sched-event-sub">Digital Dome Foyer · Try Africa-made XR experiences</div><span class="sched-event-tag">Immersive Africa</span></div></div>
+  </div>
+
+  <div class="sched-panel" id="day-3">
+    <div class="sched-row"><div class="sched-time">09:00</div><div><div class="sched-event-title">Pitchathon Grand Finale</div><div class="sched-event-sub">Wits Innovation Centre · 6 finalists, live jury scoring</div><span class="sched-event-tag">Pitchathon</span></div></div>
+    <div class="sched-row"><div class="sched-time">11:00</div><div><div class="sched-event-title">Dala Khona: Joburg Games Fest Speedrun Marathon</div><div class="sched-event-sub">Courtyard Main Screen · Live speedruns + crowd challenges</div><span class="sched-event-tag">Dala Khona</span></div></div>
+    <div class="sched-row"><div class="sched-time">13:00</div><div><div class="sched-event-title">PRO: Creative Organisations Roundtable</div><div class="sched-event-sub">PRO Boardroom · Closed session, invite-only</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">15:30</div><div><div class="sched-event-title">JAMZ Video Game Challenge — Semifinals</div><div class="sched-event-sub">Gaming Arena · Top 4 players battle for finals spot</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">19:00</div><div><div class="sched-event-title">Pitchathon Winners Announced + Celebration</div><div class="sched-event-sub">Tshimologong Main Stage · Public welcome</div><span class="sched-event-tag">Pitchathon</span></div></div>
+  </div>
+
+  <div class="sched-panel" id="day-4">
+    <div class="sched-row"><div class="sched-time">10:00</div><div><div class="sched-event-title">JAMZ Animation Challenge — Grand Final</div><div class="sched-event-sub">Main Stage · Last 2 teams, live brief, audience votes</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">12:00</div><div><div class="sched-event-title">JAMZ Video Game Challenge — Final</div><div class="sched-event-sub">Gaming Arena · Championship match + live commentary</div><span class="sched-event-tag">JAMZ</span></div></div>
+    <div class="sched-row"><div class="sched-time">14:00</div><div><div class="sched-event-title">Immersive Africa: Closing Screening — Kancícà</div><div class="sched-event-sub">Wits Digital Dome · Final scheduled screening this season</div><span class="sched-event-tag">Immersive Africa</span></div></div>
+    <div class="sched-row"><div class="sched-time">16:00</div><div><div class="sched-event-title">PRO: Future of African Digital Creative Industry</div><div class="sched-event-sub">Tshimologong Auditorium · Closing keynote, all welcome</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">18:00</div><div><div class="sched-event-title">JAMZ Winners Announced</div><div class="sched-event-sub">Main Stage · Prizes presented, community celebration</div><span class="sched-event-tag">JAMZ</span></div></div>
+  </div>
+
+  <div class="sched-panel" id="day-5">
+    <div class="sched-row"><div class="sched-time">10:00</div><div><div class="sched-event-title">Awards: Final Day of Exhibition</div><div class="sched-event-sub">Tshimologong Gallery · Last chance to view shortlisted works</div><span class="sched-event-tag">Awards</span></div></div>
+    <div class="sched-row"><div class="sched-time">12:00</div><div><div class="sched-event-title">Dala Khona: Community Play Day</div><div class="sched-event-sub">Courtyard · Open to families and public, free entry</div><span class="sched-event-tag">Dala Khona</span></div></div>
+    <div class="sched-row"><div class="sched-time">15:00</div><div><div class="sched-event-title">PRO Alumni Networking Session</div><div class="sched-event-sub">PRO Lounge · All past Fak'ugesi participants welcome</div><span class="sched-event-tag">PRO</span></div></div>
+    <div class="sched-row"><div class="sched-time">17:30</div><div><div class="sched-event-title">Fak'ugesi Awards Ceremony</div><div class="sched-event-sub">Main Stage · Black-tie optional · All pass holders welcome</div><span class="sched-event-tag">Awards Ceremony</span></div></div>
+    <div class="sched-row"><div class="sched-time">20:00</div><div><div class="sched-event-title">Festival Closing Party</div><div class="sched-event-sub">Rooftop & Courtyard · DJs, live performances, networking</div><span class="sched-event-tag">Closing</span></div></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     REQUIREMENTS
-═══════════════════════════════════════ -->
-<section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-
-  <div class="req-header">
-    <h2 class="req-title">Requirements</h2>
-    <a class="req-apply-link" href="#">Submit your application</a>
-  </div>
-  <ol class="req-list">
-    <li>Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede. Aenean congue pede in nisi tristique interdum. Sed commodo, ipsum ac dignissim ullamcorper, odio nulla venenatis nisi, in porta dolor neque venenatis lacus. Pellentesque fermentum. Mauris sit amet ligula ut tellus gravida mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices cubilia Curae;</li>
-    <li>Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl, suscipit at, rhoncus sit amet, porttitor sit amet, leo. Aenean hendrerit est. Etiam ac augue. Morbi tincidunt neque ut lacus. Duis vulputate cursus orci. Mauris justo lorem, scelerisque sit amet, placerat sed, condimentum in, leo. Donec urna est, semper quis, auctor eget, ultrices in, purus. Etiam rutrum. Aliquam blandit dui a libero. Praesent tortor tortor, bibendum vehicula, accumsan sed, adipiscing a, pede. Nullam et tortor. Suspendisse tempor leo quis nunc fringilla volutpat. Donec rutrum ullamcorper lorem. Nunc tincidunt sagittis augue. Quisque lacinia. Phasellus sollicitudin.</li>
-    <li>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus purus, elementum ac, luctus ullamcorper, ornare vitae, massa. Nullam posuere sem ut mauris. Nullam velit. Quisque sodales. Donec suscipit suscipit erat. Nam blandit. Praesent congue lorem non dolor. Maecenas vitae erat. Ut ac purus vel purus dapibus gravida.</li>
-    <li>Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus. Duis molestie pede. Vivamus quis odio sit amet libero sodales tincidunt. Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus</li>
-  </ol>
-</section>
-
-<!-- ═══════════════════════════════════════
-     FAQ
-═══════════════════════════════════════ -->
-<section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
-  <div class="faq-layout">
-    <div class="faq-left">
-      <h2 class="faq-title">FAQ</h2>
-      <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
-    </div>
-    <div>
-      <div class="faq-right-header">
-        <a class="faq-apply-link" href="#">Submit your application</a>
-      </div>
-      <div class="faq-items" id="faq-items">
-        <!-- injected by JS -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PARTNERS
-═══════════════════════════════════════ -->
-<section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-
-  <div class="partners-header">
-    <h2 class="partners-title">Our Awards Partners</h2>
-    <a class="partners-link" href="about.html#partners">View all partners</a>
-  </div>
-  <div class="partners-grid">
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
+<!-- ── APPLY CTA ── -->
+<section class="apply-cta reveal">
+  <h2>Ready to join us?</h2>
+  <p>Applications are open for Awards, JAMZ, and Pitchathon. Festival passes available now. Don't miss Africa's most exciting digital innovation festival — 07–12 October 2026, Braamfontein, Johannesburg.</p>
+  <div class="apply-cta-btns">
+    <a class="btn-cta-filled" href="tickets.html">GET TICKETS</a>
+    <a class="btn-cta-white" href="sig-awards.html">AWARDS SUBMISSIONS</a>
+    <a class="btn-cta-white" href="about.html">ABOUT FAK'UGESI</a>
   </div>
 </section>
 
 <script src="sig-nav.js"></script>
 <script src="footer.js"></script>
-
+<script src="fak-ugesi-global-effects-v9.js"></script>
 <script>
-  /* ── Reveal on scroll ── */
+  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.06 });
+  }, { threshold: 0.07 });
   revealEls.forEach(el => io.observe(el));
 
-  /* ── FAQ accordion ── */
-  const faqData = [
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
-  ];
-
-  const faqContainer = document.getElementById('faq-items');
-  faqData.forEach((faq, i) => {
-    const item = document.createElement('div');
-    item.className = 'faq-item' + (i === 0 ? ' open' : '');
-    item.innerHTML = `
-      <button class="faq-question" aria-expanded="${i === 0}">
-        <span class="faq-question-text">${faq.q}</span>
-        <span class="faq-toggle">${i === 0 ? '−' : '+'}</span>
-      </button>
-      <div class="faq-answer">${faq.a}</div>
-    `;
-    item.querySelector('.faq-question').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-toggle').textContent = '+';
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        item.querySelector('.faq-toggle').textContent = '−';
-        item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
-      }
+  // Schedule tabs
+  document.querySelectorAll('.sched-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const day = tab.dataset.day;
+      document.querySelectorAll('.sched-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.sched-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.getElementById('day-' + day);
+      if (panel) panel.classList.add('active');
     });
-    faqContainer.appendChild(item);
   });
 </script>
-
 </body>
 </html>

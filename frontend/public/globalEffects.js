@@ -295,7 +295,7 @@
   }
 
   function initCardFlips() {
-    document.querySelectorAll('.inv-card').forEach(wrapInvCard);
+    document.querySelectorAll('.prog-card:not([data-flipped]), .cat-card:not([data-flipped])')
     document.querySelectorAll('.winner-card:not([data-flipped]), .prog-card:not([data-flipped]), .cat-card:not([data-flipped])').forEach(card => {
       card.dataset.flipped = '1';
       const fact = nextFact();

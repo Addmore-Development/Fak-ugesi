@@ -1,10 +1,9 @@
 /**
- * Fak'ugesi Shared Nav v6
- * Changes from v5:
- *  - Cross indicator now CONTINUOUSLY bounces up and down over the active tab
- *  - On hover: smoothly slides to hovered tab (pauses bounce, resumes on leave)
- *  - On click: triple-bounce then resumes continuous bounce
- *  - No water/ripple canvas effect
+ * Fak'ugesi Shared Nav v7
+ * Changes from v6:
+ *  - Cross indicator now positioned using getBoundingClientRect for precise centering (from sig-nav.js)
+ *  - Ticket button hover: white background, navy text (was orange bg, white text)
+ *  - Preserved all other functionality: dropdowns, plus spinner, baby pluses
  */
 
 (function() {
@@ -61,7 +60,7 @@
       top: 6px;
       pointer-events: none;
       z-index: 20;
-      transition: left 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     #fug-nav-indicator svg { display: block; }
 
@@ -76,18 +75,18 @@
     /* Click-burst triple bounce (overrides float temporarily) */
     @keyframes navIndicatorBounce {
       0%   { transform: translateY(0) scale(1); }
-      18%  { transform: translateY(-10px) scale(1.6); }
-      36%  { transform: translateY(0) scale(1); }
-      54%  { transform: translateY(-7px) scale(1.35); }
-      72%  { transform: translateY(0) scale(1); }
-      86%  { transform: translateY(-4px) scale(1.15); }
+      16%  { transform: translateY(-10px) scale(1.6); }
+      32%  { transform: translateY(0) scale(1); }
+      48%  { transform: translateY(-7px) scale(1.35); }
+      64%  { transform: translateY(0) scale(1); }
+      80%  { transform: translateY(-4px) scale(1.15); }
       100% { transform: translateY(0) scale(1); }
     }
     #fug-nav-indicator.floating {
       animation: navIndicatorFloat 1.8s ease-in-out infinite;
     }
     #fug-nav-indicator.jumping {
-      animation: navIndicatorBounce 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+      animation: navIndicatorBounce 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
     }
 
     #fug-nav .nav-centre { display:flex; align-items:center; justify-content:center; position:relative; }
@@ -136,17 +135,34 @@
     #fug-nav .nav-dropdown a:hover { color:#0d1b3e; background:rgba(0,0,0,0.04); }
     #fug-nav .nav-dropdown a.active { color:#0d1b3e; font-weight:600; }
     #fug-nav .nav-right { display:flex; align-items:center; gap:12px; justify-content:flex-end; }
+    
+    /* ── Tickets button: navy bg; hover → white bg, navy text (from sig-nav.js) ── */
     #fug-nav .nav-tickets-btn {
-      background:#2a3f72; color:#ffffff; border:none; cursor:pointer;
-      padding:9px 20px; font-size:11px; font-weight:700;
-      letter-spacing:0.1em; text-transform:uppercase;
-      font-family:'InterDisplay',sans-serif;
-      transition:background 0.22s, color 0.22s, transform 0.15s;
-      white-space:nowrap; text-decoration:none;
-      display:inline-flex; align-items:center;
+      background: rgba(26, 55, 120, 0.85);
+      color: #ffffff;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      cursor: pointer;
+      padding: 8px 18px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'InterDisplay', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
       border-radius: 100px;
+      white-space: nowrap;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
     }
-    #fug-nav .nav-tickets-btn:hover { background:#e05a1e; color:#ffffff; transform:translateY(-1px); }
+
+    #fug-nav .nav-tickets-btn:hover {
+      background: #ffffff;
+      color: #1a2744;
+      border-color: #ffffff;
+      transform: translateY(-1px);
+    }
+    
     .fug-baby-plus {
       position:fixed; pointer-events:none; z-index:99999;
       font-weight:700; line-height:1;
@@ -204,10 +220,11 @@
   const indicator = document.getElementById('fug-nav-indicator');
   const navLinks = document.getElementById('fug-nav-links');
 
-  // Position indicator above a given element
+  // Position indicator above a given element using getBoundingClientRect for precise centering
   function positionIndicator(el) {
     const navRect = nav.getBoundingClientRect();
     const elRect = el.getBoundingClientRect();
+    // Center the cross (16px wide) exactly over the element's midpoint
     const centerX = elRect.left - navRect.left + elRect.width / 2 - 8;
     indicator.style.left = centerX + 'px';
   }
@@ -220,14 +237,13 @@
 
   // Pause float (on hover away from active)
   function pauseFloat() {
-    indicator.classList.remove('floating');
-    indicator.classList.remove('jumping');
+    indicator.classList.remove('floating', 'jumping');
   }
 
   // Triple-bounce click burst, then resume float
   function jumpIndicator() {
     indicator.classList.remove('floating', 'jumping');
-    void indicator.offsetWidth;
+    void indicator.offsetWidth; // force reflow
     indicator.classList.add('jumping');
     indicator.addEventListener('animationend', () => {
       indicator.classList.remove('jumping');
@@ -253,6 +269,7 @@
       pauseFloat();
       positionIndicator(trigger);
     });
+    
     li.addEventListener('mouseleave', () => {
       const activeEl = navLinks.querySelector('a.active, .nav-drop-trigger.active');
       const fallback = activeEl || navLinks.querySelector('a');
@@ -263,10 +280,14 @@
     });
 
     li.addEventListener('click', () => {
-      navLinks.querySelectorAll('a, .nav-drop-trigger').forEach(el => el.classList.remove('active'));
-      trigger.classList.add('active');
-      positionIndicator(trigger);
-      jumpIndicator();
+      // Only update active class if clicking on a link that changes page
+      // For dropdown triggers, we don't want to mark them as active on click
+      if (trigger.tagName === 'A' && trigger.getAttribute('href')) {
+        navLinks.querySelectorAll('a, .nav-drop-trigger').forEach(el => el.classList.remove('active'));
+        trigger.classList.add('active');
+        positionIndicator(trigger);
+        jumpIndicator();
+      }
     });
   });
 

@@ -62,11 +62,26 @@
     /* ── JOIN INDUSTRY NETWORK ── */
     .network-section{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:stretch}
     .network-bg{position:absolute;inset:0;background-image:url('../images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55)}
-    .network-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:space-between;padding:52px 80px}
-    .network-top{display:flex;justify-content:space-between;align-items:flex-start}
-    .network-title{font-size:52px;font-weight:900;color:#fff;line-height:1.0;max-width:600px;font-family:'InterDisplay',sans-serif}
-    .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px;opacity:.85}
-    .network-bottom{max-width:420px;margin-top:auto;padding-top:80px}
+    .network-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:52px 80px 64px}
+    .network-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px}
+    /* ── UPDATED: larger title, pushed lower via margin-top auto on the container ── */
+    .network-title {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1.0;
+      color: #fff;
+      font-family: 'InterDisplay', sans-serif;
+      max-width: 700px;
+      cursor: default;
+      transition: all 0.22s ease;
+    }
+    .network-title:hover {
+      letter-spacing: 0.02em;
+      transform: scale(1.01);
+      transition: all 0.22s ease;
+    }
+    .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-bottom:8px;opacity:.85}
+    .network-bottom{max-width:480px}
     .network-body{font-size:13px;line-height:1.72;color:#fff;opacity:.88;margin-bottom:24px;font-family:'InterDisplay',sans-serif}
     .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .network-cta:hover{background:#fff;color:var(--navy)}
@@ -77,7 +92,7 @@
     .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif}
     .highlights-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
     .highlights-strip-wrap{overflow:hidden;position:relative}
-    .highlights-strip{display:flex;width:max-content;animation:highlightsScroll 40s linear infinite}
+    .highlights-strip{display:flex;width:max-content;animation:highlightsScroll 40s linear infinite;gap:24px}
     .highlights-strip:hover{animation-play-state:paused}
     @keyframes highlightsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .highlight-item{flex:0 0 340px;display:flex;flex-direction:column}
@@ -120,6 +135,19 @@
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* ── Rotating cross icons on hover ── */
+    .cross-icon {
+      transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+      cursor: pointer;
+    }
+    .cross-icon:hover {
+      transform: rotate(180deg) scale(1.15);
+    }
+    .cross-icon:active {
+      transform: rotate(360deg) scale(0.95);
+      transition: transform 0.15s ease;
+    }
   </style>
 </head>
 <body>
@@ -198,8 +226,9 @@
 <section class="network-section reveal">
   <div class="network-bg"></div>
   <div class="network-inner">
+    <!-- Title is now large (72px) and sits at the bottom via flex-direction:column + justify-content:flex-end -->
     <div class="network-top">
-      <h2 class="network-title">Join our industry network</h2>
+      <h2 class="network-title">Join our industry<br>network</h2>
       <a class="network-link" href="#">View 2026 programme</a>
     </div>
     <div class="network-bottom">
@@ -330,6 +359,21 @@
       btn.querySelector('.faq-icon').textContent = '−';
     }
   }
+
+  // Rotating cross icons
+  (function initRotatingCrosses() {
+    const crosses = document.querySelectorAll('.cross-icon');
+    crosses.forEach(cross => {
+      if (cross.dataset.rotatingDone) return;
+      cross.dataset.rotatingDone = '1';
+      cross.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cross.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.2, 0.64, 1)';
+        cross.style.transform = 'rotate(360deg) scale(0.9)';
+        setTimeout(() => { cross.style.transform = ''; }, 150);
+      });
+    });
+  })();
 </script>
 </body>
 </html>

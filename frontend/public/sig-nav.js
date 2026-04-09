@@ -1,10 +1,11 @@
 /**
- * Fak'ugesi Signature Programmes Sub-Navigation v3
- * Changes from v2:
- *  - Cross indicator now CONTINUOUSLY bounces up and down over the active tab
+ * Fak'ugesi Signature Programmes Sub-Navigation v4
+ * Changes from v3:
+ *  - Ticket button hover: white background, navy/blue text (was blue bg, white text)
+ *  - Cross indicator: bounces directly ABOVE the active tab text (centered over it,
+ *    not offset to the right). Uses getBoundingClientRect for precise centering.
  *  - On hover: smoothly slides to hovered tab (pauses bounce, resumes on leave)
  *  - On click: triple-bounce then resumes continuous bounce
- *  - No water/ripple canvas effect
  */
 (function () {
   const path = window.location.pathname;
@@ -40,12 +41,14 @@
       box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
 
-    /* ── Cross indicator — continuously bounces above active tab ── */
+    /* ── Cross indicator — continuously bounces ABOVE the active tab ── */
     #sig-nav-indicator {
       position: absolute;
-      top: 6px;
+      /* positioned above the nav links, centered over the active tab */
+      top: 4px;
       pointer-events: none;
       z-index: 10;
+      /* left is set dynamically in JS to center exactly over the tab text */
       transition: left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     #sig-nav-indicator svg {
@@ -113,6 +116,7 @@
       font-weight: 600;
     }
 
+    /* ── Tickets button: default navy bg; hover → white bg, navy text ── */
     #sig-nav .sig-tickets {
       position: absolute;
       right: 32px;
@@ -180,14 +184,19 @@
 
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  const sigNav = document.getElementById('sig-nav');
+  const sigNav    = document.getElementById('sig-nav');
   const indicator = document.getElementById('sig-nav-indicator');
   const sigLinksList = document.getElementById('sig-links-list');
 
-  function positionIndicator(el) {
-    const navRect = sigNav.getBoundingClientRect();
-    const elRect = el.getBoundingClientRect();
-    const centerX = elRect.left - navRect.left + elRect.width / 2 - 8;
+  /**
+   * Position the indicator cross so it is horizontally centered
+   * over the given anchor element, relative to the nav bar.
+   * We measure the link element's midpoint inside the nav.
+   */
+  function positionIndicator(anchorEl) {
+    const navRect  = sigNav.getBoundingClientRect();
+    const linkRect = anchorEl.getBoundingClientRect();
+    const centerX = linkRect.left - navRect.left + linkRect.width / 2 - 8;
     indicator.style.left = centerX + 'px';
   }
 
@@ -202,7 +211,7 @@
 
   function jumpIndicator() {
     indicator.classList.remove('floating', 'jumping');
-    void indicator.offsetWidth;
+    void indicator.offsetWidth; // force reflow to restart animation
     indicator.classList.add('jumping');
     indicator.addEventListener('animationend', () => {
       indicator.classList.remove('jumping');
@@ -212,7 +221,7 @@
 
   function initIndicator() {
     const activeLink = sigLinksList.querySelector('a.active');
-    const targetEl = activeLink || sigLinksList.querySelector('a');
+    const targetEl   = activeLink || sigLinksList.querySelector('a');
     if (targetEl) {
       positionIndicator(targetEl);
       startFloat();
@@ -230,7 +239,7 @@
 
     li.addEventListener('mouseleave', () => {
       const activeLink = sigLinksList.querySelector('a.active');
-      const fallback = activeLink || sigLinksList.querySelector('a');
+      const fallback   = activeLink || sigLinksList.querySelector('a');
       if (fallback) {
         positionIndicator(fallback);
         startFloat();
@@ -250,10 +259,13 @@
   }, { passive: true });
   sigNav.classList.toggle('scrolled', window.scrollY > 40);
 
+  /* Wait for fonts/layout to settle before positioning */
   requestAnimationFrame(() => requestAnimationFrame(initIndicator));
+
+  /* Re-position on resize (font/layout may shift) */
   window.addEventListener('resize', () => {
     const activeLink = sigLinksList.querySelector('a.active');
-    const fallback = activeLink || sigLinksList.querySelector('a');
+    const fallback   = activeLink || sigLinksList.querySelector('a');
     if (fallback) positionIndicator(fallback);
   });
 })();

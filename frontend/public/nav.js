@@ -6,6 +6,7 @@
  * - Rounded corners on GET TICKETS button
  * - Plus sign spins 360° and shoots baby pluses on hover
  */
+
 (function() {
   const path = window.location.pathname;
   const page = path.replace(/^\//, '').replace(/\.html$/, '') || 'index';

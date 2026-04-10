@@ -208,7 +208,7 @@
     <div class="nav-right">
       <a class="nav-tickets-btn" id="nav-tickets-btn" href="/tickets.html">
         <canvas class="btn-lightning-canvas" id="nav-lightning-canvas"></canvas>
-        <span class="btn-label">⚡ GET TICKETS</span>
+        <span class="btn-label"> GET TICKETS</span>
       </a>
     </div>
   </nav>`;

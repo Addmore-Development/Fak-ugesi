@@ -1,10 +1,12 @@
 /**
- * Fak'ugesi Global Effects v9
- * Changes from v8:
- *  - REMOVED: water/ripple canvas effect
- *  - ADDED: Lightning text effect on hover (non-hero sections only)
- *    Background goes dark, lightning bolt flashes through text on hover
- *  - KEPT: all other v8 effects
+ * Fak'ugesi Global Effects v10
+ * Changes from v9:
+ *  - REMOVED: water/ripple/droplet canvas effect entirely
+ *  - REMOVED: lightning text effect on body text
+ *  - ADDED: Invisible box on ALL headings (background matching section color)
+ *    On hover: box reveals dark/navy 3D depth effect behind heading text
+ *    Text does NOT move — only the background behind it changes
+ *  - KEPT: all other v9 effects
  *    A. KIKK FAQ horizontal-expand
  *    B. Arrow conveyor (winners-nav buttons)
  *    C. Hero simultaneous word-drop
@@ -68,56 +70,89 @@
     .noodle-letter.noodling{animation:noodleWave 0.7s ease forwards;filter:blur(0.4px);color:inherit;}
 
     /* ══════════════════════════════════════════════════════
-       LIGHTNING TEXT EFFECT
-       Applied to text elements outside .hero sections
-       On hover: bg goes dark, lightning flashes through
+       HEADING BOX EFFECT
+       All headings get an invisible box behind them.
+       On hover: box reveals a deep 3D dark/navy/black layered
+       background behind the text. Text itself does NOT move.
+       The box blends with the section background when idle.
     ══════════════════════════════════════════════════════ */
-    .fug-lightning-wrap {
+    .fug-heading-wrap {
       position: relative;
       display: inline-block;
-      cursor: default;
-      overflow: visible;
     }
-    .fug-lightning-wrap .fug-lightning-bg {
+
+    /* The invisible bg box — same color as section bg at rest */
+    .fug-heading-box {
       position: absolute;
-      inset: -6px -12px;
-      background: transparent;
-      border-radius: 2px;
-      transition: background 0.22s ease;
+      inset: -8px -14px;
+      border-radius: 3px;
       pointer-events: none;
       z-index: 0;
+      /* At rest: transparent — matches whatever background it sits on */
+      background: transparent;
+      /* 3D depth layers via box-shadow — hidden at rest */
+      box-shadow: none;
+      transition:
+        background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .fug-lightning-wrap:hover .fug-lightning-bg {
-      background: rgba(5, 10, 35, 0.88);
-    }
-    .fug-lightning-wrap .fug-lightning-text {
+
+    /* The text sits above the box */
+    .fug-heading-text {
       position: relative;
       z-index: 1;
-      transition: color 0.15s;
+      transition: text-shadow 0.28s ease;
     }
-    .fug-lightning-wrap:hover .fug-lightning-text {
-      color: rgba(255,255,255,0.0);
+
+    /* HOVER STATE: reveal 3D dark depth behind heading */
+    .fug-heading-wrap:hover .fug-heading-box {
+      background: linear-gradient(
+        135deg,
+        rgba(5, 8, 28, 0.92) 0%,
+        rgba(15, 25, 65, 0.88) 35%,
+        rgba(8, 12, 40, 0.94) 65%,
+        rgba(2, 4, 18, 0.96) 100%
+      );
+      /* 3D illusion: multiple shadow layers simulating depth */
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        inset 0 -1px 0 rgba(0,0,0,0.6),
+        inset 2px 0 8px rgba(0,0,0,0.4),
+        inset -2px 0 8px rgba(0,0,0,0.4),
+        0 4px 24px rgba(0,0,0,0.5),
+        0 8px 40px rgba(5,10,40,0.4),
+        0 0 0 1px rgba(80,100,180,0.15);
     }
-    .fug-lightning-wrap.lightning-flash .fug-lightning-text {
-      color: #ffffff !important;
+
+    /* On dark sections (navy/dark bg): use lighter reveal */
+    .fug-heading-wrap.on-dark:hover .fug-heading-box {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(200, 215, 255, 0.04) 35%,
+        rgba(255, 255, 255, 0.08) 65%,
+        rgba(180, 200, 255, 0.05) 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        inset 0 -1px 0 rgba(0,0,0,0.3),
+        inset 2px 0 8px rgba(255,255,255,0.04),
+        inset -2px 0 8px rgba(255,255,255,0.04),
+        0 4px 24px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    /* Heading text subtle glow on hover for depth emphasis */
+    .fug-heading-wrap:hover .fug-heading-text {
       text-shadow:
-        0 0 8px rgba(180, 220, 255, 0.9),
-        0 0 20px rgba(120, 180, 255, 0.7),
-        0 0 40px rgba(80, 140, 255, 0.5);
+        0 1px 0 rgba(0,0,0,0.8),
+        0 2px 4px rgba(0,0,0,0.4),
+        0 0 20px rgba(100,140,255,0.15);
     }
-    /* SVG lightning canvas overlay */
-    .fug-lightning-canvas {
-      position: absolute;
-      inset: -6px -12px;
-      width: calc(100% + 24px);
-      height: calc(100% + 12px);
-      pointer-events: none;
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 0.1s;
-    }
-    .fug-lightning-wrap:hover .fug-lightning-canvas {
-      opacity: 1;
+    .fug-heading-wrap.on-dark:hover .fug-heading-text {
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.5),
+        0 0 16px rgba(200,220,255,0.2);
     }
 
     /* ══════════════════════════════════════════════════════
@@ -421,130 +456,66 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     LIGHTNING TEXT EFFECT
-     Wraps body text (p, li, .hero-body, etc.) OUTSIDE .hero
-     On hover: dark background overlay + lightning SVG flash
+     HEADING BOX 3D EFFECT
+     Wraps all headings (h1, h2, h3) outside .hero and nav in an
+     invisible box. On hover: reveals 3D dark depth behind text.
+     Text does NOT move — only background changes.
   ═══════════════════════════════════════════════════════════════ */
-  const LIGHTNING_COLORS = [
-    'rgba(160, 210, 255, 0.95)',
-    'rgba(200, 230, 255, 0.85)',
-    'rgba(100, 180, 255, 0.9)',
-    'rgba(220, 240, 255, 1.0)',
-  ];
-
-  function generateLightningPath(w, h) {
-    // Generate a jagged lightning bolt path across the element
-    const segments = 6 + Math.floor(Math.random() * 5);
-    const startX = Math.random() * w * 0.3;
-    const startY = 0;
-    let x = startX;
-    let y = startY;
-    let d = `M ${x} ${y}`;
-    for (let i = 1; i <= segments; i++) {
-      const progress = i / segments;
-      x = startX + (Math.random() - 0.3) * w * 0.8 + progress * w * 0.4;
-      y = progress * h;
-      x = Math.max(0, Math.min(w, x));
-      d += ` L ${x} ${y}`;
-    }
-    return d;
-  }
-
-  function fireLightning(wrap) {
-    const canvas = wrap.querySelector('.fug-lightning-canvas');
-    if (!canvas) return;
-
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
-    canvas.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    canvas.innerHTML = '';
-
-    // Draw 2-3 lightning bolts
-    const count = 2 + Math.floor(Math.random() * 2);
-    for (let i = 0; i < count; i++) {
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', generateLightningPath(w, h));
-      path.setAttribute('stroke', LIGHTNING_COLORS[Math.floor(Math.random() * LIGHTNING_COLORS.length)]);
-      path.setAttribute('stroke-width', (1 + Math.random() * 1.5).toFixed(1));
-      path.setAttribute('fill', 'none');
-      path.setAttribute('stroke-linecap', 'round');
-      path.style.opacity = '0';
-      path.style.transition = `opacity ${60 + i * 30}ms ease`;
-      canvas.appendChild(path);
-
-      // Flash on
-      setTimeout(() => { path.style.opacity = '1'; }, i * 40);
-      // Flash off
-      setTimeout(() => { path.style.opacity = '0'; }, 120 + i * 40);
-    }
-
-    // Text flash
-    wrap.classList.add('lightning-flash');
-    setTimeout(() => wrap.classList.remove('lightning-flash'), 180);
-  }
-
-  const LIGHTNING_TEXT_SELECTORS = [
-    '.hero-body', '.hero-eyebrow',
-    '.spotlight-body', '.theme-body',
-    '.partner-desc', '.faq-intro', '.faq-left-body',
-    '.card-body', '.audience-body', '.winner-cat',
-    '.network-body', '.intro-body',
-    '.what-body', '.cat-back-body',
-    '.highlight-desc', '.highlight-speakers',
-    '.jury-role', '.jury-country',
-    '.footer-addr', '.footer-copy',
-    'p:not(.hero-title):not(.hero-body)',
+  const HEADING_SELECTORS = [
+    'h1', 'h2', 'h3',
+    '.winners-title', '.cat-title', '.jury-title', '.req-title', '.faq-title',
+    '.partners-title', '.what-title', '.highlights-title', '.network-title',
+    '.section-header-label', '.premiere-title',
   ].join(',');
 
-  function wrapLightningEl(el) {
-    if (el.dataset.lightning) return;
-    if (el.closest('.hero')) return; // Never in hero
-    if (el.closest('.faq-kikk-row')) return;
-    if (el.closest('.inv-card')) return;
-    if (el.closest('#sig-nav, #fug-nav')) return;
-    el.dataset.lightning = '1';
-
-    // Create wrapper preserving existing content
-    const wrapper = document.createElement('span');
-    wrapper.className = 'fug-lightning-wrap';
-    wrapper.style.display = 'block';
-
-    const bg = document.createElement('span');
-    bg.className = 'fug-lightning-bg';
-
-    const textSpan = document.createElement('span');
-    textSpan.className = 'fug-lightning-text';
-
-    // Create SVG canvas
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(svgNS, 'svg');
-    svg.setAttribute('xmlns', svgNS);
-    svg.classList.add('fug-lightning-canvas');
-    svg.style.cssText = 'position:absolute;inset:-6px -12px;pointer-events:none;z-index:2;overflow:visible;';
-
-    // Move el's children into textSpan
-    while (el.firstChild) textSpan.appendChild(el.firstChild);
-
-    wrapper.appendChild(bg);
-    wrapper.appendChild(textSpan);
-    wrapper.appendChild(svg);
-    el.appendChild(wrapper);
-
-    let lightningTimer = null;
-    wrapper.addEventListener('mouseenter', () => {
-      fireLightning(wrapper);
-      lightningTimer = setInterval(() => fireLightning(wrapper), 400);
-    });
-    wrapper.addEventListener('mouseleave', () => {
-      if (lightningTimer) { clearInterval(lightningTimer); lightningTimer = null; }
-      svg.innerHTML = '';
-    });
+  function isDarkSection(el) {
+    let node = el.parentElement;
+    while (node && node !== document.body) {
+      const bg = getComputedStyle(node).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        const m = bg.match(/[\d.]+/g);
+        if (m && m.length >= 3) {
+          const brightness = parseInt(m[0]) * 0.299 + parseInt(m[1]) * 0.587 + parseInt(m[2]) * 0.114;
+          return brightness < 128;
+        }
+      }
+      // check class names
+      const cls = node.className || '';
+      if (cls.includes('navy') || cls.includes('requirements') || cls.includes('categories') ||
+          cls.includes('network') || cls.includes('hero')) return true;
+      node = node.parentElement;
+    }
+    return false;
   }
 
-  function initLightningText() {
+  function wrapHeadingBox(el) {
+    if (el.dataset.hbox) return;
+    if (el.closest('.hero')) return;
+    if (el.closest('#fug-nav, #sig-nav, .nav-links')) return;
+    if (el.closest('.faq-kikk-row')) return;
+    el.dataset.hbox = '1';
+
+    const dark = isDarkSection(el);
+    const wrap = document.createElement('span');
+    wrap.className = 'fug-heading-wrap' + (dark ? ' on-dark' : '');
+    wrap.style.display = 'block';
+
+    const box = document.createElement('span');
+    box.className = 'fug-heading-box';
+
+    const textSpan = document.createElement('span');
+    textSpan.className = 'fug-heading-text';
+
+    while (el.firstChild) textSpan.appendChild(el.firstChild);
+    wrap.appendChild(box);
+    wrap.appendChild(textSpan);
+    el.appendChild(wrap);
+  }
+
+  function initHeadingBoxes() {
     try {
-      document.querySelectorAll(LIGHTNING_TEXT_SELECTORS).forEach(el => {
-        if (!el.closest('.hero')) wrapLightningEl(el);
+      document.querySelectorAll(HEADING_SELECTORS).forEach(el => {
+        if (!el.closest('.hero')) wrapHeadingBox(el);
       });
     } catch(e) {}
   }
@@ -553,67 +524,177 @@
      ARROW CRASH CANVAS (.arrow-btn)
   ═══════════════════════════════════════════════════════════════ */
   function drawBolt(ctx, cx, cy, size, color, alpha) {
-    ctx.save(); ctx.globalAlpha = Math.max(0,alpha); ctx.translate(cx,cy);
+    // Classic lightning bolt matching reference: wide top-right, zig-zag middle, tapered bottom-left point
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.translate(cx, cy);
     const s = size;
     ctx.beginPath();
-    ctx.moveTo( s*0.28, -s*0.52); ctx.lineTo(-s*0.08, -s*0.04);
-    ctx.lineTo( s*0.18, -s*0.04); ctx.lineTo(-s*0.28,  s*0.52);
-    ctx.lineTo( s*0.08,  s*0.04); ctx.lineTo(-s*0.18,  s*0.04);
-    ctx.closePath(); ctx.fillStyle = color; ctx.fill(); ctx.restore();
+    ctx.moveTo( s*0.18, -s*0.55);   // top-left of upper half
+    ctx.lineTo( s*0.42, -s*0.55);   // top-right of upper half
+    ctx.lineTo( s*0.10,  s*0.00);   // notch right-middle
+    ctx.lineTo( s*0.30,  s*0.00);   // inner notch right
+    ctx.lineTo(-s*0.18,  s*0.55);   // bottom point (left)
+    ctx.lineTo(-s*0.42,  s*0.55);   // bottom-left
+    ctx.lineTo(-s*0.10,  s*0.00);   // notch left-middle
+    ctx.lineTo(-s*0.30,  s*0.00);   // inner notch left
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.shadowColor = '#ffe600';
+    ctx.shadowBlur = size * 0.8;
+    ctx.fill();
+    ctx.restore();
   }
-  function drawStack(ctx, cx, cy, btnH, alpha) {
-    const size = btnH*0.36, gap = size*0.52;
-    drawBolt(ctx, cx-gap, cy, size, 'rgba(255,220,0,0.38)', alpha*0.75);
-    drawBolt(ctx, cx+gap, cy, size, 'rgba(255,220,0,0.38)', alpha*0.75);
-    drawBolt(ctx, cx,     cy, size, '#ffffff',              alpha);
+
+  function drawBoltTarget(ctx, cx, cy, H, alpha) {
+    if (alpha <= 0) return;
+    ctx.save();
+    const bw = H * 0.55, bh = H * 0.72;
+    ctx.globalAlpha = alpha * 0.18;
+    ctx.fillStyle = '#ffe600';
+    ctx.shadowColor = '#ffe600';
+    ctx.shadowBlur = 18;
+    ctx.fillRect(cx - bw/2, cy - bh/2, bw, bh);
+    ctx.restore();
+    drawBolt(ctx, cx, cy, H * 0.44, '#ffffff', alpha);
+    drawBolt(ctx, cx - H*0.24, cy, H * 0.22, 'rgba(255,220,0,0.55)', alpha * 0.7);
+    drawBolt(ctx, cx + H*0.24, cy, H * 0.22, 'rgba(255,220,0,0.55)', alpha * 0.7);
   }
+
   function drawArrow(ctx, x, cy, alpha, color) {
-    ctx.save(); ctx.globalAlpha = Math.max(0,alpha); ctx.strokeStyle=color; ctx.fillStyle=color;
-    ctx.lineWidth=2; ctx.lineCap='round'; ctx.lineJoin='round';
-    ctx.beginPath(); ctx.moveTo(x-12,cy); ctx.lineTo(x+3,cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(x+7,cy); ctx.lineTo(x-1,cy-6); ctx.lineTo(x-1,cy+6); ctx.closePath(); ctx.fill();
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.strokeStyle = color; ctx.fillStyle = color;
+    ctx.lineWidth = 2.2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(x - 14, cy); ctx.lineTo(x + 2, cy); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x + 8, cy);
+    ctx.lineTo(x, cy - 7);
+    ctx.lineTo(x, cy + 7);
+    ctx.closePath(); ctx.fill();
     ctx.restore();
   }
 
   function initArrowBtn(btn) {
-    if (btn.dataset.arrowDone) return; btn.dataset.arrowDone = '1';
+    if (btn.dataset.arrowDone) return;
+    btn.dataset.arrowDone = '1';
     const isDark = btn.classList.contains('dark');
     const arrowColor = isDark ? '#111' : '#fff';
+
     const canvas = document.createElement('canvas');
-    canvas.className = 'fug-canvas'; btn.insertBefore(canvas, btn.firstChild);
+    canvas.className = 'fug-canvas';
+    btn.insertBefore(canvas, btn.firstChild);
     const origIcon = btn.querySelector('.arr-icon');
     if (origIcon) origIcon.style.cssText = 'opacity:0!important;';
+    // Also hide conveyor-style spans (used in winners nav)
+    const arrowInner = btn.querySelector('.arrow-inner');
+    if (arrowInner) arrowInner.style.cssText = 'opacity:0!important;position:absolute;';
+
     const ctx = canvas.getContext('2d');
-    let W=0,H=0;
-    function resize(){ W=canvas.width=btn.offsetWidth||120; H=canvas.height=btn.offsetHeight||52; }
+    let W = 0, H = 0;
+    function resize() { W = canvas.width = btn.offsetWidth || 120; H = canvas.height = btn.offsetHeight || 52; }
     resize();
-    const STACK_X=()=>W*0.72, ARROW_X0=()=>W*0.22+12;
-    let phase='idle',arrowX=0,enterX=0,raf=null,hovering=false,flashA=0,shakeT=0,parts=[];
-    function boom(x){flashA=1;shakeT=10;for(let i=0;i<22;i++){const a=(i/22)*Math.PI*2,spd=1.5+Math.random()*3.5;parts.push({x,y:H/2,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,life:1,r:1.5+Math.random()*3,col:['#ffe600','#fff','#d4e600','#ffaa00'][Math.floor(Math.random()*4)]});}}
-    function drawIdle(){resize();ctx.clearRect(0,0,W,H);drawStack(ctx,STACK_X(),H/2,H,0.55);drawArrow(ctx,ARROW_X0(),H/2,0.9,arrowColor);}
-    function tick(){
-      resize();ctx.clearRect(0,0,W,H);const sx=STACK_X(),cy=H/2;
-      if(flashA>0){ctx.save();ctx.globalAlpha=flashA*0.32;ctx.fillStyle='#ffe600';ctx.fillRect(0,0,W,H);ctx.restore();flashA=Math.max(0,flashA-0.11);}
-      parts=parts.filter(p=>p.life>0.02);
-      parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vx*=0.84;p.vy*=0.84;p.life-=0.055;ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.col;ctx.shadowColor=p.col;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x,p.y,Math.max(0.3,p.r*p.life),0,Math.PI*2);ctx.fill();ctx.restore();});
-      const shk=shakeT>0?(Math.random()-.5)*4:0;if(shakeT>0)shakeT--;
-      if(phase==='idle'){drawStack(ctx,sx+shk,cy,H,0.55);drawArrow(ctx,ARROW_X0(),cy,0.9,arrowColor);raf=null;return;}
-      if(phase==='travel'){arrowX+=W*0.048;drawStack(ctx,sx+shk,cy,H,0.88);drawArrow(ctx,arrowX,cy,1,arrowColor);if(arrowX>=sx-8){boom(sx);phase='crash';}}
-      else if(phase==='crash'){drawStack(ctx,sx+shk,cy,H,flashA>0.4?0.1:0.88);if(parts.length===0&&flashA<=0){enterX=-W*0.08;phase='enter';}}
-      else if(phase==='enter'){enterX+=W*0.048;const stackAlpha=Math.min(0.88,enterX/(W*0.28));drawStack(ctx,sx,cy,H,Math.max(0,stackAlpha));drawArrow(ctx,enterX,cy,Math.min(1,enterX/(W*0.1)),arrowColor);if(enterX>=ARROW_X0()){if(hovering){arrowX=enterX;phase='travel';}else{phase='idle';drawIdle();raf=null;return;}}}
-      raf=requestAnimationFrame(tick);
+
+    const BOLT_X  = () => W * 0.72;
+    const ARROW_X0 = () => W * 0.22 + 12;
+
+    let phase = 'idle', arrowX = 0, enterX = 0, raf = null;
+    let hovering = false, flashA = 0, shakeT = 0, parts = [];
+
+    function boom(x) {
+      flashA = 1; shakeT = 12;
+      for (let i = 0; i < 28; i++) {
+        const a = (i / 28) * Math.PI * 2;
+        const spd = 1.8 + Math.random() * 4.2;
+        parts.push({
+          x, y: H / 2,
+          vx: Math.cos(a) * spd, vy: Math.sin(a) * spd,
+          life: 1, r: 1.8 + Math.random() * 3.5,
+          col: ['#ffe600','#fff','#ffcc00','#ffaa00','#ff8c00','rgba(255,255,255,0.9)'][Math.floor(Math.random() * 6)]
+        });
+      }
     }
-    btn.addEventListener('mouseenter',()=>{hovering=true;if(phase==='idle'){arrowX=ARROW_X0();phase='travel';parts=[];flashA=0;shakeT=0;if(!raf)raf=requestAnimationFrame(tick);}});
-    btn.addEventListener('mouseleave',()=>{hovering=false;});
+
+    function drawIdle() {
+      resize(); ctx.clearRect(0, 0, W, H);
+      drawBoltTarget(ctx, BOLT_X(), H / 2, H, 0.75);
+      drawArrow(ctx, ARROW_X0(), H / 2, 0.9, arrowColor);
+    }
+
+    function tick() {
+      resize(); ctx.clearRect(0, 0, W, H);
+      const bx = BOLT_X(), cy = H / 2;
+
+      if (flashA > 0) {
+        ctx.save(); ctx.globalAlpha = flashA * 0.45; ctx.fillStyle = '#ffe600';
+        ctx.shadowColor = '#ffe600'; ctx.shadowBlur = 30;
+        ctx.fillRect(0, 0, W, H); ctx.restore();
+        flashA = Math.max(0, flashA - 0.09);
+      }
+
+      parts = parts.filter(p => p.life > 0.02);
+      parts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        p.vx *= 0.82; p.vy *= 0.82;
+        p.life -= 0.048;
+        ctx.save(); ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.col; ctx.shadowColor = p.col; ctx.shadowBlur = 10;
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0.3, p.r * p.life), 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      });
+
+      const shk = shakeT > 0 ? (Math.random() - 0.5) * 5 : 0;
+      if (shakeT > 0) shakeT--;
+
+      if (phase === 'idle') {
+        drawBoltTarget(ctx, bx + shk, cy, H, 0.75);
+        drawArrow(ctx, ARROW_X0(), cy, 0.9, arrowColor);
+        raf = null; return;
+      }
+      if (phase === 'travel') {
+        arrowX += W * 0.052;
+        drawBoltTarget(ctx, bx + shk, cy, H, 0.88);
+        drawArrow(ctx, arrowX, cy, 1, arrowColor);
+        if (arrowX >= bx - 8) { boom(bx); phase = 'crash'; }
+      } else if (phase === 'crash') {
+        const boltAlpha = flashA > 0.3 ? 0 : Math.max(0, 0.88 - (1 - flashA) * 2);
+        drawBoltTarget(ctx, bx + shk, cy, H, boltAlpha);
+        if (parts.length === 0 && flashA <= 0) { enterX = -W * 0.08; phase = 'enter'; }
+      } else if (phase === 'enter') {
+        enterX += W * 0.052;
+        const boltAlpha = Math.min(0.75, enterX / (W * 0.28));
+        drawBoltTarget(ctx, bx, cy, H, Math.max(0, boltAlpha));
+        drawArrow(ctx, enterX, cy, Math.min(1, enterX / (W * 0.12)), arrowColor);
+        if (enterX >= ARROW_X0()) {
+          if (hovering) { arrowX = enterX; phase = 'travel'; }
+          else { phase = 'idle'; drawIdle(); raf = null; return; }
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    btn.addEventListener('mouseenter', () => {
+      hovering = true;
+      if (phase === 'idle') {
+        arrowX = ARROW_X0(); phase = 'travel';
+        parts = []; flashA = 0; shakeT = 0;
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
+    });
+    btn.addEventListener('mouseleave', () => { hovering = false; });
     drawIdle();
   }
-  function initAllArrows(){ document.querySelectorAll('.arrow-btn').forEach(initArrowBtn); }
+
+  function initAllArrows() {
+    document.querySelectorAll('.arrow-btn, #prev-winner, #next-winner').forEach(initArrowBtn);
+  }
 
   /* ═══════════════════════════════════════════════════════════════
      B. ARROW CONVEYOR (winners-nav ← / → plain buttons)
   ═══════════════════════════════════════════════════════════════ */
   function initArrowConveyor() {
-    const SEL = '#prev-winner, #next-winner, #winners-prev, #winners-next';
+    // #prev-winner and #next-winner are handled by initArrowBtn (crash animation) — skip them here
+    const SEL = '#winners-prev, #winners-next';
     document.querySelectorAll(SEL).forEach(btn => {
       if (btn.classList.contains('arrow-btn') || btn.dataset.conveyorDone) return;
       btn.dataset.conveyorDone = '1';
@@ -838,8 +919,8 @@
     initHeroSimDrop();
     initNoodleText();
     initKikkFaq();
-    // Lightning runs after a short delay to let DOM settle
-    setTimeout(initLightningText, 300);
+    // Heading boxes run after DOM settles
+    setTimeout(initHeadingBoxes, 200);
 
     setInterval(() => {
       initAllArrows();
@@ -847,7 +928,7 @@
       initCardFlips();
       initNoodleText();
       initKikkFaq();
-      initLightningText();
+      initHeadingBoxes();
     }, 2000);
   }
 

@@ -191,10 +191,11 @@
     }
 
     /* ══════════════════════════════════════════════
-       PARTNERS SECTION — scrolling carousel
+       PARTNERS SECTION — lavender bg so all logos are clearly visible
     ══════════════════════════════════════════════ */
     .partners-section{
-      background:#fff;padding:80px 0 80px;
+      background: var(--lavender);  /* #dde3f0 — site lavender, complements navy */
+      padding:80px 0 80px;
       position:relative;overflow:hidden;
     }
     .partners-title{
@@ -223,19 +224,36 @@
       from{transform:translateX(0)}
       to{transform:translateX(-50%)}
     }
+
+    /* White logo boxes so logos pop cleanly against the lavender background */
     .carousel-logo{
       min-width: 180px;
-      height: 200px;
-      background:rgb(194, 189, 189);
+      height: 125px;
+      background: #c0bddb, 212, 238);
+      border: 1px solid rgba(26,39,68,0.10);
       flex:0 0 auto;
       display:flex;align-items:center;justify-content:center;
-      height:125px;
+      padding: 16px 24px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .carousel-logo:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 24px rgba(26,39,68,0.14);
     }
     .carousel-logo img{
-      max-height:200px;
-      max-width:200px;
+      max-height:80px;
+      max-width:150px;
       object-fit:contain;
       display:block;
+    }
+    .carousel-logo a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
 
     .partners-disclaimer{
@@ -339,9 +357,9 @@
     </div>
 
     <div class="premiere-co">
-      <span>DREAM FEEL FACTORY</span>
-      <img src="../images/logos/immersiveAfrica/dreamfeel.svg" alt="I'm Sorry"/>
-      <img src="../images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;filter:invert(1) brightness(2)"/>
+      <span style="font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;">Dream Feel Factory</span>
+      <img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/>
+      <img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;filter:invert(1) brightness(2)"/>
     </div>
 
     <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
@@ -386,7 +404,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     PARTNERS SECTION — moving carousel
+     PARTNERS SECTION — lavender background, white logo boxes
 ══════════════════════════════════════════════ -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:24px;left:80px;animation-delay:0s;">
@@ -406,23 +424,23 @@
 
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track">
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+      <div class="carousel-logo"><a href="https://www.acfafrica.org" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></a></div>
+      <div class="carousel-logo"><a href="https://www.eunicglobal.eu" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></a></div>
+      <div class="carousel-logo"><a href="https://www.eeas.europa.eu/south-africa" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></a></div>
+      <div class="carousel-logo"><a href="https://prohelvetia.ch" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></a></div>
+      <div class="carousel-logo"><a href="https://www.goethe.de/southafrica" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></a></div>
+      <div class="carousel-logo"><a href="https://www.bmeia.gv.at/en/austrian-embassy-pretoria" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></a></div>
+      <div class="carousel-logo"><a href="https://dreamfeelfactory.com" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></a></div>
+      <div class="carousel-logo"><a href="https://tshimologong.joburg" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></a></div>
       <!-- duplicate for seamless loop -->
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
-      <div class="carousel-logo"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+      <div class="carousel-logo"><a href="https://www.acfafrica.org" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></a></div>
+      <div class="carousel-logo"><a href="https://www.eunicglobal.eu" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></a></div>
+      <div class="carousel-logo"><a href="https://www.eeas.europa.eu/south-africa" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></a></div>
+      <div class="carousel-logo"><a href="https://prohelvetia.ch" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></a></div>
+      <div class="carousel-logo"><a href="https://www.goethe.de/southafrica" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></a></div>
+      <div class="carousel-logo"><a href="https://www.bmeia.gv.at/en/austrian-embassy-pretoria" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></a></div>
+      <div class="carousel-logo"><a href="https://dreamfeelfactory.com" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></a></div>
+      <div class="carousel-logo"><a href="https://tshimologong.joburg" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></a></div>
     </div>
   </div>
 
@@ -431,12 +449,8 @@
   </p>
 </section>
 
-
-<!-- Scripts -->
-
 <script src="footer.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
+<script src="fak-ugesi-global-effects-v10.js"></script>
 <script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {

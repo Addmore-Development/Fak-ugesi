@@ -115,245 +115,6 @@
     }
     .ticker-item span { margin-right:32px; opacity:.5; }
 
-    /* ── 2025 WINNERS ─────────────────────────────── */
-    .winners-section {
-      background:#fff; padding:72px 80px; position:relative;
-      color: var(--dark-text);
-    }
-    .winners-header {
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom:48px;
-    }
-    .winners-title {
-      font-size:48px; font-weight:900; color:var(--dark-text);
-    }
-    .winners-nav {
-      display:flex; gap:16px; align-items:center;
-    }
-    .winners-nav button {
-      background:none; border:none; font-size:20px; cursor:pointer;
-      color:var(--dark-text); padding:4px 8px;
-      transition: opacity .2s;
-    }
-    .winners-nav button:hover { opacity:.5; }
-    .winners-carousel { overflow:hidden; position:relative; }
-    .winners-track {
-      display:flex; gap:20px;
-      transition: transform .4s ease;
-    }
-    .winner-card { flex:0 0 380px; }
-    .winner-img {
-      width:100%; height:280px; object-fit:cover; display:block;
-      margin-bottom:16px;
-    }
-    .winner-category {
-      font-size:11px; font-weight:600; letter-spacing:.1em;
-      text-transform:uppercase; color:var(--body-gray); margin-bottom:6px;
-    }
-    .winner-badge {
-      font-size:11px; font-weight:600; letter-spacing:.1em;
-      text-transform:uppercase; color:var(--body-gray); margin-bottom:6px;
-    }
-    .winner-name {
-      font-size:24px; font-weight:800; color:var(--dark-text); margin-bottom:6px;
-    }
-    .winner-members {
-      font-size:13px; color:var(--body-gray);
-    }
-
-    /* ── CHALLENGE PANELS ─────────────────────────── */
-    .challenge-panel {
-      position:relative; width:100%; min-height:520px;
-      overflow:hidden; display:flex; align-items:flex-end;
-    }
-    .challenge-bg {
-      position:absolute; inset:0;
-      background-size:cover; background-position:center;
-      filter:brightness(0.45);
-    }
-    .challenge-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.75) 40%, transparent 100%);
-    }
-    .challenge-content {
-      position:relative; z-index:3;
-      padding:0 80px 56px; width:100%;
-      display:flex; align-items:flex-end; justify-content:space-between;
-    }
-    .challenge-text { max-width:520px; }
-    .challenge-title {
-      font-size:52px; font-weight:900; line-height:1.05;
-      color:#fff; margin-bottom:24px;
-    }
-    .challenge-badge {
-      font-size:11px; font-weight:600; letter-spacing:.1em;
-      text-transform:uppercase; color:rgba(255,255,255,.65);
-      margin-bottom:10px;
-    }
-    .challenge-sub {
-      font-size:20px; font-weight:700; color:#fff; margin-bottom:12px;
-    }
-    .challenge-body {
-      font-size:13px; line-height:1.7; color:rgba(255,255,255,.82);
-      margin-bottom:24px; max-width:460px;
-    }
-    .challenge-cta {
-      display:inline-flex; align-items:center;
-      border:1.5px solid #fff; color:#fff; background:transparent;
-      padding:11px 28px; font-size:11px; font-weight:700;
-      letter-spacing:.12em; text-transform:uppercase;
-      text-decoration:none; cursor:pointer;
-      transition: background .22s, color .22s;
-    }
-    .challenge-cta:hover { background:#fff; color:#000; }
-    .challenge-apply-link {
-      font-size:12px; color:#fff; text-decoration:underline;
-      font-weight:600; letter-spacing:.05em; opacity:.8;
-      align-self:flex-start; padding-top:8px;
-      transition: opacity .2s;
-    }
-    .challenge-apply-link:hover { opacity:1; }
-
-    /* ── PRIZES ───────────────────────────────────── */
-    .prizes-section {
-      background:#fff; padding:72px 80px; position:relative;
-    }
-    .prizes-header {
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom:44px;
-    }
-    .prizes-title {
-      font-size:44px; font-weight:900; color:var(--dark-text);
-    }
-    .prizes-apply-link {
-      font-size:12px; color:var(--navy); text-decoration:underline;
-      font-weight:600; letter-spacing:.05em; cursor:pointer;
-    }
-    .prizes-grid {
-      display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
-    }
-    .prize-card {
-      border:1px solid rgba(26,39,68,.14);
-      background:#f5f7fc;
-      padding:28px 24px;
-    }
-    .prize-card-category {
-      font-size:11px; font-weight:600; letter-spacing:.1em;
-      text-transform:uppercase; color:var(--body-gray); margin-bottom:10px;
-    }
-    .prize-amount {
-      font-size:30px; font-weight:900; color:var(--dark-text); margin-bottom:12px;
-    }
-    .prize-desc {
-      font-size:13px; line-height:1.65; color:var(--body-gray);
-    }
-
-    /* ── REQUIREMENTS ─────────────────────────────── */
-    .requirements-section {
-      background:var(--navy); padding:72px 80px; position:relative;
-      color:#fff;
-    }
-    .req-header {
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom:44px;
-    }
-    .req-title {
-      font-size:44px; font-weight:900; color:#fff;
-    }
-    .req-apply-link {
-      font-size:12px; color:#fff; text-decoration:underline;
-      font-weight:600; letter-spacing:.05em; cursor:pointer; opacity:.8;
-    }
-    .req-list {
-      list-style:none; counter-reset:req-counter;
-      display:flex; flex-direction:column; gap:20px;
-    }
-    .req-list li {
-      counter-increment:req-counter;
-      display:grid; grid-template-columns:28px 1fr; gap:16px;
-      font-size:13px; line-height:1.75; color:rgba(255,255,255,.85);
-    }
-    .req-list li::before {
-      content:counter(req-counter)".";
-      font-weight:700; color:#fff; padding-top:1px;
-    }
-
-    /* ── FAQ ──────────────────────────────────────── */
-    .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
-    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-    .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-    .faq-right-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
-    .faq-items { display: flex; flex-direction: column; }
-    .faq-grid {
-      display:grid; grid-template-columns:1fr 1.6fr; gap:64px; align-items:start;
-    }
-    .faq-left-title {
-      font-size:44px; font-weight:900; color:var(--dark-text);
-    }
-    .faq-left-body {
-      font-size:13px; line-height:1.72; color:var(--body-gray); margin-top:16px;
-    }
-    .faq-apply-link {
-      font-size:12px; color:var(--navy); text-decoration:underline;
-      font-weight:600; letter-spacing:.05em; cursor:pointer;
-      position:absolute; top:72px; right:80px;
-    }
-    .faq-list { display:flex; flex-direction:column; }
-    .faq-question {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:18px 0; cursor:pointer; font-size:15px; font-weight:600;
-      color:var(--dark-text); gap:16px;
-      background:none; border:none; width:100%; text-align:left;
-      font-family:'InterDisplay',sans-serif;
-    }
-    .faq-question:hover { color:var(--navy); }
-    .faq-icon {
-      font-size:18px; flex-shrink:0; color:var(--dark-text);
-      transition: transform .25s;
-    }
-    .faq-item.open .faq-icon { transform:rotate(45deg); }
-    .faq-answer {
-      font-size:13px; line-height:1.72; color:var(--body-gray);
-      max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease;
-    }
-    .faq-item.open .faq-answer { max-height:300px; padding-bottom:18px; }
-
-    /* ── PARTNERS ─────────────────────────────────── */
-    .partners-section {
-      background:var(--lavender); padding:72px 80px; position:relative;
-    }
-    .partners-header {
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom:44px;
-    }
-    .partners-title {
-      font-size:38px; font-weight:600; color:var(--dark-text);
-    }
-    .partners-link {
-      font-size:12px; color:var(--navy); font-weight:600;
-      text-decoration:underline; letter-spacing:.06em; cursor:pointer;
-    }
-    .partners-grid {
-      display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-    }
-    .partner-card { display:flex; flex-direction:column; }
-    .partner-logo-box {
-      background:#fff; border:1px solid rgba(26,39,68,.12);
-      aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-      padding:40px 32px; margin-bottom:16px;
-      transition: box-shadow .3s, transform .3s;
-    }
-    .partner-card:hover .partner-logo-box {
-      box-shadow:0 10px 32px rgba(26,39,68,.13); transform:translateY(-5px);
-    }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color {filter: none; }
-    .partner-desc {
-      font-size:12px; color:var(--body-gray); line-height:1.65;
-    }
-
     /* ── SOCIAL FOOTER BAR ────────────────────────── */
     .social-bar {
       background:var(--navy); padding:18px 80px;
@@ -390,109 +151,108 @@
       padding:0 80px; height:40px; position:relative;
     }
 
+
+    /* ── 2025 WINNERS — awards-style scroll ── */
+    .winners-section{background:var(--white);padding:60px 0 0;position:relative;overflow:hidden}
+    .winners-header{display:flex;justify-content:space-between;align-items:center;padding:0 80px 36px}
+    .winners-title{font-size:50px;font-weight:600;color:var(--dark-text)}
+    .winners-nav{display:flex;gap:0;align-items:center}
+    .winners-nav button{
+      background:none;border:1px solid var(--dark-text);cursor:pointer;
+      font-size:13px;color:var(--dark-text);width:90px;height:48px;
+      display:flex;align-items:center;justify-content:center;gap:4px;
+      overflow:hidden;position:relative;font-family:'InterDisplay',sans-serif;
+      transition:background 0.22s,color 0.22s;font-weight:700;
+    }
+    .winners-nav button:hover{background:var(--dark-text);color:var(--white)}
+    .winners-nav button .arrow-inner{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:100%}
+    .arrow-bolt{font-size:15px;display:inline-block}
+    .winners-nav button:hover .arrow-bolt{animation:boltCrash 0.38s ease forwards}
+    @keyframes boltCrash{0%{transform:scale(1) rotate(0)opacity:1}40%{transform:scale(1.8) rotate(-20deg);opacity:1}55%{transform:scale(0.5) rotate(10deg);opacity:.4}70%{transform:scale(1.3) rotate(-5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+    #next-winner:hover .arrow-inner{animation:arrowRight 0.42s cubic-bezier(0.4,0,0.2,1) forwards}
+    @keyframes arrowRight{0%{transform:translateX(0);opacity:1}45%{transform:translateX(150%);opacity:0}46%{transform:translateX(-150%);opacity:0}100%{transform:translateX(0);opacity:1}}
+    #prev-winner:hover .arrow-inner{animation:arrowLeft 0.42s cubic-bezier(0.4,0,0.2,1) forwards}
+    @keyframes arrowLeft{0%{transform:translateX(0);opacity:1}45%{transform:translateX(-150%);opacity:0}46%{transform:translateX(150%);opacity:0}100%{transform:translateX(0);opacity:1}}
+    .winners-strip-outer{overflow:hidden}
+    .winners-strip{display:flex;gap:16px;width:max-content;animation:winnersScroll 34s linear infinite}
+    .winners-strip:hover{animation-play-state:paused}
+    @keyframes winnersScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .winner-card{flex:0 0 380px;cursor:pointer}
+    .winner-img-wrap{width:380px;height:380px;overflow:hidden}
+    .winner-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+    .winner-card:hover .winner-img-wrap img{transform:scale(1.04)}
+    .winner-meta{padding:18px 0 0}
+    .winner-cat{font-size:11px;color:var(--body-gray);margin-bottom:6px}
+    .winner-name{font-size:18px;font-weight:700;color:var(--dark-text);line-height:1.3;margin-bottom:10px}
+    .winner-bottom{display:flex;justify-content:space-between}
+    .winner-author,.winner-country{font-size:13px;color:var(--body-gray)}
+    .crosses-row{display:flex;justify-content:space-between;padding:20px 80px}
+    .crosses-row svg{width:18px;height:18px}
+
+    /* ── FAQ — awards style ── */
+    .faq-section{background:var(--white);padding:64px 80px;position:relative}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
+    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
+    .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px}
+    .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px}
+    .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer}
+    .faq-items-wrap{display:flex;flex-direction:column}
+    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background .2s ease}
+    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15)}
+    .faq-item:hover{background:var(--navy)}
+    .faq-item:hover .faq-q-text{color:var(--white)}
+    .faq-item:hover .faq-t-icon{color:var(--white)}
+    .faq-item:hover .faq-ans{color:rgba(255,255,255,.75)}
+    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color .2s ease}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg)}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0}
+    .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
+
+    /* ── REQUIREMENTS — awards style ── */
+    .requirements-section{background:var(--navy);padding:64px 80px 72px;position:relative}
+    .req-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
+    .req-heading{font-size:50px;font-weight:600;color:var(--white)}
+    .req-link{color:var(--white);font-size:12px;text-decoration:underline;letter-spacing:.06em;opacity:.8;cursor:pointer}
+    #req-accordion{display:flex;flex-direction:column}
+    #req-accordion .req-item{border-top:1px solid rgba(255,255,255,.18);background:transparent;transition:background .2s ease}
+    #req-accordion .req-item:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
+    #req-accordion .req-item:hover{background:var(--white)}
+    #req-accordion .req-item:hover .req-q-text{color:var(--navy)}
+    #req-accordion .req-item:hover .req-tog{color:var(--navy)}
+    #req-accordion .req-item:hover .req-body{color:var(--body-gray)}
+    #req-accordion .req-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
+    #req-accordion .req-q-text{font-size:16px;font-weight:600;color:#fff;line-height:1.35;transition:color .2s ease}
+    #req-accordion .req-tog{font-size:22px;color:#fff;flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
+    #req-accordion .req-item.open .req-tog{transform:rotate(45deg)}
+    #req-accordion .req-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:rgba(255,255,255,.7);padding:0}
+    #req-accordion .req-item.open .req-body{max-height:300px;padding-bottom:22px}
+
+    /* ── PRIZE FLIP CARDS ── */
+    .prizes-section{background:var(--navy);padding:64px 80px 72px;position:relative;color:#fff}
+    .prizes-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+    .prizes-heading{font-size:46px;font-weight:600;color:#fff}
+    .prizes-link{font-size:12px;color:#fff;text-decoration:underline;letter-spacing:.06em;cursor:pointer;opacity:.8}
+    .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .prize-flip{perspective:1000px;cursor:pointer;min-height:220px}
+    .prize-flip-inner{position:relative;width:100%;height:100%;min-height:220px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(0.4,0,0.2,1)}
+    .prize-flip:hover .prize-flip-inner{transform:rotateY(180deg)}
+    .prize-front,.prize-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(255,255,255,.35);padding:24px 20px 28px}
+    .prize-front{background:transparent;transition:border-color .28s,background .28s}
+    .prize-flip:hover .prize-front{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
+    .prize-back{transform:rotateY(180deg);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:center}
+    .prize-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:16px}
+    .prize-amount{font-size:36px;font-weight:900;margin-bottom:16px}
+    .prize-desc{font-size:13px;line-height:1.65;opacity:.8}
+    .prize-fact-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+    .prize-fact{font-size:15px;font-weight:600;line-height:1.5;margin-bottom:10px}
+    .prize-detail{font-size:12px;color:rgba(255,255,255,.75);line-height:1.7}
+    .prize-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:14px}
+
     /* ── REVEAL ───────────────────────────────────── */
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
-
-        /* ════════════════════════════════════════════════════════
-       KIKK FAQ horizontal-expand styles (from awards page)
-    ════════════════════════════════════════════════════════ */
-    .faq-kikk-row {
-      display: flex !important; flex-direction: row !important;
-      align-items: stretch; width: 100%; overflow: hidden;
-      border: 1px solid rgba(26,39,68,0.15);
-    }
-    .faq-kikk-cell {
-      flex: 1 1 0; min-width: 0; position: relative; overflow: hidden;
-      cursor: pointer; border-right: 1px solid rgba(26,39,68,0.1);
-      transition: flex 0.5s cubic-bezier(0.4,0,0.2,1), background 0.38s ease, color 0.38s ease;
-    }
-    .faq-kikk-cell:last-child { border-right: none; }
-    .faq-kikk-cell.fkk-active   { flex: 5 1 0; }
-    .faq-kikk-cell.fkk-inactive { flex: 0.4 1 0; }
-    .faq-kikk-cell::before {
-      content: ''; position: absolute; left: 0; top: 0;
-      width: 3px; height: 100%; transform: scaleY(0); transform-origin: top;
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
-    .faq-kikk-cell.fkk-active::before { transform: scaleY(1); }
-    .fkk-collapsed {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      writing-mode: vertical-rl; text-orientation: mixed;
-      font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-      opacity: 0.45; white-space: nowrap; padding: 14px 8px;
-      font-family: 'InterDisplay', sans-serif; transition: opacity 0.25s; pointer-events: none;
-    }
-    .faq-kikk-cell.fkk-active .fkk-collapsed { opacity: 0; }
-    .fkk-expanded {
-      padding: 24px 20px 28px 22px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      min-height: 120px; opacity: 0; pointer-events: none;
-      transition: opacity 0.24s ease 0.1s; font-family: 'InterDisplay', sans-serif;
-    }
-    .faq-kikk-cell.fkk-active .fkk-expanded { opacity: 1; pointer-events: auto; }
-    .fkk-num { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.4; margin-bottom: 8px; }
-    .fkk-q   { font-size: 13px; font-weight: 600; line-height: 1.38; margin-bottom: 10px; }
-    .fkk-a   { font-size: 11.5px; line-height: 1.7; opacity: 0.78; }
-
-    /* FAQ theme: light bg → navy on hover */
-    .faq-kikk-row.faq-theme { border-color: rgba(26,39,68,0.15); }
-    .faq-kikk-row.faq-theme .faq-kikk-cell { background: #f0f3f9; color: #0d1b3e; border-right-color: rgba(26,39,68,0.1); }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active { background: #1a2744; color: #ffffff; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell::before { background: #1a2744; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active::before { background: rgba(255,255,255,0.4); }
-    .faq-kikk-row.faq-theme .fkk-collapsed { color: #0d1b3e; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active .fkk-collapsed { color: #fff; }
-    .faq-kikk-row.faq-theme .fkk-q,
-    .faq-kikk-row.faq-theme .fkk-a,
-    .faq-kikk-row.faq-theme .fkk-num { color: inherit; }
-
-    /* ════════════════════════════════════════════════════════
-       Section divider styles
-    ════════════════════════════════════════════════════════ */
-    .section-divider-line {
-      display: flex; align-items: center; gap: 14px;
-      padding: 18px 40px; position: relative; z-index: 2;
-    }
-    .section-divider-rule {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent);
-    }
-    .light-section .section-divider-rule {
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,.1), transparent);
-    }
-    .divider-plus {
-      cursor: pointer; display: inline-block; user-select: none;
-      font-size: 18px; font-weight: 300; line-height: 1; transition: color .2s;
-    }
-    .divider-plus:hover { color: #e05a1e !important; }
-    @keyframes divPlusSpin {
-      0%   { transform: rotate(0deg) scale(1); }
-      45%  { transform: rotate(210deg) scale(1.6); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .div-plus-spinning { animation: divPlusSpin .5s cubic-bezier(.4,0,.2,1) forwards !important; }
-    .fug-baby-plus2 {
-      position: fixed; pointer-events: none; z-index: 99999;
-      font-weight: 700; line-height: 1; transform: translate(-50%,-50%);
-      transition: transform .5s ease-out, opacity .5s ease-out;
-    }
-
-    /* ════════════════════════════════════════════════════════
-       Noodle text styles
-    ════════════════════════════════════════════════════════ */
-    .noodle-word   { display: inline-block; transition: none; cursor: default; }
-    .noodle-letter { display: inline-block; transition: transform 0.18s ease, filter 0.18s ease; }
-    @keyframes noodleWave {
-      0%   { transform: translateY(0) rotate(0deg) scaleX(1); }
-      20%  { transform: translateY(-8px) rotate(-6deg) scaleX(1.12); }
-      40%  { transform: translateY(6px) rotate(4deg) scaleX(0.88); }
-      60%  { transform: translateY(-5px) rotate(-3deg) scaleX(1.08); }
-      80%  { transform: translateY(3px) rotate(2deg) scaleX(0.95); }
-      100% { transform: translateY(0) rotate(0deg) scaleX(1); }
-    }
-    .noodle-letter.noodling { animation: noodleWave 0.7s ease forwards; filter: blur(0.4px); color: inherit; }
   </style>
 </head>
 <body>
@@ -533,54 +293,36 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
-     2025 WINNERS
-═══════════════════════════════════════════════════ -->
+<!-- 2025 WINNERS — awards style -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
     <div class="winners-nav">
-      <button id="prev-winner" aria-label="Previous">←</button>
-      <button id="next-winner" aria-label="Next">→</button>
+      <button id="prev-winner" aria-label="Previous"><span class="arrow-inner"><span class="arrow-bolt">⚡</span>←</span></button>
+      <button id="next-winner" aria-label="Next"><span class="arrow-inner">→<span class="arrow-bolt">⚡</span></span></button>
     </div>
   </div>
-
-  <div class="winners-carousel">
-    <div class="winners-track" id="winners-track">
-      <div class="winner-card">
-        <img class="winner-img" src="../images/team-sokuga.png" alt="Team Sakuga"/>
-        <p class="winner-badge">Runner-up</p>
-        <p class="winner-category">Animation</p>
-        <h3 class="winner-name">Team Sakuga</h3>
-        <p class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</p>
-      </div>
-      <div class="winner-card">
-        <img class="winner-img" src="../images/team-sokuga.png" alt="Team Sakuga"/>
-        <p class="winner-badge">Runner-up</p>
-        <p class="winner-category">Animation</p>
-        <h3 class="winner-name">Team Sakuga</h3>
-        <p class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</p>
-      </div>
-      <div class="winner-card">
-        <img class="winner-img" src="../images/team-sokuga.png" alt="Team Sakuga"/>
-        <p class="winner-badge">Runner-up</p>
-        <p class="winner-category">Animation</p>
-        <h3 class="winner-name">Team Sakuga</h3>
-        <p class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</p>
-      </div>
-      <div class="winner-card">
-        <img class="winner-img" src="../images/team-sokuga.png" alt="Team Sakuga"/>
-        <p class="winner-badge">Winner</p>
-        <p class="winner-category">Animation</p>
-        <h3 class="winner-name">Team Sakuga</h3>
-        <p class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</p>
-      </div>
+  <div class="winners-strip-outer">
+    <div class="winners-strip" id="winnersStrip">
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/team-sokuga.png" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
     </div>
+  </div>
+  <div class="crosses-row">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════
      2026 ANIMATION CHALLENGE
@@ -622,93 +364,213 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     2026 PRIZES
-═══════════════════════════════════════════════════ -->
+<!-- 2026 PRIZES — flip cards -->
 <section class="prizes-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-
-  <div class="prizes-header">
-    <h2 class="prizes-title">2026 Prizes</h2>
-    <a class="prizes-apply-link" href="tickets.html">Apply now</a>
-  </div>
-
-  <div class="prizes-grid">
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-    <div class="prize-card">
-      <p class="prize-card-category">Animation Winner</p>
-      <p class="prize-amount">R20,000</p>
-      <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     REQUIREMENTS
-═══════════════════════════════════════════════════ -->
-<section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:50%;animation-delay:.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-
-  <div class="req-header">
-    <h2 class="req-title">Requirements</h2>
-    <a class="req-apply-link" href="tickets.html">Apply now</a>
+  <div class="prizes-hdr">
+    <h2 class="prizes-heading">2026 Prizes</h2>
+    <a class="prizes-link" href="#">Apply now</a>
   </div>
-
-  <ol class="req-list">
-    <li>Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede. Aenean congue pede in nisi tristique interdum. Sed commodo, ipsum ac dignissim ullamcorper, odio nulla venenatis nisi, in porta dolor neque venenatis lacus. Pellentesque fermentum. Mauris sit amet ligula ut tellus gravida mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices cubilia Curae;</li>
-    <li>Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl, suscipit at, rhoncus sit amet, porttitor sit amet, leo. Aenean hendrerit est. Etiam ac augue. Morbi tincidunt neque ut lacus. Duis vulputate cursus orci. Mauris justo lorem, scelerisque sit amet, placerat sed, condimentum in, leo. Donec urna est, semper quis, auctor eget, ultrices in, purus. Etiam rutrum. Aliquam blandit dui a libero.</li>
-    <li>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus purus, elementum ac, luctus ullamcorper, ornare vitae, massa. Nullam posuere sem ut mauris. Nullam velit. Quisque sodales. Donec suscipit suscipit erat. Nam blandit. Praesent congue lorem non dolor.</li>
-    <li>Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus. Duis molestie pede. Vivamus quis odio sit amet libero sodales tincidunt. Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</li>
-  </ol>
+  <div class="prizes-grid">
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Animation Winner</div>
+          <div class="prize-amount">R20,000</div>
+          <p class="prize-desc">First place in the animation category. Full prize package includes cash and mentorship.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">The Fak'ugesi Awards have been running since 2013.</div>
+          <div class="prize-detail">Over 10 years of celebrating African digital creativity.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Animation Runner-up</div>
+          <div class="prize-amount">R10,000</div>
+          <p class="prize-desc">Second place in the animation category.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">Winners receive mentorship from industry leaders.</div>
+          <div class="prize-detail">Access to Tshimologong's global creative network.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Game Design Winner</div>
+          <div class="prize-amount">R20,000</div>
+          <p class="prize-desc">First place in the video game challenge. Cash prize plus development support.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">Past winners have gone on to international exhibitions.</div>
+          <div class="prize-detail">From Lagos to Berlin — African creativity goes global.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Game Design Runner-up</div>
+          <div class="prize-amount">R10,000</div>
+          <p class="prize-desc">Second place in the video game challenge.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">All entries are reviewed by a diverse jury.</div>
+          <div class="prize-detail">Judges span art, tech, film, and interactive media.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Best Concept Award</div>
+          <div class="prize-amount">R5,000</div>
+          <p class="prize-desc">Awarded for the most innovative concept, regardless of final output.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">The prize includes exhibition space at the festival.</div>
+          <div class="prize-detail">Your work shown to thousands of festival attendees.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="prize-flip">
+      <div class="prize-flip-inner">
+        <div class="prize-front">
+          <div class="prize-label">Audience Choice Award</div>
+          <div class="prize-amount">R5,000</div>
+          <p class="prize-desc">Voted by festival attendees — the people's favourite.</p>
+        </div>
+        <div class="prize-back">
+          <div class="prize-fact-label">Fun Fact</div>
+          <div class="prize-fact">Winners are announced at the awards ceremony.</div>
+          <div class="prize-detail">A highlight of the Fak'ugesi Festival calendar.</div>
+          <div class="prize-hint">Hover to flip back</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq-section reveal" style="position:relative;">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:0.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 
+<!-- REQUIREMENTS — awards style -->
+<section class="requirements-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="req-hdr">
+    <h2 class="req-heading">Requirements</h2>
+    <a class="req-link" href="#">Submit your application</a>
+  </div>
+  <div id="req-accordion">
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">African origin or diaspora connection</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Work must be created by an African national or diaspora participant with demonstrable ties to the continent.</div>
+    </div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Digital or technology-led medium</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology.</div>
+    </div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Completed within the past 24 months</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Works older than two years from the submission date are ineligible.</div>
+    </div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Complete submission package required</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Portfolio, project description, high-resolution images, and an optional video link are all required.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ — awards style -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="faq-layout">
-    <div class="faq-left">
-      <h2 class="faq-title">FAQ</h2>
-      <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
     </div>
     <div>
-      <div class="faq-right-header">
-        <a class="faq-apply-link" href="tickets.html">Apply now</a>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="#">Apply now</a>
       </div>
-      <div class="faq-items" id="faq-items"></div>
+      <div class="faq-items-wrap" id="faqAccordion">
+      <div class="faq-item open">
+        <button class="faq-q-btn" aria-expanded="true">
+          <span class="faq-q-text">Who can apply?</span>
+          <span class="faq-t-icon">×</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" aria-expanded="false">
+          <span class="faq-q-text">What is the submission deadline?</span>
+          <span class="faq-t-icon">+</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" aria-expanded="false">
+          <span class="faq-q-text">How many categories can I enter?</span>
+          <span class="faq-t-icon">+</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" aria-expanded="false">
+          <span class="faq-q-text">What does a winner receive?</span>
+          <span class="faq-t-icon">+</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" aria-expanded="false">
+          <span class="faq-q-text">How is the jury selected?</span>
+          <span class="faq-t-icon">+</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q-btn" aria-expanded="false">
+          <span class="faq-q-text">Can I submit work in progress?</span>
+          <span class="faq-t-icon">+</span>
+        </button>
+        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      </div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════
      PARTNERS
@@ -793,275 +655,119 @@
      SCRIPTS
 ═══════════════════════════════════════════════════ -->
 <script src="sig-nav.js"></script>
-
+<script src="globalEffects.js"></script>
 
 <script>
-  /* ═══════════════════════════════════════════════════════════
-     REVEAL ON SCROLL
-  ═══════════════════════════════════════════════════════════ */
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealIO = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
-  }, { threshold: 0.06 });
-  revealEls.forEach(el => revealIO.observe(el));
+  /* ── Winners carousel ── */
+  const track = document.getElementById('winners-track');
+  let currentOffset = 0;
+  const cardWidth = 400; // card + gap
 
-  /* ═══════════════════════════════════════════════════════════
-     FAQ — build accordion items first so KIKK can read them
-  ═══════════════════════════════════════════════════════════ */
-  const faqData = [
-    { q: 'Who can apply to the JAMZ programme?',
-      a: 'Any African digital creator, studio, or collective is eligible to apply. Applicants must be based on the African continent or be of African origin, and the submitted work must have been created within the last two years.' },
-    { q: 'What file formats are accepted for submissions?',
-      a: 'We accept PDF portfolios, MP4 video files (max 500MB), and ZIP archives containing your project assets. All submissions must be accompanied by a completed online entry form.' },
-    { q: 'Is there an entry fee?',
-      a: 'There is no entry fee for applications. The JAMZ programme is committed to remaining accessible to all African creatives regardless of financial circumstance.' },
-    { q: 'Can I submit work that has already won another award?',
-      a: 'Yes. Previously awarded work is eligible provided it meets the two-year recency requirement and has not been submitted to the JAMZ programme in a prior cycle.' },
-    { q: 'When will winners be announced?',
-      a: 'Winners will be announced at the Fak\'ugesi Awards ceremony held during the annual festival in Johannesburg. Shortlisted applicants will be notified by email at least four weeks before the ceremony.' },
-    { q: 'Can a single applicant submit across multiple categories?',
-      a: 'Yes — applicants may submit to a maximum of three categories per cycle. Each submission must be accompanied by its own completed entry form and relevant supporting materials.' },
+  document.getElementById('next-winner').addEventListener('click', () => {
+    const max = (track.children.length - 3) * cardWidth;
+    currentOffset = Math.min(currentOffset + cardWidth, max);
+    track.style.transform = `translateX(-${currentOffset}px)`;
+  });
+  document.getElementById('prev-winner').addEventListener('click', () => {
+    currentOffset = Math.max(currentOffset - cardWidth, 0);
+    track.style.transform = `translateX(-${currentOffset}px)`;
+  });
+
+  /* ── FAQ accordion ── */
+  const faqs = [
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
   ];
 
-  const faqContainer = document.getElementById('faq-items');
-  faqData.forEach((faq, i) => {
+  const faqList = document.getElementById('faq-list');
+  faqs.forEach((faq, i) => {
     const item = document.createElement('div');
     item.className = 'faq-item' + (i === 0 ? ' open' : '');
     item.innerHTML = `
-      <button class="faq-question" aria-expanded="${i === 0}">
-        <span class="faq-question-text">${faq.q}</span>
-        <span class="faq-toggle">${i === 0 ? '−' : '+'}</span>
+      <button class="faq-question">
+        <span>${faq.q}</span>
+        <span class="faq-icon">${i === 0 ? '−' : '+'}</span>
       </button>
-      <div class="faq-answer">${faq.a}</div>`;
-    /* standard accordion (fallback — KIKK replaces this interaction) */
+      <div class="faq-answer">${faq.a}</div>
+    `;
     item.querySelector('.faq-question').addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      faqList.querySelectorAll('.faq-item').forEach(el => {
         el.classList.remove('open');
-        el.querySelector('.faq-toggle').textContent = '+';
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-icon').textContent = '+';
       });
       if (!isOpen) {
         item.classList.add('open');
-        item.querySelector('.faq-toggle').textContent = '−';
-        item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
+        item.querySelector('.faq-icon').textContent = '−';
       }
     });
-    faqContainer.appendChild(item);
+    faqList.appendChild(item);
   });
 
-  /* ═══════════════════════════════════════════════════════════
-     EMBEDDED FROM globalEffects.js
-     A. KIKK HORIZONTAL EXPAND — FAQ
-     Reads the .faq-item divs just built above and transforms
-     them into the animated horizontal panel layout.
-  ═══════════════════════════════════════════════════════════ */
-  (function initKikkFaq() {
+  /* ── Reveal on scroll ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => io.observe(el));
+</script>
 
-    function buildKikkRow(container, theme) {
-      if (container.dataset.kikkDone) return;
-      const items = container.querySelectorAll(':scope > .faq-item');
-      if (items.length < 2) return;
-      container.dataset.kikkDone = '1';
-
-      const themeClass = (theme === 'req') ? 'req-theme' : 'faq-theme';
-      const data = [];
-
-      items.forEach((item, i) => {
-        const qEl = item.querySelector('.faq-question-text, .faq-question span:first-child');
-        const aEl = item.querySelector('.faq-answer');
-        const rawQ = qEl ? qEl.textContent.trim() : `Item ${i + 1}`;
-        const rawA = aEl ? aEl.innerHTML.trim() : '';
-        const shortLabel = rawQ.length > 16 ? rawQ.slice(0, 16) + '…' : rawQ;
-        data.push({ q: rawQ, a: rawA, shortLabel, num: String(i + 1).padStart(2, '0') });
-      });
-
-      const row = document.createElement('div');
-      row.className = `faq-kikk-row ${themeClass}`;
-
-      data.forEach((d, i) => {
-        const cell = document.createElement('div');
-        cell.className = 'faq-kikk-cell' + (i === 0 ? ' fkk-active' : '');
-        cell.innerHTML = `
-          <div class="fkk-collapsed">${d.shortLabel}</div>
-          <div class="fkk-expanded">
-            <div class="fkk-num">${d.num}</div>
-            <div class="fkk-q">${d.q}</div>
-            ${d.a ? `<div class="fkk-a">${d.a}</div>` : ''}
-          </div>`;
-
-        cell.addEventListener('mouseenter', () => {
-          row.querySelectorAll('.faq-kikk-cell').forEach(c => {
-            c.classList.remove('fkk-active');
-            c.classList.add('fkk-inactive');
-          });
-          cell.classList.remove('fkk-inactive');
-          cell.classList.add('fkk-active');
-        });
-
-        row.appendChild(cell);
-      });
-
-      row.addEventListener('mouseleave', () => {
-        row.querySelectorAll('.faq-kikk-cell').forEach((c, idx) => {
-          c.classList.remove('fkk-active', 'fkk-inactive');
-          if (idx === 0) c.classList.add('fkk-active');
-        });
-      });
-
-      container.innerHTML = '';
-      container.appendChild(row);
+<script>
+  /* ── WINNERS scroll nudge ── */
+  (function(){
+    const strip=document.getElementById('winnersStrip');
+    if(!strip)return;
+    const CARD=380+16; let paused=false;
+    function nudge(dir){
+      if(paused)return; paused=true;
+      const mat=new DOMMatrix(getComputedStyle(strip).transform);
+      const curX=mat.m41;
+      strip.style.animation='none';
+      strip.style.transition='transform 0.52s cubic-bezier(0.4,0,0.2,1)';
+      strip.style.transform=`translateX(${curX+dir*CARD}px)`;
+      setTimeout(()=>{strip.style.transition='';strip.style.transform='';strip.style.animation='winnersScroll 34s linear infinite';paused=false;},1800);
     }
-
-    /* FAQ containers */
-    ['#faq-items', '.faq-items', '#faq-list', '.faq-list', '#faqList'].forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => { if (!el.dataset.kikkDone) buildKikkRow(el, 'faq'); });
+    const pb=document.getElementById('prev-winner');
+    const nb=document.getElementById('next-winner');
+    if(pb)pb.addEventListener('click',()=>nudge(1));
+    if(nb)nb.addEventListener('click',()=>nudge(-1));
+  })();
+  /* ── FAQ accordion ── */
+  (function(){
+    const c=document.getElementById('faqAccordion');
+    if(!c)return;
+    c.addEventListener('click',e=>{
+      const item=e.target.closest('.faq-item');
+      if(!item)return;
+      const isOpen=item.classList.contains('open');
+      c.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-t-icon').textContent='+';i.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');item.querySelector('.faq-t-icon').textContent='×';item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');}
     });
   })();
-
-  /* ═══════════════════════════════════════════════════════════
-     SECTION DIVIDERS — plus-spin + baby plus burst
-  ═══════════════════════════════════════════════════════════ */
-  (function initDividers() {
-
-    function shootBabyPluses(el) {
-      const rect   = el.getBoundingClientRect();
-      const cx     = rect.left + rect.width / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const colours = ['#e05a1e', '#1a2744', '#4a6fa5', '#ff8c42'];
-      for (let i = 0; i < 8; i++) {
-        const angle = (i / 8) * Math.PI * 2;
-        const dist  = 28 + Math.random() * 22;
-        const size  = 9  + Math.random() * 7;
-        const baby  = document.createElement('span');
-        baby.className  = 'fug-baby-plus2';
-        baby.textContent = '+';
-        baby.style.cssText = `left:${cx}px;top:${cy}px;font-size:${size}px;color:${colours[i % colours.length]};`;
-        document.body.appendChild(baby);
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          baby.style.transform = `translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px)) rotate(${Math.random()*360}deg) scale(0.3)`;
-          baby.style.opacity   = '0';
-        }));
-        setTimeout(() => baby.remove(), 580);
-      }
-    }
-
-    const lightSet = new Set([
-      'spotlight-section','happening-section','who-section',
-      'editions-section','team-section','contact-section','partners-section'
-    ]);
-
-    document.querySelectorAll(
-      '.winners-section,.challenge-panel,.prizes-section,' +
-      '.requirements-section,.faq-section,.partners-section'
-    ).forEach(sec => {
-      if (sec.dataset.divider) return;
-      sec.dataset.divider = '1';
-
-      const isLight = [...sec.classList].some(c => lightSet.has(c));
-      sec.classList.toggle('light-section', isLight);
-      const col = isLight ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-
-      const div = document.createElement('div');
-      div.className = 'section-divider-line';
-      div.innerHTML = `
-        <span class="divider-plus" style="color:${col}">+</span>
-        <div class="section-divider-rule"></div>
-        <span class="divider-plus" style="color:${col}">+</span>
-        <div class="section-divider-rule"></div>
-        <span class="divider-plus" style="color:${col}">+</span>`;
-      sec.insertBefore(div, sec.firstChild);
-
-      div.querySelectorAll('.divider-plus').forEach(p => {
-        p.addEventListener('mouseenter', () => {
-          p.classList.remove('div-plus-spinning');
-          void p.offsetWidth;
-          p.classList.add('div-plus-spinning');
-          shootBabyPluses(p);
-        });
-        p.addEventListener('animationend', () => p.classList.remove('div-plus-spinning'));
-      });
+  /* ── Requirements accordion ── */
+  (function(){
+    const c=document.getElementById('req-accordion');
+    if(!c)return;
+    c.addEventListener('click',e=>{
+      const item=e.target.closest('.req-item');
+      if(!item)return;
+      const isOpen=item.classList.contains('open');
+      c.querySelectorAll('.req-item').forEach(i=>{i.classList.remove('open');i.querySelector('.req-tog').textContent='+';i.querySelector('.req-btn').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');item.querySelector('.req-tog').textContent='×';item.querySelector('.req-btn').setAttribute('aria-expanded','true');}
     });
   })();
-
-  /* ═══════════════════════════════════════════════════════════
-     NOODLE TEXT — section headings
-  ═══════════════════════════════════════════════════════════ */
-  (function initNoodle() {
-
-    const SEL = [
-      '.winners-title', '.prizes-title',
-      '.req-title', '.faq-title', '.partners-title',
-      'h2:not(.hero-title):not(.hero-head)',
-      'h3:not(.hero-title):not(.hero-head)',
-    ].join(',');
-
-    function wrapNoodle(el) {
-      if (el.dataset.noodle) return;
-      if (el.closest('.hero') || el.closest('.nav-links') || el.closest('.faq-kikk-row')) return;
-      if (el.classList.contains('hero-title') || el.classList.contains('hero-head')) return;
-
-      el.dataset.noodle = '1';
-      el.classList.add('noodle-word');
-
-      function splitNode(node) {
-        if (node.nodeType === 3) {
-          const frag = document.createDocumentFragment();
-          for (const ch of node.textContent) {
-            if (ch === ' ' || ch === '\n') { frag.appendChild(document.createTextNode(ch)); continue; }
-            const span = document.createElement('span');
-            span.className  = 'noodle-letter';
-            span.textContent = ch;
-            frag.appendChild(span);
-          }
-          return frag;
-        } else if (node.nodeType === 1 && node.tagName !== 'SPAN') {
-          const clone = node.cloneNode(false);
-          node.childNodes.forEach(c => clone.appendChild(splitNode(c)));
-          return clone;
-        }
-        return node.cloneNode(true);
-      }
-
-      const frag = document.createDocumentFragment();
-      el.childNodes.forEach(n => frag.appendChild(splitNode(n)));
-      el.innerHTML = '';
-      el.appendChild(frag);
-
-      el.addEventListener('mouseenter', () => {
-        el.querySelectorAll('.noodle-letter').forEach((letter, i) => {
-          letter.classList.remove('noodling');
-          void letter.offsetWidth;
-          setTimeout(() => {
-            letter.classList.add('noodling');
-            letter.addEventListener('animationend', () => letter.classList.remove('noodling'), { once: true });
-          }, i * 28);
-        });
-      });
-    }
-
-    try { document.querySelectorAll(SEL).forEach(wrapNoodle); } catch (e) {}
+  /* ── Reveal on scroll ── */
+  (function(){
+    const els=document.querySelectorAll('.reveal');
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.06});
+    els.forEach(el=>io.observe(el));
   })();
-
-  /* Winners carousel (preserved from original) */
-  const track = document.getElementById('winners-track');
-  let currentOffset = 0;
-  const cardWidth = 400;
-
-  const nextBtn = document.getElementById('next-winner');
-  const prevBtn = document.getElementById('prev-winner');
-  
-  if (nextBtn && prevBtn && track) {
-    nextBtn.addEventListener('click', () => {
-      const max = (track.children.length - 3) * cardWidth;
-      currentOffset = Math.min(currentOffset + cardWidth, max);
-      track.style.transform = `translateX(-${currentOffset}px)`;
-    });
-    prevBtn.addEventListener('click', () => {
-      currentOffset = Math.max(currentOffset - cardWidth, 0);
-      track.style.transform = `translateX(-${currentOffset}px)`;
-    });
-  }
 </script>
 </body>
 </html>

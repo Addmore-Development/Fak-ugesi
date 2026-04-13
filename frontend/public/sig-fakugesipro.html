@@ -29,7 +29,7 @@
     .hero-bg{position:absolute;inset:0;background-image:url('../images/_DMC6809.JPG');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 80px 44px;animation:fadeUp .9s ease both}
+    .hero-content{position:relative;z-index:3;padding:0 248px 44px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;font-family:'InterDisplay',sans-serif}
     .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px;font-family:'InterDisplay',sans-serif}
@@ -47,7 +47,7 @@
     .ticker-arrow{opacity:.6}
 
     /* ── WHAT IS FAK'UGESI PRO ── */
-    .what-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .what-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
     .what-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
     .what-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif;max-width:600px}
     .what-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
@@ -64,7 +64,7 @@
     .network-inner{
       position:relative;z-index:2;width:100%;
       display:flex;flex-direction:column;justify-content:space-between;
-      padding:52px 80px 64px;
+      padding:52px 248px 64px;
     }
     .network-top{display:flex;justify-content:space-between;align-items:flex-start}
     .network-title{font-size:52px;font-weight:900;color:#fff;line-height:1.0;max-width:600px;font-family:'InterDisplay',sans-serif}
@@ -90,7 +90,7 @@
 
     /* ── 2025 HIGHLIGHTS ── */
     .highlights-section{background:var(--white);padding:72px 0 0;position:relative;color:var(--dark-text)}
-    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 80px 44px;position:relative}
+    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 248px 44px;position:relative}
     .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif}
     .highlights-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
     .highlights-strip-wrap{overflow:hidden;position:relative}
@@ -108,7 +108,7 @@
     .highlight-speakers{font-size:11px;color:var(--dark-text);line-height:1.6;font-family:'InterDisplay',sans-serif}
 
     /* ── PARTNERS ── */
-    .partners-section{background:var(--lavender);padding:64px 80px;position:relative}
+    .partners-section{background:var(--lavender);padding:64px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
     .partners-title{font-size:36px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
@@ -121,7 +121,7 @@
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
 
     /* ── FAQ — awards style ── */
-    .faq-section{background:var(--white);padding:64px 80px;position:relative}
+    .faq-section{background:var(--white);padding:64px 248px;position:relative}
     .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
     .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
     .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px}
@@ -142,7 +142,7 @@
     .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
 
     /* ── REQUIREMENTS — awards style ── */
-    .requirements-section{background:var(--navy);padding:64px 80px 72px;position:relative}
+    .requirements-section{background:var(--navy);padding:64px 248px 72px;position:relative}
     .req-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
     .req-heading{font-size:50px;font-weight:600;color:var(--white)}
     .req-link{color:var(--white);font-size:12px;text-decoration:underline;letter-spacing:.06em;opacity:.8;cursor:pointer}
@@ -163,6 +163,18 @@
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
 </head>
 <body>
@@ -208,8 +220,8 @@
 
 <!-- ── WHAT IS FAK'UGESI PRO ── -->
 <section class="what-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="what-header">
     <h2 class="what-title">What is Fak'ugesiPRO</h2>
     <a class="what-link" href="#">View 2026 programme</a>
@@ -232,9 +244,9 @@
       <p class="audience-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
     </div>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:calc(50% - 9px);animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- ── JOIN OUR INDUSTRY NETWORK ── -->
@@ -256,8 +268,8 @@
 <!-- ── 2025 HIGHLIGHTS ── -->
 <section class="highlights-section reveal">
   <div class="highlights-header">
-    <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-    <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
     <h2 class="highlights-title">2025 Highlights</h2>
     <a class="highlights-link" href="#">View 2026 programme</a>
   </div>
@@ -278,8 +290,8 @@
 
 <!-- REQUIREMENTS -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="req-hdr">
     <h2 class="req-heading">Requirements</h2>
     <a class="req-link" href="#">Submit your application</a>
@@ -318,10 +330,10 @@
 
 <!-- FAQ -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
@@ -381,8 +393,8 @@
 
 <!-- ── OUR MAIN PARTNERS ── -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
     <a class="partners-link" href="about.html#partners">View all partners</a>
@@ -430,6 +442,27 @@
       c.querySelectorAll('.req-item').forEach(i=>{i.classList.remove('open');i.querySelector('.req-tog').textContent='+';i.querySelector('.req-btn').setAttribute('aria-expanded','false');});
       if(!isOpen){item.classList.add('open');item.querySelector('.req-tog').textContent='×';item.querySelector('.req-btn').setAttribute('aria-expanded','true');}
     });
+
+  
+      // Force remove water/ripple canvas elements
+  (function removeWaterEffect() {
+    function removeWaterCanvases() {
+      // Remove any canvas that might be water-related
+      const canvases = document.querySelectorAll('.hero canvas, .page-hero canvas, .hero-bg + canvas');
+      canvases.forEach(canvas => {
+        canvas.remove();
+      });
+      
+      // Also remove any elements with water/ripple classes
+      const waterElements = document.querySelectorAll('.water-canvas, .ripple-canvas, [class*="water"], [class*="ripple"]');
+      waterElements.forEach(el => el.remove());
+    }
+    
+    // Run immediately and after a short delay (for dynamic injection)
+    removeWaterCanvases();
+    setTimeout(removeWaterCanvases, 100);
+    setTimeout(removeWaterCanvases, 500);
+  })();
   })();
   /* ── Reveal on scroll ── */
   (function(){

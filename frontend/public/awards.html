@@ -57,7 +57,7 @@
     }
     .hero-content {
       position: relative; z-index: 3;
-      padding: 0 80px 52px;
+      padding: 0 248px 52px;
       animation: fadeUp 0.9s ease both;
       max-width: 760px;
     }
@@ -108,7 +108,7 @@
     }
     .winners-header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px 36px;
+      padding: 0 248px 36px;
     }
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
@@ -138,7 +138,7 @@
 
     /* Cross row below winners */
     .crosses-row {
-      display: flex; justify-content: space-between; padding: 20px 80px;
+      display: flex; justify-content: space-between; padding: 20px 248px;
     }
     .crosses-row svg { width: 18px; height: 18px; }
 
@@ -150,7 +150,7 @@
       background-size: cover; background-position: center;
       filter: brightness(0.28);
     }
-    .categories-content { position: relative; z-index: 3; padding: 64px 80px 80px; }
+    .categories-content { position: relative; z-index: 3; padding: 64px 248px 80px; }
     .cat-header {
       display: flex; justify-content: space-between; align-items: flex-start;
       margin-bottom: 40px;
@@ -183,7 +183,7 @@
     .cat-items li::before { content: '→'; position: absolute; left: 0; }
 
     /* ── JURY ── */
-    .jury-section { background: var(--white); padding: 64px 80px 0; position: relative; }
+    .jury-section { background: var(--white); padding: 64px 248px 0; position: relative; }
     .jury-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 40px;
@@ -203,7 +203,7 @@
     .jury-country { font-size: 12px; color: var(--body-gray); }
 
     /* ── REQUIREMENTS ── */
-    .requirements-section { background: var(--navy); padding: 64px 80px 72px; position: relative; }
+    .requirements-section { background: var(--navy); padding: 64px 248px 72px; position: relative; }
     .req-header {
       display: flex; justify-content: space-between; align-items: flex-start;
       margin-bottom: 36px;
@@ -217,7 +217,7 @@
     .req-list li { font-size: 13px; line-height: 1.78; opacity: 0.85; margin-bottom: 20px; color: #fff; }
 
     /* ── FAQ ── */
-    .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
+    .faq-section { background: var(--white); padding: 64px 248px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
@@ -249,7 +249,7 @@
     .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
 
     /* ── PARTNERS ── */
-    .partners-section { background: var(--lavender); padding: 64px 80px 72px; position: relative; }
+    .partners-section { background: var(--lavender); padding: 64px 248px 72px; position: relative; }
     .partners-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 44px;
@@ -274,7 +274,7 @@
     /* ── SOCIAL BAR ── */
     .social-band {
       background: var(--navy); display: flex; justify-content: space-between;
-      align-items: center; padding: 22px 80px;
+      align-items: center; padding: 22px 248px;
     }
     .social-band p { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
     .social-band-icons { display: flex; gap: 18px; }
@@ -284,10 +284,10 @@
     /* ── FOOTER ── */
     .footer-crosses {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 80px; height: 44px; background: #fff;
+      padding: 0 248px; height: 44px; background: #fff;
     }
     footer {
-      background: var(--white); padding: 0 80px;
+      background: var(--white); padding: 0 248px;
       color: var(--dark-text); position: relative;
     }
     .footer-inner {
@@ -307,6 +307,18 @@
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
 </head>
 <body>
@@ -320,10 +332,10 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="cross-icon" style="top:16px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:80px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:80px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:248px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:248px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
 
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Awards</p>
@@ -363,8 +375,8 @@
      2025 WINNERS
 ═══════════════════════════════════════ -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
@@ -447,9 +459,9 @@
      2026 AWARDS JURY
 ═══════════════════════════════════════ -->
 <section class="jury-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;left:50%;animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="jury-header">
     <h2 class="jury-title">2026 Awards Jury</h2>
@@ -518,8 +530,8 @@
      REQUIREMENTS
 ═══════════════════════════════════════ -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="req-header">
     <h2 class="req-title">Requirements</h2>
@@ -537,10 +549,10 @@
      FAQ
 ═══════════════════════════════════════ -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="faq-layout">
     <div class="faq-left">
@@ -562,8 +574,8 @@
      PARTNERS
 ═══════════════════════════════════════ -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="partners-header">
     <h2 class="partners-title">Our Awards Partners</h2>

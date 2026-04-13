@@ -32,9 +32,7 @@
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
-    /* ══════════════════════════════════════════════
-       HERO
-    ══════════════════════════════════════════════ */
+    /* ── HERO ── */
     .hero{
       position:relative;width:100%;min-height:100vh;
       overflow:hidden;display:flex;align-items:flex-end;
@@ -54,7 +52,7 @@
     }
     .hero-content{
       position:relative;z-index:3;
-      padding:0 80px 72px;
+      padding:0 248px 72px;
       animation:fadeUp .9s ease both
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -80,11 +78,7 @@
     }
     .hero-cta:hover{background:#fff;color:var(--navy)}
 
-    .hero .cross-icon{position:absolute}
-
-    /* ══════════════════════════════════════════════
-       TICKER
-    ══════════════════════════════════════════════ */
+    /* ── TICKER ── */
     .ticker-wrap{
       width:100%;overflow:hidden;
       background:#fff;border-top:1px solid rgba(26,39,68,.1);
@@ -103,9 +97,7 @@
     }
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
 
-    /* ══════════════════════════════════════════════
-       PREMIERING SECTION
-    ══════════════════════════════════════════════ */
+    /* ── PREMIERING SECTION ── */
     .premiering-section{
       position:relative;width:100%;min-height:100vh;
       overflow:hidden;display:flex;align-items:flex-end
@@ -122,7 +114,7 @@
     }
     .premiering-content{
       position:relative;z-index:3;
-      padding:0 80px 80px;width:100%
+      padding:0 248px 80px;width:100%
     }
     .section-header-label{
       font-size:48px;font-weight:900;line-height:1;
@@ -152,10 +144,10 @@
       opacity:.8;cursor:pointer;transition:opacity .2s
     }
     .premiere-links a:hover{opacity:1}
+    /* Co-presenter logos only — NO text label */
     .premiere-co{
       display:flex;align-items:center;gap:12px;
-      margin-bottom:32px;font-size:12px;font-weight:700;
-      letter-spacing:.08em;text-transform:uppercase;opacity:.9
+      margin-bottom:32px;
     }
     .premiere-co img{height:28px;width:auto;filter:invert(1) brightness(2)}
     .section-cta{
@@ -168,9 +160,7 @@
     }
     .section-cta:hover{background:#fff;color:var(--navy);border-color:#fff}
 
-    /* ══════════════════════════════════════════════
-       ON-GOING SECTION
-    ══════════════════════════════════════════════ */
+    /* ── ON-GOING SECTION ── */
     .ongoing-section{
       position:relative;width:100%;min-height:100vh;
       overflow:hidden;display:flex;align-items:flex-end
@@ -187,24 +177,22 @@
     }
     .ongoing-content{
       position:relative;z-index:3;
-      padding:0 80px 80px;width:100%
+      padding:0 248px 80px;width:100%
     }
 
-    /* ══════════════════════════════════════════════
-       PARTNERS SECTION — lavender bg so all logos are clearly visible
-    ══════════════════════════════════════════════ */
+    /* ── PARTNERS SECTION ── */
     .partners-section{
-      background: var(--lavender);  /* #dde3f0 — site lavender, complements navy */
-      padding:80px 0 80px;
+      background:#ece9e9;padding:80px 0 0;
       position:relative;overflow:hidden;
     }
     .partners-title{
       font-size:48px;font-weight:900;
       color:var(--dark-text);text-align:center;
       margin-bottom:56px;font-family:'InterDisplay',sans-serif;
-      padding:0 80px;
+      padding:0 248px;
     }
 
+    /* Carousel */
     .partners-carousel-outer{
       overflow:hidden;
       width:100%;
@@ -225,77 +213,108 @@
       to{transform:translateX(-50%)}
     }
 
-    /* White logo boxes so logos pop cleanly against the lavender background */
+    /* Each logo box — hover: lift image, grow alt text label */
     .carousel-logo{
-      min-width: 180px;
-      height: 125px;
-      background: #c0bddb, 212, 238);
-      border: 1px solid rgba(26,39,68,0.10);
+      min-width:160px;
       flex:0 0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      cursor:pointer;
+    }
+    .carousel-logo-img-wrap{
+      width:160px;height:110px;
+      background:#ece9e9;padding:80px 0 0;
       display:flex;align-items:center;justify-content:center;
-      padding: 16px 24px;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding:16px;
+      transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+                 box-shadow 0.28s ease,
+                 background 0.28s ease;
     }
-    .carousel-logo:hover {
-      transform: scale(1.06);
-      box-shadow: 0 8px 24px rgba(26,39,68,0.14);
+    .carousel-logo:hover .carousel-logo-img-wrap{
+      transform:translateY(-6px) scale(1.06);
+      box-shadow:0 12px 36px rgba(26,39,68,0.15);
+      background:rgba(194,189,189,0.6);
     }
-    .carousel-logo img{
+    .carousel-logo-img-wrap img{
       max-height:80px;
-      max-width:150px;
+      max-width:130px;
       object-fit:contain;
       display:block;
     }
-    .carousel-logo a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
+    /* Partner name label — scales up on hover */
+    .carousel-logo-name{
+      font-size:11px;font-weight:600;
+      color:var(--dark-text);letter-spacing:0.04em;
+      text-align:center;
+      transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+                 font-size 0.28s ease,
+                 color 0.28s ease;
+      max-width:160px;
+      line-height:1.3;
+    }
+    .carousel-logo:hover .carousel-logo-name{
+      transform:scale(1.2);
+      color:var(--navy);
+    }
+
+    /* Blue low-opacity band BELOW the partners carousel */
+    .partners-blue-band{
+      width:100%;
+      background:rgba(26,55,120,0.07);
+      margin-top:56px;
+      padding:40px 248px;
     }
 
     .partners-disclaimer{
       font-size:11px;line-height:1.7;
       color:var(--body-gray);text-align:center;
-      max-width:840px;margin:48px auto 0;
-      padding:0 80px;
+      max-width:840px;margin:0 auto;
     }
 
-    /* ══════════════════════════════════════════════
-       REVEAL
-    ══════════════════════════════════════════════ */
+    /* ── REVEAL ── */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
     @media(max-width:900px){
       .hero-title{font-size:44px}
       .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
-      .partners-title,.partners-disclaimer{padding-left:32px;padding-right:32px}
+      .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
       .section-header-label{font-size:36px}
     }
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
 </head>
 <body>
 
-<!-- ══ SUB-NAV: Signature Programmes ══ -->
+<!-- SUB-NAV -->
 <script src="sig-nav.js"></script>
 
-<!-- ══════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="cross-icon" style="top:130px;left:80px;animation-delay:0s;">
+  <div class="cross-icon" style="top:130px;left:248px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:130px;right:80px;animation-delay:1.4s;">
+  <div class="cross-icon" style="top:130px;right:248px;animation-delay:1.4s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:160px;right:80px;animation-delay:.7s;">
+  <div class="cross-icon" style="bottom:160px;right:248px;animation-delay:.7s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
 
@@ -307,7 +326,7 @@
   </div>
 </section>
 
-<!-- ══ TICKER ══ -->
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
@@ -325,20 +344,18 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     PREMIERING SECTION
-══════════════════════════════════════════════ -->
+<!-- PREMIERING SECTION -->
 <section class="premiering-section">
   <div class="premiering-bg"></div>
   <div class="premiering-overlay"></div>
 
-  <div class="cross-icon" style="top:40px;left:80px;animation-delay:.3s;">
+  <div class="cross-icon" style="top:40px;left:248px;animation-delay:.3s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:40px;right:80px;animation-delay:1.6s;">
+  <div class="cross-icon" style="top:40px;right:248px;animation-delay:1.6s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:280px;right:80px;animation-delay:.9s;">
+  <div class="cross-icon" style="bottom:280px;right:248px;animation-delay:.9s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
 
@@ -356,9 +373,9 @@
       <a href="#">More about MansA</a>
     </div>
 
+    <!-- Co-presenters: logos only, "DREAM FEEL FACTORY" text label removed -->
     <div class="premiere-co">
-      <span style="font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;">Dream Feel Factory</span>
-     
+      <img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/>
       <img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;filter:invert(1) brightness(2)"/>
     </div>
 
@@ -366,20 +383,18 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     ON-GOING SECTION
-══════════════════════════════════════════════ -->
+<!-- ON-GOING SECTION -->
 <section class="ongoing-section">
   <div class="ongoing-bg"></div>
   <div class="ongoing-overlay"></div>
 
-  <div class="cross-icon" style="top:40px;left:80px;animation-delay:.5s;">
+  <div class="cross-icon" style="top:40px;left:248px;animation-delay:.5s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:40px;right:80px;animation-delay:1.8s;">
+  <div class="cross-icon" style="top:40px;right:248px;animation-delay:1.8s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:280px;right:80px;animation-delay:1.1s;">
+  <div class="cross-icon" style="bottom:280px;right:248px;animation-delay:1.1s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
   </div>
 
@@ -403,20 +418,12 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     PARTNERS SECTION — lavender background, white logo boxes
-══════════════════════════════════════════════ -->
+<!-- PARTNERS SECTION — logo hover: text-scale effect; blue band below -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:24px;left:80px;animation-delay:0s;">
+  <div class="cross-icon" style="top:24px;left:248px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:24px;right:80px;animation-delay:1.3s;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:100px;left:80px;animation-delay:.6s;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:100px;right:80px;animation-delay:1.9s;">
+  <div class="cross-icon" style="top:24px;right:248px;animation-delay:1.3s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
 
@@ -424,33 +431,86 @@
 
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track">
-      <div class="carousel-logo"><a href="https://www.acfafrica.org" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></a></div>
-      <div class="carousel-logo"><a href="https://www.eunicglobal.eu" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></a></div>
-      <div class="carousel-logo"><a href="https://www.eeas.europa.eu/south-africa" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></a></div>
-      <div class="carousel-logo"><a href="https://prohelvetia.ch" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></a></div>
-      <div class="carousel-logo"><a href="https://www.goethe.de/southafrica" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></a></div>
-      <div class="carousel-logo"><a href="https://www.bmeia.gv.at/en/austrian-embassy-pretoria" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></a></div>
-      <div class="carousel-logo"><a href="https://dreamfeelfactory.com" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></a></div>
-      <div class="carousel-logo"><a href="https://tshimologong.joburg" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></a></div>
-      <!-- duplicate for seamless loop -->
-      <div class="carousel-logo"><a href="https://www.acfafrica.org" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></a></div>
-      <div class="carousel-logo"><a href="https://www.eunicglobal.eu" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></a></div>
-      <div class="carousel-logo"><a href="https://www.eeas.europa.eu/south-africa" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></a></div>
-      <div class="carousel-logo"><a href="https://prohelvetia.ch" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></a></div>
-      <div class="carousel-logo"><a href="https://www.goethe.de/southafrica" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></a></div>
-      <div class="carousel-logo"><a href="https://www.bmeia.gv.at/en/austrian-embassy-pretoria" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></a></div>
-      <div class="carousel-logo"><a href="https://dreamfeelfactory.com" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></a></div>
-      <div class="carousel-logo"><a href="https://tshimologong.joburg" target="_blank" rel="noopener"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></a></div>
+      <!-- Original set -->
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
+        <span class="carousel-logo-name">Maison des Mondes Africains</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
+        <span class="carousel-logo-name">EUNIC</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
+        <span class="carousel-logo-name">EU Delegation</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></div>
+        <span class="carousel-logo-name">Pro Helvetia</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
+        <span class="carousel-logo-name">Goethe Institut</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
+        <span class="carousel-logo-name">Austrian Embassy Pretoria</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
+        <span class="carousel-logo-name" style="font-size:8px;">Dream Feel Factory</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+        <span class="carousel-logo-name">Digital Dome</span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains"/></div>
+        <span class="carousel-logo-name">Maison des Mondes Africains</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/></div>
+        <span class="carousel-logo-name">EUNIC</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/eudelegation.svg" alt="EU Delegation"/></div>
+        <span class="carousel-logo-name">EU Delegation</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/prohelvetia.svg" alt="Pro Helvetia"/></div>
+        <span class="carousel-logo-name">Pro Helvetia</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/goethe.svg" alt="Goethe Institut"/></div>
+        <span class="carousel-logo-name">Goethe Institut</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/austrianembassy.svg" alt="Austrian Embassy Pretoria"/></div>
+        <span class="carousel-logo-name">Austrian Embassy Pretoria</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory"/></div>
+        <span class="carousel-logo-name" style="font-size:8px;">Dream Feel Factory</span>
+      </div>
+      <div class="carousel-logo">
+        <div class="carousel-logo-img-wrap"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+        <span class="carousel-logo-name">Digital Dome</span>
+      </div>
     </div>
   </div>
 
-  <p class="partners-disclaimer">
-    Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC – EU National Institutes for Culture. This programme aims to contribute to improve Euro-African cultural cooperation, exchange, co-creation and dissemination around the two continents with the view to promoting intercultural dialogue and mutual understanding. By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes across our print and digital platforms, including social media.
-  </p>
+  <!-- Blue low-opacity band below partners carousel, above disclaimer -->
+  <div class="partners-blue-band">
+    <p class="partners-disclaimer">
+      Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC – EU National Institutes for Culture. This programme aims to contribute to improve Euro-African cultural cooperation, exchange, co-creation and dissemination around the two continents with the view to promoting intercultural dialogue and mutual understanding. By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes across our print and digital platforms, including social media.
+    </p>
+  </div>
 </section>
 
 <script src="footer.js"></script>
-<script src="fak-ugesi-global-effects-v10.js"></script>
+<script src="globalEffects.js"></script>
+<script src="starArrows.js"></script>
 <script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {

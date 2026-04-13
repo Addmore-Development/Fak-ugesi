@@ -30,7 +30,7 @@
     .hero-bg{position:absolute;inset:0;background-image:url('../images/image00044.jpeg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 80px 44px;animation:fadeUp .9s ease both}
+    .hero-content{position:relative;z-index:3;padding:0 248px 44px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
@@ -50,7 +50,7 @@
     .ticker-sep{opacity:.4;margin-left:4px}
 
     /* ── INTRO ── */
-    .intro-section{background:var(--white);padding:72px 80px;position:relative}
+    .intro-section{background:var(--white);padding:72px 248px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
     .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
     .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
@@ -65,107 +65,21 @@
     .section-title.dark-text{color:var(--dark-text)}
     .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;color:inherit;opacity:.7;font-family:'InterDisplay',sans-serif}
 
-    
-    /* ── 2025 WINNERS — awards-style scroll ── */
-    .winners-section{background:var(--white);padding:60px 0 0;position:relative;overflow:hidden}
-    .winners-header{display:flex;justify-content:space-between;align-items:center;padding:0 80px 36px}
-    .winners-title{font-size:50px;font-weight:600;color:var(--dark-text)}
-    .winners-nav{display:flex;gap:0;align-items:center}
-    .winners-nav button{
-      background:none;border:1px solid var(--dark-text);cursor:pointer;
-      font-size:13px;color:var(--dark-text);width:90px;height:48px;
-      display:flex;align-items:center;justify-content:center;gap:4px;
-      overflow:hidden;position:relative;font-family:'InterDisplay',sans-serif;
-      transition:background 0.22s,color 0.22s;font-weight:700;
-    }
-    .winners-nav button:hover{background:var(--dark-text);color:var(--white)}
-    .winners-nav button .arrow-inner{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:100%}
-    .arrow-bolt{font-size:15px;display:inline-block}
-    .winners-nav button:hover .arrow-bolt{animation:boltCrash 0.38s ease forwards}
-    @keyframes boltCrash{0%{transform:scale(1) rotate(0)opacity:1}40%{transform:scale(1.8) rotate(-20deg);opacity:1}55%{transform:scale(0.5) rotate(10deg);opacity:.4}70%{transform:scale(1.3) rotate(-5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
-    #next-winner:hover .arrow-inner{animation:arrowRight 0.42s cubic-bezier(0.4,0,0.2,1) forwards}
-    @keyframes arrowRight{0%{transform:translateX(0);opacity:1}45%{transform:translateX(150%);opacity:0}46%{transform:translateX(-150%);opacity:0}100%{transform:translateX(0);opacity:1}}
-    #prev-winner:hover .arrow-inner{animation:arrowLeft 0.42s cubic-bezier(0.4,0,0.2,1) forwards}
-    @keyframes arrowLeft{0%{transform:translateX(0);opacity:1}45%{transform:translateX(-150%);opacity:0}46%{transform:translateX(150%);opacity:0}100%{transform:translateX(0);opacity:1}}
-    .winners-strip-outer{overflow:hidden}
-    .winners-strip{display:flex;gap:16px;width:max-content;animation:winnersScroll 34s linear infinite}
-    .winners-strip:hover{animation-play-state:paused}
-    @keyframes winnersScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .winner-card{flex:0 0 380px;cursor:pointer}
-    .winner-img-wrap{width:380px;height:380px;overflow:hidden}
-    .winner-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
-    .winner-card:hover .winner-img-wrap img{transform:scale(1.04)}
-    .winner-meta{padding:18px 0 0}
-    .winner-cat{font-size:11px;color:var(--body-gray);margin-bottom:6px}
-    .winner-name{font-size:18px;font-weight:700;color:var(--dark-text);line-height:1.3;margin-bottom:10px}
-    .winner-bottom{display:flex;justify-content:space-between}
-    .winner-author,.winner-country{font-size:13px;color:var(--body-gray)}
-    .crosses-row{display:flex;justify-content:space-between;padding:20px 80px}
-    .crosses-row svg{width:18px;height:18px}
+    /* ── 2025 WINNERS ── */
+    .winners-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
+    .winners-rail-wrapper{overflow:hidden}
+    .winners-rail{display:flex;transition:transform .5s ease}
+    .winner-slide{flex:0 0 33.333%;min-width:0;padding-right:1px}
+    .winner-slide img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
+    .winner-slide:hover img{transform:scale(1.04)}
+    .winner-info{padding:14px 0 0}
+    .winner-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-right:12px;font-family:'InterDisplay',sans-serif}
+    .winner-name{font-size:22px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-top:4px}
+    .winners-nav button{background:none;border:none;cursor:pointer;font-size:24px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s}
+    .winners-nav button:hover{opacity:.4}
 
-    /* ── FAQ — awards style ── */
-    .faq-section{background:var(--white);padding:64px 80px;position:relative}
-    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
-    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
-    .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px}
-    .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px}
-    .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer}
-    .faq-items-wrap{display:flex;flex-direction:column}
-    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background .2s ease}
-    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15)}
-    .faq-item:hover{background:var(--navy)}
-    .faq-item:hover .faq-q-text{color:var(--white)}
-    .faq-item:hover .faq-t-icon{color:var(--white)}
-    .faq-item:hover .faq-ans{color:rgba(255,255,255,.75)}
-    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
-    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color .2s ease}
-    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
-    .faq-item.open .faq-t-icon{transform:rotate(45deg)}
-    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0}
-    .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
-
-    /* ── REQUIREMENTS — awards style ── */
-    .requirements-section{background:var(--navy);padding:64px 80px 72px;position:relative}
-    .req-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
-    .req-heading{font-size:50px;font-weight:600;color:var(--white)}
-    .req-link{color:var(--white);font-size:12px;text-decoration:underline;letter-spacing:.06em;opacity:.8;cursor:pointer}
-    #req-accordion{display:flex;flex-direction:column}
-    #req-accordion .req-item{border-top:1px solid rgba(255,255,255,.18);background:transparent;transition:background .2s ease}
-    #req-accordion .req-item:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
-    #req-accordion .req-item:hover{background:var(--white)}
-    #req-accordion .req-item:hover .req-q-text{color:var(--navy)}
-    #req-accordion .req-item:hover .req-tog{color:var(--navy)}
-    #req-accordion .req-item:hover .req-body{color:var(--body-gray)}
-    #req-accordion .req-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
-    #req-accordion .req-q-text{font-size:16px;font-weight:600;color:#fff;line-height:1.35;transition:color .2s ease}
-    #req-accordion .req-tog{font-size:22px;color:#fff;flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
-    #req-accordion .req-item.open .req-tog{transform:rotate(45deg)}
-    #req-accordion .req-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:rgba(255,255,255,.7);padding:0}
-    #req-accordion .req-item.open .req-body{max-height:300px;padding-bottom:22px}
-
-    /* ── PRIZE FLIP CARDS ── */
-    .prizes-section{background:var(--navy);padding:64px 80px 72px;position:relative;color:#fff}
-    .prizes-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .prizes-heading{font-size:46px;font-weight:600;color:#fff}
-    .prizes-link{font-size:12px;color:#fff;text-decoration:underline;letter-spacing:.06em;cursor:pointer;opacity:.8}
-    .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .prize-flip{perspective:1000px;cursor:pointer;min-height:220px}
-    .prize-flip-inner{position:relative;width:100%;height:100%;min-height:220px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(0.4,0,0.2,1)}
-    .prize-flip:hover .prize-flip-inner{transform:rotateY(180deg)}
-    .prize-front,.prize-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(255,255,255,.35);padding:24px 20px 28px}
-    .prize-front{background:transparent;transition:border-color .28s,background .28s}
-    .prize-flip:hover .prize-front{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
-    .prize-back{transform:rotateY(180deg);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:center}
-    .prize-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:16px}
-    .prize-amount{font-size:36px;font-weight:900;margin-bottom:16px}
-    .prize-desc{font-size:13px;line-height:1.65;opacity:.8}
-    .prize-fact-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
-    .prize-fact{font-size:15px;font-weight:600;line-height:1.5;margin-bottom:10px}
-    .prize-detail{font-size:12px;color:rgba(255,255,255,.75);line-height:1.7}
-    .prize-hint{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:14px}
-
-    /* ── JURY/* ── JURY ── */
-    .jury-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    /* ── JURY ── */
+    .jury-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
     .jury-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .jury-card{border:1px solid rgba(26,39,68,.12);overflow:hidden}
     .jury-card img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
@@ -175,7 +89,7 @@
     .jury-country{font-size:11px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;opacity:.7}
 
     /* ── PRIZES ── */
-    .prizes-section{background:var(--navy);color:#fff;padding:72px 80px;position:relative}
+    .prizes-section{background:var(--navy);color:#fff;padding:72px 248px;position:relative}
     .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .prize-card{border:1px solid rgba(255,255,255,.25);padding:28px 24px}
     .prize-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
@@ -183,7 +97,7 @@
     .prize-desc{font-size:13px;line-height:1.65;opacity:.8;font-family:'InterDisplay',sans-serif}
 
     /* ── FAQ ── */
-    .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .faq-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
     .faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
     .faq-intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif;margin-bottom:16px}
     .faq-intro-body{font-size:14px;line-height:1.78;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
@@ -194,7 +108,7 @@
     .faq-item.open .faq-answer{max-height:300px;padding:0 22px 20px}
 
     /* ── PARTNERS ── */
-    .partners-section{background:var(--lavender);padding:72px 80px;position:relative}
+    .partners-section{background:var(--lavender);padding:72px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
     .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
@@ -209,6 +123,18 @@
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
 </head>
 <body>
@@ -252,8 +178,8 @@
 
 <!-- ── INTRO ── -->
 <section class="intro-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="intro-grid">
     <h2 class="intro-title">High stakes, shark tank style pitches</h2>
     <div class="intro-body">
@@ -264,41 +190,55 @@
   </div>
 </section>
 
-<!-- 2025 WINNERS — awards style -->
+<!-- ── 2025 WINNERS ── -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="winners-header">
-    <h2 class="winners-title">2025 Winners</h2>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="section-header">
+    <h2 class="section-title dark-text">2025 Winners</h2>
     <div class="winners-nav">
-      <button id="prev-winner" aria-label="Previous"><span class="arrow-inner"><span class="arrow-bolt">⚡</span>←</span></button>
-      <button id="next-winner" aria-label="Next"><span class="arrow-inner">→<span class="arrow-bolt">⚡</span></span></button>
+      <button id="winners-prev">&#8592;</button>
+      <button id="winners-next">&#8594;</button>
     </div>
   </div>
-  <div class="winners-strip-outer">
-    <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img-wrap"><img src="../images/_MGL7139.jpg" alt="Winner"/></div><div class="winner-meta"><div class="winner-cat">Category</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+  <div class="winners-rail-wrapper">
+    <div class="winners-rail" id="winnersRail">
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span><span class="winner-badge">Runner-up</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
+      <div class="winner-slide">
+        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
+        <div class="winner-info">
+          <span class="winner-badge">Winner</span>
+          <div class="winner-name">Neo Shingenwana</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="crosses-row">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
 </section>
 
-
 <!-- ── 2026 JURY ── -->
 <section class="jury-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="section-header">
     <h2 class="section-title dark-text">2026 Pitchathon Jury</h2>
     <a class="section-link" style="color:var(--navy)" href="/programme">View 2026 programme</a>
@@ -331,177 +271,69 @@
   </div>
 </section>
 
-<!-- 2026 PRIZES — flip cards -->
+<!-- ── 2026 PRIZES ── -->
 <section class="prizes-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="prizes-hdr">
-    <h2 class="prizes-heading">2026 Prizes</h2>
-    <a class="prizes-link" href="#">Apply now</a>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="section-header">
+    <h2 class="section-title light-text">2026 Prizes</h2>
+    <a class="section-link" style="color:#fff" href="/programme">View 2026 programme</a>
   </div>
   <div class="prizes-grid">
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">WIC PGDip Winner</div>
-          <div class="prize-amount">R20,000</div>
-          <p class="prize-desc">Winner of the Wits Innovation Challenge PGDip category.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">The Fak'ugesi Awards have been running since 2013.</div>
-          <div class="prize-detail">Over 10 years of celebrating African digital creativity.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">WIC PGDip Runner-up</div>
-          <div class="prize-amount">R10,000</div>
-          <p class="prize-desc">Runner-up in the Wits Innovation Challenge PGDip category.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">Winners receive mentorship from industry leaders.</div>
-          <div class="prize-detail">Access to Tshimologong's global creative network.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">WIC UG Winner</div>
-          <div class="prize-amount">R20,000</div>
-          <p class="prize-desc">Winner of the undergraduate track of the Wits Innovation Challenge.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">Past winners have gone on to international exhibitions.</div>
-          <div class="prize-detail">From Lagos to Berlin — African creativity goes global.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">WIC UG Runner-up</div>
-          <div class="prize-amount">R10,000</div>
-          <p class="prize-desc">Runner-up in the undergraduate track.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">All entries are reviewed by a diverse jury.</div>
-          <div class="prize-detail">Judges span art, tech, film, and interactive media.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">Best Pitch Award</div>
-          <div class="prize-amount">R5,000</div>
-          <p class="prize-desc">Awarded for the most compelling pitch performance.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">The prize includes exhibition space at the festival.</div>
-          <div class="prize-detail">Your work shown to thousands of festival attendees.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
-    <div class="prize-flip">
-      <div class="prize-flip-inner">
-        <div class="prize-front">
-          <div class="prize-label">Social Impact Award</div>
-          <div class="prize-amount">R5,000</div>
-          <p class="prize-desc">For the project with the most meaningful social impact potential.</p>
-        </div>
-        <div class="prize-back">
-          <div class="prize-fact-label">Fun Fact</div>
-          <div class="prize-fact">Winners are announced at the awards ceremony.</div>
-          <div class="prize-detail">A highlight of the Fak'ugesi Festival calendar.</div>
-          <div class="prize-hint">Hover to flip back</div>
-        </div>
-      </div>
-    </div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
+    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
   </div>
 </section>
 
-
-<!-- FAQ — awards style -->
+<!-- ── FAQ ── -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="faq-layout">
     <div>
-      <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <h2 class="faq-intro-title">FAQ</h2>
+      <p class="faq-intro-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="section-link" href="/programme" style="display:inline-block;margin-top:16px;color:var(--navy)">View 2026 programme</a>
     </div>
-    <div>
-      <div class="faq-right-hdr">
-        <a class="faq-apply-top" href="#">Submit your application</a>
-      </div>
-      <div class="faq-items-wrap" id="faqAccordion">
+    <div id="faqList">
       <div class="faq-item open">
-        <button class="faq-q-btn" aria-expanded="true">
-          <span class="faq-q-text">Who can apply?</span>
-          <span class="faq-t-icon">×</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci.</div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">&#8722;</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q-btn" aria-expanded="false">
-          <span class="faq-q-text">What is the submission deadline?</span>
-          <span class="faq-t-icon">+</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q-btn" aria-expanded="false">
-          <span class="faq-q-text">How many categories can I enter?</span>
-          <span class="faq-t-icon">+</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q-btn" aria-expanded="false">
-          <span class="faq-q-text">What does a winner receive?</span>
-          <span class="faq-t-icon">+</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q-btn" aria-expanded="false">
-          <span class="faq-q-text">How is the jury selected?</span>
-          <span class="faq-t-icon">+</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q-btn" aria-expanded="false">
-          <span class="faq-q-text">Can I submit work in progress?</span>
-          <span class="faq-t-icon">+</span>
-        </button>
-        <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
-      </div>
+        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
+        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ── PARTNERS ── -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Pitchathon Partners</h2>
     <a class="partners-link" href="/about#partners">View all partners</a>
@@ -523,58 +355,62 @@
 </section>
 
 <script src="footer.js"></script>
-
-
+<script src="globalEffects.js"></script>
 <script>
-  /* ── WINNERS scroll nudge ── */
-  (function(){
-    const strip=document.getElementById('winnersStrip');
-    if(!strip)return;
-    const CARD=380+16; let paused=false;
-    function nudge(dir){
-      if(paused)return; paused=true;
-      const mat=new DOMMatrix(getComputedStyle(strip).transform);
-      const curX=mat.m41;
-      strip.style.animation='none';
-      strip.style.transition='transform 0.52s cubic-bezier(0.4,0,0.2,1)';
-      strip.style.transform=`translateX(${curX+dir*CARD}px)`;
-      setTimeout(()=>{strip.style.transition='';strip.style.transform='';strip.style.animation='winnersScroll 34s linear infinite';paused=false;},1800);
+  // Remove any announcement/premiere bar injected by globalEffects at runtime
+  (function removeAnnouncementBars() {
+    const selectors = [
+      '.announcement-bar','.global-announcement','.site-announcement',
+      '.promo-bar','.premiere-bar','.festival-bar',
+      '[data-announcement]','[data-promo]'
+    ];
+    function purge() {
+      selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
     }
-    const pb=document.getElementById('prev-winner');
-    const nb=document.getElementById('next-winner');
-    if(pb)pb.addEventListener('click',()=>nudge(1));
-    if(nb)nb.addEventListener('click',()=>nudge(-1));
+    purge();
+    // Also run after scripts have loaded
+    window.addEventListener('load', purge);
+    setTimeout(purge, 500);
   })();
-  /* ── FAQ accordion ── */
-  (function(){
-    const c=document.getElementById('faqAccordion');
-    if(!c)return;
-    c.addEventListener('click',e=>{
-      const item=e.target.closest('.faq-item');
-      if(!item)return;
-      const isOpen=item.classList.contains('open');
-      c.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-t-icon').textContent='+';i.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');});
-      if(!isOpen){item.classList.add('open');item.querySelector('.faq-t-icon').textContent='×';item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');}
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.10 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Winners carousel
+  const rail = document.getElementById('winnersRail');
+  const slides = rail ? Array.from(rail.querySelectorAll('.winner-slide')) : [];
+  let winnerIdx = 0;
+  function updateWinnersRail() {
+    if (!rail || !slides.length) return;
+    rail.style.transform = 'translateX(-' + (winnerIdx * slides[0].offsetWidth) + 'px)';
+  }
+  document.getElementById('winners-next')?.addEventListener('click', () => {
+    if (winnerIdx < slides.length - 3) winnerIdx++;
+    updateWinnersRail();
+  });
+  document.getElementById('winners-prev')?.addEventListener('click', () => {
+    if (winnerIdx > 0) winnerIdx--;
+    updateWinnersRail();
+  });
+
+  // FAQ accordion
+  document.getElementById('faqList')?.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-toggle').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-toggle').innerHTML = '&#8722;';
+      }
     });
-  })();
-  /* ── Requirements accordion ── */
-  (function(){
-    const c=document.getElementById('req-accordion');
-    if(!c)return;
-    c.addEventListener('click',e=>{
-      const item=e.target.closest('.req-item');
-      if(!item)return;
-      const isOpen=item.classList.contains('open');
-      c.querySelectorAll('.req-item').forEach(i=>{i.classList.remove('open');i.querySelector('.req-tog').textContent='+';i.querySelector('.req-btn').setAttribute('aria-expanded','false');});
-      if(!isOpen){item.classList.add('open');item.querySelector('.req-tog').textContent='×';item.querySelector('.req-btn').setAttribute('aria-expanded','true');}
-    });
-  })();
-  /* ── Reveal on scroll ── */
-  (function(){
-    const els=document.querySelectorAll('.reveal');
-    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.06});
-    els.forEach(el=>io.observe(el));
-  })();
+  });
 </script>
 </body>
 </html>

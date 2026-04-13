@@ -149,7 +149,7 @@
     .faq-item.open .faq-a{display:block}
 
     /* ══ PARTNERS ══ */
-    .partners-section{background:#e8eaf0;padding:80px 120px}
+    .partners-section{background:#e8eaf0;padding:80px 248px}
     .partners-crosshairs{display:flex;justify-content:space-between;margin-bottom:20px}
     .partners-crosshairs span{color:rgba(0,0,0,.15);font-size:18px}
     .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
@@ -185,6 +185,18 @@
       .requirements-section{padding:40px 24px}
       .faq-section,.categories-section{padding:60px 24px}
     }
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
   <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -216,10 +228,10 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="crosshair" style="top:90px;left:40px;z-index:2">+</div>
-  <div class="crosshair" style="top:90px;right:200px;z-index:2">+</div>
-  <div class="crosshair" style="bottom:40px;left:40px;z-index:2">+</div>
-  <div class="crosshair" style="bottom:40px;right:40px;z-index:2">+</div>
+  <div class="crosshair" style="top:90px;left:248px;z-index:2">+</div>
+  <div class="crosshair" style="top:90px;right:248px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;left:248px;z-index:2">+</div>
+  <div class="crosshair" style="bottom:40px;right:248px;z-index:2">+</div>
   <div class="page-eyebrow">→ Awards 2026</div>
   <h1 class="page-title">Recognising<br/>African Digital<br/>Excellence</h1>
   <p class="page-subtitle">Submissions now open across 8 categories. Win prizes, residencies, and global exposure for your work.</p>
@@ -255,13 +267,13 @@
 
 <!-- ══ ELIGIBLE CATEGORIES — FLIP CARDS ══ -->
 <section class="categories-section">
-  <div class="crosshair" style="top:24px;left:40px;z-index:3">+</div>
-  <div class="crosshair" style="top:24px;right:40px;z-index:3">+</div>
-  <div class="crosshair" style="bottom:24px;left:40px;z-index:3">+</div>
-  <div class="crosshair" style="bottom:24px;right:40px;z-index:3">+</div>
+  <div class="crosshair" style="top:24px;left:248px;z-index:3">+</div>
+  <div class="crosshair" style="top:24px;right:248px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;left:248px;z-index:3">+</div>
+  <div class="crosshair" style="bottom:24px;right:248px;z-index:3">+</div>
   <div class="cat-header">
     <h2 class="cat-title">Eligible Categories</h2>
-    <a class="cat-link" href="mailto:awards@fakugesi.co.za">Submit your application</a>
+    <a class="cat-link" href="/cdn-cgi/l/email-protection#2b4a5c4a594f586b4d4a405e4c4e584205484405514a">Submit your application</a>
   </div>
   <div class="categories-grid">
 
@@ -434,7 +446,7 @@
   <div class="req-grid">
     <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
       <h2 class="req-title" style="margin-bottom:0">Requirements</h2>
-      <a style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:underline;text-underline-offset:3px" href="mailto:awards@fakugesi.co.za">Submit your application</a>
+      <a style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:underline;text-underline-offset:3px" href="/cdn-cgi/l/email-protection#264751475442556640474d534143554f084549085c47">Submit your application</a>
     </div>
     <div>
       <div class="req-col-title">Eligibility</div>
@@ -476,7 +488,7 @@
     <div>
       <div class="faq-label">FAQ</div>
       <h2 class="faq-title">Frequently<br/>Asked<br/>Questions</h2>
-      <p class="faq-desc">Everything you need to know about submitting to the Fak'ugesi Awards 2026. More questions? Email awards@fakugesi.co.za</p>
+      <p class="faq-desc">Everything you need to know about submitting to the Fak'ugesi Awards 2026. More questions? Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="503127312234231036313b25373523397e333f7e2a31">[email&#160;protected]</a></p>
     </div>
     <div class="faq-list">
       <div class="faq-item open">
@@ -586,7 +598,7 @@
 </div>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const WINNERS = {
   2025: [
     {category:'Digital Art',title:'Voices of Fire',artist:'Joseph Dairo',country:'Nigeria',desc:"A large-scale print series merging fire, movement and ancestral memory — winner of the 2025 Fak'ugesi Digital Art Award.",img:'images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg'},
@@ -664,14 +676,4 @@ renderWinners();
     });
   });
   document.addEventListener('click',function(){
-    document.querySelectorAll('#fug-nav .drop-li.open').forEach(function(o){o.classList.remove('open');});
-  });
-})();
-</script>
-<script src="nav.js"></script>
-<script src="ticker.js"></script>
-<script src="footer.js"></script>
-<script src="globalEffects.js"></script>
-<script src="starArrows.js"></script>
-</body>
-</html>
+    document

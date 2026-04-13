@@ -46,7 +46,7 @@
       50%      { opacity: 1;   transform: scale(1.4); }
     }
 
-    /* ── HERO ── */
+    /* ── HERO ── CHANGED: height:320px → min-height:490px + padding-top:110px */
     .hero {
       position: relative;
       width: 100%;
@@ -146,6 +146,7 @@
       display: flex; align-items: center; overflow: hidden;
       background: linear-gradient(135deg, #1e2d5a 0%, #2d4080 40%, #3a5299 70%, #5570b8 100%);
     }
+    /* CHANGED: background-size 80% → 55%, background-position left center → center 30% */
     .theme-bg-img {
       position: absolute; right: 20px; bottom: 0; top: 0;
       width: 55%; height: 100%;
@@ -219,40 +220,13 @@
 
     /* ── SPOTLIGHT ── */
     .spotlight-section { background: var(--lavender); padding: 64px 0; position: relative; }
-
-    /* Word-pop heading effect */
     .spotlight-title { font-size: 42px; font-weight: 600; color: var(--dark-text); margin-bottom: 36px; }
-
     .spotlight-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .spotlight-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
     .spotlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; display: block; }
     .spotlight-img-wrap:hover img { transform: scale(1.05); }
     .spotlight-tag  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
-
-    /* Word-pop heading: each word becomes a span that pops on hover */
-    .pop-heading {
-      font-size: 28px; font-weight: 600; color: var(--dark-text);
-      line-height: 1.12; margin-bottom: 18px;
-      cursor: default;
-    }
-    .pop-heading .pop-word {
-      display: inline-block;
-      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  color 0.22s ease,
-                  text-shadow 0.22s ease;
-      will-change: transform;
-    }
-    .pop-heading .pop-word:hover {
-      transform: scale(1.18) translateY(-4px);
-      color: var(--navy);
-      text-shadow: 0 4px 18px rgba(26, 39, 68, 0.18);
-    }
-    /* Neighbour words lean away slightly */
-    .pop-heading:hover .pop-word:not(:hover) {
-      transform: scale(0.97) translateY(1px);
-      color: rgba(13, 27, 62, 0.55);
-    }
-
+    .spotlight-head { font-size: 28px; font-weight: 600; color: var(--dark-text); line-height: 1.12; margin-bottom: 18px; }
     .spotlight-body { font-size: 13px; line-height: 1.72; color: var(--body-gray); margin-bottom: 28px; }
     .btn-outline-dark {
       display: inline-flex; align-items: center; gap: 10px;
@@ -366,7 +340,7 @@
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color { filter: none; }
+    .partner-logo-box img.keep-color {filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
@@ -529,8 +503,7 @@
       </div>
       <div>
         <p class="spotlight-tag">Fak'ugesi Awards</p>
-        <!-- Word-pop heading: JS will wrap each word in a span -->
-        <h3 class="pop-heading" id="spotlight-pop-heading">Awards applications now open</h3>
+        <h3 class="spotlight-head">Awards applications<br>now open</h3>
         <p class="spotlight-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
         <button class="btn-outline-dark" onclick="location.href='awards.html'">LEARN MORE</button>
       </div>
@@ -549,6 +522,7 @@
   <div class="section-inner" style="padding:0 20px;">
     <div class="happening-header">
       <h2 class="happening-title">What's happening</h2>
+      <!-- Social platform switcher tabs -->
       <div class="soc-tabs">
         <button class="soc-tab active" data-feed="instagram" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
@@ -566,6 +540,7 @@
     </div>
   </div>
 
+  <!-- INSTAGRAM FEED -->
   <div class="soc-feed-panel active" id="feed-instagram">
     <div class="happening-strip-outer">
       <div class="happening-strip">
@@ -575,6 +550,7 @@
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
+        <!-- duplicated for seamless loop -->
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
@@ -588,6 +564,7 @@
     </div>
   </div>
 
+  <!-- TWITTER / X FEED -->
   <div class="soc-feed-panel" id="feed-twitter">
     <div class="section-inner" style="padding:0 20px;">
       <div class="tweet-grid">
@@ -632,6 +609,7 @@
     </div>
   </div>
 
+  <!-- FACEBOOK FEED -->
   <div class="soc-feed-panel" id="feed-facebook">
     <div class="section-inner" style="padding:0 20px;">
       <div class="fb-feed">
@@ -691,6 +669,7 @@
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
       <div class="partner-card">
+        <!-- CHANGED: was frontend\images\digitaldome.png, now uses the SVG (black) -->
         <div class="partner-logo-box">
           <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
         </div>
@@ -701,7 +680,6 @@
 </section>
 
 <script>
-  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -718,14 +696,6 @@
       document.getElementById('feed-' + feed).classList.add('active');
     });
   });
-
-  // Word-pop: wrap each word in a span for the spotlight heading
-  (function () {
-    const heading = document.getElementById('spotlight-pop-heading');
-    if (!heading) return;
-    const words = heading.textContent.trim().split(/\s+/);
-    heading.innerHTML = words.map(w => `<span class="pop-word">${w}</span>`).join(' ');
-  })();
 </script>
 <script src="nav.js"></script>
 <script src="footer.js"></script>

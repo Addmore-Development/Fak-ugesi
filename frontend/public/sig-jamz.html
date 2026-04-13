@@ -54,7 +54,7 @@
     }
     .hero-content {
       position:relative; z-index:3;
-      padding: 60px 80px 60px;
+      padding: 60px 248px 60px;
       animation: fadeUp .9s ease both;
       max-width: 760px;
     }
@@ -117,7 +117,7 @@
 
     /* ── 2025 WINNERS ─────────────────────────────── */
     .winners-section {
-      background:#fff; padding:72px 80px; position:relative;
+      background:#fff; padding:72px 248px; position:relative;
       color: var(--dark-text);
     }
     .winners-header {
@@ -177,7 +177,7 @@
     }
     .challenge-content {
       position:relative; z-index:3;
-      padding:0 80px 56px; width:100%;
+      padding:0 248px 56px; width:100%;
       display:flex; align-items:flex-end; justify-content:space-between;
     }
     .challenge-text { max-width:520px; }
@@ -216,7 +216,7 @@
 
     /* ── PRIZES ───────────────────────────────────── */
     .prizes-section {
-      background:#fff; padding:72px 80px; position:relative;
+      background:#fff; padding:72px 248px; position:relative;
     }
     .prizes-header {
       display:flex; justify-content:space-between; align-items:center;
@@ -250,7 +250,7 @@
 
     /* ── REQUIREMENTS ─────────────────────────────── */
     .requirements-section {
-      background:var(--navy); padding:72px 80px; position:relative;
+      background:var(--navy); padding:72px 248px; position:relative;
       color:#fff;
     }
     .req-header {
@@ -279,7 +279,7 @@
     }
 
     /* ── FAQ ──────────────────────────────────────── */
-    .faq-section { background: var(--white); padding: 64px 80px 64px; position: relative; }
+    .faq-section { background: var(--white); padding: 64px 248px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
@@ -322,7 +322,7 @@
 
     /* ── PARTNERS ─────────────────────────────────── */
     .partners-section {
-      background:var(--lavender); padding:72px 80px; position:relative;
+      background:var(--lavender); padding:72px 248px; position:relative;
     }
     .partners-header {
       display:flex; justify-content:space-between; align-items:center;
@@ -356,7 +356,7 @@
 
     /* ── SOCIAL FOOTER BAR ────────────────────────── */
     .social-bar {
-      background:var(--navy); padding:18px 80px;
+      background:var(--navy); padding:18px 248px;
       display:flex; justify-content:space-between; align-items:center;
     }
     .social-bar-text {
@@ -368,7 +368,7 @@
 
     /* ── FOOTER ───────────────────────────────────── */
     .footer {
-      background:#fff; padding:48px 80px 32px;
+      background:#fff; padding:48px 248px 32px;
       display:grid; grid-template-columns:1fr 1fr 1fr;
       gap:32px; align-items:start;
     }
@@ -387,7 +387,7 @@
     /* ── CROSS-ICON ROWS ──────────────────────────── */
     .cross-row {
       display:flex; justify-content:space-between; align-items:center;
-      padding:0 80px; height:40px; position:relative;
+      padding:0 248px; height:40px; position:relative;
     }
 
     /* ── REVEAL ───────────────────────────────────── */
@@ -493,6 +493,18 @@
       100% { transform: translateY(0) rotate(0deg) scaleX(1); }
     }
     .noodle-letter.noodling { animation: noodleWave 0.7s ease forwards; filter: blur(0.4px); color: inherit; }
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
+
   </style>
 </head>
 <body>
@@ -537,8 +549,8 @@
      2025 WINNERS
 ═══════════════════════════════════════════════════ -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
@@ -626,8 +638,8 @@
      2026 PRIZES
 ═══════════════════════════════════════════════════ -->
 <section class="prizes-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="prizes-header">
     <h2 class="prizes-title">2026 Prizes</h2>
@@ -672,8 +684,8 @@
      REQUIREMENTS
 ═══════════════════════════════════════════════════ -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:50%;animation-delay:.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="req-header">
@@ -691,10 +703,10 @@
 
 <!-- FAQ -->
 <section class="faq-section reveal" style="position:relative;">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:0.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:0.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="faq-layout">
     <div class="faq-left">
@@ -714,8 +726,8 @@
      PARTNERS
 ═══════════════════════════════════════════════════ -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="partners-header">
     <h2 class="partners-title">Our Jamz Partners</h2>
@@ -772,7 +784,7 @@
   </div>
   <div class="footer-contact">
     <strong>Contact us</strong>
-    <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
+    <a href="/cdn-cgi/l/email-protection#8de5e8e1e1e2cdebece6f8eae8fee4a3eee2a3f7ec"><span class="__cf_email__" data-cfemail="38505d545457785e59534d5f5d4b51165b57164259">[email&#160;protected]</span></a>
     <a href="tel:+27117178156">+27 11 717 8156</a>
   </div>
   <div class="footer-brand">
@@ -792,7 +804,7 @@
 <!-- ═══════════════════════════════════════════════════
      SCRIPTS
 ═══════════════════════════════════════════════════ -->
-<script src="sig-nav.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="sig-nav.js"></script>
 
 
 <script>
@@ -1055,13 +1067,4 @@
     nextBtn.addEventListener('click', () => {
       const max = (track.children.length - 3) * cardWidth;
       currentOffset = Math.min(currentOffset + cardWidth, max);
-      track.style.transform = `translateX(-${currentOffset}px)`;
-    });
-    prevBtn.addEventListener('click', () => {
-      currentOffset = Math.max(currentOffset - cardWidth, 0);
-      track.style.transform = `translateX(-${currentOffset}px)`;
-    });
-  }
-</script>
-</body>
-</html>
+      track.style.transform = `translateX(-${cu

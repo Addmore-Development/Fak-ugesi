@@ -16,7 +16,6 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    /* ── Suppress any announcement/promo bar from globalEffects.js ── */
     .announcement-bar,.global-announcement,.site-announcement,
     .promo-bar,.premiere-bar,.festival-bar,
     [data-announcement],[data-promo]{display:none!important}
@@ -30,7 +29,7 @@
     .hero-bg{position:absolute;inset:0;background-image:url('../images/_DMC6809.JPG');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 80px 44px;animation:fadeUp .9s ease both}
+    .hero-content{position:relative;z-index:3;padding:0 248px 44px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;font-family:'InterDisplay',sans-serif}
     .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px;font-family:'InterDisplay',sans-serif}
@@ -48,7 +47,7 @@
     .ticker-arrow{opacity:.6}
 
     /* ── WHAT IS FAK'UGESI PRO ── */
-    .what-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
+    .what-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
     .what-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
     .what-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif;max-width:600px}
     .what-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
@@ -62,37 +61,40 @@
     /* ── JOIN INDUSTRY NETWORK ── */
     .network-section{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:stretch}
     .network-bg{position:absolute;inset:0;background-image:url('../images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55)}
-    .network-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:52px 80px 64px}
-    .network-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px}
-    /* ── UPDATED: larger title, pushed lower via margin-top auto on the container ── */
-    .network-title {
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 1.0;
-      color: #fff;
-      font-family: 'InterDisplay', sans-serif;
-      max-width: 700px;
-      cursor: default;
-      transition: all 0.22s ease;
+    .network-inner{
+      position:relative;z-index:2;width:100%;
+      display:flex;flex-direction:column;justify-content:space-between;
+      padding:52px 248px 64px;
     }
-    .network-title:hover {
-      letter-spacing: 0.02em;
-      transform: scale(1.01);
-      transition: all 0.22s ease;
+    .network-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .network-title{font-size:52px;font-weight:900;color:#fff;line-height:1.0;max-width:600px;font-family:'InterDisplay',sans-serif}
+    .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px;opacity:.85}
+
+    /* ── FIXED: professional text wrapping — constrained width, proper line length ── */
+    .network-bottom{
+      max-width: 520px;          /* cap line length for comfortable reading */
+      margin-top: auto;
+      padding-top: 60px;
     }
-    .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-bottom:8px;opacity:.85}
-    .network-bottom{max-width:480px}
-    .network-body{font-size:13px;line-height:1.72;color:#fff;opacity:.88;margin-bottom:24px;font-family:'InterDisplay',sans-serif}
+    .network-body{
+      font-size:13px;
+      line-height:1.8;           /* slightly more open leading for body on dark bg */
+      color:#fff;
+      opacity:.90;
+      margin-bottom:28px;
+      font-family:'InterDisplay',sans-serif;
+      /* Let text wrap naturally within network-bottom's max-width */
+    }
     .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
     .network-cta:hover{background:#fff;color:var(--navy)}
 
     /* ── 2025 HIGHLIGHTS ── */
     .highlights-section{background:var(--white);padding:72px 0 0;position:relative;color:var(--dark-text)}
-    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 80px 44px;position:relative}
+    .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 248px 44px;position:relative}
     .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0;font-family:'InterDisplay',sans-serif}
     .highlights-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px}
     .highlights-strip-wrap{overflow:hidden;position:relative}
-    .highlights-strip{display:flex;width:max-content;animation:highlightsScroll 40s linear infinite;gap:24px}
+    .highlights-strip{display:flex;width:max-content;animation:highlightsScroll 40s linear infinite}
     .highlights-strip:hover{animation-play-state:paused}
     @keyframes highlightsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .highlight-item{flex:0 0 340px;display:flex;flex-direction:column}
@@ -105,22 +107,8 @@
     .highlight-desc{font-size:12px;line-height:1.65;color:var(--body-gray);margin-bottom:16px;font-family:'InterDisplay',sans-serif}
     .highlight-speakers{font-size:11px;color:var(--dark-text);line-height:1.6;font-family:'InterDisplay',sans-serif}
 
-    /* ── FAQ ── */
-    .faq-section{background:var(--white);padding:72px 80px;position:relative;color:var(--dark-text)}
-    .faq-wrap{display:flex;gap:64px;align-items:flex-start}
-    .faq-left{flex:0 0 380px}
-    .faq-title{font-size:52px;font-weight:900;color:var(--dark-text);margin-bottom:24px;font-family:'InterDisplay',sans-serif}
-    .faq-intro{font-size:13px;line-height:1.75;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
-    .faq-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;display:inline-block;margin-top:16px}
-    .faq-items{flex:1}
-    .faq-item{border:1.5px solid var(--lavender);margin-bottom:8px;background:var(--lavender);cursor:pointer}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;gap:16px}
-    .faq-icon{flex-shrink:0;font-size:20px;font-weight:300;color:var(--dark-text);line-height:1;width:20px;text-align:center}
-    .faq-answer{display:none;padding:0 24px 20px;font-size:13px;line-height:1.72;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
-    .faq-item.open .faq-answer{display:block}
-
     /* ── PARTNERS ── */
-    .partners-section{background:var(--lavender);padding:64px 80px;position:relative}
+    .partners-section{background:var(--lavender);padding:64px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
     .partners-title{font-size:36px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
@@ -128,26 +116,65 @@
     .partner-card{display:flex;flex-direction:column}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:36px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:14px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color {filter: none; }
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) invert(0);}
+    .partner-logo-box img.keep-color{filter:none;}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
+
+    /* ── FAQ — awards style ── */
+    .faq-section{background:var(--white);padding:64px 248px;position:relative}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
+    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
+    .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px}
+    .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px}
+    .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer}
+    .faq-items-wrap{display:flex;flex-direction:column}
+    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background .2s ease}
+    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15)}
+    .faq-item:hover{background:var(--navy)}
+    .faq-item:hover .faq-q-text{color:var(--white)}
+    .faq-item:hover .faq-t-icon{color:var(--white)}
+    .faq-item:hover .faq-ans{color:rgba(255,255,255,.75)}
+    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color .2s ease}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg)}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0}
+    .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
+
+    /* ── REQUIREMENTS — awards style ── */
+    .requirements-section{background:var(--navy);padding:64px 248px 72px;position:relative}
+    .req-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
+    .req-heading{font-size:50px;font-weight:600;color:var(--white)}
+    .req-link{color:var(--white);font-size:12px;text-decoration:underline;letter-spacing:.06em;opacity:.8;cursor:pointer}
+    #req-accordion{display:flex;flex-direction:column}
+    #req-accordion .req-item{border-top:1px solid rgba(255,255,255,.18);background:transparent;transition:background .2s ease}
+    #req-accordion .req-item:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
+    #req-accordion .req-item:hover{background:var(--white)}
+    #req-accordion .req-item:hover .req-q-text{color:var(--navy)}
+    #req-accordion .req-item:hover .req-tog{color:var(--navy)}
+    #req-accordion .req-item:hover .req-body{color:var(--body-gray)}
+    #req-accordion .req-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
+    #req-accordion .req-q-text{font-size:16px;font-weight:600;color:#fff;line-height:1.35;transition:color .2s ease}
+    #req-accordion .req-tog{font-size:22px;color:#fff;flex-shrink:0;font-weight:300;line-height:1;transition:color .2s ease,transform .3s ease}
+    #req-accordion .req-item.open .req-tog{transform:rotate(45deg)}
+    #req-accordion .req-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .2s ease;font-size:13px;line-height:1.72;color:rgba(255,255,255,.7);padding:0}
+    #req-accordion .req-item.open .req-body{max-height:300px;padding-bottom:22px}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+  
+    /* ═══════════════════════════════════════════
+       248px CONTENT BAND
+       Crosses sit at 248px from each edge.
+       All written content lives between them.
+    ═══════════════════════════════════════════ */
+    .content-band {
+      padding-left:  248px;
+      padding-right: 248px;
+      box-sizing: border-box;
+    }
 
-    /* ── Rotating cross icons on hover ── */
-    .cross-icon {
-      transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
-      cursor: pointer;
-    }
-    .cross-icon:hover {
-      transform: rotate(180deg) scale(1.15);
-    }
-    .cross-icon:active {
-      transform: rotate(360deg) scale(0.95);
-      transition: transform 0.15s ease;
-    }
   </style>
 </head>
 <body>
@@ -193,8 +220,8 @@
 
 <!-- ── WHAT IS FAK'UGESI PRO ── -->
 <section class="what-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="what-header">
     <h2 class="what-title">What is Fak'ugesiPRO</h2>
     <a class="what-link" href="#">View 2026 programme</a>
@@ -217,20 +244,20 @@
       <p class="audience-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
     </div>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:calc(50% - 9px);animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- ── JOIN OUR INDUSTRY NETWORK ── -->
 <section class="network-section reveal">
   <div class="network-bg"></div>
   <div class="network-inner">
-    <!-- Title is now large (72px) and sits at the bottom via flex-direction:column + justify-content:flex-end -->
     <div class="network-top">
       <h2 class="network-title">Join our industry<br>network</h2>
       <a class="network-link" href="#">View 2026 programme</a>
     </div>
+    <!-- Text is constrained to max-width 520px for clean professional wrapping -->
     <div class="network-bottom">
       <p class="network-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
       <a class="network-cta" href="#">GET INVOLVED</a>
@@ -241,8 +268,8 @@
 <!-- ── 2025 HIGHLIGHTS ── -->
 <section class="highlights-section reveal">
   <div class="highlights-header">
-    <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-    <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
     <h2 class="highlights-title">2025 Highlights</h2>
     <a class="highlights-link" href="#">View 2026 programme</a>
   </div>
@@ -261,52 +288,113 @@
   </div>
 </section>
 
-<!-- ── FAQ ── -->
-<section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;left:calc(50% - 9px);animation-delay:.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="faq-wrap">
-    <div class="faq-left">
-      <h2 class="faq-title">FAQ</h2>
-      <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
-      <a class="faq-link" href="#">View 2026 programme</a>
+<!-- REQUIREMENTS -->
+<section class="requirements-section reveal">
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="req-hdr">
+    <h2 class="req-heading">Requirements</h2>
+    <a class="req-link" href="#">Submit your application</a>
+  </div>
+  <div id="req-accordion">
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">African origin or diaspora connection</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Work must be created by an African national or diaspora participant with demonstrable ties to the continent.</div>
     </div>
-    <div class="faq-items">
-      <div class="faq-item open">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">−</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Digital or technology-led medium</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology.</div>
+    </div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Completed within the past 24 months</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Works older than two years from the submission date are ineligible.</div>
+    </div>
+    <div class="req-item">
+      <button class="req-btn" aria-expanded="false">
+        <span class="req-q-text">Complete submission package required</span>
+        <span class="req-tog">+</span>
+      </button>
+      <div class="req-body">Portfolio, project description, high-resolution images, and an optional video link are all required.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+    </div>
+    <div>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="#">View 2026 programme</a>
       </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)"><span>Nulla gravida, arcu eget dictum eleifend, velit</span><span class="faq-icon">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+      <div class="faq-items-wrap" id="faqAccordion">
+        <div class="faq-item open">
+          <button class="faq-q-btn" aria-expanded="true">
+            <span class="faq-q-text">Who can apply?</span>
+            <span class="faq-t-icon">×</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">What is the submission deadline?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">How many categories can I enter?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">What does a winner receive?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">How is the jury selected?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">Can I submit work in progress?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:80px;animation-delay:.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:80px;animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- ── OUR MAIN PARTNERS ── -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:80px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:80px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:248px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>
     <a class="partners-link" href="about.html#partners">View all partners</a>
@@ -328,51 +416,59 @@
 </section>
 
 <script src="footer.js"></script>
-<script src="globalEffects.js"></script>
+<script src="fak-ugesi-global-effects-v10.js"></script>
+
 <script>
-  // Remove any announcement/premiere bar injected by globalEffects at runtime
-  (function removeAnnouncementBars() {
-    const selectors = ['.announcement-bar','.global-announcement','.site-announcement','.promo-bar','.premiere-bar','.festival-bar','[data-announcement]','[data-promo]'];
-    function purge() { selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove())); }
-    purge();
-    window.addEventListener('load', purge);
-    setTimeout(purge, 500);
+  /* ── FAQ accordion ── */
+  (function(){
+    const c=document.getElementById('faqAccordion');
+    if(!c)return;
+    c.addEventListener('click',e=>{
+      const item=e.target.closest('.faq-item');
+      if(!item)return;
+      const isOpen=item.classList.contains('open');
+      c.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-t-icon').textContent='+';i.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');item.querySelector('.faq-t-icon').textContent='×';item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');}
+    });
   })();
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-
-  // FAQ accordion
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-icon').textContent = '+';
+  /* ── Requirements accordion ── */
+  (function(){
+    const c=document.getElementById('req-accordion');
+    if(!c)return;
+    c.addEventListener('click',e=>{
+      const item=e.target.closest('.req-item');
+      if(!item)return;
+      const isOpen=item.classList.contains('open');
+      c.querySelectorAll('.req-item').forEach(i=>{i.classList.remove('open');i.querySelector('.req-tog').textContent='+';i.querySelector('.req-btn').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');item.querySelector('.req-tog').textContent='×';item.querySelector('.req-btn').setAttribute('aria-expanded','true');}
     });
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.querySelector('.faq-icon').textContent = '−';
-    }
-  }
 
-  // Rotating cross icons
-  (function initRotatingCrosses() {
-    const crosses = document.querySelectorAll('.cross-icon');
-    crosses.forEach(cross => {
-      if (cross.dataset.rotatingDone) return;
-      cross.dataset.rotatingDone = '1';
-      cross.addEventListener('click', (e) => {
-        e.stopPropagation();
-        cross.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.2, 0.64, 1)';
-        cross.style.transform = 'rotate(360deg) scale(0.9)';
-        setTimeout(() => { cross.style.transform = ''; }, 150);
+  
+      // Force remove water/ripple canvas elements
+  (function removeWaterEffect() {
+    function removeWaterCanvases() {
+      // Remove any canvas that might be water-related
+      const canvases = document.querySelectorAll('.hero canvas, .page-hero canvas, .hero-bg + canvas');
+      canvases.forEach(canvas => {
+        canvas.remove();
       });
-    });
+      
+      // Also remove any elements with water/ripple classes
+      const waterElements = document.querySelectorAll('.water-canvas, .ripple-canvas, [class*="water"], [class*="ripple"]');
+      waterElements.forEach(el => el.remove());
+    }
+    
+    // Run immediately and after a short delay (for dynamic injection)
+    removeWaterCanvases();
+    setTimeout(removeWaterCanvases, 100);
+    setTimeout(removeWaterCanvases, 500);
+  })();
+  })();
+  /* ── Reveal on scroll ── */
+  (function(){
+    const els=document.querySelectorAll('.reveal');
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.06});
+    els.forEach(el=>io.observe(el));
   })();
 </script>
 </body>

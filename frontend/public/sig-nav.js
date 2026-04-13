@@ -1,9 +1,8 @@
 /**
- * Fak'ugesi Signature Programmes Sub-Navigation v6
- * - 4-pointed star indicator (diamond shape) floats above active tab
- * - Indicator sits at TOP-RIGHT corner of the active tab word
- * - Float + triple-bounce click animation
- * - GET TICKETS: 3D lightning INSIDE button on hover (no external sparks)
+ * Fak'ugesi Signature Programmes Sub-Navigation v7
+ * – Square/rectangle corners on GET TICKETS button
+ * – Electric hover effect on GET TICKETS
+ * – 4-pointed star indicator
  */
 (function () {
   const path = window.location.pathname;
@@ -14,7 +13,6 @@
     return page === h;
   }
 
-  // 4-pointed star SVG (clean 4-point diamond shape)
   const STAR_SVG = `<svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M10 0 L11.8 8.2 L20 10 L11.8 11.8 L10 20 L8.2 11.8 L0 10 L8.2 8.2 Z" fill="rgba(255,255,255,0.95)"/>
   </svg>`;
@@ -43,7 +41,6 @@
       box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
 
-    /* 4-pointed star indicator */
     #sig-nav-indicator {
       position: absolute;
       top: 5px;
@@ -70,12 +67,8 @@
       75%  { transform: translateY(-4px) rotate(405deg) scale(1.2); }
       100% { transform: translateY(0) rotate(450deg) scale(1); }
     }
-    #sig-nav-indicator.floating {
-      animation: sigStarFloat 2.4s ease-in-out infinite;
-    }
-    #sig-nav-indicator.jumping {
-      animation: sigStarBounce 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
-    }
+    #sig-nav-indicator.floating { animation: sigStarFloat 2.4s ease-in-out infinite; }
+    #sig-nav-indicator.jumping  { animation: sigStarBounce 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; }
 
     #sig-nav .sig-links {
       display: flex; align-items: center; gap: 28px;
@@ -91,7 +84,7 @@
     #sig-nav .sig-links a:hover { color: #ffffff; }
     #sig-nav .sig-links a.active { color: #ffffff; font-weight: 600; }
 
-    /* GET TICKETS button — 3D lightning inside on hover */
+    /* GET TICKETS — SQUARE corners */
     #sig-nav .sig-tickets {
       position: fixed; right: 32px; top: 12px;
       background: rgba(26, 55, 120, 0.85);
@@ -101,7 +94,8 @@
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; font-family: 'InterDisplay', sans-serif;
       text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-      border-radius: 100px; white-space: nowrap;
+      border-radius: 0;
+      white-space: nowrap;
       transition: background 0.22s, border-color 0.22s, transform 0.15s;
       overflow: hidden;
     }
@@ -115,7 +109,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      border-radius: 100px;
+      border-radius: 0;
     }
     #sig-nav .sig-tickets .sig-btn-label {
       position: relative;
@@ -148,7 +142,7 @@
     <nav id="sig-nav">
       <div id="sig-nav-indicator">${STAR_SVG}</div>
       <ul class="sig-links" id="sig-links-list">${listItems}</ul>
-      <a class="sig-tickets" id="sig-tickets-btn" href="/tickets.html" style="position:fixed;">
+      <a class="sig-tickets" id="sig-tickets-btn" href="/tickets.html">
         <canvas class="sig-btn-canvas" id="sig-lightning-canvas"></canvas>
         <span class="sig-btn-label">GET TICKETS</span>
       </a>
@@ -168,157 +162,94 @@
     indicator.style.left = rightEdgeX + 'px';
   }
 
-  function startFloat() {
-    indicator.classList.remove('jumping');
-    indicator.classList.add('floating');
-  }
-  function pauseFloat() {
-    indicator.classList.remove('floating', 'jumping');
-  }
+  function startFloat() { indicator.classList.remove('jumping'); indicator.classList.add('floating'); }
+  function pauseFloat()  { indicator.classList.remove('floating','jumping'); }
   function jumpIndicator() {
-    indicator.classList.remove('floating', 'jumping');
+    indicator.classList.remove('floating','jumping');
     void indicator.offsetWidth;
     indicator.classList.add('jumping');
-    indicator.addEventListener('animationend', () => {
-      indicator.classList.remove('jumping');
-      startFloat();
-    }, { once: true });
+    indicator.addEventListener('animationend',()=>{ indicator.classList.remove('jumping'); startFloat(); },{ once:true });
   }
 
   function initIndicator() {
     const activeLink = sigLinksList.querySelector('a.active');
-    const targetEl   = activeLink || sigLinksList.querySelector('a');
-    if (targetEl) { positionIndicator(targetEl); startFloat(); }
+    const target = activeLink || sigLinksList.querySelector('a');
+    if (target) { positionIndicator(target); startFloat(); }
   }
 
   sigLinksList.querySelectorAll('li').forEach(li => {
     const a = li.querySelector('a');
     if (!a) return;
-    li.addEventListener('mouseenter', () => { pauseFloat(); positionIndicator(a); });
-    li.addEventListener('mouseleave', () => {
-      const active = sigLinksList.querySelector('a.active');
-      const fallback = active || sigLinksList.querySelector('a');
-      if (fallback) { positionIndicator(fallback); startFloat(); }
+    li.addEventListener('mouseenter',()=>{ pauseFloat(); positionIndicator(a); });
+    li.addEventListener('mouseleave',()=>{
+      const active=sigLinksList.querySelector('a.active');
+      const fb=active||sigLinksList.querySelector('a');
+      if(fb){positionIndicator(fb);startFloat();}
     });
-    li.addEventListener('click', () => {
-      sigLinksList.querySelectorAll('a').forEach(x => x.classList.remove('active'));
+    li.addEventListener('click',()=>{
+      sigLinksList.querySelectorAll('a').forEach(x=>x.classList.remove('active'));
       a.classList.add('active');
       positionIndicator(a);
       jumpIndicator();
     });
   });
 
-  window.addEventListener('scroll', () => {
-    sigNav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-  sigNav.classList.toggle('scrolled', window.scrollY > 40);
-
-  requestAnimationFrame(() => requestAnimationFrame(initIndicator));
-  window.addEventListener('resize', () => {
-    const active = sigLinksList.querySelector('a.active');
-    const fallback = active || sigLinksList.querySelector('a');
-    if (fallback) positionIndicator(fallback);
+  window.addEventListener('scroll',()=>{ sigNav.classList.toggle('scrolled',window.scrollY>40); },{passive:true});
+  sigNav.classList.toggle('scrolled',window.scrollY>40);
+  requestAnimationFrame(()=>requestAnimationFrame(initIndicator));
+  window.addEventListener('resize',()=>{
+    const active=sigLinksList.querySelector('a.active');
+    const fb=active||sigLinksList.querySelector('a');
+    if(fb) positionIndicator(fb);
   });
 
-  // ── 3D Lightning INSIDE GET TICKETS button ──
-  (function() {
-    const btn = document.getElementById('sig-tickets-btn');
-    const canvas = document.getElementById('sig-lightning-canvas');
-    if (!btn || !canvas) return;
+  // ── Electric lightning INSIDE GET TICKETS ──
+  (function(){
+    const btn=document.getElementById('sig-tickets-btn');
+    const canvas=document.getElementById('sig-lightning-canvas');
+    if(!btn||!canvas) return;
+    const ctx=canvas.getContext('2d');
+    let raf=null,hovering=false,bolts=[],frameCount=0;
 
-    const ctx = canvas.getContext('2d');
-    let animFrame = null;
-    let hovering = false;
-    let bolts = [];
-    let frameCount = 0;
-
-    function resizeCanvas() {
-      canvas.width = btn.offsetWidth;
-      canvas.height = btn.offsetHeight;
+    function resizeCanvas(){ canvas.width=btn.offsetWidth; canvas.height=btn.offsetHeight; }
+    function buildSegments(x1,y1,x2,y2,roughness,depth){
+      if(depth<=0) return[[x1,y1],[x2,y2]];
+      const mx=(x1+x2)/2+(Math.random()-0.5)*roughness;
+      const my=(y1+y2)/2+(Math.random()-0.5)*roughness*0.5;
+      return[...buildSegments(x1,y1,mx,my,roughness*0.55,depth-1),
+             ...buildSegments(mx,my,x2,y2,roughness*0.55,depth-1).slice(1)];
     }
-
-    function buildSegments(x1, y1, x2, y2, roughness, depth) {
-      if (depth <= 0) return [[x1, y1], [x2, y2]];
-      const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * roughness;
-      const my = (y1 + y2) / 2 + (Math.random() - 0.5) * roughness * 0.5;
-      return [
-        ...buildSegments(x1, y1, mx, my, roughness * 0.55, depth - 1),
-        ...buildSegments(mx, my, x2, y2, roughness * 0.55, depth - 1).slice(1)
-      ];
+    function spawnBolt(){
+      const W=canvas.width,H=canvas.height;
+      const sx=W*(0.15+Math.random()*0.7),ex=W*(0.15+Math.random()*0.7);
+      const pts=buildSegments(sx,0,ex,H,W*0.3,4);
+      return{pts,life:1.0,decay:0.065+Math.random()*0.075,width:1.0+Math.random()*1.2};
     }
-
-    function spawnBolt() {
-      const W = canvas.width, H = canvas.height;
-      const sx = W * (0.15 + Math.random() * 0.7);
-      const ex = W * (0.15 + Math.random() * 0.7);
-      const pts = buildSegments(sx, 0, ex, H, W * 0.3, 4);
-      return {
-        pts,
-        life: 1.0,
-        decay: 0.065 + Math.random() * 0.075,
-        width: 1.0 + Math.random() * 1.2,
-      };
+    function drawBolt(b){
+      if(b.pts.length<2) return;
+      const alpha=Math.max(0,b.life);
+      ctx.save();ctx.beginPath();ctx.moveTo(b.pts[0][0],b.pts[0][1]);
+      for(let i=1;i<b.pts.length;i++) ctx.lineTo(b.pts[i][0],b.pts[i][1]);
+      ctx.strokeStyle=`rgba(80,120,255,${alpha*0.3})`;ctx.lineWidth=b.width*5;
+      ctx.shadowColor='rgba(80,140,255,0.8)';ctx.shadowBlur=10;ctx.stroke();ctx.restore();
+      ctx.save();ctx.beginPath();ctx.moveTo(b.pts[0][0],b.pts[0][1]);
+      for(let i=1;i<b.pts.length;i++) ctx.lineTo(b.pts[i][0],b.pts[i][1]);
+      ctx.strokeStyle=`rgba(140,200,255,${alpha*0.75})`;ctx.lineWidth=b.width*2;
+      ctx.shadowColor='rgba(160,210,255,0.9)';ctx.shadowBlur=6;ctx.stroke();ctx.restore();
+      ctx.save();ctx.beginPath();ctx.moveTo(b.pts[0][0],b.pts[0][1]);
+      for(let i=1;i<b.pts.length;i++) ctx.lineTo(b.pts[i][0],b.pts[i][1]);
+      ctx.strokeStyle=`rgba(255,255,255,${alpha})`;ctx.lineWidth=b.width*0.6;ctx.stroke();ctx.restore();
     }
-
-    function drawBolt(b) {
-      if (b.pts.length < 2) return;
-      const alpha = Math.max(0, b.life);
-      // Glow layer
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(b.pts[0][0], b.pts[0][1]);
-      for (let i = 1; i < b.pts.length; i++) ctx.lineTo(b.pts[i][0], b.pts[i][1]);
-      ctx.strokeStyle = `rgba(80,120,255,${alpha * 0.3})`;
-      ctx.lineWidth = b.width * 5;
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.shadowColor = 'rgba(80,140,255,0.8)'; ctx.shadowBlur = 10;
-      ctx.stroke(); ctx.restore();
-      // Mid layer
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(b.pts[0][0], b.pts[0][1]);
-      for (let i = 1; i < b.pts.length; i++) ctx.lineTo(b.pts[i][0], b.pts[i][1]);
-      ctx.strokeStyle = `rgba(140,200,255,${alpha * 0.75})`;
-      ctx.lineWidth = b.width * 2;
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.shadowColor = 'rgba(160,210,255,0.9)'; ctx.shadowBlur = 6;
-      ctx.stroke(); ctx.restore();
-      // Core
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(b.pts[0][0], b.pts[0][1]);
-      for (let i = 1; i < b.pts.length; i++) ctx.lineTo(b.pts[i][0], b.pts[i][1]);
-      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-      ctx.lineWidth = b.width * 0.6;
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.stroke(); ctx.restore();
-    }
-
-    function tick() {
-      if (!hovering) return;
-      resizeCanvas();
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function tick(){
+      if(!hovering) return;
+      resizeCanvas();ctx.clearRect(0,0,canvas.width,canvas.height);
       frameCount++;
-      if (frameCount % 8 === 0) {
-        bolts.push(spawnBolt());
-        if (Math.random() > 0.5) bolts.push(spawnBolt());
-      }
-      bolts = bolts.filter(b => b.life > 0);
-      bolts.forEach(b => { drawBolt(b); b.life -= b.decay; });
-      animFrame = requestAnimationFrame(tick);
+      if(frameCount%8===0){bolts.push(spawnBolt());if(Math.random()>0.5)bolts.push(spawnBolt());}
+      bolts=bolts.filter(b=>b.life>0);
+      bolts.forEach(b=>{drawBolt(b);b.life-=b.decay;});
+      raf=requestAnimationFrame(tick);
     }
-
-    btn.addEventListener('mouseenter', () => {
-      hovering = true;
-      resizeCanvas();
-      bolts = [];
-      frameCount = 0;
-      if (!animFrame) animFrame = requestAnimationFrame(tick);
-    });
-    btn.addEventListener('mouseleave', () => {
-      hovering = false;
-      if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    });
+    btn.addEventListener('mouseenter',()=>{hovering=true;resizeCanvas();bolts=[];frameCount=0;if(!raf)raf=requestAnimationFrame(tick);});
+    btn.addEventListener('mouseleave',()=>{hovering=false;if(raf){cancelAnimationFrame(raf);raf=null;}ctx.clearRect(0,0,canvas.width,canvas.height);});
   })();
 })();

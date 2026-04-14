@@ -1,0 +1,217 @@
+/**
+ * fakugesi-global-patch.css
+ * Applied globally across all pages.
+ * 
+ * 1. Cross icons moved 5px inward from content boundary (253px instead of 248px)
+ * 2. FAQ sections adopt sig-fakugesipro.html hover-invert accordion style
+ * 3. Hero heading font sizes reduced and aligned
+ * 4. All buttons use electric canvas effect structure (canvas injected by nav.js)
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. CROSS ICON REPOSITIONING — 5px inward from 248px = 253px
+   Override inline left/right:248px to 253px
+   ══════════════════════════════════════════════════════════════ */
+
+/* We use a CSS custom property override approach.
+   Inline styles on .cross-icon have left:248px / right:248px.
+   Since inline styles override classes we use JS in nav.js to patch.
+   The CSS below handles any cross icons set via class (non-inline). */
+
+/* For cross-icon elements in the crosses-bar and crosses-row containers */
+.crosses-bar,
+.crosses-bar-3,
+.team-crosses-top,
+.crosses-row {
+  padding-left: 253px !important;
+  padding-right: 253px !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   2. FAQ — sig-fakugesipro.html style
+   Hover → navy background, white text; open → navy bg persists
+   Applies to .faq-item / .faq-question pattern used across all pages
+   ══════════════════════════════════════════════════════════════ */
+
+/* Base faq-item: transparent bg, top border */
+.faq-item {
+  border: none !important;
+  border-top: 1px solid rgba(26,39,68,0.15) !important;
+  background: transparent !important;
+  margin-bottom: 0 !important;
+  transition: background 0.2s ease !important;
+}
+.faq-item:last-child {
+  border-bottom: 1px solid rgba(26,39,68,0.15) !important;
+}
+
+/* Hover state: navy bg, everything white */
+.faq-item:hover {
+  background: #1a2744 !important;
+}
+.faq-item:hover .faq-question,
+.faq-item:hover .faq-question-text,
+.faq-item:hover .faq-q-text,
+.faq-item:hover .faq-q-btn .faq-q-text {
+  color: #ffffff !important;
+}
+.faq-item:hover .faq-toggle,
+.faq-item:hover .faq-t-icon,
+.faq-item:hover .faq-icon {
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.6) !important;
+}
+.faq-item:hover .faq-answer,
+.faq-item:hover .faq-ans,
+.faq-item:hover .faq-body {
+  color: rgba(255,255,255,0.75) !important;
+}
+
+/* Open state: navy bg */
+.faq-item.open {
+  background: #1a2744 !important;
+}
+.faq-item.open .faq-question,
+.faq-item.open .faq-question-text,
+.faq-item.open .faq-q-text,
+.faq-item.open .faq-q-btn .faq-q-text {
+  color: #ffffff !important;
+}
+.faq-item.open .faq-toggle,
+.faq-item.open .faq-t-icon,
+.faq-item.open .faq-icon {
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.6) !important;
+  transform: rotate(45deg) !important;
+}
+.faq-item.open .faq-answer,
+.faq-item.open .faq-ans,
+.faq-item.open .faq-body {
+  color: rgba(255,255,255,0.75) !important;
+}
+
+/* Question button layout */
+.faq-question,
+.faq-q-btn,
+.faq-btn {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 20px 22px !important;
+  cursor: pointer !important;
+  gap: 16px !important;
+  background: none !important;
+  border: none !important;
+  width: 100% !important;
+  text-align: left !important;
+  font-family: 'InterDisplay', sans-serif !important;
+  transition: color 0.2s ease !important;
+}
+
+.faq-question-text,
+.faq-q-text {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--dark-text, #0d1b3e) !important;
+  line-height: 1.35 !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Toggle icon */
+.faq-toggle,
+.faq-t-icon,
+.faq-icon {
+  flex-shrink: 0 !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
+  transition: transform 0.3s ease, color 0.2s ease !important;
+  user-select: none !important;
+}
+
+/* Answer panel */
+.faq-answer,
+.faq-ans,
+.faq-body {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease !important;
+  font-size: 13px !important;
+  line-height: 1.72 !important;
+  color: var(--body-gray, #3a4060) !important;
+  padding: 0 22px !important;
+}
+.faq-item.open .faq-answer,
+.faq-item.open .faq-ans,
+.faq-item.open .faq-body {
+  max-height: 300px !important;
+  padding: 0 22px 22px !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   3. HERO HEADING SIZE REDUCTION
+   Reduce large hero titles across all pages for better proportion
+   ══════════════════════════════════════════════════════════════ */
+
+.hero .hero-title,
+.hero h1.hero-title {
+  font-size: 42px !important;
+  line-height: 1.08 !important;
+  max-width: 640px !important;
+  text-align: left !important;
+}
+
+/* Page-specific overrides where hero titles are used */
+.hero-content .hero-title { font-size: 42px !important; }
+
+/* Theme section heading (index.html) */
+.theme-section .theme-head { font-size: 32px !important; }
+.theme-section .theme-year { font-size: 40px !important; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   4. GLOBAL BUTTON ELECTRIC STRUCTURE
+   Ensures all buttons can receive the canvas overlay from nav.js
+   ══════════════════════════════════════════════════════════════ */
+
+.btn-primary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.intro-cta,
+.network-cta,
+.section-cta,
+.challenge-cta,
+a.btn-tickets,
+button.btn-tickets,
+.btn-get-pass,
+.btn-tickets {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Square corners on all buttons to match GET TICKETS aesthetic */
+.btn-primary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.intro-cta,
+.network-cta,
+.section-cta,
+.challenge-cta,
+a.btn-tickets,
+button.btn-tickets,
+.btn-get-pass,
+.btn-tickets {
+  border-radius: 0 !important;
+}

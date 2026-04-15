@@ -371,4 +371,60 @@
     setTimeout(attachAll, 600);
   })();
 
+  // ── Scroll-driven cross/plus spin ──
+  // Faster spin (0.45 deg/px). On scroll-start, crosses burst to 2.2× scale
+  // then decay back — the "multiply" burst effect.
+  // Clockwise on scroll-down, anti-clockwise on scroll-up.
+  (function () {
+    let totalRotation = 0;
+    let lastScrollY   = window.scrollY;
+    let rafPending    = false;
+    let burstScale    = 1;
+    let bursting      = false;
+    let scrollTimeout = null;
+
+    const DEGREES_PER_PX = 0.45;   // much faster spin
+    const BURST_SCALE    = 2.2;    // scale multiplier on spin-start
+    const BURST_DECAY    = 0.07;   // per-frame decay toward 1
+
+    function applyRotation() {
+      const crosses = document.querySelectorAll('.cross-icon');
+      const transform = `translateY(-50%) rotate(${totalRotation}deg) scale(${burstScale.toFixed(3)})`;
+      crosses.forEach(el => {
+        el.style.transform  = transform;
+        el.style.transition = 'none'; // JS-driven; no CSS transition lag
+      });
+
+      // Decay burst scale back to 1
+      if (burstScale > 1) {
+        burstScale = Math.max(1, burstScale - BURST_DECAY);
+        requestAnimationFrame(applyRotation);
+      } else {
+        rafPending = false;
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+
+      totalRotation += delta * DEGREES_PER_PX;
+
+      // Trigger burst at the start of each scroll gesture
+      if (!bursting) {
+        burstScale = BURST_SCALE;
+        bursting   = true;
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => { bursting = false; }, 150);
+
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(applyRotation);
+      }
+    }, { passive: true });
+  })();
+
 })();

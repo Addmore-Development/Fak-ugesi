@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fak'ugesi Awards 2026</title>
-   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; }
@@ -26,11 +26,10 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── Cross icons ── */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
-      animation: crossPulse 3s ease-in-out infinite;
+      animation: crossPulse 1.5s ease-in-out infinite;
     }
     .cross-icon svg { width: 100%; height: 100%; }
     @keyframes crossPulse {
@@ -41,8 +40,7 @@
     /* ── HERO ── */
     .hero {
       position: relative; width: 100%; min-height: 420px;
-      overflow: hidden; display: flex; align-items: flex-end;
-      padding-top: 58px;
+      overflow: hidden; display: flex; align-items: flex-end; padding-top: 58px;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -57,24 +55,13 @@
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
     .hero-content {
-      position: relative; z-index: 3;
-      padding: 0 248px 52px;
-      animation: fadeUp 0.9s ease both;
-      max-width: 760px;
+      position: relative; z-index: 3; padding: 0 248px 52px;
+      animation: fadeUp 0.9s ease both; max-width: 760px;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-eyebrow {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff;
-    }
-    .hero-title {
-      font-size: 52px; font-weight: 900; line-height: 1.05;
-      margin-bottom: 20px; color: #fff; max-width: 640px;
-    }
-    .hero-body {
-      font-size: 13px; line-height: 1.72; max-width: 440px;
-      opacity: 0.85; margin-bottom: 28px; color: #fff;
-    }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
+    .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
+    .hero-body { font-size: 13px; line-height: 1.72; max-width: 440px; opacity: 0.85; margin-bottom: 28px; color: #fff; }
     .btn-apply {
       display: inline-block; border: 1.5px solid var(--white); color: var(--white);
       background: transparent; padding: 11px 28px; font-size: 11px; font-weight: 700;
@@ -95,40 +82,21 @@
       padding: 10px 0; position: relative; z-index: 10;
     }
     .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
-    .ticker-track span {
-      padding: 0 32px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,0.85); letter-spacing: 0.02em;
-    }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── 2025 WINNERS ── */
-    .winners-section {
-      background: var(--white); padding: 60px 0 0;
-      position: relative; overflow: hidden;
-    }
-    .winners-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 248px 36px;
-    }
+    .winners-section { background: var(--white); padding: 60px 0 0; position: relative; overflow: hidden; }
+    .winners-header { display: flex; justify-content: space-between; align-items: center; padding: 0 248px 36px; }
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
-    .winners-nav button {
-      background: none; border: none; cursor: pointer; font-size: 22px;
-      color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s;
-    }
+    .winners-nav button { background: none; border: none; cursor: pointer; font-size: 22px; color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s; }
     .winners-nav button:hover { opacity: 0.5; }
 
-    /* Winners strip: scrolls LEFT → RIGHT */
     .winners-strip-outer { overflow: hidden; }
-    .winners-strip {
-      display: flex; gap: 16px; width: max-content;
-      animation: winnersScrollRTL 34s linear infinite;
-    }
+    .winners-strip { display: flex; gap: 16px; width: max-content; animation: winnersScroll 34s linear infinite; }
     .winners-strip:hover { animation-play-state: paused; }
-    @keyframes winnersScrollRTL {
-      from { transform: translateX(-50%); }
-      to   { transform: translateX(0); }
-    }
+    @keyframes winnersScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .winner-card { flex: 0 0 380px; cursor: pointer; }
     .winner-img { width: 380px; height: 380px; overflow: hidden; }
     .winner-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
@@ -139,9 +107,7 @@
     .winner-bottom { display: flex; justify-content: space-between; }
     .winner-author, .winner-country { font-size: 13px; color: var(--body-gray); }
 
-    .crosses-row {
-      display: flex; justify-content: space-between; padding: 20px 248px;
-    }
+    .crosses-row { display: flex; justify-content: space-between; padding: 20px 200px; }
     .crosses-row svg { width: 18px; height: 18px; }
 
     /* ── ELIGIBLE CATEGORIES ── */
@@ -149,64 +115,23 @@
     .categories-bg {
       position: absolute; inset: 0;
       background-image: url('../images/signature/Poster - Akende Muyumbana.png');
-      background-size: cover; background-position: center;
-      filter: brightness(0.28);
+      background-size: cover; background-position: center; filter: brightness(0.28);
     }
     .categories-content { position: relative; z-index: 3; padding: 64px 248px 80px; }
-    .cat-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 40px;
-    }
+    .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
     .cat-title { font-size: 52px; font-weight: 600; color: var(--white); }
-    .cat-apply-link {
-      color: var(--white); font-size: 12px;
-      letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap;
-    }
+    .cat-apply-link { color: var(--white); font-size: 12px; opacity: 0.8; cursor: pointer; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); white-space: nowrap; }
     .cat-apply-link:hover { opacity: 1; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
-    /* Cat card flip */
-    .cat-card { perspective: 900px; height: 260px; cursor: default; }
-    .cat-card-inner {
-      position: relative; width: 100%; height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .cat-card:hover .cat-card-inner { transform: rotateY(180deg); }
-    .cat-card-front,
-    .cat-card-back {
-      position: absolute; inset: 0;
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      border: 1px solid rgba(255,255,255,0.45);
-      padding: 22px 20px 24px;
-      display: flex; flex-direction: column;
-    }
-    .cat-card-front { background: rgba(0,0,0,0.15); transition: border-color 0.28s, background 0.28s; }
-    .cat-card:hover .cat-card-front { border-color: var(--white); background: rgba(255,255,255,0.06); }
-    .cat-card-back {
-      transform: rotateY(180deg);
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-      border-color: rgba(255,255,255,0.6);
-      justify-content: center; gap: 10px;
-    }
-    .cat-card-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 14px;
-    }
-    .cat-tag  { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; color: #fff; }
-    .cat-num  { font-size: 36px; font-weight: 700; opacity: 0.75; color: #fff; }
+    .cat-card { border: 1px solid rgba(255,255,255,0.45); padding: 22px 20px 24px; position: relative; transition: border-color 0.28s, background 0.28s; }
+    .cat-card:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+    .cat-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .cat-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; color: #fff; }
+    .cat-num { font-size: 36px; font-weight: 700; opacity: 0.75; color: #fff; }
     .cat-name { font-size: 20px; font-weight: 700; line-height: 1.25; margin-bottom: 20px; color: #fff; }
     .cat-items { list-style: none; }
-    .cat-items li {
-      font-size: 12px; opacity: 0.8; line-height: 1.9;
-      padding-left: 18px; position: relative; color: #fff;
-    }
+    .cat-items li { font-size: 12px; opacity: 0.8; line-height: 1.9; padding-left: 18px; position: relative; color: #fff; }
     .cat-items li::before { content: '→'; position: absolute; left: 0; }
-    .cat-back-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6; color: #fff; font-family: 'InterDisplay', sans-serif; }
-    .cat-back-title { font-size: 15px; font-weight: 600; line-height: 1.45; color: #fff; font-family: 'InterDisplay', sans-serif; }
-    .cat-back-body  { font-size: 11px; line-height: 1.6; opacity: 0.78; color: #fff; font-family: 'InterDisplay', sans-serif; }
 
     /* ── JURY ── */
     .jury-section { background: var(--white); padding: 64px 248px 0; position: relative; }
@@ -230,9 +155,7 @@
     .req-list { list-style: decimal; padding-left: 18px; max-width: 900px; }
     .req-list li { font-size: 13px; line-height: 1.78; opacity: 0.85; margin-bottom: 20px; color: #fff; }
 
-    /* ════════════════════════════════════════════════════════
-       FAQ — base styles (accordion fallback + layout)
-    ════════════════════════════════════════════════════════ */
+    /* ── FAQ ── */
     .faq-section { background: var(--white); padding: 64px 248px 64px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
@@ -245,120 +168,15 @@
     .faq-question {
       display: flex; justify-content: space-between; align-items: center;
       padding: 20px 22px; cursor: pointer; gap: 16px;
-      background: none; border: none; width: 100%; text-align: left;
-      font-family: 'InterDisplay', sans-serif;
+      background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif;
     }
     .faq-question-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; }
     .faq-toggle { font-size: 20px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; }
     .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
       font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 22px;
     }
     .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 22px; }
-
-    /* ════════════════════════════════════════════════════════
-       EMBEDDED FROM globalEffects.js
-       A. KIKK FAQ horizontal-expand styles
-    ════════════════════════════════════════════════════════ */
-    .faq-kikk-row {
-      display: flex !important; flex-direction: row !important;
-      align-items: stretch; width: 100%; overflow: hidden;
-      border: 1px solid rgba(26,39,68,0.15);
-    }
-    .faq-kikk-cell {
-      flex: 1 1 0; min-width: 0; position: relative; overflow: hidden;
-      cursor: pointer; border-right: 1px solid rgba(26,39,68,0.1);
-      transition: flex 0.5s cubic-bezier(0.4,0,0.2,1), background 0.38s ease, color 0.38s ease;
-    }
-    .faq-kikk-cell:last-child { border-right: none; }
-    .faq-kikk-cell.fkk-active   { flex: 5 1 0; }
-    .faq-kikk-cell.fkk-inactive { flex: 0.4 1 0; }
-    .faq-kikk-cell::before {
-      content: ''; position: absolute; left: 0; top: 0;
-      width: 3px; height: 100%; transform: scaleY(0); transform-origin: top;
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
-    .faq-kikk-cell.fkk-active::before { transform: scaleY(1); }
-    .fkk-collapsed {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      writing-mode: vertical-rl; text-orientation: mixed;
-      font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-      opacity: 0.45; white-space: nowrap; padding: 14px 8px;
-      font-family: 'InterDisplay', sans-serif; transition: opacity 0.25s; pointer-events: none;
-    }
-    .faq-kikk-cell.fkk-active .fkk-collapsed { opacity: 0; }
-    .fkk-expanded {
-      padding: 24px 20px 28px 22px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      min-height: 120px; opacity: 0; pointer-events: none;
-      transition: opacity 0.24s ease 0.1s; font-family: 'InterDisplay', sans-serif;
-    }
-    .faq-kikk-cell.fkk-active .fkk-expanded { opacity: 1; pointer-events: auto; }
-    .fkk-num { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.4; margin-bottom: 8px; }
-    .fkk-q   { font-size: 13px; font-weight: 600; line-height: 1.38; margin-bottom: 10px; }
-    .fkk-a   { font-size: 11.5px; line-height: 1.7; opacity: 0.78; }
-
-    /* FAQ theme: light bg → navy on hover */
-    .faq-kikk-row.faq-theme { border-color: rgba(26,39,68,0.15); }
-    .faq-kikk-row.faq-theme .faq-kikk-cell { background: #f0f3f9; color: #0d1b3e; border-right-color: rgba(26,39,68,0.1); }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active { background: #1a2744; color: #ffffff; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell::before { background: #1a2744; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active::before { background: rgba(255,255,255,0.4); }
-    .faq-kikk-row.faq-theme .fkk-collapsed { color: #0d1b3e; }
-    .faq-kikk-row.faq-theme .faq-kikk-cell.fkk-active .fkk-collapsed { color: #fff; }
-    .faq-kikk-row.faq-theme .fkk-q,
-    .faq-kikk-row.faq-theme .fkk-a,
-    .faq-kikk-row.faq-theme .fkk-num { color: inherit; }
-
-    /* ════════════════════════════════════════════════════════
-       EMBEDDED FROM globalEffects.js
-       Section divider styles
-    ════════════════════════════════════════════════════════ */
-    .section-divider-line {
-      display: flex; align-items: center; gap: 14px;
-      padding: 18px 40px; position: relative; z-index: 2;
-    }
-    .section-divider-rule {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent);
-    }
-    .light-section .section-divider-rule {
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,.1), transparent);
-    }
-    .divider-plus {
-      cursor: pointer; display: inline-block; user-select: none;
-      font-size: 18px; font-weight: 300; line-height: 1; transition: color .2s;
-    }
-    .divider-plus:hover { color: #e05a1e !important; }
-    @keyframes divPlusSpin {
-      0%   { transform: rotate(0deg) scale(1); }
-      45%  { transform: rotate(210deg) scale(1.6); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .div-plus-spinning { animation: divPlusSpin .5s cubic-bezier(.4,0,.2,1) forwards !important; }
-    .fug-baby-plus2 {
-      position: fixed; pointer-events: none; z-index: 99999;
-      font-weight: 700; line-height: 1; transform: translate(-50%,-50%);
-      transition: transform .5s ease-out, opacity .5s ease-out;
-    }
-
-    /* ════════════════════════════════════════════════════════
-       EMBEDDED FROM globalEffects.js
-       Noodle text styles
-    ════════════════════════════════════════════════════════ */
-    .noodle-word   { display: inline-block; transition: none; cursor: default; }
-    .noodle-letter { display: inline-block; transition: transform 0.18s ease, filter 0.18s ease; }
-    @keyframes noodleWave {
-      0%   { transform: translateY(0) rotate(0deg) scaleX(1); }
-      20%  { transform: translateY(-8px) rotate(-6deg) scaleX(1.12); }
-      40%  { transform: translateY(6px) rotate(4deg) scaleX(0.88); }
-      60%  { transform: translateY(-5px) rotate(-3deg) scaleX(1.08); }
-      80%  { transform: translateY(3px) rotate(2deg) scaleX(0.95); }
-      100% { transform: translateY(0) rotate(0deg) scaleX(1); }
-    }
-    .noodle-letter.noodling { animation: noodleWave 0.7s ease forwards; filter: blur(0.4px); color: inherit; }
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px 248px 72px; position: relative; }
@@ -368,45 +186,32 @@
     .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
-      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
+      background: var(--white); border: 1px solid rgba(26,39,68,0.12); aspect-ratio: 1/1;
+      display: flex; align-items: center; justify-content: center; padding: 40px 32px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
     .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
-    /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
-  
-    /* ═══════════════════════════════════════════
-       248px CONTENT BAND
-       Crosses sit at 248px from each edge.
-       All written content lives between them.
-    ═══════════════════════════════════════════ */
-    .content-band {
-      padding-left:  248px;
-      padding-right: 248px;
-      box-sizing: border-box;
-    }
 
+    .content-band { padding-left: 248px; padding-right: 248px; box-sizing: border-box; }
   </style>
 </head>
 <body>
 
 <!-- sig-nav injected by sig-nav.js -->
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="cross-icon" style="top:16px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:248px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:248px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
 
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Awards</p>
@@ -420,13 +225,8 @@
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
@@ -438,10 +238,11 @@
   </div>
 </div>
 
-<!-- 2025 WINNERS -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
@@ -453,17 +254,16 @@
 
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <!-- duplicate set for seamless loop -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo</span><span class="winner-country">Nigeria</span></div></div></div>
     </div>
   </div>
 
@@ -474,115 +274,33 @@
   </div>
 </section>
 
-<!-- ELIGIBLE CATEGORIES -->
 <section class="categories-section reveal">
   <div class="categories-bg"></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="categories-content">
     <div class="cat-header">
       <h2 class="cat-title">Eligible Categories</h2>
       <a class="cat-apply-link" href="#">Submit your application</a>
     </div>
     <div class="cat-grid">
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">01</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Did you know?</span>
-            <span class="cat-back-title">Fak'ugesi has showcased over 300 African digital artists since its launch.</span>
-            <span class="cat-back-body">Africa's creativity knows no bounds.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Digital Art</span><span class="cat-num">02</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>Digital Illustration</li><li>Generative Art</li><li>NFT & Web3 Art</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Festival fact</span>
-            <span class="cat-back-title">The festival attracts visitors from 30+ countries across every continent.</span>
-            <span class="cat-back-body">A truly global celebration of African innovation.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Interactive Design</span><span class="cat-num">03</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>UX / UI Design</li><li>Motion Design</li><li>Data Visualisation</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Innovation stat</span>
-            <span class="cat-back-title">Over 60% of Fak'ugesi alumni have gone on to found their own tech startups.</span>
-            <span class="cat-back-body">The festival is a launchpad for the future.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Game Design</span><span class="cat-num">04</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>Mobile Games</li><li>Console / PC Games</li><li>Serious Games</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Heritage note</span>
-            <span class="cat-back-title">Fak'ugesi means "wonder" or "amazement" in Zulu — Africa's boldest digital festival.</span>
-            <span class="cat-back-body">Rooted in culture, reaching for tomorrow.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Film & Animation</span><span class="cat-num">05</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>Short Film</li><li>Animation</li><li>Documentary</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Community pulse</span>
-            <span class="cat-back-title">More than 500 volunteers have contributed their skills to Fak'ugesi over the years.</span>
-            <span class="cat-back-body">Built by the community, for the community.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-card-inner">
-          <div class="cat-card-front">
-            <div class="cat-card-top"><span class="cat-tag">Tech Innovation</span><span class="cat-num">06</span></div>
-            <div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div>
-            <ul class="cat-items"><li>AI / Machine Learning</li><li>IoT Solutions</li><li>Social Impact Tech</li></ul>
-          </div>
-          <div class="cat-card-back">
-            <span class="cat-back-label">Awards insight</span>
-            <span class="cat-back-title">Fak'ugesi Awards receive applications from over 15 African countries every year.</span>
-            <span class="cat-back-body">Celebrating excellence across the continent.</span>
-          </div>
-        </div>
-      </div>
-
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">01</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">02</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">03</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">04</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">05</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
+      <div class="cat-card"><div class="cat-card-top"><span class="cat-tag">Immersive Media</span><span class="cat-num">06</span></div><div class="cat-name">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</div><ul class="cat-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- 2026 AWARDS JURY -->
 <section class="jury-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;left:50%;animation-delay:0.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="jury-header">
     <h2 class="jury-title">2026 Awards Jury</h2>
@@ -590,54 +308,12 @@
   </div>
 
   <div class="jury-grid">
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Mickael Newton"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
-    <div class="jury-card">
-      <div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div>
-      <div class="jury-info">
-        <div class="jury-name">Mickael<br>Newton</div>
-        <div class="jury-role">Ubisoft Senior Social Impact Manager</div>
-        <div class="jury-country">France</div>
-      </div>
-    </div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Mickael Newton"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
   </div>
 
   <div style="display:flex;justify-content:space-between;padding-top:40px;padding-bottom:16px;">
@@ -647,10 +323,11 @@
   </div>
 </section>
 
-<!-- REQUIREMENTS -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="req-header">
     <h2 class="req-title">Requirements</h2>
@@ -659,17 +336,16 @@
   <ol class="req-list">
     <li>Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede. Aenean congue pede in nisi tristique interdum. Sed commodo, ipsum ac dignissim ullamcorper, odio nulla venenatis nisi, in porta dolor neque venenatis lacus. Pellentesque fermentum. Mauris sit amet ligula ut tellus gravida mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices cubilia Curae;</li>
     <li>Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl, suscipit at, rhoncus sit amet, porttitor sit amet, leo. Aenean hendrerit est. Etiam ac augue. Morbi tincidunt neque ut lacus. Duis vulputate cursus orci. Mauris justo lorem, scelerisque sit amet, placerat sed, condimentum in, leo.</li>
-    <li>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus purus, elementum ac, luctus ullamcorper, ornare vitae, massa.</li>
+    <li>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus purus, elementum ac, luctus ullamcorper, ornare vitae, massa. Nullam posuere sem ut mauris.</li>
     <li>Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus. Duis molestie pede. Vivamus quis odio sit amet libero sodales tincidunt. Nam sit amet metus vitae lectus ullamcorper dignissim.</li>
   </ol>
 </section>
 
-<!-- FAQ -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="faq-layout">
     <div class="faq-left">
@@ -685,28 +361,20 @@
   </div>
 </section>
 
-<!-- PARTNERS -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="partners-header">
     <h2 class="partners-title">Our Awards Partners</h2>
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 
@@ -715,31 +383,19 @@
 <script src="footer.js"></script>
 
 <script>
-  /* ═══════════════════════════════════════════════════════════
-     REVEAL ON SCROLL
-  ═══════════════════════════════════════════════════════════ */
   const revealEls = document.querySelectorAll('.reveal');
-  const revealIO = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.06 });
-  revealEls.forEach(el => revealIO.observe(el));
+  revealEls.forEach(el => io.observe(el));
 
-  /* ═══════════════════════════════════════════════════════════
-     FAQ — build accordion items first so KIKK can read them
-  ═══════════════════════════════════════════════════════════ */
   const faqData = [
-    { q: 'Who can apply to the Fak\'ugesi Awards?',
-      a: 'Any African digital creator, studio, or collective is eligible to apply. Applicants must be based on the African continent or be of African origin, and the submitted work must have been created within the last two years.' },
-    { q: 'What file formats are accepted for submissions?',
-      a: 'We accept PDF portfolios, MP4 video files (max 500MB), and ZIP archives containing your project assets. All submissions must be accompanied by a completed online entry form.' },
-    { q: 'Is there an entry fee?',
-      a: 'There is no entry fee for applications. The Fak\'ugesi Awards are committed to remaining accessible to all African creatives regardless of financial circumstance.' },
-    { q: 'Can I submit work that has already won another award?',
-      a: 'Yes. Previously awarded work is eligible provided it meets the two-year recency requirement and has not been submitted to the Fak\'ugesi Awards in a prior cycle.' },
-    { q: 'When will winners be announced?',
-      a: 'Winners will be announced at the Fak\'ugesi Awards ceremony held during the annual festival in Johannesburg. Shortlisted applicants will be notified by email at least four weeks before the ceremony.' },
-    { q: 'Can a single applicant submit across multiple categories?',
-      a: 'Yes — applicants may submit to a maximum of three categories per cycle. Each submission must be accompanied by its own completed entry form and relevant supporting materials.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
+    { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper enim non eros.' },
   ];
 
   const faqContainer = document.getElementById('faq-items');
@@ -751,8 +407,8 @@
         <span class="faq-question-text">${faq.q}</span>
         <span class="faq-toggle">${i === 0 ? '−' : '+'}</span>
       </button>
-      <div class="faq-answer">${faq.a}</div>`;
-    /* standard accordion (fallback — KIKK replaces this interaction) */
+      <div class="faq-answer">${faq.a}</div>
+    `;
     item.querySelector('.faq-question').addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
       faqContainer.querySelectorAll('.faq-item').forEach(el => {
@@ -768,211 +424,6 @@
     });
     faqContainer.appendChild(item);
   });
-
-  /* ═══════════════════════════════════════════════════════════
-     EMBEDDED FROM globalEffects.js
-     A. KIKK HORIZONTAL EXPAND — FAQ
-     Reads the .faq-item divs just built above and transforms
-     them into the animated horizontal panel layout.
-  ═══════════════════════════════════════════════════════════ */
-  (function initKikkFaq() {
-
-    function buildKikkRow(container, theme) {
-      if (container.dataset.kikkDone) return;
-      const items = container.querySelectorAll(':scope > .faq-item');
-      if (items.length < 2) return;
-      container.dataset.kikkDone = '1';
-
-      const themeClass = (theme === 'req') ? 'req-theme' : 'faq-theme';
-      const data = [];
-
-      items.forEach((item, i) => {
-        const qEl = item.querySelector(
-          '.faq-question-text, .faq-question span:first-child, .faq-btn span:first-child, .faq-q, button span:first-child'
-        );
-        const aEl = item.querySelector('.faq-answer, .faq-a, .faq-body');
-        const rawQ = qEl
-          ? qEl.textContent.trim()
-          : (item.querySelector('button, .faq-question, .faq-btn')?.textContent?.trim() ?? `Item ${i + 1}`);
-        const rawA    = aEl ? aEl.innerHTML.trim() : '';
-        const shortLabel = rawQ.length > 16 ? rawQ.slice(0, 16) + '…' : rawQ;
-        data.push({ q: rawQ, a: rawA, shortLabel, num: String(i + 1).padStart(2, '0') });
-      });
-
-      const row = document.createElement('div');
-      row.className = `faq-kikk-row ${themeClass}`;
-
-      data.forEach((d, i) => {
-        const cell = document.createElement('div');
-        cell.className = 'faq-kikk-cell' + (i === 0 ? ' fkk-active' : '');
-        cell.innerHTML = `
-          <div class="fkk-collapsed">${d.shortLabel}</div>
-          <div class="fkk-expanded">
-            <div class="fkk-num">${d.num}</div>
-            <div class="fkk-q">${d.q}</div>
-            ${d.a ? `<div class="fkk-a">${d.a}</div>` : ''}
-          </div>`;
-
-        cell.addEventListener('mouseenter', () => {
-          row.querySelectorAll('.faq-kikk-cell').forEach(c => {
-            c.classList.remove('fkk-active');
-            c.classList.add('fkk-inactive');
-          });
-          cell.classList.remove('fkk-inactive');
-          cell.classList.add('fkk-active');
-        });
-
-        row.appendChild(cell);
-      });
-
-      row.addEventListener('mouseleave', () => {
-        row.querySelectorAll('.faq-kikk-cell').forEach((c, idx) => {
-          c.classList.remove('fkk-active', 'fkk-inactive');
-          if (idx === 0) c.classList.add('fkk-active');
-        });
-      });
-
-      container.innerHTML = '';
-      container.appendChild(row);
-    }
-
-    /* FAQ containers */
-    ['#faq-items', '.faq-items', '#faq-list', '.faq-list', '#faqList'].forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => { if (!el.dataset.kikkDone) buildKikkRow(el, 'faq'); });
-    });
-
-    /* Requirements containers (re-used from globalEffects for this page) */
-    ['#req-items', '.req-items', '#requirements-items', '.requirements-items'].forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => { if (!el.dataset.kikkDone) buildKikkRow(el, 'req'); });
-    });
-  })();
-
-  /* ═══════════════════════════════════════════════════════════
-     EMBEDDED FROM globalEffects.js
-     SECTION DIVIDERS — plus-spin + baby plus burst
-  ═══════════════════════════════════════════════════════════ */
-  (function initDividers() {
-
-    function shootBabyPluses(el) {
-      const rect   = el.getBoundingClientRect();
-      const cx     = rect.left + rect.width / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const colours = ['#e05a1e', '#1a2744', '#4a6fa5', '#ff8c42'];
-      for (let i = 0; i < 8; i++) {
-        const angle = (i / 8) * Math.PI * 2;
-        const dist  = 28 + Math.random() * 22;
-        const size  = 9  + Math.random() * 7;
-        const baby  = document.createElement('span');
-        baby.className  = 'fug-baby-plus2';
-        baby.textContent = '+';
-        baby.style.cssText = `left:${cx}px;top:${cy}px;font-size:${size}px;color:${colours[i % colours.length]};`;
-        document.body.appendChild(baby);
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          baby.style.transform = `translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px)) rotate(${Math.random()*360}deg) scale(0.3)`;
-          baby.style.opacity   = '0';
-        }));
-        setTimeout(() => baby.remove(), 580);
-      }
-    }
-
-    const lightSet = new Set([
-      'spotlight-section','happening-section','who-section',
-      'editions-section','team-section','contact-section','partners-section'
-    ]);
-
-    document.querySelectorAll(
-      '.winners-section,.categories-section,.jury-section,' +
-      '.requirements-section,.faq-section,.partners-section'
-    ).forEach(sec => {
-      if (sec.dataset.divider) return;
-      sec.dataset.divider = '1';
-
-      const isLight = [...sec.classList].some(c => lightSet.has(c));
-      sec.classList.toggle('light-section', isLight);
-      const col = isLight ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-
-      const div = document.createElement('div');
-      div.className = 'section-divider-line';
-      div.innerHTML = `
-        <span class="divider-plus" style="color:${col}">+</span>
-        <div class="section-divider-rule"></div>
-        <span class="divider-plus" style="color:${col}">+</span>
-        <div class="section-divider-rule"></div>
-        <span class="divider-plus" style="color:${col}">+</span>`;
-      sec.insertBefore(div, sec.firstChild);
-
-      div.querySelectorAll('.divider-plus').forEach(p => {
-        p.addEventListener('mouseenter', () => {
-          p.classList.remove('div-plus-spinning');
-          void p.offsetWidth;
-          p.classList.add('div-plus-spinning');
-          shootBabyPluses(p);
-        });
-        p.addEventListener('animationend', () => p.classList.remove('div-plus-spinning'));
-      });
-    });
-  })();
-
-  /* ═══════════════════════════════════════════════════════════
-     EMBEDDED FROM globalEffects.js
-     NOODLE TEXT — section headings
-  ═══════════════════════════════════════════════════════════ */
-  (function initNoodle() {
-
-    const SEL = [
-      '.winners-title', '.cat-title', '.jury-title',
-      '.req-title', '.faq-title', '.partners-title',
-      'h2:not(.hero-title):not(.hero-head)',
-      'h3:not(.hero-title):not(.hero-head)',
-    ].join(',');
-
-    function wrapNoodle(el) {
-      if (el.dataset.noodle) return;
-      if (el.closest('.hero') || el.closest('.nav-links') || el.closest('.faq-kikk-row')) return;
-      if (el.classList.contains('hero-title') || el.classList.contains('hero-head')) return;
-
-      el.dataset.noodle = '1';
-      el.classList.add('noodle-word');
-
-      function splitNode(node) {
-        if (node.nodeType === 3) {
-          const frag = document.createDocumentFragment();
-          for (const ch of node.textContent) {
-            if (ch === ' ' || ch === '\n') { frag.appendChild(document.createTextNode(ch)); continue; }
-            const span = document.createElement('span');
-            span.className  = 'noodle-letter';
-            span.textContent = ch;
-            frag.appendChild(span);
-          }
-          return frag;
-        } else if (node.nodeType === 1 && node.tagName !== 'SPAN') {
-          const clone = node.cloneNode(false);
-          node.childNodes.forEach(c => clone.appendChild(splitNode(c)));
-          return clone;
-        }
-        return node.cloneNode(true);
-      }
-
-      const frag = document.createDocumentFragment();
-      el.childNodes.forEach(n => frag.appendChild(splitNode(n)));
-      el.innerHTML = '';
-      el.appendChild(frag);
-
-      el.addEventListener('mouseenter', () => {
-        el.querySelectorAll('.noodle-letter').forEach((letter, i) => {
-          letter.classList.remove('noodling');
-          void letter.offsetWidth;
-          setTimeout(() => {
-            letter.classList.add('noodling');
-            letter.addEventListener('animationend', () => letter.classList.remove('noodling'), { once: true });
-          }, i * 28);
-        });
-      });
-    }
-
-    try { document.querySelectorAll(SEL).forEach(wrapNoodle); } catch (e) {}
-  })();
 </script>
-
 </body>
 </html>

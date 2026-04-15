@@ -28,11 +28,9 @@
     .cross-icon {
       display:inline-flex; align-items:center; justify-content:center;
       width:18px; height:18px; flex-shrink:0; position:absolute; z-index:6;
-      animation: crossPulse 3s ease-in-out infinite;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .cross-icon svg { width:100%; height:100%; }
-    @keyframes crossPulse {
-      0%,100% { opacity:.45; transform:scale(1); }
       50%      { opacity:1;   transform:scale(1.4); }
     }
 
@@ -161,7 +159,7 @@
       position:absolute; inset:0;
       background:linear-gradient(to top, rgba(0,0,0,.75) 40%, transparent 100%);
     }
-    /* Challenge content pinned between 248px markers */
+    /* Challenge content pinned between 200px markers */
     .challenge-content {
       position:relative; z-index:3;
       padding: 0 var(--gutter) 56px;
@@ -457,16 +455,16 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:0.7s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:0.7s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:1.4s;">
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:1.4s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:2.1s;">
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2.1s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
   </div>
 
@@ -503,10 +501,10 @@
      2025 WINNERS
 ═══════════════════════════════════════════════════ -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
 
@@ -558,10 +556,10 @@
 <section class="challenge-panel">
   <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
   <div class="challenge-overlay"></div>
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
   <div class="challenge-content">
@@ -584,10 +582,10 @@
 <section class="challenge-panel">
   <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');"></div>
   <div class="challenge-overlay"></div>
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0.3s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0.3s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.3s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.3s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg>
   </div>
   <div class="challenge-content">
@@ -608,16 +606,16 @@
      2026 PRIZES
 ═══════════════════════════════════════════════════ -->
 <section class="prizes-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:0.6s;">
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.6s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.8s;">
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:1.8s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
 
@@ -664,16 +662,16 @@
      REQUIREMENTS
 ═══════════════════════════════════════════════════ -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:.3s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:.3s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.5s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.5s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:.8s;">
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:.8s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:2s;">
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
   </div>
 
@@ -694,16 +692,16 @@
      FAQ
 ═══════════════════════════════════════════════════ -->
 <section class="faq-section reveal" style="position:relative;">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:0.6s;">
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.6s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:1.8s;">
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:1.8s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
 
@@ -725,16 +723,16 @@
      PARTNERS
 ═══════════════════════════════════════════════════ -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:20px;left:248px;animation-delay:0s;">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:20px;right:248px;animation-delay:1.2s;">
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;left:248px;animation-delay:0.8s;">
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.8s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:20px;right:248px;animation-delay:2s;">
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2s;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
   </div>
 

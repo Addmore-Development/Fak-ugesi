@@ -4,34 +4,30 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pitchathon • Fak'ugesi Festival 2026</title>
-   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
-    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#d4e600;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    /* ── Suppress any announcement/promo bar from globalEffects.js ── */
-    .announcement-bar,.global-announcement,.site-announcement,
-    .promo-bar,.premiere-bar,.festival-bar,
-    [data-announcement],[data-promo]{display:none!important}
+    .announcement-bar,.global-announcement,.site-announcement,.promo-bar,.premiere-bar,.festival-bar,[data-announcement],[data-promo]{display:none!important}
 
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;animation:crossPulse 3s ease-in-out infinite}
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
     /* ── HERO ── */
-    .hero{position:relative;width:100%;min-height:340px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
+    .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
     .hero-bg{position:absolute;inset:0;background-image:url('../images/image00044.jpeg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 248px 44px;animation:fadeUp .9s ease both}
+    .hero-content{position:relative;z-index:3;padding:0 248px 52px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
@@ -39,15 +35,14 @@
     .hero-dates{font-size:24px;font-weight:700;letter-spacing:.02em;margin-bottom:20px}
     .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;transition:background .22s,color .22s}
     .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;display:flex;flex-direction:column;align-items:flex-end;}
+    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;}
     .hero-signia img{display:block;height:90px;width:auto;}
 
     /* ── TICKER ── */
     .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
-    .ticker-track:hover{animation-play-state:paused}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px;font-family:'InterDisplay',sans-serif}
+    .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px}
     .ticker-sep{opacity:.4;margin-left:4px}
 
     /* ── INTRO ── */
@@ -61,23 +56,32 @@
 
     /* ── SECTION SHARED ── */
     .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
-    .section-title{font-size:38px;font-weight:900;font-family:'InterDisplay',sans-serif}
-    .section-title.light-text{color:#fff}
+    .section-title{font-size:38px;font-weight:900}
     .section-title.dark-text{color:var(--dark-text)}
-    .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;color:inherit;opacity:.7;font-family:'InterDisplay',sans-serif}
+    .section-title.light-text{color:#fff}
+    .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;opacity:.7}
 
-    /* ── 2025 WINNERS ── */
-    .winners-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
-    .winners-rail-wrapper{overflow:hidden}
-    .winners-rail{display:flex;transition:transform .5s ease}
-    .winner-slide{flex:0 0 33.333%;min-width:0;padding-right:1px}
-    .winner-slide img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
-    .winner-slide:hover img{transform:scale(1.04)}
-    .winner-info{padding:14px 0 0}
-    .winner-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-right:12px;font-family:'InterDisplay',sans-serif}
-    .winner-name{font-size:22px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-top:4px}
-    .winners-nav button{background:none;border:none;cursor:pointer;font-size:24px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s}
-    .winners-nav button:hover{opacity:.4}
+    /* ── 2025 WINNERS — awards style scrolling strip ── */
+    .winners-section{background:var(--white);padding:60px 0 0;position:relative;overflow:hidden;}
+    .winners-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px 36px;}
+    .winners-title{font-size:50px;font-weight:600;color:var(--dark-text);}
+    .winners-nav{display:flex;gap:16px;align-items:center;}
+    .winners-nav button{background:none;border:none;cursor:pointer;font-size:22px;color:var(--dark-text);padding:4px 8px;transition:opacity .2s;}
+    .winners-nav button:hover{opacity:.5;}
+    .winners-strip-outer{overflow:hidden;}
+    .winners-strip{display:flex;gap:16px;width:max-content;animation:winnersScroll 34s linear infinite;}
+    .winners-strip:hover{animation-play-state:paused;}
+    @keyframes winnersScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .winner-card{flex:0 0 380px;cursor:pointer;}
+    .winner-img{width:380px;height:380px;overflow:hidden;}
+    .winner-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s;}
+    .winner-card:hover .winner-img img{transform:scale(1.04);}
+    .winner-meta{padding:18px 0 0;}
+    .winner-cat{font-size:11px;color:var(--body-gray);margin-bottom:4px;}
+    .winner-badge-txt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:6px;}
+    .winner-name{font-size:18px;font-weight:700;color:var(--dark-text);line-height:1.3;margin-bottom:10px;}
+    .crosses-row{display:flex;justify-content:space-between;padding:20px 200px;}
+    .crosses-row svg{width:18px;height:18px;}
 
     /* ── JURY ── */
     .jury-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
@@ -85,85 +89,89 @@
     .jury-card{border:1px solid rgba(26,39,68,.12);overflow:hidden}
     .jury-card img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
     .jury-info{padding:16px 18px 20px;background:#fff}
-    .jury-name{font-size:18px;font-weight:700;color:var(--dark-text);font-family:'InterDisplay',sans-serif;margin-bottom:4px}
-    .jury-role{font-size:12px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;margin-bottom:6px}
-    .jury-country{font-size:11px;color:var(--body-gray);font-family:'InterDisplay',sans-serif;opacity:.7}
+    .jury-name{font-size:18px;font-weight:700;color:var(--dark-text);margin-bottom:4px}
+    .jury-role{font-size:12px;color:var(--body-gray);margin-bottom:6px}
+    .jury-country{font-size:11px;color:var(--body-gray);opacity:.7}
 
-    /* ── PRIZES ── */
+    /* ── PRIZES — FLIP CARDS matching image 2 ── */
     .prizes-section{background:var(--navy);color:#fff;padding:72px 248px;position:relative}
+    .prizes-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+    .prizes-title{font-size:44px;font-weight:900;color:#fff}
+    .prizes-apply-link{font-size:12px;color:#fff;text-decoration:underline;font-weight:600;letter-spacing:.05em;opacity:.8;cursor:pointer}
     .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .prize-card{border:1px solid rgba(255,255,255,.25);padding:28px 24px}
-    .prize-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
-    .prize-amount{font-size:36px;font-weight:900;margin-bottom:16px;font-family:'InterDisplay',sans-serif}
-    .prize-desc{font-size:13px;line-height:1.65;opacity:.8;font-family:'InterDisplay',sans-serif}
 
-    /* ── FAQ ── */
-    .faq-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
-    .faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
-    .faq-intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05;font-family:'InterDisplay',sans-serif;margin-bottom:16px}
-    .faq-intro-body{font-size:14px;line-height:1.78;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
-    .faq-item{border:1px solid rgba(26,39,68,.15);margin-bottom:-1px}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;gap:16px}
-    .faq-toggle{flex-shrink:0;font-size:20px;font-weight:300;color:var(--navy);line-height:1;user-select:none}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:13px;line-height:1.75;color:var(--body-gray);font-family:'InterDisplay',sans-serif}
-    .faq-item.open .faq-answer{max-height:300px;padding:0 22px 20px}
+    .prize-flip{perspective:900px;height:220px}
+    .prize-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
+    .prize-flip:hover .prize-flip-inner{transform:rotateY(180deg)}
+    .prize-front,.prize-back{position:absolute;inset:0;backface-visibility:hidden;border:1px solid rgba(255,255,255,.2);padding:28px 24px}
+    .prize-front{background:#eef1f7;}
+    .prize-back{background:var(--navy);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;gap:8px;border-color:rgba(255,255,255,.25)}
+    .prize-card-category{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--body-gray);margin-bottom:10px}
+    .prize-amount{font-size:30px;font-weight:900;color:var(--dark-text);margin-bottom:12px}
+    .prize-desc{font-size:13px;line-height:1.65;color:var(--body-gray)}
+    .prize-fact-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px}
+    .prize-fact{font-size:13px;line-height:1.65;color:#fff;font-style:italic}
+
+    /* ── FAQ — PRO STYLE ── */
+    .faq-section{background:var(--white);padding:64px 248px;position:relative}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
+    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
+    .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px}
+    .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px}
+    .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer}
+    .faq-items-wrap{display:flex;flex-direction:column}
+
+    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background 0.28s ease}
+    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15)}
+    .faq-item:hover{background:var(--navy)}
+    .faq-item:hover .faq-q-text{color:var(--white);font-family:'Georgia',serif}
+    .faq-item:hover .faq-t-icon{color:var(--white)}
+    .faq-item:hover .faq-ans{color:rgba(255,255,255,.8)}
+    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color 0.28s ease,font-family 0.1s;max-width:calc(100% - 40px)}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color 0.28s ease,transform 0.3s ease}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg)}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0}
+    .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
 
     /* ── PARTNERS ── */
     .partners-section{background:var(--lavender);padding:72px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-    .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif}
-    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif}
+    .partners-title{font-size:42px;font-weight:600;color:var(--dark-text)}
+    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer}
     .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .partner-card{display:flex;flex-direction:column}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
-    .partner-logo-box img.keep-color {filter: none; }
-    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;font-family:'InterDisplay',sans-serif}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) invert(0)}
+    .partner-logo-box img.keep-color{filter:none}
+    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65}
 
-    /* REVEAL */
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
-  
-    /* ═══════════════════════════════════════════
-       200px CONTENT BAND
-       Crosses sit at 200px from each edge.
-       All written content lives between them.
-    ═══════════════════════════════════════════ */
-    .content-band {
-      padding-left:  200px;
-      padding-right: 200px;
-      box-sizing: border-box;
-    }
-
   </style>
 </head>
 <body>
-
 <script src="nav.js"></script>
 
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Pitchathon</p>
     <h1 class="hero-title">High stakes, shark<br>tank style pitches</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
     <p class="hero-dates">07 — 12.10.2026</p>
-    <a class="hero-cta" href="/tickets">Get Tickets</a>
-    <a class="hero-cta" href="/programme">View Programme</a>
+    <a class="hero-cta" href="tickets.html" id="pitch-cta1">Get Tickets</a>
+    <a class="hero-cta" href="programme.html">View Programme</a>
   </div>
   <div class="hero-signia">
     <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
   </div>
 </section>
 
-<!-- ── TICKER ── -->
 <div class="ticker-bar">
   <div class="ticker-track">
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
     <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
     <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
     <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
@@ -177,7 +185,7 @@
   </div>
 </div>
 
-<!-- ── INTRO ── -->
+<!-- INTRO -->
 <section class="intro-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -186,470 +194,278 @@
     <div class="intro-body">
       <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-      <a class="intro-cta" href="/tickets">Get Tickets</a>
+      <a class="intro-cta" href="tickets.html">Get Tickets</a>
     </div>
   </div>
 </section>
 
-<!-- ── 2025 WINNERS ── -->
+<!-- 2025 WINNERS — awards style scrolling strip -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="section-header">
-    <h2 class="section-title dark-text">2025 Winners</h2>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+
+  <div class="winners-header">
+    <h2 class="winners-title">2025 Winners</h2>
     <div class="winners-nav">
-      <button id="winners-prev">&#8592;</button>
-      <button id="winners-next">&#8594;</button>
+      <button id="prev-winner" aria-label="Previous">←</button>
+      <button id="next-winner" aria-label="Next">→</button>
     </div>
   </div>
-  <div class="winners-rail-wrapper">
-    <div class="winners-rail" id="winnersRail">
-      <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
-        <div class="winner-info">
-          <span class="winner-badge">Winner</span><span class="winner-badge">Runner-up</span>
-          <div class="winner-name">Neo Shingenwana</div>
-        </div>
-      </div>
-      <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
-        <div class="winner-info">
-          <span class="winner-badge">Winner</span>
-          <div class="winner-name">Neo Shingenwana</div>
-        </div>
-      </div>
-      <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
-        <div class="winner-info">
-          <span class="winner-badge">Winner</span>
-          <div class="winner-name">Neo Shingenwana</div>
-        </div>
-      </div>
-      <div class="winner-slide">
-        <img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80'"/>
-        <div class="winner-info">
-          <span class="winner-badge">Winner</span>
-          <div class="winner-name">Neo Shingenwana</div>
-        </div>
-      </div>
+
+  <div class="winners-strip-outer">
+    <div class="winners-strip" id="winnersStrip">
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
+      <!-- duplicate -->
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
     </div>
+  </div>
+
+  <div class="crosses-row">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
 </section>
 
-<!-- ── 2026 JURY ── -->
+<!-- 2026 JURY -->
 <section class="jury-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;animation-delay:.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="section-header">
     <h2 class="section-title dark-text">2026 Pitchathon Jury</h2>
-    <a class="section-link" style="color:var(--navy)" href="/programme">View 2026 programme</a>
+    <a class="section-link" style="color:var(--navy)" href="programme.html">View 2026 programme</a>
   </div>
   <div class="jury-grid">
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
-    <div class="jury-card">
-      <img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/>
-      <div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div>
-    </div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
   </div>
 </section>
 
-<!-- ── 2026 PRIZES ── -->
+<!-- 2026 PRIZES — FLIP CARDS -->
 <section class="prizes-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="section-header">
-    <h2 class="section-title light-text">2026 Prizes</h2>
-    <a class="section-link" style="color:#fff" href="/programme">View 2026 programme</a>
+  <div class="prizes-header">
+    <h2 class="prizes-title">2026 Prizes</h2>
+    <a class="prizes-apply-link" href="programme.html">View 2026 programme</a>
   </div>
-  <div class="prizes-grid">
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-    <div class="prize-card"><div class="prize-label">WIC PGDIP Winner</div><div class="prize-amount">R20,000</div><p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p></div>
-  </div>
+  <div class="prizes-grid" id="prizesGrid"></div>
 </section>
 
-<!-- ── FAQ ── -->
+<!-- FAQ — PRO STYLE -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;animation-delay:.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;animation-delay:2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width("1.5"/><line x1("0" y1("9" x2("18" y2("9" stroke("rgba(26,39,68,0.35)" stroke-width("1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="faq-layout">
     <div>
-      <h2 class="faq-intro-title">FAQ</h2>
-      <p class="faq-intro-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
-      <a class="section-link" href="/programme" style="display:inline-block;margin-top:16px;color:var(--navy)">View 2026 programme</a>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a href="programme.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;display:inline-block;margin-top:16px">View 2026 programme</a>
     </div>
-    <div id="faqList">
-      <div class="faq-item open">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">&#8722;</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt</div>
+    <div>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="tickets.html">Get Tickets</a>
       </div>
-      <div class="faq-item">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Nulla gravida, arcu eget dictum eleifend, velit <span class="faq-toggle">+</span></div>
-        <div class="faq-answer">In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui ante fermentum interdum.</div>
-      </div>
+      <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
 </section>
 
-<!-- ── PARTNERS ── -->
+<!-- PARTNERS -->
 <section class="partners-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Pitchathon Partners</h2>
-    <a class="partners-link" href="/about#partners">View all partners</a>
+    <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" onerror="this.src='https://placehold.co/180x80?text=Tshimologong'"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University" onerror="this.src='https://placehold.co/180x80?text=Wits+University'"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" onerror="this.src='https://placehold.co/180x80?text=Digital+Dome'"/></div>
-      <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-    </div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 
 <script src="footer.js"></script>
+
 <script>
-  // Remove any announcement/premiere bar injected by globalEffects at runtime
-  (function removeAnnouncementBars() {
-    const selectors = [
-      '.announcement-bar','.global-announcement','.site-announcement',
-      '.promo-bar','.premiere-bar','.festival-bar',
-      '[data-announcement]','[data-promo]'
-    ];
-    function purge() {
-      selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
-    }
-    purge();
-    // Also run after scripts have loaded
-    window.addEventListener('load', purge);
-    setTimeout(purge, 500);
-  })();
+/* ── REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.06 });
+revealEls.forEach(el => io.observe(el));
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.10 });
-  revealEls.forEach(el => io.observe(el));
+/* ── PRIZES FLIP CARDS ── */
+const prizeData = [
+  { cat: 'WIC PGDIP Winner', amount: 'R20,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'South Africa has the most technology startups per capita on the African continent, with Johannesburg being the primary startup hub.' },
+  { cat: 'Audience Choice Award', amount: 'R15,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'The African startup ecosystem raised over USD 5 billion in venture funding in 2022 — a 3x increase from just three years prior.' },
+  { cat: 'Social Impact Prize', amount: 'R10,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'Nigeria, Kenya, South Africa, and Egypt collectively represent over 70% of all venture capital invested in African startups.' },
+  { cat: 'Tech Innovation Award', amount: 'R10,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'Africa is home to over 640 tech hubs, incubators, and accelerators — more than double the number from 2016.' },
+  { cat: 'Runner-up Prize', amount: 'R8,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'Mobile money platforms originated in Kenya and have now transformed financial inclusion for over 300 million Africans.' },
+  { cat: 'Creative Economy Prize', amount: 'R5,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'Africa\'s creative industries contribute an estimated USD 4.2 billion annually to GDP, with digital creative work being the fastest-growing segment.' },
+];
 
-  // Winners carousel
-  const rail = document.getElementById('winnersRail');
-  const slides = rail ? Array.from(rail.querySelectorAll('.winner-slide')) : [];
-  let winnerIdx = 0;
-  function updateWinnersRail() {
-    if (!rail || !slides.length) return;
-    rail.style.transform = 'translateX(-' + (winnerIdx * slides[0].offsetWidth) + 'px)';
-  }
-  document.getElementById('winners-next')?.addEventListener('click', () => {
-    if (winnerIdx < slides.length - 3) winnerIdx++;
-    updateWinnersRail();
-  });
-  document.getElementById('winners-prev')?.addEventListener('click', () => {
-    if (winnerIdx > 0) winnerIdx--;
-    updateWinnersRail();
-  });
+const prizesGrid = document.getElementById('prizesGrid');
+prizeData.forEach(p => {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'prize-flip';
+  wrapper.innerHTML = `
+    <div class="prize-flip-inner">
+      <div class="prize-front">
+        <p class="prize-card-category">${p.cat}</p>
+        <p class="prize-amount">${p.amount}</p>
+        <p class="prize-desc">${p.desc}</p>
+      </div>
+      <div class="prize-back">
+        <span class="prize-fact-label">Did you know</span>
+        <p class="prize-fact">${p.fact}</p>
+      </div>
+    </div>`;
+  prizesGrid.appendChild(wrapper);
+});
 
-  // FAQ accordion
-  document.getElementById('faqList')?.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-question').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-toggle').textContent = '+';
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        item.querySelector('.faq-toggle').innerHTML = '&#8722;';
-      }
+/* ── FAQ BUILD + PRO ACCORDION ── */
+const faqData = [
+  { q: 'Who can apply to Pitchathon?', a: 'Any African digital entrepreneur, startup, or creative business is eligible to apply. Applicants must be based on the African continent or be of African origin, and the venture must have been operational for no more than five years.' },
+  { q: 'What is the submission deadline?', a: 'Applications close at 23:59 SAST on 15 August 2026. Late submissions will not be accepted under any circumstances.' },
+  { q: 'How many applicants are shortlisted?', a: 'A maximum of twelve applicants are shortlisted for the live pitch round. All shortlisted participants will be notified by email at least six weeks before the festival.' },
+  { q: 'What does a winner receive?', a: 'Winners receive a cash prize, mentorship access, a featured profile on the Fak\'ugesi platform, and introductions to our network of investors and industry partners.' },
+  { q: 'How long is the pitch presentation?', a: 'Each pitch is five minutes, followed by five minutes of questions from the jury. Presentation slides must be submitted at least 48 hours before the pitch round.' },
+  { q: 'Is the event open to the public?', a: 'Yes, the Pitchathon finals are open to all festival attendees with a valid ticket. The live audience vote determines the Audience Choice Award winner.' },
+];
+
+const faqContainer = document.getElementById('faqAccordion');
+faqData.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item' + (i === 0 ? ' open' : '');
+  item.innerHTML = `
+    <button class="faq-q-btn" aria-expanded="${i === 0}">
+      <span class="faq-q-text">${faq.q}</span>
+      <span class="faq-t-icon">${i === 0 ? '×' : '+'}</span>
+    </button>
+    <div class="faq-ans">${faq.a}</div>`;
+  item.querySelector('.faq-q-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-t-icon').textContent = '+';
+      el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');
     });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-t-icon').textContent = '×';
+      item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');
+    }
   });
+  faqContainer.appendChild(item);
+});
 
-  (function () {
-  /* ─────────────────────────────────────────────
-     1. INJECT STYLES
-  ───────────────────────────────────────────── */
+/* ── SPINNING ELECTRIC SPARKS on Get Tickets CTA ── */
+(function() {
+  const btn = document.getElementById('pitch-cta1');
+  if (!btn) return;
+  let angle = 0;
+  function spawnElectric() {
+    if (!btn.matches(':hover')) return;
+    const rect = btn.getBoundingClientRect();
+    angle += 22;
+    const r = 28 + Math.random() * 18;
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+    const x = cx + Math.cos(angle * Math.PI/180) * r * (rect.width / rect.height);
+    const y = cy + Math.sin(angle * Math.PI/180) * r;
+    const bolt = document.createElement('span');
+    bolt.style.cssText = `
+      position:fixed;pointer-events:none;z-index:9999;
+      left:${x}px;top:${y}px;
+      width:${6+Math.random()*8}px;height:2px;
+      background:linear-gradient(to right,rgba(100,200,255,0.9),rgba(255,255,255,0.5));
+      border-radius:1px;
+      transform:rotate(${angle}deg);
+      box-shadow:0 0 6px rgba(100,200,255,0.8);
+      transition:opacity 0.35s ease,transform 0.35s ease;
+    `;
+    document.body.appendChild(bolt);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      bolt.style.opacity = '0';
+      bolt.style.transform = `rotate(${angle + 90}deg) scale(0.3)`;
+    }));
+    setTimeout(() => bolt.remove(), 380);
+  }
+  let si;
+  btn.addEventListener('mouseenter', () => { si = setInterval(spawnElectric, 40); });
+  btn.addEventListener('mouseleave', () => clearInterval(si));
+})();
+
+/* ── SIG-STRIP INJECT ── */
+(function(){
   const styleEl = document.createElement('style');
   styleEl.textContent = `
-    /* ── Hero sizing: match index.html ── */
-    .hero {
-      min-height: 490px !important;
-      align-items: center !important;
-      padding-top: 0 !important;
-    }
-    .hero-content {
-      padding-top: 110px !important;
-      padding-bottom: 60px !important;
-    }
- 
-    /* ── Cross icon animation (canonical) ── */
-    .cross-icon {
-      animation: fug-crossPulse 3s ease-in-out infinite !important;
-    }
-    @keyframes fug-crossPulse {
-      0%,100% { opacity: 0.45; transform: scale(1); }
-      50%      { opacity: 1;   transform: scale(1.4); }
-    }
- 
-    /* ── Sig-programmes navigation strip ── */
-    .fug-sig-strip {
-      background: rgba(26, 39, 68, 0.82);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      position: relative;
-      z-index: 20;
-    }
-    .fug-sig-strip-inner {
-      display: flex;
-      align-items: stretch;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 0 200px;
-    }
-    .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
- 
-    .fug-sig-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 12px 24px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.60);
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.22s, color 0.22s;
-      flex-shrink: 0;
-      min-width: 100px;
-      position: relative;
-      white-space: nowrap;
-    }
-    .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
- 
-    .fug-sig-item:hover {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.95);
-    }
-    .fug-sig-item.fug-active {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-    }
-    .fug-sig-item.fug-active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: rgba(255,255,255,0.5);
-    }
-    .fug-sig-item img {
-      display: block;
-      max-width: 88px;
-      max-height: 40px;
-      object-fit: contain;
-      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s;
-      opacity: 0.65;
-    }
-    .fug-sig-item:hover img,
-    .fug-sig-item.fug-active img {
-      transform: scale(1.08);
-      opacity: 1;
-    }
-    .fug-sig-label { line-height: 1; }
+    .hero{min-height:490px!important;align-items:center!important;padding-top:0!important;}
+    .hero-content{padding-top:110px!important;padding-bottom:60px!important;}
+    .cross-icon{animation:fug-crossPulse 3s ease-in-out infinite!important;}
+    @keyframes fug-crossPulse{0%,100%{opacity:0.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+    .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
+    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;padding:0 200px;}
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
+    .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
+    .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
+    .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
+    .fug-sig-item.fug-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.5);}
+    .fug-sig-item img{display:block;max-width:88px;max-height:40px;object-fit:contain;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),opacity 0.22s;opacity:0.65;}
+    .fug-sig-item:hover img,.fug-sig-item.fug-active img{transform:scale(1.08);opacity:1;}
+    .fug-sig-label{line-height:1;}
   `;
   document.head.appendChild(styleEl);
- 
-  /* ─────────────────────────────────────────────
-     2. PATCH HERO CROSS-ICONS
-     Remove any existing cross-icons inside .hero
-     and inject the four canonical index.html ones
-  ───────────────────────────────────────────── */
-  function patchHeroCrosses() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
- 
-    // Remove existing cross-icons that are direct children of .hero
-    hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
- 
-    const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
- 
-    const positions = [
-      { style: 'top:16px;left:200px;',   delay: '0s'   },
-      { style: 'top:16px;right:200px;',  delay: '0.7s' },
-      { style: 'bottom:16px;left:200px;',delay: '1.4s' },
-      { style: 'bottom:16px;right:200px;',delay:'2.1s' },
-    ];
- 
-    positions.forEach(({ style, delay }) => {
-      const el = document.createElement('div');
-      el.className = 'cross-icon';
-      el.style.cssText = style + `animation-delay:${delay};`;
-      el.innerHTML = CROSS_SVG;
-      hero.appendChild(el);
-    });
-  }
- 
-  /* ─────────────────────────────────────────────
-     3. BUILD AND INJECT SIG-PROGRAMMES STRIP
-  ───────────────────────────────────────────── */
-  const PAGES = [
-    {
-      label: 'Programme',
-      href: 'programme.html',
-      img: 'images/logos/fakugesi/logo_fakugesi_light.svg',
-      imgStyle: 'height:32px;filter:brightness(0) invert(1);opacity:.8;'
-    },
-    {
-      label: 'Awards',
-      href: 'sig-awards.html',
-      img: 'images/logos/signatureProgrammes/awards_logo_light.svg',
-      imgStyle: 'height:38px;'
-    },
-    {
-      label: 'Dala Khona',
-      href: 'sig-dalakhona.html',
-      img: 'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',
-      imgStyle: 'height:38px;'
-    },
-    {
-      label: 'PRO',
-      href: 'sig-fakugesipro.html',
-      img: 'images/logos/signatureProgrammes/pro_logo_logo_light.svg',
-      imgStyle: 'height:34px;'
-    },
-    {
-      label: 'Immersive Africa',
-      href: 'sig-immersive.html',
-      img: 'images/logos/immersiveAfrica/digitaldome.svg',
-      imgStyle: 'height:32px;filter:brightness(0) invert(1);opacity:.8;'
-    },
-    {
-      label: 'JAMZ',
-      href: 'sig-jamz.html',
-      img: 'images/logos/signatureProgrammes/jamz_logo_colour.svg',
-      imgStyle: 'height:42px;'
-    },
-    {
-      label: 'Pitchathon',
-      href: 'sig-pitchathon.html',
-      img: 'images/logos/signatureProgrammes/pitchathon_logo_light.svg',
-      imgStyle: 'height:36px;'
-    }
+  const PAGES=[
+    {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
+    {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
+    {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
+    {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},
+    {label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
+    {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
+    {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
   ];
- 
-  const currentPage = window.location.pathname.split('/').pop() || '';
- 
-  function buildStrip() {
-    const strip = document.createElement('nav');
-    strip.className = 'fug-sig-strip';
-    strip.setAttribute('aria-label', 'Signature Programmes Navigation');
- 
-    const inner = document.createElement('div');
-    inner.className = 'fug-sig-strip-inner';
- 
-    PAGES.forEach(p => {
-      const a = document.createElement('a');
-      a.className = 'fug-sig-item';
-      a.href = p.href;
-      if (currentPage === p.href) a.classList.add('fug-active');
- 
-      const img = document.createElement('img');
-      img.src = p.img;
-      img.alt = p.label;
-      img.style.cssText = p.imgStyle;
- 
-      const label = document.createElement('span');
-      label.className = 'fug-sig-label';
-      label.textContent = p.label;
- 
-      a.appendChild(img);
-      a.appendChild(label);
-      inner.appendChild(a);
+  const currentPage=window.location.pathname.split('/').pop()||'';
+  function buildStrip(){
+    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
+    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
+    PAGES.forEach(p=>{
+      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
+      if(currentPage===p.href) a.classList.add('fug-active');
+      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
+      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
+      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
     });
- 
-    strip.appendChild(inner);
-    return strip;
+    strip.appendChild(inner); return strip;
   }
- 
-  function injectStrip() {
-    const ticker = document.querySelector(
-      '.ticker-wrapper, .ticker-bar, .ticker-wrap'
-    );
-    if (ticker) {
-      ticker.after(buildStrip());
-    }
+  function run(){
+    document.querySelector('.hero')?.querySelectorAll('.cross-icon').forEach(el=>el.remove());
+    const CROSS_SVG=`<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
+    [{style:'top:16px;left:200px;',delay:'0s'},{style:'top:16px;right:200px;',delay:'0.7s'},{style:'bottom:16px;left:200px;',delay:'1.4s'},{style:'bottom:16px;right:200px;',delay:'2.1s'}].forEach(({style,delay})=>{
+      const el=document.createElement('div'); el.className='cross-icon'; el.style.cssText=style+`animation-delay:${delay};`; el.innerHTML=CROSS_SVG;
+      document.querySelector('.hero')?.appendChild(el);
+    });
+    const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
+    if(ticker) ticker.after(buildStrip());
   }
- 
-  /* ─────────────────────────────────────────────
-     4. RUN ON DOM READY
-  ───────────────────────────────────────────── */
-  function run() {
-    patchHeroCrosses();
-    injectStrip();
-  }
- 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
- 
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
 })();
- 
 </script>
 </body>
 </html>

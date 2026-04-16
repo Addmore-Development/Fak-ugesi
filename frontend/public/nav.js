@@ -27,56 +27,38 @@
     }
 
     /*
-     * SCROLL GRADIENT — top of nav = deep navy blue (low opacity)
-     *                    bottom of nav = glass / transparent
-     * Direction: to bottom (navy at top, fading to transparent at bottom)
-     */
-    #main-nav::before {
-      content:'';
-      position:absolute; inset:0;
-      background: linear-gradient(to bottom,
-        rgba(10,18,72,0.72) 0%,
-        rgba(20,32,80,0.42) 45%,
-        rgba(26,39,100,0.12) 78%,
-        transparent 100%
-      );
-      opacity:0;
-      transition:opacity .45s ease;
-      pointer-events:none;
-      z-index:0;
-    }
-    #main-nav.scrolled::before {
-      opacity:1;
-    }
+ * SCROLL GRADIENT — pure color dark to light
+ * Top: deep navy blue (dark)
+ * Bottom: lighter navy/slate (still visible)
+ */
+#main-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+  to bottom,
+  #1a2856 0%,      /* Start directly with navy, no darker */
+  #23346b 20%,
+  #2d4078 40%,
+  #3b5090 60%,
+  #4a5d9e 80%,
+  #5a6dad 100%
+);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /*
-     * Glass layer — lives only at the bottom edge of the nav bar,
-     * providing the frosted-glass feel at the transition point
-     */
-    #main-nav::after {
-      content:'';
-      position:absolute; left:0; right:0; bottom:0;
-      height:50%;                          /* only bottom half */
-      background: linear-gradient(to bottom,
-        transparent 0%,
-        rgba(255,255,255,0.04) 100%
-      );
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      opacity:0;
-      transition:opacity .45s ease;
-      pointer-events:none;
-      z-index:0;
-    }
-    #main-nav.scrolled::after {
-      opacity:1;
-    }
+#main-nav.scrolled::before {
+  opacity: 1;
+}
 
-    #main-nav.scrolled {
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      box-shadow:0 2px 24px rgba(0,0,0,0.14);
-    }
-
+#main-nav.scrolled {
+  border-bottom: 1px solid rgba(74, 93, 158, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+ 
     /*
      * Nav links container — starts at exactly var(--band) from the left
      * so "Home" aligns with the first letter of the hero written content.
@@ -163,7 +145,7 @@
 
     /* Right-side controls */
     #main-nav .nav-right {
-      display:flex; align-items:center; gap:16px; padding-right:32px;
+      display:flex; align-items:center; gap:70px; padding-right:32px;
       flex-shrink:0; position:relative; z-index:1;
     }
     #main-nav .nav-search {

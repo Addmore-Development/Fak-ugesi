@@ -103,28 +103,12 @@
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:600; }
 
-    /* Star floats above active link */
+    /* Star indicator above active link — static, no movement */
     #main-nav-star {
       position:absolute; top:6px; left:0;
       pointer-events:none; z-index:20;
-      transition:left .42s cubic-bezier(0.34,1.56,0.64,1);
+      transition:none;
     }
-    @keyframes nStarFloat {
-      0%,100%{transform:translateY(0) rotate(0deg) scale(1);}
-      25%{transform:translateY(-4px) rotate(45deg) scale(1.2);}
-      50%{transform:translateY(0) rotate(90deg) scale(1);}
-      75%{transform:translateY(-3px) rotate(135deg) scale(1.1);}
-    }
-    @keyframes nStarBounce {
-      0%{transform:translateY(0) rotate(0deg) scale(1);}
-      15%{transform:translateY(-10px) rotate(90deg) scale(1.7);}
-      30%{transform:translateY(0) rotate(180deg) scale(1);}
-      45%{transform:translateY(-7px) rotate(270deg) scale(1.4);}
-      60%{transform:translateY(0) rotate(360deg) scale(1);}
-      100%{transform:translateY(0) rotate(450deg) scale(1);}
-    }
-    #main-nav-star.floating{animation:nStarFloat 2.4s ease-in-out infinite;}
-    #main-nav-star.jumping{animation:nStarBounce .7s cubic-bezier(.4,0,.2,1) forwards!important;}
 
     /* Dropdown */
     #main-nav .nav-dd {
@@ -260,13 +244,9 @@
     const er = el.getBoundingClientRect();
     star.style.left = (er.right - wr.left - 6) + 'px';
   }
-  function floatStar()  { star.classList.remove('jumping'); star.classList.add('floating'); }
-  function pauseStar()  { star.classList.remove('floating', 'jumping'); }
-  function bounceStar() {
-    star.classList.remove('floating', 'jumping'); void star.offsetWidth;
-    star.classList.add('jumping');
-    star.addEventListener('animationend', () => { star.classList.remove('jumping'); floatStar(); }, { once:true });
-  }
+  function floatStar()  { /* static — no animation */ }
+  function pauseStar()  { /* static — no animation */ }
+  function bounceStar() { /* static — no animation */ }
 
   function init() {
     const a = list.querySelector('a.active, span.active') || list.querySelector('a, span');
@@ -395,44 +375,6 @@
     setTimeout(attachAll, 600);
   })();
 
-  /* ── Scroll-driven cross/plus spin ── */
-  (function () {
-    let totalRotation = 0;
-    let lastScrollY   = window.scrollY;
-    let rafPending    = false;
-    let burstScale    = 1;
-    let bursting      = false;
-    let scrollTimeout = null;
 
-    const DEGREES_PER_PX = 0.45;
-    const BURST_SCALE    = 2.2;
-    const BURST_DECAY    = 0.07;
-
-    function applyRotation() {
-      const crosses = document.querySelectorAll('.cross-icon');
-      const transform = `translateY(-50%) rotate(${totalRotation}deg) scale(${burstScale.toFixed(3)})`;
-      crosses.forEach(el => {
-        el.style.transform  = transform;
-        el.style.transition = 'none';
-      });
-      if (burstScale > 1) {
-        burstScale = Math.max(1, burstScale - BURST_DECAY);
-        requestAnimationFrame(applyRotation);
-      } else {
-        rafPending = false;
-      }
-    }
-
-    window.addEventListener('scroll', function () {
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
-      lastScrollY = currentScrollY;
-      totalRotation += delta * DEGREES_PER_PX;
-      if (!bursting) { burstScale = BURST_SCALE; bursting = true; }
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => { bursting = false; }, 150);
-      if (!rafPending) { rafPending = true; requestAnimationFrame(applyRotation); }
-    }, { passive:true });
-  })();
 
 })();

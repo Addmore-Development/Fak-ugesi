@@ -1,8 +1,8 @@
 /**
- * Fak'ugesi Signature Programmes Sub-Navigation v7
+ * Fak'ugesi Signature Programmes Sub-Navigation v8
  * – Square/rectangle corners on GET TICKETS button
  * – Electric hover effect on GET TICKETS
- * – 4-pointed star indicator
+ * – No star indicator, no bottom border
  */
 (function () {
   const path = window.location.pathname;
@@ -12,10 +12,6 @@
     const h = href.replace(/^\//, '').replace(/\.html$/, '');
     return page === h;
   }
-
-  const STAR_SVG = `<svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 0 L11.8 8.2 L20 10 L11.8 11.8 L10 20 L8.2 11.8 L0 10 L8.2 8.2 Z" fill="rgba(255,255,255,0.95)"/>
-  </svg>`;
 
   const sigCSS = `
     #sig-nav {
@@ -30,45 +26,16 @@
       background: transparent;
       border-bottom: 1px solid transparent;
       font-family: 'InterDisplay', sans-serif;
-      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
       overflow: visible;
     }
     #sig-nav.scrolled {
       background: rgba(26, 39, 68, 0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid transparent;
       box-shadow: 0 2px 32px rgba(0, 0, 0, 0.12);
     }
-
-    #sig-nav-indicator {
-      position: absolute;
-      top: 5px;
-      pointer-events: none;
-      z-index: 20;
-      transition: left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
-      transform-origin: center center;
-    }
-    #sig-nav-indicator svg { display: block; }
-
-    @keyframes sigStarFloat {
-      0%   { transform: translateY(0px) rotate(0deg) scale(1); }
-      25%  { transform: translateY(-5px) rotate(45deg) scale(1.2); }
-      50%  { transform: translateY(0px) rotate(90deg) scale(1); }
-      75%  { transform: translateY(-3px) rotate(135deg) scale(1.1); }
-      100% { transform: translateY(0px) rotate(180deg) scale(1); }
-    }
-    @keyframes sigStarBounce {
-      0%   { transform: translateY(0) rotate(0deg) scale(1); }
-      15%  { transform: translateY(-10px) rotate(90deg) scale(1.7); }
-      30%  { transform: translateY(0) rotate(180deg) scale(1); }
-      45%  { transform: translateY(-7px) rotate(270deg) scale(1.4); }
-      60%  { transform: translateY(0) rotate(360deg) scale(1); }
-      75%  { transform: translateY(-4px) rotate(405deg) scale(1.2); }
-      100% { transform: translateY(0) rotate(450deg) scale(1); }
-    }
-    #sig-nav-indicator.floating { animation: sigStarFloat 2.4s ease-in-out infinite; }
-    #sig-nav-indicator.jumping  { animation: sigStarBounce 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; }
 
     #sig-nav .sig-links {
       display: flex; align-items: center; gap: 28px;
@@ -140,7 +107,6 @@
 
   const navHTML = `
     <nav id="sig-nav">
-      <div id="sig-nav-indicator">${STAR_SVG}</div>
       <ul class="sig-links" id="sig-links-list">${listItems}</ul>
       <a class="sig-tickets" id="sig-tickets-btn" href="/tickets.html">
         <canvas class="sig-btn-canvas" id="sig-lightning-canvas"></canvas>
@@ -152,56 +118,10 @@
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
   const sigNav       = document.getElementById('sig-nav');
-  const indicator    = document.getElementById('sig-nav-indicator');
   const sigLinksList = document.getElementById('sig-links-list');
-
-  function positionIndicator(anchorEl) {
-    const navRect  = sigNav.getBoundingClientRect();
-    const linkRect = anchorEl.getBoundingClientRect();
-    const rightEdgeX = linkRect.right - navRect.left - 7;
-    indicator.style.left = rightEdgeX + 'px';
-  }
-
-  function startFloat() { indicator.classList.remove('jumping'); indicator.classList.add('floating'); }
-  function pauseFloat()  { indicator.classList.remove('floating','jumping'); }
-  function jumpIndicator() {
-    indicator.classList.remove('floating','jumping');
-    void indicator.offsetWidth;
-    indicator.classList.add('jumping');
-    indicator.addEventListener('animationend',()=>{ indicator.classList.remove('jumping'); startFloat(); },{ once:true });
-  }
-
-  function initIndicator() {
-    const activeLink = sigLinksList.querySelector('a.active');
-    const target = activeLink || sigLinksList.querySelector('a');
-    if (target) { positionIndicator(target); startFloat(); }
-  }
-
-  sigLinksList.querySelectorAll('li').forEach(li => {
-    const a = li.querySelector('a');
-    if (!a) return;
-    li.addEventListener('mouseenter',()=>{ pauseFloat(); positionIndicator(a); });
-    li.addEventListener('mouseleave',()=>{
-      const active=sigLinksList.querySelector('a.active');
-      const fb=active||sigLinksList.querySelector('a');
-      if(fb){positionIndicator(fb);startFloat();}
-    });
-    li.addEventListener('click',()=>{
-      sigLinksList.querySelectorAll('a').forEach(x=>x.classList.remove('active'));
-      a.classList.add('active');
-      positionIndicator(a);
-      jumpIndicator();
-    });
-  });
 
   window.addEventListener('scroll',()=>{ sigNav.classList.toggle('scrolled',window.scrollY>40); },{passive:true});
   sigNav.classList.toggle('scrolled',window.scrollY>40);
-  requestAnimationFrame(()=>requestAnimationFrame(initIndicator));
-  window.addEventListener('resize',()=>{
-    const active=sigLinksList.querySelector('a.active');
-    const fb=active||sigLinksList.querySelector('a');
-    if(fb) positionIndicator(fb);
-  });
 
   // ── Electric lightning INSIDE GET TICKETS ──
   (function(){

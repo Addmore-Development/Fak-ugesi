@@ -71,8 +71,7 @@
     }
     .btn-apply:hover { background: var(--white); color: var(--navy); }
     .hero-awards-logo {
-      position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
-      z-index: 4;
+      position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 4;
     }
     .hero-awards-logo img { display: block; height: 160px; width: auto; }
 
@@ -105,10 +104,21 @@
     .winner-cat { font-size: 11px; color: var(--body-gray); margin-bottom: 6px; }
     .winner-name { font-size: 18px; font-weight: 700; color: var(--dark-text); line-height: 1.3; margin-bottom: 10px; }
 
-    /* CHANGE 2: winner-bottom — single attribution string, no space-between */
-    .winner-bottom { display: flex; align-items: center; gap: 4px; }
+    /* winner-bottom: country centered, author right */
+    .winner-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
     .winner-author { font-size: 13px; color: var(--body-gray); }
-    .winner-country { font-size: 13px; color: var(--body-gray); }
+    /* Nigeria text: centered in middle position */
+    .winner-country {
+      font-size: 13px;
+      color: var(--body-gray);
+      flex: 1;
+      text-align: center;
+    }
 
     .crosses-row { display: flex; justify-content: space-between; padding: 20px 200px; }
     .crosses-row svg { width: 18px; height: 18px; }
@@ -119,7 +129,7 @@
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
       filter: brightness(0.28);
-      transition: background-image 0.5s ease;
+      transition: opacity 0.45s ease;
     }
     .categories-content { position: relative; z-index: 3; padding: 64px 248px 80px; }
     .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
@@ -128,14 +138,15 @@
     .cat-apply-link:hover { opacity: 1; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* FLIP CARD */
-    .cat-card-wrapper { perspective: 900px; height: 220px; }
+    /* FLIP CARD — click only, not hover */
+    .cat-card-wrapper { perspective: 900px; height: 220px; cursor: pointer; }
     .cat-card-inner {
       position: relative; width: 100%; height: 100%;
       transform-style: preserve-3d;
       transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
     }
-    .cat-card-wrapper:hover .cat-card-inner { transform: rotateY(180deg); }
+    /* Flipped state triggered by JS on click only */
+    .cat-card-wrapper.flipped .cat-card-inner { transform: rotateY(180deg); }
 
     .cat-card-front, .cat-card-back {
       position: absolute; inset: 0;
@@ -151,8 +162,8 @@
       display: flex; align-items: center; justify-content: center;
       padding: 24px;
     }
-    .cat-card-wrapper:hover .cat-card-front,
-    .cat-card-wrapper:hover .cat-card-back { border-color: var(--white); }
+    .cat-card-wrapper.flipped .cat-card-front,
+    .cat-card-wrapper.flipped .cat-card-back { border-color: var(--white); }
 
     .cat-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
     .cat-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; color: #fff; }
@@ -161,15 +172,13 @@
     .cat-items { list-style: none; }
     .cat-items li { font-size: 12px; opacity: 0.8; line-height: 1.9; padding-left: 18px; position: relative; color: #fff; }
     .cat-items li::before { content: '→'; position: absolute; left: 0; }
-
     .cat-fact {
       font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.92);
       font-weight: 400; text-align: center; font-style: italic;
     }
     .cat-fact-label {
       font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); margin-bottom: 10px; text-align: center;
-      display: block;
+      color: rgba(255,255,255,0.5); margin-bottom: 10px; text-align: center; display: block;
     }
 
     /* ── JURY ── */
@@ -191,7 +200,6 @@
     .req-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; }
     .req-title { font-size: 50px; font-weight: 600; color: var(--white); }
     .req-apply-link { color: var(--white); font-size: 12px; text-decoration: underline; letter-spacing: 0.06em; opacity: 0.8; cursor: pointer; }
-
     #req-accordion { display: flex; flex-direction: column; }
     #req-accordion .req-item { border-top: 1px solid rgba(255,255,255,0.18); background: transparent; transition: background 0.28s ease; }
     #req-accordion .req-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
@@ -218,7 +226,6 @@
     .faq-right-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
     .faq-apply-link { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .faq-items { display: flex; flex-direction: column; }
-
     .faq-item { border-top: 1px solid rgba(26,39,68,0.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,0.15); }
     .faq-item:hover { background: var(--navy); }
@@ -233,10 +240,7 @@
     .faq-question-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; }
     .faq-toggle { font-size: 20px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
     .faq-item.open .faq-toggle { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease, color 0.28s ease;
-      font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0;
-    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0; }
     .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 
     /* ── PARTNERS ── */
@@ -258,11 +262,8 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── LIGHTNING BUTTON EFFECTS ── */
     .btn-apply { position: relative; overflow: visible; }
-    .btn-apply .lightning-canvas {
-      position: absolute; inset: 0; pointer-events: none; z-index: 10;
-    }
+    .btn-apply .lightning-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
   </style>
 </head>
 <body>
@@ -272,21 +273,13 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Awards</p>
-    <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
+    <h1 class="hero-title">Celebrating The Best In<br>African Digital Creativity</h1>
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     <a class="btn-apply" href="#" id="hero-cta-btn">SUBMIT YOUR APPLICATION</a>
   </div>
@@ -399,34 +392,10 @@
     <a class="req-apply-link" href="#">Submit your application</a>
   </div>
   <div id="req-accordion">
-    <div class="req-item">
-      <button class="req-btn" aria-expanded="false">
-        <span class="req-q-text">African origin or diaspora connection</span>
-        <span class="req-tog">+</span>
-      </button>
-      <div class="req-body">Work must be created by an African national or diaspora participant with demonstrable ties to the continent. Both individual creators and collaborative teams are eligible to apply.</div>
-    </div>
-    <div class="req-item">
-      <button class="req-btn" aria-expanded="false">
-        <span class="req-q-text">Digital or technology-led medium</span>
-        <span class="req-tog">+</span>
-      </button>
-      <div class="req-body">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Works combining analogue and digital methodologies are considered on a case-by-case basis.</div>
-    </div>
-    <div class="req-item">
-      <button class="req-btn" aria-expanded="false">
-        <span class="req-q-text">Completed within the past 24 months</span>
-        <span class="req-tog">+</span>
-      </button>
-      <div class="req-body">Works older than two years from the submission date are ineligible. Works-in-progress that are substantially complete may be submitted with a note indicating expected completion date.</div>
-    </div>
-    <div class="req-item">
-      <button class="req-btn" aria-expanded="false">
-        <span class="req-q-text">Complete submission package required</span>
-        <span class="req-tog">+</span>
-      </button>
-      <div class="req-body">Portfolio, project description, high-resolution images, and an optional video link are all required. Incomplete submissions will not be considered for jury review.</div>
-    </div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">African origin or diaspora connection</span><span class="req-tog">+</span></button><div class="req-body">Work must be created by an African national or diaspora participant with demonstrable ties to the continent. Both individual creators and collaborative teams are eligible to apply.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Digital or technology-led medium</span><span class="req-tog">+</span></button><div class="req-body">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Works combining analogue and digital methodologies are considered on a case-by-case basis.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Completed within the past 24 months</span><span class="req-tog">+</span></button><div class="req-body">Works older than two years from the submission date are ineligible. Works-in-progress that are substantially complete may be submitted with a note indicating expected completion date.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Complete submission package required</span><span class="req-tog">+</span></button><div class="req-body">Portfolio, project description, high-resolution images, and an optional video link are all required. Incomplete submissions will not be considered for jury review.</div></div>
   </div>
 </section>
 
@@ -442,9 +411,7 @@
       <p class="faq-intro">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
     </div>
     <div>
-      <div class="faq-right-header">
-        <a class="faq-apply-link" href="#">Submit your application</a>
-      </div>
+      <div class="faq-right-header"><a class="faq-apply-link" href="#">Submit your application</a></div>
       <div class="faq-items" id="faq-items"></div>
     </div>
   </div>
@@ -472,68 +439,61 @@
 <script src="footer.js"></script>
 
 <script>
-/* ── REVEAL ── */
+/* REVEAL */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── CATEGORIES: 6 flip-cards with unique facts + background images ── */
+/* CATEGORIES: 6 flip-cards — click to flip, click again to unflip */
 const catData = [
-  {
-    tag: 'Immersive Media', num: '01',
-    name: 'Extended Reality & Volumetric Work',
-    items: ['Virtual Reality', 'Augmented Reality', 'Extended Reality'],
-    fact: 'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.',
-    bg: '../images/signature/Poster - Akende Muyumbana.png'
-  },
-  {
-    tag: 'Digital Art', num: '02',
-    name: 'Generative & Computational Art',
-    items: ['AI-generated works', 'Algorithmic art', 'Data visualisation'],
-    fact: 'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.',
-    bg: '../images/signature/VOF Voices of fire print - Joseph Dairo.jpg'
-  },
-  {
-    tag: 'Interactive Design', num: '03',
-    name: 'Interactive Installations & Experiences',
-    items: ['Physical computing', 'Sensor-based work', 'Participatory art'],
-    fact: 'South Africa hosts the African continent\'s only fully digital planetarium dome — the Wits Anglo American Digital Dome in Johannesburg.',
-    bg: '../images/_MGL7139.jpg'
-  },
-  {
-    tag: 'Game Design', num: '04',
-    name: 'Video Games & Interactive Narrative',
-    items: ['Mobile games', 'PC & console games', 'Narrative experiences'],
-    fact: 'Nigeria is the fastest-growing mobile gaming market in Africa, with over 50 million active players and a 36% year-on-year growth rate.',
-    bg: '../images/0A9A8876.jpg'
-  },
-  {
-    tag: 'Motion & Animation', num: '05',
-    name: 'Animation & Motion Graphics',
-    items: ['Short-form animation', 'Motion graphics', 'Digital film'],
-    fact: 'The Lagos animation industry has grown by over 200% in the past decade, producing internationally recognised short films and series.',
-    bg: '../images/image00028.jpeg'
-  },
-  {
-    tag: 'Emerging Tech', num: '06',
-    name: 'AI, Blockchain & Emerging Technologies',
-    items: ['AI-generated work', 'Blockchain art', 'Speculative tech'],
-    fact: 'Africa produces more than 700 blockchain developers per month — the second highest growth rate globally, behind only Southeast Asia.',
-    bg: '../images/image00038.jpg'
-  }
+  { tag:'Immersive Media', num:'01', name:'Extended Reality & Volumetric Work', items:['Virtual Reality','Augmented Reality','Extended Reality'], fact:'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.', bg:'../images/signature/Poster - Akende Muyumbana.png' },
+  { tag:'Digital Art', num:'02', name:'Generative & Computational Art', items:['AI-generated works','Algorithmic art','Data visualisation'], fact:'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.', bg:'../images/signature/VOF Voices of fire print - Joseph Dairo.jpg' },
+  { tag:'Interactive Design', num:'03', name:'Interactive Installations & Experiences', items:['Physical computing','Sensor-based work','Participatory art'], fact:"South Africa hosts the African continent's only fully digital planetarium dome — the Wits Anglo American Digital Dome in Johannesburg.", bg:'../images/_MGL7139.jpg' },
+  { tag:'Game Design', num:'04', name:'Video Games & Interactive Narrative', items:['Mobile games','PC & console games','Narrative experiences'], fact:'Nigeria is the fastest-growing mobile gaming market in Africa, with over 50 million active players and a 36% year-on-year growth rate.', bg:'../images/0A9A8876.jpg' },
+  { tag:'Motion & Animation', num:'05', name:'Animation & Motion Graphics', items:['Short-form animation','Motion graphics','Digital film'], fact:'The Lagos animation industry has grown by over 200% in the past decade, producing internationally recognised short films and series.', bg:'../images/image00028.jpeg' },
+  { tag:'Emerging Tech', num:'06', name:'AI, Blockchain & Emerging Technologies', items:['AI-generated work','Blockchain art','Speculative tech'], fact:'Africa produces more than 700 blockchain developers per month — the second highest growth rate globally, behind only Southeast Asia.', bg:'../images/image00038.jpg' }
 ];
 
-const catGrid = document.getElementById('catGrid');
-const catBg = document.getElementById('catBg');
+// Preload ALL background images immediately so no flash on first use
+catData.forEach(cat => {
+  const img = new Image();
+  img.src = cat.bg;
+});
 
-catData.forEach((cat, i) => {
+const catGrid = document.getElementById('catGrid');
+const catBg   = document.getElementById('catBg');
+
+// Use two overlapping bg layers for smooth crossfade (no white flash)
+const catSection = document.getElementById('catSection');
+const catBg2 = catBg.cloneNode(false);
+catBg2.id = 'catBg2';
+catBg2.style.cssText = catBg.style.cssText;
+catBg2.style.opacity = '0';
+catBg2.style.transition = 'opacity 0.45s ease';
+catBg.style.transition = 'opacity 0.45s ease';
+catSection.insertBefore(catBg2, catBg.nextSibling);
+
+let currentBg = catBg, nextBg = catBg2;
+function swapBg(url) {
+  nextBg.style.backgroundImage = `url('${url}')`;
+  nextBg.style.opacity = '1';
+  currentBg.style.opacity = '0';
+  const tmp = currentBg; currentBg = nextBg; nextBg = tmp;
+}
+
+catData.forEach(cat => {
   const wrapper = document.createElement('div');
   wrapper.className = 'cat-card-wrapper';
 
-  wrapper.addEventListener('mouseenter', () => {
-    catBg.style.backgroundImage = `url('${cat.bg}')`;
+  // On click: flip the card AND update background smoothly
+  wrapper.addEventListener('click', () => {
+    const isFlipping = !wrapper.classList.contains('flipped');
+    wrapper.classList.toggle('flipped');
+    if (isFlipping) {
+      swapBg(cat.bg);
+    }
   });
 
   wrapper.innerHTML = `
@@ -558,7 +518,7 @@ catData.forEach((cat, i) => {
   catGrid.appendChild(wrapper);
 });
 
-/* ── REQUIREMENTS ACCORDION ── */
+/* REQUIREMENTS ACCORDION */
 (function(){
   const c = document.getElementById('req-accordion');
   if (!c) return;
@@ -579,14 +539,14 @@ catData.forEach((cat, i) => {
   });
 })();
 
-/* ── FAQ BUILD + ACCORDION ── */
+/* FAQ BUILD + ACCORDION */
 const faqData = [
-  { q: 'Who can apply to the Fak\'ugesi Awards?', a: 'Any African digital creator, studio, or collective is eligible to apply. Applicants must be based on the African continent or be of African origin, and submitted work must have been created within the last two years.' },
-  { q: 'What is the submission deadline?', a: 'Submissions close at 23:59 SAST on 15 August 2026. Late submissions will not be accepted under any circumstances.' },
-  { q: 'How many categories can I enter?', a: 'You may submit to a maximum of three categories per cycle. Each submission requires its own completed entry form and supporting materials.' },
-  { q: 'What does a winner receive?', a: 'Winners receive a cash prize, an exhibition opportunity at the festival, international press coverage, and access to the Fak\'ugesi professional network.' },
-  { q: 'How is the jury selected?', a: 'Jury members are independent practitioners from across the African continent and global diaspora. They are selected for expertise across the award categories and serve on a rotational basis.' },
-  { q: 'Can I submit work in progress?', a: 'Substantially complete works-in-progress may be submitted with a note indicating the expected completion date. Fully incomplete works are not eligible.' },
+  { q:"Who can apply to the Fak'ugesi Awards?", a:"Any African digital creator, studio, or collective is eligible to apply. Applicants must be based on the African continent or be of African origin, and submitted work must have been created within the last two years." },
+  { q:'What is the submission deadline?', a:'Submissions close at 23:59 SAST on 15 August 2026. Late submissions will not be accepted under any circumstances.' },
+  { q:'How many categories can I enter?', a:'You may submit to a maximum of three categories per cycle. Each submission requires its own completed entry form and supporting materials.' },
+  { q:'What does a winner receive?', a:"Winners receive a cash prize, an exhibition opportunity at the festival, international press coverage, and access to the Fak'ugesi professional network." },
+  { q:'How is the jury selected?', a:'Jury members are independent practitioners from across the African continent and global diaspora. They are selected for expertise across the award categories and serve on a rotational basis.' },
+  { q:'Can I submit work in progress?', a:'Substantially complete works-in-progress may be submitted with a note indicating the expected completion date. Fully incomplete works are not eligible.' },
 ];
 
 const faqContainer = document.getElementById('faq-items');
@@ -615,47 +575,27 @@ faqData.forEach((faq, i) => {
   faqContainer.appendChild(item);
 });
 
-/* ── RAIN LIGHTNING on hero CTA ── */
+/* RAIN LIGHTNING on hero CTA */
 (function() {
   const btn = document.getElementById('hero-cta-btn');
   if (!btn) return;
-
   function spawnRainDrop() {
     if (!btn.matches(':hover')) return;
     const rect = btn.getBoundingClientRect();
     const drop = document.createElement('span');
-    drop.style.cssText = `
-      position:fixed;
-      pointer-events:none;
-      z-index:9999;
-      left:${rect.left + Math.random()*rect.width}px;
-      top:${rect.top - 8}px;
-      width:1.5px;
-      height:${10 + Math.random()*18}px;
-      background:linear-gradient(to bottom,rgba(120,200,255,0),rgba(150,220,255,0.85),rgba(255,255,255,0.4));
-      border-radius:2px;
-      transform:rotate(${-10 + Math.random()*20}deg);
-      animation:rainFall ${0.3+Math.random()*0.4}s linear forwards;
-    `;
+    drop.style.cssText = `position:fixed;pointer-events:none;z-index:9999;left:${rect.left + Math.random()*rect.width}px;top:${rect.top - 8}px;width:1.5px;height:${10 + Math.random()*18}px;background:linear-gradient(to bottom,rgba(120,200,255,0),rgba(150,220,255,0.85),rgba(255,255,255,0.4));border-radius:2px;transform:rotate(${-10 + Math.random()*20}deg);animation:rainFall ${0.3+Math.random()*0.4}s linear forwards;`;
     document.body.appendChild(drop);
     drop.addEventListener('animationend', () => drop.remove());
   }
-
   const style = document.createElement('style');
-  style.textContent = `
-    @keyframes rainFall {
-      0%   { transform:translateY(0) rotate(-8deg); opacity:1; }
-      100% { transform:translateY(${btn ? btn.offsetHeight + 20 : 50}px) rotate(-8deg); opacity:0; }
-    }
-  `;
+  style.textContent = `@keyframes rainFall{0%{transform:translateY(0) rotate(-8deg);opacity:1}100%{transform:translateY(${btn.offsetHeight + 20}px) rotate(-8deg);opacity:0}}`;
   document.head.appendChild(style);
-
   let rainInterval;
   btn.addEventListener('mouseenter', () => { rainInterval = setInterval(spawnRainDrop, 60); });
   btn.addEventListener('mouseleave', () => clearInterval(rainInterval));
 })();
 
-/* ── SIG-STRIP INJECT ── */
+/* SIG-STRIP INJECT */
 (function(){
   const styleEl = document.createElement('style');
   styleEl.textContent = `
@@ -674,8 +614,8 @@ faqData.forEach((faq, i) => {
     .fug-sig-label{line-height:1;}
   `;
   document.head.appendChild(styleEl);
-
   const PAGES=[
+    {label:'Sig Programmes',href:'sig-programmes.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
     {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
@@ -684,34 +624,20 @@ faqData.forEach((faq, i) => {
     {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
     {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
   ];
-
-  const currentPage = window.location.pathname.split('/').pop() || '';
+  const currentPage=window.location.pathname.split('/').pop()||'';
   function buildStrip(){
-    const strip=document.createElement('nav');
-    strip.className='fug-sig-strip';
-    const inner=document.createElement('div');
-    inner.className='fug-sig-strip-inner';
+    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
+    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
     PAGES.forEach(p=>{
-      const a=document.createElement('a');
-      a.className='fug-sig-item';
-      a.href=p.href;
+      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
       if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img');
-      img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span');
-      label.className='fug-sig-label'; label.textContent=p.label;
+      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
+      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
       a.appendChild(img); a.appendChild(label); inner.appendChild(a);
     });
     strip.appendChild(inner); return strip;
   }
   function run(){
-    document.querySelector('.hero')?.querySelectorAll('.cross-icon').forEach(el=>el.remove());
-    const CROSS_SVG=`<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
-    [{style:'top:16px;left:200px;',delay:'0s'},{style:'top:16px;right:200px;',delay:'0.7s'},{style:'bottom:16px;left:200px;',delay:'1.4s'},{style:'bottom:16px;right:200px;',delay:'2.1s'}].forEach(({style,delay})=>{
-      const el=document.createElement('div');
-      el.className='cross-icon'; el.style.cssText=style+`animation-delay:${delay};`; el.innerHTML=CROSS_SVG;
-      document.querySelector('.hero')?.appendChild(el);
-    });
     const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
     if(ticker) ticker.after(buildStrip());
   }

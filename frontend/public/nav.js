@@ -1,11 +1,9 @@
 /**
- * Fak'ugesi Main Navigation v10
- * – Nav links start at --band (248px) left edge, aligned with hero content
- * – Home link sits flush with first letter of hero written content
- * – Signature Programmes → direct link to /sig-awards.html (no dropdown)
- * – Discover → dropdown with About Us → /about.html
+ * Fak'ugesi Main Navigation v11
+ * – Nav gradient: dark navy at top, fades lighter toward bottom (blends with page)
+ * – Removed jumping star indicator entirely
+ * – Signature Programmes hover → diagonal logo strip dropdown
  * – GET TICKETS: square corners, electric effect
- * – Scroll gradient: top = navy blue (low opacity), bottom = glass/transparent
  */
 (function () {
   const path = window.location.pathname;
@@ -13,8 +11,6 @@
   function isActive(href) {
     return page === href.replace(/^\//, '').replace(/\.html$/, '');
   }
-
-  const STAR = `<svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M10 0 L11.8 8.2 L20 10 L11.8 11.8 L10 20 L8.2 11.8 L0 10 L8.2 8.2 Z" fill="rgba(255,255,255,0.9)"/></svg>`;
 
   document.head.insertAdjacentHTML('beforeend', `<style>
     #main-nav {
@@ -26,54 +22,39 @@
       overflow:visible;
     }
 
-    /*
- * SCROLL GRADIENT — pure color dark to light
- * Top: deep navy blue (dark)
- * Bottom: lighter navy/slate (still visible)
- */
-#main-nav::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-  to bottom,
-  #1a2856 0%,      /* Start directly with navy, no darker */
-  #23346b 20%,
-  #2d4078 40%,
-  #3b5090 60%,
-  #4a5d9e 80%,
-  #5a6dad 100%
-);
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  pointer-events: none;
-  z-index: 0;
-}
+    /* Scroll gradient — dark navy top, lighter/transparent bottom */
+    #main-nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,18,50,0.98) 0%,
+        rgba(15,24,60,0.92) 35%,
+        rgba(20,32,72,0.72) 70%,
+        rgba(26,40,80,0.35) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #main-nav.scrolled::before {
+      opacity: 1;
+    }
+    #main-nav.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    }
 
-#main-nav.scrolled::before {
-  opacity: 1;
-}
-
-#main-nav.scrolled {
-  border-bottom: 1px solid rgba(74, 93, 158, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
- 
-    /*
-     * Nav links container — starts at exactly var(--band) from the left
-     * so "Home" aligns with the first letter of the hero written content.
-     * Use padding-left to set that offset; the links themselves are flex-row.
-     */
     #main-nav .nav-links-wrap {
       flex:1;
       display:flex;
       align-items:center;
-      padding-left: var(--band, 248px);   /* aligns with hero content band */
+      padding-left: var(--band, 248px);
       position:relative;
       z-index:1;
       overflow:visible;
     }
-
     #main-nav .nav-links {
       display:flex; align-items:center; list-style:none; margin:0; padding:0;
       overflow:visible;
@@ -84,33 +65,19 @@
       color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
       letter-spacing:.01em; text-decoration:none; line-height:58px;
       white-space:nowrap; transition:color .2s; display:block;
-      padding:0 18px 0 0;   /* gap between items; first item has no left pad */
+      padding:0 18px 0 0;
       cursor:pointer;
     }
-    /* first item (Home) gets zero left padding — flush with band */
     #main-nav .nav-links>li:first-child>a,
-    #main-nav .nav-links>li:first-child>span {
-      padding-left:0;
-    }
-    /* remaining items get symmetrical padding */
+    #main-nav .nav-links>li:first-child>span { padding-left:0; }
     #main-nav .nav-links>li:not(:first-child)>a,
-    #main-nav .nav-links>li:not(:first-child)>span {
-      padding:0 20px;
-    }
-
+    #main-nav .nav-links>li:not(:first-child)>span { padding:0 20px; }
     #main-nav .nav-links>li>a:hover,
     #main-nav .nav-links>li>span:hover { color:#fff; }
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:600; }
 
-    /* Star indicator above active link — static, no movement */
-    #main-nav-star {
-      position:absolute; top:6px; left:0;
-      pointer-events:none; z-index:20;
-      transition:none;
-    }
-
-    /* Dropdown */
+    /* Standard dropdown (Discover) */
     #main-nav .nav-dd {
       position:absolute; top:57px; left:0; min-width:200px;
       background:rgba(8,15,44,0.97); border:1px solid rgba(255,255,255,0.1);
@@ -127,6 +94,52 @@
     }
     #main-nav .nav-dd a:hover{color:#fff;background:rgba(255,255,255,0.07);}
 
+    /* ── SIGNATURE PROGRAMMES LOGO HOVER PANEL ── */
+    .sig-logo-panel {
+      position:absolute; top:57px; left:-40px;
+      width:460px;
+      background:rgba(8,15,44,0.97);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+      padding:20px 20px 18px;
+      opacity:0; pointer-events:none; transform:translateY(-10px);
+      transition:opacity .25s,transform .25s; z-index:200;
+    }
+    #main-nav .nav-links>li:hover .sig-logo-panel {
+      opacity:1; pointer-events:auto; transform:translateY(0);
+    }
+    .sig-logo-panel-label {
+      font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+      color:rgba(255,255,255,0.35); margin-bottom:16px; display:block;
+    }
+    .sig-logo-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .sig-logo-tile {
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:8px; padding:14px 10px 12px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.07);
+      text-decoration:none;
+      transition:background .2s,border-color .2s,transform .18s;
+    }
+    .sig-logo-tile:hover {
+      background:rgba(255,255,255,0.1);
+      border-color:rgba(255,255,255,0.2);
+      transform:translateY(-2px);
+    }
+    .sig-logo-tile img {
+      height:26px; width:auto; max-width:90px; object-fit:contain; display:block;
+    }
+    .sig-logo-tile-name {
+      font-size:10px; font-weight:600; color:rgba(255,255,255,0.7);
+      letter-spacing:0.03em; text-align:center; line-height:1.2;
+      transition:color .2s;
+    }
+    .sig-logo-tile:hover .sig-logo-tile-name { color:#fff; }
+
     /* Right-side controls */
     #main-nav .nav-right {
       display:flex; align-items:center; gap:70px; padding-right:32px;
@@ -139,7 +152,7 @@
     #main-nav .nav-search:hover{color:#fff;}
     #main-nav .nav-search svg{width:18px;height:18px;}
 
-    /* GET TICKETS — square, electric */
+    /* GET TICKETS */
     #main-nav .nav-tickets {
       position:relative; overflow:hidden;
       background:#1a2744; color:#fff;
@@ -154,14 +167,12 @@
     #main-nav .nav-tickets canvas{position:absolute;inset:0;pointer-events:none;z-index:0;}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
-    /* ── GLOBAL BUTTON STYLE ── */
+    /* Global button electric canvas */
     .btn-primary, .btn-outline-dark, .btn-outline-white,
     .btn-apply, .btn-cta-white, .btn-cta-filled, .btn-learn,
     .hero-cta, .intro-cta, .network-cta, .section-cta,
-    .challenge-cta, a.btn-tickets, button.btn-tickets,
-    .btn-get-pass {
-      position:relative !important;
-      overflow:hidden !important;
+    .challenge-cta, a.btn-tickets, button.btn-tickets, .btn-get-pass {
+      position:relative !important; overflow:hidden !important;
     }
     .btn-primary canvas, .btn-outline-dark canvas, .btn-outline-white canvas,
     .btn-apply canvas, .btn-cta-white canvas, .btn-cta-filled canvas,
@@ -180,27 +191,46 @@
     }
   </style>`);
 
-  /*
-   * Nav link definitions
-   * – Signature Programmes: direct link, no dropdown
-   * – Discover: dropdown with About Us only
-   */
   const links = [
-    { label:'Home',                  href:'/index.html' },
-    { label:'Festival Programme',    href:'/programme.html' },
-    { label:'Signature Programmes',  href:'/sig-awards.html' },   // direct link
+    { label:'Home',                 href:'/index.html' },
+    { label:'Festival Programme',   href:'/programme.html' },
+    { label:'Signature Programmes', href:'#', isSig:true },
     { label:'Discover', href:'#', dd:[
       { label:'About Us', href:'/about.html' }
     ]},
   ];
 
+  // Signature programme pages for logo hover panel
+  const sigPages = [
+    { label:'Awards',           href:'/sig-awards.html',      img:'images/logos/signatureProgrammes/awards_logo_light.svg',      imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'Dala Khona',       href:'/sig-dalakhona.html',   img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',  imgStyle:'' },
+    { label:"Fak'ugesi PRO",    href:'/sig-fakugesipro.html', img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',    imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'Immersive Africa', href:'/sig-immersive.html',   img:'images/logos/immersiveAfrica/digitaldome.svg',               imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'JAMZ',             href:'/sig-jamz.html',        img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',      imgStyle:'' },
+    { label:'Pitchathon',       href:'/sig-pitchathon.html',  img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'filter:brightness(0) invert(1);' },
+  ];
+
+  // Build 3-column logo grid
+  const logoTilesHTML = sigPages.map(p =>
+    `<a class="sig-logo-tile" href="${p.href}">
+      <img src="${p.img}" alt="${p.label}" style="${p.imgStyle}"/>
+      <span class="sig-logo-tile-name">${p.label}</span>
+    </a>`
+  ).join('');
+
+  const logoPanel = `<div class="sig-logo-panel">
+    <span class="sig-logo-panel-label">Signature Programmes</span>
+    <div class="sig-logo-grid">${logoTilesHTML}</div>
+  </div>`;
+
   const items = links.map((l, i) => {
     const active = isActive(l.href);
-    const dd = l.dd
-      ? `<div class="nav-dd">${l.dd.map(d => `<a href="${d.href}">${d.label}</a>`).join('')}</div>`
-      : '';
+    if (l.isSig) {
+      return `<li data-i="${i}"><a href="/sig-programmes.html" class="${active ? 'active' : ''}">${l.label}</a>${logoPanel}</li>`;
+    }
     if (l.dd) {
-      return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span>${dd}</li>`;
+      const ddHTML = `<div class="nav-dd">${l.dd.map(d=>`<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
+      return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span>${ddHTML}</li>`;
     }
     return `<li data-i="${i}"><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
   }).join('');
@@ -208,7 +238,6 @@
   document.body.insertAdjacentHTML('afterbegin', `
     <nav id="main-nav">
       <div class="nav-links-wrap" id="nav-links-wrap">
-        <div id="main-nav-star">${STAR}</div>
         <ul class="nav-links" id="nav-list">${items}</ul>
       </div>
       <div class="nav-right">
@@ -225,57 +254,10 @@
     </nav>
   `);
 
-  const nav   = document.getElementById('main-nav');
-  const star  = document.getElementById('main-nav-star');
-  const list  = document.getElementById('nav-list');
-  const wrap  = document.getElementById('nav-links-wrap');
-
-  /* --home-left: left edge of the "Home" text, used by page sections */
-  function setHomeLeft() {
-    const homeEl = list.querySelector('li:first-child a, li:first-child span');
-    if (!homeEl) return;
-    const r = homeEl.getBoundingClientRect();
-    document.documentElement.style.setProperty('--home-left', r.left + 'px');
-  }
-
-  /* Position star relative to the nav-links-wrap container */
-  function posStar(el) {
-    const wr = wrap.getBoundingClientRect();
-    const er = el.getBoundingClientRect();
-    star.style.left = (er.right - wr.left - 6) + 'px';
-  }
-  function floatStar()  { /* static — no animation */ }
-  function pauseStar()  { /* static — no animation */ }
-  function bounceStar() { /* static — no animation */ }
-
-  function init() {
-    const a = list.querySelector('a.active, span.active') || list.querySelector('a, span');
-    if (a) { posStar(a); floatStar(); }
-    setHomeLeft();
-  }
-
-  list.querySelectorAll('li').forEach(li => {
-    const el = li.querySelector('a') || li.querySelector('span');
-    if (!el) return;
-    li.addEventListener('mouseenter', () => { pauseStar(); posStar(el); });
-    li.addEventListener('mouseleave', () => {
-      const a = list.querySelector('a.active, span.active') || list.querySelector('a, span');
-      if (a) { posStar(a); floatStar(); }
-    });
-    li.addEventListener('click', () => {
-      if (el.tagName === 'A') {
-        list.querySelectorAll('a, span').forEach(x => x.classList.remove('active'));
-        el.classList.add('active');
-        posStar(el);
-        bounceStar();
-      }
-    });
-  });
-
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive:true });
-  nav.classList.toggle('scrolled', scrollY > 40);
-  requestAnimationFrame(() => requestAnimationFrame(init));
-  window.addEventListener('resize', init);
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 40);
+  }, { passive:true });
+  document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 40);
 
   /* ── Electric lightning on GET TICKETS ── */
   (function () {
@@ -325,7 +307,6 @@
       '.hero-cta','.intro-cta','.network-cta','.section-cta',
       '.challenge-cta','a.btn-tickets','button.btn-tickets','.btn-get-pass'
     ].join(',');
-
     function attachElectric(btn) {
       if (btn.dataset.electricDone) return;
       btn.dataset.electricDone = '1';
@@ -365,16 +346,34 @@
       btn.addEventListener('mouseenter', () => { on=true; rs(); bolts=[]; f=0; if(!raf) raf=requestAnimationFrame(tick); });
       btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
     }
-
     function attachAll() { document.querySelectorAll(BTN_SEL).forEach(attachElectric); }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', attachAll);
-    } else {
-      attachAll();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attachAll);
+    else attachAll();
     setTimeout(attachAll, 600);
   })();
 
-
+  /* ── Scroll-driven cross spin ── */
+  (function () {
+    let totalRotation = 0, lastScrollY = window.scrollY, rafPending = false;
+    let burstScale = 1, bursting = false, scrollTimeout = null;
+    const DEGREES_PER_PX = 0.45, BURST_SCALE = 2.2, BURST_DECAY = 0.07;
+    function applyRotation() {
+      const crosses = document.querySelectorAll('.cross-icon');
+      const transform = `translateY(-50%) rotate(${totalRotation}deg) scale(${burstScale.toFixed(3)})`;
+      crosses.forEach(el => { el.style.transform = transform; el.style.transition = 'none'; });
+      if (burstScale > 1) { burstScale = Math.max(1, burstScale - BURST_DECAY); requestAnimationFrame(applyRotation); }
+      else rafPending = false;
+    }
+    window.addEventListener('scroll', function () {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+      totalRotation += delta * DEGREES_PER_PX;
+      if (!bursting) { burstScale = BURST_SCALE; bursting = true; }
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => { bursting = false; }, 150);
+      if (!rafPending) { rafPending = true; requestAnimationFrame(applyRotation); }
+    }, { passive:true });
+  })();
 
 })();

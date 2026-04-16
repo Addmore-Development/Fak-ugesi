@@ -21,6 +21,9 @@
       --orange:    #e05a1e;
       --dark-text: #0d1b3e;
       --body-gray: #3a4060;
+      /* Cross icon inset from edges — adjust once to shift all four crosses */
+      --cross-inset-x: 200px;
+      --cross-inset-y: 16px;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,7 +32,7 @@
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
-      animation: crossPulse 1.5s ease-in-out infinite;
+      animation: crossPulse 3s ease-in-out infinite;
     }
     .cross-icon svg { width: 100%; height: 100%; }
     @keyframes crossPulse {
@@ -39,8 +42,20 @@
 
     /* ── HERO ── */
     .hero {
-      position: relative; width: 100%; min-height: 420px;
-      overflow: hidden; display: flex; align-items: flex-end; padding-top: 58px;
+      position: relative;
+      width: 100%;
+      min-height: 490px;
+      overflow: hidden;
+      /* Use grid so we can place content in the exact centre of the cross-bounded area */
+      display: grid;
+      /* Row 1: top cross gap | content area | bottom cross gap
+         Cross icons sit at top:16px and bottom:16px (9px centre of 18px icon)
+         So the "live" boundary starts at 16+9=25px from top/bottom edges */
+      grid-template-rows: calc(var(--cross-inset-y) + 9px) 1fr calc(var(--cross-inset-y) + 9px);
+      /* Col 1: left cross gap | content area | right cross gap
+         Cross icons sit at left:200px / right:200px (9px centre of 18px icon)
+         So live boundary starts at 200+9=209px from left/right edges */
+      grid-template-columns: calc(var(--cross-inset-x) + 9px) 1fr calc(var(--cross-inset-x) + 9px);
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -54,10 +69,20 @@
       position: absolute; inset: 0;
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
+
+    /* Content sits in grid cell row 2 / col 2 — centred between the four crosses */
     .hero-content {
-      position: relative; z-index: 3; padding: 0 248px 52px;
-      animation: fadeUp 0.9s ease both; max-width: 760px;
+      grid-row: 2;
+      grid-column: 2;
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;   /* vertical centre between top & bottom crosses */
+      align-items: flex-start;   /* keep text left-aligned within the cell */
+      padding: 32px 0;           /* a little breathing room so text never kisses the crosses */
     }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
     .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
@@ -208,11 +233,21 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <!-- Four corner cross icons — positioned at the exact same inset values used in grid-template-rows/cols -->
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
+  </div>
 
+  <!-- Written content — lives in grid row 2 / col 2, centred between the four crosses -->
   <div class="hero-content">
     <p class="hero-eyebrow">Fak'ugesi Awards</p>
     <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
@@ -220,6 +255,7 @@
     <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
   </div>
 
+  <!-- Awards logo stays absolutely positioned to the right -->
   <div class="hero-awards-logo">
     <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
   </div>
@@ -378,7 +414,7 @@
   </div>
 </section>
 
-<script src="sig-nav.js"></script>
+<script src="nav.js"></script>
 <script src="fakugesi-cross-patch.js"></script>
 <script src="footer.js"></script>
 
@@ -424,6 +460,245 @@
     });
     faqContainer.appendChild(item);
   });
+
+
+  (function () {
+  /* ─────────────────────────────────────────────
+     1. INJECT STYLES
+  ───────────────────────────────────────────── */
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    /* ── Hero sizing: match index.html ── */
+    .hero {
+      min-height: 490px !important;
+      align-items: unset !important; /* let grid handle alignment */
+      padding-top: 0 !important;
+    }
+    .hero-content {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+ 
+    /* ── Cross icon animation (canonical) ── */
+    .cross-icon {
+      animation: fug-crossPulse 3s ease-in-out infinite !important;
+    }
+    @keyframes fug-crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
+ 
+    /* ── Sig-programmes navigation strip ── */
+    .fug-sig-strip {
+      background: rgba(26, 39, 68, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+      z-index: 20;
+    }
+    .fug-sig-strip-inner {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0 200px;
+    }
+    .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
+ 
+    .fug-sig-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 12px 24px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.60);
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.22s, color 0.22s;
+      flex-shrink: 0;
+      min-width: 100px;
+      position: relative;
+      white-space: nowrap;
+    }
+    .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
+ 
+    .fug-sig-item:hover {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.95);
+    }
+    .fug-sig-item.fug-active {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .fug-sig-item.fug-active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.5);
+    }
+    .fug-sig-item img {
+      display: block;
+      max-width: 88px;
+      max-height: 40px;
+      object-fit: contain;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s;
+      opacity: 0.65;
+    }
+    .fug-sig-item:hover img,
+    .fug-sig-item.fug-active img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    .fug-sig-label { line-height: 1; }
+  `;
+  document.head.appendChild(styleEl);
+ 
+  /* ─────────────────────────────────────────────
+     2. PATCH HERO CROSS-ICONS
+     Remove any existing cross-icons inside .hero
+     and inject the four canonical index.html ones
+  ───────────────────────────────────────────── */
+  function patchHeroCrosses() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+ 
+    // Remove existing cross-icons that are direct children of .hero
+    hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
+ 
+    const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
+ 
+    const positions = [
+      { style: 'top:16px;left:200px;',    delay: '0s'   },
+      { style: 'top:16px;right:200px;',   delay: '0.7s' },
+      { style: 'bottom:16px;left:200px;', delay: '1.4s' },
+      { style: 'bottom:16px;right:200px;',delay: '2.1s' },
+    ];
+ 
+    positions.forEach(({ style, delay }) => {
+      const el = document.createElement('div');
+      el.className = 'cross-icon';
+      el.style.cssText = style + `animation-delay:${delay};`;
+      el.innerHTML = CROSS_SVG;
+      hero.appendChild(el);
+    });
+  }
+ 
+  /* ─────────────────────────────────────────────
+     3. BUILD AND INJECT SIG-PROGRAMMES STRIP
+  ───────────────────────────────────────────── */
+  const PAGES = [
+    {
+      label: 'Programme',
+      href: 'programme.html',
+      img: 'images/logos/fakugesi/logo_fakugesi_light.svg',
+      imgStyle: 'height:32px;filter:brightness(0) invert(1);opacity:.8;'
+    },
+    {
+      label: 'Awards',
+      href: 'sig-awards.html',
+      img: 'images/logos/signatureProgrammes/awards_logo_light.svg',
+      imgStyle: 'height:38px;'
+    },
+    {
+      label: 'Dala Khona',
+      href: 'sig-dalakhona.html',
+      img: 'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',
+      imgStyle: 'height:38px;'
+    },
+    {
+      label: 'PRO',
+      href: 'sig-fakugesipro.html',
+      img: 'images/logos/signatureProgrammes/pro_logo_logo_light.svg',
+      imgStyle: 'height:34px;'
+    },
+    {
+      label: 'Immersive Africa',
+      href: 'sig-immersive.html',
+      img: 'images/logos/immersiveAfrica/digitaldome.svg',
+      imgStyle: 'height:32px;filter:brightness(0) invert(1);opacity:.8;'
+    },
+    {
+      label: 'JAMZ',
+      href: 'sig-jamz.html',
+      img: 'images/logos/signatureProgrammes/jamz_logo_colour.svg',
+      imgStyle: 'height:42px;'
+    },
+    {
+      label: 'Pitchathon',
+      href: 'sig-pitchathon.html',
+      img: 'images/logos/signatureProgrammes/pitchathon_logo_light.svg',
+      imgStyle: 'height:36px;'
+    }
+  ];
+ 
+  const currentPage = window.location.pathname.split('/').pop() || '';
+ 
+  function buildStrip() {
+    const strip = document.createElement('nav');
+    strip.className = 'fug-sig-strip';
+    strip.setAttribute('aria-label', 'Signature Programmes Navigation');
+ 
+    const inner = document.createElement('div');
+    inner.className = 'fug-sig-strip-inner';
+ 
+    PAGES.forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'fug-sig-item';
+      a.href = p.href;
+      if (currentPage === p.href) a.classList.add('fug-active');
+ 
+      const img = document.createElement('img');
+      img.src = p.img;
+      img.alt = p.label;
+      img.style.cssText = p.imgStyle;
+ 
+      const label = document.createElement('span');
+      label.className = 'fug-sig-label';
+      label.textContent = p.label;
+ 
+      a.appendChild(img);
+      a.appendChild(label);
+      inner.appendChild(a);
+    });
+ 
+    strip.appendChild(inner);
+    return strip;
+  }
+ 
+  function injectStrip() {
+    const ticker = document.querySelector(
+      '.ticker-wrapper, .ticker-bar, .ticker-wrap'
+    );
+    if (ticker) {
+      ticker.after(buildStrip());
+    }
+  }
+ 
+  /* ─────────────────────────────────────────────
+     4. RUN ON DOM READY
+  ───────────────────────────────────────────── */
+  function run() {
+    patchHeroCrosses();
+    injectStrip();
+  }
+ 
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+ 
+})();
 </script>
 </body>
 </html>

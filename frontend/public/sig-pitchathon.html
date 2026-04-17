@@ -23,28 +23,76 @@
     .cross-icon svg{width:100%;height:100%}
 
     /* ── HERO ── */
-    .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
-    .hero-bg{position:absolute;inset:0;background-image:url('../images/image00044.jpeg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
-    @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 248px 52px;animation:fadeUp .9s ease both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:52px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:20px}
-    .hero-dates{font-size:24px;font-weight:700;letter-spacing:.02em;margin-bottom:20px}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;transition:background .22s,color .22s}
-    .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;}
-    .hero-signia img{display:block;height:90px;width:auto;}
-
-    /* ── TICKER ── */
-    .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
-    .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
-    @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px}
-    .ticker-sep{opacity:.4;margin-left:4px}
-
+.hero {
+  position: relative; width: 100%; min-height: 490px; overflow: hidden;
+  display: grid;  /* Changed from flex to grid */
+  grid-template-rows: calc(var(--cross-inset-y, 16px) + 9px) 1fr calc(var(--cross-inset-y, 16px) + 9px);
+  grid-template-columns: calc(var(--cross-inset-x, 200px) + 9px) 1fr calc(var(--cross-inset-x, 200px) + 9px);
+  align-items: stretch;  /* Changed from flex-end */
+  padding-top: 0;  /* Removed padding-top */
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('../images/image00044.jpeg');
+  background-size: cover; background-position: center 35%;
+  filter: brightness(0.52);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(10,18,48,.75) 42%, transparent 80%);  /* Adjusted to match awards */
+}
+.hero-content {
+  grid-row: 2; grid-column: 2; position: relative; z-index: 4;
+  display: flex; flex-direction: row;  /* Changed from block to row flex */
+  justify-content: space-between;  /* Space between text and image */
+  align-items: flex-start;  /* Align to top */
+  gap: 48px;  /* Gap between text and image */
+  padding: 32px 0;  /* Adjusted padding */
+  animation: fadeUp .9s ease both;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+.hero-text-wrapper {
+  flex: 1;  /* Take available space */
+  min-width: 0;  /* Prevent overflow */
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; opacity: .75; margin-bottom: 14px;
+}
+.hero-title {
+  font-size: 52px; font-weight: 900; line-height: 1.0;
+  margin-bottom: 20px; max-width: 100%;  /* Removed max-width constraint */
+}
+.hero-body {
+  font-size: 13px; line-height: 1.72; max-width: 510px;  /* Removed max-width constraint */
+  opacity: .85; margin-bottom: 16px;
+}
+.hero-dates {
+  font-size: 24px; font-weight: 700; letter-spacing: .02em;
+  margin-bottom: 20px;  /* Kept margin for button spacing */
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid #fff; color: #fff; background: transparent;
+  padding: 11px 26px; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; margin-right: 12px;
+  transition: background .22s, color .22s;
+}
+.hero-cta:hover { background: #fff; color: var(--navy); }
+.hero-signia {
+  flex-shrink: 0;  /* Don't shrink */
+  width: auto;
+  max-width: 280px;  /* Limit image width */
+  padding-top: 38px;  /* Align with heading text */
+  /* Removed absolute positioning */
+}
+.hero-signia img {
+  display: block; width: 100%; height: auto;
+  max-height: 90px; object-fit: contain;
+}
     /* ── INTRO ── */
     .intro-section{background:var(--white);padding:72px 248px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
@@ -154,22 +202,27 @@
 <body>
 <script src="nav.js"></script>
 
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <!-- Cross icons will be injected by the SIG-STRIP script -->
   <div class="hero-content">
-    <p class="hero-eyebrow">Pitchathon</p>
-    <h1 class="hero-title">High Stakes, Shark<br>Tank Style Pitches</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-    <p class="hero-dates">07 — 12.10.2026</p>
-    <a class="hero-cta" href="tickets.html" id="pitch-cta1">Get Tickets</a>
-    <a class="hero-cta" href="programme.html">View Programme</a>
-  </div>
-  <div class="hero-signia">
-    <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
+    <div class="hero-text-wrapper">  <!-- NEW: wrapper for text content -->
+      <p class="hero-eyebrow">Pitchathon</p>
+      <h1 class="hero-title">High Stakes, Shark<br>Tank Style Pitches</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br>Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-dates">07 — 12.10.2026</p>
+      <div class="hero-cta-wrapper">  <!-- NEW: wrapper for buttons -->
+        <a class="hero-cta" href="tickets.html" id="pitch-cta1">Get Tickets</a>
+        <a class="hero-cta" href="programme.html">View Programme</a>
+      </div>
+    </div>
+    <div class="hero-signia">  <!-- MOVED: inside hero-content as flex child -->
+      <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
+    </div>
   </div>
 </section>
-
 <div class="ticker-bar">
   <div class="ticker-track">
     <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
@@ -303,6 +356,7 @@
 </section>
 
 <script src="footer.js"></script>
+<script src="sig-nav.js"></script>
 
 <script>
 /* ── REVEAL ── */
@@ -435,7 +489,7 @@ faqData.forEach((faq, i) => {
   `;
   document.head.appendChild(styleEl);
   const PAGES=[
-    {label:'Sig Programmes',href:'sig-programmes.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
+    {label:'Sig Programmes',href:'sig-awards.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
     {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},

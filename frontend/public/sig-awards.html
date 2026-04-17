@@ -28,53 +28,63 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* CHANGE 1: Cross icons — animation removed, static opacity only */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
-      opacity: 0.45;
+      animation: crossPulse 3s ease-in-out infinite;
     }
     .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
 
     /* ── HERO ── */
-    .hero {
-      position: relative; width: 100%; min-height: 490px; overflow: hidden;
-      display: grid;
-      grid-template-rows: calc(var(--cross-inset-y) + 9px) 1fr calc(var(--cross-inset-y) + 9px);
-      grid-template-columns: calc(var(--cross-inset-x) + 9px) 1fr calc(var(--cross-inset-x) + 9px);
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('../images/_MGL7139.jpg');
-      background-size: cover; background-position: center 30%;
-      filter: brightness(0.45);
-      animation: kenBurns 18s ease-in-out infinite alternate;
-    }
-    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
-    }
-    .hero-content {
-      grid-row: 2; grid-column: 2; position: relative; z-index: 4;
-      display: flex; flex-direction: column; justify-content: center;
-      align-items: flex-start; padding: 32px 0;
-    }
-    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
-    .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
-    .hero-body { font-size: 13px; line-height: 1.72; max-width: 440px; opacity: 0.85; margin-bottom: 28px; color: #fff; }
-    .btn-apply {
-      display: inline-block; border: 1.5px solid var(--white); color: var(--white);
-      background: transparent; padding: 11px 28px; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
-      text-decoration: none; transition: background 0.22s, color 0.22s;
-    }
-    .btn-apply:hover { background: var(--white); color: var(--navy); }
-    .hero-awards-logo {
-      position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 4;
-    }
-    .hero-awards-logo img { display: block; height: 160px; width: auto; }
-
+/* ── HERO ── */
+.hero {
+  position: relative; width: 100%; min-height: 490px; overflow: hidden;
+  display: grid;
+  grid-template-rows: calc(var(--cross-inset-y) + 9px) 1fr calc(var(--cross-inset-y) + 9px);
+  grid-template-columns: calc(var(--cross-inset-x) + 9px) 1fr calc(var(--cross-inset-x) + 9px);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('../images/_MGL7139.jpg');
+  background-size: cover; background-position: center 30%;
+  filter: brightness(0.45);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
+}
+.hero-content {
+  grid-row: 2; grid-column: 2; position: relative; z-index: 4;
+  display: flex; flex-direction: row; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+}
+.hero-text-wrapper {
+  flex: 1;
+  min-width: 0; /* Prevents flex overflow */
+}
+.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
+.hero-body { font-size: 13px; line-height: 1.72; max-width: 510px; opacity: 0.85; margin-bottom: 35px; color: #fff; }
+.btn-apply {
+  display: inline-block; border: 1.5px solid var(--white); color: var(--white);
+  background: transparent; padding: 11px 28px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; transition: background 0.22s, color 0.22s;
+}
+.btn-apply:hover { background: var(--white); color: var(--navy); }
+.hero-awards-logo {
+  flex-shrink: 0;
+  padding-bottom: 70px;
+}
+.hero-awards-logo img { display: block; height: 160px; width: auto; }
     /* ── TICKER ── */
     .ticker-wrapper {
       background: var(--navy); overflow: hidden; white-space: nowrap;
@@ -89,8 +99,8 @@
     .winners-header { display: flex; justify-content: space-between; align-items: center; padding: 0 248px 36px; }
     .winners-title { font-size: 50px; font-weight: 600; color: var(--dark-text); }
     .winners-nav { display: flex; gap: 16px; align-items: center; }
-    .winners-nav button { background: none; border: none; cursor: pointer; font-size: 22px; color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s; }
-    .winners-nav button:hover { opacity: 0.5; }
+    .winners-nav button { background: none; border: none; font-size: 22px; color: var(--dark-text); padding: 10px 8px; transition: opacity 0.2s; }
+    .winners-nav button:hover { opacity: 0.5; cursor: pointer;}
 
     .winners-strip-outer { overflow: hidden; }
     .winners-strip { display: flex; gap: 16px; width: max-content; animation: winnersScroll 34s linear infinite; }
@@ -129,7 +139,7 @@
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
       filter: brightness(0.28);
-      transition: opacity 0.45s ease;
+      transition: background-image 0.5s ease;
     }
     .categories-content { position: relative; z-index: 3; padding: 64px 248px 80px; }
     .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
@@ -147,6 +157,10 @@
     }
     /* Flipped state triggered by JS on click only */
     .cat-card-wrapper.flipped .cat-card-inner { transform: rotateY(180deg); }
+
+    .cat-card-wrapper.flipping {
+      pointer-events: none;
+    }
 
     .cat-card-front, .cat-card-back {
       position: absolute; inset: 0;
@@ -273,21 +287,22 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Fak'ugesi Awards</p>
-    <h1 class="hero-title">Celebrating The Best In<br>African Digital Creativity</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-    <a class="btn-apply" href="#" id="hero-cta-btn">SUBMIT YOUR APPLICATION</a>
-  </div>
-  <div class="hero-awards-logo">
-    <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
+    <div class="hero-text-wrapper">
+      <p class="hero-eyebrow">Fak'ugesi Awards</p>
+      <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <a class="btn-apply" href="#" id="hero-cta-btn">SUBMIT YOUR APPLICATION</a>
+    </div>
+    <div class="hero-awards-logo">
+      <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
+    </div>
   </div>
 </section>
-
 <div class="ticker-wrapper">
   <div class="ticker-track">
     <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
@@ -303,10 +318,10 @@
 
 <!-- 2025 WINNERS -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
 
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
@@ -318,16 +333,16 @@
 
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
     </div>
   </div>
 
@@ -341,10 +356,10 @@
 <!-- ELIGIBLE CATEGORIES -->
 <section class="categories-section reveal" id="catSection">
   <div class="categories-bg" id="catBg" style="background-image:url('../images/signature/Poster - Akende Muyumbana.png');"></div>
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="categories-content">
     <div class="cat-header">
       <h2 class="cat-title">Eligible Categories</h2>
@@ -358,10 +373,10 @@
 
 <!-- JURY -->
 <section class="jury-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="jury-header">
     <h2 class="jury-title">2026 Awards Jury</h2>
     <a class="jury-apply-link" href="#">Submit your application</a>
@@ -383,10 +398,10 @@
 
 <!-- REQUIREMENTS -->
 <section class="requirements-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="req-header">
     <h2 class="req-title">Requirements</h2>
     <a class="req-apply-link" href="#">Submit your application</a>
@@ -401,10 +416,10 @@
 
 <!-- FAQ -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="faq-layout">
     <div class="faq-left">
       <h2 class="faq-title">FAQ</h2>
@@ -419,10 +434,10 @@
 
 <!-- PARTNERS -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="partners-header">
     <h2 class="partners-title">Our Awards Partners</h2>
     <a class="partners-link" href="about.html#partners">View all partners</a>
@@ -435,7 +450,7 @@
 </section>
 
 <script src="nav.js"></script>
-
+<script src="fakugesi-cross-patch.js"></script>
 <script src="footer.js"></script>
 
 <script>
@@ -456,44 +471,43 @@ const catData = [
   { tag:'Emerging Tech', num:'06', name:'AI, Blockchain & Emerging Technologies', items:['AI-generated work','Blockchain art','Speculative tech'], fact:'Africa produces more than 700 blockchain developers per month — the second highest growth rate globally, behind only Southeast Asia.', bg:'../images/image00038.jpg' }
 ];
 
-// Preload ALL background images immediately so no flash on first use
-catData.forEach(cat => {
-  const img = new Image();
-  img.src = cat.bg;
-});
-
 const catGrid = document.getElementById('catGrid');
 const catBg   = document.getElementById('catBg');
-
-// Use two overlapping bg layers for smooth crossfade (no white flash)
-const catSection = document.getElementById('catSection');
-const catBg2 = catBg.cloneNode(false);
-catBg2.id = 'catBg2';
-catBg2.style.cssText = catBg.style.cssText;
-catBg2.style.opacity = '0';
-catBg2.style.transition = 'opacity 0.45s ease';
-catBg.style.transition = 'opacity 0.45s ease';
-catSection.insertBefore(catBg2, catBg.nextSibling);
-
-let currentBg = catBg, nextBg = catBg2;
-function swapBg(url) {
-  nextBg.style.backgroundImage = `url('${url}')`;
-  nextBg.style.opacity = '1';
-  currentBg.style.opacity = '0';
-  const tmp = currentBg; currentBg = nextBg; nextBg = tmp;
-}
 
 catData.forEach(cat => {
   const wrapper = document.createElement('div');
   wrapper.className = 'cat-card-wrapper';
 
-  // On click: flip the card AND update background smoothly
-  wrapper.addEventListener('click', () => {
-    const isFlipping = !wrapper.classList.contains('flipped');
-    wrapper.classList.toggle('flipped');
-    if (isFlipping) {
-      swapBg(cat.bg);
+  // Flip with animation lock to prevent rapid-click glitches
+  wrapper.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    // Prevent clicks during animation
+    if (wrapper.classList.contains('flipping')) return;
+    
+    const isCurrentlyFlipped = wrapper.classList.contains('flipped');
+    
+    // Add flipping lock class
+    wrapper.classList.add('flipping');
+    
+    // Remove flipped class from ALL cards
+    document.querySelectorAll('.cat-card-wrapper').forEach(card => {
+      card.classList.remove('flipped');
+    });
+    
+    // If this card wasn't flipped before, flip it now and change background
+    if (!isCurrentlyFlipped) {
+      wrapper.classList.add('flipped');
+      catBg.style.backgroundImage = `url('${cat.bg}')`;
+    } else {
+      // If unflipping, you can optionally set a default background
+      // catBg.style.backgroundImage = `url('../images/default-bg.jpg')`;
     }
+    
+    // Remove lock after animation completes
+    setTimeout(() => {
+      wrapper.classList.remove('flipping');
+    }, 600); // Match the CSS transition duration (0.6s)
   });
 
   wrapper.innerHTML = `
@@ -518,7 +532,18 @@ catData.forEach(cat => {
   catGrid.appendChild(wrapper);
 });
 
-/* REQUIREMENTS ACCORDION */
+// Close flipped card when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.cat-card-wrapper')) {
+    document.querySelectorAll('.cat-card-wrapper').forEach(card => {
+      if (!card.classList.contains('flipping')) {
+        card.classList.remove('flipped');
+      }
+    });
+    // Optional: Reset to default background when clicking outside
+    // catBg.style.backgroundImage = `url('../images/default-bg.jpg')`;
+  }
+});/* REQUIREMENTS ACCORDION */
 (function(){
   const c = document.getElementById('req-accordion');
   if (!c) return;
@@ -602,7 +627,7 @@ faqData.forEach((faq, i) => {
     .hero{min-height:490px!important;align-items:unset!important;padding-top:0!important;}
     .hero-content{padding-top:0!important;padding-bottom:0!important;}
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;justify-content:center;}
+    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 200px;}
     .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
     .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
@@ -615,7 +640,6 @@ faqData.forEach((faq, i) => {
   `;
   document.head.appendChild(styleEl);
   const PAGES=[
-    {label:'Sig Programmes',href:'sig-programmes.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
     {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},

@@ -23,7 +23,6 @@
       overflow:visible;
     }
 
-    /* Scroll gradient — dark navy top, lighter/transparent bottom */
     #main-nav::before {
       content: '';
       position: absolute;
@@ -40,12 +39,8 @@
       pointer-events: none;
       z-index: 0;
     }
-    #main-nav.scrolled::before {
-      opacity: 1;
-    }
-    #main-nav.scrolled {
-      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-    }
+    #main-nav.scrolled::before { opacity: 1; }
+    #main-nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
 
     #main-nav .nav-links-wrap {
       flex:1;
@@ -66,6 +61,9 @@
       color:rgba(255,255,255,0.82); font-size:14px; font-weight:300;
       letter-spacing:.03em; text-decoration:none; line-height:58px;
       white-space:nowrap; transition:color .2s; display:block;
+      color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
+      letter-spacing:.01em; text-decoration:none; line-height:58px;
+      white-space:nowrap; display:block;
       padding:0 18px 0 0;
       cursor:pointer;
     }
@@ -73,8 +71,6 @@
     #main-nav .nav-links>li:first-child>span { padding-left:0; }
     #main-nav .nav-links>li:not(:first-child)>a,
     #main-nav .nav-links>li:not(:first-child)>span { padding:0 20px; }
-    #main-nav .nav-links>li>a:hover,
-    #main-nav .nav-links>li>span:hover { color:#fff; }
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:400; }
 
@@ -92,8 +88,10 @@
       display:block; padding:9px 20px; color:rgba(255,255,255,0.75);
       font-size:12.5px; font-weight:400; text-decoration:none;
       transition:color .18s,background .18s; line-height:1.4;
+      font-size:12.5px; font-weight:500; text-decoration:none;
+      transition:background .18s; line-height:1.4;
     }
-    #main-nav .nav-dd a:hover{color:#fff;background:rgba(255,255,255,0.07);}
+    #main-nav .nav-dd a:hover{background:rgba(255,255,255,0.07);}
 
     /* ── SIGNATURE PROGRAMMES LOGO HOVER PANEL ── */
     .sig-logo-panel {
@@ -108,10 +106,6 @@
     #main-nav .nav-links>li:hover .sig-logo-panel {
       opacity:1; pointer-events:auto; transform:translateY(0);
     }
-    .sig-logo-panel-label {
-      font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-      color:rgba(255,255,255,0.35); margin-bottom:12px; display:block;
-    }
     .sig-logo-grid {
       display:flex;
       flex-direction:row;
@@ -119,28 +113,20 @@
       justify-content:space-between;
       gap:6px;
     }
+    /* Logos are display-only — not clickable, no pointer */
     .sig-logo-tile {
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       gap:6px; padding:8px 6px 6px;
       background:transparent;
       border:none;
-      text-decoration:none;
-      transition:transform .2s;
       flex:1;
       min-width:0;
-    }
-    .sig-logo-tile:hover {
-      transform:translateY(-2px);
+      cursor:default;
+      pointer-events:none;
     }
     .sig-logo-tile img {
       height:20px; width:auto; max-width:70px; object-fit:contain; display:block;
     }
-    .sig-logo-tile-name {
-      font-size:9px; font-weight:600; color:rgba(255,255,255,0.7);
-      letter-spacing:0.03em; text-align:center; line-height:1.2;
-      transition:color .2s;
-    }
-    .sig-logo-tile:hover .sig-logo-tile-name { color:#fff; }
 
     /* Right-side controls */
     #main-nav .nav-right {
@@ -149,9 +135,8 @@
     }
     #main-nav .nav-search {
       background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-      display:flex; align-items:center; padding:6px; transition:color .2s;
+      display:flex; align-items:center; padding:6px;
     }
-    #main-nav .nav-search:hover{color:#fff;}
     #main-nav .nav-search svg{width:18px;height:18px;}
 
     /* GET TICKETS */
@@ -206,33 +191,34 @@
     ]},
   ];
 
-  // Signature programme pages for logo hover panel
+  // Signature programme logos — display only (non-clickable), Fak'ugesi PRO kept
   const sigPages = [
-    { label:'Awards',           href:'/sig-awards.html',      img:'images/logos/signatureProgrammes/awards_logo_light.svg',      imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'Dala Khona',       href:'/sig-dalakhona.html',   img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',  imgStyle:'' },
-    { label:"Fak'ugesi PRO",    href:'/sig-fakugesipro.html', img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',    imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'Immersive Africa', href:'/sig-immersive.html',   img:'images/logos/immersiveAfrica/digitaldome.svg',               imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'JAMZ',             href:'/sig-jamz.html',        img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',      imgStyle:'' },
-    { label:'Pitchathon',       href:'/sig-pitchathon.html',  img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'Awards',           img:'images/logos/signatureProgrammes/awards_logo_light.svg',      imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'Dala Khona',       img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',  imgStyle:'' },
+    { label:"Fak'ugesi PRO",    img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',    imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'Immersive Africa', img:'images/logos/immersiveAfrica/digitaldome.svg',               imgStyle:'filter:brightness(0) invert(1);' },
+    { label:'JAMZ',             img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',      imgStyle:'' },
+    { label:'Pitchathon',       img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'filter:brightness(0) invert(1);' },
   ];
 
   // Build logo grid
+  // Build logo grid — divs only, no <a> tags, no click, no label title
   const logoTilesHTML = sigPages.map(p =>
-    `<a class="sig-logo-tile" href="${p.href}">
+    `<div class="sig-logo-tile">
       <img src="${p.img}" alt="${p.label}" style="${p.imgStyle}"/>
-      <span class="sig-logo-tile-name">${p.label}</span>
-    </a>`
+    </div>`
   ).join('');
 
+  // No "Signature Programmes" label in the panel
   const logoPanel = `<div class="sig-logo-panel">
-    <span class="sig-logo-panel-label">Signature Programmes</span>
     <div class="sig-logo-grid">${logoTilesHTML}</div>
   </div>`;
 
   const items = links.map((l, i) => {
     const active = isActive(l.href);
     if (l.isSig) {
-      return `<li data-i="${i}"><a href="/sig-programmes.html" class="${active ? 'active' : ''}">${l.label}</a>${logoPanel}</li>`;
+      // Clicking "Signature Programmes" goes directly to awards page
+      return `<li data-i="${i}"><a href="/sig-awards.html" class="${active ? 'active' : ''}">${l.label}</a>${logoPanel}</li>`;
     }
     if (l.dd) {
       const ddHTML = `<div class="nav-dd">${l.dd.map(d=>`<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
@@ -358,28 +344,6 @@
     setTimeout(attachAll, 600);
   })();
 
-  /* ── Scroll-driven cross spin ── */
-  (function () {
-    let totalRotation = 0, lastScrollY = window.scrollY, rafPending = false;
-    let burstScale = 1, bursting = false, scrollTimeout = null;
-    const DEGREES_PER_PX = 0.45, BURST_SCALE = 2.2, BURST_DECAY = 0.07;
-    function applyRotation() {
-      const crosses = document.querySelectorAll('.cross-icon');
-      const transform = `translateY(-50%) rotate(${totalRotation}deg) scale(${burstScale.toFixed(3)})`;
-      crosses.forEach(el => { el.style.transform = transform; el.style.transition = 'none'; });
-      if (burstScale > 1) { burstScale = Math.max(1, burstScale - BURST_DECAY); requestAnimationFrame(applyRotation); }
-      else rafPending = false;
-    }
-    window.addEventListener('scroll', function () {
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
-      lastScrollY = currentScrollY;
-      totalRotation += delta * DEGREES_PER_PX;
-      if (!bursting) { burstScale = BURST_SCALE; bursting = true; }
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => { bursting = false; }, 150);
-      if (!rafPending) { rafPending = true; requestAnimationFrame(applyRotation); }
-    }, { passive:true });
-  })();
+  // NOTE: Scroll-driven cross spin removed — plus signs are now static on all pages.
 
 })();

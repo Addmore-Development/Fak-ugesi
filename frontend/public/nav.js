@@ -58,6 +58,9 @@
     #main-nav .nav-links>li { position:relative; overflow:visible; }
     #main-nav .nav-links>li>a,
     #main-nav .nav-links>li>span {
+      color:rgba(255,255,255,0.82); font-size:14px; font-weight:300;
+      letter-spacing:.03em; text-decoration:none; line-height:58px;
+      white-space:nowrap; transition:color .2s; display:block;
       color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
       letter-spacing:.01em; text-decoration:none; line-height:58px;
       white-space:nowrap; display:block;
@@ -69,7 +72,7 @@
     #main-nav .nav-links>li:not(:first-child)>a,
     #main-nav .nav-links>li:not(:first-child)>span { padding:0 20px; }
     #main-nav .nav-links>li>a.active,
-    #main-nav .nav-links>li>span.active { color:#fff; font-weight:600; }
+    #main-nav .nav-links>li>span.active { color:#fff; font-weight:400; }
 
     /* Standard dropdown (Discover) */
     #main-nav .nav-dd {
@@ -83,6 +86,8 @@
     #main-nav .nav-links>li:hover .nav-dd { opacity:1;pointer-events:auto;transform:translateY(0); }
     #main-nav .nav-dd a {
       display:block; padding:9px 20px; color:rgba(255,255,255,0.75);
+      font-size:12.5px; font-weight:400; text-decoration:none;
+      transition:color .18s,background .18s; line-height:1.4;
       font-size:12.5px; font-weight:500; text-decoration:none;
       transition:background .18s; line-height:1.4;
     }
@@ -125,7 +130,7 @@
 
     /* Right-side controls */
     #main-nav .nav-right {
-      display:flex; align-items:center; gap:70px; padding-right:32px;
+      display:flex; align-items:center; gap:24px; padding-right:32px;
       flex-shrink:0; position:relative; z-index:1;
     }
     #main-nav .nav-search {
@@ -192,6 +197,7 @@
     { label:'Pitchathon',       img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'filter:brightness(0) invert(1);' },
   ];
 
+  // Build logo grid
   // Build logo grid — divs only, no <a> tags, no click, no label title
   const logoTilesHTML = sigPages.map(p =>
     `<div class="sig-logo-tile">
@@ -221,13 +227,13 @@
     <nav id="main-nav">
       <div class="nav-links-wrap" id="nav-links-wrap">
         <ul class="nav-links" id="nav-list">${items}</ul>
-      </div>
-      <div class="nav-right">
         <button class="nav-search" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </button>
+      </div>
+      <div class="nav-right">
         <a class="nav-tickets" id="nav-tickets" href="/tickets.html">
           <canvas id="nav-bolt-canvas"></canvas>
           <span>GET TICKETS</span>

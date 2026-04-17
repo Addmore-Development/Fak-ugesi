@@ -96,12 +96,11 @@
 
     /* ── SIGNATURE PROGRAMMES LOGO HOVER PANEL ── */
     .sig-logo-panel {
-      position:absolute; top:57px; left:-40px;
-      width:460px;
-      background:rgba(8,15,44,0.97);
-      border:1px solid rgba(255,255,255,0.1);
-      backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
-      padding:20px 20px 18px;
+      position:absolute; top:57px; left:-80px;
+      width:520px;
+      background:transparent;
+      border:none;
+      padding:16px 20px 14px;
       opacity:0; pointer-events:none; transform:translateY(-10px);
       transition:opacity .25s,transform .25s; z-index:200;
     }
@@ -110,31 +109,33 @@
     }
     .sig-logo-panel-label {
       font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-      color:rgba(255,255,255,0.35); margin-bottom:16px; display:block;
+      color:rgba(255,255,255,0.35); margin-bottom:12px; display:block;
     }
     .sig-logo-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      gap:6px;
     }
     .sig-logo-tile {
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:8px; padding:14px 10px 12px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.07);
+      gap:6px; padding:8px 6px 6px;
+      background:transparent;
+      border:none;
       text-decoration:none;
-      transition:background .2s,border-color .2s,transform .18s;
+      transition:transform .2s;
+      flex:1;
+      min-width:0;
     }
     .sig-logo-tile:hover {
-      background:rgba(255,255,255,0.1);
-      border-color:rgba(255,255,255,0.2);
       transform:translateY(-2px);
     }
     .sig-logo-tile img {
-      height:26px; width:auto; max-width:90px; object-fit:contain; display:block;
+      height:20px; width:auto; max-width:70px; object-fit:contain; display:block;
     }
     .sig-logo-tile-name {
-      font-size:10px; font-weight:600; color:rgba(255,255,255,0.7);
+      font-size:9px; font-weight:600; color:rgba(255,255,255,0.7);
       letter-spacing:0.03em; text-align:center; line-height:1.2;
       transition:color .2s;
     }

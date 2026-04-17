@@ -135,13 +135,11 @@
       background: linear-gradient(135deg, #1e2d5a 0%, #2d4080 40%, #3a5299 70%, #5570b8 100%);
     }
     .theme-bg-img {
-      position: absolute; right: 0; bottom: 0; top: 0; width: 55%; height: 100%;
-      /* Flipped so the image faces LEFT toward the text, zoomed in */
+      position: absolute; right: 0; bottom: 0; top: 0; width: 58%; height: 100%;
       background-image: url('images/cyber1.png');
-      background-size: 115%;
-      background-position: center center;
+      background-size: cover;
+      background-position: left center;
       background-repeat: no-repeat;
-      transform: scaleX(-1);
     }
     .theme-fade {
       position: absolute; inset: 0;
@@ -173,31 +171,41 @@
     .involved-link { color: var(--white); font-size: 12px; font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; white-space: nowrap; margin-top: 8px; }
     .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
 
-    /* Inv card with fun fact overlay */
+    /* Inv card — flip on hover */
     .inv-card {
       border: 1px solid rgba(255,255,255,0.45);
       position: relative;
-      backdrop-filter: blur(2px);
+      perspective: 900px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+    .inv-card-inner {
+      position: relative;
+      width: 100%; height: 100%; flex: 1;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+      min-height: 280px;
+    }
+    .inv-card:hover .inv-card-inner { transform: rotateY(180deg); }
+
+    .inv-card-front, .inv-card-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       padding: 22px 20px 20px;
       display: flex;
       flex-direction: column;
-      min-height: 280px;
-      overflow: hidden;
     }
-    /* Fun fact overlay — appears on hover, no text effects/transitions on base text */
-    .inv-card-fact {
-      position: absolute;
-      inset: 0;
-      background: rgba(8, 15, 45, 0.94);
-      display: flex;
+    .inv-card-front { background: transparent; }
+    .inv-card-back {
+      background: rgba(8, 15, 45, 0.96);
+      transform: rotateY(180deg);
       align-items: center;
       justify-content: center;
       padding: 28px 24px;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
+      border: 1px solid rgba(255,255,255,0.45);
     }
-    .inv-card:hover .inv-card-fact { opacity: 1; }
     .inv-card-fact p {
       font-size: 13px;
       line-height: 1.78;
@@ -425,34 +433,51 @@
     <div class="involved-cards">
 
       <div class="inv-card">
-        <!-- Fun fact overlay — no emojis -->
-        <div class="inv-card-fact">
-          <p>Africa is home to more than 54 recognized nations, yet shares a deep tradition of collective creative expression that transcends borders and languages.</p>
+        <div class="inv-card-inner">
+          <div class="inv-card-front">
+            <span class="card-num">01</span>
+            <p class="card-tag">Festival Collaboration</p>
+            <h3 class="card-title">Investors &amp; Funders</h3>
+            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
+          </div>
+          <div class="inv-card-back">
+            <div class="inv-card-fact">
+              <p>Africa is home to more than 54 recognized nations, yet shares a deep tradition of collective creative expression that transcends borders and languages.</p>
+            </div>
+          </div>
         </div>
-        <span class="card-num">01</span>
-        <p class="card-tag">Festival Collaboration</p>
-        <h3 class="card-title">Investors &amp; Funders</h3>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
       </div>
 
       <div class="inv-card">
-        <div class="inv-card-fact">
-          <p>The African continent has the fastest-growing startup ecosystem in the world, with digital innovation hubs now operating in over 40 countries across the continent.</p>
+        <div class="inv-card-inner">
+          <div class="inv-card-front">
+            <span class="card-num">02</span>
+            <p class="card-tag">Curated Festival Experiences</p>
+            <h3 class="card-title">Expo &amp; Showcases</h3>
+            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
+          </div>
+          <div class="inv-card-back">
+            <div class="inv-card-fact">
+              <p>The African continent has the fastest-growing startup ecosystem in the world, with digital innovation hubs now operating in over 40 countries across the continent.</p>
+            </div>
+          </div>
         </div>
-        <span class="card-num">02</span>
-        <p class="card-tag">Curated Festival Experiences</p>
-        <h3 class="card-title">Expo &amp; Showcases</h3>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
       </div>
 
       <div class="inv-card">
-        <div class="inv-card-fact">
-          <p>Fak'ugesi has welcomed visitors from over 30 countries since its founding, building one of the most diverse networks of digital creators on the African continent.</p>
+        <div class="inv-card-inner">
+          <div class="inv-card-front">
+            <span class="card-num">03</span>
+            <p class="card-tag">Lend a Hand</p>
+            <h3 class="card-title">Volunteers</h3>
+            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
+          </div>
+          <div class="inv-card-back">
+            <div class="inv-card-fact">
+              <p>Fak'ugesi has welcomed visitors from over 30 countries since its founding, building one of the most diverse networks of digital creators on the African continent.</p>
+            </div>
+          </div>
         </div>
-        <span class="card-num">03</span>
-        <p class="card-tag">Lend a Hand</p>
-        <h3 class="card-title">Volunteers</h3>
-        <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
       </div>
 
     </div>

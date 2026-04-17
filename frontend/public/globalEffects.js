@@ -315,6 +315,8 @@
 
   function wrapInvCard(card) {
     if (card.dataset.flipped) return;
+    // If already has inv-card-inner structure, skip
+    if (card.querySelector('.inv-card-inner')) { card.dataset.flipped = '1'; return; }
     card.dataset.flipped = '1';
     const fact = nextFact();
     const frontContent = card.innerHTML;
@@ -915,8 +917,12 @@
     initArrowConveyor();
     addDividers();
     initCardFlips();
-    initHeroLetterDrop();
-    initHeroSimDrop();
+    // Skip text drop-in animations on sig-programmes page
+    const isSigProg = window.location.pathname.includes('sig-programmes');
+    if (!isSigProg) {
+      initHeroLetterDrop();
+      initHeroSimDrop();
+    }
     initNoodleText();
     initKikkFaq();
     // Heading boxes run after DOM settles

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources – Fak'ugesi Festival</title>
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --blue-mid:  #2a3f72;
+      --lavender:  #dde3f0;
+      --card-blue: #e8edf5;
+      --white:     #ffffff;
+      --orange:    #e05a1e;
+      --dark-text: #0d1b3e;
+      --body-gray: #3a4060;
+      --band:      248px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'InterDisplay', sans-serif;
+      background: var(--white);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── CROSS ICONS ── */
+    .cross-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0;
+      position: absolute; z-index: 6;
+      animation: crossPulse 3s ease-in-out infinite;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; width: 100%; min-height: 490px; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('imgs/2C6A4988.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.52);
+      animation: kenBurns 16s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.55) 40%, transparent 78%);
+    }
+    .hero-inner {
+      position: relative; z-index: 3; width: 100%;
+      padding: 110px var(--band) 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-content { max-width: 520px; }
+    .hero-subtitle {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; opacity: 0.8; margin-bottom: 14px;
+    }
+    .hero-title { font-size: 58px; font-weight: 600; line-height: 1.0; margin-bottom: 22px; }
+    .hero-body { font-size: 13px; line-height: 1.7; max-width: 420px; opacity: 0.82; }
+    .hero-logo {
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      animation: fadeUp 1.1s ease both;
+    }
+    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); }
+
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--navy);
+      overflow: hidden; white-space: nowrap;
+      padding: 11px 0; position: relative; z-index: 10;
+    }
+    .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; }
+    .ticker-track span {
+      padding: 0 32px; font-size: 12.5px; font-weight: 500;
+      color: rgba(255,255,255,0.88); letter-spacing: 0.02em;
+    }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── RESEARCH SECTION ── */
+    .research-section {
+      background: var(--white);
+      position: relative;
+      padding: 72px 0 80px;
+      border-bottom: 1px solid rgba(26,39,68,0.1);
+    }
+    .research-section:last-of-type { border-bottom: none; }
+
+    .research-inner {
+      padding: 0 var(--band);
+      position: relative; z-index: 2;
+    }
+
+    /* Section title */
+    .research-title {
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--dark-text);
+      line-height: 1.0;
+      margin-bottom: 52px;
+    }
+
+    /* Two-col layout: cover left, content right */
+    .research-body {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Cover image */
+    .research-cover {
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .research-cover img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Right content */
+    .research-content {}
+
+    /* Meta row: Report | Year | Author */
+    .research-meta {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(26,39,68,0.12);
+    }
+    .research-meta-item {
+      font-size: 11px;
+      color: var(--body-gray);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* Body text */
+    .research-body-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--dark-text);
+      margin-bottom: 40px;
+      max-width: 640px;
+    }
+
+    /* Guidelines block */
+    .research-guidelines {
+      margin-bottom: 36px;
+    }
+    .research-guidelines-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--body-gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .research-guidelines ol {
+      padding-left: 16px;
+    }
+    .research-guidelines li {
+      font-size: 10px;
+      color: var(--body-gray);
+      line-height: 1.65;
+      margin-bottom: 4px;
+    }
+
+    /* Download button */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 40px;
+      border: 1.5px solid var(--navy);
+      background: transparent;
+      color: var(--dark-text);
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .download-btn:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    /* ── PARTNERS ── */
+    .partners-section { background: var(--lavender); padding: 72px 0; position: relative; }
+    .partners-inner { padding: 0 var(--band); }
+    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .partners-title { font-size: 38px; font-weight: 600; color: var(--dark-text); }
+    .partners-link {
+      font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: none;
+      letter-spacing: 0.06em; border-bottom: 1px solid var(--navy); padding-bottom: 1px;
+    }
+    .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-box {
+      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
+      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+      padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
+    }
+    .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .partner-logo-box img.keep-color { filter: none; }
+    .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+
+  <link rel="preload" href="/fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/InterDisplay-SemiBold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="cross-icon" style="top:16px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;animation-delay:0.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;animation-delay:2.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg></div>
+
+  <!-- nav injected by nav.js -->
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-subtitle">Resources</p>
+      <h1 class="hero-title">Explore our<br>knowledge base</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+    </div>
+    <div class="hero-logo">
+      <img src="../images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrapper">
+  <div class="ticker-track">
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+  </div>
+</div>
+
+<!-- RESEARCH SECTION 1 -->
+<section class="research-section reveal">
+
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:0.9s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+
+  <div class="research-inner">
+    <h2 class="research-title">Intermediaries Research</h2>
+    <div class="research-body">
+      <div class="research-cover">
+        <img src="imgs/Intermediaries Report rev15.jpg" alt="Trust in the Value Chain – Intermediaries Report" />
+      </div>
+      <div class="research-content">
+        <div class="research-meta">
+          <span class="research-meta-item">Report</span>
+          <span class="research-meta-item">2023</span>
+          <span class="research-meta-item">Dr. Tegan Bristow</span>
+        </div>
+        <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.</p>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
+          </ol>
+        </div>
+        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);animation-delay:1.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- RESEARCH SECTION 2 -->
+<section class="research-section reveal">
+
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:2.0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+
+  <div class="research-inner">
+    <h2 class="research-title">Intermediaries Research</h2>
+    <div class="research-body">
+      <div class="research-cover">
+        <img src="imgs/Intermediaries Report rev15.jpg" alt="Trust in the Value Chain – Intermediaries Report" />
+      </div>
+      <div class="research-content">
+        <div class="research-meta">
+          <span class="research-meta-item">Report</span>
+          <span class="research-meta-item">2022</span>
+          <span class="research-meta-item">Dr. Tegan Bristow</span>
+        </div>
+        <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.</p>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
+          </ol>
+        </div>
+        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);animation-delay:1.5s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- RESEARCH SECTION 3 -->
+<section class="research-section reveal">
+
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);animation-delay:1.3s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:2.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+
+  <div class="research-inner">
+    <h2 class="research-title">Intermediaries Research</h2>
+    <div class="research-body">
+      <div class="research-cover">
+        <img src="imgs/Intermediaries Report rev15.jpg" alt="Trust in the Value Chain – Intermediaries Report" />
+      </div>
+      <div class="research-content">
+        <div class="research-meta">
+          <span class="research-meta-item">Report</span>
+          <span class="research-meta-item">2021</span>
+          <span class="research-meta-item">Dr. Tegan Bristow</span>
+        </div>
+        <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.</p>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
+          </ol>
+        </div>
+        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);animation-delay:1.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:2.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- OUR MAIN PARTNERS -->
+<section class="partners-section reveal">
+  <div class="cross-icon" style="top:20px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:20px;right:200px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:200px;animation-delay:0.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;animation-delay:1.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+
+  <div class="partners-inner">
+    <div class="partners-header">
+      <h2 class="partners-title">Our Main Partners</h2>
+      <a class="partners-link" href="../about.html#partners">View all partners</a>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(function(el) { io.observe(el); });
+</script>
+<script src="../nav.js"></script>
+<script src="../fakugesi-cross-patch.js"></script>
+<script src="../starArrows.js"></script>
+<script src="../footer.js"></script>
+</body>
+</html>

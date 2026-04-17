@@ -104,20 +104,16 @@
     .winner-cat { font-size: 11px; color: var(--body-gray); margin-bottom: 6px; }
     .winner-name { font-size: 18px; font-weight: 700; color: var(--dark-text); line-height: 1.3; margin-bottom: 10px; }
 
-    /* winner-bottom: country centered, author right */
     .winner-bottom {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       gap: 8px;
     }
     .winner-author { font-size: 13px; color: var(--body-gray); }
-    /* Nigeria text: centered in middle position */
     .winner-country {
       font-size: 13px;
       color: var(--body-gray);
-      flex: 1;
-      text-align: center;
     }
 
     .crosses-row { display: flex; justify-content: space-between; padding: 20px 200px; }
@@ -157,10 +153,10 @@
     }
     .cat-card-front { background: rgba(0,0,0,0.15); }
     .cat-card-back {
-      background: rgba(26,39,68,0.92);
+      background: rgba(0,0,0,0.15);
       transform: rotateY(180deg);
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px;
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      padding: 22px 20px 24px;
     }
     .cat-card-wrapper.flipped .cat-card-front,
     .cat-card-wrapper.flipped .cat-card-back { border-color: var(--white); }
@@ -173,12 +169,13 @@
     .cat-items li { font-size: 12px; opacity: 0.8; line-height: 1.9; padding-left: 18px; position: relative; color: #fff; }
     .cat-items li::before { content: '→'; position: absolute; left: 0; }
     .cat-fact {
-      font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.92);
-      font-weight: 400; text-align: center; font-style: italic;
+      font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.85);
+      font-weight: 400; text-align: left; font-style: normal;
+      font-family: 'InterDisplay', sans-serif;
     }
     .cat-fact-label {
       font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); margin-bottom: 10px; text-align: center; display: block;
+      color: rgba(255,255,255,0.55); margin-bottom: 10px; text-align: left; display: block;
     }
 
     /* ── JURY ── */
@@ -264,11 +261,15 @@
 
     .btn-apply { position: relative; overflow: visible; }
     .btn-apply .lightning-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+
+    /* Global: no text effects on hover */
+    a:hover, span:hover { text-shadow: none !important; }
   </style>
 </head>
 <body>
 
 <script src="nav.js"></script>
+<script src="sig-nav.js"></script>
 
 <section class="hero">
   <div class="hero-bg"></div>
@@ -318,16 +319,16 @@
 
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-country">Nigeria</span><span class="winner-author">(by Jopee Dairo)</span></div></div></div>
     </div>
   </div>
 
@@ -340,7 +341,7 @@
 
 <!-- ELIGIBLE CATEGORIES -->
 <section class="categories-section reveal" id="catSection">
-  <div class="categories-bg" id="catBg" style="background-image:url('../images/signature/Poster - Akende Muyumbana.png');"></div>
+  <div class="categories-bg" id="catBg" style="background-image:url('../images/Copy_of__MGL4129.jpg');"></div>
   <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
@@ -448,8 +449,8 @@ revealEls.forEach(el => io.observe(el));
 
 /* CATEGORIES: 6 flip-cards — click to flip, click again to unflip */
 const catData = [
-  { tag:'Immersive Media', num:'01', name:'Extended Reality & Volumetric Work', items:['Virtual Reality','Augmented Reality','Extended Reality'], fact:'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.', bg:'../images/signature/Poster - Akende Muyumbana.png' },
-  { tag:'Digital Art', num:'02', name:'Generative & Computational Art', items:['AI-generated works','Algorithmic art','Data visualisation'], fact:'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.', bg:'../images/signature/VOF Voices of fire print - Joseph Dairo.jpg' },
+  { tag:'Immersive Media', num:'01', name:'Extended Reality & Volumetric Work', items:['Virtual Reality','Augmented Reality','Extended Reality'], fact:'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.', bg:'../images/Copy_of__MGL4129.jpg' },
+  { tag:'Digital Art', num:'02', name:'Generative & Computational Art', items:['AI-generated works','Algorithmic art','Data visualisation'], fact:'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.', bg:'../images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg' },
   { tag:'Interactive Design', num:'03', name:'Interactive Installations & Experiences', items:['Physical computing','Sensor-based work','Participatory art'], fact:"South Africa hosts the African continent's only fully digital planetarium dome — the Wits Anglo American Digital Dome in Johannesburg.", bg:'../images/_MGL7139.jpg' },
   { tag:'Game Design', num:'04', name:'Video Games & Interactive Narrative', items:['Mobile games','PC & console games','Narrative experiences'], fact:'Nigeria is the fastest-growing mobile gaming market in Africa, with over 50 million active players and a 36% year-on-year growth rate.', bg:'../images/0A9A8876.jpg' },
   { tag:'Motion & Animation', num:'05', name:'Animation & Motion Graphics', items:['Short-form animation','Motion graphics','Digital film'], fact:'The Lagos animation industry has grown by over 200% in the past decade, producing internationally recognised short films and series.', bg:'../images/image00028.jpeg' },
@@ -477,10 +478,14 @@ catSection.insertBefore(catBg2, catBg.nextSibling);
 
 let currentBg = catBg, nextBg = catBg2;
 function swapBg(url) {
-  nextBg.style.backgroundImage = `url('${url}')`;
-  nextBg.style.opacity = '1';
-  currentBg.style.opacity = '0';
-  const tmp = currentBg; currentBg = nextBg; nextBg = tmp;
+  const img = new Image();
+  img.onload = function() {
+    nextBg.style.backgroundImage = `url('${url}')`;
+    nextBg.style.opacity = '1';
+    currentBg.style.opacity = '0';
+    const tmp = currentBg; currentBg = nextBg; nextBg = tmp;
+  };
+  img.src = url;
 }
 
 catData.forEach(cat => {
@@ -595,54 +600,7 @@ faqData.forEach((faq, i) => {
   btn.addEventListener('mouseleave', () => clearInterval(rainInterval));
 })();
 
-/* SIG-STRIP INJECT */
-(function(){
-  const styleEl = document.createElement('style');
-  styleEl.textContent = `
-    .hero{min-height:490px!important;align-items:unset!important;padding-top:0!important;}
-    .hero-content{padding-top:0!important;padding-bottom:0!important;}
-    .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 200px;}
-    .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
-    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
-    .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
-    .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
-    .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
-    .fug-sig-item.fug-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.5);}
-    .fug-sig-item img{display:block;max-width:88px;max-height:40px;object-fit:contain;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),opacity 0.22s;opacity:0.65;}
-    .fug-sig-item:hover img,.fug-sig-item.fug-active img{transform:scale(1.08);opacity:1;}
-    .fug-sig-label{line-height:1;}
-  `;
-  document.head.appendChild(styleEl);
-  const PAGES=[
-    {label:'Sig Programmes',href:'sig-programmes.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
-    {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
-    {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},
-    {label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
-    {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
-  ];
-  const currentPage=window.location.pathname.split('/').pop()||'';
-  function buildStrip(){
-    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
-    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-    PAGES.forEach(p=>{
-      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
-      if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
-    });
-    strip.appendChild(inner); return strip;
-  }
-  function run(){
-    const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
-    if(ticker) ticker.after(buildStrip());
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
-})();
+
 </script>
 </body>
 </html>

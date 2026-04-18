@@ -17,9 +17,9 @@
     #main-nav {
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; height:58px;
-      background:transparent; border-bottom:1px solid transparent;
+      background:rgba(10,18,50,0.72); border-bottom:1px solid transparent;
       font-family:'InterDisplay',sans-serif;
-      transition:border-color .35s;
+      transition:background .35s, border-color .35s;
       overflow:visible;
     }
 
@@ -30,17 +30,16 @@
       background: linear-gradient(
         to bottom,
         rgba(10,18,50,0.98) 0%,
-        rgba(15,24,60,0.92) 35%,
-        rgba(20,32,72,0.72) 70%,
-        rgba(26,40,80,0.35) 100%
+        rgba(15,24,60,0.95) 60%,
+        rgba(20,32,72,0.90) 100%
       );
       opacity: 0;
-      transition: opacity 0.45s ease;
+      transition: opacity 0.35s ease;
       pointer-events: none;
       z-index: 0;
     }
     #main-nav.scrolled::before { opacity: 1; }
-    #main-nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    #main-nav.scrolled { background: transparent; box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
 
     #main-nav .nav-links-wrap {
       flex:1;
@@ -58,10 +57,10 @@
     #main-nav .nav-links>li { position:relative; overflow:visible; }
     #main-nav .nav-links>li>a,
     #main-nav .nav-links>li>span {
-      color:rgba(255,255,255,0.82); font-size:14px; font-weight:300;
+      color:rgba(255,255,255,0.82); font-size:14px; font-weight:100;
       letter-spacing:.03em; text-decoration:none; line-height:58px;
       white-space:nowrap; transition:color .2s; display:block;
-      color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
+      color:rgba(255,255,255,0.82); font-size:13px; font-weight:100;
       letter-spacing:.01em; text-decoration:none; line-height:58px;
       white-space:nowrap; display:block;
       padding:0 18px 0 0;
@@ -180,7 +179,10 @@
 
   const links = [
     { label:'Home',                 href:'/index.html' },
-    { label:'Festival Programme',   href:'/programme.html' },
+    { label:'Festival Programme', href:'/programme.html', dd:[
+      { label:'Programme Overview', href:'/programme.html' },
+      { label:'Schedule',           href:'/fes-schedule.html' },
+    ]},
     { label:'Signature Programmes', href:'#', isSig:true },
     { label:'Discover', href:'#', dd:[
       { label:'About Us', href:'/about.html' }
@@ -218,7 +220,11 @@
     }
     if (l.dd) {
       const ddHTML = `<div class="nav-dd">${l.dd.map(d=>`<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
-      return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span>${ddHTML}</li>`;
+      // If parent has a real href (not #), make it a link; otherwise a span
+      const trigger = (l.href && l.href !== '#')
+        ? `<a href="${l.href}" class="${active ? 'active' : ''}">${l.label} ▾</a>`
+        : `<span class="${active ? 'active' : ''}">${l.label} ▾</span>`;
+      return `<li data-i="${i}">${trigger}${ddHTML}</li>`;
     }
     return `<li data-i="${i}"><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
   }).join('');

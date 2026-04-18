@@ -23,21 +23,82 @@
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
     /* ── HERO ── */
-    .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;padding-top:56px}
-    .hero-bg{position:absolute;inset:0;background-image:url('../images/image00038.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
-    @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 248px 52px;animation:fadeUp .9s ease both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:56px;font-weight:900;line-height:1.0;margin-bottom:16px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
-    .hero-dates{font-size:28px;font-weight:700;letter-spacing:.02em}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-right:12px;margin-top:20px;transition:background .22s,color .22s;position:relative;overflow:hidden;}
-    .hero-cta:hover{background:#fff;color:var(--navy)}
-    .hero-signia{position:absolute;right:80px;top:50%;transform:translateY(-50%);background:transparent;padding:0;z-index:4;}
-    .hero-signia img{display:block;height:120px;width:auto;}
-
+.hero {
+  position: relative; width: 100%; min-height: 490px; overflow: hidden;
+  display: grid;
+  grid-template-rows: calc(var(--cross-inset-y, 16px) + 9px) 1fr calc(var(--cross-inset-y, 16px) + 9px);
+  grid-template-columns: calc(var(--cross-inset-x, 200px) + 9px) 1fr calc(var(--cross-inset-x, 200px) + 9px);
+  /* Changed from flex to grid to match awards layout */
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('../images/image00038.jpg');
+  background-size: cover; background-position: center 35%;
+  filter: brightness(0.52);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(10,18,48,.75) 42%, transparent 80%);
+  /* Adjusted overlay to match awards style */
+}
+.hero-content {
+  grid-row: 2; grid-column: 2; position: relative; z-index: 4;
+  display: flex; flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 32px 0;
+  animation: fadeUp .9s ease both;
+  /* Changed to row flex with space-between like awards */
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+.hero-text-wrapper {
+  flex: 1;
+  min-width: 0;
+  /* New wrapper for text content */
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; opacity: .75; margin-bottom: 14px;
+}
+.hero-title {
+  font-size: 56px; font-weight: 900; line-height: 1.0;
+  margin-bottom: 20px; max-width: 100%;
+  /* Removed max-width constraint to fill space */
+}
+.hero-body {
+  font-size: 13px; line-height: 1.72; max-width: 510px;
+  opacity: .85; margin-bottom: 16px;
+  /* Removed max-width constraint to fill space */
+}
+.hero-dates {
+  font-size: 28px; font-weight: 700; letter-spacing: .02em;
+  margin-bottom: 8px;
+  /* Added margin for spacing before button */
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid #fff; color: #fff; background: transparent;
+  padding: 11px 28px; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; margin-top: 20px;
+  transition: background .22s, color .22s;
+}
+.hero-cta:hover { background: #fff; color: var(--navy); }
+.hero-signia {
+  flex-shrink: 0;
+  width: auto;
+  max-width: 280px;
+  padding-top: 38px;
+  /* Changed from absolute positioning to flex child with top padding for alignment */
+}
+.hero-signia img {
+  display: block; width: 100%; height: auto;
+  max-height: 120px; object-fit: contain;
+  /* Made responsive */
+}
     /* ── TICKER ── */
     .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
@@ -128,18 +189,20 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <!-- Cross icons will be injected by the SIG-STRIP script, keep them commented or remove -->
   <div class="hero-content">
-    <p class="hero-eyebrow">Dala Khona</p>
-    <h1 class="hero-title">African Gaming<br>Arcade</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-    <p class="hero-dates">07 — 12.10.2026</p>
-    <a class="hero-cta" href="tickets.html" id="dala-cta">Get Tickets</a>
-  </div>
-  <div class="hero-signia">
-    <img src="../images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
+    <div class="hero-text-wrapper">  <!-- NEW: wrapper for text content -->
+      <p class="hero-eyebrow">Dala Khona</p>
+      <h1 class="hero-title">African Gaming<br>Arcade</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+      <p class="hero-dates">07 — 12.10.2026</p>
+      <a class="hero-cta" href="tickets.html" id="dala-cta">Get Tickets</a>
+    </div>
+    <div class="hero-signia">  <!-- MOVED: now inside hero-content as flex child -->
+      <img src="../images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
+    </div>
   </div>
 </section>
-
 <div class="ticker-bar">
   <div class="ticker-track">
     <span class="ticker-item">Get your tickets now <span class="ticker-sep">→</span></span>

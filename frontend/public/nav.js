@@ -1,10 +1,10 @@
 /**
- * Fak'ugesi Main Navigation v12
- * – Signature Programmes → awards page directly
- * – Logo panel: no header label "Signature Programmes", logos non-clickable (display only)
- * – Fak'ugesi PRO kept in logo panel
- * – Plus/cross signs: static, no scroll spin
- * – No text hover effects on any nav text
+ * Fak'ugesi Main Navigation v13
+ * – Nav gradient: dark navy at top, fades lighter toward bottom (blends with page)
+ * – Removed jumping star indicator entirely
+ * – Signature Programmes hover → diagonal logo strip dropdown
+ * – GET TICKETS: square corners, electric effect
+ * – Discover dropdown now includes Venues, Partners, Archive
  */
 (function () {
   const path = window.location.pathname;
@@ -185,7 +185,11 @@
     ]},
     { label:'Signature Programmes', href:'#', isSig:true },
     { label:'Discover', href:'#', dd:[
-      { label:'About Us', href:'/about.html' }
+      { label:'About Us',   href:'/about.html' },
+      { label:'Venues',     href:'/discover/venues.html' },
+      { label:'Partners',   href:'/discover/partners.html' },
+      { label:'Archive',    href:'/discover/archive.html' },
+      { label:'Resources',  href:'/discover/resources.html' },
     ]},
   ];
 

@@ -140,19 +140,19 @@
     </div>
 
     <footer id="fug-footer">
-      <span class="fug-footer-cross" style="top:16px;left:0;">
+      <span class="fug-footer-cross" style="top:16px;left:40px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
       <span class="fug-footer-cross" style="top:16px;left:50%;transform:translateX(-50%);">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="top:16px;right:0;">
+      <span class="fug-footer-cross" style="top:16px;right:40px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="bottom:16px;left:0;">
+      <span class="fug-footer-cross" style="bottom:16px;left:40px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="bottom:16px;right:0;">
+      <span class="fug-footer-cross" style="bottom:16px;right:40px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
 

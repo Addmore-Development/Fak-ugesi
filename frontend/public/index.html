@@ -98,7 +98,13 @@
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.45) 40%, transparent 78%);
+      background: linear-gradient(
+        to bottom,
+        rgba(10,18,50,0.82) 0%,
+        rgba(10,18,50,0.60) 30%,
+        rgba(10,18,48,0.45) 60%,
+        transparent 100%
+      );
     }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
@@ -132,11 +138,13 @@
       background: linear-gradient(135deg, #1e2d5a 0%, #2d4080 40%, #3a5299 70%, #5570b8 100%);
     }
     .theme-bg-img {
-      position: absolute; right: 0; bottom: 0; top: 0; width: 55%; height: 100%;
+      position: absolute; right: var(--band); bottom: 0; top: 0; width: 50%; height: 100%;
       background-image: url('images/cyber1.png');
       background-size: contain;
       background-position: right bottom;
       background-repeat: no-repeat;
+      transform: scaleX(-1);
+      transform-origin: right center;
     }
     .theme-fade {
       position: absolute; inset: 0;
@@ -240,12 +248,13 @@
     .soc-tabs { display: flex; gap: 16px; align-items: center; }
     .soc-tab {
       display: flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px; border: none; background: transparent;
-      cursor: pointer; color: var(--body-gray); transition: color 0.2s; padding: 0;
+      width: 38px; height: 38px; border: 1.5px solid transparent; background: transparent;
+      cursor: pointer; color: var(--body-gray); transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.18s; padding: 0;
+      border-radius: 0;
     }
     .soc-tab svg { width: 22px; height: 22px; flex-shrink: 0; }
-    .soc-tab:hover { color: var(--navy); }
-    .soc-tab.active { color: var(--navy); }
+    .soc-tab:hover { color: var(--navy); background: rgba(26,39,68,0.08); border-color: rgba(26,39,68,0.2); transform: translateY(-2px) scale(1.08); }
+    .soc-tab.active { color: var(--navy); border-color: rgba(26,39,68,0.3); background: rgba(26,39,68,0.06); }
 
     .soc-feed-panel { display: none; }
     .soc-feed-panel.active { display: block; }
@@ -313,7 +322,7 @@
       padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) invert(0); }
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 

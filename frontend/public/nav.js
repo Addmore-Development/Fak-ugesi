@@ -17,7 +17,7 @@
     #main-nav {
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; height:58px;
-      background:rgba(10,18,50,0.72); border-bottom:1px solid transparent;
+      background:rgba(10,18,50,0.82); border-bottom:1px solid transparent;
       font-family:'InterDisplay',sans-serif;
       transition:background .35s, border-color .35s;
       overflow:visible;
@@ -134,9 +134,62 @@
     }
     #main-nav .nav-search {
       background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-      display:flex; align-items:center; padding:6px;
+      display:flex; align-items:center; padding:6px; margin-left:32px;
+      transition:color .2s;
     }
+    #main-nav .nav-search:hover{color:#fff;}
     #main-nav .nav-search svg{width:18px;height:18px;}
+
+    /* ── SEARCH OVERLAY ── */
+    #fug-search-overlay {
+      position:fixed;inset:0;z-index:2000;
+      background:rgba(8,15,44,0.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .25s;
+    }
+    #fug-search-overlay.open{opacity:1;pointer-events:auto;}
+    #fug-search-overlay .fug-search-close{
+      position:absolute;top:28px;right:36px;background:none;border:none;
+      color:rgba(255,255,255,.5);font-size:32px;cursor:pointer;line-height:1;
+      transition:color .2s;font-family:'InterDisplay',sans-serif;padding:4px 10px;
+    }
+    #fug-search-overlay .fug-search-close:hover{color:#fff;}
+    #fug-search-overlay .fug-search-label{
+      font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      color:rgba(255,255,255,.4);margin-bottom:20px;font-family:'InterDisplay',sans-serif;
+    }
+    #fug-search-overlay .fug-search-row{
+      display:flex;align-items:center;
+      border-bottom:2px solid rgba(255,255,255,.25);
+      width:min(720px,88vw);
+    }
+    #fug-search-overlay .fug-search-input{
+      flex:1;background:none;border:none;outline:none;
+      font-size:36px;font-weight:300;color:#fff;padding:12px 0;
+      font-family:'InterDisplay',sans-serif;caret-color:#fff;
+    }
+    #fug-search-overlay .fug-search-input::placeholder{color:rgba(255,255,255,.2);}
+    #fug-search-overlay .fug-search-btn{
+      background:none;border:none;cursor:pointer;
+      color:rgba(255,255,255,.5);padding:8px;display:flex;align-items:center;
+      transition:color .2s;
+    }
+    #fug-search-overlay .fug-search-btn:hover{color:#fff;}
+    #fug-search-overlay .fug-search-btn svg{width:26px;height:26px;}
+    #fug-search-results{
+      margin-top:28px;width:min(720px,88vw);
+      display:flex;flex-direction:column;
+      max-height:45vh;overflow-y:auto;
+    }
+    .fug-search-result-item{
+      display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);
+      cursor:pointer;text-decoration:none;transition:padding-left .18s;
+    }
+    .fug-search-result-item:hover{padding-left:8px;}
+    .fug-sr-title{font-size:17px;font-weight:600;color:rgba(255,255,255,.85);font-family:'InterDisplay',sans-serif;margin-bottom:3px;}
+    .fug-search-result-item:hover .fug-sr-title{color:#fff;}
+    .fug-sr-sub{font-size:12px;color:rgba(255,255,255,.35);font-family:'InterDisplay',sans-serif;}
+    .fug-search-hint{font-size:13px;color:rgba(255,255,255,.25);font-family:'InterDisplay',sans-serif;margin-top:16px;}
 
     /* GET TICKETS */
     #main-nav .nav-tickets {
@@ -182,6 +235,7 @@
     { label:'Festival Programme', href:'/programme.html', dd:[
       { label:'Programme Overview', href:'/programme.html' },
       { label:'Schedule',           href:'/fes-schedule.html' },
+      { label:'Expo',               href:'/fes-expo.html' },
     ]},
     { label:'Signature Programmes', href:'#', isSig:true },
     { label:'Discover', href:'#', dd:[
@@ -237,7 +291,7 @@
     <nav id="main-nav">
       <div class="nav-links-wrap" id="nav-links-wrap">
         <ul class="nav-links" id="nav-list">${items}</ul>
-        <button class="nav-search" aria-label="Search">
+        <button class="nav-search" id="nav-search-btn" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
@@ -351,5 +405,105 @@
   })();
 
   // NOTE: Scroll-driven cross spin removed — plus signs are now static on all pages.
+
+  /* ── FUNCTIONAL SEARCH OVERLAY ── */
+  (function() {
+    // Site pages index
+    const SITE_PAGES = [
+      { title:"Home",                      sub:"Fak'ugesi Festival 2026",                href:"/index.html" },
+      { title:"Festival Programme",         sub:"Overview of the 2026 programme",         href:"/programme.html" },
+      { title:"Schedule",                   sub:"Full event schedule",                     href:"/fes-schedule.html" },
+      { title:"Expo",                       sub:"Explore our 2026 showcases",              href:"/fes-expo.html" },
+      { title:"Signature Programmes",       sub:"All signature programmes overview",       href:"/sig-programmes.html" },
+      { title:"Awards",                     sub:"Fak'ugesi Awards 2026",                   href:"/sig-awards.html" },
+      { title:"Dala Khona",                 sub:"African indie game dev programme",        href:"/sig-dalakhona.html" },
+      { title:"Fak'ugesi PRO",              sub:"Industry & professional programme",       href:"/sig-fakugesipro.html" },
+      { title:"Immersive Africa",           sub:"Digital dome & immersive experiences",    href:"/sig-immersive.html" },
+      { title:"JAMZ",                       sub:"Music & culture showcase",                href:"/sig-jamz.html" },
+      { title:"Pitchathon",                 sub:"Startup pitch competition",               href:"/sig-pitchathon.html" },
+      { title:"Tickets",                    sub:"Get your festival tickets",               href:"/tickets.html" },
+      { title:"About Us",                   sub:"About Fak'ugesi Festival",                href:"/about.html" },
+      { title:"Venues",                     sub:"Festival venues in Johannesburg",         href:"/discover/venues.html" },
+      { title:"Partners",                   sub:"Our sponsors and partners",               href:"/discover/partners.html" },
+      { title:"Archive",                    sub:"Past festival archive",                   href:"/discover/archive.html" },
+    ];
+
+    // Inject overlay
+    document.body.insertAdjacentHTML('beforeend', `
+      <div id="fug-search-overlay" role="dialog" aria-modal="true" aria-label="Search">
+        <button class="fug-search-close" id="fug-search-close" aria-label="Close search">&#x2715;</button>
+        <p class="fug-search-label">Search Fak'ugesi</p>
+        <div class="fug-search-row">
+          <input class="fug-search-input" id="fug-search-input" type="text" placeholder="Type to search…" autocomplete="off" spellcheck="false"/>
+          <button class="fug-search-btn" id="fug-search-submit" aria-label="Submit search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+        </div>
+        <div id="fug-search-results"></div>
+      </div>
+    `);
+
+    const overlay  = document.getElementById('fug-search-overlay');
+    const input    = document.getElementById('fug-search-input');
+    const results  = document.getElementById('fug-search-results');
+    const openBtn  = document.getElementById('nav-search-btn');
+    const closeBtn = document.getElementById('fug-search-close');
+
+    function openSearch() {
+      overlay.classList.add('open');
+      setTimeout(() => input.focus(), 80);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSearch() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      input.value = '';
+      results.innerHTML = '';
+    }
+
+    openBtn && openBtn.addEventListener('click', openSearch);
+    closeBtn && closeBtn.addEventListener('click', closeSearch);
+
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeSearch();
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+    });
+
+    function doSearch(query) {
+      const q = query.trim().toLowerCase();
+      results.innerHTML = '';
+      if (!q) return;
+      const matches = SITE_PAGES.filter(p =>
+        p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q)
+      );
+      if (matches.length === 0) {
+        results.innerHTML = `<p class="fug-search-hint">No results for "<em>${query}</em>"</p>`;
+        return;
+      }
+      matches.forEach(p => {
+        const a = document.createElement('a');
+        a.className = 'fug-search-result-item';
+        a.href = p.href;
+        a.innerHTML = `<div class="fug-sr-title">${p.title}</div><div class="fug-sr-sub">${p.sub}</div>`;
+        results.appendChild(a);
+      });
+    }
+
+    input && input.addEventListener('input', () => doSearch(input.value));
+    document.getElementById('fug-search-submit') && document.getElementById('fug-search-submit').addEventListener('click', () => {
+      const q = input.value.trim();
+      if (q) {
+        // If only one result, navigate straight there
+        const matches = SITE_PAGES.filter(p =>
+          p.title.toLowerCase().includes(q.toLowerCase()) || p.sub.toLowerCase().includes(q.toLowerCase())
+        );
+        if (matches.length === 1) window.location.href = matches[0].href;
+      }
+    });
+  })();
 
 })();

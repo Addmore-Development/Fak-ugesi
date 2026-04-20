@@ -86,7 +86,8 @@
   text-decoration: none; margin-top: 20px;
   transition: background .22s, color .22s;
 }
-.hero-cta:hover { background: #fff; color: var(--navy); }
+/* #main-nav .nav-tickets:hover{} */
+.hero-cta:hover { background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
 .hero-signia {
   flex-shrink: 0;
   width: auto;
@@ -374,39 +375,6 @@ faqData.forEach((faq, i) => {
 });
 
 /* ── RAINBOW SPARK LIGHTNING on hero CTA ── */
-(function() {
-  const btn = document.getElementById('dala-cta');
-  if (!btn) return;
-  const rainbowColors = ['#ff0040','#ff8800','#ffee00','#00cc44','#0099ff','#aa00ff'];
-  function spawnSpark() {
-    if (!btn.matches(':hover')) return;
-    const rect = btn.getBoundingClientRect();
-    const col = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
-    const x = rect.left + Math.random() * rect.width;
-    const y = rect.top + Math.random() * rect.height;
-    const spark = document.createElement('span');
-    const angle = Math.random() * 360;
-    const dist = 20 + Math.random() * 30;
-    spark.style.cssText = `
-      position:fixed;pointer-events:none;z-index:9999;
-      left:${x}px;top:${y}px;
-      width:${3+Math.random()*4}px;height:${3+Math.random()*4}px;
-      background:${col};border-radius:50%;
-      box-shadow:0 0 6px ${col};
-      animation:sparkFly${Math.floor(angle)} 0.5s ease-out forwards;
-    `;
-    document.body.appendChild(spark);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      spark.style.transform = `translate(${Math.cos(angle*Math.PI/180)*dist}px,${Math.sin(angle*Math.PI/180)*dist}px) scale(0)`;
-      spark.style.opacity = '0';
-      spark.style.transition = 'transform 0.45s ease-out, opacity 0.45s ease-out';
-    }));
-    setTimeout(() => spark.remove(), 500);
-  }
-  let si;
-  btn.addEventListener('mouseenter', () => { si = setInterval(spawnSpark, 80); });
-  btn.addEventListener('mouseleave', () => clearInterval(si));
-})();
 
 /* ── SIG-STRIP INJECT ── */
 (function(){

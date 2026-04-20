@@ -79,7 +79,7 @@
   letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
   text-decoration: none; transition: background 0.22s, color 0.22s;
 }
-.btn-apply:hover { background: var(--white); color: var(--navy); }
+.btn-apply:hover { background:#0d1b3e;}
 .hero-awards-logo {
   flex-shrink: 0;
   padding-bottom: 70px;
@@ -601,24 +601,6 @@ faqData.forEach((faq, i) => {
 });
 
 /* RAIN LIGHTNING on hero CTA */
-(function() {
-  const btn = document.getElementById('hero-cta-btn');
-  if (!btn) return;
-  function spawnRainDrop() {
-    if (!btn.matches(':hover')) return;
-    const rect = btn.getBoundingClientRect();
-    const drop = document.createElement('span');
-    drop.style.cssText = `position:fixed;pointer-events:none;z-index:9999;left:${rect.left + Math.random()*rect.width}px;top:${rect.top - 8}px;width:1.5px;height:${10 + Math.random()*18}px;background:linear-gradient(to bottom,rgba(120,200,255,0),rgba(150,220,255,0.85),rgba(255,255,255,0.4));border-radius:2px;transform:rotate(${-10 + Math.random()*20}deg);animation:rainFall ${0.3+Math.random()*0.4}s linear forwards;`;
-    document.body.appendChild(drop);
-    drop.addEventListener('animationend', () => drop.remove());
-  }
-  const style = document.createElement('style');
-  style.textContent = `@keyframes rainFall{0%{transform:translateY(0) rotate(-8deg);opacity:1}100%{transform:translateY(${btn.offsetHeight + 20}px) rotate(-8deg);opacity:0}}`;
-  document.head.appendChild(style);
-  let rainInterval;
-  btn.addEventListener('mouseenter', () => { rainInterval = setInterval(spawnRainDrop, 60); });
-  btn.addEventListener('mouseleave', () => clearInterval(rainInterval));
-})();
 
 /* SIG-STRIP INJECT */
 (function(){
@@ -627,9 +609,9 @@ faqData.forEach((faq, i) => {
     .hero{min-height:490px!important;align-items:unset!important;padding-top:0!important;}
     .hero-content{padding-top:0!important;padding-bottom:0!important;}
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 200px;}
+    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
     .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
-    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 74px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
     .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
     .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
@@ -640,7 +622,6 @@ faqData.forEach((faq, i) => {
   `;
   document.head.appendChild(styleEl);
   const PAGES=[
-    {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
     {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
     {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},

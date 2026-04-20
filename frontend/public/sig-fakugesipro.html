@@ -84,7 +84,7 @@
   text-decoration: none; margin-top: 20px;
   transition: background .22s, color .22s;
 }
-.hero-cta:hover { background: #fff; color: var(--navy); }
+.hero-cta:hover { background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
 .hero-signia {
   flex-shrink: 0;  /* Don't shrink */
   width: auto;
@@ -254,7 +254,7 @@
       <h1 class="hero-title">Our Dedicated<br>Industry Platform</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-dates">07 — 12.10.2026</p>
-      <a class="hero-cta" href="tickets.html" id="pro-cta">Get Tickets</a>  <!-- ADDED: CTA button -->
+      <a class="hero-cta" href="tickets.html" id="pro-cta" id="hero-cta-btn">Get Tickets</a>  <!-- ADDED: CTA button -->
     </div>
     <div class="hero-signia">  <!-- MOVED: inside hero-content as flex child -->
       <img src="../images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:80px;width:auto;"/>
@@ -481,7 +481,6 @@
 </section>
 
 <script src="footer.js"></script>
-<script src="sig-nav.js"></script>
 <script src="fakugesi-cross-patch.js"></script>
 <script src="fak-ugesi-global-effects-v10.js"></script>
 
@@ -574,37 +573,10 @@
       position: relative;
       z-index: 20;
     }
-    .fug-sig-strip-inner {
-      display: flex;
-      align-items: stretch;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 0 200px;
-    }
+.fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
     .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
  
-    .fug-sig-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 12px 24px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.60);
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.22s, color 0.22s;
-      flex-shrink: 0;
-      min-width: 100px;
-      position: relative;
-      white-space: nowrap;
-    }
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 74px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
  
     .fug-sig-item:hover {
@@ -673,18 +645,6 @@
      3. BUILD AND INJECT SIG-PROGRAMMES STRIP
   ───────────────────────────────────────────── */
   const PAGES = [
-    {
-      label: 'Sig Programmes',
-      href: 'sig-programmes.html',
-      img: 'images/logos/fakugesi/logo_fakugesi_light.svg',
-      imgStyle: 'height:28px;filter:brightness(0) invert(1);opacity:.8;'
-    },
-    {
-      label: 'Programme',
-      href: 'programme.html',
-      img: 'images/logos/fakugesi/logo_fakugesi_light.svg',
-      imgStyle: 'height:32px;filter:brightness(0) invert(1);opacity:.8;'
-    },
     {
       label: 'Awards',
       href: 'sig-awards.html',

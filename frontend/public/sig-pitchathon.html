@@ -93,6 +93,14 @@
   display: block; width: 100%; height: auto;
   max-height: 90px; object-fit: contain;
 }
+.ticker-wrapper {
+      background: var(--navy); overflow: hidden; white-space: nowrap;
+      padding: 10px 0; position: relative; z-index: 10;
+    }
+.ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
     /* ── INTRO ── */
     .intro-section{background:var(--white);padding:72px 248px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
@@ -223,18 +231,16 @@
     </div>
   </div>
 </section>
-<div class="ticker-bar">
+<div class="ticker-wrapper">
   <div class="ticker-track">
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
-    <span class="ticker-item">Applications close in 3 days, 2 hours. Apply now <span class="ticker-sep">→</span></span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
   </div>
 </div>
 
@@ -477,8 +483,8 @@ faqData.forEach((faq, i) => {
     /* ensure any dynamically added cross icons remain static */
     .cross-icon{ animation: none !important; transition: none !important; }
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;padding:0 200px;}
-    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
+    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 74px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
     .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
     .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
@@ -489,8 +495,6 @@ faqData.forEach((faq, i) => {
   `;
   document.head.appendChild(styleEl);
   const PAGES=[
-    {label:'Sig Programmes',href:'sig-awards.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'Programme',href:'programme.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
     {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
     {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
     {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},

@@ -44,6 +44,7 @@
       position: absolute;
       z-index: 6;
       opacity: 0.45;
+      transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
 
@@ -100,10 +101,10 @@
       position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(10,18,50,0.82) 0%,
-        rgba(10,18,50,0.82) 10%,
-        rgba(10,18,50,0.55) 40%,
-        rgba(10,18,48,0.35) 70%,
+        rgba(10,18,50,0.0) 0%,
+        rgba(10,18,50,0.0) 10%,
+        rgba(10,18,50,0.35) 40%,
+        rgba(10,18,48,0.25) 70%,
         transparent 100%
       );
     }
@@ -139,7 +140,7 @@
       background: linear-gradient(135deg, #1e2d5a 0%, #2d4080 40%, #3a5299 70%, #5570b8 100%);
     }
     .theme-bg-img {
-      position: absolute; right: var(--band); bottom: 0; top: 0; width: 46%; height: 100%;
+      position: absolute; right: calc(var(--band) + 60px); bottom: 0; top: 0; width: 46%; height: 100%;
       background-image: url('images/cyber1.png');
       background-size: contain;
       background-position: center bottom;
@@ -206,20 +207,31 @@
     .inv-card-back {
       background: transparent;
       transform: rotateY(180deg);
-      align-items: flex-start;
-      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
       padding: 22px 20px 20px;
       border: 1px solid rgba(255,255,255,0.45);
+      position: relative;
     }
     .inv-card-fact p {
       font-size: 11.5px;
       line-height: 1.65;
       color: rgba(255,255,255,0.85);
-      text-align: left;
+      text-align: center;
       font-style: normal;
       font-weight: 400;
       font-family: 'InterDisplay', sans-serif;
       opacity: 0.82;
+    }
+    .inv-card-back-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
     }
 
     .card-num   { position: absolute; top: 16px; right: 16px; font-size: 22px; font-weight: 700; opacity: 0.65; }
@@ -455,6 +467,7 @@
             <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
           </div>
           <div class="inv-card-back">
+            <span class="inv-card-back-label">Fun Facts</span>
             <div class="inv-card-fact">
               <p>Africa is home to more than 54 recognized nations, yet shares a deep tradition of collective creative expression that transcends borders and languages.</p>
             </div>
@@ -471,6 +484,7 @@
             <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
           </div>
           <div class="inv-card-back">
+            <span class="inv-card-back-label">Fun Facts</span>
             <div class="inv-card-fact">
               <p>The African continent has the fastest-growing startup ecosystem in the world, with digital innovation hubs now operating in over 40 countries across the continent.</p>
             </div>
@@ -487,6 +501,7 @@
             <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
           </div>
           <div class="inv-card-back">
+            <span class="inv-card-back-label">Fun Facts</span>
             <div class="inv-card-fact">
               <p>Fak'ugesi has welcomed visitors from over 30 countries since its founding, building one of the most diverse networks of digital creators on the African continent.</p>
             </div>
@@ -705,6 +720,32 @@
       document.getElementById('feed-' + feed).classList.add('active');
     });
   });
+</script>
+<script>
+  // ── Cross icon scroll spin ──
+  (function(){
+    let lastY = window.scrollY;
+    let rot = 0;
+    let ticking = false;
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(function(){
+          const y = window.scrollY;
+          const delta = y - lastY;
+          if(Math.abs(delta) > 0){
+            rot += delta > 0 ? 15 : -15;
+            document.querySelectorAll('.cross-icon').forEach(el => {
+              el.style.transform = 'rotate(' + rot + 'deg)';
+            });
+          }
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
 </script>
 <script src="nav.js"></script>
 

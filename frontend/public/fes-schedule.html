@@ -24,12 +24,13 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--dark-text); overflow-x: hidden; }
+    body { font-family: 'InterDisplay', sans-serif; background: linear-gradient(135deg,#1a2462 0%,#2a3a8f 30%,#3a52b0 55%,#6878c8 80%,#8898d8 100%); color: var(--dark-text); overflow-x: hidden; }
 
     /* ── CROSS ICON ── */
     .cross-icon {
       position: absolute; width: 18px; height: 18px; z-index: 5;
       opacity: 0.45;
+      transition: transform 0.1s linear;
     }
 
     /* ── HERO ── */
@@ -278,21 +279,22 @@
       margin-bottom: 28px; padding: 0 var(--band);
     }
     .more-grid {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 0;
       padding: 0 var(--band);
     }
     .more-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
       cursor: pointer;
       min-width: 0;
       border: 1px solid rgba(26,39,68,0.1);
-      border-bottom: none;
     }
-    .more-card:last-child { border-bottom: 1px solid rgba(26,39,68,0.1); }
+    .more-card + .more-card {
+      border-left: none;
+    }
     .more-card-img {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -306,15 +308,14 @@
     .more-card:hover .more-card-img img { transform: scale(1.04); }
     .more-card-body {
       background: var(--white);
-      padding: 28px 32px;
+      padding: 16px 18px 20px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      border-left: 1px solid rgba(26,39,68,0.1);
     }
     .more-card-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 12px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px;
     }
     .more-card-tag {
       font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
@@ -326,7 +327,7 @@
       white-space: nowrap; text-underline-offset: 3px;
     }
     .more-card-name {
-      font-size: 32px; font-weight: 900; color: var(--dark-text); margin-bottom: 8px;
+      font-size: 26px; font-weight: 900; color: var(--dark-text); margin-bottom: 4px;
       line-height: 1.05;
     }
     .more-card-time {
@@ -434,6 +435,52 @@
       color: rgba(255,255,255,0.38); margin-bottom: 4px;
     }
     .speaker-modal-meta-value { font-size: 22px; font-weight: 700; color: #fff; }
+
+    /* ── SPEAKER DETAIL FULL SECTION ── */
+    .speaker-detail-section {
+      display: none;
+      position: relative;
+      min-height: 540px;
+      overflow: hidden;
+    }
+    .speaker-detail-section.active { display: block; }
+    .speaker-detail-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center 20%;
+    }
+    .speaker-detail-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.88) 40%, rgba(10,18,48,0.5) 100%);
+    }
+    .speaker-detail-inner {
+      position: relative; z-index: 2;
+      padding: 56px var(--band) 64px;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 0 48px;
+    }
+    .speaker-detail-back {
+      grid-column: 1/-1;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.75); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      font-family: 'InterDisplay', sans-serif;
+      margin-bottom: 36px; padding: 0;
+      transition: color 0.2s;
+    }
+    .speaker-detail-back:hover { color: #fff; }
+    .speaker-detail-back svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .speaker-detail-name {
+      font-size: 52px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px;
+    }
+    .speaker-detail-role { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 28px; }
+    .speaker-detail-event-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .speaker-detail-event-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .speaker-detail-bio { font-size: 13.5px; line-height: 1.72; color: rgba(255,255,255,0.85); max-width: 560px; }
+    .speaker-detail-meta { display: flex; flex-direction: column; gap: 20px; justify-content: flex-end; padding-top: 80px; }
+    .speaker-detail-meta-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 4px; }
+    .speaker-detail-meta-value { font-size: 22px; font-weight: 700; color: #fff; }
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px var(--band) 72px; position: relative; }
@@ -976,6 +1023,27 @@
   </div><!-- /.schedule-inner -->
 </section>
 
+<!-- ── SPEAKER DETAIL FULL SECTION ── -->
+<section class="speaker-detail-section" id="speakerDetailSection">
+  <div class="speaker-detail-bg" id="speakerDetailBg"></div>
+  <div class="speaker-detail-inner">
+    <button class="speaker-detail-back" id="speakerDetailBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to schedule
+    </button>
+    <div>
+      <div class="speaker-detail-name" id="sdName"></div>
+      <div class="speaker-detail-role" id="sdRole"></div>
+      <div class="speaker-detail-event-title" id="sdEventTitle"></div>
+      <div class="speaker-detail-event-sub" id="sdEventSub"></div>
+      <div class="speaker-detail-bio" id="sdBio"></div>
+    </div>
+    <div class="speaker-detail-meta" id="sdMeta"></div>
+  </div>
+</section>
+
 <!-- ── MORE TO EXPERIENCE ── -->
 <section class="more-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
@@ -1016,10 +1084,9 @@
 </section>
 
 <!-- crosses row between more and partners -->
-<div class="crosses-row">
-  <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+<div class="crosses-row" style="padding: 24px var(--band);">
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
 </div>
 
 <!-- ── PARTNERS ── -->
@@ -1093,6 +1160,30 @@
 <script src="footer.js"></script>
 
 <script>
+  // ── Cross icon scroll spin ──
+  (function(){
+    let lastY = window.scrollY;
+    let rot = 0;
+    let ticking = false;
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(function(){
+          const y = window.scrollY;
+          const delta = y - lastY;
+          if(Math.abs(delta) > 0){
+            rot += delta > 0 ? 15 : -15;
+            document.querySelectorAll('.cross-icon').forEach(el => {
+              el.style.transform = 'rotate(' + rot + 'deg)';
+            });
+          }
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
   // ── Reveal on scroll ──
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -1121,30 +1212,56 @@
     });
   });
 
-  // ── Speaker background on row click ──
-  let activeSpeakerRow = null;
+  // ── Speaker full-section expand on row click ──
+  const speakerDetailSection = document.getElementById('speakerDetailSection');
+  const speakerDetailBg      = document.getElementById('speakerDetailBg');
+  const speakerDetailBack    = document.getElementById('speakerDetailBack');
+  const sdName      = document.getElementById('sdName');
+  const sdRole      = document.getElementById('sdRole');
+  const sdEventTitle = document.getElementById('sdEventTitle');
+  const sdEventSub  = document.getElementById('sdEventSub');
+  const sdBio       = document.getElementById('sdBio');
+  const sdMeta      = document.getElementById('sdMeta');
 
   document.querySelectorAll('.sched-row').forEach(row => {
     row.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') return;
       const img = row.dataset.speakerImg;
-      if (activeSpeakerRow === row) {
-        activeSpeakerRow = null;
-        row.classList.remove('active-row');
-        speakerBg.classList.remove('visible');
-        schedSection.classList.remove('dark-mode');
-        speakerBg.style.backgroundImage = '';
-      } else {
-        if (activeSpeakerRow) activeSpeakerRow.classList.remove('active-row');
-        activeSpeakerRow = row;
-        row.classList.add('active-row');
-        if (img) {
-          speakerBg.style.backgroundImage = `url('${img}')`;
-          speakerBg.classList.add('visible');
-          schedSection.classList.add('dark-mode');
-        }
-      }
+      const speakerName = row.dataset.speakerName || '';
+      const eventTitleEl = row.querySelector('.sched-event-title');
+      const eventSubEl   = row.querySelector('.sched-event-sub');
+      const data = SPEAKERS[speakerName] || {};
+
+      speakerDetailBg.style.backgroundImage = img ? `url('${img}')` : '';
+      sdName.textContent = data.name || speakerName;
+      sdRole.textContent = data.role || '';
+      sdEventTitle.textContent = eventTitleEl ? eventTitleEl.textContent : '';
+      sdEventSub.textContent   = eventSubEl   ? eventSubEl.textContent   : '';
+      sdBio.textContent = data.bio || '';
+
+      sdMeta.innerHTML = '';
+      [
+        { label: 'Organisation', value: data.org },
+        { label: 'Designation',  value: data.designation },
+        { label: 'Nationality',  value: data.nationality },
+      ].filter(f => f.value).forEach(f => {
+        sdMeta.insertAdjacentHTML('beforeend',
+          `<div><div class="speaker-detail-meta-label">${f.label}</div><div class="speaker-detail-meta-value">${f.value}</div></div>`
+        );
+      });
+
+      schedSection.style.display = 'none';
+      document.querySelector('.day-selector').style.display = 'none';
+      speakerDetailSection.classList.add('active');
+      speakerDetailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+
+  speakerDetailBack.addEventListener('click', () => {
+    speakerDetailSection.classList.remove('active');
+    schedSection.style.display = '';
+    document.querySelector('.day-selector').style.display = '';
+    schedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // ── Speaker Bio Modal ──

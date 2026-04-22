@@ -110,6 +110,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       width: 14px; height: 14px; position: absolute; z-index: 2;
       opacity: 0.25;
+      transition: transform 0.1s linear;
     }
     .fug-footer-cross svg { width: 100%; height: 100%; }
   `;
@@ -140,19 +141,16 @@
     </div>
 
     <footer id="fug-footer">
-      <span class="fug-footer-cross" style="top:16px;left:calc(50% - 420px);">
+      <span class="fug-footer-cross" style="top:16px;left:200px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="top:16px;left:50%;transform:translateX(-50%);">
+      <span class="fug-footer-cross" style="top:16px;right:200px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="top:16px;right:calc(50% - 420px);">
+      <span class="fug-footer-cross" style="bottom:16px;left:200px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
-      <span class="fug-footer-cross" style="bottom:16px;left:calc(50% - 420px);">
-        <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
-      </span>
-      <span class="fug-footer-cross" style="bottom:16px;right:calc(50% - 420px);">
+      <span class="fug-footer-cross" style="bottom:16px;right:200px;">
         <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
       </span>
 
@@ -176,5 +174,30 @@
 
   // Insert at end of body
   document.body.insertAdjacentHTML('beforeend', html);
+
+  // Scroll spin for footer crosses (coordinates with page-level cross icons)
+  (function(){
+    let lastY = window.scrollY;
+    let rot = 0;
+    let ticking = false;
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(function(){
+          const y = window.scrollY;
+          const delta = y - lastY;
+          if(Math.abs(delta) > 0){
+            rot += delta > 0 ? 15 : -15;
+            document.querySelectorAll('.fug-footer-cross').forEach(el => {
+              el.style.transform = 'rotate(' + rot + 'deg)';
+            });
+          }
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
 
 })();

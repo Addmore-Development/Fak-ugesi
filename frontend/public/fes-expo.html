@@ -15,9 +15,8 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;animation:crossPulse 3s ease-in-out infinite}
+    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
-    @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
     /* HERO */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
@@ -502,61 +501,48 @@ document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
     document.getElementById('sd-badge').textContent = d.badge;
     const linksEl = document.getElementById('sd-links');
     linksEl.innerHTML = d.links.map(l => `<span class="showcase-detail-link">${l}</span>`).join('');
-    // Hide the header + grid, show detail
+    // Hide the curatorial section + header + grid, show detail filling the space
+    document.querySelector('.curatorial-section').style.display = 'none';
     document.querySelector('.showcases-header').style.display = 'none';
     showcasesGrid.style.display = 'none';
     showcaseDetail.classList.add('active');
+    showcaseDetail.style.padding = '0';
     document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
   });
 });
 
 showcaseDetailBack.addEventListener('click', () => {
   showcaseDetail.classList.remove('active');
+  showcaseDetail.style.padding = '';
+  document.querySelector('.curatorial-section').style.display = '';
   document.querySelector('.showcases-header').style.display = '';
   showcasesGrid.style.display = '';
   document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
 });
 
-/* SIG-STRIP */
+/* CROSS ICON SCROLL SPIN */
 (function(){
-  const styleEl = document.createElement('style');
-  styleEl.textContent = `
-    .fug-fes-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-fes-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;padding:0 200px;}
-    .fug-fes-strip-inner::-webkit-scrollbar{display:none;}
-    .fug-fes-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 24px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
-    .fug-fes-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
-    .fug-fes-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
-    .fug-fes-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
-    .fug-fes-item.fug-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.5);}
-    .fug-fes-item img{display:block;max-width:88px;max-height:40px;object-fit:contain;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),opacity 0.22s;opacity:0.65;}
-    .fug-fes-item:hover img,.fug-fes-item.fug-active img{transform:scale(1.08);opacity:1;}
-    .fug-fes-label{line-height:1;}
-  `;
-  document.head.appendChild(styleEl);
-  const PAGES=[
-    {label:'Schedule',href:'fes-schedule.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'Expo',href:'fes-expo.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'Market',href:'fes-market.html',img:'images/logos/fakugesi/logo_fakugesi_light.svg',imgStyle:'height:28px;filter:brightness(0) invert(1);opacity:.8;'},
-  ];
-  const currentPage=window.location.pathname.split('/').pop()||'';
-  function buildStrip(){
-    const strip=document.createElement('nav'); strip.className='fug-fes-strip';
-    const inner=document.createElement('div'); inner.className='fug-fes-strip-inner';
-    PAGES.forEach(p=>{
-      const a=document.createElement('a'); a.className='fug-fes-item'; a.href=p.href;
-      if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span'); label.className='fug-fes-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
-    });
-    strip.appendChild(inner); return strip;
+  let lastY = window.scrollY;
+  let rot = 0;
+  let ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        const y = window.scrollY;
+        const delta = y - lastY;
+        if(Math.abs(delta) > 0){
+          rot += delta > 0 ? 15 : -15;
+          document.querySelectorAll('.cross-icon').forEach(el => {
+            el.style.transform = 'rotate(' + rot + 'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+      });
+      ticking = true;
+    }
   }
-  function run(){
-    const ticker=document.querySelector('.ticker-wrap');
-    if(ticker) ticker.after(buildStrip());
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
+  window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
 </body>

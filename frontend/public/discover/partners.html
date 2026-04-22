@@ -92,12 +92,12 @@
     .partner-section-banded {
       background: var(--white);
       position: relative;
-      padding: 64px 0 72px;
+      padding: 64px 0 72px; 
     }
     .partner-inner-banded {
       padding: 0 var(--band);
       position: relative;
-      z-index: 2;
+      z-index: 2; 
     }
 
     /* ══════════════════════════════════════════
@@ -106,7 +106,7 @@
     .partner-section-full {
       background: var(--white);
       position: relative;
-      padding: 0 0 64px;
+      padding: 0 0 64px; 
     }
 
     /* Header for full-width sections stays banded */
@@ -202,7 +202,7 @@
       font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: none;
       letter-spacing: 0.06em; border-bottom: 1px solid var(--navy); padding-bottom: 1px;
     }
-    .main-partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .main-partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;  }
     .mp-card { display: flex; flex-direction: column; }
     .mp-logo-box {
       background: var(--white); border: 1px solid rgba(26,39,68,0.12);
@@ -210,7 +210,7 @@
       padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
     }
     .mp-card:hover .mp-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .mp-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .mp-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .mp-logo-box img.keep-color { filter: none; }
     .mp-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
   </style>
@@ -412,7 +412,7 @@
       </div>
       <div class="mp-card">
         <div class="mp-logo-box">
-          <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" class="keep-color" alt="Wits University" />
+          <img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University" />
         </div>
         <p class="mp-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>

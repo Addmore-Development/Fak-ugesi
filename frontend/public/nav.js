@@ -1,11 +1,4 @@
-/**
- * Fak'ugesi Main Navigation v13
- * – Nav gradient: dark navy at top, fades lighter toward bottom (blends with page)
- * – Removed jumping star indicator entirely
- * – Signature Programmes hover → diagonal logo strip dropdown
- * – GET TICKETS: square corners, electric effect
- * – Discover dropdown now includes Venues, Partners, Archive
- */
+
 (function () {
   const path = window.location.pathname;
   const page = path.replace(/^\//, '').replace(/\.html$/, '') || 'index';
@@ -17,9 +10,9 @@
     #main-nav {
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; height:58px;
-      background:rgba(10,18,50,0.82); border-bottom:1px solid transparent;
+      background:transparent; border-bottom:1px solid transparent;
       font-family:'InterDisplay',sans-serif;
-      transition:background .35s, border-color .35s;
+      transition:border-color .35s;
       overflow:visible;
     }
 
@@ -30,16 +23,17 @@
       background: linear-gradient(
         to bottom,
         rgba(10,18,50,0.98) 0%,
-        rgba(15,24,60,0.95) 60%,
-        rgba(20,32,72,0.90) 100%
+        rgba(15,24,60,0.92) 35%,
+        rgba(20,32,72,0.72) 70%,
+        rgba(26,40,80,0.35) 100%
       );
       opacity: 0;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.45s ease;
       pointer-events: none;
       z-index: 0;
     }
     #main-nav.scrolled::before { opacity: 1; }
-    #main-nav.scrolled { background: transparent; box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    #main-nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
 
     #main-nav .nav-links-wrap {
       flex:1;
@@ -57,10 +51,10 @@
     #main-nav .nav-links>li { position:relative; overflow:visible; }
     #main-nav .nav-links>li>a,
     #main-nav .nav-links>li>span {
-      color:rgba(255,255,255,0.82); font-size:14px; font-weight:100;
+      color:rgba(255,255,255,0.82); font-size:14px; font-weight:300;
       letter-spacing:.03em; text-decoration:none; line-height:58px;
       white-space:nowrap; transition:color .2s; display:block;
-      color:rgba(255,255,255,0.82); font-size:13px; font-weight:100;
+      color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
       letter-spacing:.01em; text-decoration:none; line-height:58px;
       white-space:nowrap; display:block;
       padding:0 18px 0 0;
@@ -73,7 +67,7 @@
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:400; }
 
-    /* Standard dropdown (Discover) */
+    /* Standard dropdown (Discover, Festival Programme) */
     #main-nav .nav-dd {
       position:absolute; top:57px; left:0; min-width:200px;
       background:rgba(8,15,44,0.97); border:1px solid rgba(255,255,255,0.1);
@@ -92,32 +86,6 @@
     }
     #main-nav .nav-dd a:hover{background:rgba(255,255,255,0.07);}
 
-    /* ── SIGNATURE PROGRAMMES LOGO PANEL — hidden, never shown on hover ── */
-    .sig-logo-panel {
-      display:none;
-    }
-    .sig-logo-grid {
-      display:flex;
-      flex-direction:row;
-      align-items:center;
-      justify-content:space-between;
-      gap:6px;
-    }
-    /* Logos are display-only — not clickable, no pointer */
-    .sig-logo-tile {
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:6px; padding:8px 6px 6px;
-      background:transparent;
-      border:none;
-      flex:1;
-      min-width:0;
-      cursor:default;
-      pointer-events:none;
-    }
-    .sig-logo-tile img {
-      height:20px; width:auto; max-width:70px; object-fit:contain; display:block;
-    }
-
     /* Right-side controls */
     #main-nav .nav-right {
       display:flex; align-items:center; gap:24px; padding-right:32px;
@@ -125,50 +93,9 @@
     }
     #main-nav .nav-search {
       background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-      display:flex; align-items:center; padding:6px; margin-left:32px;
-      transition:color .2s; flex-shrink:0;
+      display:flex; align-items:center; padding:6px;
     }
-    #main-nav .nav-search:hover{color:#fff;}
     #main-nav .nav-search svg{width:18px;height:18px;}
-
-    /* ── INLINE SEARCH BAR ── */
-    #fug-inline-search {
-      display:flex; align-items:center;
-      position:relative; margin-left:8px;
-    }
-    #fug-search-input-inline {
-      width:0; opacity:0; pointer-events:none;
-      background:rgba(255,255,255,0.08);
-      border:none; border-bottom:1.5px solid rgba(255,255,255,0.35);
-      outline:none; color:#fff; font-size:13px; font-weight:400;
-      font-family:'InterDisplay',sans-serif;
-      padding:4px 8px; letter-spacing:.02em;
-      transition:width .3s cubic-bezier(.4,0,.2,1), opacity .25s;
-      caret-color:#fff;
-    }
-    #fug-search-input-inline::placeholder{color:rgba(255,255,255,.35);}
-    #fug-search-input-inline.open{width:200px; opacity:1; pointer-events:auto;}
-
-    /* dropdown results */
-    #fug-search-dropdown {
-      position:absolute; top:calc(100% + 12px); right:0;
-      min-width:280px; max-width:340px;
-      background:rgba(8,15,44,0.97); border:1px solid rgba(255,255,255,0.1);
-      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-      padding:6px 0; z-index:500;
-      opacity:0; pointer-events:none; transform:translateY(-6px);
-      transition:opacity .2s, transform .2s;
-      max-height:60vh; overflow-y:auto;
-    }
-    #fug-search-dropdown.open{opacity:1; pointer-events:auto; transform:translateY(0);}
-    .fug-sr-item {
-      display:block; padding:10px 18px; text-decoration:none;
-      transition:background .15s;
-    }
-    .fug-sr-item:hover{background:rgba(255,255,255,0.07);}
-    .fug-sr-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88);font-family:'InterDisplay',sans-serif;}
-    .fug-sr-sub{font-size:11px;color:rgba(255,255,255,.38);font-family:'InterDisplay',sans-serif;margin-top:2px;}
-    .fug-sr-empty{padding:12px 18px;font-size:12px;color:rgba(255,255,255,.3);font-family:'InterDisplay',sans-serif;}
 
     /* GET TICKETS */
     #main-nav .nav-tickets {
@@ -211,12 +138,12 @@
 
   const links = [
     { label:'Home',                 href:'/index.html' },
-    { label:'Festival Programme', href:'/fes-schedule.html', dd:[
-      { label:'Schedule',     href:'/fes-schedule.html' },
-      { label:'Expo',         href:'/fes-expo.html' },
-      { label:'Market',       href:'/fes-market.html' },
+    { label:'Festival Programme',   href:'/programme.html', dd:[
+      { label:'Expo',      href:'/fes-expo.html' },
+      { label:'Market',    href:'/fes-market.html' },
+      { label:'Schedule',  href:'/fes-schedule.html' },
     ]},
-    { label:'Signature Programmes', href:'#', isSig:true },
+    { label:'Signature Programmes', href:'/sig-awards.html' },
     { label:'Discover', href:'#', dd:[
       { label:'About Us',   href:'/about.html' },
       { label:'Venues',     href:'/discover/venues.html' },
@@ -226,42 +153,11 @@
     ]},
   ];
 
-  // Signature programme logos — display only (non-clickable), Fak'ugesi PRO kept
-  const sigPages = [
-    { label:'Awards',           img:'images/logos/signatureProgrammes/awards_logo_light.svg',      imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'Dala Khona',       img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',  imgStyle:'' },
-    { label:"Fak'ugesi PRO",    img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',    imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'Immersive Africa', img:'images/logos/immersiveAfrica/digitaldome.svg',               imgStyle:'filter:brightness(0) invert(1);' },
-    { label:'JAMZ',             img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',      imgStyle:'' },
-    { label:'Pitchathon',       img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'filter:brightness(0) invert(1);' },
-  ];
-
-  // Build logo grid
-  // Build logo grid — divs only, no <a> tags, no click, no label title
-  const logoTilesHTML = sigPages.map(p =>
-    `<div class="sig-logo-tile">
-      <img src="${p.img}" alt="${p.label}" style="${p.imgStyle}"/>
-    </div>`
-  ).join('');
-
-  // No "Signature Programmes" label in the panel
-  const logoPanel = `<div class="sig-logo-panel">
-    <div class="sig-logo-grid">${logoTilesHTML}</div>
-  </div>`;
-
   const items = links.map((l, i) => {
     const active = isActive(l.href);
-    if (l.isSig) {
-      // Clicking "Signature Programmes" goes directly to awards page
-      return `<li data-i="${i}"><a href="/sig-awards.html" class="${active ? 'active' : ''}">${l.label}</a>${logoPanel}</li>`;
-    }
     if (l.dd) {
       const ddHTML = `<div class="nav-dd">${l.dd.map(d=>`<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
-      // If parent has a real href (not #), make it a link; otherwise a span
-      const trigger = (l.href && l.href !== '#')
-        ? `<a href="${l.href}" class="${active ? 'active' : ''}">${l.label} ▾</a>`
-        : `<span class="${active ? 'active' : ''}">${l.label} ▾</span>`;
-      return `<li data-i="${i}">${trigger}${ddHTML}</li>`;
+      return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span>${ddHTML}</li>`;
     }
     return `<li data-i="${i}"><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
   }).join('');
@@ -270,11 +166,7 @@
     <nav id="main-nav">
       <div class="nav-links-wrap" id="nav-links-wrap">
         <ul class="nav-links" id="nav-list">${items}</ul>
-        <div id="fug-inline-search">
-          <input id="fug-search-input-inline" type="text" placeholder="Search…" autocomplete="off" spellcheck="false" aria-label="Search"/>
-          <div id="fug-search-dropdown"></div>
-        </div>
-        <button class="nav-search" id="nav-search-btn" aria-label="Search">
+        <button class="nav-search" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
@@ -387,88 +279,6 @@
     setTimeout(attachAll, 600);
   })();
 
-  // NOTE: Scroll-driven cross spin removed — plus signs are now static on all pages.
 
-  /* ── INLINE SEARCH ── */
-  (function() {
-    const SITE_PAGES = [
-      { title:'Home',                 sub:"Fak'ugesi Festival 2026",             href:'/index.html' },
-      { title:'Festival Programme',   sub:'Overview of the 2026 programme',      href:'/programme.html' },
-      { title:'Schedule',             sub:'Full event schedule',                  href:'/fes-schedule.html' },
-      { title:'Expo',                 sub:'Explore our 2026 showcases',           href:'/fes-expo.html' },
-      { title:'Market',              sub:'Explore our 2026 marketplace',          href:'/fes-market.html' },
-      { title:'Signature Programmes', sub:'All signature programmes overview',    href:'/sig-programmes.html' },
-      { title:'Awards',               sub:"Fak'ugesi Awards 2026",                href:'/sig-awards.html' },
-      { title:'Dala Khona',           sub:'African indie game dev programme',     href:'/sig-dalakhona.html' },
-      { title:"Fak'ugesi PRO",        sub:'Industry & professional programme',    href:'/sig-fakugesipro.html' },
-      { title:'Immersive Africa',     sub:'Digital dome & immersive experiences', href:'/sig-immersive.html' },
-      { title:'JAMZ',                 sub:'Music & culture showcase',             href:'/sig-jamz.html' },
-      { title:'Pitchathon',           sub:'Startup pitch competition',            href:'/sig-pitchathon.html' },
-      { title:'Tickets',              sub:'Get your festival tickets',            href:'/tickets.html' },
-      { title:'About Us',             sub:"About Fak'ugesi Festival",             href:'/about.html' },
-      { title:'Venues',               sub:'Festival venues in Johannesburg',      href:'/discover/venues.html' },
-      { title:'Partners',             sub:'Our sponsors and partners',            href:'/discover/partners.html' },
-      { title:'Archive',              sub:'Past festival archive',                href:'/discover/archive.html' },
-    ];
-
-    const btn      = document.getElementById('nav-search-btn');
-    const input    = document.getElementById('fug-search-input-inline');
-    const dropdown = document.getElementById('fug-search-dropdown');
-
-    function openSearch() {
-      input.classList.add('open');
-      dropdown.classList.remove('open');
-      dropdown.innerHTML = '';
-      setTimeout(() => input.focus(), 60);
-    }
-    function closeSearch() {
-      input.classList.remove('open');
-      dropdown.classList.remove('open');
-      input.value = '';
-      dropdown.innerHTML = '';
-    }
-
-    btn && btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (input.classList.contains('open')) { closeSearch(); }
-      else { openSearch(); }
-    });
-
-    input && input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      dropdown.innerHTML = '';
-      if (!q) { dropdown.classList.remove('open'); return; }
-      const matches = SITE_PAGES.filter(p =>
-        p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q)
-      );
-      if (matches.length === 0) {
-        dropdown.innerHTML = '<p class="fug-sr-empty">No results found</p>';
-      } else {
-        matches.slice(0, 8).forEach(p => {
-          const a = document.createElement('a');
-          a.className = 'fug-sr-item';
-          a.href = p.href;
-          a.innerHTML = '<div class="fug-sr-title">' + p.title + '</div><div class="fug-sr-sub">' + p.sub + '</div>';
-          dropdown.appendChild(a);
-        });
-      }
-      dropdown.classList.add('open');
-    });
-
-    input && input.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeSearch();
-      if (e.key === 'Enter') {
-        const q = input.value.trim().toLowerCase();
-        const matches = SITE_PAGES.filter(p => p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q));
-        if (matches.length >= 1) window.location.href = matches[0].href;
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#fug-inline-search') && !e.target.closest('#nav-search-btn')) {
-        closeSearch();
-      }
-    });
-  })();
 
 })();

@@ -290,9 +290,8 @@
   </div>
 
   <div class="crosses-row">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   </div>
 </section>
 
@@ -300,6 +299,8 @@
 <section class="jury-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div
   <div class="section-header">
     <h2 class="section-title dark-text">2026 Pitchathon Jury</h2>
     <a class="section-link" style="color:var(--navy)" href="programme.html">View 2026 programme</a>
@@ -415,11 +416,11 @@ faqData.forEach((faq, i) => {
   const item = document.createElement('div');
   item.className = 'faq-item' + (i === 0 ? ' open' : '');
   item.innerHTML = `
-    <button class="faq-q-btn" aria-expanded="${i === 0}">
+    <button style="margin-left: 10px;" class="faq-q-btn" aria-expanded="${i === 0}">
       <span class="faq-q-text">${faq.q}</span>
-      <span class="faq-t-icon">${i === 0 ? '×' : '+'}</span>
+      <span class="faq-t-icon" style="margin-right: 10px;">${i === 0 ? '×' : '+'}</span>
     </button>
-    <div class="faq-ans">${faq.a}</div>`;
+    <div style="margin-left: 10px;" class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {

@@ -161,10 +161,10 @@
     .faq-item:hover .faq-ans{color:rgba(255,255,255,.8);}
 
     .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif;}
-    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color 0.28s ease, font-family 0.1s;max-width:calc(100% - 40px);}
-    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color 0.28s ease,transform 0.3s ease;}
-    .faq-item.open .faq-t-icon{transform:rotate(45deg);}
-    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0;}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color 0.28s ease, font-family 0.1s;max-width:calc(100% - 40px); margin-left: 10px;}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color 0.28s ease,transform 0.3s ease; margin-right: 15px;}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg); margin-right: 15px;}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0; margin-left: 10px;}
     .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px;}
 
     /* ── PARTNERS ── */
@@ -387,7 +387,7 @@ faqData.forEach((faq, i) => {
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
     .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
     .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
-    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 74px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 38px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
     .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
     .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}

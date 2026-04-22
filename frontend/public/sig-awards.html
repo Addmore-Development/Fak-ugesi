@@ -390,9 +390,6 @@
     <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
   </div>
   <div style="display:flex;justify-content:space-between;padding-top:40px;padding-bottom:16px;">
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
 </section>
 
@@ -407,10 +404,10 @@
     <a class="req-apply-link" href="#">Submit your application</a>
   </div>
   <div id="req-accordion">
-    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">African origin or diaspora connection</span><span class="req-tog">+</span></button><div class="req-body">Work must be created by an African national or diaspora participant with demonstrable ties to the continent. Both individual creators and collaborative teams are eligible to apply.</div></div>
-    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Digital or technology-led medium</span><span class="req-tog">+</span></button><div class="req-body">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Works combining analogue and digital methodologies are considered on a case-by-case basis.</div></div>
-    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Completed within the past 24 months</span><span class="req-tog">+</span></button><div class="req-body">Works older than two years from the submission date are ineligible. Works-in-progress that are substantially complete may be submitted with a note indicating expected completion date.</div></div>
-    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text">Complete submission package required</span><span class="req-tog">+</span></button><div class="req-body">Portfolio, project description, high-resolution images, and an optional video link are all required. Incomplete submissions will not be considered for jury review.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text" style="margin-left: 10px;">African origin or diaspora connection</span><span margin-right: 15px; class="req-tog">+</span></button><div class="req-body" style="margin-left: 10px;">Work must be created by an African national or diaspora participant with demonstrable ties to the continent. Both individual creators and collaborative teams are eligible to apply.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text" style="margin-left: 10px;">Digital or technology-led medium</span><span margin-right: 15px; class="req-tog">+</span></button><div class="req-body" style="margin-left: 10px;">Entries must use digital tools as the primary medium — software, hardware, interactive, or immersive technology. Works combining analogue and digital methodologies are considered on a case-by-case basis.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text" style="margin-left: 10px;">Completed within the past 24 months</span><span margin-right: 15px; class="req-tog">+</span></button><div class="req-body" style="margin-left: 10px;">Works older than two years from the submission date are ineligible. Works-in-progress that are substantially complete may be submitted with a note indicating expected completion date.</div></div>
+    <div class="req-item"><button class="req-btn" aria-expanded="false"><span class="req-q-text" style="margin-left: 10px;">Complete submission package required</span><span margin-right: 15px; class="req-tog">+</span></button><div class="req-body" style="margin-left: 10px;">Portfolio, project description, high-resolution images, and an optional video link are all required. Incomplete submissions will not be considered for jury review.</div></div>
   </div>
 </section>
 
@@ -579,11 +576,11 @@ faqData.forEach((faq, i) => {
   const item = document.createElement('div');
   item.className = 'faq-item' + (i === 0 ? ' open' : '');
   item.innerHTML = `
-    <button class="faq-question" aria-expanded="${i === 0}">
-      <span class="faq-question-text">${faq.q}</span>
-      <span class="faq-toggle">${i === 0 ? '×' : '+'}</span>
+    <button style="margin-left: 5px;" class="faq-question" aria-expanded="${i === 0}">
+      <span style="margin-left: 5px;" class="faq-question-text">${faq.q}</span>
+      <span style="margin-right: 15px;" class="faq-toggle">${i === 0 ? '×' : '+'}</span>
     </button>
-    <div class="faq-answer">${faq.a}</div>`;
+    <div style="margin-left: 10px;" class="faq-answer">${faq.a}</div>`;
   item.querySelector('.faq-question').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {
@@ -611,7 +608,7 @@ faqData.forEach((faq, i) => {
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
     .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
     .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
-    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 74px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
+    .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 38px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
     .fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}
     .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}

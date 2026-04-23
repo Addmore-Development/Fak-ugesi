@@ -60,7 +60,7 @@
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 .hero-text-wrapper { flex: 1; min-width: 0; }
 .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .75; margin-bottom: 14px; }
-.hero-title { font-size: 56px; font-weight: 900; line-height: 1.0; margin-bottom: 20px; max-width: 100%; }
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
 .hero-body { font-size: 13px; line-height: 1.72; max-width: 510px; opacity: .85; margin-bottom: 16px; }
 .hero-dates { font-size: 28px; font-weight: 700; letter-spacing: .02em; margin-bottom: 8px; }
 .hero-cta {
@@ -158,7 +158,7 @@
       .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
       .hero-content { flex-direction: column; align-items: flex-start; gap: 28px; padding-top: 110px !important; padding-bottom: 60px !important; }
       .hero-text-wrapper { width: 100%; }
-      .hero-title { font-size: 42px; }
+      .hero-title { font-size: 36px; max-width: 100%; }
       .hero-body { max-width: 100%; }
       .hero-signia { padding-top: 0; max-width: 200px; }
       .intro-section { padding: 48px 24px; }
@@ -204,11 +204,13 @@
         padding-top: 110px !important;
         padding-bottom: 60px !important;
       }
-      .hero-title { font-size: 48px; }
+      .hero-title {
+        font-size: 42px;
+      }
     }
 
     @media (max-width: 768px) {
-      .hero-title { font-size: 32px; }
+      .hero-title { font-size: 28px; }
       .hero-dates { font-size: 22px; }
       .hero-cta { padding: 9px 20px; font-size: 10px; }
       .hero-signia { max-width: 150px; }
@@ -229,7 +231,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 28px; }
+      .hero-title { font-size: 24px; line-height: 1.2; }
       .hero-dates { font-size: 18px; }
       .hero-body { font-size: 12px; }
       .hero-signia { max-width: 120px; }
@@ -383,6 +385,9 @@
       #fug-footer .fug-footer-addr { font-size: 11px !important; }
       #fug-footer a { font-size: 11px !important; }
     }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -464,8 +469,7 @@
     <div style="max-width:520px;">
       <h2 style="font-size:48px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:24px;">Join our developer<br>network</h2>
       <p style="font-size:13px;line-height:1.72;color:rgba(255,255,255,.85);margin-bottom:28px;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-      <a href="#" style="display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .22s,color .22s;" onmouseover="this.style.background='#fff';this.style.color='#1a2744'" onmouseout="this.style.background='transparent';this.style.color='#fff'">GET INVOLVED</a>
-    </div>
+      <a class="hero-cta" href="#" id="dala-cta">GET INVOLVED</a>    </div>
     <a href="programme.html" style="font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;opacity:.8;">View 2026 programme</a>
   </div>
 </section>

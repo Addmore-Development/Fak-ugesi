@@ -34,7 +34,7 @@
     .hero-content{grid-row:2;grid-column:2;position:relative;z-index:4;padding:32px 0 72px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
+    .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
     .hero-body{font-size:13px;line-height:1.72;max-width:510px;opacity:.85;margin-bottom:28px}
     .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:13px 30px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:8px;transition:background .22s,color .22s;}
     .hero-cta:hover{background:#fff;color:var(--navy)}
@@ -96,7 +96,7 @@
       :root { --cross-inset-x: 24px; --cross-inset-y: 12px; }
       .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
       .hero-content { padding: 32px 0 48px; padding-top: 110px !important; padding-bottom: 60px !important; }
-      .hero-title { font-size: 44px; }
+      .hero-title { font-size: 36px; max-width: 100%; }
       .hero-body { max-width: 100%; }
       .premiering-content, .ongoing-content { padding: 0 24px 60px; }
       .section-header-label { font-size: 36px; }
@@ -113,11 +113,13 @@
       #main-nav.scrolled { background: rgba(10,18,50,0.96) !important; backdrop-filter: blur(12px) !important; }
       #main-nav.scrolled::before { opacity: 1 !important; }
       .hero-content { padding-top: 110px !important; padding-bottom: 60px !important; }
-      .hero-title { font-size: 56px; }
+      .hero-title {
+        font-size: 42px;
+      }
     }
 
     @media (max-width: 768px) {
-      .hero-title { font-size: 32px; }
+      .hero-title { font-size: 28px; }
       .hero-eyebrow { font-size: 10px; }
       .hero-body { font-size: 12px; margin-bottom: 20px; }
       .hero-cta { padding: 10px 20px; font-size: 10px; }
@@ -138,7 +140,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 28px; }
+      .hero-title { font-size: 24px; line-height: 1.2; }
       .hero-body { font-size: 11px; }
       .hero-cta { padding: 8px 16px; font-size: 9px; }
       .section-header-label { font-size: 24px; }
@@ -146,6 +148,9 @@
       .partners-title { font-size: 24px; }
       .carousel-logo { min-width: 100px; }
       .carousel-logo-img-wrap { width: 100px; height: 80px; }
+    }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
     }
 
     /* Hamburger Menu - only on ≤768px */

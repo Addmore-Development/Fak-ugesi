@@ -68,10 +68,7 @@
   font-size: 11px; font-weight: 600; letter-spacing: .14em;
   text-transform: uppercase; opacity: .75; margin-bottom: 14px;
 }
-.hero-title {
-  font-size: 52px; font-weight: 900; line-height: 1.0;
-  margin-bottom: 20px; max-width: 100%;
-}
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
 .hero-body {
   font-size: 13px; line-height: 1.72; max-width: 510px;
   opacity: .85; margin-bottom: 16px;
@@ -216,7 +213,7 @@
       .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
       .hero-content { flex-direction: column; align-items: flex-start; gap: 28px; padding-top: 110px !important; padding-bottom: 60px !important; }
       .hero-text-wrapper { width: 100%; }
-      .hero-title { font-size: 36px; }
+      .hero-title { font-size: 36px; max-width: 100%; }
       .hero-body { max-width: 100%; }
       .hero-signia { padding-top: 0; max-width: 200px; }
       .intro-section { padding: 48px 24px; }
@@ -279,7 +276,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 24px; }
+      .hero-title { font-size: 24px; line-height: 1.2; }
       .hero-dates { font-size: 16px; }
       .hero-body { font-size: 12px; }
       .hero-signia { max-width: 120px; }
@@ -290,6 +287,9 @@
       .prizes-title { font-size: 24px; }
       .faq-title-left { font-size: 24px; }
       .partners-title { font-size: 24px; }
+    }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
     }
 
     /* Hamburger Menu - only on ≤768px */

@@ -68,11 +68,8 @@
   text-transform: uppercase; opacity: .75; margin-bottom: 14px;
   font-family: 'InterDisplay', sans-serif;
 }
-.hero-title {
-  font-size: 52px; font-weight: 900; line-height: 1.0;
-  margin-bottom: 20px; max-width: 100%;
-  font-family: 'InterDisplay', sans-serif;
-}
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
+
 .hero-body {
   font-size: 13px; line-height: 1.72; max-width: 510px;
   opacity: .85; margin-bottom: 16px;
@@ -140,7 +137,7 @@
     .network-bottom{max-width:520px;margin-top:auto;padding-top:60px}
     .network-body{font-size:13px;line-height:1.8;color:#fff;opacity:.90;margin-bottom:28px;font-family:'InterDisplay',sans-serif}
     .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
-    .network-cta:hover{background:#fff;color:var(--navy)}
+    .network-cta:hover{ background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
 
     /* 2025 HIGHLIGHTS */
     .highlights-section{background:var(--white);padding:72px 0 0;position:relative;color:var(--dark-text)}
@@ -223,7 +220,7 @@
       .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
       .hero-content { flex-direction: column; align-items: flex-start; gap: 15px; padding-top: 110px !important; padding-bottom: 60px !important; }
       .hero-text-wrapper { width: 100%; }
-      .hero-title { font-size: 42px; }
+      .hero-title { font-size: 36px; max-width: 100%; }
       .hero-body { max-width: 100%; }
       .hero-signia { padding-top: 0; max-width: 200px; margin-right: 0; margin-bottom: 0; }
       .what-section { padding: 48px 24px; }
@@ -283,7 +280,7 @@
     }
 
     @media (max-width: 768px) {
-      .hero-title { font-size: 32px; }
+      .hero-title { font-size: 28px; }
       .hero-dates { font-size: 20px; }
       .hero-cta { padding: 9px 20px; font-size: 10px; }
       .hero-signia { max-width: 150px; }
@@ -308,7 +305,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 28px; }
+      .hero-title { font-size: 24px; line-height: 1.2; }
       .hero-dates { font-size: 18px; }
       .hero-body { font-size: 12px; }
       .hero-signia { max-width: 120px; }
@@ -462,6 +459,9 @@
       #fug-footer .fug-footer-addr { font-size: 11px !important; }
       #fug-footer a { font-size: 11px !important; }
     }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -478,7 +478,7 @@
   <a href="/programme.html">Festival Programme</a>
   <a href="/sig-awards.html">Signature Programmes</a>
   <a href="/about.html">Discover</a>
-  <a href="/tickets.html" class="mobile-tickets">GET TICKETS</a>
+  <a href="/tickets.html" class="mobile-tickets network-cta">GET TICKETS</a>
 </div>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
@@ -494,7 +494,7 @@
       <h1 class="hero-title">Our Dedicated<br>Industry Platform</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-dates">07 — 12.10.2026</p>
-      <a class="hero-cta" href="tickets.html" id="pro-cta">Get Tickets</a>
+      <a class="hero-cta network-cta" href="tickets.html" id="pro-cta">Get Tickets</a>
     </div>
     <div class="hero-signia">
       <img src="../images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:80px;width:auto;"/>

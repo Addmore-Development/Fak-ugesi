@@ -135,11 +135,11 @@
       font-size: 11px; line-height: 1.75; color: rgba(255,255,255,0.55);
     }
 
-    /* Two-column layout: blurb left, card right */
     .passes-right {
       display: flex;
       flex-direction: column;
       gap: 32px;
+      overflow: visible;
     }
 
     .ticket-row {
@@ -147,6 +147,7 @@
       grid-template-columns: 220px 1fr;
       gap: 28px;
       align-items: start;
+      overflow: visible;
     }
 
     .ticket-blurb {
@@ -165,38 +166,70 @@
     .ticket-card {
       position: relative;
       overflow: hidden;
-      --perf:   72%;    /* perforation sits 72% across the card */
+      --perf:   72%;
       --hole-w: 100px;
       --hole-h: 100px;
       width: 100%;
     }
 
-    /* ── Punch-hole pseudo-elements — filled with section bg to fake a cutout ── */
-    .ticket-card::before,
-    .ticket-card::after {
+    /* ticket-card-wrap must also know --perf for the dots column inside the card */
+
+    /* ── Ticket row wrapper — positions the punch-hole notches outside card ── */
+    .ticket-card-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: visible;
+      /* vertical padding gives the half-circle room to render outside the card */
+      padding-top: 50px;
+      padding-bottom: 50px;
+      margin-top: -50px;
+      margin-bottom: -50px;
+    }
+
+    /* Punch-holes on the WRAPPER (not the card) so they aren't clipped by overflow:hidden */
+    .ticket-card-wrap::before,
+    .ticket-card-wrap::after {
       content: '';
       position: absolute;
       left: var(--perf);
       width: var(--hole-w);
       height: var(--hole-h);
       border-radius: 50%;
-      z-index: 15;
+      z-index: 25;
       transform: translateX(-50%);
-      /* Fill with the dark overlay color of the passes section to look like a cutout */
-      background: rgba(4, 7, 20, 0.82);
-      border: 1.5px solid rgba(255,255,255,0.35);
+      background: transparent;
+      pointer-events: none;
     }
-    .ticket-card::before { top:    calc(var(--hole-h) / -2); }
-    .ticket-card::after  { bottom: calc(var(--hole-h) / -2); }
+    .ticket-card-wrap::before { top:    calc(var(--hole-h) / -2); }
+    .ticket-card-wrap::after  { bottom: calc(var(--hole-h) / -2); }
+
+    .ticket-card-wrap.full-pass-wrap {
+      --perf:   72%;
+      --hole-w: 100px;
+      --hole-h: 100px;
+    }
+    .ticket-card-wrap.full-pass-wrap::before,
+    .ticket-card-wrap.full-pass-wrap::after {
+      border: 1.5px solid rgba(26,39,68,0.35);
+    }
+
+    .ticket-card-wrap.dark-pass-wrap {
+      --perf:   72%;
+      --hole-w: 100px;
+      --hole-h: 100px;
+    }
+    .ticket-card-wrap.dark-pass-wrap::before,
+    .ticket-card-wrap.dark-pass-wrap::after {
+      border: 1.5px solid rgba(255,255,255,0.50);
+    }
+
+    /* Remove pseudo-elements from the card itself */
+    .ticket-card::before,
+    .ticket-card::after { display: none; }
 
     /* ── Full Pass — white card ── */
     .ticket-card.full-pass { background: var(--white); }
-    /* Full pass holes same dark cutout — sits against the dark section bg */
-    .ticket-card.full-pass::before,
-    .ticket-card.full-pass::after {
-      background: rgba(4, 7, 20, 0.82);
-      border: 1.5px solid rgba(255,255,255,0.30);
-    }
 
     /* ── Day & Industry Pass — transparent dark ── */
     .ticket-card.day-pass,
@@ -204,13 +237,6 @@
       background: rgba(6, 10, 28, 0.45);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-    }
-    .ticket-card.day-pass::before,
-    .ticket-card.day-pass::after,
-    .ticket-card.industry-pass::before,
-    .ticket-card.industry-pass::after {
-      background: rgba(4, 7, 20, 0.75);
-      border: 1.5px solid rgba(255,255,255,0.35);
     }
 
     /* SVG border overlay */
@@ -466,6 +492,7 @@
           <div class="ticket-blurb">
             Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
           </div>
+          <div class="ticket-card-wrap full-pass-wrap">
           <div class="ticket-card full-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col">
@@ -512,6 +539,7 @@
               </div>
             </div>
           </div>
+          </div><!-- /.ticket-card-wrap -->
         </div>
 
         <!-- DAY PASS ROW -->
@@ -519,6 +547,7 @@
           <div class="ticket-blurb">
             Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.
           </div>
+          <div class="ticket-card-wrap dark-pass-wrap">
           <div class="ticket-card day-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col">
@@ -564,6 +593,7 @@
               </div>
             </div>
           </div>
+          </div><!-- /.ticket-card-wrap -->
         </div>
 
         <!-- INDUSTRY PASS ROW -->
@@ -571,6 +601,7 @@
           <div class="ticket-blurb">
             Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.
           </div>
+          <div class="ticket-card-wrap dark-pass-wrap">
           <div class="ticket-card industry-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col">
@@ -612,6 +643,7 @@
               </div>
             </div>
           </div>
+          </div><!-- /.ticket-card-wrap -->
         </div>
 
       </div><!-- /.passes-right -->

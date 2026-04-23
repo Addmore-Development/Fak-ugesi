@@ -51,7 +51,6 @@
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
 
-    /* Corner crosses */
     .hero .cross-icon { position: absolute; }
 
     .hero-inner {
@@ -65,7 +64,6 @@
     .hero-body { font-size: 13px; line-height: 1.72; max-width: 440px; opacity: 0.85; margin-bottom: 28px; color: #fff; }
     .hero-dates { font-size: 30px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
 
-    /* Hero logo top-right */
     .hero-logo {
       position: relative; z-index: 4;
       flex-shrink: 0;
@@ -92,7 +90,6 @@
       position: relative;
       padding: 28px var(--band);
     }
-    /* Cross markers at corners of the day-selector band */
     .day-selector .cross-icon { position: absolute; opacity: 0.5; }
     .day-cards {
       display: grid;
@@ -125,34 +122,16 @@
     }
     .day-card.active .day-card-desc { color: var(--body-gray); }
 
-    /* ── SCHEDULE TABLE SECTION ── */
+    /* ── SCHEDULE TABLE SECTION — lavender background ── */
     .schedule-section {
-      background: linear-gradient(180deg, #1a2462 0%, #1e2d6a 30%, var(--lavender) 100%);
+      background: var(--lavender);
       position: relative;
-    }
-
-    /* Speaker BG Layer */
-    .schedule-speaker-bg {
-      position: absolute; inset: 0; z-index: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      background-size: cover;
-      background-position: center 20%;
-      pointer-events: none;
-    }
-    .schedule-speaker-bg.visible { opacity: 1; }
-    .schedule-speaker-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(13,27,62,0.78);
     }
 
     .schedule-inner {
       position: relative; z-index: 2;
       padding: 56px var(--band) 72px;
-      transition: color 0.5s;
     }
-    .schedule-section.dark-mode .schedule-inner { color: #fff; }
 
     /* Column headers */
     .schedule-cols {
@@ -163,20 +142,16 @@
       padding: 0 0 12px;
       border-bottom: 1px solid rgba(26,39,68,0.15);
     }
-    .schedule-section.dark-mode .schedule-cols { border-bottom-color: rgba(255,255,255,0.18); }
     .col-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--body-gray);
     }
-    .schedule-section.dark-mode .col-label { color: rgba(255,255,255,0.55); }
 
     /* Schedule Title */
     .schedule-title {
       font-size: 48px; font-weight: 900; color: var(--dark-text);
       margin-bottom: 36px; line-height: 1.05;
-      transition: color 0.5s;
     }
-    .schedule-section.dark-mode .schedule-title { color: #fff; }
 
     /* Panel containers */
     .sched-panel { display: none; }
@@ -194,107 +169,91 @@
       transition: background 0.22s, box-shadow 0.22s;
       position: relative;
     }
-    .schedule-section.dark-mode .sched-row { border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.06); }
     .sched-row:hover { box-shadow: 0 4px 20px rgba(26,39,68,0.1); }
-    .schedule-section.dark-mode .sched-row:hover { background: rgba(255,255,255,0.1); }
-    .sched-row.active-row { background: rgba(26,39,68,0.05); }
-    .schedule-section.dark-mode .sched-row.active-row { background: rgba(255,255,255,0.1); }
 
     .sched-cell {
       padding: 22px 20px 20px;
       border-right: 1px solid rgba(26,39,68,0.08);
     }
     .sched-cell:last-child { border-right: none; }
-    .schedule-section.dark-mode .sched-cell { border-right-color: rgba(255,255,255,0.07); }
 
     .sched-time {
       font-size: 14px; font-weight: 700; color: var(--navy);
       line-height: 1.2; padding-top: 2px;
-      transition: color 0.5s;
     }
-    .schedule-section.dark-mode .sched-time { color: rgba(255,255,255,0.85); }
 
     .sched-location {
       font-size: 10px; color: var(--navy); margin-top: 8px;
-      letter-spacing: 0.03em; transition: color 0.5s;
+      letter-spacing: 0.03em;
       text-decoration: underline; display: block;
     }
     .sched-location:hover { opacity: 0.7; }
-    .schedule-section.dark-mode .sched-location { color: rgba(255,255,255,0.5); }
 
     .sched-event-title {
       font-size: 18px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 4px; line-height: 1.25; transition: color 0.5s;
+      margin-bottom: 4px; line-height: 1.25;
     }
-    .schedule-section.dark-mode .sched-event-title { color: #fff; }
     .sched-event-sub {
       font-size: 12px; color: var(--body-gray); line-height: 1.5;
-      margin-bottom: 8px; transition: color 0.5s;
+      margin-bottom: 8px;
     }
-    .schedule-section.dark-mode .sched-event-sub { color: rgba(255,255,255,0.6); }
 
     .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
     .tag {
       display: inline-block; font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; padding: 3px 8px;
       background: rgba(26,39,68,0.1); color: var(--navy);
-      transition: background 0.3s, color 0.3s;
-    }
-    .schedule-section.dark-mode .tag {
-      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
     }
 
     /* Speakers cell */
     .sched-speakers {
       font-size: 12px; color: var(--dark-text); line-height: 1.7;
-      transition: color 0.5s;
     }
-    .schedule-section.dark-mode .sched-speakers { color: rgba(255,255,255,0.85); }
     .sched-speakers a {
       color: var(--navy); text-decoration: underline; display: block;
-      transition: color 0.3s; font-size: 12px;
+      font-size: 12px;
     }
-    .schedule-section.dark-mode .sched-speakers a { color: rgba(255,255,255,0.9); }
     .sched-speakers a:hover { opacity: 0.7; }
 
-    /* clickable speaker names */
     .sched-speakers .speaker-link {
       color: var(--navy); text-decoration: underline; cursor: pointer;
       display: block; font-size: 12px; line-height: 1.7;
-      transition: color 0.2s; background: none; border: none; padding: 0;
+      background: none; border: none; padding: 0;
       font-family: inherit; text-align: left;
     }
     .sched-speakers .speaker-link:hover { opacity: 0.7; }
-    .schedule-section.dark-mode .sched-speakers .speaker-link { color: rgba(255,255,255,0.9); }
     .sched-speakers .speaker-link::after { content: ' →'; font-size: 10px; }
 
-    /* ── MORE TO EXPERIENCE ── */
+    /* ── MORE TO EXPERIENCE — lavender bg, exhibitor-card style ── */
     .more-section {
-      background: var(--white);
-      padding: 56px 0 0;
+      background: var(--lavender);
+      padding: 56px 0 72px;
       position: relative;
     }
     .more-title {
       font-size: 40px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 28px; padding: 0 var(--band);
+      margin-bottom: 40px; padding: 0 var(--band);
     }
     .more-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       padding: 0 var(--band);
+      align-items: start;
     }
     .more-card {
       display: flex;
       flex-direction: column;
       text-decoration: none;
       cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.22s, box-shadow 0.22s;
+      background: var(--white);
+      border: 1px solid rgba(26,39,68,0.08);
+      width: 100%;
       min-width: 0;
-      border: 1px solid rgba(26,39,68,0.1);
     }
-    .more-card + .more-card {
-      border-left: none;
-    }
+    .more-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,39,68,0.18); }
     .more-card-img {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -309,9 +268,6 @@
     .more-card-body {
       background: var(--white);
       padding: 16px 18px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
     }
     .more-card-top {
       display: flex; justify-content: space-between; align-items: center;
@@ -339,9 +295,9 @@
       display: flex; justify-content: space-between;
       padding: 24px var(--band);
       position: relative;
+      background: var(--lavender);
     }
     .crosses-row svg { width: 18px; height: 18px; }
-
 
     /* ── SPEAKER DETAIL FULL SECTION ── */
     .speaker-detail-section {
@@ -356,7 +312,8 @@
       background-size: cover; background-position: center 20%;
     }
     .speaker-detail-bg::after {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute; inset: 0;
       background: linear-gradient(105deg, rgba(10,18,48,0.88) 40%, rgba(10,18,48,0.55) 100%);
     }
     .speaker-detail-inner {
@@ -381,19 +338,14 @@
     .speaker-detail-back svg { width: 16px; height: 16px; flex-shrink: 0; }
     .speaker-detail-left { display: flex; flex-direction: column; }
     .speaker-detail-right { display: flex; flex-direction: column; justify-content: space-between; }
-    .speaker-detail-name {
-      font-size: 52px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px;
-    }
+    .speaker-detail-name { font-size: 52px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px; }
     .speaker-detail-role { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 28px; }
     .speaker-detail-event-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
     .speaker-detail-event-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
     .speaker-detail-bio { font-size: 13.5px; line-height: 1.72; color: rgba(255,255,255,0.85); max-width: 560px; }
     .speaker-detail-org-area { margin-bottom: 24px; }
     .speaker-detail-org-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .speaker-detail-org-link {
-      font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none;
-      letter-spacing: 0.04em; display: block; transition: color 0.2s;
-    }
+    .speaker-detail-org-link { font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none; letter-spacing: 0.04em; display: block; }
     .speaker-detail-org-link:hover { color: #fff; text-decoration: underline; }
     .speaker-detail-meta { display: flex; flex-direction: column; gap: 20px; }
     .speaker-detail-meta-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 4px; }
@@ -438,12 +390,194 @@
       .sched-row { grid-template-columns: 1fr; }
       .schedule-cols { display: none; }
       .more-title { padding-left: 16px; padding-right: 16px; }
-      .more-grid { padding-left: 16px; padding-right: 16px; }
-      .more-card { grid-template-columns: 1fr; }
-      .more-card-body { border-left: none; border-top: 1px solid rgba(26,39,68,0.1); }
+      .more-grid { padding-left: 16px; padding-right: 16px; grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+<style id="fug-global-fixes">
+/* ── HERO NAV FIX ── */
+.hero { padding-top: 58px !important; }
+body > .hero:first-child { padding-top: 58px !important; }
+
+/* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
+.btn-primary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.intro-cta,
+.network-cta,
+.section-cta,
+.challenge-cta,
+a.btn-tickets,
+button.btn-tickets,
+.btn-get-pass,
+.btn-primary-dark,
+.btn-white,
+.btn-dark,
+.cta-btn,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn) {
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, border-color 0.22s !important;
+}
+
+/* Blue hover shading on ALL buttons */
+.btn-primary:hover,
+.btn-outline-dark:hover,
+.btn-outline-white:hover,
+.hero-cta:hover,
+.btn-apply:hover,
+.btn-cta-white:hover,
+.btn-cta-filled:hover,
+.btn-learn:hover,
+a.btn-tickets:hover,
+button.btn-tickets:hover,
+.btn-get-pass:hover,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
+  background: #1e3a6e !important;
+  color: #ffffff !important;
+  border-color: rgba(100,160,255,0.6) !important;
+}
+
+/* font color should always be white on hover */
+.btn-outline-dark:hover,
+.btn-outline-white:hover {
+  color: #fff !important;
+}
+
+/* ── CROSS ICON ── always allow transform ── */
+.cross-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important; height: 18px !important;
+  flex-shrink: 0 !important;
+  position: absolute !important;
+  z-index: 6 !important;
+  opacity: 0.45 !important;
+  animation: none !important;
+  transition: transform 0.1s linear !important;
+}
+.cross-icon svg { width: 100%; height: 100%; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1400px) {
+  :root { --band: 160px !important; --gutter: 160px !important; }
+}
+@media (max-width: 1200px) {
+  :root { --band: 80px !important; --gutter: 80px !important; }
+  .prizes-grid, .involved-cards { grid-template-columns: repeat(2,1fr) !important; }
+  .spotlight-grid { gap: 32px !important; }
+}
+@media (max-width: 1024px) {
+  :root { --band: 40px !important; --gutter: 40px !important; }
+  .hero-title { font-size: 40px !important; }
+  .theme-head { font-size: 30px !important; }
+  .theme-year { font-size: 36px !important; }
+  .partners-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .winners-header { padding: 0 40px 36px !important; }
+}
+@media (max-width: 768px) {
+  :root { --band: 20px !important; --gutter: 20px !important; }
+  #main-nav .nav-links-wrap { display: none !important; }
+  #main-nav .nav-mobile-toggle { display: flex !important; }
+
+  .hero-inner { flex-direction: column !important; padding: 80px 20px 40px !important; gap: 24px !important; }
+  .hero-logo { display: none !important; }
+  .hero-title { font-size: 36px !important; }
+  .hero-content { max-width: 100% !important; }
+
+  .theme-inner { padding: 40px 20px !important; }
+  .theme-head { font-size: 26px !important; }
+  .theme-year { font-size: 28px !important; }
+  .theme-dates { font-size: 22px !important; }
+  .theme-bg-img { width: 100% !important; opacity: 0.2 !important; }
+
+  .involved-cards { grid-template-columns: 1fr !important; }
+  .prizes-grid { grid-template-columns: 1fr !important; }
+  .partners-grid { grid-template-columns: 1fr !important; }
+  .spotlight-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .tweet-grid { grid-template-columns: 1fr !important; }
+  .fb-feed { grid-template-columns: 1fr !important; }
+
+  .involved-header { flex-direction: column !important; gap: 12px !important; }
+  .involved-title { font-size: 30px !important; }
+  .spotlight-title { font-size: 30px !important; }
+  .happening-title { font-size: 30px !important; }
+  .partners-title { font-size: 28px !important; }
+  .happening-header { flex-direction: column !important; gap: 16px !important; }
+  .partners-header { flex-direction: column !important; gap: 12px !important; }
+
+  /* sig pages responsive */
+  .hero-content { padding: 80px 20px 40px !important; max-width: 100% !important; }
+  .hero-logo { margin-right: 0 !important; }
+  .ia-grid, .cat-grid { grid-template-columns: 1fr !important; }
+  .faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .req-header, .faq-right-header { flex-direction: column !important; gap: 12px !important; }
+  .winners-header { padding: 0 20px 24px !important; }
+  .winners-strip-outer { margin: 0 !important; }
+  .prog-cards { grid-template-columns: 1fr !important; }
+  .team-grid { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* discover pages */
+  .content-band { padding-left: 20px !important; padding-right: 20px !important; }
+  .arch-grid, .venues-grid, .resource-grid { grid-template-columns: 1fr !important; }
+  .partners-inner .partners-grid { grid-template-columns: 1fr !important; }
+
+  /* sig-jamz specific */
+  .faq-layout { grid-template-columns: 1fr !important; }
+
+  /* nav mobile */
+  #main-nav { height: 58px !important; }
+  .cross-icon[style*="left:200px"] { left: 16px !important; }
+  .cross-icon[style*="right:200px"] { right: 16px !important; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 28px !important; }
+  .theme-head { font-size: 22px !important; }
+  .btn-row { flex-direction: column !important; }
+  .team-grid { grid-template-columns: 1fr !important; }
+  .fug-sig-strip-inner { justify-content: flex-start !important; }
+}
+
+/* ── NAV MOBILE HAMBURGER ── */
+#main-nav .nav-mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  color: #fff; padding: 8px; margin-left: auto; margin-right: 16px;
+  flex-direction: column; gap: 5px; align-items: center; justify-content: center;
+}
+#main-nav .nav-mobile-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; transition: transform 0.3s, opacity 0.3s;
+}
+#mobile-nav-drawer {
+  display: none; position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,18,50,0.98); z-index: 999;
+  flex-direction: column; padding: 24px 24px;
+  overflow-y: auto;
+}
+#mobile-nav-drawer.open { display: flex; }
+#mobile-nav-drawer a {
+  color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'InterDisplay', sans-serif;
+}
+#mobile-nav-drawer a:hover { color: #fff; }
+#mobile-nav-drawer .drawer-tickets {
+  margin-top: 24px; border: 1.5px solid rgba(255,255,255,0.4);
+  text-align: center; padding: 14px; font-weight: 700;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+</style>
+
 </head>
 <body>
 
@@ -455,7 +589,6 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- Corner cross icons -->
   <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
   </div>
@@ -501,20 +634,7 @@
 </div>
 
 <!-- ── DAY SELECTOR ── -->
-<section class="day-selector">
-  <!-- Cross markers at the 4 corners of the card grid -->
-  <div class="cross-icon" style="top:28px;left:248px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:28px;right:248px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:28px;left:248px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:28px;right:248px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
+<section class="day-selector" id="daySelectorSection">
   <div class="day-cards" id="daySelectorCards">
     <div class="day-card active" data-day="0">
       <div class="day-card-programme">AI Symposium</div>
@@ -546,9 +666,6 @@
 
 <!-- ── SCHEDULE TABLE ── -->
 <section class="schedule-section reveal" id="scheduleSection">
-  <div class="schedule-speaker-bg" id="speakerBg"></div>
-
-  <!-- Corner crosses -->
   <div class="cross-icon" style="top:24px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
@@ -565,7 +682,6 @@
   <div class="schedule-inner">
     <h2 class="schedule-title">Schedule</h2>
 
-    <!-- Column headers -->
     <div class="schedule-cols">
       <span class="col-label">Time &amp; Location</span>
       <span class="col-label">Panel &amp; Themes</span>
@@ -969,36 +1085,42 @@
 </section>
 
 <!-- ── MORE TO EXPERIENCE ── -->
-<section class="more-section reveal">
+<section class="more-section reveal" id="moreSection">
   <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
   </div>
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  </div>
   <h2 class="more-title">More to Experience</h2>
   <div class="more-grid">
-    <a class="more-card" href="sig-dalakhona.html">
+    <a class="more-card" href="expo.html">
       <div class="more-card-img">
         <img src="/images/Copy of _MGL3490.jpg" alt="Fak'ugesi Expo" />
       </div>
       <div class="more-card-body">
         <div class="more-card-top">
           <span class="more-card-tag">Showcases &amp; Exhibitions</span>
-          <a class="more-card-link" href="sig-dalakhona.html">More info →</a>
+          <span class="more-card-link">More info →</span>
         </div>
         <div class="more-card-name">Fak'ugesi Expo</div>
         <div class="more-card-time">08:30 — 17:00</div>
       </div>
     </a>
-    <a class="more-card" href="sig-pitchathon.html">
+    <a class="more-card" href="market.html">
       <div class="more-card-img">
         <img src="/images/0A9A8925.jpg" alt="Fak'ugesi Market" />
       </div>
       <div class="more-card-body">
         <div class="more-card-top">
           <span class="more-card-tag">Startups &amp; Innovators</span>
-          <a class="more-card-link" href="sig-pitchathon.html">More info →</a>
+          <span class="more-card-link">More info →</span>
         </div>
         <div class="more-card-name">Fak'ugesi Market</div>
         <div class="more-card-time">10:00 — 16:00</div>
@@ -1008,9 +1130,9 @@
 </section>
 
 <!-- crosses row between more and partners -->
-<div class="crosses-row" style="padding: 24px var(--band);">
-  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+<div class="crosses-row" id="crossesRow">
+  <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
 </div>
 
 <!-- ── PARTNERS ── -->
@@ -1047,51 +1169,50 @@
   </div>
 </section>
 
-
 <!-- FOOTER injected by footer.js -->
 <script src="footer.js"></script>
 
 <script>
-  /* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
-(function(){
-  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-  function resetRot(){
-    rot = 0;
-    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-      el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
-    });
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        var y = window.scrollY, delta = y - lastY;
-        if(Math.abs(delta) > 0){
-          rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-            el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate('+rot+'deg)';
-          });
-        }
-        lastY = y;
-        ticking = false;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(resetRot, 300);
+  /* Cross icon scroll spin */
+  (function(){
+    var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+    function resetRot(){
+      rot = 0;
+      document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+        el.style.transition = 'transform 0.45s ease';
+        el.style.transform = 'rotate(0deg)';
       });
-      ticking = true;
     }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-})();
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(function(){
+          var y = window.scrollY, delta = y - lastY;
+          if(Math.abs(delta) > 0){
+            rot += delta > 0 ? 15 : -15;
+            document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+              el.style.transition = 'transform 0.1s linear';
+              el.style.transform = 'rotate('+rot+'deg)';
+            });
+          }
+          lastY = y;
+          ticking = false;
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(resetRot, 300);
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
 
-  // ── Reveal on scroll ──
+  /* Reveal on scroll */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.07 });
   revealEls.forEach(el => io.observe(el));
 
-  // ── Speaker data ──
+  /* Speaker data */
   const SPEAKERS = {
     'Pierre Saal': {
       name: 'Pierre Saal',
@@ -1117,11 +1238,13 @@
     },
   };
 
-  // ── Day selector ──
-  const dayCards = document.querySelectorAll('.day-card');
-  const dayPanels = document.querySelectorAll('.sched-panel');
-  const schedSection = document.getElementById('scheduleSection');
-  const speakerBg = document.getElementById('speakerBg');
+  /* Day selector */
+  const dayCards    = document.querySelectorAll('.day-card');
+  const dayPanels   = document.querySelectorAll('.sched-panel');
+  const schedSection   = document.getElementById('scheduleSection');
+  const daySelectorEl  = document.getElementById('daySelectorSection');
+  const moreSection    = document.getElementById('moreSection');
+  const crossesRow     = document.getElementById('crossesRow');
 
   dayCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -1131,34 +1254,10 @@
       dayPanels.forEach(p => p.classList.remove('active'));
       const panel = document.getElementById('day-' + day);
       if (panel) panel.classList.add('active');
-      schedSection.classList.remove('dark-mode');
-      speakerBg.classList.remove('visible');
-      speakerBg.style.backgroundImage = '';
-      document.querySelectorAll('.sched-row').forEach(r => r.classList.remove('active-row'));
     });
   });
 
-  // ── Row hover: show speaker background image ──
-  document.querySelectorAll('.sched-row').forEach(row => {
-    row.addEventListener('mouseenter', () => {
-      const img = row.dataset.speakerImg;
-      if (img) {
-        speakerBg.style.backgroundImage = `url('${img}')`;
-        speakerBg.classList.add('visible');
-        schedSection.classList.add('dark-mode');
-      }
-    });
-    row.addEventListener('mouseleave', () => {
-      // Only clear if no row is actively selected
-      if (!document.querySelector('.sched-row.active-row')) {
-        speakerBg.classList.remove('visible');
-        schedSection.classList.remove('dark-mode');
-        speakerBg.style.backgroundImage = '';
-      }
-    });
-  });
-
-  // ── Speaker full-section expand on row click (inline like expo/market) ──
+  /* Speaker detail elements */
   const speakerDetailSection = document.getElementById('speakerDetailSection');
   const speakerDetailBg      = document.getElementById('speakerDetailBg');
   const speakerDetailBack    = document.getElementById('speakerDetailBack');
@@ -1168,31 +1267,33 @@
   const sdEventSub           = document.getElementById('sdEventSub');
   const sdBio                = document.getElementById('sdBio');
   const sdMeta               = document.getElementById('sdMeta');
-  const daySelectorEl        = document.querySelector('.day-selector');
 
+  /* Row click — open speaker detail */
   document.querySelectorAll('.sched-row').forEach(row => {
     row.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') return;
-      const img = row.dataset.speakerImg;
+
+      const img         = row.dataset.speakerImg;
       const speakerName = row.dataset.speakerName || '';
       const eventTitleEl = row.querySelector('.sched-event-title');
       const eventSubEl   = row.querySelector('.sched-event-sub');
       const data = SPEAKERS[speakerName] || {};
 
       speakerDetailBg.style.backgroundImage = img ? `url('${img}')` : '';
-      sdName.textContent      = data.name || speakerName;
-      sdRole.textContent      = data.role || '';
+      sdName.textContent       = data.name || speakerName;
+      sdRole.textContent       = data.role || '';
       sdEventTitle.textContent = eventTitleEl ? eventTitleEl.textContent : '';
       sdEventSub.textContent   = eventSubEl   ? eventSubEl.textContent   : '';
       sdBio.textContent        = data.bio || '';
 
-      // Org info
       const orgArea = document.getElementById('sdOrgArea');
       if (orgArea) {
         orgArea.innerHTML = '';
         if (data.org) {
           orgArea.innerHTML = `<div class="speaker-detail-org-name">${data.org}</div>`;
-          if (data.orgLink) orgArea.innerHTML += `<a class="speaker-detail-org-link" href="${data.orgLink}">${data.orgLinkLabel||'Visit website →'}</a>`;
+          if (data.orgLink) {
+            orgArea.innerHTML += `<a class="speaker-detail-org-link" href="${data.orgLink}">${data.orgLinkLabel || 'Visit website →'}</a>`;
+          }
         }
       }
 
@@ -1207,24 +1308,82 @@
         );
       });
 
-      // Hide day selector + schedule, show detail inline
-      schedSection.style.display   = 'none';
-      daySelectorEl.style.display  = 'none';
+      /* Hide schedule, day selector, more section and crosses divider */
+      schedSection.style.display  = 'none';
+      daySelectorEl.style.display = 'none';
+      moreSection.style.display   = 'none';
+      crossesRow.style.display    = 'none';
+
       speakerDetailSection.classList.add('active');
       speakerDetailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
+  /* Back button — restore all hidden sections */
   speakerDetailBack.addEventListener('click', () => {
     speakerDetailSection.classList.remove('active');
     schedSection.style.display  = '';
     daySelectorEl.style.display = '';
-    // Clear hover state
-    speakerBg.classList.remove('visible');
-    schedSection.classList.remove('dark-mode');
-    speakerBg.style.backgroundImage = '';
+    moreSection.style.display   = '';
+    crossesRow.style.display    = '';
     schedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+</script>
+
+
+<script>
+/* Mobile nav drawer */
+(function(){
+  var nav = document.getElementById('main-nav');
+  if (!nav || document.getElementById('fug-mobile-toggle')) return;
+  
+  var toggle = document.createElement('button');
+  toggle.id = 'fug-mobile-toggle';
+  toggle.className = 'nav-mobile-toggle';
+  toggle.setAttribute('aria-label','Menu');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(toggle);
+
+  var drawer = document.createElement('div');
+  drawer.id = 'mobile-nav-drawer';
+  var links = [
+    ['Home', '/index.html'],
+    ['Festival Programme', '/programme.html'],
+    ['Expo', '/fes-expo.html'],
+    ['Market', '/fes-market.html'],
+    ['Schedule', '/fes-schedule.html'],
+    ['Signature Programmes', '/sig-awards.html'],
+    ['Awards', '/sig-awards.html'],
+    ['Dala Khona', '/sig-dalakhona.html'],
+    ['PRO', '/sig-fakugesipro.html'],
+    ['Immersive Africa', '/sig-immersive.html'],
+    ['JAMZ', '/sig-jamz.html'],
+    ['Pitchathon', '/sig-pitchathon.html'],
+    ['About', '/about.html'],
+    ['Venues', '/discover/venues.html'],
+    ['Partners', '/discover/partners.html'],
+    ['Resources', '/discover/resources.html'],
+    ['Archive', '/discover/archive.html'],
+  ];
+  links.forEach(function(l){
+    var a = document.createElement('a');
+    a.href = l[1]; a.textContent = l[0];
+    drawer.appendChild(a);
+  });
+  var ticketLink = document.createElement('a');
+  ticketLink.href = '/tickets.html';
+  ticketLink.className = 'drawer-tickets';
+  ticketLink.textContent = 'GET TICKETS';
+  drawer.appendChild(ticketLink);
+  document.body.appendChild(drawer);
+
+  toggle.addEventListener('click', function(){
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
+  });
+})();
 </script>
 
 </body>

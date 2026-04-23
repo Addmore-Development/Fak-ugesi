@@ -21,7 +21,7 @@
     .promo-bar,.premiere-bar,.festival-bar,
     [data-announcement],[data-promo]{display:none!important}
 
-    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;animation:none !important;transition:none !important;}
+    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear;}
     .cross-icon svg{width:100%;height:100%}
     @keyframes crossPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
@@ -238,6 +238,190 @@
     }
 
   </style>
+
+<style id="fug-global-fixes">
+/* ── HERO NAV FIX ── */
+.hero { padding-top: 58px !important; }
+body > .hero:first-child { padding-top: 58px !important; }
+
+/* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
+.btn-primary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.intro-cta,
+.network-cta,
+.section-cta,
+.challenge-cta,
+a.btn-tickets,
+button.btn-tickets,
+.btn-get-pass,
+.btn-primary-dark,
+.btn-white,
+.btn-dark,
+.cta-btn,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn) {
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, border-color 0.22s !important;
+}
+
+/* Blue hover shading on ALL buttons */
+.btn-primary:hover,
+.btn-outline-dark:hover,
+.btn-outline-white:hover,
+.hero-cta:hover,
+.btn-apply:hover,
+.btn-cta-white:hover,
+.btn-cta-filled:hover,
+.btn-learn:hover,
+a.btn-tickets:hover,
+button.btn-tickets:hover,
+.btn-get-pass:hover,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
+  background: #1e3a6e !important;
+  color: #ffffff !important;
+  border-color: rgba(100,160,255,0.6) !important;
+}
+
+/* font color should always be white on hover */
+.btn-outline-dark:hover,
+.btn-outline-white:hover {
+  color: #fff !important;
+}
+
+/* ── CROSS ICON ── always allow transform ── */
+.cross-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important; height: 18px !important;
+  flex-shrink: 0 !important;
+  position: absolute !important;
+  z-index: 6 !important;
+  opacity: 0.45 !important;
+  animation: none !important;
+  transition: transform 0.1s linear !important;
+}
+.cross-icon svg { width: 100%; height: 100%; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1400px) {
+  :root { --band: 160px !important; --gutter: 160px !important; }
+}
+@media (max-width: 1200px) {
+  :root { --band: 80px !important; --gutter: 80px !important; }
+  .prizes-grid, .involved-cards { grid-template-columns: repeat(2,1fr) !important; }
+  .spotlight-grid { gap: 32px !important; }
+}
+@media (max-width: 1024px) {
+  :root { --band: 40px !important; --gutter: 40px !important; }
+  .hero-title { font-size: 40px !important; }
+  .theme-head { font-size: 30px !important; }
+  .theme-year { font-size: 36px !important; }
+  .partners-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .winners-header { padding: 0 40px 36px !important; }
+}
+@media (max-width: 768px) {
+  :root { --band: 20px !important; --gutter: 20px !important; }
+  #main-nav .nav-links-wrap { display: none !important; }
+  #main-nav .nav-mobile-toggle { display: flex !important; }
+
+  .hero-inner { flex-direction: column !important; padding: 80px 20px 40px !important; gap: 24px !important; }
+  .hero-logo { display: none !important; }
+  .hero-title { font-size: 36px !important; }
+  .hero-content { max-width: 100% !important; }
+
+  .theme-inner { padding: 40px 20px !important; }
+  .theme-head { font-size: 26px !important; }
+  .theme-year { font-size: 28px !important; }
+  .theme-dates { font-size: 22px !important; }
+  .theme-bg-img { width: 100% !important; opacity: 0.2 !important; }
+
+  .involved-cards { grid-template-columns: 1fr !important; }
+  .prizes-grid { grid-template-columns: 1fr !important; }
+  .partners-grid { grid-template-columns: 1fr !important; }
+  .spotlight-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .tweet-grid { grid-template-columns: 1fr !important; }
+  .fb-feed { grid-template-columns: 1fr !important; }
+
+  .involved-header { flex-direction: column !important; gap: 12px !important; }
+  .involved-title { font-size: 30px !important; }
+  .spotlight-title { font-size: 30px !important; }
+  .happening-title { font-size: 30px !important; }
+  .partners-title { font-size: 28px !important; }
+  .happening-header { flex-direction: column !important; gap: 16px !important; }
+  .partners-header { flex-direction: column !important; gap: 12px !important; }
+
+  /* sig pages responsive */
+  .hero-content { padding: 80px 20px 40px !important; max-width: 100% !important; }
+  .hero-logo { margin-right: 0 !important; }
+  .ia-grid, .cat-grid { grid-template-columns: 1fr !important; }
+  .faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .req-header, .faq-right-header { flex-direction: column !important; gap: 12px !important; }
+  .winners-header { padding: 0 20px 24px !important; }
+  .winners-strip-outer { margin: 0 !important; }
+  .prog-cards { grid-template-columns: 1fr !important; }
+  .team-grid { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* discover pages */
+  .content-band { padding-left: 20px !important; padding-right: 20px !important; }
+  .arch-grid, .venues-grid, .resource-grid { grid-template-columns: 1fr !important; }
+  .partners-inner .partners-grid { grid-template-columns: 1fr !important; }
+
+  /* sig-jamz specific */
+  .faq-layout { grid-template-columns: 1fr !important; }
+
+  /* nav mobile */
+  #main-nav { height: 58px !important; }
+  .cross-icon[style*="left:200px"] { left: 16px !important; }
+  .cross-icon[style*="right:200px"] { right: 16px !important; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 28px !important; }
+  .theme-head { font-size: 22px !important; }
+  .btn-row { flex-direction: column !important; }
+  .team-grid { grid-template-columns: 1fr !important; }
+  .fug-sig-strip-inner { justify-content: flex-start !important; }
+}
+
+/* ── NAV MOBILE HAMBURGER ── */
+#main-nav .nav-mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  color: #fff; padding: 8px; margin-left: auto; margin-right: 16px;
+  flex-direction: column; gap: 5px; align-items: center; justify-content: center;
+}
+#main-nav .nav-mobile-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; transition: transform 0.3s, opacity 0.3s;
+}
+#mobile-nav-drawer {
+  display: none; position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,18,50,0.98); z-index: 999;
+  flex-direction: column; padding: 24px 24px;
+  overflow-y: auto;
+}
+#mobile-nav-drawer.open { display: flex; }
+#mobile-nav-drawer a {
+  color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'InterDisplay', sans-serif;
+}
+#mobile-nav-drawer a:hover { color: #fff; }
+#mobile-nav-drawer .drawer-tickets {
+  margin-top: 24px; border: 1.5px solid rgba(255,255,255,0.4);
+  text-align: center; padding: 14px; font-weight: 700;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+</style>
+
 </head>
 <body>
 
@@ -556,7 +740,7 @@
  
     /* ── Cross icon animation (canonical) ── */
     .cross-icon {
-      opacity: 0.45; animation: none !important; transition: none !important;
+      opacity: 0.45;  transition:transform 0.1s linear;
     }
     @keyframes fug-crossPulse {
       0%,100% { opacity: 0.45; transform: scale(1); }
@@ -743,5 +927,96 @@
 })();
  
 </script>
+
+<script>
+/* Cross icon scroll spin */
+(function(){
+  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+  function resetRot(){
+    rot = 0;
+    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+      el.style.transition = 'transform 0.45s ease';
+      el.style.transform = 'rotate(0deg)';
+    });
+  }
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.scrollY, delta = y - lastY;
+        if(Math.abs(delta) > 0){
+          rot += delta > 0 ? 15 : -15;
+          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+            el.style.transition = 'transform 0.1s linear';
+            el.style.transform = 'rotate('+rot+'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(resetRot, 300);
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+
+
+<script>
+/* Mobile nav drawer */
+(function(){
+  var nav = document.getElementById('main-nav');
+  if (!nav || document.getElementById('fug-mobile-toggle')) return;
+  
+  var toggle = document.createElement('button');
+  toggle.id = 'fug-mobile-toggle';
+  toggle.className = 'nav-mobile-toggle';
+  toggle.setAttribute('aria-label','Menu');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(toggle);
+
+  var drawer = document.createElement('div');
+  drawer.id = 'mobile-nav-drawer';
+  var links = [
+    ['Home', '/index.html'],
+    ['Festival Programme', '/programme.html'],
+    ['Expo', '/fes-expo.html'],
+    ['Market', '/fes-market.html'],
+    ['Schedule', '/fes-schedule.html'],
+    ['Signature Programmes', '/sig-awards.html'],
+    ['Awards', '/sig-awards.html'],
+    ['Dala Khona', '/sig-dalakhona.html'],
+    ['PRO', '/sig-fakugesipro.html'],
+    ['Immersive Africa', '/sig-immersive.html'],
+    ['JAMZ', '/sig-jamz.html'],
+    ['Pitchathon', '/sig-pitchathon.html'],
+    ['About', '/about.html'],
+    ['Venues', '/discover/venues.html'],
+    ['Partners', '/discover/partners.html'],
+    ['Resources', '/discover/resources.html'],
+    ['Archive', '/discover/archive.html'],
+  ];
+  links.forEach(function(l){
+    var a = document.createElement('a');
+    a.href = l[1]; a.textContent = l[0];
+    drawer.appendChild(a);
+  });
+  var ticketLink = document.createElement('a');
+  ticketLink.href = '/tickets.html';
+  ticketLink.className = 'drawer-tickets';
+  ticketLink.textContent = 'GET TICKETS';
+  drawer.appendChild(ticketLink);
+  document.body.appendChild(drawer);
+
+  toggle.addEventListener('click', function(){
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
+  });
+})();
+</script>
+
 </body>
 </html>

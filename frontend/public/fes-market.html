@@ -23,13 +23,27 @@
     .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 248px 72px;width:100%;}
+    .hero-inner{
+      position:relative;z-index:3;padding:0 248px 72px;width:100%;
+      display:flex;align-items:flex-end;justify-content:space-between;
+    }
+    .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
-    .hero-logo-overlay{position:absolute;top:80px;right:248px;z-index:4;background:#fff;padding:14px 18px;}
-    .hero-logo-overlay img{height:72px;width:auto;display:block;}
+
+    /* Hero logo — bottom right, same as schedule/index: light SVG, no white box */
+    .hero-logo{
+      position:relative;z-index:4;
+      flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      align-self:center;
+    }
+    .hero-logo img{
+      height:110px;width:auto;display:block;
+      filter:brightness(0) invert(1) contrast(1.2);
+    }
 
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
@@ -88,29 +102,29 @@
     /* EXHIBITOR DETAIL — in-section overlay */
     .exhibitor-detail{
       display:none;
-      padding:0 248px 80px;
       position:relative;
     }
     .exhibitor-detail.active{display:block;}
+    .exhibitor-detail-bg{
+      position:absolute;inset:0;
+      background-size:cover;background-position:center 20%;
+    }
+    .exhibitor-detail-bg::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(105deg,rgba(10,18,48,0.88) 40%,rgba(10,18,48,0.55) 100%);
+    }
     .exhibitor-detail-inner{
       position:relative;
-      min-height:520px;
+      min-height:540px;
       overflow:hidden;
-      background-image:url('/images/radicals.f-824583338.jpg');
-      background-size:cover;
-      background-position:center;
-    }
-    .exhibitor-detail-inner::before{
-      content:'';position:absolute;inset:0;
-      background:rgba(60,40,120,0.72);
     }
     .exhibitor-detail-content{
       position:relative;z-index:2;
-      padding:56px 64px 60px;
+      padding:48px var(--band) 64px;
       display:grid;
-      grid-template-columns:1fr 1fr;
-      grid-template-rows:auto 1fr;
-      gap:0 80px;
+      grid-template-columns:1fr 260px;
+      grid-template-rows:auto auto;
+      gap:0 48px;
     }
     .exhibitor-detail-back{
       grid-column:1/-1;
@@ -125,9 +139,10 @@
     .exhibitor-detail-back:hover{color:#fff;}
     .exhibitor-detail-back svg{width:16px;height:16px;flex-shrink:0;}
     .exhibitor-detail-left{display:flex;flex-direction:column;}
-    .exhibitor-detail-title{font-size:56px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:16px;}
-    .exhibitor-detail-subtitle{font-size:20px;font-weight:400;color:rgba(255,255,255,.8);margin-bottom:40px;}
-    .exhibitor-detail-body{font-size:14px;line-height:1.8;color:rgba(255,255,255,.88);max-width:560px;}
+    .exhibitor-detail-right{display:flex;flex-direction:column;justify-content:space-between;}
+    .exhibitor-detail-title{font-size:52px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:8px;}
+    .exhibitor-detail-subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:28px;}
+    .exhibitor-detail-body{font-size:13.5px;line-height:1.72;color:rgba(255,255,255,.85);max-width:560px;}
     .exhibitor-detail-right{display:flex;flex-direction:column;}
     .exhibitor-detail-logos{display:flex;align-items:center;gap:12px;margin-bottom:36px;}
     .exhibitor-detail-logo-box{
@@ -150,9 +165,9 @@
       cursor:pointer;transition:color .2s;
     }
     .exhibitor-detail-link:hover{color:#fff;}
-    .exhibitor-detail-meta{margin-top:auto;padding-top:32px;}
-    .exhibitor-detail-meta-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;}
-    .exhibitor-detail-meta-value{font-size:28px;font-weight:900;color:#fff;margin-bottom:28px;line-height:1.1;}
+    .exhibitor-detail-meta{display:flex;flex-direction:column;gap:20px;}
+    .exhibitor-detail-meta-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:4px;}
+    .exhibitor-detail-meta-value{font-size:22px;font-weight:700;color:#fff;}
 
     /* WANT TO SPOT */
     .spot-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
@@ -164,7 +179,7 @@
     .spot-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s,border-color .22s;}
     .spot-cta-btn:hover{background:#fff;color:var(--navy);border-color:#fff}
 
-    /* PARTNERS — carousel style like immersive page */
+    /* PARTNERS — carousel style */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
     .partners-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:52px;}
     .partners-title{font-size:48px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif;}
@@ -196,12 +211,197 @@
 
     @media(max-width:900px){
       .hero-title{font-size:44px}
-      .hero-content,.market-info-section,.exhibitors-header,.exhibitors-grid,.spot-cta-content,.exhibitor-detail{padding-left:32px;padding-right:32px}
+      .hero-inner{padding-left:32px;padding-right:32px;}
+      .hero-logo{display:none;}
+      .market-info-section,.exhibitors-header,.exhibitors-grid,.spot-cta-content,.exhibitor-detail{padding-left:32px;padding-right:32px}
       .exhibitors-grid{grid-template-columns:1fr}
-      .hero-logo-overlay{right:32px;}
-      .partners-header,.partners-logos-row{padding-left:32px;padding-right:32px}
+      .partners-header{padding-left:32px;padding-right:32px}
     }
   </style>
+
+<style id="fug-global-fixes">
+/* ── HERO NAV FIX ── */
+.hero { padding-top: 58px !important; }
+body > .hero:first-child { padding-top: 58px !important; }
+
+/* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
+.btn-primary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.intro-cta,
+.network-cta,
+.section-cta,
+.challenge-cta,
+a.btn-tickets,
+button.btn-tickets,
+.btn-get-pass,
+.btn-primary-dark,
+.btn-white,
+.btn-dark,
+.cta-btn,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn) {
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, border-color 0.22s !important;
+}
+
+/* Blue hover shading on ALL buttons */
+.btn-primary:hover,
+.btn-outline-dark:hover,
+.btn-outline-white:hover,
+.hero-cta:hover,
+.btn-apply:hover,
+.btn-cta-white:hover,
+.btn-cta-filled:hover,
+.btn-learn:hover,
+a.btn-tickets:hover,
+button.btn-tickets:hover,
+.btn-get-pass:hover,
+[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
+  background: #1e3a6e !important;
+  color: #ffffff !important;
+  border-color: rgba(100,160,255,0.6) !important;
+}
+
+/* font color should always be white on hover */
+.btn-outline-dark:hover,
+.btn-outline-white:hover {
+  color: #fff !important;
+}
+
+/* ── CROSS ICON ── always allow transform ── */
+.cross-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important; height: 18px !important;
+  flex-shrink: 0 !important;
+  position: absolute !important;
+  z-index: 6 !important;
+  opacity: 0.45 !important;
+  animation: none !important;
+  transition: transform 0.1s linear !important;
+}
+.cross-icon svg { width: 100%; height: 100%; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1400px) {
+  :root { --band: 160px !important; --gutter: 160px !important; }
+}
+@media (max-width: 1200px) {
+  :root { --band: 80px !important; --gutter: 80px !important; }
+  .prizes-grid, .involved-cards { grid-template-columns: repeat(2,1fr) !important; }
+  .spotlight-grid { gap: 32px !important; }
+}
+@media (max-width: 1024px) {
+  :root { --band: 40px !important; --gutter: 40px !important; }
+  .hero-title { font-size: 40px !important; }
+  .theme-head { font-size: 30px !important; }
+  .theme-year { font-size: 36px !important; }
+  .partners-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .winners-header { padding: 0 40px 36px !important; }
+}
+@media (max-width: 768px) {
+  :root { --band: 20px !important; --gutter: 20px !important; }
+  #main-nav .nav-links-wrap { display: none !important; }
+  #main-nav .nav-mobile-toggle { display: flex !important; }
+
+  .hero-inner { flex-direction: column !important; padding: 80px 20px 40px !important; gap: 24px !important; }
+  .hero-logo { display: none !important; }
+  .hero-title { font-size: 36px !important; }
+  .hero-content { max-width: 100% !important; }
+
+  .theme-inner { padding: 40px 20px !important; }
+  .theme-head { font-size: 26px !important; }
+  .theme-year { font-size: 28px !important; }
+  .theme-dates { font-size: 22px !important; }
+  .theme-bg-img { width: 100% !important; opacity: 0.2 !important; }
+
+  .involved-cards { grid-template-columns: 1fr !important; }
+  .prizes-grid { grid-template-columns: 1fr !important; }
+  .partners-grid { grid-template-columns: 1fr !important; }
+  .spotlight-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .tweet-grid { grid-template-columns: 1fr !important; }
+  .fb-feed { grid-template-columns: 1fr !important; }
+
+  .involved-header { flex-direction: column !important; gap: 12px !important; }
+  .involved-title { font-size: 30px !important; }
+  .spotlight-title { font-size: 30px !important; }
+  .happening-title { font-size: 30px !important; }
+  .partners-title { font-size: 28px !important; }
+  .happening-header { flex-direction: column !important; gap: 16px !important; }
+  .partners-header { flex-direction: column !important; gap: 12px !important; }
+
+  /* sig pages responsive */
+  .hero-content { padding: 80px 20px 40px !important; max-width: 100% !important; }
+  .hero-logo { margin-right: 0 !important; }
+  .ia-grid, .cat-grid { grid-template-columns: 1fr !important; }
+  .faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .req-header, .faq-right-header { flex-direction: column !important; gap: 12px !important; }
+  .winners-header { padding: 0 20px 24px !important; }
+  .winners-strip-outer { margin: 0 !important; }
+  .prog-cards { grid-template-columns: 1fr !important; }
+  .team-grid { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* discover pages */
+  .content-band { padding-left: 20px !important; padding-right: 20px !important; }
+  .arch-grid, .venues-grid, .resource-grid { grid-template-columns: 1fr !important; }
+  .partners-inner .partners-grid { grid-template-columns: 1fr !important; }
+
+  /* sig-jamz specific */
+  .faq-layout { grid-template-columns: 1fr !important; }
+
+  /* nav mobile */
+  #main-nav { height: 58px !important; }
+  .cross-icon[style*="left:200px"] { left: 16px !important; }
+  .cross-icon[style*="right:200px"] { right: 16px !important; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 28px !important; }
+  .theme-head { font-size: 22px !important; }
+  .btn-row { flex-direction: column !important; }
+  .team-grid { grid-template-columns: 1fr !important; }
+  .fug-sig-strip-inner { justify-content: flex-start !important; }
+}
+
+/* ── NAV MOBILE HAMBURGER ── */
+#main-nav .nav-mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  color: #fff; padding: 8px; margin-left: auto; margin-right: 16px;
+  flex-direction: column; gap: 5px; align-items: center; justify-content: center;
+}
+#main-nav .nav-mobile-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; transition: transform 0.3s, opacity 0.3s;
+}
+#mobile-nav-drawer {
+  display: none; position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,18,50,0.98); z-index: 999;
+  flex-direction: column; padding: 24px 24px;
+  overflow-y: auto;
+}
+#mobile-nav-drawer.open { display: flex; }
+#mobile-nav-drawer a {
+  color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'InterDisplay', sans-serif;
+}
+#mobile-nav-drawer a:hover { color: #fff; }
+#mobile-nav-drawer .drawer-tickets {
+  margin-top: 24px; border: 1.5px solid rgba(255,255,255,0.4);
+  text-align: center; padding: 14px; font-weight: 700;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+</style>
+
 </head>
 <body>
 <script src="nav.js"></script>
@@ -210,17 +410,20 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:100px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:100px;right:200px;animation-delay:1.4s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:40px;right:200px;animation-delay:.7s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-  <div class="hero-logo-overlay">
-    <img src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival"/>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Market</p>
-    <h1 class="hero-title">Explore our 2026<br>marketplace</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-    <p class="hero-date">07 — 12.10.2026</p>
+  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Market</p>
+      <h1 class="hero-title">Explore our 2026<br>marketplace</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-date">07 — 12.10.2026</p>
+    </div>
+    <div class="hero-logo">
+      <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/>
+    </div>
   </div>
 </section>
 
@@ -244,8 +447,8 @@
 
 <!-- MARKET INFO -->
 <section class="market-info-section reveal">
-  <div class="cross-icon" style="top:24px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="market-info-top">
     <h2 class="market-info-title">Fak'ugesi Market</h2>
     <a class="market-info-link" href="programme.html">View 2026 programme →</a>
@@ -255,10 +458,10 @@
 
 <!-- EXHIBITORS -->
 <section class="exhibitors-section reveal" id="exhibitors-section">
-  <div class="cross-icon" style="top:24px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;animation-delay:1.2s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;animation-delay:.6s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;animation-delay:1.8s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
 
   <!-- Cards view -->
   <div id="exhibitors-cards-view">
@@ -329,6 +532,11 @@
   <!-- Detail view (in-section) -->
   <div class="exhibitor-detail" id="exhibitor-detail">
     <div class="exhibitor-detail-inner">
+      <div class="exhibitor-detail-bg" id="exhibitor-detail-bg"></div>
+      <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
       <div class="exhibitor-detail-content">
         <button class="exhibitor-detail-back" id="exhibitor-detail-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -342,20 +550,28 @@
           <p class="exhibitor-detail-body" id="ed-body"></p>
         </div>
         <div class="exhibitor-detail-right">
-          <div class="exhibitor-detail-logos">
-            <div class="exhibitor-detail-logo-box">
-              <img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Organisation"/>
+          <div>
+            <div class="exhibitor-detail-logos">
+              <div class="exhibitor-detail-logo-box">
+                <img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Organisation"/>
+              </div>
+              <div class="exhibitor-detail-badge" id="ed-badge"></div>
             </div>
-            <div class="exhibitor-detail-badge" id="ed-badge"></div>
+            <div class="exhibitor-detail-links" id="ed-links"></div>
           </div>
-          <div class="exhibitor-detail-links" id="ed-links"></div>
           <div class="exhibitor-detail-meta">
-            <p class="exhibitor-detail-meta-label">Viewing Dates</p>
-            <p class="exhibitor-detail-meta-value" id="ed-dates"></p>
-            <p class="exhibitor-detail-meta-label">Market Type</p>
-            <p class="exhibitor-detail-meta-value" id="ed-type"></p>
-            <p class="exhibitor-detail-meta-label">Location</p>
-            <p class="exhibitor-detail-meta-value" id="ed-location"></p>
+            <div>
+              <p class="exhibitor-detail-meta-label">Viewing Dates</p>
+              <p class="exhibitor-detail-meta-value" id="ed-dates"></p>
+            </div>
+            <div>
+              <p class="exhibitor-detail-meta-label">Market Type</p>
+              <p class="exhibitor-detail-meta-value" id="ed-type"></p>
+            </div>
+            <div>
+              <p class="exhibitor-detail-meta-label">Location</p>
+              <p class="exhibitor-detail-meta-value" id="ed-location"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -367,8 +583,8 @@
 <section class="spot-cta-section reveal">
   <div class="spot-cta-bg"></div>
   <div class="spot-cta-overlay"></div>
-  <div class="cross-icon" style="top:24px;left:200px;animation-delay:0s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;animation-delay:1.1s;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="spot-cta-content">
     <h2 class="spot-cta-title">Want to a spot at Fak'ugesi Market?</h2>
     <p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
@@ -399,7 +615,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* MARKET PARTNERS — carousel like immersive page */
+/* MARKET PARTNERS CAROUSEL */
 const marketPartners = [
   { img:'/images/logos/expo/goethe.svg', name:'Goethe Institut' },
   { img:'/images/logos/tshimologong/logo_tshimologong_dark.svg', name:'Tshimologong' },
@@ -436,16 +652,19 @@ const EXHIBITOR_DATA = Array(8).fill(null).map((_, i) => ({
   links: ['Visit Maputo Fast Forward website →', 'View more info →']
 }));
 
-/* CARD CLICK — full section expand like image 2 */
+/* CARD CLICK */
 const exhibitorsSection  = document.getElementById('exhibitors-section');
 const cardsView          = document.getElementById('exhibitors-cards-view');
 const detailView         = document.getElementById('exhibitor-detail');
 const detailBack         = document.getElementById('exhibitor-detail-back');
+const detailBg           = document.getElementById('exhibitor-detail-bg');
 const marketInfoSection  = document.querySelector('.market-info-section');
 
 document.querySelectorAll('.exhibitor-card[data-id]').forEach(card => {
   card.addEventListener('click', () => {
     const d = EXHIBITOR_DATA[parseInt(card.dataset.id)] || EXHIBITOR_DATA[0];
+    const cardImg = card.querySelector('.exhibitor-card-img img');
+    const imgSrc = cardImg ? cardImg.src : '/images/radicals.f-824583338.jpg';
     document.getElementById('ed-title').textContent = d.title;
     document.getElementById('ed-subtitle').textContent = d.subtitle;
     document.getElementById('ed-body').textContent = d.body;
@@ -455,25 +674,22 @@ document.querySelectorAll('.exhibitor-card[data-id]').forEach(card => {
     document.getElementById('ed-badge').textContent = d.badge;
     const linksEl = document.getElementById('ed-links');
     linksEl.innerHTML = d.links.map(l => `<span class="exhibitor-detail-link">${l}</span>`).join('');
-    // Hide the market info section title area and cards, show only detail
+    detailBg.style.backgroundImage = `url('${imgSrc}')`;
     if(marketInfoSection) marketInfoSection.style.display = 'none';
     cardsView.style.display = 'none';
     detailView.classList.add('active');
-    detailView.style.padding = '0';
-    // Make detail fill the whole section space
     exhibitorsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
 detailBack.addEventListener('click', () => {
   detailView.classList.remove('active');
-  detailView.style.padding = '';
   cardsView.style.display = '';
   if(marketInfoSection) marketInfoSection.style.display = '';
   exhibitorsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
-/* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
+/* Cross icon scroll spin — identical to index.html */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){
@@ -505,5 +721,61 @@ detailBack.addEventListener('click', () => {
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
+
+<script>
+/* Mobile nav drawer */
+(function(){
+  var nav = document.getElementById('main-nav');
+  if (!nav || document.getElementById('fug-mobile-toggle')) return;
+  
+  var toggle = document.createElement('button');
+  toggle.id = 'fug-mobile-toggle';
+  toggle.className = 'nav-mobile-toggle';
+  toggle.setAttribute('aria-label','Menu');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(toggle);
+
+  var drawer = document.createElement('div');
+  drawer.id = 'mobile-nav-drawer';
+  var links = [
+    ['Home', '/index.html'],
+    ['Festival Programme', '/programme.html'],
+    ['Expo', '/fes-expo.html'],
+    ['Market', '/fes-market.html'],
+    ['Schedule', '/fes-schedule.html'],
+    ['Signature Programmes', '/sig-awards.html'],
+    ['Awards', '/sig-awards.html'],
+    ['Dala Khona', '/sig-dalakhona.html'],
+    ['PRO', '/sig-fakugesipro.html'],
+    ['Immersive Africa', '/sig-immersive.html'],
+    ['JAMZ', '/sig-jamz.html'],
+    ['Pitchathon', '/sig-pitchathon.html'],
+    ['About', '/about.html'],
+    ['Venues', '/discover/venues.html'],
+    ['Partners', '/discover/partners.html'],
+    ['Resources', '/discover/resources.html'],
+    ['Archive', '/discover/archive.html'],
+  ];
+  links.forEach(function(l){
+    var a = document.createElement('a');
+    a.href = l[1]; a.textContent = l[0];
+    drawer.appendChild(a);
+  });
+  var ticketLink = document.createElement('a');
+  ticketLink.href = '/tickets.html';
+  ticketLink.className = 'drawer-tickets';
+  ticketLink.textContent = 'GET TICKETS';
+  drawer.appendChild(ticketLink);
+  document.body.appendChild(drawer);
+
+  toggle.addEventListener('click', function(){
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
+  });
+})();
+</script>
+
 </body>
 </html>

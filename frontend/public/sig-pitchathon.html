@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Pitchathon • Fak'ugesi Festival 2026</title>
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -12,24 +12,35 @@
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#d4e600;}
-    html{scroll-behavior:smooth}
-    body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
+    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#d4e600;--cross-inset-x:200px;--cross-inset-y:16px;}
+    html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden;width:100%}
+    body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden;width:100%;position:relative}
 
     .announcement-bar,.global-announcement,.site-announcement,.promo-bar,.premiere-bar,.festival-bar,[data-announcement],[data-promo]{display:none!important}
 
     /* STATIC CROSS ICONS – no animation, imported from the static version */
+    .cross-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
+      opacity: 0.45; animation: none !important; transition: none !important;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
+    /* HERO */
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear;}
     .cross-icon svg{width:100%;height:100%}
 
     /* ── HERO ── */
 .hero {
   position: relative; width: 100%; min-height: 490px; overflow: hidden;
-  display: grid;  /* Changed from flex to grid */
+  display: grid;
   grid-template-rows: calc(var(--cross-inset-y, 16px) + 9px) 1fr calc(var(--cross-inset-y, 16px) + 9px);
   grid-template-columns: calc(var(--cross-inset-x, 200px) + 9px) 1fr calc(var(--cross-inset-x, 200px) + 9px);
-  align-items: stretch;  /* Changed from flex-end */
-  padding-top: 0;  /* Removed padding-top */
+  align-items: stretch;
+  padding-top: 0;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -41,37 +52,34 @@
 @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(10,18,48,.75) 42%, transparent 80%);  /* Adjusted to match awards */
+  background: linear-gradient(105deg, rgba(10,18,48,.75) 42%, transparent 80%);
 }
 .hero-content {
   grid-row: 2; grid-column: 2; position: relative; z-index: 4;
-  display: flex; flex-direction: row;  /* Changed from block to row flex */
-  justify-content: space-between;  /* Space between text and image */
-  align-items: flex-start;  /* Align to top */
-  gap: 48px;  /* Gap between text and image */
-  padding: 32px 0;  /* Adjusted padding */
+  display: flex; flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 32px 0;
   animation: fadeUp .9s ease both;
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 .hero-text-wrapper {
-  flex: 1;  /* Take available space */
-  min-width: 0;  /* Prevent overflow */
+  flex: 1;
+  min-width: 0;
 }
 .hero-eyebrow {
   font-size: 11px; font-weight: 600; letter-spacing: .14em;
   text-transform: uppercase; opacity: .75; margin-bottom: 14px;
 }
-.hero-title {
-  font-size: 52px; font-weight: 900; line-height: 1.0;
-  margin-bottom: 20px; max-width: 100%;  /* Removed max-width constraint */
-}
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
 .hero-body {
-  font-size: 13px; line-height: 1.72; max-width: 510px;  /* Removed max-width constraint */
+  font-size: 13px; line-height: 1.72; max-width: 510px;
   opacity: .85; margin-bottom: 16px;
 }
 .hero-dates {
   font-size: 24px; font-weight: 700; letter-spacing: .02em;
-  margin-bottom: 20px;  /* Kept margin for button spacing */
+  margin-bottom: 20px;
 }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 10px;
@@ -83,11 +91,10 @@
 }
 .hero-cta:hover { background: #fff; color: var(--navy); }
 .hero-signia {
-  flex-shrink: 0;  /* Don't shrink */
+  flex-shrink: 0;
   width: auto;
-  max-width: 280px;  /* Limit image width */
-  padding-top: 38px;  /* Align with heading text */
-  /* Removed absolute positioning */
+  max-width: 280px;
+  padding-top: 38px;
 }
 .hero-signia img {
   display: block; width: 100%; height: auto;
@@ -101,7 +108,7 @@
     .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── INTRO ── */
+    /* INTRO */
     .intro-section{background:var(--white);padding:72px 248px;position:relative}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
     .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
@@ -110,14 +117,14 @@
     .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
     .intro-cta:hover{background:var(--navy);color:#fff}
 
-    /* ── SECTION SHARED ── */
+    /* SECTION SHARED */
     .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
     .section-title{font-size:38px;font-weight:900}
     .section-title.dark-text{color:var(--dark-text)}
     .section-title.light-text{color:#fff}
     .section-link{font-size:12px;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;opacity:.7}
 
-    /* ── 2025 WINNERS — awards style scrolling strip ── */
+    /* WINNERS */
     .winners-section{background:var(--white);padding:60px 0 0;position:relative;overflow:hidden;}
     .winners-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px 36px;}
     .winners-title{font-size:50px;font-weight:600;color:var(--dark-text);}
@@ -139,7 +146,7 @@
     .crosses-row{display:flex;justify-content:space-between;padding:20px 200px;}
     .crosses-row svg{width:18px;height:18px;}
 
-    /* ── JURY ── */
+    /* JURY */
     .jury-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
     .jury-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .jury-card{border:1px solid rgba(26,39,68,.12);overflow:hidden}
@@ -149,13 +156,12 @@
     .jury-role{font-size:12px;color:var(--body-gray);margin-bottom:6px}
     .jury-country{font-size:11px;color:var(--body-gray);opacity:.7}
 
-    /* ── PRIZES — FLIP CARDS matching image 2 ── */
+    /* PRIZES */
     .prizes-section{background:var(--navy);color:#fff;padding:72px 248px;position:relative}
     .prizes-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
     .prizes-title{font-size:44px;font-weight:900;color:#fff}
     .prizes-apply-link{font-size:12px;color:#fff;text-decoration:underline;font-weight:600;letter-spacing:.05em;opacity:.8;cursor:pointer}
     .prizes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-
     .prize-flip{perspective:900px;height:220px}
     .prize-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
     .prize-flip:hover .prize-flip-inner{transform:rotateY(180deg)}
@@ -168,7 +174,7 @@
     .prize-fact-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px}
     .prize-fact{font-size:13px;line-height:1.65;color:#fff;font-style:italic}
 
-    /* ── FAQ — PRO STYLE ── */
+    /* FAQ */
     .faq-section{background:var(--white);padding:64px 248px;position:relative}
     .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start}
     .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px}
@@ -176,7 +182,6 @@
     .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px}
     .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer}
     .faq-items-wrap{display:flex;flex-direction:column}
-
     .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background 0.28s ease}
     .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15)}
     .faq-item:hover{background:var(--navy)}
@@ -190,7 +195,7 @@
     .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0}
     .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px}
 
-    /* ── PARTNERS ── */
+    /* PARTNERS */
     .partners-section{background:var(--lavender);padding:72px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
     .partners-title{font-size:42px;font-weight:600;color:var(--dark-text)}
@@ -205,6 +210,232 @@
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1023px) {
+      :root { --cross-inset-x: 24px; --cross-inset-y: 12px; }
+      .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
+      .hero-content { flex-direction: column; align-items: flex-start; gap: 28px; padding-top: 110px !important; padding-bottom: 60px !important; }
+      .hero-text-wrapper { width: 100%; }
+      .hero-title { font-size: 36px; max-width: 100%; }
+      .hero-body { max-width: 100%; }
+      .hero-signia { padding-top: 0; max-width: 200px; }
+      .intro-section { padding: 48px 24px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+      .intro-title { font-size: 32px; }
+      .winners-header { padding: 0 24px 24px; flex-wrap: wrap; gap: 16px; }
+      .winners-title { font-size: 32px; }
+      .winner-card { flex: 0 0 280px; }
+      .winner-img { width: 280px; height: 280px; }
+      .jury-section { padding: 48px 24px; }
+      .jury-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .prizes-section { padding: 48px 24px; }
+      .prizes-title { font-size: 32px; }
+      .prizes-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .faq-section { padding: 48px 24px 56px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+      .faq-title-left { font-size: 36px; }
+      .faq-intro-text { max-width: 100%; }
+      .faq-right-hdr { justify-content: flex-start; }
+      .partners-section { padding: 48px 24px; }
+      .partners-title { font-size: 32px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1440px) {
+      #mobileHamburgerBar{ display: none !important; }
+      .mobile-logo { display: none !important; }
+      .mobile-menu { display: none !important; }
+      #main-nav { background: transparent !important; border-bottom-color: transparent !important; }
+      #main-nav::before { opacity: 0 !important; }
+      #main-nav.scrolled { background: rgba(10,18,50,0.96) !important; backdrop-filter: blur(12px) !important; }
+      #main-nav.scrolled::before { opacity: 1 !important; }
+      .hero-content { padding-top: 110px !important; padding-bottom: 60px !important; }
+      .hero-title { font-size: 42px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 28px; }
+      .hero-dates { font-size: 18px; }
+      .hero-cta { padding: 9px 18px; font-size: 9px; margin-right: 8px; }
+      .hero-signia { max-width: 150px; }
+      .intro-title { font-size: 28px; }
+      .winners-title { font-size: 28px; }
+      .winner-card { flex: 0 0 260px; }
+      .winner-img { width: 260px; height: 260px; }
+      .winner-name { font-size: 16px; }
+      .jury-grid { grid-template-columns: 1fr; }
+      .prizes-title { font-size: 28px; }
+      .prizes-grid { grid-template-columns: 1fr; gap: 16px; }
+      .prize-flip { height: auto; min-height: 220px; }
+      .faq-title-left { font-size: 28px; }
+      .faq-q-text { font-size: 14px; }
+      .partners-title { font-size: 28px; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .partner-logo-box { padding: 32px 24px; }
+      .ticker-track span { font-size: 10px; padding: 0 20px; }
+      
+      /* Hide original nav.js injected nav on mobile */
+      #main-nav { display: none !important; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 24px; line-height: 1.2; }
+      .hero-dates { font-size: 16px; }
+      .hero-body { font-size: 12px; }
+      .hero-signia { max-width: 120px; }
+      .intro-title { font-size: 24px; }
+      .winners-title { font-size: 24px; }
+      .winner-card { flex: 0 0 220px; }
+      .winner-img { width: 220px; height: 220px; }
+      .prizes-title { font-size: 24px; }
+      .faq-title-left { font-size: 24px; }
+      .partners-title { font-size: 24px; }
+    }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
+    }
+
+    /* Hamburger Menu - only on ≤768px */
+    @media (max-width: 768px) {
+      .mobile-hamburger-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2000;
+        background: transparent;
+        backdrop-filter: blur(0px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+        transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      }
+      .mobile-hamburger-bar.scrolled {
+        background: rgba(10,18,50,0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .mobile-logo {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+        color: white;
+        text-decoration: none;
+      }
+      .hamburger-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 6px 0;
+        z-index: 2001;
+        position: relative;
+      }
+      .hamburger-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+      .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+      .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(10,18,50,0.98);
+        backdrop-filter: blur(16px);
+        z-index: 1999;
+        padding: 80px 24px 32px;
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border-left: 1px solid rgba(255,255,255,0.1);
+        overflow-y: auto;
+      }
+      .mobile-menu.open { right: 0; }
+      .mobile-menu a {
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover { color: white; }
+      .mobile-menu .mobile-tickets {
+        margin-top: 20px;
+        background: #1a2744;
+        border: 1.5px solid rgba(255,255,255,0.38);
+        text-align: center;
+        border-radius: 0;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-size: 12px;
+        padding: 12px;
+      }
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s;
+      }
+      .mobile-overlay.active { opacity: 1; visibility: visible; }
+      body.menu-open { overflow: hidden; }
+    }
+
+    /* Footer Responsive Overrides */
+    @media (max-width: 768px) {
+      #fug-social-band {
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 16px 20px !important;
+        text-align: center !important;
+      }
+      #fug-footer .fug-footer-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 32px !important;
+        text-align: center !important;
+        padding: 32px 20px !important;
+      }
+      #fug-footer .fug-footer-right {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+      #fug-footer .fug-footer-cross { display: none !important; }
+      #fug-footer .fug-footer-logo { height: 45px !important; }
+      #fug-footer .fug-footer-copy { text-align: center !important; }
+    }
+    @media (max-width: 480px) {
+      #fug-social-band { padding: 12px 16px !important; }
+      #fug-social-band p { font-size: 12px !important; }
+      #fug-footer .fug-footer-inner { padding: 24px 16px !important; }
+      #fug-footer .fug-footer-brand { font-size: 12px !important; }
+      #fug-footer .fug-footer-addr { font-size: 11px !important; }
+      #fug-footer a { font-size: 11px !important; }
+    }
   </style>
 
 <style id="fug-global-fixes">
@@ -392,25 +623,41 @@ button.btn-tickets:hover,
 
 </head>
 <body>
+
+<!-- Mobile Hamburger Menu (only visible on ≤768px) -->
+<div class="mobile-hamburger-bar" id="mobileHamburgerBar">
+  <a href="/index.html" class="mobile-logo">Fak'ugesi</a>
+  <button class="hamburger-btn" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/index.html">Home</a>
+  <a href="/programme.html">Festival Programme</a>
+  <a href="/sig-awards.html">Signature Programmes</a>
+  <a href="/about.html">Discover</a>
+  <a href="/tickets.html" class="mobile-tickets">GET TICKETS</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
 <script src="nav.js"></script>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <!-- Cross icons will be injected by the SIG-STRIP script -->
   <div class="hero-content">
-    <div class="hero-text-wrapper">  <!-- NEW: wrapper for text content -->
+    <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Pitchathon</p>
       <h1 class="hero-title">High Stakes, Shark<br>Tank Style Pitches</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br>Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-dates">07 — 12.10.2026</p>
-      <div class="hero-cta-wrapper">  <!-- NEW: wrapper for buttons -->
+      <div class="hero-cta-wrapper">
         <a class="hero-cta" href="tickets.html" id="pitch-cta1">Get Tickets</a>
         <a class="hero-cta" href="programme.html">View Programme</a>
       </div>
     </div>
-    <div class="hero-signia">  <!-- MOVED: inside hero-content as flex child -->
+    <div class="hero-signia">
       <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
     </div>
   </div>
@@ -430,7 +677,6 @@ button.btn-tickets:hover,
 
 <!-- INTRO -->
 <section class="intro-section reveal">
-  <!-- Static cross icons: no animation-delay, no pulse -->
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="intro-grid">
@@ -443,9 +689,8 @@ button.btn-tickets:hover,
   </div>
 </section>
 
-<!-- 2025 WINNERS — awards style scrolling strip -->
+<!-- 2025 WINNERS -->
 <section class="winners-section reveal">
-  <!-- Static cross icons: removed all animation-delay attributes -->
   <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
@@ -465,7 +710,6 @@ button.btn-tickets:hover,
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
-      <!-- duplicate -->
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
       <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
@@ -475,7 +719,7 @@ button.btn-tickets:hover,
 
   <div class="crosses-row">
     <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   </div>
 </section>
 
@@ -484,7 +728,7 @@ button.btn-tickets:hover,
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div
+  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="section-header">
     <h2 class="section-title dark-text">2026 Pitchathon Jury</h2>
     <a class="section-link" style="color:var(--navy)" href="programme.html">View 2026 programme</a>
@@ -499,7 +743,7 @@ button.btn-tickets:hover,
   </div>
 </section>
 
-<!-- 2026 PRIZES — FLIP CARDS -->
+<!-- 2026 PRIZES -->
 <section class="prizes-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -510,7 +754,7 @@ button.btn-tickets:hover,
   <div class="prizes-grid" id="prizesGrid"></div>
 </section>
 
-<!-- FAQ — PRO STYLE -->
+<!-- FAQ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -541,7 +785,7 @@ button.btn-tickets:hover,
   </div>
   <div class="partners-grid">
     <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
     <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
@@ -549,14 +793,55 @@ button.btn-tickets:hover,
 <script src="footer.js"></script>
 
 <script>
-/* ── REVEAL ── */
+/* Hamburger Menu Toggle + Scroll Background */
+(function() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileBar = document.getElementById('mobileHamburgerBar');
+  
+  if (hamburgerBtn && mobileMenu && mobileOverlay) {
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      } else {
+        mobileMenu.classList.add('open');
+        mobileOverlay.classList.add('active');
+        hamburgerBtn.classList.add('active');
+        document.body.classList.add('menu-open');
+      }
+    }
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', toggleMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+  if (mobileBar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) mobileBar.classList.add('scrolled');
+      else mobileBar.classList.remove('scrolled');
+    });
+  }
+})();
+
+/* REVEAL */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── PRIZES FLIP CARDS ── */
+/* PRIZES FLIP CARDS */
 const prizeData = [
   { cat: 'WIC PGDIP Winner', amount: 'R20,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'South Africa has the most technology startups per capita on the African continent, with Johannesburg being the primary startup hub.' },
   { cat: 'Audience Choice Award', amount: 'R15,000', desc: 'Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.', fact: 'The African startup ecosystem raised over USD 5 billion in venture funding in 2022 — a 3x increase from just three years prior.' },
@@ -570,22 +855,11 @@ const prizesGrid = document.getElementById('prizesGrid');
 prizeData.forEach(p => {
   const wrapper = document.createElement('div');
   wrapper.className = 'prize-flip';
-  wrapper.innerHTML = `
-    <div class="prize-flip-inner">
-      <div class="prize-front">
-        <p class="prize-card-category">${p.cat}</p>
-        <p class="prize-amount">${p.amount}</p>
-        <p class="prize-desc">${p.desc}</p>
-      </div>
-      <div class="prize-back">
-        <span class="prize-fact-label">Did you know</span>
-        <p class="prize-fact">${p.fact}</p>
-      </div>
-    </div>`;
+  wrapper.innerHTML = `<div class="prize-flip-inner"><div class="prize-front"><p class="prize-card-category">${p.cat}</p><p class="prize-amount">${p.amount}</p><p class="prize-desc">${p.desc}</p></div><div class="prize-back"><span class="prize-fact-label">Did you know</span><p class="prize-fact">${p.fact}</p></div></div>`;
   prizesGrid.appendChild(wrapper);
 });
 
-/* ── FAQ BUILD + PRO ACCORDION ── */
+/* FAQ BUILD + PRO ACCORDION */
 const faqData = [
   { q: 'Who can apply to Pitchathon?', a: 'Any African digital entrepreneur, startup, or creative business is eligible to apply. Applicants must be based on the African continent or be of African origin, and the venture must have been operational for no more than five years.' },
   { q: 'What is the submission deadline?', a: 'Applications close at 23:59 SAST on 15 August 2026. Late submissions will not be accepted under any circumstances.' },
@@ -599,12 +873,7 @@ const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');
   item.className = 'faq-item' + (i === 0 ? ' open' : '');
-  item.innerHTML = `
-    <button style="margin-left: 10px;" class="faq-q-btn" aria-expanded="${i === 0}">
-      <span class="faq-q-text">${faq.q}</span>
-      <span class="faq-t-icon" style="margin-right: 10px;">${i === 0 ? '×' : '+'}</span>
-    </button>
-    <div style="margin-left: 10px;" class="faq-ans">${faq.a}</div>`;
+  item.innerHTML = `<button style="margin-left: 10px;" class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon" style="margin-right: 10px;">${i === 0 ? '×' : '+'}</span></button><div style="margin-left: 10px;" class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {
@@ -621,7 +890,7 @@ faqData.forEach((faq, i) => {
   faqContainer.appendChild(item);
 });
 
-/* ── SPINNING ELECTRIC SPARKS (unchanged) ── */
+/* SPINNING ELECTRIC SPARKS */
 (function() {
   const btn = document.getElementById('pitch-cta1');
   if (!btn) return;
@@ -636,16 +905,7 @@ faqData.forEach((faq, i) => {
     const x = cx + Math.cos(angle * Math.PI/180) * r * (rect.width / rect.height);
     const y = cy + Math.sin(angle * Math.PI/180) * r;
     const bolt = document.createElement('span');
-    bolt.style.cssText = `
-      position:fixed;pointer-events:none;z-index:9999;
-      left:${x}px;top:${y}px;
-      width:${6+Math.random()*8}px;height:2px;
-      background:linear-gradient(to right,rgba(100,200,255,0.9),rgba(255,255,255,0.5));
-      border-radius:1px;
-      transform:rotate(${angle}deg);
-      box-shadow:0 0 6px rgba(100,200,255,0.8);
-      transition:opacity 0.35s ease,transform 0.35s ease;
-    `;
+    bolt.style.cssText = `position:fixed;pointer-events:none;z-index:9999;left:${x}px;top:${y}px;width:${6+Math.random()*8}px;height:2px;background:linear-gradient(to right,rgba(100,200,255,0.9),rgba(255,255,255,0.5));border-radius:1px;transform:rotate(${angle}deg);box-shadow:0 0 6px rgba(100,200,255,0.8);transition:opacity 0.35s ease,transform 0.35s ease;`;
     document.body.appendChild(bolt);
     requestAnimationFrame(() => requestAnimationFrame(() => {
       bolt.style.opacity = '0';
@@ -658,9 +918,10 @@ faqData.forEach((faq, i) => {
   btn.addEventListener('mouseleave', () => clearInterval(si));
 })();
 
-/* ── SIG-STRIP INJECT (preserved, but cross-icon overrides already static) ── */
+/* SIG-STRIP INJECT + HERO CROSSES */
 (function(){
   const styleEl = document.createElement('style');
+  styleEl.textContent = `.fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow-x:auto;position:relative;z-index:20;}.fug-sig-strip-inner{display:flex;align-items:stretch;justify-content:center;}.fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 38px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s;flex-shrink:0;}.fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}.fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}.fug-sig-item img{max-width:88px;max-height:40px;object-fit:contain;opacity:0.65;}.fug-sig-item:hover img{opacity:1;}`;
   styleEl.textContent = `
     .hero{min-height:490px!important;align-items:center!important;padding-top:0!important;}
     .hero-content{padding-top:110px!important;padding-bottom:60px!important;}
@@ -678,45 +939,35 @@ faqData.forEach((faq, i) => {
     .fug-sig-label{line-height:1;}
   `;
   document.head.appendChild(styleEl);
-  const PAGES=[
-    {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
-    {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
-    {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},
-    {label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
-    {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
-  ];
-  const currentPage=window.location.pathname.split('/').pop()||'';
-  function buildStrip(){
-    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
-    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-    PAGES.forEach(p=>{
-      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
-      if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
-    });
-    strip.appendChild(inner); return strip;
-  }
-  function run(){
-    // remove any animated cross icons from hero before adding static ones
-    document.querySelector('.hero')?.querySelectorAll('.cross-icon').forEach(el=>el.remove());
-    const CROSS_SVG=`<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
-    // add static cross icons (no animation, no delay)
-    [{style:'top:16px;left:200px;'},{style:'top:16px;right:200px;'},{style:'bottom:16px;left:200px;'},{style:'bottom:16px;right:200px;'}].forEach(({style})=>{
-      const el=document.createElement('div'); el.className='cross-icon'; el.style.cssText = style; el.innerHTML=CROSS_SVG;
-      document.querySelector('.hero')?.appendChild(el);
-    });
-    const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
-    if(ticker) ticker.after(buildStrip());
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
-})();
-</script>
 
-<script>
-/* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
+  function patchHeroCrosses() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
+    const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
+    const positions = [
+      { style: 'top:16px;left:200px;', delay: '0s' },
+      { style: 'top:16px;right:200px;', delay: '0.7s' },
+      { style: 'bottom:16px;left:200px;', delay: '1.4s' },
+      { style: 'bottom:16px;right:200px;', delay: '2.1s' },
+    ];
+    positions.forEach(({ style, delay }) => {
+      const el = document.createElement('div');
+      el.className = 'cross-icon';
+      el.style.cssText = style;
+      el.innerHTML = CROSS_SVG;
+      hero.appendChild(el);
+    });
+  }
+
+  const pages=[{label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg'},{label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg'},{label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg'},{label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg'},{label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg'},{label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg'}];
+  const strip=document.createElement('nav'); strip.className='fug-sig-strip'; const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
+  pages.forEach(p=>{const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href; const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.height='38px'; const label=document.createElement('span'); label.textContent=p.label; a.appendChild(img); a.appendChild(label); inner.appendChild(a);});
+  strip.appendChild(inner); const ticker=document.querySelector('.ticker-wrapper'); if(ticker) ticker.after(strip);
+  patchHeroCrosses();
+})();
+
+/* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){

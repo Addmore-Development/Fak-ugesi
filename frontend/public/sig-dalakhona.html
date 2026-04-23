@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Dala Khona • Fak'ugesi Festival 2026</title>
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -12,12 +12,24 @@
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#7ed321;}
-    html{scroll-behavior:smooth}
-    body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
+    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--accent:#7ed321;--cross-inset-x:200px;--cross-inset-y:16px;}
+     html { scroll-behavior: smooth; }
+    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
+    .cross-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
+      opacity: 0.45; animation: none !important; transition: none !important;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+    @keyframes crossPulse {
+      0%,100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.4); }
+    }
     .announcement-bar,.global-announcement,.site-announcement,.promo-bar,.premiere-bar,.festival-bar,[data-announcement],[data-promo]{display:none!important}
 
+    
+    /* HERO */
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear;}
     .cross-icon svg{width:100%;height:100%}
 
@@ -27,7 +39,6 @@
   display: grid;
   grid-template-rows: calc(var(--cross-inset-y, 16px) + 9px) 1fr calc(var(--cross-inset-y, 16px) + 9px);
   grid-template-columns: calc(var(--cross-inset-x, 200px) + 9px) 1fr calc(var(--cross-inset-x, 200px) + 9px);
-  /* Changed from flex to grid to match awards layout */
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -40,7 +51,6 @@
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(105deg, rgba(10,18,48,.75) 42%, transparent 80%);
-  /* Adjusted overlay to match awards style */
 }
 .hero-content {
   grid-row: 2; grid-column: 2; position: relative; z-index: 4;
@@ -50,33 +60,13 @@
   gap: 48px;
   padding: 32px 0;
   animation: fadeUp .9s ease both;
-  /* Changed to row flex with space-between like awards */
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-.hero-text-wrapper {
-  flex: 1;
-  min-width: 0;
-  /* New wrapper for text content */
-}
-.hero-eyebrow {
-  font-size: 11px; font-weight: 600; letter-spacing: .14em;
-  text-transform: uppercase; opacity: .75; margin-bottom: 14px;
-}
-.hero-title {
-  font-size: 56px; font-weight: 900; line-height: 1.0;
-  margin-bottom: 20px; max-width: 100%;
-  /* Removed max-width constraint to fill space */
-}
-.hero-body {
-  font-size: 13px; line-height: 1.72; max-width: 510px;
-  opacity: .85; margin-bottom: 16px;
-  /* Removed max-width constraint to fill space */
-}
-.hero-dates {
-  font-size: 28px; font-weight: 700; letter-spacing: .02em;
-  margin-bottom: 8px;
-  /* Added margin for spacing before button */
-}
+.hero-text-wrapper { flex: 1; min-width: 0; }
+.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .75; margin-bottom: 14px; }
+.hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
+.hero-body { font-size: 13px; line-height: 1.72; max-width: 510px; opacity: .85; margin-bottom: 16px; }
+.hero-dates { font-size: 28px; font-weight: 700; letter-spacing: .02em; margin-bottom: 8px; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 10px;
   border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -85,32 +75,20 @@
   text-decoration: none; margin-top: 20px;
   transition: background .22s, color .22s;
 }
-/* #main-nav .nav-tickets:hover{} */
 .hero-cta:hover { background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
-.hero-signia {
-  flex-shrink: 0;
-  width: auto;
-  max-width: 280px;
-  padding-top: 38px;
-  /* Changed from absolute positioning to flex child with top padding for alignment */
-}
-.hero-signia img {
-  display: block; width: 100%; height: auto;
-  max-height: 120px; object-fit: contain;
-  /* Made responsive */
-}
-    /* ── TICKER ── */
+.hero-signia { flex-shrink: 0; width: auto; max-width: 280px; padding-top: 38px; }
+.hero-signia img { display: block; width: 100%; height: auto; max-height: 120px; object-fit: contain; }
+
+    /* TICKER */
     .ticker-bar{background:var(--navy);overflow:hidden;position:relative;padding:14px 0}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;text-transform:uppercase;padding:0 36px}
     .ticker-sep{opacity:.4;margin-left:4px}
 
-    /* ── INTRO ── */
+    /* INTRO */
     .intro-section{background:var(--white);padding:72px 248px;position:relative}
     .intro-title{font-size:44px;font-weight:900;color:var(--dark-text);line-height:1.05}
-    .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
-    .intro-cta:hover{background:var(--navy);color:#fff}
     .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .info-card{border:1px solid rgba(26,39,68,.15);padding:28px 24px;background:#fff;position:relative}
     .card-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);opacity:.6;margin-bottom:8px}
@@ -118,13 +96,13 @@
     .card-head{font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:12px;line-height:1.2}
     .card-body{font-size:13px;line-height:1.65;color:var(--dark-text)}
 
-    /* ── DEVELOPER NETWORK ── */
+    /* DEVELOPER NETWORK */
     .dev-network-section{position:relative;min-height:500px;overflow:hidden;display:flex;align-items:flex-end;}
     .dev-network-bg{position:absolute;inset:0;background-image:url('../images/0A9A8876.jpg');background-size:cover;background-position:center;filter:brightness(0.55);}
     .dev-network-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.75) 55%,transparent 85%);}
     .dev-network-inner{position:relative;z-index:3;padding:52px 248px;width:100%;display:flex;justify-content:space-between;align-items:flex-end;}
 
-    /* ── 2025 HIGHLIGHTS ── */
+    /* HIGHLIGHTS */
     .highlights-section{background:var(--white);position:relative;color:var(--dark-text)}
     .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:44px;position:relative; padding:72px 248px 0;}
     .highlights-title{font-size:52px;font-weight:900;color:var(--dark-text);line-height:1.0}
@@ -142,7 +120,7 @@
     .hl-card-title{font-size:20px;font-weight:700;color:var(--dark-text);margin-bottom:10px;line-height:1.2}
     .hl-card-desc{font-size:13px;line-height:1.65;color:var(--body-gray)}
 
-    /* ── FAQ — FAKUGESIPRO STYLE with hover color + font shift ── */
+    /* FAQ */
     .faq-section{background:var(--white);padding:64px 248px 64px;position:relative;}
     .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start;}
     .faq-title{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px;font-family:'InterDisplay',sans-serif;}
@@ -150,15 +128,12 @@
     .faq-right-header{display:flex;justify-content:flex-end;margin-bottom:8px;}
     .faq-apply-link{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:0.06em;cursor:pointer;}
     .faq-items-wrap{display:flex;flex-direction:column;}
-
-    /* Each faq item — hover: navy bg, white text, font switches to Georgia */
     .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background 0.28s ease;}
     .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15);}
     .faq-item:hover{background:var(--navy);}
     .faq-item:hover .faq-q-text{color:var(--white);font-family:'Georgia',serif;}
     .faq-item:hover .faq-t-icon{color:var(--white);}
     .faq-item:hover .faq-ans{color:rgba(255,255,255,.8);}
-
     .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif;}
     .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color 0.28s ease, font-family 0.1s;max-width:calc(100% - 40px); margin-left: 10px;}
     .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color 0.28s ease,transform 0.3s ease; margin-right: 15px;}
@@ -166,7 +141,7 @@
     .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0; margin-left: 10px;}
     .faq-item.open .faq-ans{max-height:300px;padding-bottom:22px;}
 
-    /* ── PARTNERS ── */
+    /* PARTNERS */
     .partners-section{background:var(--lavender);padding:72px 248px;position:relative}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
     .partners-title{font-size:38px;font-weight:900;color:var(--dark-text)}
@@ -176,11 +151,247 @@
     .partner-logo-box{background:#fff;border:1px solid rgba(26,39,68,.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow .3s,transform .3s;margin-bottom:16px}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,.13);transform:translateY(-5px)}
     .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
-    .partner-logo-box img.keep-color{filter:none;}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65}
 
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1023px) {
+      :root { --cross-inset-x: 24px; --cross-inset-y: 12px; }
+      .hero { grid-template-columns: 20px 1fr 20px; min-height: auto; }
+      .hero-content { flex-direction: column; align-items: flex-start; gap: 28px; padding-top: 110px !important; padding-bottom: 60px !important; }
+      .hero-text-wrapper { width: 100%; }
+      .hero-title { font-size: 36px; max-width: 100%; }
+      .hero-body { max-width: 100%; }
+      .hero-signia { padding-top: 0; max-width: 200px; }
+      .intro-section { padding: 48px 24px; }
+      .intro-title { font-size: 36px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .dev-network-inner { padding: 48px 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
+      .dev-network-inner div:last-child { align-self: flex-end; }
+      .highlights-header { padding: 48px 24px 0; flex-wrap: wrap; gap: 16px; }
+      .highlights-title { font-size: 36px; }
+      .hl-card { flex: 0 0 300px; }
+      .hl-card-img { width: 300px; height: 300px; }
+      .faq-section { padding: 48px 24px 56px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+      .faq-title { font-size: 36px; }
+      .faq-intro { max-width: 100%; }
+      .faq-right-header { justify-content: flex-start; }
+      .partners-section { padding: 48px 24px; }
+      .partners-title { font-size: 32px; }
+      .partners-grid { gap: 20px; }
+      .partner-card { width: calc(50% - 10px); }
+    }
+
+    @media (min-width: 769px) and (max-width: 1440px) {
+      #mobileHamburgerBar{ display: none !important; }
+      .mobile-logo { display: none !important; }
+      .mobile-menu { display: none !important; }
+      #main-nav {
+        background: transparent !important;
+        border-bottom-color: transparent !important;
+      }
+      #main-nav::before {
+        opacity: 0 !important;
+      }
+      #main-nav.scrolled {
+        background: rgba(10,18,50,0.96) !important;
+        backdrop-filter: blur(12px) !important;
+      }
+      #main-nav.scrolled::before {
+        opacity: 1 !important;
+      }
+      .hero-content {
+        padding: 40px 0 60px;
+        padding-top: 110px !important;
+        padding-bottom: 60px !important;
+      }
+      .hero-title {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 28px; }
+      .hero-dates { font-size: 22px; }
+      .hero-cta { padding: 9px 20px; font-size: 10px; }
+      .hero-signia { max-width: 150px; }
+      .intro-title { font-size: 28px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+      .highlights-title { font-size: 28px; }
+      .hl-card { flex: 0 0 260px; }
+      .hl-card-img { width: 260px; height: 260px; }
+      .hl-card-title { font-size: 18px; }
+      .faq-title { font-size: 28px; }
+      .faq-q-text { font-size: 14px; }
+      .partners-title { font-size: 28px; }
+      .partner-card { width: 100%; max-width: 100%; }
+      .ticker-item { font-size: 10px; padding: 0 20px; }
+      
+      /* Hide original nav.js injected nav on mobile */
+      #main-nav { display: none !important; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 24px; line-height: 1.2; }
+      .hero-dates { font-size: 18px; }
+      .hero-body { font-size: 12px; }
+      .hero-signia { max-width: 120px; }
+      .intro-title { font-size: 24px; }
+      .intro-section p { font-size: 13px; }
+      .card-head { font-size: 18px; }
+      .highlights-title { font-size: 24px; }
+      .hl-card { flex: 0 0 220px; }
+      .hl-card-img { width: 220px; height: 220px; }
+      .faq-title { font-size: 24px; }
+      .partners-title { font-size: 24px; }
+    }
+
+    /* Hamburger Menu - only on ≤768px */
+    @media (max-width: 768px) {
+      .mobile-hamburger-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2000;
+        background: transparent;
+        backdrop-filter: blur(0px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+        transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      }
+      .mobile-hamburger-bar.scrolled {
+        background: rgba(10,18,50,0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .mobile-logo {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+        color: white;
+        text-decoration: none;
+      }
+      .hamburger-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 6px 0;
+        z-index: 2001;
+        position: relative;
+      }
+      .hamburger-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+      .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+      .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(10,18,50,0.98);
+        backdrop-filter: blur(16px);
+        z-index: 1999;
+        padding: 80px 24px 32px;
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border-left: 1px solid rgba(255,255,255,0.1);
+        overflow-y: auto;
+      }
+      .mobile-menu.open { right: 0; }
+      .mobile-menu a {
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover { color: white; }
+      .mobile-menu .mobile-tickets {
+        margin-top: 20px;
+        background: #1a2744;
+        border: 1.5px solid rgba(255,255,255,0.38);
+        text-align: center;
+        border-radius: 0;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-size: 12px;
+        padding: 12px;
+      }
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s;
+      }
+      .mobile-overlay.active { opacity: 1; visibility: visible; }
+      body.menu-open { overflow: hidden; }
+    }
+
+    /* Footer Responsive Overrides */
+    @media (max-width: 768px) {
+      #fug-social-band {
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 16px 20px !important;
+        text-align: center !important;
+      }
+      #fug-footer .fug-footer-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 32px !important;
+        text-align: center !important;
+        padding: 32px 20px !important;
+      }
+      #fug-footer .fug-footer-right {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+      #fug-footer .fug-footer-cross { display: none !important; }
+      #fug-footer .fug-footer-logo { height: 45px !important; }
+      #fug-footer .fug-footer-copy { text-align: center !important; }
+    }
+    @media (max-width: 480px) {
+      #fug-social-band { padding: 12px 16px !important; }
+      #fug-social-band p { font-size: 12px !important; }
+      #fug-footer .fug-footer-inner { padding: 24px 16px !important; }
+      #fug-footer .fug-footer-brand { font-size: 12px !important; }
+      #fug-footer .fug-footer-addr { font-size: 11px !important; }
+      #fug-footer a { font-size: 11px !important; }
+    }
+    @media (max-width: 360px) {
+      .hero-title { font-size: 22px; }
+    }
   </style>
 
 <style id="fug-global-fixes">
@@ -368,21 +579,37 @@ button.btn-tickets:hover,
 
 </head>
 <body>
+
+<!-- Mobile Hamburger Menu (only visible on ≤768px) -->
+<div class="mobile-hamburger-bar" id="mobileHamburgerBar">
+  <a href="/index.html" class="mobile-logo">Fak'ugesi</a>
+  <button class="hamburger-btn" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/index.html">Home</a>
+  <a href="/programme.html">Festival Programme</a>
+  <a href="/sig-awards.html">Signature Programmes</a>
+  <a href="/about.html">Discover</a>
+  <a href="/tickets.html" class="mobile-tickets">GET TICKETS</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
 <script src="nav.js"></script>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <!-- Cross icons will be injected by the SIG-STRIP script, keep them commented or remove -->
   <div class="hero-content">
-    <div class="hero-text-wrapper">  <!-- NEW: wrapper for text content -->
+    <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Dala Khona</p>
       <h1 class="hero-title">African Gaming<br>Arcade</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
       <p class="hero-dates">07 — 12.10.2026</p>
       <a class="hero-cta" href="tickets.html" id="dala-cta">Get Tickets</a>
     </div>
-    <div class="hero-signia">  <!-- MOVED: now inside hero-content as flex child -->
+    <div class="hero-signia">
       <img src="../images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
     </div>
   </div>
@@ -408,27 +635,15 @@ button.btn-tickets:hover,
 <section class="intro-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;flex-wrap:wrap;gap:16px;">
     <h2 class="intro-title">What is Dala Khona</h2>
     <a href="programme.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;white-space:nowrap;margin-top:8px;">View 2026 programme</a>
   </div>
   <p style="font-size:14px;line-height:1.78;color:var(--dark-text);max-width:900px;margin-bottom:40px;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
   <div class="cards-grid">
-    <div class="info-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">01</div></div>
-      <div class="card-head">Intermediaries<br>&amp; Policymakers</div>
-      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p>
-    </div>
-    <div class="info-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">02</div></div>
-      <div class="card-head">Entrepreneurs<br>&amp; Investors</div>
-      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p>
-    </div>
-    <div class="info-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">03</div></div>
-      <div class="card-head">Creative<br>Organisations</div>
-      <p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p>
-    </div>
+    <div class="info-card"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">01</div></div><div class="card-head">Intermediaries<br>&amp; Policymakers</div><p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p></div>
+    <div class="info-card"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">02</div></div><div class="card-head">Entrepreneurs<br>&amp; Investors</div><p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p></div>
+    <div class="info-card"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;"><div class="card-label">Nam sit amet</div><div class="card-num">03</div></div><div class="card-head">Creative<br>Organisations</div><p class="card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi.</p></div>
   </div>
 </section>
 
@@ -438,13 +653,11 @@ button.btn-tickets:hover,
   <div class="dev-network-overlay"></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-
   <div class="dev-network-inner">
     <div style="max-width:520px;">
       <h2 style="font-size:48px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:24px;">Join our developer<br>network</h2>
       <p style="font-size:13px;line-height:1.72;color:rgba(255,255,255,.85);margin-bottom:28px;">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
-      <a href="#" style="display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .22s,color .22s;" onmouseover="this.style.background='#fff';this.style.color='#1a2744'" onmouseout="this.style.background='transparent';this.style.color='#fff'">GET INVOLVED</a>
-    </div>
+      <a class="hero-cta" href="#" id="dala-cta">GET INVOLVED</a>    </div>
     <a href="programme.html" style="font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;opacity:.8;">View 2026 programme</a>
   </div>
 </section>
@@ -463,7 +676,6 @@ button.btn-tickets:hover,
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Workshop</div><div class="hl-card-title">Dev Bootcamp Sessions</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Exhibition</div><div class="hl-card-title">African Indie Showcase</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Panel</div><div class="hl-card-title">Future of African Gaming</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
-      <!-- Duplicate set -->
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Activation</div><div class="hl-card-title">Joburg Games Fest Pop-up</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Workshop</div><div class="hl-card-title">Dev Bootcamp Sessions</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
       <div class="hl-card"><div class="hl-card-img"><img src="../images/image00057.jpeg" alt="Joburg Games Fest Pop-up"/></div><div class="hl-card-body"><div class="hl-card-tag">Exhibition</div><div class="hl-card-title">African Indie Showcase</div><p class="hl-card-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p></div></div>
@@ -472,13 +684,12 @@ button.btn-tickets:hover,
   </div>
 </section>
 
-<!-- FAQ — FAKUGESIPRO STYLE -->
+<!-- FAQ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-
   <div class="faq-layout">
     <div class="faq-left">
       <h2 class="faq-title">FAQ</h2>
@@ -486,12 +697,8 @@ button.btn-tickets:hover,
       <a href="programme.html" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;letter-spacing:.06em;display:inline-block;margin-top:20px;">View 2026 programme</a>
     </div>
     <div>
-      <div class="faq-right-header">
-        <a class="faq-apply-link" href="tickets.html">Get Tickets</a>
-      </div>
-      <div class="faq-items-wrap" id="faqAccordion">
-        <!-- built by JS -->
-      </div>
+      <div class="faq-right-header"><a class="faq-apply-link" href="tickets.html">Get Tickets</a></div>
+      <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
 </section>
@@ -506,7 +713,7 @@ button.btn-tickets:hover,
   </div>
   <div class="partners-grid">
     <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
     <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
@@ -516,14 +723,55 @@ button.btn-tickets:hover,
 <script src="fakugesi-cross-patch.js"></script>
 
 <script>
-/* ── REVEAL ── */
+/* Hamburger Menu Toggle + Scroll Background */
+(function() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileBar = document.getElementById('mobileHamburgerBar');
+  
+  if (hamburgerBtn && mobileMenu && mobileOverlay) {
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      } else {
+        mobileMenu.classList.add('open');
+        mobileOverlay.classList.add('active');
+        hamburgerBtn.classList.add('active');
+        document.body.classList.add('menu-open');
+      }
+    }
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', toggleMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+  if (mobileBar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) mobileBar.classList.add('scrolled');
+      else mobileBar.classList.remove('scrolled');
+    });
+  }
+})();
+
+/* REVEAL */
 const revealEls = document.querySelectorAll('.reveal');
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
 }, { threshold: 0.06 });
 revealEls.forEach(el => revealIO.observe(el));
 
-/* ── FAQ DATA + BUILD — PRO STYLE ── */
+/* FAQ DATA + BUILD */
 const faqData = [
   { q: 'Who can attend Dala Khona?', a: 'Dala Khona is open to everyone interested in African gaming and digital creativity. Whether you are a developer, student, industry professional, or gaming enthusiast, you are welcome to join.' },
   { q: 'Do I need a ticket to attend?', a: 'Yes, tickets are required for entry. Early bird tickets are available until September 2026. You can purchase tickets through our website or at the venue.' },
@@ -532,17 +780,11 @@ const faqData = [
   { q: 'Is there food available at the venue?', a: 'Yes, there will be food vendors and coffee stations available throughout the festival. Vegetarian, vegan, and halal options will be available.' },
   { q: 'Are there networking opportunities?', a: 'Yes, we host dedicated networking sessions, industry meetups, and social events. All ticket holders are welcome to attend these events.' },
 ];
-
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');
   item.className = 'faq-item' + (i === 0 ? ' open' : '');
-  item.innerHTML = `
-    <button class="faq-q-btn" aria-expanded="${i === 0}">
-      <span class="faq-q-text">${faq.q}</span>
-      <span class="faq-t-icon">${i === 0 ? '×' : '+'}</span>
-    </button>
-    <div class="faq-ans">${faq.a}</div>`;
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {
@@ -559,11 +801,10 @@ faqData.forEach((faq, i) => {
   faqContainer.appendChild(item);
 });
 
-/* ── RAINBOW SPARK LIGHTNING on hero CTA ── */
-
-/* ── SIG-STRIP INJECT ── */
+/* SIG-STRIP INJECT */
 (function(){
   const styleEl = document.createElement('style');
+  styleEl.textContent = `.fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow-x:auto;position:relative;z-index:20;}.fug-sig-strip-inner{display:flex;align-items:stretch;justify-content:center;}.fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 38px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s;flex-shrink:0;}.fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}.fug-sig-item:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.95);}.fug-sig-item img{max-width:88px;max-height:40px;object-fit:contain;opacity:0.65;}.fug-sig-item:hover img{opacity:1;}`;
   styleEl.textContent = `
     .hero{min-height:490px!important;align-items:center!important;padding-top:0!important;}
     .hero-content{padding-top:110px!important;padding-bottom:60px!important;}
@@ -581,38 +822,32 @@ faqData.forEach((faq, i) => {
     .fug-sig-label{line-height:1;}
   `;
   document.head.appendChild(styleEl);
-  const PAGES=[
-    {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
-    {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
-    {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},
-    {label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
-    {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
-  ];
-  const currentPage=window.location.pathname.split('/').pop()||'';
-  function buildStrip(){
-    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
-    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-    PAGES.forEach(p=>{
-      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
-      if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
+  
+  function patchHeroCrosses() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
+    const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
+    const positions = [
+      { style: 'top:16px;left:200px;', delay: '0s' },
+      { style: 'top:16px;right:200px;', delay: '0.7s' },
+      { style: 'bottom:16px;left:200px;', delay: '1.4s' },
+      { style: 'bottom:16px;right:200px;', delay: '2.1s' },
+    ];
+    positions.forEach(({ style, delay }) => {
+      const el = document.createElement('div');
+      el.className = 'cross-icon';
+      el.style.cssText = style;
+      el.innerHTML = CROSS_SVG;
+      hero.appendChild(el);
     });
-    strip.appendChild(inner); return strip;
   }
-  function run(){
-    document.querySelector('.hero')?.querySelectorAll('.cross-icon').forEach(el=>el.remove());
-    const CROSS_SVG=`<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
-    [{style:'top:16px;left:200px;',delay:'0s'},{style:'top:16px;right:200px;',delay:'0.7s'},{style:'bottom:16px;left:200px;',delay:'1.4s'},{style:'bottom:16px;right:200px;',delay:'2.1s'}].forEach(({style,delay})=>{
-      const el=document.createElement('div'); el.className='cross-icon'; el.style.cssText=style; el.innerHTML=CROSS_SVG;
-      document.querySelector('.hero')?.appendChild(el);
-    });
-    const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
-    if(ticker) ticker.after(buildStrip());
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
+  
+  const pages=[{label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg'},{label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg'},{label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg'},{label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg'},{label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg'},{label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg'}];
+  const strip=document.createElement('nav'); strip.className='fug-sig-strip'; const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
+  pages.forEach(p=>{const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href; const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.height='38px'; const label=document.createElement('span'); label.textContent=p.label; a.appendChild(img); a.appendChild(label); inner.appendChild(a);});
+  strip.appendChild(inner); const ticker=document.querySelector('.ticker-bar'); if(ticker) ticker.after(strip);
+  patchHeroCrosses();
 })();
 </script>
 

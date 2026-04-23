@@ -175,29 +175,6 @@
   // Insert at end of body
   document.body.insertAdjacentHTML('beforeend', html);
 
-  // Scroll spin for footer crosses (coordinates with page-level cross icons)
-  (function(){
-    let lastY = window.scrollY;
-    let rot = 0;
-    let ticking = false;
-    function onScroll(){
-      if(!ticking){
-        requestAnimationFrame(function(){
-          const y = window.scrollY;
-          const delta = y - lastY;
-          if(Math.abs(delta) > 0){
-            rot += delta > 0 ? 15 : -15;
-            document.querySelectorAll('.fug-footer-cross').forEach(el => {
-              el.style.transform = 'rotate(' + rot + 'deg)';
-            });
-          }
-          lastY = y;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll, {passive:true});
-  })();
+  // Footer crosses participate in the same scroll-spin as page cross-icons (handled by page scripts)
 
 })();

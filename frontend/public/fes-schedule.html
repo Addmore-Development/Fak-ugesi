@@ -88,7 +88,7 @@
 
     /* ── DAY SELECTOR ── */
     .day-selector {
-      background: linear-gradient(180deg, #4a5899 0%, #5a6aaa 60%, #7080bb 100%);
+      background: linear-gradient(180deg, #3a4a88 0%, #4a5899 40%, #5a6aaa 70%, #6878bb 100%);
       position: relative;
       padding: 28px var(--band);
     }
@@ -127,7 +127,7 @@
 
     /* ── SCHEDULE TABLE SECTION ── */
     .schedule-section {
-      background: var(--lavender);
+      background: linear-gradient(180deg, #1a2462 0%, #1e2d6a 30%, var(--lavender) 100%);
       position: relative;
     }
 
@@ -342,99 +342,6 @@
     }
     .crosses-row svg { width: 18px; height: 18px; }
 
-    /* ── SPEAKER BIO MODAL ── */
-    .speaker-modal-overlay {
-      position: fixed; inset: 0; z-index: 900;
-      background: rgba(10,18,48,0.55);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .speaker-modal-overlay.open { opacity: 1; pointer-events: auto; }
-
-    .speaker-modal {
-      position: fixed; inset: 0; z-index: 901;
-      pointer-events: none; opacity: 0;
-      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1);
-      transform: translateY(20px);
-      display: flex; align-items: stretch;
-    }
-    .speaker-modal.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-
-    .speaker-modal-inner {
-      position: relative; width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-    }
-    .speaker-modal-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background-size: cover; background-position: center 20%;
-    }
-    .speaker-modal-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.88) 40%, rgba(10,18,48,0.5) 100%);
-    }
-    .speaker-modal-ticker {
-      position: relative; z-index: 10;
-      background: var(--navy); overflow: hidden; padding: 10px 0;
-      flex-shrink: 0;
-    }
-    .speaker-modal-ticker-track {
-      display: inline-flex; animation: tickerScroll 36s linear infinite; white-space: nowrap;
-    }
-    .speaker-modal-ticker-track span {
-      padding: 0 28px; font-size: 11.5px; font-weight: 600;
-      color: rgba(255,255,255,0.9); letter-spacing: 0.04em;
-    }
-    .speaker-modal-close {
-      position: absolute; top: 64px; right: 200px; z-index: 20;
-      background: none; border: 1.5px solid rgba(255,255,255,0.35);
-      color: #fff; cursor: pointer; width: 38px; height: 38px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; transition: border-color 0.2s, background 0.2s;
-    }
-    .speaker-modal-close:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
-    .speaker-modal-cross {
-      position: absolute; z-index: 15; width: 18px; height: 18px;
-    }
-    .speaker-modal-body {
-      position: relative; z-index: 10;
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      grid-template-rows: auto 1fr auto;
-      padding: 40px 200px 56px;
-      gap: 0 48px;
-    }
-    .speaker-modal-header { grid-column: 1; grid-row: 1; }
-    .speaker-modal-name {
-      font-size: 52px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px;
-    }
-    .speaker-modal-role { font-size: 16px; color: rgba(255,255,255,0.75); }
-    .speaker-modal-org-area {
-      grid-column: 2; grid-row: 1;
-      display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
-    }
-    .speaker-modal-org-logo { display: flex; align-items: center; gap: 10px; }
-    .speaker-modal-org-logo img { height: 32px; width: auto; object-fit: contain; }
-    .speaker-modal-org-name { font-size: 18px; font-weight: 700; color: #fff; }
-    .speaker-modal-org-link {
-      font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none;
-      letter-spacing: 0.04em; display: block;
-    }
-    .speaker-modal-org-link:hover { color: #fff; text-decoration: underline; }
-    .speaker-modal-bio {
-      grid-column: 1; grid-row: 3;
-      font-size: 13.5px; line-height: 1.72; color: rgba(255,255,255,0.85);
-      max-width: 560px;
-    }
-    .speaker-modal-meta {
-      grid-column: 2; grid-row: 3;
-      display: flex; flex-direction: column; gap: 20px; justify-content: flex-end;
-    }
-    .speaker-modal-meta-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.38); margin-bottom: 4px;
-    }
-    .speaker-modal-meta-value { font-size: 22px; font-weight: 700; color: #fff; }
 
     /* ── SPEAKER DETAIL FULL SECTION ── */
     .speaker-detail-section {
@@ -450,13 +357,14 @@
     }
     .speaker-detail-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.88) 40%, rgba(10,18,48,0.5) 100%);
+      background: linear-gradient(105deg, rgba(10,18,48,0.88) 40%, rgba(10,18,48,0.55) 100%);
     }
     .speaker-detail-inner {
       position: relative; z-index: 2;
-      padding: 56px var(--band) 64px;
+      padding: 48px var(--band) 64px;
       display: grid;
       grid-template-columns: 1fr 260px;
+      grid-template-rows: auto auto;
       gap: 0 48px;
     }
     .speaker-detail-back {
@@ -471,14 +379,23 @@
     }
     .speaker-detail-back:hover { color: #fff; }
     .speaker-detail-back svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .speaker-detail-left { display: flex; flex-direction: column; }
+    .speaker-detail-right { display: flex; flex-direction: column; justify-content: space-between; }
     .speaker-detail-name {
       font-size: 52px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px;
     }
     .speaker-detail-role { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 28px; }
-    .speaker-detail-event-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .speaker-detail-event-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .speaker-detail-event-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .speaker-detail-event-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
     .speaker-detail-bio { font-size: 13.5px; line-height: 1.72; color: rgba(255,255,255,0.85); max-width: 560px; }
-    .speaker-detail-meta { display: flex; flex-direction: column; gap: 20px; justify-content: flex-end; padding-top: 80px; }
+    .speaker-detail-org-area { margin-bottom: 24px; }
+    .speaker-detail-org-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .speaker-detail-org-link {
+      font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none;
+      letter-spacing: 0.04em; display: block; transition: color 0.2s;
+    }
+    .speaker-detail-org-link:hover { color: #fff; text-decoration: underline; }
+    .speaker-detail-meta { display: flex; flex-direction: column; gap: 20px; }
     .speaker-detail-meta-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 4px; }
     .speaker-detail-meta-value { font-size: 22px; font-weight: 700; color: #fff; }
 
@@ -1026,6 +943,10 @@
 <!-- ── SPEAKER DETAIL FULL SECTION ── -->
 <section class="speaker-detail-section" id="speakerDetailSection">
   <div class="speaker-detail-bg" id="speakerDetailBg"></div>
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
   <div class="speaker-detail-inner">
     <button class="speaker-detail-back" id="speakerDetailBack">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1033,14 +954,17 @@
       </svg>
       Back to schedule
     </button>
-    <div>
+    <div class="speaker-detail-left">
       <div class="speaker-detail-name" id="sdName"></div>
       <div class="speaker-detail-role" id="sdRole"></div>
       <div class="speaker-detail-event-title" id="sdEventTitle"></div>
       <div class="speaker-detail-event-sub" id="sdEventSub"></div>
       <div class="speaker-detail-bio" id="sdBio"></div>
     </div>
-    <div class="speaker-detail-meta" id="sdMeta"></div>
+    <div class="speaker-detail-right">
+      <div class="speaker-detail-org-area" id="sdOrgArea"></div>
+      <div class="speaker-detail-meta" id="sdMeta"></div>
+    </div>
   </div>
 </section>
 
@@ -1123,73 +1047,75 @@
   </div>
 </section>
 
-<!-- ── SPEAKER BIO MODAL ── -->
-<div class="speaker-modal-overlay" id="speakerModalOverlay"></div>
-<div class="speaker-modal" id="speakerModal" role="dialog" aria-modal="true">
-  <div class="speaker-modal-inner">
-    <div class="speaker-modal-bg" id="speakerModalBg"></div>
-    <div class="speaker-modal-ticker">
-      <div class="speaker-modal-ticker-track">
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-        <span>Get your tickets now →</span><span>Get your tickets now →</span>
-      </div>
-    </div>
-    <button class="speaker-modal-close" id="speakerModalClose" aria-label="Close">✕</button>
-    <div class="speaker-modal-cross" style="top:54px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-    <div class="speaker-modal-cross" style="top:54px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-    <div class="speaker-modal-cross" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-    <div class="speaker-modal-cross" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-    <div class="speaker-modal-body">
-      <div class="speaker-modal-header">
-        <div class="speaker-modal-name" id="speakerModalName"></div>
-        <div class="speaker-modal-role" id="speakerModalRole"></div>
-      </div>
-      <div class="speaker-modal-org-area" id="speakerModalOrgArea"></div>
-      <div style="grid-column:1/3;grid-row:2;"></div>
-      <div class="speaker-modal-bio" id="speakerModalBio"></div>
-      <div class="speaker-modal-meta" id="speakerModalMeta"></div>
-    </div>
-  </div>
-</div>
 
 <!-- FOOTER injected by footer.js -->
 <script src="footer.js"></script>
 
 <script>
-  // ── Cross icon scroll spin ──
-  (function(){
-    let lastY = window.scrollY;
-    let rot = 0;
-    let ticking = false;
-    function onScroll(){
-      if(!ticking){
-        requestAnimationFrame(function(){
-          const y = window.scrollY;
-          const delta = y - lastY;
-          if(Math.abs(delta) > 0){
-            rot += delta > 0 ? 15 : -15;
-            document.querySelectorAll('.cross-icon').forEach(el => {
-              el.style.transform = 'rotate(' + rot + 'deg)';
-            });
-          }
-          lastY = y;
-          ticking = false;
-        });
-        ticking = true;
-      }
+  /* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
+(function(){
+  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+  function resetRot(){
+    rot = 0;
+    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+      el.style.transition = 'transform 0.45s ease';
+      el.style.transform = 'rotate(0deg)';
+    });
+  }
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.scrollY, delta = y - lastY;
+        if(Math.abs(delta) > 0){
+          rot += delta > 0 ? 15 : -15;
+          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+            el.style.transition = 'transform 0.1s linear';
+            el.style.transform = 'rotate('+rot+'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(resetRot, 300);
+      });
+      ticking = true;
     }
-    window.addEventListener('scroll', onScroll, {passive:true});
-  })();
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
   // ── Reveal on scroll ──
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.07 });
   revealEls.forEach(el => io.observe(el));
+
+  // ── Speaker data ──
+  const SPEAKERS = {
+    'Pierre Saal': {
+      name: 'Pierre Saal',
+      role: 'AI Specialist',
+      bio: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.',
+      img: '/images/pierresaal-astronaute.jpg',
+      org: 'Elessar Labs', orgLink: '#', orgLinkLabel: 'Visit Elessar Labs website →',
+      designation: 'Founder', nationality: 'France',
+    },
+    'Adam Pantanowitz': {
+      name: 'Adam Pantanowitz',
+      role: 'Researcher & Innovator',
+      bio: 'Adam Pantanowitz is a researcher and innovator working at the intersection of technology and society. His work explores the transformative potential of AI within African creative economies.',
+      img: '/images/Adam-Pantanowitztp.png',
+      org: 'Tshimologong Precinct', designation: 'Director', nationality: 'South Africa',
+    },
+    'Masilakhe Njomane': {
+      name: 'Masilakhe Njomane',
+      role: 'AI Researcher',
+      bio: 'Masilakhe Njomane is an AI researcher whose work focuses on the intersection of machine learning and African cultural contexts.',
+      img: '/images/Copy_of__MGL3584.jpg',
+      org: 'Independent Research', designation: 'Researcher', nationality: 'South Africa',
+    },
+  };
 
   // ── Day selector ──
   const dayCards = document.querySelectorAll('.day-card');
@@ -1212,16 +1138,37 @@
     });
   });
 
-  // ── Speaker full-section expand on row click ──
+  // ── Row hover: show speaker background image ──
+  document.querySelectorAll('.sched-row').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      const img = row.dataset.speakerImg;
+      if (img) {
+        speakerBg.style.backgroundImage = `url('${img}')`;
+        speakerBg.classList.add('visible');
+        schedSection.classList.add('dark-mode');
+      }
+    });
+    row.addEventListener('mouseleave', () => {
+      // Only clear if no row is actively selected
+      if (!document.querySelector('.sched-row.active-row')) {
+        speakerBg.classList.remove('visible');
+        schedSection.classList.remove('dark-mode');
+        speakerBg.style.backgroundImage = '';
+      }
+    });
+  });
+
+  // ── Speaker full-section expand on row click (inline like expo/market) ──
   const speakerDetailSection = document.getElementById('speakerDetailSection');
   const speakerDetailBg      = document.getElementById('speakerDetailBg');
   const speakerDetailBack    = document.getElementById('speakerDetailBack');
-  const sdName      = document.getElementById('sdName');
-  const sdRole      = document.getElementById('sdRole');
-  const sdEventTitle = document.getElementById('sdEventTitle');
-  const sdEventSub  = document.getElementById('sdEventSub');
-  const sdBio       = document.getElementById('sdBio');
-  const sdMeta      = document.getElementById('sdMeta');
+  const sdName               = document.getElementById('sdName');
+  const sdRole               = document.getElementById('sdRole');
+  const sdEventTitle         = document.getElementById('sdEventTitle');
+  const sdEventSub           = document.getElementById('sdEventSub');
+  const sdBio                = document.getElementById('sdBio');
+  const sdMeta               = document.getElementById('sdMeta');
+  const daySelectorEl        = document.querySelector('.day-selector');
 
   document.querySelectorAll('.sched-row').forEach(row => {
     row.addEventListener('click', (e) => {
@@ -1233,11 +1180,21 @@
       const data = SPEAKERS[speakerName] || {};
 
       speakerDetailBg.style.backgroundImage = img ? `url('${img}')` : '';
-      sdName.textContent = data.name || speakerName;
-      sdRole.textContent = data.role || '';
+      sdName.textContent      = data.name || speakerName;
+      sdRole.textContent      = data.role || '';
       sdEventTitle.textContent = eventTitleEl ? eventTitleEl.textContent : '';
       sdEventSub.textContent   = eventSubEl   ? eventSubEl.textContent   : '';
-      sdBio.textContent = data.bio || '';
+      sdBio.textContent        = data.bio || '';
+
+      // Org info
+      const orgArea = document.getElementById('sdOrgArea');
+      if (orgArea) {
+        orgArea.innerHTML = '';
+        if (data.org) {
+          orgArea.innerHTML = `<div class="speaker-detail-org-name">${data.org}</div>`;
+          if (data.orgLink) orgArea.innerHTML += `<a class="speaker-detail-org-link" href="${data.orgLink}">${data.orgLinkLabel||'Visit website →'}</a>`;
+        }
+      }
 
       sdMeta.innerHTML = '';
       [
@@ -1250,8 +1207,9 @@
         );
       });
 
-      schedSection.style.display = 'none';
-      document.querySelector('.day-selector').style.display = 'none';
+      // Hide day selector + schedule, show detail inline
+      schedSection.style.display   = 'none';
+      daySelectorEl.style.display  = 'none';
       speakerDetailSection.classList.add('active');
       speakerDetailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
@@ -1259,133 +1217,13 @@
 
   speakerDetailBack.addEventListener('click', () => {
     speakerDetailSection.classList.remove('active');
-    schedSection.style.display = '';
-    document.querySelector('.day-selector').style.display = '';
+    schedSection.style.display  = '';
+    daySelectorEl.style.display = '';
+    // Clear hover state
+    speakerBg.classList.remove('visible');
+    schedSection.classList.remove('dark-mode');
+    speakerBg.style.backgroundImage = '';
     schedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // ── Speaker Bio Modal ──
-  const SPEAKERS = {
-    'Pierre Saal': {
-      name: 'Pierre Saal',
-      role: 'AI Specialist',
-      bio: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis.',
-      img: '/images/pierresaal-astronaute.jpg',
-      org: 'Elessar Labs', orgLink: '#', orgLinkLabel: 'Visit Elessar Labs website →',
-      designation: 'Founder', nationality: 'France',
-    },
-    'Adam Pantanowitz': {
-      name: 'Adam Pantanowitz',
-      role: 'Researcher & Innovator',
-      bio: 'Adam Pantanowitz is a researcher and innovator working at the intersection of technology and society. His work explores the transformative potential of AI within African creative economies.',
-      img: '/images/0A9A8876.jpg',
-      org: 'Tshimologong Precinct', designation: 'Director', nationality: 'South Africa',
-    },
-    'Masilakhe Njomane': {
-      name: 'Masilakhe Njomane',
-      role: 'AI Researcher',
-      bio: 'Masilakhe Njomane is an AI researcher whose work focuses on the intersection of machine learning and African cultural contexts.',
-      img: '/images/Copy_of__MGL3584.jpg',
-      org: 'Independent Research', designation: 'Researcher', nationality: 'South Africa',
-    },
-  };
-
-  const speakerModalOverlay = document.getElementById('speakerModalOverlay');
-  const speakerModal        = document.getElementById('speakerModal');
-  const speakerModalClose   = document.getElementById('speakerModalClose');
-  const speakerModalBgEl    = document.getElementById('speakerModalBg');
-  const speakerModalName    = document.getElementById('speakerModalName');
-  const speakerModalRole    = document.getElementById('speakerModalRole');
-  const speakerModalBio     = document.getElementById('speakerModalBio');
-  const speakerModalOrgArea = document.getElementById('speakerModalOrgArea');
-  const speakerModalMeta    = document.getElementById('speakerModalMeta');
-
-  function openSpeakerModal(speakerName) {
-    const data = SPEAKERS[speakerName];
-    if (!data) return;
-    speakerModalBgEl.style.backgroundImage = `url('${data.img}')`;
-    speakerModalName.textContent = data.name;
-    speakerModalRole.textContent = data.role;
-    speakerModalBio.textContent  = data.bio;
-    speakerModalOrgArea.innerHTML = '';
-    const orgLogoDiv = document.createElement('div');
-    orgLogoDiv.className = 'speaker-modal-org-logo';
-    const orgSpan = document.createElement('span');
-    orgSpan.className = 'speaker-modal-org-name';
-    orgSpan.textContent = data.org || '';
-    orgLogoDiv.appendChild(orgSpan);
-    speakerModalOrgArea.appendChild(orgLogoDiv);
-    if (data.orgLink) {
-      const link = document.createElement('a');
-      link.className = 'speaker-modal-org-link';
-      link.href = data.orgLink;
-      link.textContent = data.orgLinkLabel || 'Visit website →';
-      speakerModalOrgArea.appendChild(link);
-    }
-    speakerModalMeta.innerHTML = '';
-    [
-      { label: 'Organisation', value: data.org },
-      { label: 'Designation',  value: data.designation },
-      { label: 'Nationality',  value: data.nationality },
-    ].filter(f => f.value).forEach(f => {
-      speakerModalMeta.insertAdjacentHTML('beforeend',
-        `<div class="speaker-modal-meta-item">
-          <div class="speaker-modal-meta-label">${f.label}</div>
-          <div class="speaker-modal-meta-value">${f.value}</div>
-        </div>`
-      );
-    });
-    speakerModalOverlay.classList.add('open');
-    speakerModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeSpeakerModal() {
-    speakerModalOverlay.classList.remove('open');
-    speakerModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  speakerModalClose.addEventListener('click', closeSpeakerModal);
-  speakerModalOverlay.addEventListener('click', closeSpeakerModal);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSpeakerModal(); });
-
-  // Make speaker names clickable where SPEAKERS data exists
-  document.querySelectorAll('.sched-speakers').forEach(cell => {
-    const links = cell.querySelectorAll('a');
-    links.forEach(a => {
-      const name = a.textContent.replace(/\s*→\s*$/, '').trim();
-      if (SPEAKERS[name]) {
-        const btn = document.createElement('button');
-        btn.className = 'speaker-link';
-        btn.textContent = name;
-        btn.addEventListener('click', (e) => { e.stopPropagation(); openSpeakerModal(name); });
-        a.replaceWith(btn);
-      }
-    });
-    Object.keys(SPEAKERS).forEach(name => {
-      const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT);
-      const textNodes = [];
-      let n;
-      while ((n = walker.nextNode())) textNodes.push(n);
-      textNodes.forEach(tn => {
-        if (tn.textContent.includes(name) && tn.parentElement.tagName !== 'BUTTON' && tn.parentElement.tagName !== 'A') {
-          const parts = tn.textContent.split(name);
-          const frag = document.createDocumentFragment();
-          parts.forEach((part, i) => {
-            if (part) frag.appendChild(document.createTextNode(part));
-            if (i < parts.length - 1) {
-              const btn = document.createElement('button');
-              btn.className = 'speaker-link';
-              btn.textContent = name;
-              btn.addEventListener('click', (e) => { e.stopPropagation(); openSpeakerModal(name); });
-              frag.appendChild(btn);
-            }
-          });
-          tn.parentNode.replaceChild(frag, tn);
-        }
-      });
-    });
   });
 </script>
 

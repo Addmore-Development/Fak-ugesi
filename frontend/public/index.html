@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fak'ugesi Festival – African Digital &amp; Innovation Festival</title>
-   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
@@ -47,7 +47,6 @@
       transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
-
 
     .content-band {
       padding-left:  var(--band);
@@ -112,7 +111,6 @@
       position: relative; z-index: 3; width: 100%;
       padding: 110px var(--band) 60px;
       display: flex; align-items: center; justify-content: space-between;
-      /* animation removed — no text fall-in */
     }
     @keyframes fadeUp { from { opacity: 1; transform: translateY(0); } to { opacity: 1; transform: translateY(0); } }
     .hero-content { max-width: 420px; }
@@ -120,7 +118,7 @@
     .hero-title { font-size: 52px; font-weight: 600; line-height: 1.0; margin-bottom: 18px; }
     .hero-body { font-size: 12px; line-height: 1.7; max-width: 340px; opacity: 0.85; margin-bottom: 18px; }
     .hero-link { color: var(--white); font-size: 12px; font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
-    .hero-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; /* animation removed */ }
+    .hero-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); }
 
     /* ── TICKER ── */
@@ -140,7 +138,7 @@
       background: linear-gradient(135deg, #1a2462 0%, #2a3a8f 30%, #3a52b0 55%, #6878c8 80%, #8898d8 100%);
     }
     .theme-bg-img {
-      position: absolute; right: 0; bottom: 0; top: 0; width: 52%; height: 100%;
+      position: absolute; right: -3cm; bottom: 0; top: 0; width: 52%; height: 100%;
       background-image: url('images/cyber1.png');
       background-size: contain;
       background-position: right bottom;
@@ -344,11 +342,12 @@
     .reveal.visible { opacity: 1; transform: none; }
   </style>
 
-
+  <style>
     /* Global: no text effects on hover anywhere */
     * { -webkit-text-stroke: 0 !important; }
     a, span, p, h1, h2, h3, h4, li { transition: none !important; }
     a:hover, span:hover, p:hover, h1:hover, h2:hover, h3:hover { color: inherit !important; text-shadow: none !important; }
+  </style>
 
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-SemiBold.otf" as="font" type="font/otf" crossorigin>
@@ -689,7 +688,7 @@
       </div>
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University" />
+          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
         </div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
@@ -756,8 +755,6 @@
 })();
 </script>
 <script src="nav.js"></script>
-
-
 <script src="footer.js"></script>
 </body>
 </html>

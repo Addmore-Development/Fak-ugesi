@@ -11,7 +11,7 @@
     @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;}
+    :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
@@ -24,7 +24,7 @@
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
     .hero-inner{
-      position:relative;z-index:3;padding:0 248px 72px;width:100%;
+      position:relative;z-index:3;padding:110px var(--band) 72px;width:100%;
       display:flex;align-items:flex-end;justify-content:space-between;
     }
     .hero-content{max-width:620px;}
@@ -39,10 +39,13 @@
       flex-shrink:0;
       display:flex;align-items:center;justify-content:center;
       align-self:center;
+      background:transparent;
     }
     .hero-logo img{
       height:110px;width:auto;display:block;
       filter:brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode:screen;
+      background:transparent;
     }
 
     /* TICKER */
@@ -220,9 +223,7 @@
   </style>
 
 <style id="fug-global-fixes">
-/* ── HERO NAV FIX ── */
-.hero { padding-top: 58px !important; }
-body > .hero:first-child { padding-top: 58px !important; }
+/* ── HERO NAV FIX ── handled by hero-inner padding-top:110px */
 
 /* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
 .btn-primary,
@@ -721,61 +722,5 @@ detailBack.addEventListener('click', () => {
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
-
-<script>
-/* Mobile nav drawer */
-(function(){
-  var nav = document.getElementById('main-nav');
-  if (!nav || document.getElementById('fug-mobile-toggle')) return;
-  
-  var toggle = document.createElement('button');
-  toggle.id = 'fug-mobile-toggle';
-  toggle.className = 'nav-mobile-toggle';
-  toggle.setAttribute('aria-label','Menu');
-  toggle.innerHTML = '<span></span><span></span><span></span>';
-  nav.appendChild(toggle);
-
-  var drawer = document.createElement('div');
-  drawer.id = 'mobile-nav-drawer';
-  var links = [
-    ['Home', '/index.html'],
-    ['Festival Programme', '/programme.html'],
-    ['Expo', '/fes-expo.html'],
-    ['Market', '/fes-market.html'],
-    ['Schedule', '/fes-schedule.html'],
-    ['Signature Programmes', '/sig-awards.html'],
-    ['Awards', '/sig-awards.html'],
-    ['Dala Khona', '/sig-dalakhona.html'],
-    ['PRO', '/sig-fakugesipro.html'],
-    ['Immersive Africa', '/sig-immersive.html'],
-    ['JAMZ', '/sig-jamz.html'],
-    ['Pitchathon', '/sig-pitchathon.html'],
-    ['About', '/about.html'],
-    ['Venues', '/discover/venues.html'],
-    ['Partners', '/discover/partners.html'],
-    ['Resources', '/discover/resources.html'],
-    ['Archive', '/discover/archive.html'],
-  ];
-  links.forEach(function(l){
-    var a = document.createElement('a');
-    a.href = l[1]; a.textContent = l[0];
-    drawer.appendChild(a);
-  });
-  var ticketLink = document.createElement('a');
-  ticketLink.href = '/tickets.html';
-  ticketLink.className = 'drawer-tickets';
-  ticketLink.textContent = 'GET TICKETS';
-  drawer.appendChild(ticketLink);
-  document.body.appendChild(drawer);
-
-  toggle.addEventListener('click', function(){
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
-  });
-})();
-</script>
-
 </body>
 </html>

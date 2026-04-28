@@ -42,7 +42,6 @@
       opacity: 0.45; transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
-    }
 
     /* ── HERO ── */
     .hero {
@@ -154,13 +153,18 @@
       color: rgba(255,255,255,0.55);
       padding: 4px 0;
       letter-spacing: 0.01em;
-      transition: color 0.2s;
+      transition: color 0.2s, font-size 0.2s, font-weight 0.2s;
       border-bottom: 1px solid transparent;
     }
-    .year-btn:hover { color: rgba(255,255,255,0.85); }
+    .year-btn:hover {
+      color: rgba(255,255,255,0.9);
+      font-size: 20px;
+      font-weight: 600;
+    }
     .year-btn.active {
       color: #fff;
-      font-weight: 500;
+      font-size: 22px;
+      font-weight: 700;
       border-bottom: 1px solid rgba(255,255,255,0.7);
     }
 
@@ -221,7 +225,7 @@
     /* Poster + Trailer row */
     .detail-media {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 2fr;
       gap: 24px;
       margin-bottom: 52px;
     }
@@ -250,14 +254,14 @@
 
     .poster-img {
       width: 100%;
-      height: 340px;
+      height: 420px;
       object-fit: cover;
       display: block;
       background: var(--card-blue);
     }
     .trailer-frame {
       width: 100%;
-      height: 340px;
+      height: 420px;
       background: var(--card-blue);
       display: flex;
       align-items: center;
@@ -484,7 +488,7 @@
             <span class="media-label">Poster</span>
             <a class="media-link" href="#" download>Download project file &nbsp;→</a>
           </div>
-          <div style="width:100%;height:340px;overflow:hidden;">
+          <div style="width:100%;height:420px;overflow:hidden;">
             <img src="imgs/Fak_ugesi 2023 Poster rev10.jpg" alt="More Flow 2023 Poster" style="width:100%;height:100%;object-fit:cover;display:block;"/>
           </div>
         </div>
@@ -494,7 +498,7 @@
             <a class="media-link" href="https://www.youtube.com/watch?v=placeholder" target="_blank" rel="noopener">View on Youtube &nbsp;→</a>
           </div>
           <div class="trailer-frame">
-            <img class="trailer-placeholder" src="imgs/Copy of 2C6A2225.jpg" alt="More Flow 2023 Trailer" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <img class="trailer-placeholder" src="imgs/trailer1.png" alt="More Flow 2023 Trailer" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <div class="play-overlay">
               <div class="play-btn">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -546,7 +550,7 @@
             <span class="media-label">Poster</span>
             <a class="media-link" href="#" download>Download project file &nbsp;→</a>
           </div>
-          <div style="width:100%;height:340px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;">
+          <div style="width:100%;height:420px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;">
             <span style="color:var(--body-gray);font-size:12px;">Poster 2022</span>
           </div>
         </div>
@@ -590,7 +594,7 @@
         <div><p class="detail-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.</p></div>
       </div>
       <div class="detail-media">
-        <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:340px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Poster 2024</span></div></div>
+        <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:420px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Poster 2024</span></div></div>
         <div class="media-block"><div class="media-label-row"><span class="media-label">Trailer</span><a class="media-link" href="#">View on Youtube &nbsp;→</a></div><div class="trailer-frame"><div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
       </div>
       <div><p class="photos-section-label">Photos</p><div class="photos-grid"><div class="photo-item" style="aspect-ratio:4/3;background:var(--card-blue);"></div><div class="photo-item" style="aspect-ratio:4/3;background:var(--card-blue);"></div><div class="photo-item" style="aspect-ratio:4/3;background:var(--card-blue);"></div><div class="photo-item" style="aspect-ratio:4/3;background:#d0d8eb;"></div><div class="photo-item" style="aspect-ratio:4/3;background:#d0d8eb;"></div><div class="photo-item" style="aspect-ratio:4/3;background:#d0d8eb;"></div></div></div>
@@ -602,7 +606,7 @@
         <div><p class="detail-body-text">Stay tuned for details about the 2025 edition of Fak'ugesi African Digital Innovation Festival.</p></div>
       </div>
       <div class="detail-media">
-        <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:340px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Coming soon</span></div></div>
+        <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:420px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Coming soon</span></div></div>
         <div class="media-block"><div class="media-label-row"><span class="media-label">Trailer</span><a class="media-link" href="#">View on Youtube &nbsp;→</a></div><div class="trailer-frame"><div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
       </div>
     </div>
@@ -629,7 +633,7 @@
             <div><p class="detail-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.</p></div>
           </div>
           <div class="detail-media">
-            <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:340px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Poster ${y}</span></div></div>
+            <div class="media-block"><div class="media-label-row"><span class="media-label">Poster</span><a class="media-link" href="#">Download project file &nbsp;→</a></div><div style="height:420px;background:var(--card-blue);display:flex;align-items:center;justify-content:center;"><span style="color:var(--body-gray);font-size:12px;">Poster ${y}</span></div></div>
             <div class="media-block"><div class="media-label-row"><span class="media-label">Trailer</span><a class="media-link" href="#">View on Youtube &nbsp;→</a></div><div class="trailer-frame"><div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
           </div>
           <div><p class="photos-section-label">Photos</p><div class="photos-grid">

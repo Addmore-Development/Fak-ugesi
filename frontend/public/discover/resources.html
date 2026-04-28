@@ -41,7 +41,6 @@
       opacity: 0.45; transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
-    }
 
     /* ── HERO ── */
     .hero {
@@ -201,13 +200,25 @@
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: background 0.22s, color 0.22s, border-color 0.22s;
-      position: relative;
-      overflow: hidden;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
+      position: relative !important;
+      overflow: hidden !important;
     }
     .download-btn:hover {
       background: var(--navy);
       color: #fff;
+      border-color: rgba(100,160,255,0.6);
+      transform: translateY(-1px);
+    }
+    .download-btn canvas {
+      position: absolute !important;
+      inset: 0 !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+    .download-btn span {
+      position: relative !important;
+      z-index: 1 !important;
     }
 
     /* ── PARTNERS ── */
@@ -305,7 +316,7 @@
             <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
           </ol>
         </div>
-        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+        <a class="download-btn" href="#" download><span>DOWNLOAD PDF</span></a>
       </div>
     </div>
   </div>
@@ -341,7 +352,7 @@
             <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
           </ol>
         </div>
-        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+        <a class="download-btn" href="#" download><span>DOWNLOAD PDF</span></a>
       </div>
     </div>
   </div>
@@ -377,7 +388,7 @@
             <li>In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem. Cras risus turpis, varius ac, feugiat id, faucibus vitae, massa. Nunc gravida nonummy felis. Etiam suscipit, est sit amet suscipit sodales, est neque suscipit erat, nec</li>
           </ol>
         </div>
-        <a class="download-btn" href="#" download>DOWNLOAD PDF</a>
+        <a class="download-btn" href="#" download><span>DOWNLOAD PDF</span></a>
       </div>
     </div>
   </div>
@@ -467,6 +478,87 @@
     }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+
+<script>
+/* ── Electric lightning on ALL download buttons ── */
+(function applyDownloadElectric(){
+  function attachElectric(btn){
+    if(btn.dataset.electricDone) return;
+    btn.dataset.electricDone = '1';
+    var cv = document.createElement('canvas');
+    btn.insertBefore(cv, btn.firstChild);
+    var ctx = cv.getContext('2d');
+    var raf = null, on = false, bolts = [], f = 0;
+    function rs(){ cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
+    function seg(x1,y1,x2,y2,r,d){
+      if(d<=0) return [[x1,y1],[x2,y2]];
+      var mx=(x1+x2)/2+(Math.random()-.5)*r, my=(y1+y2)/2+(Math.random()-.5)*r*.4;
+      return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
+    }
+    function spawn(){
+      var W=cv.width, H=cv.height;
+      return {pts:seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
+              life:1,decay:.08+Math.random()*.06,w:.7+Math.random()*.9};
+    }
+    function draw(b){
+      var a=Math.max(0,b.life);
+      [[b.w*5,'rgba(60,120,255,'+a*.28+')','rgba(60,140,255,.7)',12],
+       [b.w*.7,'rgba(200,230,255,'+a*.8+')','rgba(180,220,255,.9)',4]]
+      .forEach(function(row){
+        ctx.save(); ctx.beginPath(); ctx.moveTo(b.pts[0][0],b.pts[0][1]);
+        b.pts.slice(1).forEach(function(p){ctx.lineTo(p[0],p[1]);});
+        ctx.strokeStyle=row[1]; ctx.lineWidth=row[0];
+        ctx.shadowColor=row[2]; ctx.shadowBlur=row[3];
+        ctx.stroke(); ctx.restore();
+      });
+    }
+    function tick(){
+      if(!on) return; rs(); ctx.clearRect(0,0,cv.width,cv.height); f++;
+      if(f%9===0){bolts.push(spawn()); if(Math.random()>.55)bolts.push(spawn());}
+      bolts=bolts.filter(function(b){return b.life>0;});
+      bolts.forEach(function(b){draw(b); b.life-=b.decay;});
+      raf=requestAnimationFrame(tick);
+    }
+    btn.addEventListener('mouseenter',function(){on=true;rs();bolts=[];f=0;if(!raf)raf=requestAnimationFrame(tick);});
+    btn.addEventListener('mouseleave',function(){on=false;if(raf){cancelAnimationFrame(raf);raf=null;}ctx.clearRect(0,0,cv.width,cv.height);});
+  }
+  function attachAll(){ document.querySelectorAll('.download-btn').forEach(attachElectric); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',attachAll);
+  else attachAll();
+  setTimeout(attachAll,300);
+})();
+
+/* Cross icon scroll spin */
+(function(){
+  var lastY=window.scrollY,rot=0,ticking=false,scrollTimer=null;
+  function resetRot(){
+    rot=0;
+    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+      el.style.transition='transform 0.45s ease';
+      el.style.transform='rotate(0deg)';
+    });
+  }
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y=window.scrollY,delta=y-lastY;
+        if(Math.abs(delta)>0){
+          rot+=delta>0?15:-15;
+          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
+            el.style.transition='transform 0.1s linear';
+            el.style.transform='rotate('+rot+'deg)';
+          });
+        }
+        lastY=y; ticking=false;
+        clearTimeout(scrollTimer);
+        scrollTimer=setTimeout(resetRot,300);
+      });
+      ticking=true;
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
 })();
 </script>
 </body>

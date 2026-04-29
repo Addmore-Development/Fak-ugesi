@@ -393,6 +393,198 @@
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  .hero-inner { padding: 100px 48px 52px; }
+  .hero-title { font-size: 40px; }
+  .hero-logo img { height: 80px; }
+
+  .theme-inner { padding: 52px 48px; }
+  .theme-year { font-size: 36px; }
+  .theme-head { font-size: 30px; }
+  .theme-dates { font-size: 24px; }
+  .theme-bg-img { width: 50%; opacity: 0.6; }
+
+  .involved-inner { padding: 52px 48px; }
+  .involved-title { font-size: 34px; }
+  .inv-card { min-height: 240px; }
+  .inv-card-inner { min-height: 240px; }
+
+  .spotlight-inner { padding: 0 48px; }
+  .spotlight-title { font-size: 36px; }
+  .spotlight-head { font-size: 26px; }
+
+  .happening-inner { padding: 0 48px; }
+  .happening-title { font-size: 36px; }
+  .tweet-grid { grid-template-columns: 1fr 1fr; }
+  .happening-caption { padding: 0 48px; }
+
+  .partners-inner { padding: 0 48px; }
+  .partners-title { font-size: 32px; }
+
+  .strip-img { flex: 0 0 260px; height: 230px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 32px; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
+  .hero-logo { display: none; }
+
+  /* THEME SECTION */
+  .theme-section { min-height: auto; }
+  .theme-bg-img { display: none; }
+  .theme-fade { display: none; }
+  .theme-inner { padding: 40px 20px 44px; }
+  .theme-content { max-width: 100%; }
+  .theme-year { font-size: 28px; margin-bottom: 4px; }
+  .theme-sub { font-size: 10px; margin-bottom: 10px; }
+  .theme-head { font-size: 26px; margin-bottom: 14px; }
+  .theme-body { font-size: 12px; max-width: 100%; margin-bottom: 20px; }
+  .btn-row {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .btn-row .btn-outline-white {
+    width: 100%;
+    justify-content: center;
+  }
+  .theme-dates { font-size: 22px; }
+
+  /* GET INVOLVED */
+  .involved-inner { padding: 40px 20px; }
+  .involved-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .involved-title { font-size: 28px; }
+  .involved-link { font-size: 11px; }
+  .involved-cards { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Disable flip on mobile — show front only, make static */
+  .inv-card { min-height: auto; perspective: none; }
+  .inv-card-inner { min-height: auto; transform-style: flat; transition: none; }
+  .inv-card:hover .inv-card-inner { transform: none; }
+  .inv-card-front {
+    position: relative; inset: auto;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    padding: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .inv-card-back { display: none; }
+  .card-title { font-size: 18px; margin-bottom: 8px; }
+  .card-body { font-size: 11px; }
+  .card-num { font-size: 18px; top: 12px; right: 12px; }
+
+  /* SPOTLIGHT */
+  .spotlight-section { padding: 48px 0; }
+  .spotlight-inner { padding: 0 20px; }
+  .spotlight-title { font-size: 28px; margin-bottom: 28px; }
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .spotlight-head { font-size: 22px; margin-bottom: 14px; }
+  .spotlight-body { font-size: 12px; margin-bottom: 20px; }
+  .btn-outline-dark { width: 100%; justify-content: center; }
+
+  /* WHAT'S HAPPENING */
+  .happening-section { padding: 48px 0; }
+  .happening-inner { padding: 0 20px; }
+  .happening-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .happening-title { font-size: 28px; }
+
+  /* Social tabs — keep horizontal, just tighten */
+  .soc-tabs { gap: 10px; }
+  .soc-tab { width: 34px; height: 34px; }
+
+  /* Instagram strip — smaller tiles */
+  .strip-img { flex: 0 0 200px; height: 180px; }
+
+  /* Twitter grid — single col */
+  .tweet-grid { grid-template-columns: 1fr; gap: 12px; }
+  .tweet-card { padding: 16px; }
+  .tweet-name { font-size: 12px; }
+  .tweet-text { font-size: 12px; }
+
+  /* Facebook feed — single col */
+  .fb-feed { grid-template-columns: 1fr; gap: 14px; }
+  .fb-card-img { height: 180px; }
+  .fb-card-body { padding: 14px 16px; }
+
+  .happening-caption { padding: 0 20px; font-size: 11px; margin-top: 12px; }
+
+  /* PARTNERS */
+  .partners-section { padding: 40px 0 48px; }
+  .partners-inner { padding: 0 20px; }
+  .partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .partners-title { font-size: 26px; }
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
+  .partner-logo-box img { max-height: 80px; }
+  .partner-desc { font-size: 11px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px; }
+
+  .theme-year { font-size: 24px; }
+  .theme-head { font-size: 22px; }
+  .theme-dates { font-size: 18px; }
+
+  .involved-title { font-size: 24px; }
+
+  .spotlight-title { font-size: 24px; }
+  .spotlight-head { font-size: 20px; }
+
+  .happening-title { font-size: 24px; }
+  .strip-img { flex: 0 0 160px; height: 150px; }
+
+  .partners-title { font-size: 22px; }
+  .partners-grid { grid-template-columns: 1fr; }
+}
+
+
   </style>
 
   <style>

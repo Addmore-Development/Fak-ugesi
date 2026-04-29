@@ -92,8 +92,9 @@
   letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
   text-decoration: none; margin-top: 20px;
   transition: background .22s, color .22s;
+  position: relative; overflow: hidden;
 }
-.hero-cta:hover { background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
+
 .hero-signia {
   flex-shrink: 0;
   width: auto;
@@ -130,6 +131,9 @@
 
     /* JOIN INDUSTRY NETWORK */
     .network-section{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:stretch}
+    .network-section { min-height: auto !important; }
+    .network-top { flex-direction: column !important; gap: 12px !important; }
+    .network-bottom { padding-top: 20px !important; }
     .network-bg{position:absolute;inset:0;background-image:url('../images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55); transform: scaleX(-1);}
     .network-inner{
       position:relative;z-index:2;width:100%;
@@ -141,9 +145,8 @@
     .network-link{font-size:12px;color:#fff;font-weight:600;text-decoration:underline;letter-spacing:.06em;cursor:pointer;font-family:'InterDisplay',sans-serif;white-space:nowrap;margin-top:8px;opacity:.85}
     .network-bottom{max-width:520px;margin-top:auto;padding-top:60px}
     .network-body{font-size:13px;line-height:1.8;color:#fff;opacity:.90;margin-bottom:28px;font-family:'InterDisplay',sans-serif}
-    .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif}
-    .network-cta:hover{ background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px); }
-
+    .network-cta{display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;background:transparent;padding:12px 32px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s;font-family:'InterDisplay',sans-serif;position: relative; overflow: hidden;}
+    
     /* 2025 HIGHLIGHTS */
     .highlights-section{background:var(--white);padding:72px 0 0;position:relative;color:var(--dark-text)}
     .highlights-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 248px 44px;position:relative}
@@ -304,9 +307,42 @@
       .req-heading { font-size: 28px; }
       #req-accordion .req-q-text { font-size: 14px; }
       .ticker-item { font-size: 10px; padding: 0 20px; }
+
+      .hero {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: auto !important;
+}
+.hero-content {
+  padding: 80px 24px 40px !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+.hero-text-wrapper { 
+  width: 100% !important; 
+  padding: 0 24px !important;
+}
+.hero-signia {
+  display: flex !important;
+  max-width: 140px !important;
+ padding-left: 24px !important;
+}
+.hero-signia { margin-bottom: 0 !important; margin-right: 0 !important; }
+
+.hero-cta { width: 100%; justify-content: center; }
+
+.what-section { padding: 40px 20px !important; }
+.network-inner { padding: 40px 20px !important; flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+.highlights-header { padding: 40px 20px 0 !important; flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+.faq-section { padding: 40px 20px 48px !important; }
+.faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+.partners-section { padding: 40px 20px 48px !important; }
+.partners-header { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; margin-bottom: 24px !important; }
+.partner-card { width: 100% !important; max-width: 100% !important; }
       
-      /* Hide original nav.js injected nav on mobile */
-      #main-nav { display: none !important; }
+    
     }
 
     @media (max-width: 480px) {
@@ -501,29 +537,6 @@ button.btn-tickets,
   transition: background 0.22s, color 0.22s, border-color 0.22s !important;
 }
 
-/* Blue hover shading on ALL buttons */
-.btn-primary:hover,
-.btn-outline-dark:hover,
-.btn-outline-white:hover,
-.hero-cta:hover,
-.btn-apply:hover,
-.btn-cta-white:hover,
-.btn-cta-filled:hover,
-.btn-learn:hover,
-a.btn-tickets:hover,
-button.btn-tickets:hover,
-.btn-get-pass:hover,
-[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
-  background: #1e3a6e !important;
-  color: #ffffff !important;
-  border-color: rgba(100,160,255,0.6) !important;
-}
-
-/* font color should always be white on hover */
-.btn-outline-dark:hover,
-.btn-outline-white:hover {
-  color: #fff !important;
-}
 
 /* ── CROSS ICON ── always allow transform ── */
 .cross-icon {
@@ -815,47 +828,6 @@ button.btn-tickets:hover,
 <script src="fak-ugesi-global-effects-v10.js"></script>
 
 <script>
-/* Hamburger Menu Toggle + Scroll Background */
-(function() {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-  const mobileBar = document.getElementById('mobileHamburgerBar');
-  
-  if (hamburgerBtn && mobileMenu && mobileOverlay) {
-    function toggleMenu() {
-      const isOpen = mobileMenu.classList.contains('open');
-      if (isOpen) {
-        mobileMenu.classList.remove('open');
-        mobileOverlay.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
-        document.body.classList.remove('menu-open');
-      } else {
-        mobileMenu.classList.add('open');
-        mobileOverlay.classList.add('active');
-        hamburgerBtn.classList.add('active');
-        document.body.classList.add('menu-open');
-      }
-    }
-    hamburgerBtn.addEventListener('click', toggleMenu);
-    mobileOverlay.addEventListener('click', toggleMenu);
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        mobileOverlay.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
-        document.body.classList.remove('menu-open');
-      });
-    });
-  }
-  if (mobileBar) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) mobileBar.classList.add('scrolled');
-      else mobileBar.classList.remove('scrolled');
-    });
-  }
-})();
-
 /* FAQ accordion */
 (function(){
   const c=document.getElementById('faqAccordion');
@@ -984,7 +956,25 @@ button.btn-tickets:hover,
 
   const pages=[{label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg'},{label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg'},{label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg'},{label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg'},{label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg'},{label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg'}];
   const strip=document.createElement('nav'); strip.className='fug-sig-strip'; const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-  pages.forEach(p=>{const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href; const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.height='38px'; const label=document.createElement('span'); label.textContent=p.label; a.appendChild(img); a.appendChild(label); inner.appendChild(a);});
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+pages.forEach(p => {
+  const a = document.createElement('a');
+  a.className = 'fug-sig-item';
+  a.href = p.href;
+  const isActive = currentPage === p.href.split('/').pop();
+  if (isActive) a.classList.add('fug-active');
+  const img = document.createElement('img');
+  img.src = p.img; img.alt = p.label;
+  img.style.height = '38px';
+  if (isActive) {
+    img.style.transform = 'scale(1.18)';
+    img.style.opacity = '1';
+  }
+  const label = document.createElement('span');
+  label.textContent = p.label;
+  a.appendChild(img); a.appendChild(label);
+  inner.appendChild(a);
+});
   strip.appendChild(inner); const ticker=document.querySelector('.ticker-bar'); if(ticker) ticker.after(strip);
   patchHeroCrosses();
 })();
@@ -1034,62 +1024,6 @@ button.btn-tickets:hover,
     }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-})();
-</script>
-
-
-<script>
-/* Mobile nav drawer */
-(function(){
-  var nav = document.getElementById('main-nav');
-  if (!nav || document.getElementById('fug-mobile-toggle')) return;
-  
-  var toggle = document.createElement('button');
-  toggle.id = 'fug-mobile-toggle';
-  toggle.className = 'nav-mobile-toggle';
-  toggle.setAttribute('aria-label','Menu');
-  toggle.innerHTML = '<span></span><span></span><span></span>';
-  nav.appendChild(toggle);
-
-  var drawer = document.createElement('div');
-  drawer.id = 'mobile-nav-drawer';
-  var links = [
-    ['Home', '/index.html'],
-    ['Festival Programme', '/programme.html'],
-    ['Expo', '/fes-expo.html'],
-    ['Market', '/fes-market.html'],
-    ['Schedule', '/fes-schedule.html'],
-    ['Signature Programmes', '/sig-awards.html'],
-    ['Awards', '/sig-awards.html'],
-    ['Dala Khona', '/sig-dalakhona.html'],
-    ['PRO', '/sig-fakugesipro.html'],
-    ['Immersive Africa', '/sig-immersive.html'],
-    ['JAMZ', '/sig-jamz.html'],
-    ['Pitchathon', '/sig-pitchathon.html'],
-    ['About', '/about.html'],
-    ['Venues', '/discover/venues.html'],
-    ['Partners', '/discover/partners.html'],
-    ['Resources', '/discover/resources.html'],
-    ['Archive', '/discover/archive.html'],
-  ];
-  links.forEach(function(l){
-    var a = document.createElement('a');
-    a.href = l[1]; a.textContent = l[0];
-    drawer.appendChild(a);
-  });
-  var ticketLink = document.createElement('a');
-  ticketLink.href = '/tickets.html';
-  ticketLink.className = 'drawer-tickets';
-  ticketLink.textContent = 'GET TICKETS';
-  drawer.appendChild(ticketLink);
-  document.body.appendChild(drawer);
-
-  toggle.addEventListener('click', function(){
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
-  });
 })();
 </script>
 

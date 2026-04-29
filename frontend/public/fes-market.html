@@ -220,6 +220,152 @@
       .exhibitors-grid{grid-template-columns:1fr}
       .partners-header{padding-left:32px;padding-right:32px}
     }
+
+    /* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  .hero-inner { padding: 52px 48px 48px; }
+  .hero-title { font-size: 52px; }
+  .hero-date { font-size: 22px; }
+  .hero-logo img { height: 80px; }
+
+  .market-info-section { padding: 60px 48px 56px; }
+  .market-info-title { font-size: 36px; }
+
+  .exhibitors-header { padding: 0 48px; margin-bottom: 32px; }
+  .exhibitors-title { font-size: 36px; }
+  .exhibitors-grid { padding: 0 48px; gap: 16px; }
+
+  .exhibitor-detail-content { padding: 40px 48px 52px; }
+  .exhibitor-detail-title { font-size: 40px; }
+
+  .spot-cta-content { padding: 52px 48px; }
+  .spot-cta-title { font-size: 34px; }
+
+  .partners-header { padding: 0 48px; margin-bottom: 36px; }
+  .partners-title { font-size: 36px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .hero-content { max-width: 100% !important; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 32px !important; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; }
+  .hero-date { font-size: 20px; }
+  .hero-logo { display: none !important; }
+
+  /* MARKET INFO */
+  .market-info-section { padding: 40px 20px 36px; }
+  .market-info-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .market-info-title { font-size: 28px; }
+  .market-info-link { margin-left: 0; font-size: 11px; }
+  .market-info-body { font-size: 13px; max-width: 100%; }
+
+  /* EXHIBITORS */
+  .exhibitors-section { padding: 40px 0 48px; }
+  .exhibitors-header {
+    padding: 0 20px;
+    margin-bottom: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .exhibitors-title { font-size: 28px; }
+  .exhibitors-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px;
+    gap: 16px;
+  }
+  .exhibitor-card-title { font-size: 22px; }
+
+  /* EXHIBITOR DETAIL PANEL */
+  .exhibitor-detail-content {
+    padding: 32px 20px 48px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 28px 0;
+  }
+  .exhibitor-detail-back { margin-bottom: 20px; }
+  .exhibitor-detail-title { font-size: 28px; margin-bottom: 6px; }
+  .exhibitor-detail-subtitle { font-size: 14px; margin-bottom: 16px; }
+  .exhibitor-detail-body { font-size: 13px; }
+  .exhibitor-detail-logos { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .exhibitor-detail-meta { gap: 16px; }
+  .exhibitor-detail-meta-value { font-size: 18px; }
+
+  /* WANT A SPOT CTA */
+  .spot-cta-section { min-height: auto; }
+  .spot-cta-content { padding: 48px 20px; }
+  .spot-cta-title { font-size: 26px; margin-bottom: 16px; max-width: 100%; }
+  .spot-cta-body { font-size: 12px; margin-bottom: 20px; max-width: 100%; }
+  .spot-cta-btn { width: 100%; justify-content: center; padding: 14px 20px; }
+
+  /* MARKET PARTNERS */
+  .partners-section { padding: 48px 0 0; }
+  .partners-header {
+    padding: 0 20px !important;
+    margin-bottom: 28px;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .partners-title { font-size: 28px !important; }
+  .partners-carousel-track { gap: 40px; }
+  .carousel-logo-img-wrap { width: 120px; height: 80px; }
+  .carousel-logo-img-wrap img { max-height: 48px; max-width: 100px; }
+  .carousel-logo-name { font-size: 10px; }
+
+  /* Navy social band */
+  .partners-blue-band { padding: 16px 20px; }
+  .partners-social-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .partners-social-row p { font-size: 13px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px !important; }
+  .hero-date { font-size: 17px; }
+
+  .market-info-title { font-size: 24px; }
+
+  .exhibitors-title { font-size: 24px; }
+  .exhibitor-card-title { font-size: 20px; }
+
+  .exhibitor-detail-title { font-size: 24px; }
+
+  .spot-cta-title { font-size: 22px; }
+
+  .partners-title { font-size: 24px !important; }
+}
+
+
   </style>
 
 <style id="fug-global-fixes">

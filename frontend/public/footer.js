@@ -1,8 +1,7 @@
 /**
  * Fak'ugesi Shared Footer
  * Injects consistent footer + social band on every page.
- * Drop <script src="footer.js"></script> before </body> on each page,
- * and REMOVE the static <footer> and .social-band markup from each page.
+ * Drop <script src="footer.js"></script> before </body> on each page.
  */
 (function () {
 
@@ -13,6 +12,7 @@
     @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
     @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
 
+    /* ── SOCIAL BAND ── */
     #fug-social-band {
       background: #1a2744;
       display: flex;
@@ -42,6 +42,7 @@
     }
     #fug-social-band .fsb-icons a:hover { opacity: 0.5; }
 
+    /* ── FOOTER ── */
     #fug-footer {
       background: #fff;
       border-top: 1px solid rgba(26,39,68,0.1);
@@ -113,6 +114,75 @@
       transition: transform 0.1s linear;
     }
     .fug-footer-cross svg { width: 100%; height: 100%; }
+
+    /* ── TABLET (≤1024px) ── */
+    @media (max-width: 1024px) {
+      #fug-social-band {
+        gap: 24px;
+        padding: 16px 32px;
+      }
+      #fug-social-band p { font-size: 13px; }
+
+      #fug-footer { padding: 0 32px; }
+      #fug-footer .fug-footer-inner {
+        gap: 48px;
+        padding: 36px 0 32px;
+      }
+
+      /* Hide corner crosses on tablet — too close to content */
+      .fug-footer-cross { display: none; }
+    }
+
+    /* ── MOBILE (≤768px) ── */
+    @media (max-width: 768px) {
+      /* Social band stacks on very small */
+      #fug-social-band {
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 20px;
+        text-align: center;
+      }
+      #fug-social-band p { font-size: 12px; }
+      #fug-social-band .fsb-icons { justify-content: center; gap: 20px; }
+      #fug-social-band .fsb-icons a svg { width: 22px; height: 22px; }
+
+      /* Footer layout stacks vertically */
+      #fug-footer { padding: 0 20px; }
+      #fug-footer .fug-footer-inner {
+        flex-direction: column;
+        gap: 28px;
+        padding: 32px 0 28px;
+        align-items: flex-start;
+      }
+
+      /* Brand + address col */
+      #fug-footer .fug-footer-col { width: 100%; }
+      #fug-footer .fug-footer-brand { font-size: 14px; margin-bottom: 4px; }
+      #fug-footer .fug-footer-addr { font-size: 12px; }
+      #fug-footer .fug-footer-col-title { font-size: 11px; letter-spacing: 0.06em; }
+      #fug-footer a { font-size: 13px; line-height: 2.1; }
+
+      /* Logo + copyright row: side by side on mobile */
+      #fug-footer .fug-footer-right {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+        padding-top: 8px;
+        border-top: 1px solid rgba(26,39,68,0.08);
+        margin-top: 4px;
+      }
+      #fug-footer .fug-footer-logo { height: 38px; }
+      #fug-footer .fug-footer-copy { font-size: 10px; text-align: right; line-height: 1.6; }
+    }
+
+    /* ── SMALL MOBILE (≤480px) ── */
+    @media (max-width: 480px) {
+      #fug-social-band p { font-size: 11px; }
+      #fug-footer .fug-footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
+      #fug-footer .fug-footer-copy { text-align: left; }
+    }
   `;
   document.head.appendChild(style);
 
@@ -172,9 +242,6 @@
     </footer>
   `;
 
-  // Insert at end of body
   document.body.insertAdjacentHTML('beforeend', html);
-
-  // Footer crosses participate in the same scroll-spin as page cross-icons (handled by page scripts)
 
 })();

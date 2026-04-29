@@ -376,6 +376,175 @@
     /* ── ARCHIVE YEAR PANELS ── */
     .year-panel { display: none; }
     .year-panel.active { display: block; }
+
+    /* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  :root { --band: 48px; }
+
+  .hero-inner { padding: 100px 48px 52px; }
+  .hero-title { font-size: 44px; }
+  .hero-logo img { height: 80px; }
+
+  .time-machine-section { padding: 52px 0 48px; }
+  .time-machine-inner { padding: 0 48px; }
+  .time-machine-title { font-size: 38px; }
+
+  .year-list { gap: 20px; }
+  .year-btn { font-size: 13px; }
+  .year-btn.active { font-size: 18px; }
+  .year-btn:hover { font-size: 16px; }
+
+  .archive-detail-section { padding: 52px 0 60px; }
+  .archive-detail-inner { padding: 0 48px; }
+  .detail-festival-name { font-size: 30px; }
+
+  .detail-media { gap: 16px; }
+  .poster-img,
+  .trailer-frame,
+  .detail-media [style*="height:420px"] { height: 320px !important; }
+
+  .photos-grid { gap: 8px; }
+
+  .partners-section { padding: 52px 0 60px; }
+  .partners-inner { padding: 0 48px; }
+  .partners-title { font-size: 34px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+  :root { --band: 20px; }
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 28px; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; }
+  .hero-logo { width: 100%; justify-content: flex-start; }
+  .hero-logo img { height: 56px; }
+
+  /* TIME MACHINE */
+  .time-machine-section { padding: 40px 0 36px; }
+  .time-machine-inner { padding: 0 20px; }
+  .time-machine-title { font-size: 28px; margin-bottom: 24px; }
+  .time-machine-header { margin-bottom: 20px; }
+
+  /* Year selector — scroll horizontally on mobile */
+  .year-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .year-hint { margin-right: 0; margin-bottom: 0; }
+  .year-list {
+    gap: 16px;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 8px;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .year-list::-webkit-scrollbar { display: none; }
+  .year-btn { font-size: 13px; flex-shrink: 0; }
+  .year-btn.active { font-size: 17px; }
+  .year-btn:hover { font-size: 15px; }
+
+  /* ARCHIVE DETAIL */
+  .archive-detail-section { padding: 40px 0 48px; }
+  .archive-detail-inner { padding: 0 20px; }
+
+  /* Stack detail-top to single column */
+  .detail-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .detail-festival-name { font-size: 26px; margin-bottom: 16px; }
+  .detail-meta-label { width: 120px; }
+
+  /* Stack poster + trailer to single column */
+  .detail-media {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .poster-img,
+  .trailer-frame { height: 260px !important; }
+
+  /* Inline styles on poster divs need override */
+  .detail-media .media-block > div[style*="height:420px"],
+  .detail-media .media-block > div[style*="height: 420px"] {
+    height: 260px !important;
+  }
+
+  .media-label-row { margin-bottom: 8px; }
+  .media-link { font-size: 10px; }
+
+  /* Photos — 2 col on mobile */
+  .photos-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .photos-section-label { font-size: 10px; margin-bottom: 10px; }
+
+  /* PARTNERS */
+  .partners-section { padding: 40px 0 48px; }
+  .partners-inner { padding: 0 20px; }
+  .partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .partners-title { font-size: 26px; }
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
+  .partner-logo-box img { max-height: 80px; }
+  .partner-desc { font-size: 11px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+
+  .time-machine-title { font-size: 24px; }
+  .year-btn { font-size: 12px; }
+  .year-btn.active { font-size: 15px; }
+
+  .detail-festival-name { font-size: 22px; }
+  .poster-img,
+  .trailer-frame { height: 220px !important; }
+  .detail-media .media-block > div[style*="height:420px"],
+  .detail-media .media-block > div[style*="height: 420px"] {
+    height: 220px !important;
+  }
+
+  /* Photos — single col on very small screens */
+  .photos-grid { grid-template-columns: 1fr; }
+
+  .partners-title { font-size: 22px; }
+  .partners-grid { grid-template-columns: 1fr; }
+}
+
   </style>
 
   <link rel="preload" href="../../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>

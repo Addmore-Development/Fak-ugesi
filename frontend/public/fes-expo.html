@@ -168,7 +168,7 @@
     .showcase-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .showcase-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
     .showcase-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s,border-color .22s;}
-    .showcase-cta-btn:hover{background:#fff;color:var(--navy);border-color:#fff}
+    
 
     /* PARTNERS */
     .partners-section{background:#b8cce0;padding:80px 0 0;position:relative;overflow:hidden;}
@@ -204,6 +204,160 @@
       .showcases-grid{grid-template-columns:1fr}
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
     }
+
+    /* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  .hero-inner { padding: 100px 48px 52px; }
+  .hero-title { font-size: 52px; }
+  .hero-date { font-size: 22px; }
+  .hero-logo img { height: 80px; }
+
+  .curatorial-inner { padding: 52px 48px 48px; }
+  .curatorial-title { font-size: 44px; }
+  .curatorial-bg-img { width: 50%; }
+
+  .showcases-header { padding: 0 48px; margin-bottom: 32px; }
+  .showcases-title { font-size: 36px; }
+  .showcases-grid { padding: 0 48px; gap: 16px; }
+
+  .showcase-cta-content { padding: 52px 48px; }
+  .showcase-cta-title { font-size: 34px; }
+
+  .partners-title { padding: 0 48px; font-size: 36px; margin-bottom: 40px; }
+  .partners-blue-band { padding: 32px 48px; }
+
+  .showcase-detail-content { padding: 40px 48px 52px; }
+  .showcase-detail-title { font-size: 40px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .hero-content { max-width: 100% !important; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 32px !important; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; }
+  .hero-date { font-size: 20px; }
+  .hero-logo { display: none !important; }
+
+  /* CURATORIAL FREQUENCIES */
+  .curatorial-section { min-height: auto; }
+  .curatorial-bg-img { display: none; }
+  .curatorial-fade { display: none; }
+  .curatorial-inner { padding: 40px 20px 36px; }
+  .curatorial-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .curatorial-title { font-size: 28px; max-width: 100%; }
+  .curatorial-view-link { margin-left: 0; margin-top: 0; font-size: 11px; }
+  .curatorial-body { font-size: 13px; margin-bottom: 28px; max-width: 100%; }
+
+  /* Curatorial cards — stack to single col */
+  .curatorial-cards { grid-template-columns: 1fr; }
+  .curatorial-card { padding: 20px 18px 24px; }
+  .curatorial-card + .curatorial-card { border-left: 1px solid rgba(255,255,255,0.22); border-top: none; }
+  .curatorial-card-title { font-size: 18px; margin-bottom: 10px; }
+  .curatorial-card-num { font-size: 24px; }
+
+  /* SHOWCASES */
+  .showcases-section { padding: 48px 0; }
+  .showcases-header {
+    padding: 0 20px;
+    margin-bottom: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .showcases-title { font-size: 28px; }
+  .showcases-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px;
+    gap: 16px;
+  }
+  .showcase-card-title { font-size: 22px; }
+
+  /* SHOWCASE DETAIL PANEL */
+  .showcase-detail-content {
+    padding: 32px 20px 48px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 28px 0;
+  }
+  .showcase-detail-back { margin-bottom: 20px; }
+  .showcase-detail-title { font-size: 28px; margin-bottom: 6px; }
+  .showcase-detail-subtitle { font-size: 14px; margin-bottom: 16px; }
+  .showcase-detail-body { font-size: 13px; }
+  .showcase-detail-right { margin-top: 0; gap: 24px; }
+  .showcase-detail-logos { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .showcase-detail-meta { gap: 16px; }
+  .showcase-detail-meta-value { font-size: 18px; }
+
+  /* WANT TO SHOWCASE CTA */
+  .showcase-cta-section { min-height: auto; }
+  .showcase-cta-content { padding: 48px 20px; }
+  .showcase-cta-title { font-size: 26px; margin-bottom: 16px; max-width: 100%; }
+  .showcase-cta-body { font-size: 12px; margin-bottom: 20px; max-width: 100%; }
+  .showcase-cta-btn { width: 100%; justify-content: center; padding: 14px 20px; }
+
+  /* EXPO PARTNERS */
+  .partners-section { padding: 48px 0 0; }
+  .partners-title {
+    font-size: 28px !important;
+    padding: 0 20px !important;
+    margin-bottom: 28px;
+    text-align: left;
+  }
+  .partners-blue-band {
+    padding: 28px 20px !important;
+    margin-top: 40px;
+  }
+  .partners-disclaimer { font-size: 10px; text-align: left; }
+
+  /* Slow carousel slightly on mobile */
+  .partners-carousel-track { gap: 40px; }
+  .carousel-logo-img-wrap { width: 120px; height: 80px; }
+  .carousel-logo-img-wrap img { max-height: 56px; max-width: 100px; }
+  .carousel-logo-name { font-size: 10px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px !important; }
+  .hero-date { font-size: 17px; }
+
+  .curatorial-title { font-size: 24px; }
+  .curatorial-card-title { font-size: 16px; }
+
+  .showcases-title { font-size: 24px; }
+  .showcase-card-title { font-size: 20px; }
+
+  .showcase-detail-title { font-size: 24px; }
+
+  .showcase-cta-title { font-size: 22px; }
+
+  .partners-title { font-size: 24px !important; }
+}
+
   </style>
 
 <style id="fug-global-fixes">
@@ -236,29 +390,6 @@ button.btn-tickets,
   transition: background 0.22s, color 0.22s, border-color 0.22s !important;
 }
 
-/* Blue hover shading on ALL buttons */
-.btn-primary:hover,
-.btn-outline-dark:hover,
-.btn-outline-white:hover,
-.hero-cta:hover,
-.btn-apply:hover,
-.btn-cta-white:hover,
-.btn-cta-filled:hover,
-.btn-learn:hover,
-a.btn-tickets:hover,
-button.btn-tickets:hover,
-.btn-get-pass:hover,
-[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
-  background: #1e3a6e !important;
-  color: #ffffff !important;
-  border-color: rgba(100,160,255,0.6) !important;
-}
-
-/* font color should always be white on hover */
-.btn-outline-dark:hover,
-.btn-outline-white:hover {
-  color: #fff !important;
-}
 
 /* ── CROSS ICON ── always allow transform ── */
 .cross-icon {

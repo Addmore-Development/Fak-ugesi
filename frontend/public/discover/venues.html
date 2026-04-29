@@ -81,7 +81,7 @@
     }
     .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); }
 
-    /* ── TICKER — navy background ── */
+    /* ── TICKER ── */
     .ticker-wrapper {
       background: var(--navy);
       overflow: hidden; white-space: nowrap;
@@ -182,6 +182,124 @@
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+
+    /* ═══════════════════════════════════════════════════
+       MOBILE RESPONSIVE
+    ═══════════════════════════════════════════════════ */
+
+    /* ── TABLET (≤1024px) ── */
+    @media (max-width: 1024px) {
+      :root { --band: 48px; }
+
+      .hero-inner { padding: 100px 48px 52px; }
+      .hero-title { font-size: 44px; }
+      .hero-body { font-size: 12px; max-width: 100%; }
+      .hero-logo img { height: 80px; }
+
+      .locations-title { font-size: 40px; }
+
+      /* Map sits below cards on tablet — full width */
+      .locations-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .location-cards { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .location-card { flex: 1 1 calc(50% - 5px); min-width: 220px; }
+      #venue-map { min-height: 340px; }
+
+      .partners-section { padding: 52px 0; }
+      .partners-title { font-size: 30px; }
+      .partners-grid { gap: 16px; }
+      .partner-logo-box { padding: 28px 20px; }
+
+      /* Hide distant cross icons */
+      .cross-icon[style*="left:200px"],
+      .cross-icon[style*="right:200px"] { display: none; }
+    }
+
+    /* ── MOBILE (≤768px) ── */
+    @media (max-width: 768px) {
+      :root { --band: 20px; }
+
+      /* HERO */
+      .hero { min-height: auto; }
+      .hero-bg { background-position: center center; }
+      .hero-inner {
+        padding: 80px 20px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-subtitle { font-size: 10px; margin-bottom: 10px; }
+      .hero-title { font-size: 30px; margin-bottom: 14px; }
+      .hero-body { font-size: 12px; }
+      .hero-logo { width: 100%; justify-content: flex-start; }
+      .hero-logo img { height: 52px; }
+
+      /* TICKER */
+      .ticker-track span { font-size: 11px; padding: 0 20px; }
+
+      /* LOCATIONS */
+      .locations-section { padding: 40px 0 52px; }
+      .locations-inner { padding: 0 20px; }
+
+      .locations-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .locations-title { font-size: 28px; }
+      .locations-map-link { font-size: 11px; margin-bottom: 0; }
+
+      /* Stack cards vertically on mobile */
+      .locations-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .location-cards {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .location-card { flex: none; width: 100%; padding: 12px 14px 14px; }
+      .location-card-header { margin-bottom: 6px; }
+      .location-name { font-size: 12px; }
+      .directions-link { font-size: 11px; }
+      .location-address { font-size: 11px; }
+
+      /* Map full width below cards */
+      .map-wrap { border: none; border-top: 1px solid rgba(26,39,68,0.12); }
+      #venue-map { min-height: 280px; }
+
+      /* PARTNERS */
+      .partners-section { padding: 40px 0 48px; }
+      .partners-inner { padding: 0 20px; }
+      .partners-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .partners-title { font-size: 24px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
+      .partner-logo-box img { max-height: 80px; }
+      .partner-desc { font-size: 11px; }
+
+      /* Cross icons — hide all on mobile, too tight */
+      .cross-icon { display: none; }
+    }
+
+    /* ── SMALL MOBILE (≤480px) ── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px; }
+      .locations-title { font-size: 24px; }
+      .partners-title { font-size: 22px; }
+      .partners-grid { grid-template-columns: 1fr; }
+      #venue-map { min-height: 240px; }
+    }
   </style>
 
   <link rel="preload" href="../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -213,7 +331,7 @@
   </div>
 </section>
 
-<!-- TICKER — navy background -->
+<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
     <span>Get your tickets now &nbsp;→&nbsp;</span>
@@ -230,7 +348,6 @@
 <!-- LOCATIONS -->
 <section class="locations-section reveal">
 
-  <!-- Top crosses -->
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -303,7 +420,7 @@
 
       </div>
 
-      <!-- Leaflet map — OpenStreetMap tiles, no API key needed -->
+      <!-- Leaflet map -->
       <div class="map-wrap">
         <div id="venue-map"></div>
       </div>
@@ -311,7 +428,6 @@
     </div>
   </div>
 
-  <!-- Bottom crosses -->
   <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -338,7 +454,7 @@
       </div>
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University" />
+          <img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
         </div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
@@ -362,15 +478,16 @@
     { id:3, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' }
   ];
 
-  // ── Init Leaflet map centred between the two venues ──
+  // ── Init Leaflet map ──
   const map = L.map('venue-map', {
     center: [-26.1915, 28.0300],
     zoom: 15,
     zoomControl: true,
-    scrollWheelZoom: false
+    scrollWheelZoom: false,
+    // Disable tap on mobile to prevent map stealing scroll
+    tap: false
   });
 
-  // OpenStreetMap tiles — completely free, no API key
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
@@ -411,6 +528,11 @@
     const v = venues[num - 1];
     map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
     markers[num - 1].openPopup();
+
+    // On mobile, scroll the map into view after card tap
+    if (window.innerWidth <= 768) {
+      document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   // ── Reveal on scroll ──
@@ -424,6 +546,12 @@
     });
   }, { threshold: 0.08 });
   revealEls.forEach(el => io.observe(el));
+
+  // Invalidate map on resize (handles orientation change on mobile)
+  window.addEventListener('resize', () => {
+    clearTimeout(window._mapResizeTimer);
+    window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
+  });
 </script>
 <script src="../nav.js"></script>
 <script src="../fakugesi-cross-patch.js"></script>
@@ -431,7 +559,7 @@
 <script src="../footer.js"></script>
 
 <script>
-/* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
+/* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){

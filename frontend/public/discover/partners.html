@@ -214,6 +214,123 @@
     .mp-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .mp-logo-box img.keep-color { filter: none; }
     .mp-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  :root { --band: 48px; }
+
+  .hero-inner { padding: 100px 48px 52px; }
+  .hero-title { font-size: 44px; }
+  .hero-logo img { height: 80px; }
+
+  .partner-section-banded { padding: 52px 0 60px; }
+  .partner-inner-banded { padding: 0 48px; }
+  .section-title { font-size: 34px; }
+  .section-title-banded { font-size: 34px; margin-bottom: 22px; }
+
+  .partner-section-full .section-header-wrap,
+  .partner-section-full [style*="padding: 0 var(--band)"] { padding-left: 48px !important; padding-right: 48px !important; }
+
+  .logo-grid-3 { gap: 12px; }
+  .logo-card { padding: 28px 20px; }
+  .logo-card img { max-height: 90px; }
+
+  .main-partners-section { padding: 52px 0 60px; }
+  .main-partners-inner { padding: 0 48px; }
+  .main-partners-title { font-size: 34px; }
+  .main-partners-grid { gap: 16px; }
+  .mp-logo-box { padding: 28px 20px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+  :root { --band: 20px; }
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 32px; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; }
+  .hero-logo { width: 100%; justify-content: flex-start; }
+  .hero-logo img { height: 56px; }
+
+  /* BANDED SECTIONS */
+  .partner-section-banded { padding: 40px 0 48px; }
+  .partner-inner-banded { padding: 0 20px; }
+  .section-title { font-size: 26px; }
+  .section-title-banded { font-size: 26px; margin-bottom: 18px; }
+
+  /* 3-col grid → 2-col on mobile */
+  .logo-grid-3 {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .logo-card { padding: 20px 14px; }
+  .logo-card img { max-height: 70px; }
+
+  /* FULL-WIDTH STRIP SECTIONS — header padding */
+  .partner-section-full [style*="padding: 0 var(--band)"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Strip cards: show 2 on mobile instead of 5 */
+  /* (JS sizeStrips() handles the actual width — we just update the JS divisor via CSS var) */
+  .logo-strip-outer { touch-action: pan-x; }
+
+  /* Scroll nav buttons — bigger tap targets */
+  .scroll-btn { font-size: 22px; padding: 8px 12px; }
+  .section-header { gap: 12px; }
+
+  /* MAIN PARTNERS (lavender bottom) */
+  .main-partners-section { padding: 40px 0 48px; }
+  .main-partners-inner { padding: 0 20px; }
+  .main-partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .main-partners-title { font-size: 26px; }
+  .main-partners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .mp-logo-box { padding: 20px 16px; margin-bottom: 10px; }
+  .mp-logo-box img { max-height: 80px; }
+  .mp-desc { font-size: 11px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px; }
+
+  .section-title { font-size: 22px; }
+  .section-title-banded { font-size: 22px; }
+
+  /* 3-col grid → single col */
+  .logo-grid-3 { grid-template-columns: 1fr; }
+
+  .main-partners-title { font-size: 22px; }
+  .main-partners-grid { grid-template-columns: 1fr; }
+}
+
   </style>
 
   <link rel="preload" href="../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -441,8 +558,9 @@
     const cards = strip.querySelectorAll('.logo-card');
     if (!cards.length) return;
 
-    const visibleCount = 5;
-    const cardW = window.innerWidth / visibleCount;
+    const visibleCount = window.innerWidth <= 768 ? 2 : 5;
+    const visibleCards = window.innerWidth <= 768 ? 2 : 5;
+    const cardW = window.innerWidth / visibleCards;
     const maxOffset = Math.max(0, cards.length - visibleCount);
 
     stripState[id].offset = Math.min(

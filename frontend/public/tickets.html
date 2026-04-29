@@ -25,12 +25,21 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
+    /* ── CROSS ICONS — spin-ready ── */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
-      opacity: 0.45; animation: none !important; transition: none !important;
+      opacity: 0.45; animation: none !important; transition: transform 0.1s linear !important;
     }
     .cross-icon svg { width: 100%; height: 100%; }
+
+    /* Row crosses — static positioned inside flex rows */
+    .cross-icon-inline {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0;
+      opacity: 0.45; transition: transform 0.1s linear;
+    }
+    .cross-icon-inline svg { width: 18px; height: 18px; }
 
     /* ── HERO ── */
     .hero {
@@ -111,10 +120,19 @@
       padding: 52px 248px 64px;
     }
 
-    .crosses-row { display: flex; justify-content: space-between; margin-bottom: 20px; }
-    .crosses-row svg { width: 18px; height: 18px; }
-    .crosses-row-bot { display: flex; justify-content: space-between; margin-top: 28px; }
-    .crosses-row-bot svg { width: 18px; height: 18px; }
+    /* Crosses rows — now use flex with cross-icon-inline spans */
+    .crosses-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .crosses-row-bot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 28px;
+      position: relative;
+    }
 
     .passes-body {
       display: flex;
@@ -159,9 +177,6 @@
 
     /* ══════════════════════════════════════
        TICKET CARDS
-       --perf    : x-position of perforation from card left edge
-       --hole-w  : ellipse width
-       --hole-h  : ellipse height
     ══════════════════════════════════════ */
     .ticket-card {
       position: relative;
@@ -172,22 +187,17 @@
       width: 100%;
     }
 
-    /* ticket-card-wrap must also know --perf for the dots column inside the card */
-
-    /* ── Ticket row wrapper — positions the punch-hole notches outside card ── */
     .ticket-card-wrap {
       position: relative;
       flex: 1;
       min-width: 0;
       overflow: visible;
-      /* vertical padding gives the half-circle room to render outside the card */
       padding-top: 50px;
       padding-bottom: 50px;
       margin-top: -50px;
       margin-bottom: -50px;
     }
 
-    /* Punch-holes on the WRAPPER (not the card) so they aren't clipped by overflow:hidden */
     .ticket-card-wrap::before,
     .ticket-card-wrap::after {
       content: '';
@@ -224,14 +234,11 @@
       border: 1.5px solid rgba(255,255,255,0.50);
     }
 
-    /* Remove pseudo-elements from the card itself */
     .ticket-card::before,
     .ticket-card::after { display: none; }
 
-    /* ── Full Pass — white card ── */
     .ticket-card.full-pass { background: var(--white); }
 
-    /* ── Day & Industry Pass — transparent dark ── */
     .ticket-card.day-pass,
     .ticket-card.industry-pass {
       background: rgba(6, 10, 28, 0.45);
@@ -239,7 +246,6 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* SVG border overlay */
     .ticket-border-svg {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
@@ -250,7 +256,6 @@
     .ticket-card.day-pass .ticket-border-svg path,
     .ticket-card.industry-pass .ticket-border-svg path { stroke: rgba(255,255,255,0.6); }
 
-    /* ── Inner grid: main content | dots gap | price col ── */
     .ticket-inner {
       display: grid;
       grid-template-columns: calc(var(--perf) - 10px) 20px 1fr;
@@ -267,7 +272,6 @@
 
     .ticket-main-top { display: flex; flex-direction: column; gap: 0; }
 
-    /* Dots column — pinned at --perf */
     .ticket-dots-col {
       position: absolute;
       top: 0; bottom: 0;
@@ -293,21 +297,18 @@
       border: 1.5px solid rgba(255,255,255,0.5);
     }
 
-    /* Price column */
     .ticket-price-col {
       padding: 24px 24px 20px 12px;
       display: flex; flex-direction: column;
       justify-content: space-between; align-items: flex-end;
     }
 
-    /* ── Text colours — full pass (dark on white) ── */
     .ticket-card.full-pass .ticket-label  { color: var(--body-gray); }
     .ticket-card.full-pass .ticket-title  { color: var(--dark-text); }
     .ticket-card.full-pass .ticket-desc   { color: var(--body-gray); }
     .ticket-card.full-pass .ticket-features li { color: var(--dark-text); }
     .ticket-card.full-pass .ticket-features li::before { color: var(--body-gray); }
 
-    /* ── Text colours — dark passes ── */
     .ticket-card.day-pass .ticket-label,
     .ticket-card.industry-pass .ticket-label { color: rgba(255,255,255,0.52); }
     .ticket-card.day-pass .ticket-title,
@@ -326,7 +327,6 @@
     .ticket-features li { font-size: 10.5px; display: flex; align-items: center; gap: 7px; }
     .ticket-features li::before { content: '→'; font-size: 9px; flex-shrink: 0; }
 
-    /* Price */
     .price-block { text-align: right; }
     .price-amount { font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
     .price-amount.large { font-size: 44px; }
@@ -368,7 +368,7 @@
     .ticket-card.industry-pass .btn-get-pass:hover { background: var(--white); color: var(--dark-text); }
 
     /* ════════════════════════
-       FAQ — white bg, 2-col
+       FAQ
     ════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
@@ -406,21 +406,99 @@
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
-    .partner-logo-box img.keep-color {filter: none; }
+    .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+
+    /* Partners bottom crosses row */
+    .partners-crosses-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+      position: relative;
+    }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
-  
-    /* ═══════════════════════════════════════════
-       200px CONTENT BAND
-    ═══════════════════════════════════════════ */
+
     .content-band {
       padding-left:  200px;
       padding-right: 200px;
       box-sizing: border-box;
     }
 
+    /* ════════════════════════
+       RESPONSIVE
+    ════════════════════════ */
+    @media (max-width: 768px) {
+      .hero {
+        height: auto !important;
+        min-height: 60vh !important;
+        align-items: flex-end !important;
+      }
+      .hero-content { padding: 0 24px 40px !important; }
+      .hero-title { font-size: 32px !important; line-height: 1.1 !important; }
+      .hero-title br { display: none; }
+      .hero-body { font-size: 12px !important; max-width: 100% !important; }
+      .hero-logo-centered { display: none !important; }
+
+      .passes-content { padding: 40px 24px 48px !important; }
+      .passes-heading { font-size: 28px !important; }
+
+      .ticket-row { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .ticket-blurb { padding-top: 0 !important; font-size: 12px !important; order: 2 !important; }
+      .ticket-card-wrap {
+        order: 1 !important;
+        padding-top: 0 !important; padding-bottom: 0 !important;
+        margin-top: 0 !important; margin-bottom: 0 !important;
+      }
+      .ticket-card-wrap::before, .ticket-card-wrap::after { display: none !important; }
+      .ticket-inner { grid-template-columns: 1fr !important; min-height: auto !important; }
+      .ticket-dots-col { display: none !important; }
+      .ticket-price-col {
+        padding: 0 20px 20px !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: flex-end !important;
+        gap: 16px !important;
+      }
+      .price-block { text-align: left !important; }
+      .price-amount.large { font-size: 32px !important; }
+      .price-amount.xlarge { font-size: 28px !important; }
+      .ticket-main { padding: 20px 20px 16px !important; }
+      .ticket-title { font-size: 22px !important; }
+      .ticket-desc { font-size: 11px !important; }
+      .ticket-features li { font-size: 11px !important; }
+
+      .faq-section { padding: 48px 24px !important; }
+      .faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .faq-title { font-size: 32px !important; }
+      .faq-intro { max-width: 100% !important; }
+      .faq-right-header { justify-content: flex-start !important; }
+
+      .partners-section { padding: 48px 24px 56px !important; }
+      .partners-header {
+        flex-direction: column !important; align-items: flex-start !important;
+        gap: 12px !important; margin-bottom: 28px !important;
+      }
+      .partners-title { font-size: 28px !important; }
+      .partners-grid { grid-template-columns: 1fr !important; }
+
+      /* Cross icons — pull in from 200px on mobile */
+      .cross-icon[style*="left:200px"] { left: 16px !important; }
+      .cross-icon[style*="right:200px"] { right: 16px !important; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px !important; }
+      .hero-content { padding: 0 16px 32px !important; }
+      .passes-content { padding: 32px 16px 40px !important; }
+      .passes-heading { font-size: 24px !important; }
+      .ticket-main { padding: 16px !important; }
+      .ticket-title { font-size: 20px !important; }
+      .price-amount.large { font-size: 28px !important; }
+      .faq-title { font-size: 26px !important; }
+      .partners-title { font-size: 24px !important; }
+    }
   </style>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -470,21 +548,20 @@
   <div class="passes-overlay"></div>
   <div class="passes-content">
 
+    <!-- Top crosses row — converted to .cross-icon-inline so spin script targets them -->
     <div class="crosses-row">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
     </div>
 
     <div class="passes-body">
 
-      <!-- Heading above all cards -->
       <div class="passes-left">
         <h2 class="passes-heading">Festival Passes</h2>
         <p class="passes-subtext">Choose the pass that works for you. All passes include access to the main festival programme.</p>
       </div>
 
-      <!-- RIGHT: ticket cards stacked -->
       <div class="passes-right">
 
         <!-- FULL PASS ROW -->
@@ -539,7 +616,7 @@
               </div>
             </div>
           </div>
-          </div><!-- /.ticket-card-wrap -->
+          </div>
         </div>
 
         <!-- DAY PASS ROW -->
@@ -593,7 +670,7 @@
               </div>
             </div>
           </div>
-          </div><!-- /.ticket-card-wrap -->
+          </div>
         </div>
 
         <!-- INDUSTRY PASS ROW -->
@@ -643,16 +720,17 @@
               </div>
             </div>
           </div>
-          </div><!-- /.ticket-card-wrap -->
+          </div>
         </div>
 
       </div><!-- /.passes-right -->
     </div><!-- /.passes-body -->
 
+    <!-- Bottom crosses row — converted to .cross-icon-inline -->
     <div class="crosses-row-bot">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
+      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
     </div>
 
   </div>
@@ -672,7 +750,6 @@
       <div class="faq-right-header">
         <a class="faq-tickets-link" href="#passes">View all passes</a>
       </div>
-      <!-- FAQ items built by JS below -->
       <div class="faq-items" id="faqAccordion"></div>
     </div>
   </div>
@@ -694,7 +771,7 @@
       <p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University — home of the festival since 2013.</p>
     </div>
     <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University" /></div>
+      <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" /></div>
       <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
     </div>
     <div class="partner-card">
@@ -703,14 +780,15 @@
     </div>
   </div>
 
-  <div style="display:flex;justify-content:space-between;margin-top:32px;">
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+  <!-- Bottom crosses row — converted to .cross-icon-inline -->
+  <div class="partners-crosses-row">
+    <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></span>
+    <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></span>
   </div>
 </section>
 
 <script>
-  // ── Scroll reveal ──
+  /* ── Scroll reveal ── */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -725,7 +803,7 @@
   revealVisible();
   window.addEventListener('load', revealVisible);
 
-  // ── FAQ accordion — JS-driven, matching awards page pattern ──
+  /* ── FAQ accordion ── */
   const faqData = [
     { q: 'What is included in a Full Festival Pass?', a: 'The Full Pass gives you access to all festival offerings across all five days: panels, workshops, exhibitions, screenings, performances, and the Awards Ceremony. Group discounts of 15% apply for purchases of 10–20 passes.' },
     { q: 'Is there a student discount?', a: 'Yes. Students pay a reduced rate of R200 for a Full Pass and R135 for a Day Pass. A valid student ID will be required for collection at the festival. Student pricing is not available for the Industry Pass.' },
@@ -761,21 +839,15 @@
     faqContainer.appendChild(item);
   });
 
-  // ── Draw ticket border SVG — plain rect outline + dashed perforation line ──
+  /* ── Draw ticket border SVG ── */
   function drawTicketBorder(card) {
     const svg = card.querySelector('.ticket-border-svg');
     const path = card.querySelector('.ticket-outline');
     if (!svg || !path) return;
-
     const W = card.offsetWidth;
     const H = card.offsetHeight;
-
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-
-    // Simple rectangle outline
     path.setAttribute('d', `M 0 0 L ${W} 0 L ${W} ${H} L 0 ${H} Z`);
-
-    // Draw dashed perforation line if not already added
     if (!svg.querySelector('.perf-line')) {
       const style = getComputedStyle(card);
       const perfRaw = style.getPropertyValue('--perf').trim();
@@ -785,39 +857,71 @@
       } else {
         perf = parseFloat(perfRaw) || (W * 0.72);
       }
-
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.setAttribute('class', 'perf-line');
-      line.setAttribute('x1', perf);
-      line.setAttribute('y1', 0);
-      line.setAttribute('x2', perf);
-      line.setAttribute('y2', H);
+      line.setAttribute('x1', perf); line.setAttribute('y1', 0);
+      line.setAttribute('x2', perf); line.setAttribute('y2', H);
       line.setAttribute('stroke-dasharray', '4 6');
       line.setAttribute('stroke-width', '1');
-      if (card.classList.contains('full-pass')) {
-        line.setAttribute('stroke', 'rgba(26,39,68,0.2)');
-      } else {
-        line.setAttribute('stroke', 'rgba(255,255,255,0.25)');
-      }
+      line.setAttribute('stroke', card.classList.contains('full-pass') ? 'rgba(26,39,68,0.2)' : 'rgba(255,255,255,0.25)');
       svg.appendChild(line);
     }
   }
 
   function drawAllTicketBorders() {
     document.querySelectorAll('.ticket-card').forEach(card => {
-      // Remove old perf lines so they redraw at correct position
       const svg = card.querySelector('.ticket-border-svg');
       if (svg) svg.querySelectorAll('.perf-line').forEach(el => el.remove());
       drawTicketBorder(card);
     });
   }
-
   window.addEventListener('load', drawAllTicketBorders);
   window.addEventListener('resize', drawAllTicketBorders);
   drawAllTicketBorders();
 </script>
+
 <script src="nav.js"></script>
 <script src="footer.js"></script>
+
+<script>
+/* ── Cross icon scroll spin — targets .cross-icon AND .cross-icon-inline AND .fug-footer-cross ── */
+(function(){
+  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+
+  function getAllCrosses() {
+    return document.querySelectorAll('.cross-icon, .cross-icon-inline, .fug-footer-cross');
+  }
+
+  function resetRot(){
+    rot = 0;
+    getAllCrosses().forEach(function(el){
+      el.style.transition = 'transform 0.45s ease';
+      el.style.transform = 'rotate(0deg)';
+    });
+  }
+
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.scrollY, delta = y - lastY;
+        if(Math.abs(delta) > 0){
+          rot += delta > 0 ? 15 : -15;
+          getAllCrosses().forEach(function(el){
+            el.style.transition = 'transform 0.1s linear';
+            el.style.transform = 'rotate('+rot+'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(resetRot, 300);
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
 
 </body>
 </html>

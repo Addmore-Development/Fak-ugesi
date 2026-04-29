@@ -89,7 +89,7 @@
   text-decoration: none; margin-right: 12px;
   transition: background .22s, color .22s;
 }
-.hero-cta:hover { background: #fff; color: var(--navy); }
+
 .hero-signia {
   flex-shrink: 0;
   width: auto;
@@ -115,7 +115,6 @@
     .intro-body{font-size:14px;line-height:1.78;color:var(--dark-text)}
     .intro-body p+p{margin-top:20px}
     .intro-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;padding:11px 26px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:28px;transition:background .22s,color .22s}
-    .intro-cta:hover{background:var(--navy);color:#fff}
 
     /* SECTION SHARED */
     .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
@@ -275,8 +274,132 @@
       .partner-logo-box { padding: 32px 24px; }
       .ticker-track span { font-size: 10px; padding: 0 20px; }
       
-      /* Hide original nav.js injected nav on mobile */
-      #main-nav { display: none !important; }
+      /* Hero — grid to flex conversion */
+.hero {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: auto !important;
+}
+.hero-content {
+  padding: 90px 24px 48px !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+.hero-text-wrapper {
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+.hero-title br { display: none; }
+.hero-body br { display: none; }
+.hero-signia {
+  max-width: 140px !important;
+  padding-top: 0 !important;
+}
+
+/* Hero CTA wrapper — stack buttons vertically */
+.hero-cta-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+.hero-cta {
+  width: 100% !important;
+  justify-content: center !important;
+  margin-right: 0 !important;
+}
+
+/* Intro section */
+.intro-section {
+  padding: 40px 24px !important;
+}
+.intro-grid {
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+}
+.intro-title { font-size: 26px !important; }
+.intro-body { font-size: 13px !important; }
+
+/* Winners */
+.winners-section { padding: 48px 0 0 !important; }
+.winners-header {
+  padding: 0 24px 24px !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+.winner-card { flex: 0 0 260px !important; }
+.winner-img { width: 260px !important; height: 260px !important; }
+.crosses-row { padding: 16px 20px !important; }
+
+/* Jury */
+.jury-section { padding: 48px 24px !important; }
+.jury-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+.jury-name { font-size: 15px !important; }
+.jury-role { font-size: 11px !important; }
+.section-header {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+.section-title { font-size: 28px !important; }
+
+/* Prizes — disable flip on mobile */
+.prizes-section { padding: 48px 24px !important; }
+.prizes-header {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin-bottom: 28px !important;
+}
+.prizes-grid {
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+}
+.prize-flip {
+  height: auto !important;
+  perspective: none !important;
+}
+.prize-flip-inner {
+  transform: none !important;
+  transform-style: flat !important;
+  position: static !important;
+}
+.prize-front {
+  position: static !important;
+  backface-visibility: visible !important;
+}
+.prize-back { display: none !important; }
+
+/* FAQ */
+.faq-section { padding: 40px 24px 48px !important; }
+.faq-layout {
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+}
+.faq-right-hdr { justify-content: flex-start !important; }
+.faq-intro-text { max-width: 100% !important; }
+
+/* Partners */
+.partners-section { padding: 40px 24px 48px !important; }
+.partners-header {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-bottom: 24px !important;
+}
+.partners-grid {
+  grid-template-columns: 1fr !important;
+}
+
+/* Cross icons */
+.cross-icon[style*="left:200px"] { left: 16px !important; }
+.cross-icon[style*="right:200px"] { right: 16px !important; }
     }
 
     @media (max-width: 480px) {
@@ -291,6 +414,12 @@
       .prizes-title { font-size: 24px; }
       .faq-title-left { font-size: 24px; }
       .partners-title { font-size: 24px; }
+      .hero-content { padding: 80px 16px 40px !important; }
+      .jury-grid { grid-template-columns: 1fr !important; }
+      .intro-title { font-size: 22px !important; }
+      .section-title { font-size: 24px !important; }
+
+
     }
     @media (max-width: 360px) {
       .hero-title { font-size: 22px; }
@@ -469,29 +598,6 @@ button.btn-tickets,
   transition: background 0.22s, color 0.22s, border-color 0.22s !important;
 }
 
-/* Blue hover shading on ALL buttons */
-.btn-primary:hover,
-.btn-outline-dark:hover,
-.btn-outline-white:hover,
-.hero-cta:hover,
-.btn-apply:hover,
-.btn-cta-white:hover,
-.btn-cta-filled:hover,
-.btn-learn:hover,
-a.btn-tickets:hover,
-button.btn-tickets:hover,
-.btn-get-pass:hover,
-[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover {
-  background: #1e3a6e !important;
-  color: #ffffff !important;
-  border-color: rgba(100,160,255,0.6) !important;
-}
-
-/* font color should always be white on hover */
-.btn-outline-dark:hover,
-.btn-outline-white:hover {
-  color: #fff !important;
-}
 
 /* ── CROSS ICON ── always allow transform ── */
 .cross-icon {
@@ -945,7 +1051,20 @@ faqData.forEach((faq, i) => {
 
   const pages=[{label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg'},{label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg'},{label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg'},{label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg'},{label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg'},{label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg'}];
   const strip=document.createElement('nav'); strip.className='fug-sig-strip'; const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-  pages.forEach(p=>{const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href; const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.height='38px'; const label=document.createElement('span'); label.textContent=p.label; a.appendChild(img); a.appendChild(label); inner.appendChild(a);});
+  const currentPage = window.location.pathname.split('/').pop() || '';
+pages.forEach(p => {
+  const a = document.createElement('a');
+  a.className = 'fug-sig-item';
+  a.href = p.href;
+  const isActive = currentPage === p.href;
+  if (isActive) a.classList.add('fug-active');
+  const img = document.createElement('img');
+  img.src = p.img; img.alt = p.label; img.style.height = '38px';
+  if (isActive) { img.style.transform = 'scale(1.18)'; img.style.opacity = '1'; }
+  const label = document.createElement('span');
+  label.textContent = p.label;
+  a.appendChild(img); a.appendChild(label); inner.appendChild(a);
+});
   strip.appendChild(inner); const ticker=document.querySelector('.ticker-wrapper'); if(ticker) ticker.after(strip);
   patchHeroCrosses();
 })();
@@ -983,60 +1102,6 @@ faqData.forEach((faq, i) => {
 })();
 </script>
 
-<script>
-/* Mobile nav drawer */
-(function(){
-  var nav = document.getElementById('main-nav');
-  if (!nav || document.getElementById('fug-mobile-toggle')) return;
-  
-  var toggle = document.createElement('button');
-  toggle.id = 'fug-mobile-toggle';
-  toggle.className = 'nav-mobile-toggle';
-  toggle.setAttribute('aria-label','Menu');
-  toggle.innerHTML = '<span></span><span></span><span></span>';
-  nav.appendChild(toggle);
-
-  var drawer = document.createElement('div');
-  drawer.id = 'mobile-nav-drawer';
-  var links = [
-    ['Home', '/index.html'],
-    ['Festival Programme', '/programme.html'],
-    ['Expo', '/fes-expo.html'],
-    ['Market', '/fes-market.html'],
-    ['Schedule', '/fes-schedule.html'],
-    ['Signature Programmes', '/sig-awards.html'],
-    ['Awards', '/sig-awards.html'],
-    ['Dala Khona', '/sig-dalakhona.html'],
-    ['PRO', '/sig-fakugesipro.html'],
-    ['Immersive Africa', '/sig-immersive.html'],
-    ['JAMZ', '/sig-jamz.html'],
-    ['Pitchathon', '/sig-pitchathon.html'],
-    ['About', '/about.html'],
-    ['Venues', '/discover/venues.html'],
-    ['Partners', '/discover/partners.html'],
-    ['Resources', '/discover/resources.html'],
-    ['Archive', '/discover/archive.html'],
-  ];
-  links.forEach(function(l){
-    var a = document.createElement('a');
-    a.href = l[1]; a.textContent = l[0];
-    drawer.appendChild(a);
-  });
-  var ticketLink = document.createElement('a');
-  ticketLink.href = '/tickets.html';
-  ticketLink.className = 'drawer-tickets';
-  ticketLink.textContent = 'GET TICKETS';
-  drawer.appendChild(ticketLink);
-  document.body.appendChild(drawer);
-
-  toggle.addEventListener('click', function(){
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
-  });
-})();
-</script>
 
 </body>
 </html>

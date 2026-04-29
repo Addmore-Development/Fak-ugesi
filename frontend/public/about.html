@@ -27,7 +27,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── CROSS ICONS — static, no animation ── */
+    /* ── CROSS ICONS ── */
     .cross-icon {
       display: inline-flex;
       align-items: center;
@@ -219,6 +219,180 @@
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 160px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+
+
+    /* ═══════════════════════════════════════════════════
+       MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+    ═══════════════════════════════════════════════════ */
+
+    /* ── TABLET (≤1024px) ── */
+    @media (max-width: 1024px) {
+      :root { --band: 48px; }
+
+      .hero-inner { padding: 100px 48px 52px; }
+      .hero-title { font-size: 40px; }
+      .hero-dates { font-size: 24px; }
+      .hero-logo img { height: 80px; }
+
+      .crosses-bar,
+      .crosses-bar-3,
+      .team-crosses-top { padding: 18px 48px; }
+
+      .who-layout { padding: 0 48px 48px; gap: 40px; }
+      .who-title { font-size: 38px; }
+
+      .editions-header { padding: 40px 48px 28px; }
+      .editions-title { font-size: 36px; }
+      .editions-strip { padding: 0 48px; }
+
+      .team-inner { padding: 0 48px; }
+      .team-title { font-size: 36px; margin-bottom: 28px; }
+
+      .contact-section { padding: 52px 48px 60px; }
+      .contact-layout { gap: 48px; }
+      .contact-title { font-size: 36px; margin-bottom: 28px; }
+      .contact-info-val { font-size: 17px; }
+
+      .partners-section { padding: 52px 48px 60px; }
+      .partners-title { font-size: 34px; }
+    }
+
+    /* ── MOBILE (≤768px) ── */
+    @media (max-width: 768px) {
+      :root { --band: 20px; }
+
+      /* HERO */
+      .hero { min-height: auto; }
+      .hero-bg { background-position: center center; }
+
+      .hero-inner {
+        padding: 80px 20px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+      }
+
+      .hero-content { max-width: 100%; }
+      .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
+      .hero-title { font-size: 28px; margin-bottom: 14px; }
+      .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
+      .hero-dates { font-size: 22px; }
+
+      .hero-logo { width: 100%; justify-content: flex-start; }
+      .hero-logo img { height: 56px; }
+
+      /* Cross bars */
+      .crosses-bar,
+      .crosses-bar-3,
+      .team-crosses-top { padding: 14px 20px; }
+
+      /* WHO WE ARE */
+      .who-layout {
+        grid-template-columns: 1fr;
+        padding: 0 20px 40px;
+        gap: 20px;
+      }
+      .who-title { font-size: 32px; }
+      .who-body { font-size: 13px; line-height: 1.7; }
+      .who-body p + p { margin-top: 16px; }
+
+      /* IMAGE STRIP — smaller tiles on mobile */
+      .strip-img-item { flex: 0 0 240px; height: 240px; }
+
+      /* PREVIOUS EDITIONS */
+      .editions-header { padding: 32px 20px 20px; }
+      .editions-title { font-size: 28px; }
+      .editions-strip { padding: 0 20px; gap: 14px; }
+      .edition-card { flex: 0 0 240px; }
+      .edition-img { width: 240px; height: 200px; }
+      .edition-name { font-size: 16px; }
+      .edition-desc { font-size: 11.5px; }
+
+      /* TEAM */
+      .team-inner { padding: 0 20px; }
+      .team-title { font-size: 28px; margin-bottom: 20px; }
+      .team-grid,
+      .team-grid-row2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .team-grid-row2 { margin-top: 12px; }
+      .team-name { font-size: 13px; }
+      .team-role { font-size: 10px; }
+      .team-email { font-size: 9.5px; word-break: break-all; }
+      .team-info { padding: 10px 10px 12px; }
+
+      /* CONTACT */
+      .contact-section { padding: 40px 20px 48px; }
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .contact-title { font-size: 28px; margin-bottom: 24px; }
+      .contact-info-val { font-size: 15px; margin-bottom: 20px; }
+      .contact-info-label { font-size: 10px; }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 12px 14px;
+        font-size: 13px;
+      }
+      .form-textarea { min-height: 120px; }
+      .form-full { margin-bottom: 12px; }
+      .form-check label { font-size: 12px; }
+
+      /* PARTNERS */
+      .partners-section { padding: 40px 20px 48px; }
+      .partners-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .partners-title { font-size: 28px; }
+      .partners-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .partner-logo-box { padding: 24px 20px; margin-bottom: 10px; }
+      .partner-logo-box img { max-height: 80px; }
+      .partner-desc { font-size: 11px; }
+
+      /* Cross icons near partners — reposition on mobile */
+      .partners-section .cross-icon { display: none; }
+    }
+
+    /* ── SMALL MOBILE (≤480px) ── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: 24px; }
+      .hero-dates { font-size: 19px; }
+
+      .who-title { font-size: 26px; }
+
+      .editions-title { font-size: 24px; }
+
+      .team-title { font-size: 24px; }
+      .team-grid,
+      .team-grid-row2 {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-title { font-size: 24px; }
+
+      .partners-title { font-size: 24px; }
+      .partners-grid { grid-template-columns: 1fr; }
+
+      .strip-img-item { flex: 0 0 200px; height: 200px; }
+      .edition-card { flex: 0 0 200px; }
+      .edition-img { width: 200px; height: 170px; }
+    }
+
   </style>
   <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -444,7 +618,7 @@
 <script src="starArrows.js"></script>
 
 <script>
-/* Cross icon scroll spin — static when idle, clockwise scroll-down, anti-clockwise scroll-up */
+/* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){

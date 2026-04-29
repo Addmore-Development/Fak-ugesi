@@ -118,6 +118,87 @@
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
       .section-header-label{font-size:36px}
     }
+
+    @media (max-width: 768px) {
+  /* Hero */
+  .hero {
+    min-height: 70vh !important;
+    align-items: flex-end !important;
+    padding-top: 58px !important;
+  }
+  .hero-content {
+    padding: 0 24px 48px !important;
+  }
+  .hero-title {
+    font-size: 36px !important;
+    line-height: 1.1 !important;
+  }
+  .hero-body {
+    font-size: 12px !important;
+    max-width: 100% !important;
+  }
+  .hero-body br { display: none; }
+
+  /* Premiering + Ongoing sections */
+  .premiering-section,
+  .ongoing-section {
+    min-height: 70vh !important;
+  }
+  .premiering-content,
+  .ongoing-content {
+    padding: 0 24px 48px !important;
+  }
+  .section-header-label {
+    font-size: 32px !important;
+  }
+  .section-dates {
+    font-size: 16px !important;
+    margin-bottom: 32px !important;
+  }
+  .premiere-title {
+    font-size: 26px !important;
+  }
+  .premiere-body {
+    font-size: 12px !important;
+    max-width: 100% !important;
+  }
+  .premiere-links {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* Partners section */
+  .partners-section {
+    padding: 48px 0 0 !important;
+  }
+  .partners-title {
+    font-size: 24px !important;
+    padding: 0 24px !important;
+    margin-bottom: 32px !important;
+  }
+  .partners-blue-band {
+    padding: 24px 20px !important;
+    margin-top: 32px !important;
+  }
+  .partners-disclaimer {
+    font-size: 10px !important;
+  }
+
+  /* Cross icons — pull in from 200px to screen edges */
+  .cross-icon[style*="left:200px"] { left: 16px !important; }
+  .cross-icon[style*="right:200px"] { right: 16px !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 28px !important; }
+  .section-header-label { font-size: 26px !important; }
+  .premiere-title { font-size: 22px !important; }
+  .hero-content,
+  .premiering-content,
+  .ongoing-content {
+    padding: 0 16px 36px !important;
+  }
+}
   </style>
 
 <style id="fug-global-fixes">
@@ -498,7 +579,7 @@ const track = document.getElementById('partnersTrack');
     .hero-content{padding-top:110px!important;padding-bottom:60px!important;}
     .cross-icon{transition:transform 0.1s linear;}
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
-    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none; justify-content: center;}
+    .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;justify-content:center;}
     .fug-sig-strip-inner::-webkit-scrollbar{display:none;}
     .fug-sig-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 38px;text-decoration:none;color:rgba(255,255,255,0.60);font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.22s,color 0.22s;flex-shrink:0;min-width:100px;position:relative;white-space:nowrap;}
     .fug-sig-item:first-child{border-left:1px solid rgba(255,255,255,0.07);}
@@ -506,46 +587,79 @@ const track = document.getElementById('partnersTrack');
     .fug-sig-item.fug-active{background:rgba(255,255,255,0.12);color:#fff;}
     .fug-sig-item.fug-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.5);}
     .fug-sig-item img{display:block;max-width:88px;max-height:40px;object-fit:contain;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),opacity 0.22s;opacity:0.65;}
-    .fug-sig-item:hover img,.fug-sig-item.fug-active img{transform:scale(1.08);opacity:1;}
+    .fug-sig-item:hover img,.fug-sig-item.fug-active img{transform:scale(1.18);opacity:1;}
     .fug-sig-label{line-height:1;}
   `;
   document.head.appendChild(styleEl);
-  const PAGES=[
-    {label:'Awards',href:'sig-awards.html',img:'images/logos/signatureProgrammes/awards_logo_light.svg',imgStyle:'height:38px;'},
-    {label:'Dala Khona',href:'sig-dalakhona.html',img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
-    {label:'PRO',href:'sig-fakugesipro.html',img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg',imgStyle:'height:34px;'},
-    {label:'Immersive Africa',href:'sig-immersive.html',img:'images/logos/immersiveAfrica/digitaldome.svg',imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'JAMZ',href:'sig-jamz.html',img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',imgStyle:'height:42px;'},
-    {label:'Pitchathon',href:'sig-pitchathon.html',img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
+
+  const PAGES = [
+    {label:'Awards',      href:'sig-awards.html',      img:'images/logos/signatureProgrammes/awards_logo_light.svg',    imgStyle:'height:38px;'},
+    {label:'Dala Khona',  href:'sig-dalakhona.html',   img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg',imgStyle:'height:38px;'},
+    {label:'PRO',         href:'sig-fakugesipro.html',  img:'images/logos/signatureProgrammes/pro_logo_logo_light.svg', imgStyle:'height:34px;'},
+    {label:'Immersive Africa', href:'sig-immersive.html', img:'images/logos/immersiveAfrica/digitaldome.svg',           imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
+    {label:'JAMZ',        href:'sig-jamz.html',         img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',    imgStyle:'height:42px;'},
+    {label:'Pitchathon',  href:'sig-pitchathon.html',   img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
   ];
-  const currentPage=window.location.pathname.split('/').pop()||'';
-  function buildStrip(){
-    const strip=document.createElement('nav'); strip.className='fug-sig-strip';
-    const inner=document.createElement('div'); inner.className='fug-sig-strip-inner';
-    PAGES.forEach(p=>{
-      const a=document.createElement('a'); a.className='fug-sig-item'; a.href=p.href;
-      if(currentPage===p.href) a.classList.add('fug-active');
-      const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
-      const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
+
+  const currentPage = window.location.pathname.split('/').pop() || '';
+
+  function buildStrip() {
+    const strip = document.createElement('nav');
+    strip.className = 'fug-sig-strip';
+    const inner = document.createElement('div');
+    inner.className = 'fug-sig-strip-inner';
+
+    PAGES.forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'fug-sig-item';
+      a.href = p.href;
+      const isActive = currentPage === p.href;
+      if (isActive) a.classList.add('fug-active');
+      const img = document.createElement('img');
+      img.src = p.img; img.alt = p.label;
+      img.style.cssText = p.imgStyle;
+      if (isActive) {
+        img.style.transform = 'scale(1.18)';
+        img.style.opacity = '1';
+      }
+      const label = document.createElement('span');
+      label.className = 'fug-sig-label';
+      label.textContent = p.label;
+      a.appendChild(img);
+      a.appendChild(label);
+      inner.appendChild(a);
     });
-    strip.appendChild(inner); return strip;
+
+    strip.appendChild(inner);
+    return strip;
   }
-  function run(){
-    document.querySelector('.hero')?.querySelectorAll('.cross-icon').forEach(el=>el.remove());
-    const CROSS_SVG=`<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
-    [{style:'top:16px;left:200px;',delay:'0s'},{style:'top:16px;right:200px;',delay:'0.7s'},{style:'bottom:16px;left:200px;',delay:'1.4s'},{style:'bottom:16px;right:200px;',delay:'2.1s'}].forEach(({style,delay})=>{
-      const el=document.createElement('div'); el.className='cross-icon'; el.style.cssText=style; el.innerHTML=CROSS_SVG;
-      document.querySelector('.hero')?.appendChild(el);
-    });
-    const ticker=document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
-    if(ticker) ticker.after(buildStrip());
+
+  function run() {
+    /* Repatch hero crosses */
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
+      const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
+      [{style:'top:16px;left:200px;'},{style:'top:16px;right:200px;'},{style:'bottom:16px;left:200px;'},{style:'bottom:16px;right:200px;'}]
+        .forEach(({style}) => {
+          const el = document.createElement('div');
+          el.className = 'cross-icon';
+          el.style.cssText = style;
+          el.innerHTML = CROSS_SVG;
+          hero.appendChild(el);
+        });
+    }
+
+    /* Insert strip after ticker */
+    const ticker = document.querySelector('.ticker-wrapper, .ticker-bar, .ticker-wrap');
+    if (ticker) ticker.after(buildStrip());
   }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run):run();
+
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', run)
+    : run();
 })();
 </script>
-
-<script>
 /* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
@@ -579,61 +693,6 @@ const track = document.getElementById('partnersTrack');
 })();
 </script>
 
-
-<script>
-/* Mobile nav drawer */
-(function(){
-  var nav = document.getElementById('main-nav');
-  if (!nav || document.getElementById('fug-mobile-toggle')) return;
-  
-  var toggle = document.createElement('button');
-  toggle.id = 'fug-mobile-toggle';
-  toggle.className = 'nav-mobile-toggle';
-  toggle.setAttribute('aria-label','Menu');
-  toggle.innerHTML = '<span></span><span></span><span></span>';
-  nav.appendChild(toggle);
-
-  var drawer = document.createElement('div');
-  drawer.id = 'mobile-nav-drawer';
-  var links = [
-    ['Home', '/index.html'],
-    ['Festival Programme', '/programme.html'],
-    ['Expo', '/fes-expo.html'],
-    ['Market', '/fes-market.html'],
-    ['Schedule', '/fes-schedule.html'],
-    ['Signature Programmes', '/sig-awards.html'],
-    ['Awards', '/sig-awards.html'],
-    ['Dala Khona', '/sig-dalakhona.html'],
-    ['PRO', '/sig-fakugesipro.html'],
-    ['Immersive Africa', '/sig-immersive.html'],
-    ['JAMZ', '/sig-jamz.html'],
-    ['Pitchathon', '/sig-pitchathon.html'],
-    ['About', '/about.html'],
-    ['Venues', '/discover/venues.html'],
-    ['Partners', '/discover/partners.html'],
-    ['Resources', '/discover/resources.html'],
-    ['Archive', '/discover/archive.html'],
-  ];
-  links.forEach(function(l){
-    var a = document.createElement('a');
-    a.href = l[1]; a.textContent = l[0];
-    drawer.appendChild(a);
-  });
-  var ticketLink = document.createElement('a');
-  ticketLink.href = '/tickets.html';
-  ticketLink.className = 'drawer-tickets';
-  ticketLink.textContent = 'GET TICKETS';
-  drawer.appendChild(ticketLink);
-  document.body.appendChild(drawer);
-
-  toggle.addEventListener('click', function(){
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ drawer.classList.remove('open'); });
-  });
-})();
-</script>
 
 </body>
 </html>

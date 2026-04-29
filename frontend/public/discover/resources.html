@@ -245,6 +245,111 @@
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+/* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
+══════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ── */
+@media (max-width: 1024px) {
+  :root { --band: 48px; }
+
+  .hero-inner { padding: 100px 48px 52px; }
+  .hero-title { font-size: 44px; }
+  .hero-logo img { height: 80px; }
+
+  .research-section { padding: 52px 0 60px; }
+  .research-inner { padding: 0 48px; }
+  .research-title { font-size: 38px; margin-bottom: 36px; }
+  .research-body { gap: 40px; }
+  .research-cover { width: 200px; }
+  .research-body-text { font-size: 15px; }
+
+  .partners-section { padding: 52px 0 60px; }
+  .partners-inner { padding: 0 48px; }
+  .partners-title { font-size: 34px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+  :root { --band: 20px; }
+
+  /* HERO */
+  .hero { min-height: auto; }
+  .hero-bg { background-position: center center; }
+  .hero-inner {
+    padding: 80px 20px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
+  .hero-title { font-size: 32px; margin-bottom: 14px; }
+  .hero-body { font-size: 12px; max-width: 100%; }
+  .hero-logo { width: 100%; justify-content: flex-start; }
+  .hero-logo img { height: 56px; }
+
+  /* RESEARCH SECTIONS */
+  .research-section { padding: 40px 0 48px; }
+  .research-inner { padding: 0 20px; }
+  .research-title { font-size: 28px; margin-bottom: 24px; }
+
+  .research-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .research-cover {
+    width: 100%;
+    max-width: 260px;
+  }
+  .research-body-text { font-size: 14px; margin-bottom: 28px; }
+
+  .research-meta {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .download-btn {
+    width: 100%;
+    padding: 14px 20px;
+    text-align: center;
+  }
+
+  /* PARTNERS */
+  .partners-section { padding: 40px 0 48px; }
+  .partners-inner { padding: 0 20px; }
+  .partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .partners-title { font-size: 28px; }
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .partner-logo-box { padding: 24px 20px; margin-bottom: 10px; }
+  .partner-logo-box img { max-height: 80px; }
+  .partner-desc { font-size: 11px; }
+
+  .cross-icon { display: none; }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px; }
+
+  .research-title { font-size: 24px; }
+  .research-body-text { font-size: 13px; }
+
+  .partners-title { font-size: 24px; }
+  .partners-grid { grid-template-columns: 1fr; }
+}
+
+
   </style>
 
   <link rel="preload" href="../../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>

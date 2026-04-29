@@ -38,7 +38,7 @@
   position: relative; width: 100%; min-height: 490px; overflow: hidden;
   display: grid;
   grid-template-rows: calc(var(--cross-inset-y, 16px) + 9px) 1fr calc(var(--cross-inset-y, 16px) + 9px);
-  grid-template-columns: calc(var(--cross-inset-x, 200px) + 9px) 1fr calc(var(--cross-inset-x, 200px) + 9px);
+  grid-template-columns: 248px 1fr 248px;
   align-items: stretch;
   padding-top: 0;
 }
@@ -440,8 +440,7 @@
 
 <style id="fug-global-fixes">
 /* ── HERO NAV FIX ── */
-.hero { padding-top: 58px !important; }
-body > .hero:first-child { padding-top: 58px !important; }
+
 
 /* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
 .btn-primary,
@@ -531,7 +530,7 @@ button.btn-tickets:hover,
   #main-nav .nav-links-wrap { display: none !important; }
   #main-nav .nav-mobile-toggle { display: flex !important; }
 
-  .hero-inner { flex-direction: column !important; padding: 80px 20px 40px !important; gap: 24px !important; }
+  .hero-inner { flex-direction: column !important;  padding:120px 248px 56px; gap: 24px !important; }
   .hero-logo { display: none !important; }
   .hero-title { font-size: 36px !important; }
   .hero-content { max-width: 100% !important; }
@@ -623,22 +622,6 @@ button.btn-tickets:hover,
 
 </head>
 <body>
-
-<!-- Mobile Hamburger Menu (only visible on ≤768px) -->
-<div class="mobile-hamburger-bar" id="mobileHamburgerBar">
-  <a href="/index.html" class="mobile-logo">Fak'ugesi</a>
-  <button class="hamburger-btn" id="hamburgerBtn">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/index.html">Home</a>
-  <a href="/programme.html">Festival Programme</a>
-  <a href="/sig-awards.html">Signature Programmes</a>
-  <a href="/about.html">Discover</a>
-  <a href="/tickets.html" class="mobile-tickets">GET TICKETS</a>
-</div>
-<div class="mobile-overlay" id="mobileOverlay"></div>
 
 <script src="nav.js"></script>
 

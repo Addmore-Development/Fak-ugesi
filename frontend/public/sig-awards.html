@@ -494,9 +494,6 @@
   </style>
 
 <style id="fug-global-fixes">
-/* ── HERO NAV FIX ── */
-.hero { padding-top: 58px !important; }
-body > .hero:first-child { padding-top: 58px !important; }
 
 /* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
 .btn-primary,
@@ -679,24 +676,6 @@ button.btn-tickets:hover,
 </head>
 <body>
 
-<!-- Mobile Hamburger Menu (only visible on ≤768px) -->
-<div class="mobile-hamburger-bar" id="mobileHamburgerBar">
-  <a href="/index.html" class="mobile-logo">Fak'ugesi</a>
-  <button class="hamburger-btn" id="hamburgerBtn">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/index.html">Home</a>
-  <a href="/programme.html">Festival Programme</a>
-  <a href="/sig-awards.html">Signature Programmes</a>
-  <a href="/about.html">Discover</a>
-  <a href="/tickets.html" class="mobile-tickets">GET TICKETS</a>
-</div>
-<div class="mobile-overlay" id="mobileOverlay"></div>
-
-<!-- Original navbar injected by nav.js (visible on desktop & tablet, hidden on mobile via CSS) -->
-<script src="nav.js"></script>
 
 <section class="hero">
   <div class="hero-bg"></div>
@@ -846,7 +825,6 @@ button.btn-tickets:hover,
 </section>
 
 <script src="nav.js"></script>
-<script src="fakugesi-cross-patch.js"></script>
 <script src="footer.js"></script>
 
 <script>

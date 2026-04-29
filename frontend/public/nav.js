@@ -38,7 +38,7 @@
       flex:1;
       display:flex;
       align-items:center;
-      padding-left: var(--band, 248px);
+      padding-left: 248px;
       position:relative;
       z-index:1;
       overflow:visible;
@@ -112,27 +112,102 @@
     #main-nav .nav-tickets canvas{position:absolute;inset:0;pointer-events:none;z-index:0;}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
-    /* Global button electric canvas */
+    /* ── GLOBAL ELECTRIC BUTTON BASE ── */
+    /* All buttons: positioned + overflow hidden so canvas fits inside */
     .btn-primary, .btn-outline-dark, .btn-outline-white,
     .btn-apply, .btn-cta-white, .btn-cta-filled, .btn-learn,
     .hero-cta, .intro-cta, .network-cta, .section-cta,
-    .challenge-cta, a.btn-tickets, button.btn-tickets, .btn-get-pass {
-      position:relative !important; overflow:hidden !important;
+    .challenge-cta, a.btn-tickets, button.btn-tickets, .btn-get-pass,
+    .showcase-cta-btn, .day-card, .more-card,
+    [class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-tickets):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back) {
+      position:relative !important;
+      overflow:hidden !important;
+      transition: background 0.28s ease, color 0.22s ease,
+                  border-color 0.28s ease, transform 0.18s ease !important;
     }
+
+    /* Blue hover background — same dark navy as GET TICKETS */
+    .btn-primary:hover, .btn-outline-dark:hover, .btn-outline-white:hover,
+    .btn-apply:hover, .btn-cta-white:hover, .btn-cta-filled:hover, .btn-learn:hover,
+    .hero-cta:hover, .intro-cta:hover, .network-cta:hover, .section-cta:hover,
+    .challenge-cta:hover, a.btn-tickets:hover, button.btn-tickets:hover, .btn-get-pass:hover,
+    .showcase-cta-btn:hover,
+    [class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-tickets):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back):hover {
+      background: #0d1b3e !important;
+      color: #ffffff !important;
+      border-color: rgba(100,160,255,0.65) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Canvas injected by JS sits behind text */
     .btn-primary canvas, .btn-outline-dark canvas, .btn-outline-white canvas,
     .btn-apply canvas, .btn-cta-white canvas, .btn-cta-filled canvas,
     .btn-learn canvas, .hero-cta canvas, .intro-cta canvas,
     .network-cta canvas, .section-cta canvas, .challenge-cta canvas,
-    a.btn-tickets canvas, button.btn-tickets canvas, .btn-get-pass canvas {
+    a.btn-tickets canvas, button.btn-tickets canvas, .btn-get-pass canvas,
+    .showcase-cta-btn canvas,
+    [class*="btn-"] canvas {
       position:absolute !important; inset:0 !important;
       pointer-events:none !important; z-index:0 !important;
     }
+
+    /* All direct children sit above the canvas */
     .btn-primary > *, .btn-outline-dark > *, .btn-outline-white > *,
     .btn-apply > *, .btn-cta-white > *, .btn-cta-filled > *,
     .btn-learn > *, .hero-cta > *, .intro-cta > *,
     .network-cta > *, .section-cta > *, .challenge-cta > *,
-    a.btn-tickets > *, button.btn-tickets > *, .btn-get-pass > * {
+    a.btn-tickets > *, button.btn-tickets > *, .btn-get-pass > *,
+    .showcase-cta-btn > *,
+    [class*="btn-"] > * {
       position:relative !important; z-index:1 !important;
+    }
+
+    /* ── SMALL LINK HOVER GROW EFFECT ── */
+    .curatorial-view-link,
+    .showcases-link,
+    .showcase-card-more,
+    .showcase-detail-link,
+    .partners-link,
+    .more-card-link,
+    .sched-location,
+    .sched-speakers a,
+    .nav-dd a,
+    .ticker-item,
+    .carousel-logo-name,
+    .hero-eyebrow,
+    .showcases-header a,
+    .curatorial-view-link,
+    .more-card-top span,
+    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
+      display:inline-block;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+                  color 0.2s ease,
+                  letter-spacing 0.22s ease !important;
+    }
+
+    .curatorial-view-link:hover,
+    .showcases-link:hover,
+    .showcase-card-more:hover,
+    .showcase-detail-link:hover,
+    .partners-link:hover,
+    .more-card-link:hover,
+    .sched-location:hover,
+    .sched-speakers a:hover,
+    .showcases-header a:hover,
+    .more-card-top span:hover,
+    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
+      transform: scale(1.1);
+      transform-origin: left center;
+      letter-spacing: 0.07em;
+    }
+
+    /* Nav dropdown links get a slide-right instead of scale */
+    #main-nav .nav-dd a {
+      transition: background 0.18s, color 0.18s, padding-left 0.2s ease !important;
+    }
+    #main-nav .nav-dd a:hover {
+      background: rgba(255,255,255,0.07);
+      padding-left: 28px !important;
     }
   </style>`);
 
@@ -226,32 +301,44 @@
     btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
   })();
 
-  /* ── Apply electric effect to ALL site buttons ── */
+  /* ── Apply electric lightning to ALL site buttons ── */
   (function applyGlobalElectric() {
+    // Broad selector — catches every button-like element across all pages
     const BTN_SEL = [
-      '.btn-primary','.btn-outline-dark','.btn-outline-white',
-      '.btn-apply','.btn-cta-white','.btn-cta-filled','.btn-learn',
-      '.hero-cta','.intro-cta','.network-cta','.section-cta',
-      '.challenge-cta','a.btn-tickets','button.btn-tickets','.btn-get-pass'
+      '.btn-primary', '.btn-outline-dark', '.btn-outline-white',
+      '.btn-apply', '.btn-cta-white', '.btn-cta-filled', '.btn-learn',
+      '.hero-cta', '.intro-cta', '.network-cta', '.section-cta',
+      '.challenge-cta', 'a.btn-tickets', 'button.btn-tickets', '.btn-get-pass',
+      '.showcase-cta-btn',
+      '[class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back)'
     ].join(',');
-    function attachElectric(btn) {
+
+    function makeElectric(btn) {
       if (btn.dataset.electricDone) return;
+      // Skip the nav itself — it has its own dedicated canvas
+      if (btn.closest('#main-nav')) return;
       btn.dataset.electricDone = '1';
+
       const cv = document.createElement('canvas');
+      cv.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:0;';
       btn.appendChild(cv);
       const ctx = cv.getContext('2d');
       let raf = null, on = false, bolts = [], f = 0;
+
       function rs() { cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
+
       function seg(x1,y1,x2,y2,r,d) {
         if (d<=0) return [[x1,y1],[x2,y2]];
         const mx=(x1+x2)/2+(Math.random()-.5)*r, my=(y1+y2)/2+(Math.random()-.5)*r*.4;
         return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
       }
+
       function spawn() {
         const W=cv.width, H=cv.height;
         return { pts:seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
                  life:1, decay:.08+Math.random()*.06, w:.7+Math.random()*.9 };
       }
+
       function draw(b) {
         const a = Math.max(0,b.life);
         [[b.w*5,`rgba(60,120,255,${a*.28})`,'rgba(60,140,255,.7)',12],
@@ -263,22 +350,29 @@
           ctx.stroke(); ctx.restore();
         });
       }
+
       function tick() {
         if (!on) return; rs(); ctx.clearRect(0,0,cv.width,cv.height); f++;
         if (f%9===0) { bolts.push(spawn()); if(Math.random()>.55) bolts.push(spawn()); }
-        bolts = bolts.filter(b => b.life > 0);
-        bolts.forEach(b => { draw(b); b.life -= b.decay; });
+        bolts = bolts.filter(b=>b.life>0);
+        bolts.forEach(b=>{ draw(b); b.life-=b.decay; });
         raf = requestAnimationFrame(tick);
       }
-      btn.addEventListener('mouseenter', () => { on=true; rs(); bolts=[]; f=0; if(!raf) raf=requestAnimationFrame(tick); });
-      btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
+
+      btn.addEventListener('mouseenter', ()=>{ on=true; rs(); bolts=[]; f=0; if(!raf) raf=requestAnimationFrame(tick); });
+      btn.addEventListener('mouseleave', ()=>{ on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
     }
-    function attachAll() { document.querySelectorAll(BTN_SEL).forEach(attachElectric); }
+
+    function attachAll() {
+      try { document.querySelectorAll(BTN_SEL).forEach(makeElectric); } catch(e) {}
+    }
+
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attachAll);
     else attachAll();
+    // Second pass after any dynamic content has rendered
     setTimeout(attachAll, 600);
+    // Third pass for late-rendered components
+    setTimeout(attachAll, 1800);
   })();
-
-
 
 })();

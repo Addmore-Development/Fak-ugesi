@@ -55,7 +55,7 @@
 
     .hero-inner {
       position: relative; z-index: 4; width: 100%;
-      padding: 110px var(--band) 56px;
+    padding:64px 248px 56px;
       display: flex; align-items: flex-end; justify-content: space-between;
     }
     .hero-content { max-width: 620px; }
@@ -88,7 +88,7 @@
     .day-selector {
       background: linear-gradient(180deg, #3a4a88 0%, #4a5899 40%, #5a6aaa 70%, #6878bb 100%);
       position: relative;
-      padding: 28px var(--band);
+      padding: 28px 248px;
     }
     .day-selector .cross-icon { position: absolute; opacity: 0.5; }
     .day-cards {
@@ -130,7 +130,8 @@
 
     .schedule-inner {
       position: relative; z-index: 2;
-      padding: 56px var(--band) 72px;
+      padding: 56px 248px 72px;
+
     }
 
     /* Column headers */
@@ -232,13 +233,13 @@
     }
     .more-title {
       font-size: 40px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 40px; padding: 0 var(--band);
+      margin-bottom: 40px; padding: 0 248px;
     }
     .more-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      padding: 0 var(--band);
+      padding: 0 248px;
       align-items: start;
     }
     .more-card {
@@ -293,7 +294,7 @@
     /* crosses row between more and partners */
     .crosses-row {
       display: flex; justify-content: space-between;
-      padding: 24px var(--band);
+      padding: 24px 248px;
       position: relative;
       background: var(--lavender);
     }
@@ -318,7 +319,7 @@
     }
     .speaker-detail-inner {
       position: relative; z-index: 2;
-      padding: 48px var(--band) 64px;
+      padding: 48px 248px 64px;
       display: grid;
       grid-template-columns: 1fr 260px;
       grid-template-rows: auto auto;
@@ -352,7 +353,7 @@
     .speaker-detail-meta-value { font-size: 22px; font-weight: 700; color: #fff; }
 
     /* ── PARTNERS ── */
-    .partners-section { background: var(--lavender); padding: 64px var(--band) 72px; position: relative; }
+    .partners-section { background: var(--lavender); padding: 64px 248px 72px; position: relative; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
     .partners-title { font-size: 42px; font-weight: 700; color: var(--dark-text); }
     .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
@@ -371,28 +372,29 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 1100px) {
-      .hero-inner { padding-left: 48px; padding-right: 48px; }
-      .schedule-inner { padding-left: 48px; padding-right: 48px; }
-      .more-title { padding-left: 48px; padding-right: 48px; }
-      .more-grid { padding-left: 48px; padding-right: 48px; }
-      .partners-section { padding-left: 48px; padding-right: 48px; }
-      .day-selector { padding-left: 48px; padding-right: 48px; }
-      .day-cards { grid-template-columns: repeat(3, 1fr); }
-      .sched-row { grid-template-columns: 160px 1fr 160px; }
-      .schedule-cols { grid-template-columns: 160px 1fr 160px; }
-    }
-    @media (max-width: 700px) {
-      .hero-title { font-size: 36px; }
-      .hero-logo { display: none; }
-      .day-selector { padding-left: 16px; padding-right: 16px; }
-      .day-cards { grid-template-columns: 1fr 1fr; }
-      .sched-row { grid-template-columns: 1fr; }
-      .schedule-cols { display: none; }
-      .more-title { padding-left: 16px; padding-right: 16px; }
-      .more-grid { padding-left: 16px; padding-right: 16px; grid-template-columns: 1fr; }
-      .partners-grid { grid-template-columns: 1fr; }
-    }
+ @media (max-width: 1100px) {
+  .hero-inner,
+  .schedule-inner,
+  .more-title,
+  .more-grid,
+  .partners-section,
+  .day-selector,
+  .crosses-row,
+  .speaker-detail-inner { 
+    padding-left: 48px !important; 
+    padding-right: 48px !important; 
+}
+ }
+@media (max-width: 700px) {
+  .day-selector,
+  .more-title,
+  .more-grid,
+  .crosses-row,
+  .speaker-detail-inner { 
+    padding-left: 16px !important; 
+    padding-right: 16px !important; 
+  }
+}
   </style>
 
 <style id="fug-global-fixes">

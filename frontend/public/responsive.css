@@ -1,0 +1,399 @@
+/**
+ * responsive.css — Fak'ugesi Global Responsive System
+ * ─────────────────────────────────────────────────────────────────
+ * Modelled on KIKK.be's mobile-first breakpoint architecture.
+ *
+ * BREAKPOINTS (mobile-first, min-width):
+ *   @xsm  — 440px   (large phones)
+ *   @sm   — 768px   (tablet / landscape phone)
+ *   @md   — 1024px  (desktop)
+ *   @lg   — 1366px  (large desktop)
+ *   @xlg  — 1536px  (XL screens)
+ *
+ * INTERACTION QUERIES:
+ *   (hover: hover) and (pointer: fine)  → mouse/trackpad devices
+ *   (pointer: coarse)                   → touchscreens
+ *
+ * USAGE: Link this AFTER main.css / style.css on every page:
+ *   <link rel="stylesheet" href="css/responsive.css">
+ *
+ * The mobile nav hamburger is handled by nav.js (no extra markup needed).
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* ══════════════════════════════════════════════════════════════════
+   0. FLUID ROOT FONT-SIZE  (KIKK technique)
+   All rem values scale with viewport width on desktop.
+   ══════════════════════════════════════════════════════════════════ */
+
+html { font-size: 16px; }
+
+@media (min-width: 768px)  { html { font-size: 16px; } }
+@media (min-width: 1024px) { html { font-size: min(max(12px, 0.833333vw), 20px); } }
+@media (min-width: 1366px) { html { font-size: min(max(10px, 0.833333vw), 20px); } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   1. TOUCH / POINTER BEHAVIOUR
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Prevent iOS font-zoom on focused inputs */
+@media (pointer: coarse) {
+  input, textarea, select, .search-input input { font-size: 16px !important; }
+}
+
+/* Scrollbar hidden on touch */
+@media (pointer: coarse) { .unseen-scrollbar { display: none; } }
+
+/* Custom cursor: mouse-only */
+#custom-cursor { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  body        { cursor: none; }
+  #custom-cursor { display: block; }
+}
+@media (pointer: coarse) {
+  body { cursor: auto; }
+}
+
+/* Ripple canvas is hover-only — skip on touch */
+@media (pointer: coarse) { #global-ripple-canvas { display: none; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   2. CONTAINER SYSTEM
+   ══════════════════════════════════════════════════════════════════ */
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 440px)  { .container { max-width: 440px; } }
+@media (min-width: 768px)  { .container { max-width: 768px;  padding: 0 1rem; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; padding: 0 1.5rem; } }
+@media (min-width: 1366px) { .container { max-width: 1366px; } }
+@media (min-width: 1536px) { .container { max-width: 1536px; } }
+@media (min-width: 1921px) { .container { max-width: 1921px; } }
+
+.container-fluid { width: 100%; padding: 0 1.25rem; }
+@media (min-width: 768px)  { .container-fluid { padding: 0 1rem; } }
+@media (min-width: 1024px) { .container-fluid { padding: 0 1.5rem; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   3. NAVIGATION — mobile hamburger injected by nav.js
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Mobile: full-screen overlay menu */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 52px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.98);
+  backdrop-filter: blur(16px);
+  padding: 2rem 1.5rem;
+  z-index: 590;
+  overflow-y: auto;
+}
+.nav-links.nav-open { display: flex; }
+.nav-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.nav-links a  { font-size: 1.375rem; line-height: 1; padding: 1rem 0; display: block; }
+
+/* Hamburger toggle button (injected by nav.js) */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2rem; height: 2rem;
+  cursor: pointer;
+  background: none; border: none; padding: 0;
+  z-index: 601;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.85);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.nav-hamburger.nav-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.nav-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.nav-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Tablet+: restore horizontal nav */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+    top: auto; left: auto; right: auto; bottom: auto;
+    overflow-y: visible;
+  }
+  .nav-links li  { border-bottom: none; }
+  .nav-links a   { font-size: 12px; line-height: 52px; padding: 0 18px; }
+  .nav-hamburger { display: none !important; }
+}
+@media (min-width: 1024px) { nav { padding: 0 2rem; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   4. TYPOGRAPHY SCALE
+   ══════════════════════════════════════════════════════════════════ */
+
+.section-title {
+  font-size: clamp(1.75rem, 7vw, 3rem);
+  letter-spacing: -0.04em; line-height: 1.05;
+}
+@media (min-width: 768px)  { .section-title { font-size: clamp(2rem, 5vw, 4rem);   letter-spacing: -0.05em; } }
+@media (min-width: 1024px) { .section-title { font-size: clamp(2.5rem, 4vw, 5rem); letter-spacing: -0.06em; } }
+
+.section-desc { font-size: 0.9375rem; line-height: 1.7; }
+@media (min-width: 768px)  { .section-desc { font-size: 1rem; } }
+@media (min-width: 1024px) { .section-desc { font-size: 1.125rem; letter-spacing: -0.02em; } }
+
+/* Hero titles */
+.hero .hero-title, .hero h1.hero-title { font-size: clamp(2rem,9vw,3rem); line-height: 1.06; }
+@media (min-width: 440px)  { .hero .hero-title, .hero h1.hero-title { font-size: clamp(2.25rem,8vw,3.5rem); } }
+@media (min-width: 768px)  { .hero .hero-title, .hero h1.hero-title { font-size: clamp(2.5rem,6vw,4.5rem); } }
+@media (min-width: 1024px) { .hero .hero-title, .hero h1.hero-title { font-size: clamp(3rem,5vw,6rem); line-height: 0.95; letter-spacing: -0.06em; } }
+@media (min-width: 1366px) { .hero .hero-title, .hero h1.hero-title { font-size: clamp(4rem,5.5vw,7.5rem); } }
+
+/* User-content rich text */
+@media (min-width: 768px) {
+  .user-content h2 { font-size: 4rem; letter-spacing: -0.06em; margin-top: 5rem; margin-bottom: 3rem; }
+  .user-content h3, .user-content h4 { font-size: 2rem; margin-top: 3rem; margin-bottom: 2rem; }
+  .user-content p, .user-content ul, .user-content ol { font-size: 1.25rem; letter-spacing: -0.02em; }
+  .user-content ul, .user-content ol { margin: 3rem 0; }
+  .user-content ul { padding-left: 1.3rem; }
+  .user-content li { margin-bottom: 1rem; }
+}
+@media (min-width: 1024px) {
+  .user-content h3, .user-content h4 { margin-top: 3.75rem; }
+  .user-content ul, .user-content ol { margin: 2rem 0; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   5. GRID & LAYOUT UTILITIES
+   ══════════════════════════════════════════════════════════════════ */
+
+.grid { display: flex; flex-wrap: wrap; }
+@media (min-width: 768px) { .grid { margin-left: -1rem; } .grid > * { padding-left: 1rem; } }
+
+/* Gap-y helpers */
+@media (min-width: 768px)  { .gap-y-16\@sm { margin-top: -1rem; } .gap-y-16\@sm > * { padding-top: 1rem; } .gap-y-24\@sm { margin-top: -1.5rem; } .gap-y-24\@sm > * { padding-top: 1.5rem; } }
+@media (min-width: 1024px) { .gap-y-32\@md { margin-top: -2rem; } .gap-y-32\@md > * { padding-top: 2rem; } .gap-y-80\@md { margin-top: -5rem; } .gap-y-80\@md > * { padding-top: 5rem; } }
+
+/* Width fractions */
+@media (min-width: 768px)  { .w-1\/1\@sm{width:100%} .w-1\/2\@sm{width:50%} .w-1\/3\@sm{width:33.3333%} .w-1\/4\@sm{width:25%} .w-8\/24\@sm{width:33.3333%} .w-11\/24\@sm{width:45.8333%} .w-13\/24\@sm{width:54.1667%} .w-14\/24\@sm{width:58.3333%} .w-18\/24\@sm{width:75%} .w-20\/24\@sm{width:83.3333%} }
+@media (min-width: 1024px) { .w-1\/1\@md{width:100%} .w-1\/2\@md{width:50%} .w-1\/3\@md{width:33.3333%} .w-1\/4\@md{width:25%} .w-1\/6\@md{width:16.6667%} .w-5\/6\@md{width:83.3333%} .w-8\/24\@md{width:33.3333%} .w-12\/24\@md{width:50%} .w-14\/24\@md{width:58.3333%} .w-16\/24\@md{width:66.6667%} .w-18\/24\@md{width:75%} .w-20\/24\@md{width:83.3333%} }
+@media (min-width: 1366px) { .w-1\/1\@lg{width:100%} .w-1\/2\@lg{width:50%} .w-1\/3\@lg{width:33.3333%} .w-1\/5\@lg{width:20%} .w-1\/7\@lg{width:14.2857%} .w-8\/24\@lg{width:33.3333%} .w-12\/24\@lg{width:50%} .w-14\/24\@lg{width:58.3333%} .w-18\/24\@lg{width:75%} .w-20\/24\@lg{width:83.3333%} }
+
+/* Card grid: 1 → 2 → 3 → 4 col */
+.card-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 440px)  { .card-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 768px)  { .card-grid { gap: 2rem; } }
+@media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3,1fr); } }
+@media (min-width: 1366px) { .card-grid { grid-template-columns: repeat(4,1fr); } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   6. DISPLAY UTILITIES
+   ══════════════════════════════════════════════════════════════════ */
+
+.mobile-only  { display: block; }
+.desktop-only { display: none;  }
+@media (min-width: 768px)  { .mobile-only { display: none !important; } .desktop-only { display: block; } }
+
+@media (min-width: 768px)  { .d-none\@sm  { display: none; } .d-block\@sm { display: block; } .d-flex\@sm { display: flex; } }
+@media (min-width: 1024px) { .d-none\@md  { display: none; } .d-block\@md { display: block; } .d-flex\@md { display: flex; } }
+@media (min-width: 1366px) { .d-none\@lg  { display: none; } .d-block\@lg { display: block; } .d-flex\@lg { display: flex; } .d-inline-flex\@lg { display: inline-flex; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   7. FLEXBOX UTILITIES
+   ══════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 768px)  { .flex-row\@sm{flex-direction:row!important} .flex-row-reverse\@sm{flex-direction:row-reverse!important} .items-start\@sm{align-items:flex-start!important} .items-center\@sm{align-items:center!important} .items-end\@sm{align-items:flex-end!important} .justify-start\@sm{justify-content:flex-start!important} .justify-end\@sm{justify-content:flex-end!important} .flex-no-grow\@sm{max-width:100%;width:auto;flex-grow:0!important} .order-2\@sm{order:2!important} }
+@media (min-width: 1024px) { .flex-row\@md{flex-direction:row!important} .flex-column\@md{flex-direction:column!important} .flex-no-wrap\@md{flex-wrap:nowrap!important} .flex-no-shrink\@md{flex-shrink:0!important} .items-start\@md{align-items:flex-start!important} .items-center\@md{align-items:center!important} .order-1\@md{order:1!important} .order-2\@md{order:2!important} .order-3\@md{order:3!important} }
+@media (min-width: 1366px) { .flex-row\@lg{flex-direction:row!important} .flex-grow\@lg{max-width:100%;width:auto;flex-grow:1!important} .items-center\@lg{align-items:center!important} .justify-between\@lg{justify-content:space-between!important} .order-0\@lg{order:0!important} }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   8. BUTTONS — touch targets & responsive sizing
+   ══════════════════════════════════════════════════════════════════ */
+
+.btn-primary,
+.btn-secondary,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-apply,
+.btn-cta-white,
+.btn-cta-filled,
+.btn-learn,
+.hero-cta,
+.btn-tickets,
+.btn-get-pass {
+  min-height: 44px; /* WCAG 2.5.5 touch target */
+  font-size: 11px;
+  padding: 12px 20px;
+}
+
+@media (min-width: 768px)  { .btn-primary, .btn-secondary { padding: 12px 28px; font-size: 1rem; letter-spacing: 0px; } }
+@media (min-width: 1024px) { .btn-primary, .btn-secondary { padding: 14px 32px; } }
+
+/* Remove translateX hover on touch */
+@media (pointer: coarse) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-primary:active,
+  .btn-secondary:active { transform: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   9. HERO SECTION
+   ══════════════════════════════════════════════════════════════════ */
+
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-bottom: 3rem;
+}
+@media (min-width: 768px)  { .hero { padding-bottom: 4rem; } }
+@media (min-width: 1024px) { .hero { padding-bottom: 5rem; } }
+
+/* Hero video aspect ratio */
+.hero video, .hero__video video { aspect-ratio: 9/16; object-fit: cover; }
+@media (min-width: 768px)  { .hero video, .hero__video video { aspect-ratio: 768/493; } }
+@media (min-width: 1024px) { .hero video, .hero__video video { aspect-ratio: 1920/1080; } }
+
+/* Hero images */
+.hero-img, .hero__img { aspect-ratio: 375/500; object-fit: cover; width: 100%; }
+@media (min-width: 440px)  { .hero-img, .hero__img { aspect-ratio: 768/493; } }
+@media (min-width: 1024px) { .hero-img, .hero__img { aspect-ratio: 637/409; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   10. CARD IMAGES
+   ══════════════════════════════════════════════════════════════════ */
+
+.img--event-card, .card-img, .event-img { aspect-ratio: 1/1; object-fit: cover; width: 100%; }
+@media (min-width: 768px)  { .img--event-card, .card-img, .event-img { aspect-ratio: 736/504; } }
+@media (min-width: 1024px) { .img--event-card, .card-img, .event-img { aspect-ratio: 613/420; } }
+
+.archive__header-img  { aspect-ratio: 375/250; }
+@media (min-width: 768px)  { .archive__header-img  { aspect-ratio: 768/408; } }
+@media (min-width: 1024px) { .archive__header-img  { aspect-ratio: 1920/800; } }
+
+.archive__pavillon-img { aspect-ratio: 1/1; }
+@media (min-width: 768px)  { .archive__pavillon-img { aspect-ratio: 768/858; } }
+@media (min-width: 1024px) { .archive__pavillon-img { aspect-ratio: 1920/800; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   11. FOOTER
+   ══════════════════════════════════════════════════════════════════ */
+
+footer      { padding: 3rem 1.25rem 1.75rem; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+
+@media (min-width: 768px)  { footer { padding: 3rem 1.75rem 1.75rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+@media (min-width: 1024px) { footer { padding: 3rem 2rem 1.75rem; } .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; } }
+@media (min-width: 1366px) { footer { padding: 3rem 2.5rem 2rem; } .footer-navigation { width: 47%; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   12. FAQ — stack mobile, KIKK horizontal expand on tablet+
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Force column on mobile */
+.faq-kikk-row { flex-direction: column !important; }
+.faq-kikk-cell, .faq-kikk-cell.fkk-active, .faq-kikk-cell.fkk-inactive { flex: unset !important; width: 100%; }
+
+/* Restore horizontal expand on tablet+ with a mouse */
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+  .faq-kikk-row { flex-direction: row !important; }
+  .faq-kikk-cell { width: auto; }
+  .faq-kikk-cell.fkk-active  { flex: 5 1 0 !important; }
+  .faq-kikk-cell.fkk-inactive { flex: 0.4 1 0 !important; }
+  .fkk-collapsed { writing-mode: vertical-rl; text-orientation: mixed; }
+}
+
+/* Touch: always-expanded readable layout */
+@media (pointer: coarse) {
+  .faq-kikk-row { flex-direction: column !important; }
+  .faq-kikk-cell, .faq-kikk-cell.fkk-active, .faq-kikk-cell.fkk-inactive { flex: unset !important; width: 100%; }
+  .fkk-collapsed { writing-mode: horizontal-tb; position: relative; inset: auto; padding: 12px 16px; opacity: 1; }
+  .fkk-expanded  { opacity: 1; pointer-events: auto; min-height: unset; padding: 0 16px 20px; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   13. SECTION PADDING SCALE
+   ══════════════════════════════════════════════════════════════════ */
+
+.section          { padding-top: 3.75rem; padding-bottom: 3.75rem; }
+@media (min-width: 768px)  { .section { padding-top: 5rem;   padding-bottom: 5rem;   } }
+@media (min-width: 1024px) { .section { padding-top: 7.5rem; padding-bottom: 7.5rem; } }
+@media (min-width: 1366px) { .section { padding-top: 10rem;  padding-bottom: 10rem;  } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   14. BORDER UTILITIES
+   ══════════════════════════════════════════════════════════════════ */
+
+:root { --border-color: rgba(0,0,0,0.12); }
+
+@media (min-width: 768px)  { .bt-0\@sm{border-top:0 solid var(--border-color)} .bb-0\@sm{border-bottom:0 solid var(--border-color)} .bt-1\@sm{border-top:1px solid var(--border-color)} .br-1\@sm{border-right:1px solid var(--border-color)} .bb-1\@sm{border-bottom:1px solid var(--border-color)} .bl-1\@sm{border-left:1px solid var(--border-color)} }
+@media (min-width: 1024px) { .bt-0\@md{border-top:0 solid var(--border-color)} .br-0\@md{border-right:0 solid var(--border-color)} .bb-0\@md{border-bottom:0 solid var(--border-color)} .br-1\@md{border-right:1px solid var(--border-color)} .bl-1\@md{border-left:1px solid var(--border-color)} }
+@media (min-width: 1366px) { .bt-0\@lg{border-top:0 solid var(--border-color)} .bb-0\@lg{border-bottom:0 solid var(--border-color)} .br-1\@lg{border-right:1px solid var(--border-color)} .bb-1\@lg{border-bottom:1px solid var(--border-color)} .bl-1\@lg{border-left:1px solid var(--border-color)} }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   15. CROSSES BAR — responsive inward padding
+   ══════════════════════════════════════════════════════════════════ */
+
+.crosses-bar, .crosses-bar-3, .team-crosses-top, .crosses-row { padding-left: 1rem !important; padding-right: 1rem !important; }
+@media (min-width: 440px)  { .crosses-bar, .crosses-bar-3, .team-crosses-top, .crosses-row { padding-left: 4rem !important;       padding-right: 4rem !important; } }
+@media (min-width: 768px)  { .crosses-bar, .crosses-bar-3, .team-crosses-top, .crosses-row { padding-left: 9rem !important;       padding-right: 9rem !important; } }
+@media (min-width: 1024px) { .crosses-bar, .crosses-bar-3, .team-crosses-top, .crosses-row { padding-left: 15.8125rem !important; padding-right: 15.8125rem !important; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   16. MISC COMPONENTS
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Ticker */
+.ticker-content span { font-size: 12px; }
+@media (min-width: 768px)  { .ticker-content span { font-size: 13px; } }
+@media (min-width: 1024px) { .ticker-content span { font-size: 14px; } }
+
+/* Popup */
+.popup__content { width: 90%; max-width: 100%; }
+@media (min-width: 768px) { .popup__content { max-width: 50rem; } }
+.popup__close { width: 1.5rem; height: 1.5rem; }
+@media (min-width: 768px) { .popup__close { width: 2rem; height: 2rem; } }
+
+/* Newsletter */
+.newsletter__input, .newsletter__button { font-size: 0.875rem; padding: 1rem 1.25rem; }
+@media (min-width: 768px) { .newsletter__input, .newsletter__button { font-size: 1rem; padding: 1.5625rem 1.5rem 1.4375rem; } }
+
+/* Image slider */
+.image-slider__item { max-width: 100%; }
+@media (min-width: 768px)  { .image-slider__item { max-width: 91.75rem; } }
+@media (min-width: 1024px) { .image-slider__item { max-width: 38.31rem; } }
+
+/* Schedule filter */
+.schedule__filter { font-size: 0.875rem; padding: 0.875rem 1rem 0.75rem; }
+@media (min-width: 768px)  { .schedule__header { height: 26.25rem; } .schedule__filter { padding: 1.0625rem 1.5rem 0.9375rem; } }
+@media (min-width: 1024px) { .schedule__filter { padding: 1.375rem 2rem 1.125rem; font-size: 1rem; letter-spacing: -0.04em; } }
+
+/* Section dividers */
+.section-divider-line { padding: 14px 1.25rem; }
+@media (min-width: 768px)  { .section-divider-line { padding: 18px 2.5rem; } }
+@media (min-width: 1024px) { .section-divider-line { padding: 18px 3rem; } }

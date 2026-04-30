@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -46,7 +46,7 @@
 }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('../images/_MGL7139.jpg');
+      background-image: url('/images/_MGL7139.jpg');
       background-size: cover; background-position: center 30%;
       filter: brightness(0.45);
       animation: kenBurns 18s ease-in-out infinite alternate;
@@ -57,15 +57,14 @@
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
     .hero-content {
-  position: relative; z-index: 4;
+      grid-row: 2; grid-column: 2; position: relative; z-index: 4;
   display: flex; flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 48px;
   padding: 120px 248px 60px 248px;
   animation: fadeUp .9s ease both;
-  width: 100%;
-}
+    }
     .hero-text-wrapper { flex: 1; min-width: 0; }
     .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff; }
     .hero-title { font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; max-width: 640px; }
@@ -76,17 +75,32 @@
       letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
       text-decoration: none; transition: background 0.22s, color 0.22s;
     }
+    .btn-apply:hover { background:#0d1b3e;}
     .hero-awards-logo { flex-shrink: 0; padding-bottom: 70px; }
     .hero-awards-logo img { display: block; height: 160px; width: auto; }
 
     /* TICKER */
-    .ticker-wrapper {
-      background: var(--navy); overflow: hidden; white-space: nowrap;
-      padding: 10px 0; position: relative; z-index: 10;
-    }
-    .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
-    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
-    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-wrapper {
+  background: var(--navy); overflow: hidden; white-space: nowrap;
+  padding: 10px 0; position: relative; z-index: 10;
+  transition: background 0.25s ease;
+}
+.ticker-wrapper:hover {
+  background: #ffffff;
+}
+.ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
+.ticker-track span {
+  padding: 0 32px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+.ticker-wrapper:hover .ticker-track span {
+  color: var(--navy);
+}
+@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* WINNERS */
     .winners-section { background: var(--white); padding: 60px 0 0; position: relative; overflow: hidden; }
@@ -798,7 +812,7 @@ button.btn-tickets,
       <a class="btn-apply" href="#" id="hero-cta-btn">SUBMIT YOUR APPLICATION</a>
     </div>
     <div class="hero-awards-logo">
-      <img src="../images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
+      <img src="/images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
     </div>
   </div>
 </section>
@@ -823,16 +837,16 @@ button.btn-tickets,
 
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted artwork"/></div><div class="winner-meta"><div class="winner-cat">Digital Art</div><div class="winner-name">Unmuted; The Power of African Youth Movements</div><div class="winner-bottom"><span class="winner-author">by Jopee Dairo( Nigeria)</span></div></div></div>
     </div>
   </div>
 
@@ -841,7 +855,7 @@ button.btn-tickets,
 
 <!-- CATEGORIES SECTION -->
 <section class="categories-section reveal" id="catSection">
-  <div class="categories-bg" id="catBg" style="background-image:url('../images/signature/Poster - Akende Muyumbana.png');"></div>
+  <div class="categories-bg" id="catBg" style="background-image:url('/images/signature/Poster - Akende Muyumbana.png');"></div>
   <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
@@ -866,12 +880,12 @@ button.btn-tickets,
     <a class="jury-apply-link" href="#">Submit your application</a>
   </div>
   <div class="jury-grid">
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Mickael Newton"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
-    <div class="jury-card"><div class="jury-img"><img src="../images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Mickael Newton"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
+    <div class="jury-card"><div class="jury-img"><img src="/images/signature/Mickael Newton.png" alt="Jury member"/></div><div class="jury-info"><div class="jury-name">Mickael<br>Newton</div><div class="jury-role">Ubisoft Senior Social Impact Manager</div><div class="jury-country">France</div></div></div>
   </div>
   <div style="display:flex;justify-content:space-between;padding-top:40px;padding-bottom:16px;"></div>
 </section>
@@ -923,14 +937,15 @@ button.btn-tickets,
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 
 <script src="nav.js"></script>
 <script src="footer.js"></script>
+
 
 <script>
 /* Hamburger Menu Toggle + Scroll Background */
@@ -987,12 +1002,12 @@ revealEls.forEach(el => io.observe(el));
 
 /* CATEGORIES FLIP CARDS */
 const catData = [
-  { tag:'Immersive Media', num:'01', name:'Extended Reality & Volumetric Work', items:['Virtual Reality','Augmented Reality','Extended Reality'], fact:'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.', bg:'../images/signature/Poster - Akende Muyumbana.png' },
-  { tag:'Digital Art', num:'02', name:'Generative & Computational Art', items:['AI-generated works','Algorithmic art','Data visualisation'], fact:'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.', bg:'../images/signature/VOF Voices of fire print - Joseph Dairo.jpg' },
-  { tag:'Interactive Design', num:'03', name:'Interactive Installations & Experiences', items:['Physical computing','Sensor-based work','Participatory art'], fact:"South Africa hosts the African continent's only fully digital planetarium dome — the Wits Anglo American Digital Dome in Johannesburg.", bg:'../images/_MGL7139.jpg' },
-  { tag:'Game Design', num:'04', name:'Video Games & Interactive Narrative', items:['Mobile games','PC & console games','Narrative experiences'], fact:'Nigeria is the fastest-growing mobile gaming market in Africa, with over 50 million active players and a 36% year-on-year growth rate.', bg:'../images/0A9A8876.jpg' },
-  { tag:'Motion & Animation', num:'05', name:'Animation & Motion Graphics', items:['Short-form animation','Motion graphics','Digital film'], fact:'The Lagos animation industry has grown by over 200% in the past decade, producing internationally recognised short films and series.', bg:'../images/image00028.jpeg' },
-  { tag:'Emerging Tech', num:'06', name:'AI, Blockchain & Emerging Technologies', items:['AI-generated work','Blockchain art','Speculative tech'], fact:'Africa produces more than 700 blockchain developers per month — the second highest growth rate globally, behind only Southeast Asia.', bg:'../images/image00038.jpg' }
+  { tag:'Immersive Media', num:'01', name:'Extended Reality & Volumetric Work', items:['Virtual Reality','Augmented Reality','Extended Reality'], fact:'Africa has more than 600 million internet users. Mobile-first VR experiences are growing faster on the continent than anywhere else in the world.', bg:'/images/signature/Poster - Akende Muyumbana.png' },
+  { tag:'Digital Art', num:'02', name:'Generative & Computational Art', items:['AI-generated works','Algorithmic art','Data visualisation'], fact:'The oldest known art in the world was created in Africa. The Blombos Cave ochre engravings in South Africa date back 73,000 years.', bg:'/images/signature/VOF Voices of fire print - Joseph Dairo.jpg' },
+  { tag:'Interactive Design', num:'03', name:'Interactive Installations & Experiences', items:['Physical computing','Sensor-based work','Participatory art'], fact:"South Africa hosts the African continent's only fully digital planetarium dome — the Wits Anglo American Digital Dome in Johannesburg.", bg:'/images/_MGL7139.jpg' },
+  { tag:'Game Design', num:'04', name:'Video Games & Interactive Narrative', items:['Mobile games','PC & console games','Narrative experiences'], fact:'Nigeria is the fastest-growing mobile gaming market in Africa, with over 50 million active players and a 36% year-on-year growth rate.', bg:'/images/0A9A8876.jpg' },
+  { tag:'Motion & Animation', num:'05', name:'Animation & Motion Graphics', items:['Short-form animation','Motion graphics','Digital film'], fact:'The Lagos animation industry has grown by over 200% in the past decade, producing internationally recognised short films and series.', bg:'/images/image00028.jpeg' },
+  { tag:'Emerging Tech', num:'06', name:'AI, Blockchain & Emerging Technologies', items:['AI-generated work','Blockchain art','Speculative tech'], fact:'Africa produces more than 700 blockchain developers per month — the second highest growth rate globally, behind only Southeast Asia.', bg:'/images/image00038.jpg' }
 ];
 const catGrid = document.getElementById('catGrid');
 const catBg = document.getElementById('catBg');

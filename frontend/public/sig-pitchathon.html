@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -44,7 +44,7 @@
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('../images/image00044.jpeg');
+  background-image: url('/images/image00044.jpeg');
   background-size: cover; background-position: center 35%;
   filter: brightness(0.52);
   animation: kenBurns 18s ease-in-out infinite alternate;
@@ -104,6 +104,10 @@
       background: var(--navy); overflow: hidden; white-space: nowrap;
       padding: 10px 0; position: relative; z-index: 10;
     }
+.ticker-wrapper { transition: background 0.28s ease; }
+.ticker-wrapper:hover { background: #ffffff !important; }
+.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
 .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
     .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -747,7 +751,7 @@ button.btn-tickets,
       </div>
     </div>
     <div class="hero-signia">
-      <img src="../images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
+      <img src="/images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
     </div>
   </div>
 </section>
@@ -795,14 +799,14 @@ button.btn-tickets,
 
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Winner</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Neo Shingenwana</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Runner-up</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Amara Nwosu</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Audience Choice</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Studio Tshwane</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/image00084.jpg" alt="Neo Shingenwana" onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-txt">Special Mention</div><div class="winner-cat">Pitchathon</div><div class="winner-name">Kagiso Molefe</div></div></div>
     </div>
   </div>
 
@@ -823,12 +827,12 @@ button.btn-tickets,
     <a class="section-link" style="color:var(--navy)" href="programme.html">View 2026 programme</a>
   </div>
   <div class="jury-grid">
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
-    <div class="jury-card"><img src="../images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
+    <div class="jury-card"><img src="/images/Adam-Pantanowitztp.png" alt="Adam Pantanowitz" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'"/><div class="jury-info"><div class="jury-name">Adam Pantanowitz</div><div class="jury-role">Director at Wits Innovation Centre</div><div class="jury-country">South Africa</div></div></div>
   </div>
 </section>
 
@@ -873,9 +877,9 @@ button.btn-tickets,
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 

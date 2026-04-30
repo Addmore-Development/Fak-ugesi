@@ -38,21 +38,19 @@
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
 
-    /* Hero logo — bottom right, same as schedule/index: light SVG, no white box */
-.hero-logo {
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-.hero-logo img {
-  height: 110px;
-  width: auto;
-  display: block;
-  filter: brightness(0) invert(1) contrast(1.2);
-}
+    .hero-logo{
+      position:relative;z-index:4;
+      flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      align-self:center;
+      background:transparent;
+    }
+    .hero-logo img{
+      height:110px;width:auto;display:block;
+      filter:brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode:screen;
+      background:transparent;
+    }
 
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
@@ -60,6 +58,11 @@
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
+    .ticker-wrap { transition: background 0.28s ease; }
+.ticker-wrap:hover { background: var(--navy) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrap:hover .ticker-item { color: #ffffff !important; }
+.ticker-wrap:hover .ticker-item .ticker-arrow { color: #ffffff !important; }
 
     /* MARKET INFO SECTION */
     .market-info-section{
@@ -584,7 +587,7 @@ button.btn-tickets:hover,
 </head>
 <body>
 <script src="nav.js"></script>
-
+<script src="ticker-hover.js"></script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>

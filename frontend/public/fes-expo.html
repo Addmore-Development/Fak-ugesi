@@ -35,7 +35,7 @@
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
 
-    /* Hero logo — top right, aligned with content start */
+     /* Hero logo — top right, aligned with content start */
     .hero-logo{
       position:relative;z-index:4;
       flex-shrink:0;
@@ -45,13 +45,17 @@
       height:110px;width:auto;display:block;
       filter:brightness(0) invert(1) contrast(1.2);
     }
-
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
+    .ticker-wrap { transition: background 0.28s ease; }
+.ticker-wrap:hover { background: var(--navy) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrap:hover .ticker-item { color: #ffffff !important; }
+.ticker-wrap:hover .ticker-item .ticker-arrow { color: #ffffff !important; }
 
     /* CURATORIAL FREQUENCIES */
     .curatorial-section{
@@ -194,7 +198,7 @@
     
 
     /* PARTNERS */
-    .partners-section{background:#b8cce0;padding:80px 0 0;position:relative;overflow:hidden;}
+    .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
     .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.2) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.15) 0%,transparent 50%);pointer-events:none;}
     .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
     .partners-carousel-outer{overflow:hidden;width:100%;position:relative;z-index:2;}
@@ -544,6 +548,7 @@ button.btn-tickets,
 </head>
 <body>
 <script src="nav.js"></script>
+<script src="ticker-hover.js"></script>
 
 <!-- HERO -->
 <section class="hero">

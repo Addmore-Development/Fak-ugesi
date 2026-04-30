@@ -6,6 +6,7 @@
     --light: #fff;
     --gray: #555;
     --light-gray: #e8e8f0;
+    --navy: #1a2744;
 }
 
 * {
@@ -148,8 +149,8 @@ nav {
 /* Corner decorations */
 .corner-decoration {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     z-index: 5;
 }
 
@@ -157,7 +158,7 @@ nav {
 .corner-decoration::after {
     content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .corner-decoration::before {
@@ -170,46 +171,123 @@ nav {
     height: 1px;
 }
 
-.corner-tl { top: 12px; left: 12px; }
+.corner-tl { top: 15px; left: 15px; }
 .corner-tl::before { left: 0; }
 .corner-tl::after { top: 0; }
 
-.corner-tr { top: 12px; right: 12px; }
+.corner-tr { top: 15px; right: 15px; }
 .corner-tr::before { right: 0; }
 .corner-tr::after { top: 0; }
 
-.corner-bl { bottom: 12px; left: 12px; }
+.corner-bl { bottom: 15px; left: 15px; }
 .corner-bl::before { left: 0; }
 .corner-bl::after { bottom: 0; }
 
-.corner-br { bottom: 12px; right: 12px; }
+.corner-br { bottom: 15px; right: 15px; }
 .corner-br::before { right: 0; }
 .corner-br::after { bottom: 0; }
 
-/* Ticker */
+/* ── TICKER HOVER EFFECT (universal) ── */
+
+/* Navy tickers — .ticker-bar */
+.ticker-bar {
+    background: #1a2744;
+    overflow: hidden;
+    position: relative;
+    padding: 14px 0;
+    transition: background 0.25s ease;
+    cursor: pointer;
+}
+.ticker-bar:hover {
+    background: #ffffff !important;
+}
+.ticker-bar:hover .ticker-track span,
+.ticker-bar:hover .ticker-item {
+    color: #1a2744 !important;
+}
+.ticker-bar:hover .ticker-item .ticker-sep,
+.ticker-bar:hover .ticker-item .ticker-arrow {
+    opacity: 0.5;
+    color: #1a2744 !important;
+}
+
+/* Navy .ticker-wrapper */
+.ticker-wrapper {
+    background: #1a2744;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 11px 0;
+    position: relative;
+    z-index: 10;
+    transition: background 0.25s ease;
+    cursor: pointer;
+}
+.ticker-wrapper:hover {
+    background: #ffffff !important;
+}
+.ticker-wrapper:hover .ticker-track span,
+.ticker-wrapper:hover .ticker-item {
+    color: #1a2744 !important;
+}
+
+/* White .ticker-wrap — hover inverts to navy */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border-top: 1px solid rgba(26, 39, 68, 0.1);
+    border-bottom: 1px solid rgba(26, 39, 68, 0.1);
+    padding: 12px 0;
+    position: relative;
+    z-index: 10;
+    transition: background 0.25s ease;
+    cursor: pointer;
+}
+.ticker-wrap:hover {
+    background: #1a2744 !important;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+}
+.ticker-wrap:hover .ticker-track span,
+.ticker-wrap:hover .ticker-item {
+    color: #ffffff !important;
+}
+.ticker-wrap:hover .ticker-item .ticker-arrow {
+    color: #ffffff !important;
+}
+
+/* Yellow .ticker (awards/sig pages) — hover inverts to dark */
 .ticker {
     background: var(--primary);
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
+    transition: background 0.25s ease;
+    cursor: pointer;
 }
-
-.ticker-content {
-    display: inline-block;
-    animation: tickerScroll 20s linear infinite;
+.ticker:hover {
+    background: var(--dark) !important;
 }
-
-.ticker-content span {
+.ticker .ticker-content span {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--dark);
     padding: 0 24px;
+    transition: color 0.25s ease;
+}
+.ticker:hover .ticker-content span {
+    color: var(--primary) !important;
 }
 
 @keyframes tickerScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+.ticker-content {
+    display: inline-block;
+    animation: tickerScroll 20s linear infinite;
 }
 
 /* Footer */
@@ -266,238 +344,157 @@ footer {
     .container {
         padding: 0 20px;
     }
-    
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
     }
-    
+
     nav {
         padding: 0 16px;
     }
-    
+
     .nav-links a {
         padding: 0 12px;
     }
 }
-/* Additional global styles */
-.corner-decoration {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    z-index: 5;
-}
 
-.corner-decoration::before,
-.corner-decoration::after {
-    content: '';
-    position: absolute;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.corner-decoration::before {
-    width: 1px;
-    height: 100%;
-}
-
-.corner-decoration::after {
-    width: 100%;
-    height: 1px;
-}
-
-.corner-tl { top: 15px; left: 15px; }
-.corner-tl::before { left: 0; }
-.corner-tl::after { top: 0; }
-
-.corner-tr { top: 15px; right: 15px; }
-.corner-tr::before { right: 0; }
-.corner-tr::after { top: 0; }
-
-.corner-bl { bottom: 15px; left: 15px; }
-.corner-bl::before { left: 0; }
-.corner-bl::after { bottom: 0; }
-
-.corner-br { bottom: 15px; right: 15px; }
-.corner-br::before { right: 0; }
-.corner-br::after { bottom: 0; }
 /**
  * fakugesi-global-patch.css
- * Applied globally across all pages.
- * 
- * 1. Cross icons moved 5px inward from content boundary (253px instead of 248px)
- * 2. FAQ sections adopt sig-fakugesipro.html hover-invert accordion style
- * 3. Hero heading font sizes reduced and aligned
- * 4. All buttons use electric canvas effect structure (canvas injected by nav.js)
  */
 
-/* ══════════════════════════════════════════════════════════════
-   1. CROSS ICON REPOSITIONING — 5px inward from 248px = 253px
-   Override inline left/right:248px to 253px
-   ══════════════════════════════════════════════════════════════ */
-
-/* We use a CSS custom property override approach.
-   Inline styles on .cross-icon have left:248px / right:248px.
-   Since inline styles override classes we use JS in nav.js to patch.
-   The CSS below handles any cross icons set via class (non-inline). */
-
-/* For cross-icon elements in the crosses-bar and crosses-row containers */
+/* Cross icon repositioning */
 .crosses-bar,
 .crosses-bar-3,
 .team-crosses-top,
 .crosses-row {
-  padding-left: 253px !important;
-  padding-right: 253px !important;
+    padding-left: 253px !important;
+    padding-right: 253px !important;
 }
 
-
-/* ══════════════════════════════════════════════════════════════
-   2. FAQ — sig-fakugesipro.html style
-   Hover → navy background, white text; open → navy bg persists
-   Applies to .faq-item / .faq-question pattern used across all pages
-   ══════════════════════════════════════════════════════════════ */
-
-/* Base faq-item: transparent bg, top border */
+/* FAQ global styles */
 .faq-item {
-  border: none !important;
-  border-top: 1px solid rgba(26,39,68,0.15) !important;
-  background: transparent !important;
-  margin-bottom: 0 !important;
-  transition: background 0.2s ease !important;
+    border: none !important;
+    border-top: 1px solid rgba(26, 39, 68, 0.15) !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
+    transition: background 0.2s ease !important;
 }
 .faq-item:last-child {
-  border-bottom: 1px solid rgba(26,39,68,0.15) !important;
+    border-bottom: 1px solid rgba(26, 39, 68, 0.15) !important;
 }
-
-/* Hover state: navy bg, everything white */
 .faq-item:hover {
-  background: #1a2744 !important;
+    background: #1a2744 !important;
 }
 .faq-item:hover .faq-question,
 .faq-item:hover .faq-question-text,
 .faq-item:hover .faq-q-text,
 .faq-item:hover .faq-q-btn .faq-q-text {
-  color: #ffffff !important;
+    color: #ffffff !important;
 }
 .faq-item:hover .faq-toggle,
 .faq-item:hover .faq-t-icon,
 .faq-item:hover .faq-icon {
-  color: #ffffff !important;
-  border-color: rgba(255,255,255,0.6) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
 }
 .faq-item:hover .faq-answer,
 .faq-item:hover .faq-ans,
 .faq-item:hover .faq-body {
-  color: rgba(255,255,255,0.75) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
 }
-
-/* Open state: navy bg */
 .faq-item.open {
-  background: #1a2744 !important;
+    background: #1a2744 !important;
 }
 .faq-item.open .faq-question,
 .faq-item.open .faq-question-text,
 .faq-item.open .faq-q-text,
 .faq-item.open .faq-q-btn .faq-q-text {
-  color: #ffffff !important;
+    color: #ffffff !important;
 }
 .faq-item.open .faq-toggle,
 .faq-item.open .faq-t-icon,
 .faq-item.open .faq-icon {
-  color: #ffffff !important;
-  border-color: rgba(255,255,255,0.6) !important;
-  transform: rotate(45deg) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: rotate(45deg) !important;
 }
 .faq-item.open .faq-answer,
 .faq-item.open .faq-ans,
 .faq-item.open .faq-body {
-  color: rgba(255,255,255,0.75) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
 }
-
-/* Question button layout */
 .faq-question,
 .faq-q-btn,
 .faq-btn {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 20px 22px !important;
-  cursor: pointer !important;
-  gap: 16px !important;
-  background: none !important;
-  border: none !important;
-  width: 100% !important;
-  text-align: left !important;
-  font-family: 'InterDisplay', sans-serif !important;
-  transition: color 0.2s ease !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 22px !important;
+    cursor: pointer !important;
+    gap: 16px !important;
+    background: none !important;
+    border: none !important;
+    width: 100% !important;
+    text-align: left !important;
+    font-family: 'InterDisplay', sans-serif !important;
+    transition: color 0.2s ease !important;
 }
-
 .faq-question-text,
 .faq-q-text {
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  color: var(--dark-text, #0d1b3e) !important;
-  line-height: 1.35 !important;
-  transition: color 0.2s ease !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: var(--dark-text, #0d1b3e) !important;
+    line-height: 1.35 !important;
+    transition: color 0.2s ease !important;
 }
-
-/* Toggle icon */
 .faq-toggle,
 .faq-t-icon,
 .faq-icon {
-  flex-shrink: 0 !important;
-  font-size: 20px !important;
-  font-weight: 300 !important;
-  line-height: 1 !important;
-  transition: transform 0.3s ease, color 0.2s ease !important;
-  user-select: none !important;
+    flex-shrink: 0 !important;
+    font-size: 20px !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    transition: transform 0.3s ease, color 0.2s ease !important;
+    user-select: none !important;
 }
-
-/* Answer panel */
 .faq-answer,
 .faq-ans,
 .faq-body {
-  max-height: 0 !important;
-  overflow: hidden !important;
-  transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease !important;
-  font-size: 13px !important;
-  line-height: 1.72 !important;
-  color: var(--body-gray, #3a4060) !important;
-  padding: 0 22px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.35s ease, padding 0.35s ease, color 0.2s ease !important;
+    font-size: 13px !important;
+    line-height: 1.72 !important;
+    color: var(--body-gray, #3a4060) !important;
+    padding: 0 22px !important;
 }
 .faq-item.open .faq-answer,
 .faq-item.open .faq-ans,
 .faq-item.open .faq-body {
-  max-height: 300px !important;
-  padding: 0 22px 22px !important;
+    max-height: 300px !important;
+    padding: 0 22px 22px !important;
 }
 
-
-/* ══════════════════════════════════════════════════════════════
-   3. HERO HEADING SIZE REDUCTION
-   Reduce large hero titles across all pages for better proportion
-   ══════════════════════════════════════════════════════════════ */
-
+/* Hero heading sizes */
 .hero .hero-title,
 .hero h1.hero-title {
-  font-size: 42px !important;
-  line-height: 1.08 !important;
-  max-width: 640px !important;
-  text-align: left !important;
+    font-size: 42px !important;
+    line-height: 1.08 !important;
+    max-width: 640px !important;
+    text-align: left !important;
+}
+.hero-content .hero-title {
+    font-size: 42px !important;
+}
+.theme-section .theme-head {
+    font-size: 32px !important;
+}
+.theme-section .theme-year {
+    font-size: 40px !important;
 }
 
-/* Page-specific overrides where hero titles are used */
-.hero-content .hero-title { font-size: 42px !important; }
-
-/* Theme section heading (index.html) */
-.theme-section .theme-head { font-size: 32px !important; }
-.theme-section .theme-year { font-size: 40px !important; }
-
-
-/* ══════════════════════════════════════════════════════════════
-   4. GLOBAL BUTTON ELECTRIC STRUCTURE
-   Ensures all buttons can receive the canvas overlay from nav.js
-   ══════════════════════════════════════════════════════════════ */
-
+/* Global button electric structure */
 .btn-primary,
 .btn-outline-dark,
 .btn-outline-white,
@@ -514,26 +511,110 @@ a.btn-tickets,
 button.btn-tickets,
 .btn-get-pass,
 .btn-tickets {
-  position: relative !important;
-  overflow: hidden !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
 }
 
-/* Square corners on all buttons to match GET TICKETS aesthetic */
-.btn-primary,
-.btn-outline-dark,
-.btn-outline-white,
-.btn-apply,
-.btn-cta-white,
-.btn-cta-filled,
-.btn-learn,
-.hero-cta,
-.intro-cta,
-.network-cta,
-.section-cta,
-.challenge-cta,
-a.btn-tickets,
-button.btn-tickets,
-.btn-get-pass,
-.btn-tickets {
-  border-radius: 0 !important;
+/* ══════════════════════════════════════════════════════════
+   TICKER HOVER EFFECTS
+   Paste into styles.css  (or into the <style> block on
+   each page that doesn't yet link to styles.css)
+   ══════════════════════════════════════════════════════════
+
+   Three class variants exist across the site:
+     .ticker-bar      → navy bg   (used on sig-* pages, schedule, index)
+     .ticker-wrapper  → varies    (navy: sig-fakugesipro, awards;  white: tickets.html)
+     .ticker-wrap     → white bg  (used on immersive, market, expo, pitchathon)
+
+   Strategy:
+     navy  bg ticker → hover: white bg, navy text
+     white bg ticker → hover: navy  bg, white text
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. SHARED BASE — smooth transition + pause animation ─── */
+.ticker-bar,
+.ticker-wrapper,
+.ticker-wrap {
+  transition: background 0.28s ease,
+              border-color 0.28s ease !important;
+  cursor: default;
+}
+
+.ticker-bar:hover      .ticker-track,
+.ticker-wrapper:hover  .ticker-track,
+.ticker-wrap:hover     .ticker-track {
+  animation-play-state: paused;
+}
+
+
+/* ─── 2. NAVY TICKERS  →  hover: white bg, navy text ─── */
+
+/* .ticker-bar  (sig-*, schedule, about/discover, index ticker-bar) */
+.ticker-bar {
+  background: var(--navy, #1a2744);
+}
+.ticker-bar:hover {
+  background: #ffffff !important;
+}
+.ticker-bar:hover .ticker-track span,
+.ticker-bar:hover .ticker-item {
+  color: var(--navy, #1a2744) !important;
+}
+.ticker-bar:hover .ticker-item .ticker-arrow {
+  color: var(--navy, #1a2744) !important;
+  opacity: 0.55 !important;
+}
+
+/* .ticker-wrapper with navy background
+   (sig-fakugesipro, sig-awards, sig-dalakhona, sig-pitchathon navy ticker,
+    archive, venues, resources, partners, about/discover) */
+.ticker-wrapper {
+  /* base background set inline per page — we detect by JS class added below */
+}
+.ticker-wrapper.fug-ticker-navy {
+  background: var(--navy, #1a2744);
+}
+.ticker-wrapper.fug-ticker-navy:hover {
+  background: #ffffff !important;
+}
+.ticker-wrapper.fug-ticker-navy:hover .ticker-track span,
+.ticker-wrapper.fug-ticker-navy:hover .ticker-item {
+  color: var(--navy, #1a2744) !important;
+}
+
+
+/* ─── 3. WHITE TICKERS  →  hover: navy bg, white text ─── */
+
+/* .ticker-wrap  (sig-immersive white ticker, market, expo, pitchathon) */
+.ticker-wrap {
+  /* base background is white/light */
+}
+.ticker-wrap:hover {
+  background: var(--navy, #1a2744) !important;
+  border-top-color:    rgba(26,39,68,0.35) !important;
+  border-bottom-color: rgba(26,39,68,0.35) !important;
+}
+.ticker-wrap:hover .ticker-item,
+.ticker-wrap:hover .ticker-track span {
+  color: #ffffff !important;
+}
+.ticker-wrap:hover .ticker-item .ticker-arrow {
+  color: #ffffff !important;
+  opacity: 0.65 !important;
+}
+
+/* .ticker-wrapper on tickets.html (white bg variant) */
+.ticker-wrapper.fug-ticker-white {
+  background: var(--white, #ffffff);
+}
+.ticker-wrapper.fug-ticker-white:hover {
+  background: var(--navy, #1a2744) !important;
+  border-top-color:    rgba(26,39,68,0.35) !important;
+  border-bottom-color: rgba(26,39,68,0.35) !important;
+}
+.ticker-wrapper.fug-ticker-white:hover .ticker-track span,
+.ticker-wrapper.fug-ticker-white:hover .ticker-item {
+  color: #ffffff !important;
 }

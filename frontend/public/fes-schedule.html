@@ -84,6 +84,10 @@
       padding: 0 28px; font-size: 11.5px; font-weight: 600;
       color: rgba(255,255,255,0.9); letter-spacing: 0.04em;
     }
+    .ticker-bar { transition: background 0.28s ease; }
+.ticker-bar:hover { background: #ffffff !important; }
+.ticker-bar:hover .ticker-track { animation-play-state: paused; }
+.ticker-bar:hover .ticker-track span { color: var(--navy) !important; }
 
     /* ── DAY SELECTOR ── */
     .day-selector {
@@ -786,6 +790,7 @@ button.btn-tickets:hover,
 
 <!-- MAIN NAV injected by nav.js -->
 <script src="nav.js"></script>
+<script src="ticker-hover.js"></script>
 
 <!-- ── HERO ── -->
 <section class="hero">

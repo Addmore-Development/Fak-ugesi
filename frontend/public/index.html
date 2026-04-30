@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fak'ugesi Festival – African Digital &amp; Innovation Festival</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
@@ -157,6 +157,10 @@
       padding: 11px 0; position: relative; z-index: 10;
       border-top: 1px solid rgba(26,39,68,0.08); border-bottom: 1px solid rgba(26,39,68,0.08);
     }
+    .ticker-wrapper { transition: background 0.28s ease; }
+.ticker-wrapper:hover { background: var(--navy) !important; }
+.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrapper:hover .ticker-track span { color: #ffffff !important; }
     .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; }
     .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: var(--navy); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -1027,5 +1031,6 @@
 </script>
 <script src="nav.js"></script>
 <script src="footer.js"></script>
+<script src="ticker-hover.js"></script>
 </body>
 </html>

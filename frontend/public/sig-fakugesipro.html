@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -46,7 +46,7 @@
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('../images/_DMC6809.JPG');
+  background-image: url('/images/_DMC6809.JPG');
   background-size: cover; background-position: center 35%;
   filter: brightness(0.52);
   animation: kenBurns 18s ease-in-out infinite alternate;
@@ -115,6 +115,12 @@
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.08em;color:#fff;text-transform:uppercase;padding:0 36px;font-family:'InterDisplay',sans-serif}
     .ticker-arrow{opacity:.6}
+    /* Add inside existing <style> */
+.ticker-bar { transition: background 0.28s ease; }
+.ticker-bar:hover { background: #ffffff !important; }
+.ticker-bar:hover .ticker-track { animation-play-state: paused; }
+.ticker-bar:hover .ticker-item { color: var(--navy) !important; }
+.ticker-bar:hover .ticker-item .ticker-arrow { color: var(--navy) !important; }
 
     /* WHAT IS FAK'UGESI PRO */
     .what-section{background:var(--white);padding:72px 248px;position:relative;color:var(--dark-text)}
@@ -133,7 +139,7 @@
     .network-section { min-height: auto !important; }
     .network-top { flex-direction: column !important; gap: 12px !important; }
     .network-bottom { padding-top: 20px !important; }
-    .network-bg{position:absolute;inset:0;background-image:url('../images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55); transform: scaleX(-1);}
+    .network-bg{position:absolute;inset:0;background-image:url('/images/_DMC6610.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.55); transform: scaleX(-1);}
     .network-inner{
       position:relative;z-index:2;width:100%;
       display:flex;flex-direction:column;justify-content:space-between;
@@ -669,7 +675,7 @@ button.btn-tickets,
 
 
 <script src="nav.js"></script>
-<script src="style.css"></script>
+<script src="ticker-hover.js"></script>
 
 
 <!-- HERO -->
@@ -685,7 +691,7 @@ button.btn-tickets,
       <a class="hero-cta network-cta" href="tickets.html" id="pro-cta">Get Tickets</a>
     </div>
     <div class="hero-signia">
-      <img src="../images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:80px;width:auto;"/>
+      <img src="/images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPro" style="height:80px;width:auto;"/>
     </div>
   </div>
 </section>
@@ -756,14 +762,14 @@ button.btn-tickets,
   </div>
   <div class="highlights-strip-wrap">
     <div class="highlights-strip">
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
-      <div class="highlight-item"><div class="highlight-img"><img src="../images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
+      <div class="highlight-item"><div class="highlight-img"><img src="/images/image00028.jpeg" alt="A Seat at the Table of Change"/></div><div class="highlight-info"><div class="highlight-tag">Panel</div><div class="highlight-head">A Seat at the Table of Change</div><p class="highlight-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</p><div class="highlight-speakers">Thobile Chittenden<br>Samukelisiwe Dube<br>Masentle Nzimande<br>Tadeo Lopez-Sendon<br>Meghna Singh<br>Daniel Getachew</div></div></div>
     </div>
   </div>
 </section>
@@ -818,16 +824,13 @@ button.btn-tickets,
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
 
 <script src="footer.js"></script>
-<script src="fakugesi-cross-patch.js"></script>
-<script src="fak-ugesi-global-effects-v10.js"></script>
-
 <script>
 /* FAQ accordion */
 (function(){

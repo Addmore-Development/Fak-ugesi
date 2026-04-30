@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -21,7 +21,7 @@
 
      /* ── HERO ── */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:center;padding-top:58px;}
-    .hero-bg{position:absolute;inset:0;background-image:url('../images/0A9A0222.JPG');background-size:cover;background-position:center 35%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate;}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/0A9A0222.JPG');background-size:cover;background-position:center 35%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate;}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.80) 45%,transparent 85%);}
     .hero-content{position:relative;z-index:3;padding:60px 0 60px var(--gutter);animation:fadeUp .9s ease both;max-width:calc(var(--gutter) + 640px);}
@@ -40,6 +40,10 @@
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 20s linear infinite;}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.05em;color:#fff;padding:0 32px;opacity:.9;}
+    .ticker-bar { transition: background 0.28s ease; }
+.ticker-bar:hover { background: #ffffff !important; }
+.ticker-bar:hover .ticker-track { animation-play-state: paused; }
+.ticker-bar:hover .ticker-item { color: var(--navy) !important; }
 
     /* ── 2025 WINNERS — awards style scrolling strip ── */
     .winners-section{background:#fff;padding:72px var(--gutter);position:relative;color:var(--dark-text);}
@@ -480,6 +484,7 @@ button.btn-tickets,
 </head>
 <body>
 <script src="nav.js"></script>
+<script src="ticker-hover.js"></script>
 
 
 <section class="hero">
@@ -498,7 +503,7 @@ button.btn-tickets,
     <a class="hero-cta" href="tickets.html" id="jamz-cta">Get Tickets</a>
   </div>
   <div class="hero-logo">
-    <img src="../images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" style="height:120px;width:auto;"/>
+    <img src="/images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" style="height:120px;width:auto;"/>
   </div>
 </section>
 
@@ -531,15 +536,15 @@ button.btn-tickets,
   </div>
   <div class="winners-strip-outer">
     <div class="winners-strip" id="winnersStrip">
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Animation</div><div class="winner-name">Team Sakuga</div><div class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Runner-up</div><div class="winner-cat">Video Game</div><div class="winner-name">Pixel Collective</div><div class="winner-members">Kagiso Molefe<br>Aisha Bah</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Audience Choice</div><div class="winner-cat">Animation</div><div class="winner-name">Frame Zero</div><div class="winner-members">Lebo Dlamini</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Video Game</div><div class="winner-name">Studio Ndoto</div><div class="winner-members">Amara Nwosu<br>James Osei</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Animation</div><div class="winner-name">Team Sakuga</div><div class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Runner-up</div><div class="winner-cat">Video Game</div><div class="winner-name">Pixel Collective</div><div class="winner-members">Kagiso Molefe<br>Aisha Bah</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Audience Choice</div><div class="winner-cat">Animation</div><div class="winner-name">Frame Zero</div><div class="winner-members">Lebo Dlamini</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Video Game</div><div class="winner-name">Studio Ndoto</div><div class="winner-members">Amara Nwosu<br>James Osei</div></div></div>
       <!-- duplicate -->
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Animation</div><div class="winner-name">Team Sakuga</div><div class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Runner-up</div><div class="winner-cat">Video Game</div><div class="winner-name">Pixel Collective</div><div class="winner-members">Kagiso Molefe<br>Aisha Bah</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Audience Choice</div><div class="winner-cat">Animation</div><div class="winner-name">Frame Zero</div><div class="winner-members">Lebo Dlamini</div></div></div>
-      <div class="winner-card"><div class="winner-img"><img src="../images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Video Game</div><div class="winner-name">Studio Ndoto</div><div class="winner-members">Amara Nwosu<br>James Osei</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Animation</div><div class="winner-name">Team Sakuga</div><div class="winner-members">Thobile Chittenden<br>Samukelisiwe Dube</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Runner-up</div><div class="winner-cat">Video Game</div><div class="winner-name">Pixel Collective</div><div class="winner-members">Kagiso Molefe<br>Aisha Bah</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Audience Choice</div><div class="winner-cat">Animation</div><div class="winner-name">Frame Zero</div><div class="winner-members">Lebo Dlamini</div></div></div>
+      <div class="winner-card"><div class="winner-img"><img src="/images/team-sokuga.png" alt="Team Sakuga" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80'"/></div><div class="winner-meta"><div class="winner-badge-text">Winner</div><div class="winner-cat">Video Game</div><div class="winner-name">Studio Ndoto</div><div class="winner-members">Amara Nwosu<br>James Osei</div></div></div>
     </div>
   </div>
 
@@ -547,7 +552,7 @@ button.btn-tickets,
 
 <!-- 2026 ANIMATION CHALLENGE -->
 <section class="challenge-panel">
-  <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
+  <div class="challenge-bg" style="background-image:url('/images/trailer.png');"></div>
   <div class="challenge-overlay"></div>
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
@@ -567,7 +572,7 @@ button.btn-tickets,
 
 <!-- 2026 VIDEO GAME CHALLENGE -->
 <section class="challenge-panel">
-  <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');"></div>
+  <div class="challenge-bg" style="background-image:url('/images/ruka.jpg');"></div>
   <div class="challenge-overlay"></div>
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
@@ -661,9 +666,9 @@ button.btn-tickets,
     <a class="partners-link" href="about.html#partners">View all partners</a>
   </div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_light_colloquial_extended.svg"  alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
   </div>
 </section>
 

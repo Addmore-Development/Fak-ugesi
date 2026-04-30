@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Venues – Fak'ugesi Festival</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
   <!-- Leaflet CSS — free, no API key required -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
@@ -94,6 +94,10 @@
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    .ticker-wrapper { transition: background 0.28s ease; }
+.ticker-wrapper:hover { background: #ffffff !important; }
+.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
     /* ── LOCATIONS SECTION ── */
     .locations-section {
       background: var(--white); position: relative;

@@ -515,3 +515,106 @@ button.btn-tickets,
     overflow: hidden !important;
     border-radius: 0 !important;
 }
+
+/* ══════════════════════════════════════════════════════════
+   TICKER HOVER EFFECTS
+   Paste into styles.css  (or into the <style> block on
+   each page that doesn't yet link to styles.css)
+   ══════════════════════════════════════════════════════════
+
+   Three class variants exist across the site:
+     .ticker-bar      → navy bg   (used on sig-* pages, schedule, index)
+     .ticker-wrapper  → varies    (navy: sig-fakugesipro, awards;  white: tickets.html)
+     .ticker-wrap     → white bg  (used on immersive, market, expo, pitchathon)
+
+   Strategy:
+     navy  bg ticker → hover: white bg, navy text
+     white bg ticker → hover: navy  bg, white text
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. SHARED BASE — smooth transition + pause animation ─── */
+.ticker-bar,
+.ticker-wrapper,
+.ticker-wrap {
+  transition: background 0.28s ease,
+              border-color 0.28s ease !important;
+  cursor: default;
+}
+
+.ticker-bar:hover      .ticker-track,
+.ticker-wrapper:hover  .ticker-track,
+.ticker-wrap:hover     .ticker-track {
+  animation-play-state: paused;
+}
+
+
+/* ─── 2. NAVY TICKERS  →  hover: white bg, navy text ─── */
+
+/* .ticker-bar  (sig-*, schedule, about/discover, index ticker-bar) */
+.ticker-bar {
+  background: var(--navy, #1a2744);
+}
+.ticker-bar:hover {
+  background: #ffffff !important;
+}
+.ticker-bar:hover .ticker-track span,
+.ticker-bar:hover .ticker-item {
+  color: var(--navy, #1a2744) !important;
+}
+.ticker-bar:hover .ticker-item .ticker-arrow {
+  color: var(--navy, #1a2744) !important;
+  opacity: 0.55 !important;
+}
+
+/* .ticker-wrapper with navy background
+   (sig-fakugesipro, sig-awards, sig-dalakhona, sig-pitchathon navy ticker,
+    archive, venues, resources, partners, about/discover) */
+.ticker-wrapper {
+  /* base background set inline per page — we detect by JS class added below */
+}
+.ticker-wrapper.fug-ticker-navy {
+  background: var(--navy, #1a2744);
+}
+.ticker-wrapper.fug-ticker-navy:hover {
+  background: #ffffff !important;
+}
+.ticker-wrapper.fug-ticker-navy:hover .ticker-track span,
+.ticker-wrapper.fug-ticker-navy:hover .ticker-item {
+  color: var(--navy, #1a2744) !important;
+}
+
+
+/* ─── 3. WHITE TICKERS  →  hover: navy bg, white text ─── */
+
+/* .ticker-wrap  (sig-immersive white ticker, market, expo, pitchathon) */
+.ticker-wrap {
+  /* base background is white/light */
+}
+.ticker-wrap:hover {
+  background: var(--navy, #1a2744) !important;
+  border-top-color:    rgba(26,39,68,0.35) !important;
+  border-bottom-color: rgba(26,39,68,0.35) !important;
+}
+.ticker-wrap:hover .ticker-item,
+.ticker-wrap:hover .ticker-track span {
+  color: #ffffff !important;
+}
+.ticker-wrap:hover .ticker-item .ticker-arrow {
+  color: #ffffff !important;
+  opacity: 0.65 !important;
+}
+
+/* .ticker-wrapper on tickets.html (white bg variant) */
+.ticker-wrapper.fug-ticker-white {
+  background: var(--white, #ffffff);
+}
+.ticker-wrapper.fug-ticker-white:hover {
+  background: var(--navy, #1a2744) !important;
+  border-top-color:    rgba(26,39,68,0.35) !important;
+  border-bottom-color: rgba(26,39,68,0.35) !important;
+}
+.ticker-wrapper.fug-ticker-white:hover .ticker-track span,
+.ticker-wrapper.fug-ticker-white:hover .ticker-item {
+  color: #ffffff !important;
+}

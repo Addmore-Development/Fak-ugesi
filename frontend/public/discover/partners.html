@@ -86,6 +86,10 @@
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    .ticker-wrapper { transition: background 0.28s ease; }
+.ticker-wrapper:hover { background: #ffffff !important; }
+.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
     /* ══════════════════════════════════════════
        BANDED SECTIONS — Main Partners & Media Partners
        (3-col grid, constrained to --band padding)

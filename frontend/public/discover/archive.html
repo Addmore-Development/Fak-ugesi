@@ -93,8 +93,13 @@
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    .ticker-wrapper { transition: background 0.28s ease; }
+.ticker-wrapper:hover { background: #ffffff !important; }
+.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+.ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
     /* ── TIME MACHINE SECTION (navy) ── */
     .time-machine-section {
+      
       background: var(--navy);
       position: relative;
       padding: 72px 0 64px;

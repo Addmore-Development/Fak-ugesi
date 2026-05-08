@@ -18,11 +18,11 @@
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
 
-    /* HERO */
+    /* HERO — brighter: brightness 0.72 */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
-    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.72);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.48) 45%,transparent 80%)}
     .hero-inner{
       position:relative;z-index:3;
       padding:120px 248px 56px;
@@ -34,8 +34,6 @@
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
-
-    /* Hero logo — aligned like market page: centered vertically */
     .hero-logo{
       position:relative;z-index:4;
       flex-shrink:0;
@@ -169,10 +167,10 @@
     .showcase-card-title{font-size:28px;font-weight:900;color:var(--dark-text);margin-bottom:6px;line-height:1.1;}
     .showcase-card-sub{font-size:13px;color:var(--body-gray);}
 
-    /* WANT TO SHOWCASE */
+    /* WANT TO SHOWCASE — brighter: brightness 0.68, lighter overlay */
     .showcase-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
-    .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.45);}
-    .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.75) 40%,rgba(5,10,28,.25) 80%);}
+    .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.68);}
+    .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.42) 40%,rgba(5,10,28,.12) 80%);}
     .showcase-cta-content{position:relative;z-index:3;padding:60px 248px;width:100%;}
     .showcase-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .showcase-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
@@ -216,7 +214,6 @@
       .showcases-grid{grid-template-columns:1fr}
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
     }
-
     @media(max-width:1024px){
       .hero-inner{padding:100px 48px 52px;}
       .hero-title{font-size:52px;}
@@ -236,7 +233,6 @@
       .showcase-detail-title{font-size:40px;}
       .cross-icon{display:none;}
     }
-
     @media(max-width:768px){
       .hero{min-height:auto;}
       .hero-bg{background-position:center center;}
@@ -289,7 +285,6 @@
       .carousel-logo-name{font-size:10px;}
       .cross-icon{display:none;}
     }
-
     @media(max-width:480px){
       .hero-title{font-size:26px!important;}
       .hero-date{font-size:17px;}
@@ -366,7 +361,7 @@
 </div>
 
 <!-- CURATORIAL FREQUENCIES -->
-<section class="curatorial-section reveal">
+<section class="curatorial-section reveal" id="curatorial-section">
   <div class="curatorial-bg-img"></div>
   <div class="curatorial-fade"></div>
   <div class="cross-icon" style="top:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -401,24 +396,27 @@
 </section>
 
 <!-- SHOWCASES -->
-<section class="showcases-section reveal">
+<section class="showcases-section reveal" id="showcases-section">
   <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="showcases-header">
-    <h2 class="showcases-title">Showcases</h2>
-    <a class="showcases-link" href="programme.html">Show 2026 programme →</a>
-  </div>
-  <div class="showcases-grid" id="showcases-grid">
-    <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+
+  <div id="showcases-cards-view">
+    <div class="showcases-header" id="showcases-header">
+      <h2 class="showcases-title">Showcases</h2>
+      <a class="showcases-link" href="programme.html">Show 2026 programme →</a>
+    </div>
+    <div class="showcases-grid" id="showcases-grid">
+      <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+    </div>
   </div>
 
   <!-- In-section showcase detail -->
@@ -452,18 +450,9 @@
             <div class="showcase-detail-links" id="sd-links"></div>
           </div>
           <div class="showcase-detail-meta">
-            <div>
-              <p class="showcase-detail-meta-label">Viewing Dates</p>
-              <p class="showcase-detail-meta-value" id="sd-dates"></p>
-            </div>
-            <div>
-              <p class="showcase-detail-meta-label">Expo Type</p>
-              <p class="showcase-detail-meta-value" id="sd-type"></p>
-            </div>
-            <div>
-              <p class="showcase-detail-meta-label">Location</p>
-              <p class="showcase-detail-meta-value" id="sd-location"></p>
-            </div>
+            <div><p class="showcase-detail-meta-label">Viewing Dates</p><p class="showcase-detail-meta-value" id="sd-dates"></p></div>
+            <div><p class="showcase-detail-meta-label">Expo Type</p><p class="showcase-detail-meta-value" id="sd-type"></p></div>
+            <div><p class="showcase-detail-meta-label">Location</p><p class="showcase-detail-meta-value" id="sd-location"></p></div>
           </div>
         </div>
       </div>
@@ -472,7 +461,7 @@
 </section>
 
 <!-- WANT TO SHOWCASE -->
-<section class="showcase-cta-section reveal">
+<section class="showcase-cta-section reveal" id="showcase-cta-section">
   <div class="showcase-cta-bg"></div>
   <div class="showcase-cta-overlay"></div>
   <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -522,7 +511,6 @@ const expoPartners = [
   { img:'/images/logos/expo/eudelegation.svg',    name:'EU Delegation',         url:'https://www.eeas.europa.eu/delegations/south-africa_en' },
   { img:'/images/logos/expo/eunic.svg',           name:'EUNIC',                 url:'https://www.eunic.eu/' },
 ];
-
 const track = document.getElementById('expoPartnersTrack');
 [...expoPartners, ...expoPartners].forEach(p => {
   const a = document.createElement('a');
@@ -543,17 +531,21 @@ const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
   links:['Visit University of Johannesburg website →','Visit Toor|Bos website →']
 }));
 
-/* SHOWCASE CARD CLICK */
-const showcasesGrid      = document.getElementById('showcases-grid');
+/* DOM refs */
+const curatorialSection  = document.getElementById('curatorial-section');
+const showcaseCtaSection = document.getElementById('showcase-cta-section');
+const showcasesCardsView = document.getElementById('showcases-cards-view');
 const showcaseDetail     = document.getElementById('showcase-detail');
 const showcaseDetailBack = document.getElementById('showcase-detail-back');
 const showcaseDetailBg   = document.getElementById('showcase-detail-bg');
+const showcasesSection   = document.getElementById('showcases-section');
 
+/* SHOWCASE CARD CLICK — hides curatorial + CTA sections */
 document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
   card.addEventListener('click', () => {
     const d = SHOWCASE_DATA[parseInt(card.dataset.id)] || SHOWCASE_DATA[0];
     const cardImg = card.querySelector('.showcase-card-img img');
-    const imgSrc = cardImg ? cardImg.src : '/images/IMG_2164-Enhanced-NR-scaled.jpg';
+    const imgSrc = cardImg ? cardImg.src : '/images/Toor-Bos.jpg';
     document.getElementById('sd-title').textContent    = d.title;
     document.getElementById('sd-subtitle').textContent = d.subtitle;
     document.getElementById('sd-body').textContent     = d.body;
@@ -564,20 +556,22 @@ document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
     const linksEl = document.getElementById('sd-links');
     linksEl.innerHTML = d.links.map(l => `<span class="showcase-detail-link">${l}</span>`).join('');
     showcaseDetailBg.style.backgroundImage = `url('${imgSrc}')`;
-    document.querySelector('.curatorial-section').style.display = 'none';
-    document.querySelector('.showcases-header').style.display   = 'none';
-    showcasesGrid.style.display  = 'none';
+    /* Hide curatorial frequencies + want-to-showcase CTA + card grid */
+    curatorialSection.style.display  = 'none';
+    showcaseCtaSection.style.display = 'none';
+    showcasesCardsView.style.display = 'none';
     showcaseDetail.classList.add('active');
-    document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
+    showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
   });
 });
 
+/* BACK BUTTON — restores everything */
 showcaseDetailBack.addEventListener('click', () => {
   showcaseDetail.classList.remove('active');
-  document.querySelector('.curatorial-section').style.display = '';
-  document.querySelector('.showcases-header').style.display   = '';
-  showcasesGrid.style.display = '';
-  document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
+  curatorialSection.style.display  = '';
+  showcaseCtaSection.style.display = '';
+  showcasesCardsView.style.display = '';
+  showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
 });
 
 /* Cross icon scroll spin */

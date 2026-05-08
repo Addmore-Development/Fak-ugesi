@@ -11,7 +11,7 @@
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
-    @font-face { font-family:'DxWideground'; src:url('../fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -60,16 +60,17 @@
       background: var(--navy); color: var(--white); border: none;
       padding: 12px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; cursor: pointer; font-family: 'InterDisplay', sans-serif;
-      transition: background 0.22s, color 0.22s; text-decoration: none;
+      transition: background 0.22s, color 0.22s, transform 0.18s; text-decoration: none;
     }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
     .btn-outline-white {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       border: 1.5px solid var(--white); color: var(--white); background: transparent;
       padding: 12px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; cursor: pointer; transition: background 0.22s, color 0.22s;
+      text-transform: uppercase; cursor: pointer; transition: background 0.22s, color 0.22s, transform 0.18s;
       font-family: 'InterDisplay', sans-serif;
     }
-    .btn-outline-white:hover { background: var(--white); color: var(--navy); }
+    .btn-outline-white:hover { background: var(--white); color: var(--navy); transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
@@ -102,11 +103,36 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .hero-content { max-width: 420px; }
-    .hero-subtitle { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; margin-bottom: 10px; }
-    .hero-title { font-size: 52px; font-weight: 600; line-height: 1.0; margin-bottom: 18px; }
-    .hero-body { font-size: 12px; line-height: 1.7; max-width: 340px; opacity: 0.85; margin-bottom: 18px; }
+    /* Subtitle: small, uppercase, slightly opaque — matches image */
+    .hero-subtitle {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    /* Title: large, bold white — matches image ~52px semibold */
+    .hero-title {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.0;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
+    /* Body text: small, light weight, matches image */
+    .hero-body {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 340px;
+      opacity: 0.85;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
 
-    /* ── HERO LINK with zoom + underline removal on hover ── */
+    /* ── HERO LINK ── */
     .hero-link {
       color: var(--white);
       font-size: 12px;
@@ -158,9 +184,9 @@
       border-top: 1px solid rgba(26,39,68,0.08); border-bottom: 1px solid rgba(26,39,68,0.08);
     }
     .ticker-wrapper { transition: background 0.28s ease; }
-.ticker-wrapper:hover { background: var(--navy) !important; }
-.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
-.ticker-wrapper:hover .ticker-track span { color: #ffffff !important; }
+    .ticker-wrapper:hover { background: var(--navy) !important; }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+    .ticker-wrapper:hover .ticker-track span { color: #ffffff !important; }
     .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; }
     .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: var(--navy); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -169,7 +195,8 @@
     .theme-section {
       position: relative; min-height: 540px; display: flex; align-items: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #1a2462 0%, #2a3a8f 30%, #3a52b0 55%, #6878c8 80%, #8898d8 100%);
+      /* Matches schedule page day-selector gradient exactly */
+      background: linear-gradient(180deg, #3a4a88 0%, #4a5899 40%, #5a6aaa 70%, #6878bb 100%);
     }
     .theme-bg-img {
       position: absolute; right: -3cm; bottom: 0; top: 0; width: 52%; height: 100%;
@@ -177,20 +204,66 @@
       background-size: contain;
       background-position: right bottom;
       background-repeat: no-repeat;
+      /* Original orientation — scaleX(-1) matches initial code */
       transform: scaleX(-1);
+      /* Brighter — no dimming filter */
+      filter: brightness(1.15);
     }
     .theme-fade {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, #1a2462 28%, rgba(26,36,98,0.88) 48%, rgba(26,36,98,0.3) 65%, transparent 100%);
+      background: linear-gradient(to right, #3a4a88 18%, rgba(58,74,136,0.92) 35%, rgba(58,74,136,0.4) 58%, rgba(58,74,136,0.0) 100%);
     }
     .theme-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
     .theme-content { max-width: 480px; }
-    .theme-year  { font-family: 'DxWideground', 'InterDisplay', sans-serif; font-size: 48px; font-weight: 700; margin-bottom: 6px; letter-spacing: 0.01em; }
-    .theme-sub   { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; opacity: 0.75; margin-bottom: 14px; }
-    .theme-head  { font-size: 38px; font-weight: 600; line-height: 1.05; margin-bottom: 18px; }
-    .theme-body  { font-size: 13px; line-height: 1.72; opacity: 0.84; max-width: 380px; margin-bottom: 28px; }
+
+    /* "2026 Theme" — DxWideground wide display font */
+    .theme-year {
+      font-family: 'DxWideground', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+      color: var(--white);
+    }
+    /* "Africa's creative energy unleashed" — small, regular, sits right under 2026 Theme */
+    .theme-sub {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    /* "African Imaginaries" — InterDisplay Bold, large */
+    .theme-head {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
+    /* Body text — InterDisplay Regular */
+    .theme-body {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.72;
+      opacity: 0.84;
+      max-width: 380px;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
     .btn-row     { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-    .theme-dates { font-size: 30px; font-weight: 700; letter-spacing: 0.02em; }
+    /* "07 — 12.10.2026" — InterDisplay Bold, large */
+    .theme-dates {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
 
     /* ── GET INVOLVED ── */
     .involved-section {
@@ -205,11 +278,27 @@
     }
     .involved-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
     .involved-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .involved-title { font-size: 42px; font-weight: 600; }
-    .involved-link { color: var(--white); font-size: 12px; font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; white-space: nowrap; margin-top: 8px; }
+    /* "Get involved" — large bold white */
+    .involved-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .involved-link {
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: underline;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      margin-top: 8px;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      display: inline-block;
+    }
+    .involved-link:hover { opacity: 0.7; transform: translateX(3px); }
     .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
 
-    /* Inv card — flip on hover */
+    /* Cards — matching image: bordered, with content stacked, LEARN MORE button at bottom */
     .inv-card {
       border: 1px solid rgba(255,255,255,0.45);
       position: relative;
@@ -234,30 +323,32 @@
       padding: 22px 20px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
-    .inv-card-front { background: transparent; justify-content: center; }
- .inv-card-back {
-  background: transparent;
-  transform: rotateY(180deg);
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;        /* increase top padding to push it down */
-  border: 1px solid rgba(255,255,255,0.45);
-  position: absolute;        /* keep absolute */
-  inset: 0;                  /* keep inset */
-  display: flex;             /* ADD THIS */
-  flex-direction: column;    /* ADD THIS */
-}
-.inv-card-fact {
-  flex: 1;                   /* take up remaining space */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* vertically centers within that space */
-  width: 100%;
-}
-
+    .inv-card-front {
+      background: transparent;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+    .inv-card-back {
+      background: transparent;
+      transform: rotateY(180deg);
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      border: 1px solid rgba(255,255,255,0.45);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .inv-card-fact {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
     .inv-card-fact p {
       font-size: 11.5px;
       line-height: 1.65;
@@ -279,30 +370,70 @@
       color: rgba(255,255,255,0.65);
     }
 
-    
-
-    .card-num   { position: absolute; top: 16px; right: 16px; font-size: 22px; font-weight: 700; opacity: 0.65; }
-    .card-tag   { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
-    .card-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-    .card-body  { font-size: 11.5px; line-height: 1.65; opacity: 0.82; margin-bottom: 0; flex: 0; }
+    /* Card number top-right — InterDisplay Bold, white, large — matches theme section heading style */
+    .card-num {
+      position: absolute; top: 14px; right: 16px;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      line-height: 1; letter-spacing: -0.01em;
+    }
+    /* Card tag — InterDisplay Regular, small, uppercase */
+    .card-tag {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0.6; margin-bottom: 8px; margin-top: 28px; color: var(--white);
+    }
+    /* Card title — InterDisplay Bold */
+    .card-title {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 12px; color: var(--white);
+    }
+    /* Card body — InterDisplay Regular */
+    .card-body {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 11.5px; font-weight: 400;
+      line-height: 1.65; opacity: 0.82;
+      color: var(--white);
+    }
+    /* Card back — InterDisplay fonts */
+    .inv-card-fact p {
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 13px; line-height: 1.72;
+      color: rgba(255,255,255,0.88);
+      text-align: center; font-weight: 400;
+    }
+    .inv-card-back-label {
+      position: absolute; top: 14px; left: 14px;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
 
     /* ── SPOTLIGHT ── */
     .spotlight-section { background: var(--lavender); padding: 72px 0; position: relative; }
     .spotlight-inner { padding: 0 var(--band); }
-    .spotlight-title { font-size: 44px; font-weight: 600; color: var(--dark-text); margin-bottom: 40px; }
+    /* "Spotlight" — large, bold, dark matches image */
+    .spotlight-title { font-size: 44px; font-weight: 700; color: var(--dark-text); margin-bottom: 40px; }
     .spotlight-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .spotlight-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
     .spotlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; display: block; }
     .spotlight-img-wrap:hover img { transform: scale(1.05); }
+    /* Tag — small uppercase, dark navy */
     .spotlight-tag  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
-    .spotlight-head { font-size: 30px; font-weight: 600; color: var(--dark-text); line-height: 1.1; margin-bottom: 20px; }
-    .spotlight-body { font-size: 13px; line-height: 1.72; color: var(--body-gray); margin-bottom: 32px; }
+    /* Spotlight heading — bold, matches image */
+    .spotlight-head { font-size: 30px; font-weight: 700; color: var(--dark-text); line-height: 1.1; margin-bottom: 20px; }
+    .spotlight-body { font-size: 13px; font-weight: 400; line-height: 1.72; color: var(--body-gray); margin-bottom: 32px; }
 
     /* ── WHAT'S HAPPENING ── */
     .happening-section { background: var(--white); padding: 72px 0; overflow: hidden; position: relative; }
     .happening-inner { padding: 0 var(--band); }
     .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    .happening-title { font-size: 44px; font-weight: 600; color: var(--dark-text); }
+    /* "What's happening" — large bold dark */
+    .happening-title { font-size: 44px; font-weight: 700; color: var(--dark-text); }
 
     .soc-tabs { display: flex; gap: 16px; align-items: center; }
     .soc-tab {
@@ -371,7 +502,7 @@
     .partners-section { background: var(--lavender); padding: 72px 0; position: relative; }
     .partners-inner { padding: 0 var(--band); }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-    .partners-title { font-size: 38px; font-weight: 600; color: var(--dark-text); }
+    .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
     .partners-link {
       font-size: 12px;
       color: var(--navy);
@@ -382,9 +513,7 @@
       transition: transform 0.25s ease;
       display: inline-block;
     }
-    .partners-link:hover {
-      transform: scale(1.02);
-    }
+    .partners-link:hover { transform: scale(1.02); }
     .partners-grid  { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
@@ -454,11 +583,12 @@
   text-transform: uppercase;
   cursor: pointer;
   font-family: 'InterDisplay', sans-serif;
-  transition: background 0.22s, color 0.22s;
+  transition: background 0.22s, color 0.22s, transform 0.18s;
 }
 .btn-outline-dark:hover {
   background: var(--dark-text);
   color: var(--white);
+  transform: translateY(-1px);
 }
 
 /* ── MOBILE (≤768px) ── */
@@ -527,7 +657,7 @@
   .inv-card-back { display: none; }
   .card-title { font-size: 18px; margin-bottom: 8px; }
   .card-body { font-size: 11px; }
-  .card-num { font-size: 18px; top: 12px; right: 12px; }
+  .card-num { font-size: 20px; top: 12px; right: 12px; color: rgba(255,255,255,0.7); }
 
   /* SPOTLIGHT */
   .spotlight-section { padding: 48px 0; }
@@ -613,9 +743,6 @@
   .partners-grid { grid-template-columns: 1fr; }
 }
 
-
-
-
   </style>
 
   <style>
@@ -632,20 +759,7 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
-  <!-- Cross icons: top/bottom 16px, left/right 200px — matching the grid -->
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>
-  </div>
+  <!-- Cross icons REMOVED from hero to match image -->
 
   <!-- nav injected by nav.js -->
   <div class="hero-inner">
@@ -680,6 +794,7 @@
   <div class="theme-bg-img"></div>
   <div class="theme-fade"></div>
 
+  <!-- Cross icons kept in theme section (visible in image) -->
   <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
   </div>

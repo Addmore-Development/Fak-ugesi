@@ -56,8 +56,9 @@
       inset: 0;
       background-image: url('images/Copy_of__MGL3584.jpg');
       background-size: cover;
-      background-position: center 40%;
+      background-position: center 10%;
       filter: brightness(0.58);
+      transform: scaleX(-1);
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -145,13 +146,13 @@
     }
     .edition-card {
       flex: 0 0 300px; cursor: pointer;
-      border: 1px solid rgba(26,39,68,0.1); background: #fff;
+      border: 1px solid rgba(26,39,68,0.1);;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .edition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,39,68,0.12); }
     .edition-img { width: 300px; height: 260px; overflow: hidden; }
     .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-    .edition-meta { padding: 16px 16px 20px; background: #fff; }
+    .edition-meta { padding: 16px 16px 20px; }
     .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
     .edition-dates, .edition-year { font-size: 12px; color: var(--body-gray); }
     .edition-name { font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 10px; }
@@ -169,8 +170,8 @@
     .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; }
     .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .team-info { background: var(--lavender); padding: 12px 14px 16px; }
-    .team-name { font-size: 16px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
-    .team-role { font-size: 12px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
+    .team-name { font-size: 26px; font-weight: 500; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
+    .team-role { font-size: 18px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
     .team-email { font-size: 11px; color: var(--body-gray); }
 
     /* ── GET IN TOUCH ── */
@@ -183,7 +184,8 @@
     .contact-social-icons { display: flex; gap: 14px; align-items: center; }
     .contact-social-icons a { color: var(--white); text-decoration: none; transition: opacity 0.2s; }
     .contact-social-icons a:hover { opacity: 0.55; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .contact-form { align-self: end; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 14px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; color: var(--white); }
     .form-input, .form-select, .form-textarea {
@@ -320,8 +322,8 @@
         gap: 12px;
       }
       .team-grid-row2 { margin-top: 12px; }
-      .team-name { font-size: 13px; }
-      .team-role { font-size: 10px; }
+      .team-name { font-size: 23px; }
+      .team-role { font-size: 15px; }
       .team-email { font-size: 9.5px; word-break: break-all; }
       .team-info { padding: 10px 10px 12px; }
 

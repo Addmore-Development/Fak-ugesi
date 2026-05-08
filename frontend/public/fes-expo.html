@@ -18,44 +18,47 @@
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
 
-    /* HERO */
+    /* HERO — brighter: brightness 0.72 */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
-    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.72);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.48) 45%,transparent 80%)}
     .hero-inner{
-  position:relative;z-index:3;
-  padding:120px 248px 56px;
-  width:100%;
-  display:flex;align-items:flex-start;justify-content:space-between;
-}
+      position:relative;z-index:3;
+      padding:120px 248px 56px;
+      width:100%;
+      display:flex;align-items:flex-start;justify-content:space-between;
+    }
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
-
-     /* Hero logo — top right, aligned with content start */
     .hero-logo{
       position:relative;z-index:4;
       flex-shrink:0;
-      display:flex;align-items:flex-start;justify-content:center;
+      display:flex;align-items:center;justify-content:center;
+      align-self:center;
+      background:transparent;
     }
     .hero-logo img{
       height:110px;width:auto;display:block;
       filter:brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode:screen;
+      background:transparent;
     }
+
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
-    .ticker-wrap { transition: background 0.28s ease; }
-.ticker-wrap:hover { background: var(--navy) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
-.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
-.ticker-wrap:hover .ticker-item { color: #ffffff !important; }
-.ticker-wrap:hover .ticker-item .ticker-arrow { color: #ffffff !important; }
+    .ticker-wrap{transition:background 0.28s ease;}
+    .ticker-wrap:hover{background:var(--navy)!important;border-top-color:rgba(26,39,68,0.35)!important;border-bottom-color:rgba(26,39,68,0.35)!important;}
+    .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+    .ticker-wrap:hover .ticker-item{color:#ffffff!important;}
+    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff!important;}
 
     /* CURATORIAL FREQUENCIES */
     .curatorial-section{
@@ -65,7 +68,7 @@
     }
     .curatorial-bg-img{
       position:absolute;right:0;top:0;bottom:0;width:55%;
-       background-image:url('images/robo1.png');
+      background-image:url('images/robo1.png');
       background-size:contain;
       background-repeat:no-repeat;
       background-position:right center;
@@ -164,38 +167,22 @@
     .showcase-card-title{font-size:28px;font-weight:900;color:var(--dark-text);margin-bottom:6px;line-height:1.1;}
     .showcase-card-sub{font-size:13px;color:var(--body-gray);}
 
-    /* WANT TO SHOWCASE */
+    /* WANT TO SHOWCASE — brighter: brightness 0.68, lighter overlay */
     .showcase-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
-    .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.45);}
-    .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.75) 40%,rgba(5,10,28,.25) 80%);}
+    .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.68);}
+    .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.42) 40%,rgba(5,10,28,.12) 80%);}
     .showcase-cta-content{position:relative;z-index:3;padding:60px 248px;width:100%;}
     .showcase-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .showcase-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
-    .showcase-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 1.5px solid rgba(255,255,255,0.7);
-  color: #fff;
-  background: transparent;
-  padding: 12px 28px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: 'InterDisplay', sans-serif;
-  transition: background 0.22s, color 0.22s, border-color 0.22s;
-}
-
-.showcase-cta-btn:hover {
-  background: #0d1b3e !important;
-  color: #fff !important;
-  border-color: rgba(100,160,255,0.65) !important;
-  transform: translateY(-1px) !important;
-}
-    
+    .showcase-cta-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;
+      padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;
+      text-transform:uppercase;cursor:pointer;text-decoration:none;
+      font-family:'InterDisplay',sans-serif;
+      transition:background 0.22s,color 0.22s,border-color 0.22s;
+    }
+    .showcase-cta-btn:hover{background:#0d1b3e!important;color:#fff!important;border-color:rgba(100,160,255,0.65)!important;transform:translateY(-1px)!important;}
 
     /* PARTNERS */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
@@ -220,329 +207,113 @@
 
     @media(max-width:900px){
       .hero-title{font-size:44px}
-      .hero-inner{
-  flex-direction: column !important;
-  padding: 64px 20px 40px !important;
-  gap: 24px !important;
-}
+      .hero-inner{flex-direction:column!important;padding:64px 20px 40px!important;gap:24px!important;}
       .hero-logo{display:none;}
       .showcases-header,.showcases-grid,.showcase-cta-content,.curatorial-inner{padding-left:32px;padding-right:32px}
       .curatorial-cards{width:100%;margin-left:0;padding:0;grid-template-columns:1fr}
       .showcases-grid{grid-template-columns:1fr}
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
     }
-
-    /* ══════════════════════════════════════════════════
-   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
-══════════════════════════════════════════════════ */
-
-/* ── TABLET (≤1024px) ── */
-@media (max-width: 1024px) {
-  .hero-inner { padding: 100px 48px 52px; }
-  .hero-title { font-size: 52px; }
-  .hero-date { font-size: 22px; }
-  .hero-logo img { height: 80px; }
-
-  .curatorial-inner { padding: 52px 48px 48px; }
-  .curatorial-title { font-size: 44px; }
-  .curatorial-bg-img { width: 50%; }
-
-  .showcases-header { padding: 0 48px; margin-bottom: 32px; }
-  .showcases-title { font-size: 36px; }
-  .showcases-grid { padding: 0 48px; gap: 16px; }
-
-  .showcase-cta-content { padding: 52px 48px; }
-  .showcase-cta-title { font-size: 34px; }
-
-  .partners-title { padding: 0 48px; font-size: 36px; margin-bottom: 40px; }
-  .partners-blue-band { padding: 32px 48px; }
-
-  .showcase-detail-content { padding: 40px 48px 52px; }
-  .showcase-detail-title { font-size: 40px; }
-
-  .cross-icon { display: none; }
-}
-
-/* ── MOBILE (≤768px) ── */
-@media (max-width: 768px) {
-
-  /* HERO */
-  .hero { min-height: auto; }
-  .hero-bg { background-position: center center; }
-  .hero-inner {
-    padding: 80px 20px 40px !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 20px !important;
-  }
-  .hero-content { max-width: 100% !important; }
-  .hero-eyebrow { font-size: 10px; margin-bottom: 8px; }
-  .hero-title { font-size: 32px !important; margin-bottom: 14px; }
-  .hero-body { font-size: 12px; max-width: 100%; }
-  .hero-date { font-size: 20px; }
-  .hero-logo { display: none !important; }
-
-  /* CURATORIAL FREQUENCIES */
-  .curatorial-section { min-height: auto; }
-  .curatorial-bg-img { display: none; }
-  .curatorial-fade { display: none; }
-  .curatorial-inner { padding: 40px 20px 36px; }
-  .curatorial-top-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .curatorial-title { font-size: 28px; max-width: 100%; }
-  .curatorial-view-link { margin-left: 0; margin-top: 0; font-size: 11px; }
-  .curatorial-body { font-size: 13px; margin-bottom: 28px; max-width: 100%; }
-
-  /* Curatorial cards — stack to single col */
-  .curatorial-cards { grid-template-columns: 1fr; }
-  .curatorial-card { padding: 20px 18px 24px; }
-  .curatorial-card + .curatorial-card { border-left: 1px solid rgba(255,255,255,0.22); border-top: none; }
-  .curatorial-card-title { font-size: 18px; margin-bottom: 10px; }
-  .curatorial-card-num { font-size: 24px; }
-
-  /* SHOWCASES */
-  .showcases-section { padding: 48px 0; }
-  .showcases-header {
-    padding: 0 20px;
-    margin-bottom: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .showcases-title { font-size: 28px; }
-  .showcases-grid {
-    grid-template-columns: 1fr !important;
-    padding: 0 20px;
-    gap: 16px;
-  }
-  .showcase-card-title { font-size: 22px; }
-
-  /* SHOWCASE DETAIL PANEL */
-  .showcase-detail-content {
-    padding: 32px 20px 48px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 28px 0;
-  }
-  .showcase-detail-back { margin-bottom: 20px; }
-  .showcase-detail-title { font-size: 28px; margin-bottom: 6px; }
-  .showcase-detail-subtitle { font-size: 14px; margin-bottom: 16px; }
-  .showcase-detail-body { font-size: 13px; }
-  .showcase-detail-right { margin-top: 0; gap: 24px; }
-  .showcase-detail-logos { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .showcase-detail-meta { gap: 16px; }
-  .showcase-detail-meta-value { font-size: 18px; }
-
-  /* WANT TO SHOWCASE CTA */
-  .showcase-cta-section { min-height: auto; }
-  .showcase-cta-content { padding: 48px 20px; }
-  .showcase-cta-title { font-size: 26px; margin-bottom: 16px; max-width: 100%; }
-  .showcase-cta-body { font-size: 12px; margin-bottom: 20px; max-width: 100%; }
-  .showcase-cta-btn { width: 100%; justify-content: center; padding: 14px 20px; }
-
-  /* EXPO PARTNERS */
-  .partners-section { padding: 48px 0 0; }
-  .partners-title {
-    font-size: 28px !important;
-    padding: 0 20px !important;
-    margin-bottom: 28px;
-    text-align: left;
-  }
-  .partners-blue-band {
-    padding: 28px 20px !important;
-    margin-top: 40px;
-  }
-  .partners-disclaimer { font-size: 10px; text-align: left; }
-
-  /* Slow carousel slightly on mobile */
-  .partners-carousel-track { gap: 40px; }
-  .carousel-logo-img-wrap { width: 120px; height: 80px; }
-  .carousel-logo-img-wrap img { max-height: 56px; max-width: 100px; }
-  .carousel-logo-name { font-size: 10px; }
-
-  .cross-icon { display: none; }
-}
-
-/* ── SMALL MOBILE (≤480px) ── */
-@media (max-width: 480px) {
-  .hero-title { font-size: 26px !important; }
-  .hero-date { font-size: 17px; }
-
-  .curatorial-title { font-size: 24px; }
-  .curatorial-card-title { font-size: 16px; }
-
-  .showcases-title { font-size: 24px; }
-  .showcase-card-title { font-size: 20px; }
-
-  .showcase-detail-title { font-size: 24px; }
-
-  .showcase-cta-title { font-size: 22px; }
-
-  .partners-title { font-size: 24px !important; }
-}
-
+    @media(max-width:1024px){
+      .hero-inner{padding:100px 48px 52px;}
+      .hero-title{font-size:52px;}
+      .hero-date{font-size:22px;}
+      .hero-logo img{height:80px;}
+      .curatorial-inner{padding:52px 48px 48px;}
+      .curatorial-title{font-size:44px;}
+      .curatorial-bg-img{width:50%;}
+      .showcases-header{padding:0 48px;margin-bottom:32px;}
+      .showcases-title{font-size:36px;}
+      .showcases-grid{padding:0 48px;gap:16px;}
+      .showcase-cta-content{padding:52px 48px;}
+      .showcase-cta-title{font-size:34px;}
+      .partners-title{padding:0 48px;font-size:36px;margin-bottom:40px;}
+      .partners-blue-band{padding:32px 48px;}
+      .showcase-detail-content{padding:40px 48px 52px;}
+      .showcase-detail-title{font-size:40px;}
+      .cross-icon{display:none;}
+    }
+    @media(max-width:768px){
+      .hero{min-height:auto;}
+      .hero-bg{background-position:center center;}
+      .hero-inner{padding:80px 20px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}
+      .hero-content{max-width:100%!important;}
+      .hero-eyebrow{font-size:10px;margin-bottom:8px;}
+      .hero-title{font-size:32px!important;margin-bottom:14px;}
+      .hero-body{font-size:12px;max-width:100%;}
+      .hero-date{font-size:20px;}
+      .hero-logo{display:none!important;}
+      .curatorial-section{min-height:auto;}
+      .curatorial-bg-img{display:none;}
+      .curatorial-fade{display:none;}
+      .curatorial-inner{padding:40px 20px 36px;}
+      .curatorial-top-row{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:16px;}
+      .curatorial-title{font-size:28px;max-width:100%;}
+      .curatorial-view-link{margin-left:0;margin-top:0;font-size:11px;}
+      .curatorial-body{font-size:13px;margin-bottom:28px;max-width:100%;}
+      .curatorial-cards{grid-template-columns:1fr;}
+      .curatorial-card{padding:20px 18px 24px;}
+      .curatorial-card+.curatorial-card{border-left:1px solid rgba(255,255,255,0.22);border-top:none;}
+      .curatorial-card-title{font-size:18px;margin-bottom:10px;}
+      .curatorial-card-num{font-size:24px;}
+      .showcases-section{padding:48px 0;}
+      .showcases-header{padding:0 20px;margin-bottom:24px;flex-direction:column;align-items:flex-start;gap:10px;}
+      .showcases-title{font-size:28px;}
+      .showcases-grid{grid-template-columns:1fr!important;padding:0 20px;gap:16px;}
+      .showcase-card-title{font-size:22px;}
+      .showcase-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:28px 0;}
+      .showcase-detail-back{margin-bottom:20px;}
+      .showcase-detail-title{font-size:28px;margin-bottom:6px;}
+      .showcase-detail-subtitle{font-size:14px;margin-bottom:16px;}
+      .showcase-detail-body{font-size:13px;}
+      .showcase-detail-right{margin-top:0;gap:24px;}
+      .showcase-detail-logos{flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+      .showcase-detail-meta{gap:16px;}
+      .showcase-detail-meta-value{font-size:18px;}
+      .showcase-cta-section{min-height:auto;}
+      .showcase-cta-content{padding:48px 20px;}
+      .showcase-cta-title{font-size:26px;margin-bottom:16px;max-width:100%;}
+      .showcase-cta-body{font-size:12px;margin-bottom:20px;max-width:100%;}
+      .showcase-cta-btn{width:100%;justify-content:center;padding:14px 20px;}
+      .partners-section{padding:48px 0 0;}
+      .partners-title{font-size:28px!important;padding:0 20px!important;margin-bottom:28px;text-align:left;}
+      .partners-blue-band{padding:28px 20px!important;margin-top:40px;}
+      .partners-disclaimer{font-size:10px;text-align:left;}
+      .partners-carousel-track{gap:40px;}
+      .carousel-logo-img-wrap{width:120px;height:80px;}
+      .carousel-logo-img-wrap img{max-height:56px;max-width:100px;}
+      .carousel-logo-name{font-size:10px;}
+      .cross-icon{display:none;}
+    }
+    @media(max-width:480px){
+      .hero-title{font-size:26px!important;}
+      .hero-date{font-size:17px;}
+      .curatorial-title{font-size:24px;}
+      .curatorial-card-title{font-size:16px;}
+      .showcases-title{font-size:24px;}
+      .showcase-card-title{font-size:20px;}
+      .showcase-detail-title{font-size:24px;}
+      .showcase-cta-title{font-size:22px;}
+      .partners-title{font-size:24px!important;}
+    }
   </style>
 
 <style id="fug-global-fixes">
-/* ── HERO NAV FIX ── handled by hero-inner padding-top:82px */
-
-/* ── UNIVERSAL BUTTON LIGHTNING HOVER ── */
-.btn-primary,
-.btn-outline-dark,
-.btn-outline-white,
-.btn-apply,
-.btn-cta-white,
-.btn-cta-filled,
-.btn-learn,
-.hero-cta,
-.intro-cta,
-.network-cta,
-.section-cta,
-.challenge-cta,
-a.btn-tickets,
-button.btn-tickets,
-.btn-get-pass,
-.btn-primary-dark,
-.btn-white,
-.btn-dark,
-.cta-btn,
-[class*="btn-"]:not(.req-btn):not(.faq-q-btn) {
-  position: relative !important;
-  overflow: hidden !important;
-  cursor: pointer;
-  transition: background 0.22s, color 0.22s, border-color 0.22s !important;
-}
-
-
-/* ── CROSS ICON ── always allow transform ── */
-.cross-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 18px !important; height: 18px !important;
-  flex-shrink: 0 !important;
-  position: absolute !important;
-  z-index: 6 !important;
-  opacity: 0.45 !important;
-  animation: none !important;
-  transition: transform 0.1s linear !important;
-}
-.cross-icon svg { width: 100%; height: 100%; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 1400px) {
-  :root { --band: 160px !important; --gutter: 160px !important; }
-}
-@media (max-width: 1200px) {
-  :root { --band: 80px !important; --gutter: 80px !important; }
-  .prizes-grid, .involved-cards { grid-template-columns: repeat(2,1fr) !important; }
-  .spotlight-grid { gap: 32px !important; }
-}
-@media (max-width: 1024px) {
-  :root { --band: 40px !important; --gutter: 40px !important; }
-  .hero-title { font-size: 40px !important; }
-  .theme-head { font-size: 30px !important; }
-  .theme-year { font-size: 36px !important; }
-  .partners-grid { grid-template-columns: repeat(2,1fr) !important; }
-  .winners-header { padding: 0 40px 36px !important; }
-}
-@media (max-width: 768px) {
-  :root { --band: 20px !important; --gutter: 20px !important; }
-  #main-nav .nav-links-wrap { display: none !important; }
-  #main-nav .nav-mobile-toggle { display: flex !important; }
-
-  .hero-inner { flex-direction: column !important; padding: 80px 20px 40px !important; gap: 24px !important; }
-  .hero-logo { display: none !important; }
-  .hero-title { font-size: 36px !important; }
-  .hero-content { max-width: 100% !important; }
-
-  .theme-inner { padding: 40px 20px !important; }
-  .theme-head { font-size: 26px !important; }
-  .theme-year { font-size: 28px !important; }
-  .theme-dates { font-size: 22px !important; }
-  .theme-bg-img { width: 100% !important; opacity: 0.2 !important; }
-
-  .involved-cards { grid-template-columns: 1fr !important; }
-  .prizes-grid { grid-template-columns: 1fr !important; }
-  .partners-grid { grid-template-columns: 1fr !important; }
-  .spotlight-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
-  .tweet-grid { grid-template-columns: 1fr !important; }
-  .fb-feed { grid-template-columns: 1fr !important; }
-
-  .involved-header { flex-direction: column !important; gap: 12px !important; }
-  .involved-title { font-size: 30px !important; }
-  .spotlight-title { font-size: 30px !important; }
-  .happening-title { font-size: 30px !important; }
-  .partners-title { font-size: 28px !important; }
-  .happening-header { flex-direction: column !important; gap: 16px !important; }
-  .partners-header { flex-direction: column !important; gap: 12px !important; }
-
-  /* sig pages responsive */
-  .hero-content { padding: 80px 20px 40px !important; max-width: 100% !important; }
-  .hero-logo { margin-right: 0 !important; }
-  .ia-grid, .cat-grid { grid-template-columns: 1fr !important; }
-  .faq-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
-  .req-header, .faq-right-header { flex-direction: column !important; gap: 12px !important; }
-  .winners-header { padding: 0 20px 24px !important; }
-  .winners-strip-outer { margin: 0 !important; }
-  .prog-cards { grid-template-columns: 1fr !important; }
-  .team-grid { grid-template-columns: repeat(2,1fr) !important; }
-
-  /* discover pages */
-  .content-band { padding-left: 20px !important; padding-right: 20px !important; }
-  .arch-grid, .venues-grid, .resource-grid { grid-template-columns: 1fr !important; }
-  .partners-inner .partners-grid { grid-template-columns: 1fr !important; }
-
-  /* sig-jamz specific */
-  .faq-layout { grid-template-columns: 1fr !important; }
-
-  /* nav mobile */
-  #main-nav { height: 58px !important; }
-  .cross-icon[style*="left:200px"] { left: 16px !important; }
-  .cross-icon[style*="right:200px"] { right: 16px !important; }
-}
-@media (max-width: 480px) {
-  .hero-title { font-size: 28px !important; }
-  .theme-head { font-size: 22px !important; }
-  .btn-row { flex-direction: column !important; }
-  .team-grid { grid-template-columns: 1fr !important; }
-  .fug-sig-strip-inner { justify-content: flex-start !important; }
-}
-
-/* ── NAV MOBILE HAMBURGER ── */
-#main-nav .nav-mobile-toggle {
-  display: none;
-  background: none; border: none; cursor: pointer;
-  color: #fff; padding: 8px; margin-left: auto; margin-right: 16px;
-  flex-direction: column; gap: 5px; align-items: center; justify-content: center;
-}
-#main-nav .nav-mobile-toggle span {
-  display: block; width: 22px; height: 2px;
-  background: #fff; transition: transform 0.3s, opacity 0.3s;
-}
-#mobile-nav-drawer {
-  display: none; position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
-  background: rgba(10,18,50,0.98); z-index: 999;
-  flex-direction: column; padding: 24px 24px;
-  overflow-y: auto;
-}
-#mobile-nav-drawer.open { display: flex; }
-#mobile-nav-drawer a {
-  color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
-  text-decoration: none; padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  font-family: 'InterDisplay', sans-serif;
-}
-#mobile-nav-drawer a:hover { color: #fff; }
-#mobile-nav-drawer .drawer-tickets {
-  margin-top: 24px; border: 1.5px solid rgba(255,255,255,0.4);
-  text-align: center; padding: 14px; font-weight: 700;
-  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-}
+.btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
+.cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:0.45!important;animation:none!important;transition:transform 0.1s linear!important;}
+.cross-icon svg{width:100%;height:100%;}
+@media(max-width:1400px){:root{--band:160px!important;--gutter:160px!important;}}
+@media(max-width:1200px){:root{--band:80px!important;--gutter:80px!important;}}
+@media(max-width:1024px){:root{--band:40px!important;--gutter:40px!important;}.hero-title{font-size:40px!important;}}
+@media(max-width:768px){:root{--band:20px!important;--gutter:20px!important;}#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}.hero-inner{flex-direction:column!important;padding:80px 20px 40px!important;gap:24px!important;}.hero-logo{display:none!important;}.hero-title{font-size:36px!important;}.hero-content{max-width:100%!important;}.partners-title{font-size:28px!important;}#main-nav{height:58px!important;}}
+@media(max-width:480px){.hero-title{font-size:28px!important;}}
+#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
+#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
+#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
+#mobile-nav-drawer.open{display:flex;}
+#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
+#mobile-nav-drawer a:hover{color:#fff;}
+#mobile-nav-drawer .drawer-tickets{margin-top:24px;border:1.5px solid rgba(255,255,255,0.4);text-align:center;padding:14px;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
 </style>
 
 </head>
@@ -554,7 +325,6 @@ button.btn-tickets,
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <!-- Cross icons remain exactly as original: top:16px / bottom:16px -->
   <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
@@ -591,7 +361,7 @@ button.btn-tickets,
 </div>
 
 <!-- CURATORIAL FREQUENCIES -->
-<section class="curatorial-section reveal">
+<section class="curatorial-section reveal" id="curatorial-section">
   <div class="curatorial-bg-img"></div>
   <div class="curatorial-fade"></div>
   <div class="cross-icon" style="top:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -626,24 +396,27 @@ button.btn-tickets,
 </section>
 
 <!-- SHOWCASES -->
-<section class="showcases-section reveal">
+<section class="showcases-section reveal" id="showcases-section">
   <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="showcases-header">
-    <h2 class="showcases-title">Showcases</h2>
-    <a class="showcases-link" href="programme.html">Show 2026 programme →</a>
-  </div>
-  <div class="showcases-grid" id="showcases-grid">
-    <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-    <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+
+  <div id="showcases-cards-view">
+    <div class="showcases-header" id="showcases-header">
+      <h2 class="showcases-title">Showcases</h2>
+      <a class="showcases-link" href="programme.html">Show 2026 programme →</a>
+    </div>
+    <div class="showcases-grid" id="showcases-grid">
+      <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+    </div>
   </div>
 
   <!-- In-section showcase detail -->
@@ -677,18 +450,9 @@ button.btn-tickets,
             <div class="showcase-detail-links" id="sd-links"></div>
           </div>
           <div class="showcase-detail-meta">
-            <div>
-              <p class="showcase-detail-meta-label">Viewing Dates</p>
-              <p class="showcase-detail-meta-value" id="sd-dates"></p>
-            </div>
-            <div>
-              <p class="showcase-detail-meta-label">Expo Type</p>
-              <p class="showcase-detail-meta-value" id="sd-type"></p>
-            </div>
-            <div>
-              <p class="showcase-detail-meta-label">Location</p>
-              <p class="showcase-detail-meta-value" id="sd-location"></p>
-            </div>
+            <div><p class="showcase-detail-meta-label">Viewing Dates</p><p class="showcase-detail-meta-value" id="sd-dates"></p></div>
+            <div><p class="showcase-detail-meta-label">Expo Type</p><p class="showcase-detail-meta-value" id="sd-type"></p></div>
+            <div><p class="showcase-detail-meta-label">Location</p><p class="showcase-detail-meta-value" id="sd-location"></p></div>
           </div>
         </div>
       </div>
@@ -697,7 +461,7 @@ button.btn-tickets,
 </section>
 
 <!-- WANT TO SHOWCASE -->
-<section class="showcase-cta-section reveal">
+<section class="showcase-cta-section reveal" id="showcase-cta-section">
   <div class="showcase-cta-bg"></div>
   <div class="showcase-cta-overlay"></div>
   <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
@@ -747,7 +511,6 @@ const expoPartners = [
   { img:'/images/logos/expo/eudelegation.svg',    name:'EU Delegation',         url:'https://www.eeas.europa.eu/delegations/south-africa_en' },
   { img:'/images/logos/expo/eunic.svg',           name:'EUNIC',                 url:'https://www.eunic.eu/' },
 ];
-
 const track = document.getElementById('expoPartnersTrack');
 [...expoPartners, ...expoPartners].forEach(p => {
   const a = document.createElement('a');
@@ -768,17 +531,21 @@ const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
   links:['Visit University of Johannesburg website →','Visit Toor|Bos website →']
 }));
 
-/* SHOWCASE CARD CLICK */
-const showcasesGrid      = document.getElementById('showcases-grid');
+/* DOM refs */
+const curatorialSection  = document.getElementById('curatorial-section');
+const showcaseCtaSection = document.getElementById('showcase-cta-section');
+const showcasesCardsView = document.getElementById('showcases-cards-view');
 const showcaseDetail     = document.getElementById('showcase-detail');
 const showcaseDetailBack = document.getElementById('showcase-detail-back');
 const showcaseDetailBg   = document.getElementById('showcase-detail-bg');
+const showcasesSection   = document.getElementById('showcases-section');
 
+/* SHOWCASE CARD CLICK — hides curatorial + CTA sections */
 document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
   card.addEventListener('click', () => {
     const d = SHOWCASE_DATA[parseInt(card.dataset.id)] || SHOWCASE_DATA[0];
     const cardImg = card.querySelector('.showcase-card-img img');
-    const imgSrc = cardImg ? cardImg.src : '/images/IMG_2164-Enhanced-NR-scaled.jpg';
+    const imgSrc = cardImg ? cardImg.src : '/images/Toor-Bos.jpg';
     document.getElementById('sd-title').textContent    = d.title;
     document.getElementById('sd-subtitle').textContent = d.subtitle;
     document.getElementById('sd-body').textContent     = d.body;
@@ -789,23 +556,25 @@ document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
     const linksEl = document.getElementById('sd-links');
     linksEl.innerHTML = d.links.map(l => `<span class="showcase-detail-link">${l}</span>`).join('');
     showcaseDetailBg.style.backgroundImage = `url('${imgSrc}')`;
-    document.querySelector('.curatorial-section').style.display = 'none';
-    document.querySelector('.showcases-header').style.display   = 'none';
-    showcasesGrid.style.display  = 'none';
+    /* Hide curatorial frequencies + want-to-showcase CTA + card grid */
+    curatorialSection.style.display  = 'none';
+    showcaseCtaSection.style.display = 'none';
+    showcasesCardsView.style.display = 'none';
     showcaseDetail.classList.add('active');
-    document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
+    showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
   });
 });
 
+/* BACK BUTTON — restores everything */
 showcaseDetailBack.addEventListener('click', () => {
   showcaseDetail.classList.remove('active');
-  document.querySelector('.curatorial-section').style.display = '';
-  document.querySelector('.showcases-header').style.display   = '';
-  showcasesGrid.style.display = '';
-  document.querySelector('.showcases-section').scrollIntoView({behavior:'smooth', block:'start'});
+  curatorialSection.style.display  = '';
+  showcaseCtaSection.style.display = '';
+  showcasesCardsView.style.display = '';
+  showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
 });
 
-/* Cross icon scroll spin — identical to index.html */
+/* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){

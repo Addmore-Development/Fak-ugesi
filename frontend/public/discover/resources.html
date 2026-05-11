@@ -279,25 +279,32 @@
       width: 100%;
       display: block;
       object-fit: cover;
-      height: auto;
+      height: 150%;
     }
 
     /* Right content */
-    .research-content {}
+    
 
     /* Meta row: Report | Year | Author */
     .research-meta {
       display: flex;
       align-items: center;
-      gap: 48px;
+      justify-content: flex-start;   /* instead of space-between */
+      gap: 204px; 
       margin-bottom: 32px;
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(26,39,68,0.12);
+      font-weight: 700;
+    }
+    .research-meta-right{
+      display: flex;
+      align-items: center;
+      gap: 50px;
     }
     .research-meta-item {
       font-size: 11px;
       color: var(--body-gray);
-      font-weight: 400;
+      font-weight: 700;
       letter-spacing: 0.02em;
     }
 
@@ -312,14 +319,14 @@
 
     /* Guidelines block */
     .research-guidelines {
-      margin-bottom: 36px;
+      margin-bottom: 0px;
     }
     .guidelines-flex-wrapper {
-  display: flex;
-  justify-content: space-between;  /* pushes left & right apart */
-  align-items: flex-start;         /* or center, depending on your design */
-  flex-direction: row-reverse;
-  gap: 20px;
+        display: flex;
+        justify-content: space-between;  /* pushes left & right apart */
+        align-items: flex-start;         /* or center, depending on your design */
+        flex-direction: row-reverse;
+        gap: 60px;
   /* No other styles – your existing classes remain untouched */
 }
     .research-guidelines-title {
@@ -327,17 +334,18 @@
       font-weight: 600;
       color: var(--body-gray);
       letter-spacing: 0.08em;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       margin-bottom: 10px;
     }
     .research-guidelines ol {
       padding-left: 16px;
     }
     .research-guidelines li {
-      font-size: 10px;
+      font-size: 8px;
+      font-weight: 700;
       color: var(--body-gray);
-      line-height: 1.65;
-      margin-bottom: 4px;
+      line-height: 1.2;
+      /* margin-bottom: 4px; */
     }
 
     /* Download button */
@@ -345,13 +353,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 40px;
+      padding: 10px 40px;
       border: 1.5px solid var(--navy);
       background: transparent;
       color: var(--dark-text);
       font-family: 'InterDisplay', sans-serif;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
@@ -359,6 +367,9 @@
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
       position: relative !important;
       overflow: hidden !important;
+      align-self: flex-end;
+      white-space: nowrap;          /* ← add this line */
+      min-width: fit-content;
     }
     .download-btn:hover {
       background: var(--navy);
@@ -454,7 +465,7 @@
   .research-title { font-size: 28px; margin-bottom: 24px; }
 
   .research-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: 0.5fr 1fr;
     gap: 24px;
   }
   .research-cover {
@@ -468,10 +479,15 @@
     flex-wrap: wrap;
   }
 
+    .research-guidelines {
+      margin-bottom: 0px;
+    }
+
   .download-btn {
     width: 100%;
     padding: 14px 20px;
     text-align: center;
+    align-self: flex-end;
   }
 
   /* PARTNERS */
@@ -496,7 +512,7 @@
 }
 
 /* ── SMALL MOBILE (≤480px) ── */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .hero-title { font-size: 26px; }
 
   .research-title { font-size: 24px; }
@@ -504,6 +520,218 @@
 
   .partners-title { font-size: 24px; }
   .partners-grid { grid-template-columns: 1fr; }
+} */
+
+/* ──────────────────────────────────────────────────────────
+   425px (small tablets & large phones)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 425px) {
+  /* Hero */
+  .hero-inner {
+    padding: 60px 16px 36px;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+  .hero-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .hero-body {
+    font-size: 12px;
+  }
+  .hero-logo img {
+    height: 42px;
+  }
+
+  /* Ticker */
+  .ticker-wrapper {
+    padding: 8px 0;
+  }
+  .ticker-track span {
+    font-size: 10px;
+    padding: 0 18px;
+  }
+
+  /* Research sections */
+  .guidelines-flex-wrapper {flex-direction: column;} 
+  .research-section {
+    padding: 36px 0 44px;
+  }
+  .research-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .research-body {
+    grid-template-columns: 1fr;        /* stack cover + content */
+    gap: 20px;
+  }
+  .research-cover {
+    max-width: 100%;
+  }
+  .research-cover img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+  }
+  .research-body-text {
+    font-size: 13.5px;
+    margin-bottom: 24px;
+  }
+  .research-meta-item {
+    font-size: 10px;
+  }
+  .research-guidelines ol {
+    padding-left: 14px;
+  }
+  .research-guidelines li {
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .download-btn {
+    padding: 12px 20px;
+    font-size: 10px;
+  }
+
+  /* Partners */
+  .partners-section {
+    padding: 36px 0 44px;
+  }
+  .partners-title {
+    font-size: 26px;
+  }
+  .partners-grid {
+    grid-template-columns: 1fr;        /* single column on small */
+    gap: 24px;
+  }
+  .partner-logo-box {
+    padding: 28px 20px;
+  }
+  .partner-desc {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  .partners-link {
+    font-size: 11px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   375px (common mobile width)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 26px;
+  }
+  .hero-inner {
+    padding: 50px 16px 32px;
+  }
+  .hero-logo img {
+    height: 38px;
+  }
+
+  .research-title {
+    font-size: 24px;
+  }
+  .research-body-text {
+    font-size: 13px;
+  }
+  .research-meta {
+    gap: 16px;
+  }
+  .research-meta-item {
+    font-size: 9px;
+  }
+
+  .download-btn {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    padding: 10px 16px;
+  }
+
+  .partners-title {
+    font-size: 24px;
+  }
+  .partner-desc {
+    font-size: 10.5px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   320px (very narrow devices – iPhone SE, small Android)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .hero-inner {
+    padding: 44px 14px 28px;
+  }
+  .hero-title {
+    font-size: 24px;
+    letter-spacing: -0.3px;
+  }
+  .hero-subtitle {
+    font-size: 8px;
+    margin-bottom: 6px;
+  }
+  .hero-body {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  .hero-logo img {
+    height: 34px;
+  }
+
+  .ticker-track span {
+    font-size: 9px;
+    padding: 0 12px;
+  }
+
+  .research-section {
+    padding: 32px 0 40px;
+  }
+  .research-title {
+    font-size: 22px;
+  }
+  .research-body-text {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .research-meta {
+    gap: 12px;
+    padding-bottom: 10px;
+  }
+  .research-meta-item {
+    font-size: 8.5px;
+  }
+  .research-guidelines-title {
+    font-size: 9px;
+  }
+  .research-guidelines li {
+    font-size: 9px;
+  }
+  .download-btn {
+    font-size: 9px;
+    padding: 9px 12px;
+  }
+
+  .partners-title {
+    font-size: 22px;
+  }
+  .partners-header {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .partner-logo-box {
+    padding: 22px 16px;
+  }
+  .partner-logo-box img {
+    max-height: 55px;
+  }
+  .partner-desc {
+    font-size: 10px;
+  }
+  .partners-link {
+    font-size: 10px;
+  }
 }
 
 
@@ -567,9 +795,15 @@
       </div>
       <div class="research-content">
         <div class="research-meta">
-          <span class="research-meta-item">Report</span>
-          <span class="research-meta-item">2023</span>
-          <span class="research-meta-item">Dr. Tegan Bristow</span>
+          <div class="research-meta-left">
+            <span class="research-meta-item">Report</span>
+          </div>
+          
+          <div class="research-meta-right">
+            <span class="research-meta-item">2023</span>
+            <span class="research-meta-item">Dr. Tegan Bristow</span>
+          </div>
+          
         </div>
         <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent
           turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet
@@ -592,9 +826,9 @@
     </div>
   </div>
 
-  <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- RESEARCH SECTION 2 -->
@@ -612,9 +846,15 @@
       </div>
       <div class="research-content">
         <div class="research-meta">
-          <span class="research-meta-item">Report</span>
-          <span class="research-meta-item">2023</span>
-          <span class="research-meta-item">Dr. Tegan Bristow</span>
+          <div class="research-meta-left">
+            <span class="research-meta-item">Report</span>
+          </div>
+          
+          <div class="research-meta-right">
+            <span class="research-meta-item">2023</span>
+            <span class="research-meta-item">Dr. Tegan Bristow</span>
+          </div>
+          
         </div>
         <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent
           turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet
@@ -638,9 +878,9 @@
   </div>
 
 
-  <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- RESEARCH SECTION 3 -->
@@ -658,9 +898,15 @@
       </div>
       <div class="research-content">
         <div class="research-meta">
-          <span class="research-meta-item">Report</span>
-          <span class="research-meta-item">2023</span>
-          <span class="research-meta-item">Dr. Tegan Bristow</span>
+          <div class="research-meta-left">
+            <span class="research-meta-item">Report</span>
+          </div>
+          
+          <div class="research-meta-right">
+            <span class="research-meta-item">2023</span>
+            <span class="research-meta-item">Dr. Tegan Bristow</span>
+          </div>
+          
         </div>
         <p class="research-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent
           turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet
@@ -683,9 +929,9 @@
     </div>
   </div>
 
-  <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:-50px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
 <!-- OUR MAIN PARTNERS -->

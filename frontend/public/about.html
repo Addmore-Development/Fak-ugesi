@@ -88,7 +88,7 @@
 }
     .hero-body {
       font-size: 12px; line-height: 1.7;
-      max-width: 340px; opacity: 0.85; margin-bottom: 18px;
+      max-width: 510px; opacity: 0.85; margin-bottom: 18px;
     }
     .hero-dates {
       font-size: 30px; font-weight: 700; letter-spacing: 0.02em;
@@ -116,8 +116,9 @@
       align-items: flex-start; padding: 0 248px 60px; gap: 64px;
     }
     .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
-    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
-    .who-body p + p { margin-top: 24px; }
+    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text);  }
+    .who-body p { margin-top: 64px; }
+    .who-body-paragraph { margin-top: 12px; }
 
     /* ── IMAGE STRIP ── */
     .img-strip-section { background: var(--white); overflow: hidden; position: relative; }
@@ -150,7 +151,7 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .edition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,39,68,0.12); }
-    .edition-img { width: 300px; height: 260px; overflow: hidden; }
+    .edition-img { width: 300px; height: 420px; overflow: hidden; }
     .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
     .edition-meta { padding: 16px 16px 20px; }
     .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
@@ -451,7 +452,7 @@
       .editions-title { font-size: 28px; }
       .editions-strip { padding: 0 20px; gap: 14px; }
       .edition-card { flex: 0 0 240px; }
-      .edition-img { width: 240px; height: 200px; }
+      .edition-img { width: 240px; height: 350px; }
       .edition-name { font-size: 16px; }
       .edition-desc { font-size: 11.5px; }
 
@@ -537,7 +538,7 @@
 
       .strip-img-item { flex: 0 0 200px; height: 200px; }
       .edition-card { flex: 0 0 200px; }
-      .edition-img { width: 200px; height: 170px; }
+      .edition-img { width: 200px; height: 290px; }
     }
 
     /* ── TICKER — WHITE ── */
@@ -591,7 +592,7 @@
     <div class="hero-content">
       <p class="hero-subtitle">Who we are</p>
       <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br> Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-dates">07 — 12.10.2026</p>
     </div>
     <div class="hero-logo">
@@ -628,8 +629,8 @@
     </div>
     <div class="who-right">
       <div class="who-body">
-        <p>Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
-        <p>Pellentesque tincidunt, dolor eu dignissim mollis, justo sapien iaculis pede, vel tincidunt lacus nisl sit amet metus. Fusce ac est vitae purus varius tristique. Phasellus mattis ornare ligula. Donec id nibh. Vestibulum metus quam, ultrices in, sagittis tincidunt, gravida et, sapien. Sed bibendum, lectus vitae tincidunt dapibus, sem felis posuere est, id ornare augue lorem in purus. Suspendisse ligula. Sed mollis tristique mauris. Nullam nunc nunc, aliquet et, tristique nec, porttitor quis, urna. Etiam eu erat. Morbi ut nisl. Curabitur semper sem. Nulla turpis nibh, tempor nec, aliquet vitae, elementum ac, mauris.</p>
+        <p>Nam sit amet metus vitae lectus ullamcorper dignissim.<br> Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan<br> vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+        <p style="margin-top: 16px;">Pellentesque tincidunt, dolor eu dignissim mollis, justo sapien iaculis pede, vel tincidunt lacus nisl sit amet metus. Fusce ac est vitae purus varius tristique. Phasellus mattis ornare ligula. Donec id nibh. Vestibulum metus quam, ultrices in, sagittis tincidunt, gravida et, sapien. Sed bibendum, lectus vitae tincidunt dapibus, sem felis posuere est, id ornare augue lorem in purus. Suspendisse ligula. Sed mollis tristique mauris. Nullam nunc nunc, aliquet et, tristique nec, porttitor quis, urna. Etiam eu erat. Morbi ut nisl. Curabitur semper sem. Nulla turpis nibh, tempor nec, aliquet vitae, elementum ac, mauris.</p>
       </div>
     </div>
   </div>

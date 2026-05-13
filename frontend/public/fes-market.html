@@ -15,15 +15,12 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    /* Cross icon — base style */
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
-
-    /* Solid navy cross variant used in Fak'ugesi Market section */
     .cross-icon--navy{opacity:1;}
     .cross-icon--navy svg line{stroke:#1a2744;stroke-width:2;}
 
-    /* HERO — NO cross-icons */
+    /* HERO */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
     .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.7);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
@@ -49,7 +46,7 @@
     .ticker-wrap:hover .ticker-item{color:#ffffff !important;}
     .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff !important;}
 
-    /* MARKET INFO — solid dark navy cross-icons */
+    /* MARKET INFO */
     .market-info-section{background:#ffffff;padding:80px 248px 72px;position:relative;overflow:hidden;}
     .market-info-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
     .market-info-title{font-size:48px;font-weight:900;color:var(--dark-text);line-height:1.05;}
@@ -61,22 +58,18 @@
     .exhibitors-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:48px;}
     .exhibitors-title{font-size:48px;font-weight:900;color:var(--dark-text);}
     .exhibitors-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
-
     .exhibitors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:0 248px;}
 
-    /* ── Cards: one shade lighter grey + solid black border ── */
     .exhibitor-card{background:#d4dae9;border:1.5px solid #000000;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;position:relative;}
     .exhibitor-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,39,68,.18);}
     .exhibitor-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;background:#bec7d8;}
     .exhibitor-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
-    /* ── Info panel: slightly darker than card ── */
     .exhibitor-card-info{padding:16px 18px 20px;background:#c6cedf;}
     .exhibitor-card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
     .exhibitor-card-type{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);}
     .exhibitor-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;cursor:pointer;}
     .exhibitor-card-title{font-size:26px;font-weight:900;color:var(--dark-text);line-height:1.1;}
 
-    /* ── 3 bottom cross-icons row for exhibitors section ── */
     .exhibitors-bottom-crosses{display:flex;justify-content:center;align-items:center;gap:64px;padding:40px 0 0;}
 
     /* EXHIBITOR DETAIL */
@@ -105,7 +98,7 @@
     .exhibitor-detail-meta-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:4px;}
     .exhibitor-detail-meta-value{font-size:22px;font-weight:700;color:#fff;}
 
-    /* WANT A SPOT — NO cross-icons */
+    /* WANT A SPOT */
     .spot-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
     .spot-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of 2C6A3678.jpg');background-size:cover;background-position:center top;filter:brightness(0.65);}
     .spot-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.5) 40%,rgba(5,10,28,.12) 80%);}
@@ -115,22 +108,40 @@
     .spot-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-family:'InterDisplay',sans-serif;position:relative !important;overflow:hidden !important;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.18s !important;}
     .spot-cta-btn:hover{background:#0d1b3e !important;color:#fff !important;border-color:rgba(100,160,255,0.65) !important;transform:translateY(-1px) !important;}
 
-    /* PARTNERS */
+    /* ── MARKET PARTNERS — WHITE BG, ORIGINAL COLOURS, NO NAME LABELS ── */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
     .partners-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:52px;}
     .partners-title{font-size:48px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif;}
     .partners-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
     .partners-carousel-outer{overflow:hidden;width:100%;position:relative;}
-    .partners-carousel-track{display:flex;align-items:center;gap:72px;width:max-content;animation:partnerScroll 24s linear infinite;padding:8px 0 48px;}
+    .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 24s linear infinite;padding:8px 0 48px;}
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .carousel-logo{min-width:160px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;text-decoration:none;}
-    .carousel-logo-img-wrap{width:160px;height:100px;display:flex;align-items:center;justify-content:center;background:var(--white);border:1px solid rgba(26,39,68,0.12);padding:16px 20px;transition:box-shadow 0.28s ease,transform 0.28s ease;}
-    .carousel-logo:hover .carousel-logo-img-wrap{box-shadow:0 8px 28px rgba(26,39,68,0.13);transform:translateY(-4px);}
-    .carousel-logo-img-wrap img{max-height:60px;max-width:120px;object-fit:contain;display:block;opacity:0.85;}
-    .carousel-logo:hover .carousel-logo-img-wrap img{opacity:1;}
-    .carousel-logo-name{font-size:11px;font-weight:600;color:rgba(26,39,68,0.6);letter-spacing:0.04em;text-align:center;transition:color 0.28s ease;max-width:160px;line-height:1.3;}
-    .carousel-logo:hover .carousel-logo-name{color:#1a2744;}
+
+    /* Logo item — off-white tile so white logos show, original colours, no name */
+    .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer;text-decoration:none;}
+    .carousel-logo-img-wrap{
+      width:150px;height:90px;
+      /* Slightly off-white so pure-white logos are visible */
+      background:#e8eaed;
+      border:1px solid rgba(26,39,68,0.10);
+      display:flex;align-items:center;justify-content:center;padding:14px 18px;
+      transition:box-shadow 0.28s ease,transform 0.28s ease,background 0.28s ease;
+    }
+    .carousel-logo:hover .carousel-logo-img-wrap{
+      box-shadow:0 8px 28px rgba(26,39,68,0.13);
+      transform:translateY(-4px);
+      background:#dde0e5;
+    }
+    /* Original colours — NO filter */
+    .carousel-logo-img-wrap img{
+      max-height:56px;max-width:118px;
+      object-fit:contain;display:block;
+      /* No filter — render logos in their native colours */
+    }
+    /* Name label hidden */
+    .carousel-logo-name{display:none !important;}
+
     .partners-blue-band{width:100%;background:var(--navy);padding:18px 48px;}
     .partners-social-row{display:flex;justify-content:center;align-items:center;gap:40px;}
     .partners-social-row p{font-size:14px;font-weight:500;color:#fff;letter-spacing:.02em;margin:0;}
@@ -141,7 +152,7 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* ── Fak'ugesi shared link hover effect ── */
+    /* Shared link hover */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
@@ -209,10 +220,9 @@
       .partners-section{padding:48px 0 0;}
       .partners-header{padding:0 20px !important;margin-bottom:28px;flex-direction:column !important;align-items:flex-start !important;gap:10px !important;}
       .partners-title{font-size:28px !important;}
-      .partners-carousel-track{gap:40px;}
-      .carousel-logo-img-wrap{width:120px;height:80px;}
-      .carousel-logo-img-wrap img{max-height:48px;max-width:100px;}
-      .carousel-logo-name{font-size:10px;}
+      .partners-carousel-track{gap:32px;}
+      .carousel-logo-img-wrap{width:110px;height:72px;}
+      .carousel-logo-img-wrap img{max-height:44px;max-width:88px;}
       .partners-blue-band{padding:16px 20px;}
       .partners-social-row{flex-direction:column;gap:16px;align-items:flex-start;}
       .partners-social-row p{font-size:13px;}
@@ -233,17 +243,14 @@
 
 <style id="fug-global-fixes">
 .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative !important;overflow:hidden !important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s !important;}
-.btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.hero-cta:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover{background:#1e3a6e !important;color:#ffffff !important;border-color:rgba(100,160,255,0.6) !important;}
-.btn-outline-dark:hover,.btn-outline-white:hover{color:#fff !important;}
 .cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:0.45 !important;animation:none !important;transition:transform 0.1s linear !important;}
-/* Override for navy solid crosses — bump specificity */
 .cross-icon.cross-icon--navy{opacity:1 !important;}
 .cross-icon svg{width:100%;height:100%;}
-@media(max-width:1400px){:root{--band:160px !important;--gutter:160px !important;}}
-@media(max-width:1200px){:root{--band:80px !important;--gutter:80px !important;}.prizes-grid,.involved-cards{grid-template-columns:repeat(2,1fr) !important;}.spotlight-grid{gap:32px !important;}}
-@media(max-width:1024px){:root{--band:40px !important;--gutter:40px !important;}.hero-title{font-size:40px !important;}.theme-head{font-size:30px !important;}.theme-year{font-size:36px !important;}.partners-grid{grid-template-columns:repeat(2,1fr) !important;}.winners-header{padding:0 40px 36px !important;}}
-@media(max-width:768px){:root{--band:20px !important;--gutter:20px !important;}#main-nav .nav-links-wrap{display:none !important;}#main-nav .nav-mobile-toggle{display:flex !important;}.hero-inner{flex-direction:column !important;padding:80px 20px 40px !important;gap:24px !important;}.hero-logo{display:none !important;}.hero-title{font-size:36px !important;}.hero-content{max-width:100% !important;}.theme-inner{padding:40px 20px !important;}.theme-head{font-size:26px !important;}.theme-year{font-size:28px !important;}.theme-dates{font-size:22px !important;}.theme-bg-img{width:100% !important;opacity:0.2 !important;}.involved-cards{grid-template-columns:1fr !important;}.prizes-grid{grid-template-columns:1fr !important;}.partners-grid{grid-template-columns:1fr !important;}.spotlight-grid{grid-template-columns:1fr !important;gap:24px !important;}.tweet-grid{grid-template-columns:1fr !important;}.fb-feed{grid-template-columns:1fr !important;}.involved-header{flex-direction:column !important;gap:12px !important;}.involved-title{font-size:30px !important;}.spotlight-title{font-size:30px !important;}.happening-title{font-size:30px !important;}.partners-title{font-size:28px !important;}.happening-header{flex-direction:column !important;gap:16px !important;}.partners-header{flex-direction:column !important;gap:12px !important;}.hero-content{padding:80px 20px 40px !important;max-width:100% !important;}.hero-logo{margin-right:0 !important;}.ia-grid,.cat-grid{grid-template-columns:1fr !important;}.faq-layout{grid-template-columns:1fr !important;gap:24px !important;}.req-header,.faq-right-header{flex-direction:column !important;gap:12px !important;}.winners-header{padding:0 20px 24px !important;}.winners-strip-outer{margin:0 !important;}.prog-cards{grid-template-columns:1fr !important;}.team-grid{grid-template-columns:repeat(2,1fr) !important;}.content-band{padding-left:20px !important;padding-right:20px !important;}.arch-grid,.venues-grid,.resource-grid{grid-template-columns:1fr !important;}.partners-inner .partners-grid{grid-template-columns:1fr !important;}.faq-layout{grid-template-columns:1fr !important;}#main-nav{height:58px !important;}.cross-icon[style*="left:200px"]{left:16px !important;}.cross-icon[style*="right:200px"]{right:16px !important;}}
-@media(max-width:480px){.hero-title{font-size:28px !important;}.theme-head{font-size:22px !important;}.btn-row{flex-direction:column !important;}.team-grid{grid-template-columns:1fr !important;}.fug-sig-strip-inner{justify-content:flex-start !important;}}
+@media(max-width:1400px){:root{--band:160px !important;}}
+@media(max-width:1200px){:root{--band:80px !important;}}
+@media(max-width:1024px){:root{--band:40px !important;}.hero-title{font-size:40px !important;}}
+@media(max-width:768px){:root{--band:20px !important;}#main-nav .nav-links-wrap{display:none !important;}#main-nav .nav-mobile-toggle{display:flex !important;}.hero-inner{flex-direction:column !important;padding:80px 20px 40px !important;gap:24px !important;}.hero-logo{display:none !important;}.hero-title{font-size:36px !important;}.hero-content{max-width:100% !important;}.partners-title{font-size:28px !important;}#main-nav{height:58px !important;}}
+@media(max-width:480px){.hero-title{font-size:28px !important;}}
 #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
 #main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
 #mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
@@ -258,14 +265,14 @@
 <script src="nav.js"></script>
 <script src="ticker-hover.js"></script>
 
-<!-- HERO — no cross-icons -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Market</p>
-      <h1 class="hero-title">Explore our 2026<br>marketplace</h1>
+      <h1 class="hero-title">Explore Our 2026<br>Marketplace</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-date">07 — 12.10.2026</p>
     </div>
@@ -293,9 +300,8 @@
   </div>
 </div>
 
-<!-- MARKET INFO — solid dark navy cross-icons -->
+<!-- MARKET INFO -->
 <section class="market-info-section reveal" id="market-info-section">
-  <!-- Solid navy cross-icons (no opacity fade, dark navy stroke) -->
   <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg>
   </div>
@@ -304,85 +310,33 @@
   </div>
   <div class="market-info-top">
     <h2 class="market-info-title">Fak'ugesi Market</h2>
-    <a class="market-info-link" href="programme.html">View 2026 programme →</a>
+    <a class="market-info-link" href="programme.html">View 2026 Programme →</a>
   </div>
   <p class="market-info-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
 </section>
 
 <!-- EXHIBITORS -->
 <section class="exhibitors-section reveal" id="exhibitors-section">
-  <!-- Top 2 crosses — solid dark navy -->
   <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
 
-  <!-- Cards view -->
   <div id="exhibitors-cards-view">
     <div class="exhibitors-header">
       <h2 class="exhibitors-title">Exhibitors</h2>
-      <a class="exhibitors-link" href="programme.html">View 2026 programme →</a>
+      <a class="exhibitors-link" href="programme.html">View 2026 Programme →</a>
     </div>
     <div class="exhibitors-grid" id="exhibitors-grid">
-      <div class="exhibitor-card" data-id="0">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="1">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="2">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="3">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="4">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="5">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="6">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
-      <div class="exhibitor-card" data-id="7">
-        <div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div>
-        <div class="exhibitor-card-info">
-          <div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More info →</span></div>
-          <h3 class="exhibitor-card-title">Maputo Fast Forward</h3>
-        </div>
-      </div>
+      <div class="exhibitor-card" data-id="0"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="1"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="2"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="3"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="4"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="5"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="6"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="7"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
     </div>
+  </div>
 
-  </div><!-- /#exhibitors-cards-view -->
-
-  <!-- 3 dark navy cross-icons distributed left/centre/right like index.html happening section -->
   <div class="cross-icon cross-icon--navy" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="bottom:24px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
@@ -400,7 +354,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
           </svg>
-          Back to all exhibitors
+          Back To All Exhibitors
         </button>
         <div class="exhibitor-detail-left">
           <h2 class="exhibitor-detail-title" id="ed-title"></h2>
@@ -418,18 +372,9 @@
             <div class="exhibitor-detail-links" id="ed-links"></div>
           </div>
           <div class="exhibitor-detail-meta">
-            <div>
-              <p class="exhibitor-detail-meta-label">Viewing Dates</p>
-              <p class="exhibitor-detail-meta-value" id="ed-dates"></p>
-            </div>
-            <div>
-              <p class="exhibitor-detail-meta-label">Market Type</p>
-              <p class="exhibitor-detail-meta-value" id="ed-type"></p>
-            </div>
-            <div>
-              <p class="exhibitor-detail-meta-label">Location</p>
-              <p class="exhibitor-detail-meta-value" id="ed-location"></p>
-            </div>
+            <div><p class="exhibitor-detail-meta-label">Viewing Dates</p><p class="exhibitor-detail-meta-value" id="ed-dates"></p></div>
+            <div><p class="exhibitor-detail-meta-label">Market Type</p><p class="exhibitor-detail-meta-value" id="ed-type"></p></div>
+            <div><p class="exhibitor-detail-meta-label">Location</p><p class="exhibitor-detail-meta-value" id="ed-location"></p></div>
           </div>
         </div>
       </div>
@@ -437,22 +382,22 @@
   </div>
 </section>
 
-<!-- WANT A SPOT — no cross-icons -->
+<!-- WANT A SPOT -->
 <section class="spot-cta-section reveal" id="spot-cta-section">
   <div class="spot-cta-bg"></div>
   <div class="spot-cta-overlay"></div>
   <div class="spot-cta-content">
-    <h2 class="spot-cta-title">Want to a spot at Fak'ugesi Market?</h2>
+    <h2 class="spot-cta-title">Want A Spot At Fak'ugesi Market?</h2>
     <p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
     <a class="spot-cta-btn btn-outline-white" href="#">GET INVOLVED</a>
   </div>
 </section>
 
-<!-- MARKET PARTNERS -->
+<!-- MARKET PARTNERS — original colours, off-white tile, no name labels -->
 <section class="partners-section reveal">
   <div class="partners-header">
     <h2 class="partners-title">Our Market Partners</h2>
-    <a class="partners-link" href="#">Join as partner →</a>
+    <a class="partners-link" href="#">Join As Partner →</a>
   </div>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="market-partners-track"></div>
@@ -469,27 +414,33 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* MARKET PARTNERS CAROUSEL */
+/* MARKET PARTNERS — original colours, no name labels, off-white tile for white logos */
 const marketPartners = [
-  { img:'/images/logos/expo/goethe.svg', name:'Goethe Institut' },
-  { img:'/images/logos/tshimologong/logo_tshimologong_dark.svg', name:'Tshimologong' },
-  { img:'/images/logos/wits/logo_wits_dark_colloquial_extended.svg', name:'Wits University' },
-  { img:'/images/logos/expo/eunic.svg', name:'EUNIC' },
-  { img:'/images/logos/expo/acf.svg', name:'ACF' },
-  { img:'/images/logos/expo/prohelvetia.svg', name:'Pro Helvetia' },
-  { img:'/images/habitatxr.png', name:'HabitatXR' },
+  { img:'/images/logos/expo/goethe.svg',                    name:'Goethe Institut',    url:'https://www.goethe.de/ins/za/en/index.html' },
+  { img:'/images/logos/tshimologong/logo_tshimologong_dark.svg', name:'Tshimologong', url:'https://tshimologong.joburg/' },
+  { img:'/images/logos/wits/logo_wits_dark_colloquial_extended.svg', name:'Wits University', url:'https://www.wits.ac.za/' },
+  { img:'/images/logos/expo/eunic.svg',                     name:'EUNIC',              url:'https://www.eunic.eu/' },
+  { img:'/images/logos/expo/acf.svg',                       name:'ACF',                url:'https://www.acfid.asn.au/' },
+  { img:'/images/logos/expo/prohelvetia.svg',               name:'Pro Helvetia',       url:'https://prohelvetia.ch/en/' },
+  { img:'/images/logos/immersiveAfrica/habitatxr.png',      name:'HabitatXR',          url:'#' },
+  { img:'/images/logos/immersiveAfrica/ifas.png',           name:'IFAS',               url:'#' },
+  { img:'/images/logos/immersiveAfrica/mansab.png',         name:'MansA',              url:'#' },
+  { img:'/images/logos/immersiveAfrica/SoC logo.png',       name:'Spaces of Culture',  url:'#' },
 ];
 const track = document.getElementById('market-partners-track');
 [...marketPartners, ...marketPartners].forEach(p => {
   const a = document.createElement('a');
   a.className = 'carousel-logo';
-  a.href = '#';
-  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" style="filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);"/></div><span class="carousel-logo-name">${p.name}</span>`;
+  a.href = p.url || '#';
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  // No name span — original colours — grey tile so white logos show
+  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}"/></div>`;
   track.appendChild(a);
 });
 
 /* EXHIBITOR DATA */
-const EXHIBITOR_DATA = Array(8).fill(null).map((_, i) => ({
+const EXHIBITOR_DATA = Array(8).fill(null).map(() => ({
   title: 'Maputo Fast Forward',
   subtitle: 'Cras cursus ipsum vel dolor.',
   type: 'Recruitment',
@@ -497,10 +448,9 @@ const EXHIBITOR_DATA = Array(8).fill(null).map((_, i) => ({
   dates: '07 — 12.10.2026',
   body: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.',
   badge: '20 YEARS',
-  links: ['Visit Maputo Fast Forward website →', 'View more info →']
+  links: ['Visit Maputo Fast Forward Website →', 'View More Info →']
 }));
 
-/* DOM refs */
 const exhibitorsSection = document.getElementById('exhibitors-section');
 const cardsView         = document.getElementById('exhibitors-cards-view');
 const detailView        = document.getElementById('exhibitor-detail');
@@ -509,7 +459,6 @@ const detailBg          = document.getElementById('exhibitor-detail-bg');
 const marketInfoSection = document.getElementById('market-info-section');
 const spotCtaSection    = document.getElementById('spot-cta-section');
 
-/* CARD CLICK */
 document.querySelectorAll('.exhibitor-card[data-id]').forEach(card => {
   card.addEventListener('click', () => {
     const d = EXHIBITOR_DATA[parseInt(card.dataset.id)] || EXHIBITOR_DATA[0];
@@ -533,7 +482,6 @@ document.querySelectorAll('.exhibitor-card[data-id]').forEach(card => {
   });
 });
 
-/* BACK BUTTON */
 detailBack.addEventListener('click', () => {
   detailView.classList.remove('active');
   cardsView.style.display = '';

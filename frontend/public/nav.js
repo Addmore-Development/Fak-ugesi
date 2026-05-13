@@ -55,7 +55,6 @@
       transition: opacity 0.2s;
     }
     #nav-home-logo:hover img { opacity: 1; }
-    #nav-home-logo.hidden { opacity: 0; pointer-events: none; }
 
     /* ── Desktop nav links ── */
     #main-nav .nav-links-wrap {
@@ -68,7 +67,6 @@
       overflow: visible;
       transition: opacity 0.3s ease;
     }
-    #main-nav .nav-links-wrap.hidden { opacity: 0; pointer-events: none; }
     #main-nav .nav-links {
       display: flex;
       align-items: center;
@@ -109,48 +107,48 @@
 
     /* Right-side controls */
     #main-nav .nav-right {
-      display:flex; align-items:center; gap:24px; padding-right:32px;
-      flex-shrink:0; position:relative; z-index:1;
-      transition: opacity 0.3s ease;
+      display:flex; align-items:center; gap:0; padding-right:32px;
+      flex-shrink:0; position:relative; z-index:2;
     }
-    #main-nav .nav-right.hidden { opacity: 0; pointer-events: none; }
 
-    /* ── INLINE SEARCH — expands across the nav bar ── */
+    /* ── SEARCH ICON BUTTON ── */
+    #main-nav .nav-search {
+      background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
+      display:flex; align-items:center; padding:6px 12px 6px 6px;
+      position: relative;
+      z-index: 2;
+      transition: color 0.18s;
+      flex-shrink: 0;
+    }
+    #main-nav .nav-search svg{width:18px;height:18px;}
+    #main-nav .nav-search:hover { color: #fff; }
+
+    /* ── COMPACT INLINE SEARCH — appears to left of search icon, stays within nav-right ── */
     #nav-search-bar {
-      position: absolute;
-      left: 0; right: 0; top: 0; bottom: 0;
       display: flex;
       align-items: center;
-      padding: 0 200px;
-      z-index: 10;
+      gap: 8px;
+      overflow: hidden;
+      max-width: 0;
       opacity: 0;
       pointer-events: none;
-      transform: scaleX(0.96);
-      transform-origin: right center;
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      transition: max-width 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
+      position: relative;
+      z-index: 2;
+      /* Subtle background pill so it's readable */
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0);
+      border-radius: 2px;
+      height: 34px;
+      padding: 0;
     }
     #nav-search-bar.open {
+      max-width: 260px;
       opacity: 1;
       pointer-events: auto;
-      transform: scaleX(1);
+      border-color: rgba(255,255,255,0.22);
+      padding: 0 10px 0 12px;
     }
-    #nav-search-bar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(8, 15, 44, 0.96);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: -1;
-    }
-    #nav-search-icon-static {
-      color: rgba(255,255,255,0.55);
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      margin-right: 14px;
-    }
-    #nav-search-icon-static svg { width: 18px; height: 18px; }
     #nav-search-inline-input {
       flex: 1;
       background: none;
@@ -158,43 +156,45 @@
       outline: none;
       color: #fff;
       font-family: 'InterDisplay', sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.01em;
       caret-color: rgba(255,255,255,0.8);
+      min-width: 0;
+      width: 180px;
     }
-    #nav-search-inline-input::placeholder { color: rgba(255,255,255,0.35); }
+    #nav-search-inline-input::placeholder { color: rgba(255,255,255,0.4); }
     #nav-search-close-btn {
       background: none;
       border: none;
       cursor: pointer;
-      color: rgba(255,255,255,0.5);
-      font-size: 22px;
+      color: rgba(255,255,255,0.45);
+      font-size: 18px;
       line-height: 1;
-      padding: 4px 8px;
+      padding: 2px 0 2px 4px;
       font-family: sans-serif;
       flex-shrink: 0;
       transition: color 0.18s;
     }
     #nav-search-close-btn:hover { color: #fff; }
 
-    /* ── INLINE SEARCH RESULTS DROPDOWN ── */
+    /* ── SEARCH RESULTS DROPDOWN — anchored below nav-right area ── */
     #nav-search-results-drop {
-      position: absolute;
-      top: 57px;
-      left: 200px;
-      right: 200px;
+      position: fixed;
+      top: 58px;
+      right: 32px;
+      width: 340px;
       background: rgba(8,15,44,0.98);
       border: 1px solid rgba(255,255,255,0.1);
-      border-top: none;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       max-height: 420px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.15) transparent;
-      z-index: 9;
+      z-index: 9999;
       display: none;
+      border-top: none;
     }
     #nav-search-results-drop.open { display: block; }
     #nav-search-results-drop::-webkit-scrollbar { width: 4px; }
@@ -250,20 +250,6 @@
       font-family: 'InterDisplay', sans-serif;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    /* Search icon button in nav — sits at 200px from right edge */
-    #main-nav .nav-search {
-      background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-      display:flex; align-items:center; padding:6px;
-      position: absolute;
-      right: 200px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      transition: color 0.18s;
-    }
-    #main-nav .nav-search svg{width:18px;height:18px;}
-    #main-nav .nav-search:hover { color: #fff; }
 
     /* GET TICKETS */
     #main-nav .nav-tickets {
@@ -439,52 +425,8 @@
     .btn-primary:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-dark:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-white:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
-    .btn-primary canvas, .btn-outline-dark canvas, .btn-outline-white canvas,
-    .btn-apply canvas, .btn-cta-white canvas, .btn-cta-filled canvas,
-    .btn-learn canvas, .hero-cta canvas, .intro-cta canvas,
-    .network-cta canvas, .section-cta canvas, .challenge-cta canvas,
-    a.btn-tickets canvas, button.btn-tickets canvas, .btn-get-pass canvas,
-    .showcase-cta-btn canvas,
-    [class*="btn-"] canvas {
-      position:absolute !important; inset:0 !important;
-      pointer-events:none !important; z-index:0 !important;
-    }
-    .btn-primary > *, .btn-outline-dark > *, .btn-outline-white > *,
-    .btn-apply > *, .btn-cta-white > *, .btn-cta-filled > *,
-    .btn-learn > *, .hero-cta > *, .intro-cta > *,
-    .network-cta > *, .section-cta > *, .challenge-cta > *,
-    a.btn-tickets > *, button.btn-tickets > *, .btn-get-pass > *,
-    .showcase-cta-btn > *,
-    [class*="btn-"] > * {
-      position:relative !important; z-index:1 !important;
-    }
-
-    .curatorial-view-link, .showcases-link, .showcase-card-more,
-    .showcase-detail-link, .partners-link, .more-card-link,
-    .sched-location, .sched-speakers a, .nav-dd a, .ticker-item,
-    .carousel-logo-name, .hero-eyebrow, .showcases-header a,
-    .curatorial-view-link, .more-card-top span,
-    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
-      display:inline-block;
-      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
-                  color 0.2s ease,
-                  letter-spacing 0.22s ease !important;
-    }
-    .curatorial-view-link:hover, .showcases-link:hover, .showcase-card-more:hover,
-    .showcase-detail-link:hover, .partners-link:hover, .more-card-link:hover,
-    .sched-location:hover, .sched-speakers a:hover, .showcases-header a:hover,
-    .more-card-top span:hover,
-    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
-      transform: scale(1.1);
-      transform-origin: left center;
-      letter-spacing: 0.07em;
-    }
-    #main-nav .nav-dd a {
-      transition: background 0.18s, color 0.18s, padding-left 0.2s ease !important;
-    }
 
     /* ══ RESPONSIVE BREAKPOINTS ══ */
-
     @media (max-width: 1024px) {
       #nav-home-logo { left: 180px; }
       #main-nav .nav-links-wrap { padding-left: 300px; }
@@ -492,9 +434,8 @@
       #main-nav .nav-links>li>a,
       #main-nav .nav-links>li>span { font-size: 12px; padding: 0 14px; }
       #main-nav .nav-tickets { padding: 8px 16px; font-size: 10.5px; }
-      #main-nav .nav-search { right: 48px; }
-      #nav-search-bar { padding: 0 48px; }
-      #nav-search-results-drop { left: 48px; right: 48px; }
+      #nav-search-bar.open { max-width: 200px; }
+      #nav-search-results-drop { right: 24px; width: 300px; }
     }
 
     @media (max-width: 768px) {
@@ -504,8 +445,8 @@
       #nav-mobile-logo { display: flex; align-items: center; }
       #nav-home-logo { display: none; }
       #main-nav::before { opacity: 1 !important; }
-      #main-nav .nav-search { display: none; }
       #nav-search-bar { display: none; }
+      #nav-search-results-drop { display: none !important; }
     }
   </style>`);
 
@@ -572,36 +513,31 @@
         <ul class="nav-links" id="nav-list">${items}</ul>
       </div>
 
-      <!-- Search icon — absolutely positioned at 200px from right -->
-      <button class="nav-search" id="nav-search-btn" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-      </button>
+      <!-- Search results dropdown -->
+      <div id="nav-search-results-drop"></div>
 
-      <!-- Inline search bar — expands across the entire nav -->
-      <div id="nav-search-bar" role="search" aria-label="Site search">
-        <div id="nav-search-icon-static">
+      <!-- Desktop right: compact search box + search icon + tickets -->
+      <div class="nav-right" id="nav-right">
+        <!-- Compact search bar — expands to the left of the search icon -->
+        <div id="nav-search-bar" role="search" aria-label="Site search">
+          <input
+            type="text"
+            id="nav-search-inline-input"
+            placeholder="Search…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search"
+          />
+          <button id="nav-search-close-btn" aria-label="Close search">×</button>
+        </div>
+
+        <!-- Search icon button -->
+        <button class="nav-search" id="nav-search-btn" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-        </div>
-        <input
-          type="text"
-          id="nav-search-inline-input"
-          placeholder="Search Fak'ugesi…"
-          autocomplete="off"
-          spellcheck="false"
-          aria-label="Search"
-        />
-        <button id="nav-search-close-btn" aria-label="Close search">×</button>
-      </div>
+        </button>
 
-      <!-- Inline search results dropdown -->
-      <div id="nav-search-results-drop"></div>
-
-      <!-- Desktop right: tickets -->
-      <div class="nav-right" id="nav-right">
         <a class="nav-tickets" id="nav-tickets" href="/tickets.html">
           <canvas id="nav-bolt-canvas"></canvas>
           <span>GET TICKETS</span>
@@ -678,7 +614,6 @@
      INLINE SEARCH SYSTEM
   ══════════════════════════════════════ */
   const SEARCH_INDEX = [
-    /* HOME */
     { title:'Home', section:'Home', url:'/index.html', tags:['home','festival','fakugesi','2026','african','digital','innovation','african imaginaries','theme','johannesburg'] },
     { title:'2026 Theme: African Imaginaries', section:'Home', url:'/index.html', tags:['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
     { title:'Get Involved', section:'Home', url:'/index.html', tags:['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
@@ -720,19 +655,11 @@
   const searchInput  = document.getElementById('nav-search-inline-input');
   const searchClose  = document.getElementById('nav-search-close-btn');
   const searchDrop   = document.getElementById('nav-search-results-drop');
-  const navLogo      = document.getElementById('nav-home-logo');
-  const navLinks     = document.getElementById('nav-links-wrap');
-  const navRight     = document.getElementById('nav-right');
   const navSearchBtn = document.getElementById('nav-search-btn');
 
   function openSearch() {
     searchBar.classList.add('open');
     searchDrop.classList.add('open');
-    navLogo.classList.add('hidden');
-    navLinks.classList.add('hidden');
-    navRight.classList.add('hidden');
-    navSearchBtn.style.opacity = '0';
-    navSearchBtn.style.pointerEvents = 'none';
     setTimeout(() => searchInput.focus(), 60);
     renderResults('');
   }
@@ -740,11 +667,6 @@
   function closeSearch() {
     searchBar.classList.remove('open');
     searchDrop.classList.remove('open');
-    navLogo.classList.remove('hidden');
-    navLinks.classList.remove('hidden');
-    navRight.classList.remove('hidden');
-    navSearchBtn.style.opacity = '';
-    navSearchBtn.style.pointerEvents = '';
     searchInput.value = '';
     searchDrop.innerHTML = '';
   }
@@ -769,7 +691,6 @@
         return aTitle - bTitle;
       });
     } else {
-      // Show recent/popular pages when no query
       results = results.slice(0, 6);
     }
 
@@ -797,14 +718,21 @@
     });
   }
 
-  /* Open search on button click */
-  navSearchBtn.addEventListener('click', openSearch);
-  searchClose.addEventListener('click', closeSearch);
+  /* Open/close search */
+  navSearchBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (searchBar.classList.contains('open')) {
+      closeSearch();
+    } else {
+      openSearch();
+    }
+  });
+  searchClose.addEventListener('click', (e) => { e.stopPropagation(); closeSearch(); });
 
-  /* Live filtering as user types */
+  /* Live filtering */
   searchInput.addEventListener('input', () => renderResults(searchInput.value));
 
-  /* Keyboard: Esc to close, Enter to go to first result */
+  /* Keyboard shortcuts */
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSearch();
     if (e.key === 'Enter') {
@@ -813,7 +741,6 @@
     }
   });
 
-  /* Global keyboard shortcuts: / or Cmd+K or Ctrl+K */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && searchBar.classList.contains('open')) {
       closeSearch();
@@ -829,13 +756,14 @@
     }
   });
 
-  /* Click outside the search bar to close */
+  /* Click outside to close */
   document.addEventListener('click', (e) => {
     if (
       searchBar.classList.contains('open') &&
       !searchBar.contains(e.target) &&
       !searchDrop.contains(e.target) &&
-      e.target !== navSearchBtn
+      e.target !== navSearchBtn &&
+      !navSearchBtn.contains(e.target)
     ) {
       closeSearch();
     }
@@ -884,13 +812,13 @@
   /* ── Apply electric lightning to ALL site buttons ── */
   (function applyGlobalElectric() {
     const BTN_SEL = [
-  '.btn-primary', '.btn-outline-dark', '.btn-outline-white',
-  '.btn-apply', '.btn-cta-white', '.btn-cta-filled', '.btn-learn',
-  '.hero-cta', '.intro-cta', '.network-cta', '.section-cta',
-  '.challenge-cta', 'a.btn-tickets', 'button.btn-tickets', '.btn-get-pass',
-  '.showcase-cta-btn',
-  '[class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back)'
-].join(',');
+      '.btn-primary', '.btn-outline-dark', '.btn-outline-white',
+      '.btn-apply', '.btn-cta-white', '.btn-cta-filled', '.btn-learn',
+      '.hero-cta', '.intro-cta', '.network-cta', '.section-cta',
+      '.challenge-cta', 'a.btn-tickets', 'button.btn-tickets', '.btn-get-pass',
+      '.showcase-cta-btn',
+      '[class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back)'
+    ].join(',');
 
     function makeElectric(btn) {
       if (btn.dataset.electricDone) return;

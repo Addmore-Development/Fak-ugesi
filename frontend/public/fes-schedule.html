@@ -96,9 +96,7 @@
       padding: 20px 248px;
     }
 
-    .day-cards-wrapper {
-      position: relative;
-    }
+    .day-cards-wrapper { position: relative; }
 
     .day-cards {
       display: grid;
@@ -156,109 +154,73 @@
       text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 6px;
       transition: color 0.22s;
     }
-    /* Full day name — larger text */
     .day-card-day {
       font-size: 26px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 6px;
       transition: color 0.22s;
       word-break: break-word;
     }
-    /* Info/description text shown inside card */
     .day-card-desc {
       font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.5;
       transition: color 0.22s;
       display: block;
     }
 
-    /* ── SCHEDULE SECTION — distinct background ── */
+    /* ── SCHEDULE SECTION ── */
     .schedule-section {
       background: var(--schedule-bg);
       position: relative;
       overflow: hidden;
     }
 
-    /* Full-section speaker image that shows when a row is active/hovered */
     .schedule-section-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center 20%;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-      pointer-events: none;
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center 20%;
+      opacity: 0; transition: opacity 0.4s ease;
+      z-index: 0; pointer-events: none;
     }
     .schedule-section-bg-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: rgba(5, 10, 35, 0.72);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-      pointer-events: none;
+      opacity: 0; transition: opacity 0.4s ease;
+      z-index: 1; pointer-events: none;
     }
-    /* When any row is hovered or active, reveal the section bg */
     .schedule-section.has-hover .schedule-section-bg,
     .schedule-section.has-active .schedule-section-bg { opacity: 1; }
     .schedule-section.has-hover .schedule-section-bg-overlay,
     .schedule-section.has-active .schedule-section-bg-overlay { opacity: 1; }
 
-    /* Cross icons for schedule section */
     .schedule-crosses {
-      position: absolute;
-      left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 248px;
-      pointer-events: none;
-      z-index: 20;
+      position: absolute; left: 0; right: 0;
+      display: flex; justify-content: space-between;
+      padding: 0 248px; pointer-events: none; z-index: 20;
     }
-    .schedule-crosses-top {
-      top: 20px;
-    }
-    .schedule-crosses-bottom {
-      bottom: 20px;
-    }
-    .schedule-crosses svg {
-      width: 18px; height: 18px;
-      color: var(--navy);
-      opacity: 0.65;
-      transition: opacity 0.35s;
-    }
-    .schedule-crosses svg line {
-      transition: stroke 0.35s;
-    }
+    .schedule-crosses-top { top: 20px; }
+    .schedule-crosses-bottom { bottom: 20px; }
+    .schedule-crosses svg { width: 18px; height: 18px; color: var(--navy); opacity: 0.65; transition: opacity 0.35s; }
+    .schedule-crosses svg line { transition: stroke 0.35s; }
     .schedule-section.has-hover .schedule-crosses svg line,
     .schedule-section.has-active .schedule-crosses svg line { stroke: rgba(255,255,255,0.5) !important; }
 
-    .schedule-inner {
-      position: relative; z-index: 3;
-      padding: 56px 248px 72px;
-    }
+    .schedule-inner { position: relative; z-index: 3; padding: 56px 248px 72px; }
 
     .schedule-title {
       font-size: 52px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 40px; line-height: 1.05;
-      transition: color 0.35s;
+      margin-bottom: 40px; line-height: 1.05; transition: color 0.35s;
     }
     .schedule-section.has-hover .schedule-title,
     .schedule-section.has-active .schedule-title { color: #fff; }
 
     .col-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--body-gray);
-      transition: color 0.35s;
+      text-transform: uppercase; color: var(--body-gray); transition: color 0.35s;
     }
     .schedule-section.has-hover .col-label,
     .schedule-section.has-active .col-label { color: rgba(255,255,255,0.5); }
 
     .schedule-cols {
-      display: grid;
-      grid-template-columns: 200px 1fr 200px;
-      gap: 0;
-      margin-bottom: 16px;
-      padding: 0 0 12px;
-      border-bottom: 1px solid rgba(26,39,68,0.15);
-      transition: border-color 0.35s;
+      display: grid; grid-template-columns: 200px 1fr 200px;
+      gap: 0; margin-bottom: 16px; padding: 0 0 12px;
+      border-bottom: 1px solid rgba(26,39,68,0.15); transition: border-color 0.35s;
     }
     .schedule-section.has-hover .schedule-cols,
     .schedule-section.has-active .schedule-cols { border-color: rgba(255,255,255,0.15); }
@@ -267,152 +229,95 @@
     .sched-panel.active { display: flex; flex-direction: column; gap: 2px; }
 
     .sched-row {
-      display: grid;
-      grid-template-columns: 200px 1fr 200px;
-      gap: 0;
-      align-items: start;
+      display: grid; grid-template-columns: 200px 1fr 200px;
+      gap: 0; align-items: start;
       background: var(--white);
       border: 1px solid rgba(26,39,68,0.12);
-      cursor: pointer;
-      position: relative;
+      cursor: pointer; position: relative;
       transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.28s, opacity 0.35s ease;
       z-index: 2;
     }
 
-    /* Remove the per-row bg/overlay divs effect — we don't use them anymore */
     .sched-row-bg { display: none; }
     .sched-row-overlay { display: none; }
 
-    /* When the panel is in "hover" state: all rows fade to transparent */
     .sched-panel.panel-hover .sched-row {
       background: rgba(255,255,255,0.07);
       border-color: rgba(255,255,255,0.12);
     }
-    /* The specifically hovered row stays solid */
     .sched-panel.panel-hover .sched-row:hover {
       background: var(--white);
       border-color: rgba(255,255,255,0.8);
       box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     }
 
-    /* When the panel has a locked/active row: all rows fade */
     .sched-panel.panel-active .sched-row {
       background: rgba(255,255,255,0.07);
       border-color: rgba(255,255,255,0.12);
     }
-    /* The active (locked) row stays solid white */
     .sched-panel.panel-active .sched-row.row-active {
       background: var(--white);
       border-color: rgba(255,255,255,0.8);
       box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     }
-    /* Allow hover-over to also highlight when panel-active */
-    .sched-panel.panel-active .sched-row:hover {
-      background: rgba(255,255,255,0.14);
-    }
+    .sched-panel.panel-active .sched-row:hover { background: rgba(255,255,255,0.14); }
 
     .sched-cell {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
       padding: 22px 20px 20px;
-      border-right: 1px solid rgba(26,39,68,0.08);
-      transition: border-color 0.35s;
+      border-right: 1px solid rgba(26,39,68,0.08); transition: border-color 0.35s;
     }
     .sched-cell:last-child { border-right: none; }
 
-    /* Faded rows get light borders */
     .sched-panel.panel-hover .sched-row .sched-cell,
     .sched-panel.panel-active .sched-row .sched-cell { border-right-color: rgba(255,255,255,0.08); }
-    /* Active/hovered row keeps normal border */
     .sched-panel.panel-hover .sched-row:hover .sched-cell,
     .sched-panel.panel-active .sched-row.row-active .sched-cell { border-right-color: rgba(26,39,68,0.08); }
 
-    .sched-time {
-      font-size: 14px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; padding-top: 2px;
-      transition: color 0.35s;
-    }
-    /* Faded rows: muted white text */
+    .sched-time { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.2; padding-top: 2px; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-time,
     .sched-panel.panel-active .sched-row .sched-time { color: rgba(255,255,255,0.4); }
-    /* Active/hovered row: normal dark text */
     .sched-panel.panel-hover .sched-row:hover .sched-time,
     .sched-panel.panel-active .sched-row.row-active .sched-time { color: var(--navy); }
 
-    .sched-location {
-      font-size: 10px; color: var(--navy); margin-top: 8px;
-      letter-spacing: 0.03em;
-      text-decoration: underline; display: block;
-      transition: color 0.35s;
-    }
+    .sched-location { font-size: 10px; color: var(--navy); margin-top: 8px; letter-spacing: 0.03em; text-decoration: underline; display: block; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-location,
     .sched-panel.panel-active .sched-row .sched-location { color: rgba(255,255,255,0.3); }
     .sched-panel.panel-hover .sched-row:hover .sched-location,
     .sched-panel.panel-active .sched-row.row-active .sched-location { color: var(--navy); }
 
-    .sched-event-title {
-      font-size: 18px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 4px; line-height: 1.25;
-      transition: color 0.35s;
-    }
+    .sched-event-title { font-size: 18px; font-weight: 700; color: var(--dark-text); margin-bottom: 4px; line-height: 1.25; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-event-title,
     .sched-panel.panel-active .sched-row .sched-event-title { color: rgba(255,255,255,0.35); }
     .sched-panel.panel-hover .sched-row:hover .sched-event-title,
     .sched-panel.panel-active .sched-row.row-active .sched-event-title { color: var(--dark-text); }
 
-    .sched-event-sub {
-      font-size: 12px; color: var(--body-gray); line-height: 1.5;
-      margin-bottom: 8px;
-      transition: color 0.35s;
-    }
+    .sched-event-sub { font-size: 12px; color: var(--body-gray); line-height: 1.5; margin-bottom: 8px; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-event-sub,
     .sched-panel.panel-active .sched-row .sched-event-sub { color: rgba(255,255,255,0.25); }
     .sched-panel.panel-hover .sched-row:hover .sched-event-sub,
     .sched-panel.panel-active .sched-row.row-active .sched-event-sub { color: var(--body-gray); }
 
     .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
-    .tag {
-      display: inline-block; font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 3px 8px;
-      background: rgba(26,39,68,0.1); color: var(--navy);
-      transition: background 0.35s, color 0.35s;
-    }
+    .tag { display: inline-block; font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; background: rgba(26,39,68,0.1); color: var(--navy); transition: background 0.35s, color 0.35s; }
     .sched-panel.panel-hover .sched-row .tag,
-    .sched-panel.panel-active .sched-row .tag {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.3);
-    }
+    .sched-panel.panel-active .sched-row .tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); }
     .sched-panel.panel-hover .sched-row:hover .tag,
-    .sched-panel.panel-active .sched-row.row-active .tag {
-      background: rgba(26,39,68,0.1);
-      color: var(--navy);
-    }
+    .sched-panel.panel-active .sched-row.row-active .tag { background: rgba(26,39,68,0.1); color: var(--navy); }
 
-    .sched-speakers {
-      font-size: 12px; color: var(--dark-text); line-height: 1.7;
-      transition: color 0.35s;
-    }
+    .sched-speakers { font-size: 12px; color: var(--dark-text); line-height: 1.7; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-speakers,
     .sched-panel.panel-active .sched-row .sched-speakers { color: rgba(255,255,255,0.3); }
     .sched-panel.panel-hover .sched-row:hover .sched-speakers,
     .sched-panel.panel-active .sched-row.row-active .sched-speakers { color: var(--dark-text); }
 
-    /* Speaker names: NO underline by default, underline on hover */
     .speaker-name-text {
-      display: block;
-      font-size: 12px;
-      color: var(--navy);
-      line-height: 1.7;
-      cursor: pointer;
-      padding: 2px 0;
-      border-radius: 2px;
+      display: block; font-size: 12px; color: var(--navy); line-height: 1.7;
+      cursor: pointer; padding: 2px 0; border-radius: 2px;
       transition: color 0.35s, background 0.2s, padding-left 0.2s, text-decoration 0.2s;
       text-decoration: none;
     }
-    .speaker-name-text:hover {
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
+    .speaker-name-text:hover { text-decoration: underline; text-underline-offset: 2px; }
     .sched-panel.panel-hover .sched-row .speaker-name-text,
     .sched-panel.panel-active .sched-row .speaker-name-text { color: rgba(255,255,255,0.3); }
     .sched-panel.panel-hover .sched-row:hover .speaker-name-text,
@@ -420,334 +325,65 @@
     .speaker-name-text::after { content: ' →'; font-size: 10px; }
 
     /* SPEAKER DETAIL */
-    .speaker-detail-section {
-      display: none;
-      position: relative;
-      min-height: 580px;
-      overflow: hidden;
-    }
+    .speaker-detail-section { display: none; position: relative; min-height: 580px; overflow: hidden; }
     .speaker-detail-section.active { display: block; }
-    .speaker-detail-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center 15%;
-    }
-    .speaker-detail-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(5,10,30,0.75) 40%, rgba(5,10,30,0.45) 100%);
-    }
-    .speaker-detail-inner {
-      position: relative; z-index: 2;
-      padding: 56px 248px 72px;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      grid-template-rows: auto auto;
-      gap: 0 64px;
-    }
-    .speaker-detail-back {
-      grid-column: 1/-1;
-      display: inline-flex; align-items: center; gap: 10px;
-      background: none; border: none; cursor: pointer;
-      color: rgba(255,255,255,0.75); font-size: 12px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      font-family: 'InterDisplay', sans-serif;
-      margin-bottom: 48px; padding: 0;
-      transition: color 0.2s;
-    }
+    .speaker-detail-bg { position: absolute; inset: 0; background-size: cover; background-position: center 15%; }
+    .speaker-detail-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(5,10,30,0.75) 40%, rgba(5,10,30,0.45) 100%); }
+    .speaker-detail-inner { position: relative; z-index: 2; padding: 56px 248px 72px; display: grid; grid-template-columns: 1fr 280px; grid-template-rows: auto auto; gap: 0 64px; }
+    .speaker-detail-back { grid-column: 1/-1; display: inline-flex; align-items: center; gap: 10px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.75); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'InterDisplay', sans-serif; margin-bottom: 48px; padding: 0; transition: color 0.2s; }
     .speaker-detail-back:hover { color: #fff; }
     .speaker-detail-back svg { width: 16px; height: 16px; flex-shrink: 0; }
-
     .speaker-detail-left { display: flex; flex-direction: column; }
     .speaker-detail-right { display: flex; flex-direction: column; justify-content: flex-start; gap: 0; }
-
-    .speaker-detail-name {
-      font-size: 56px; font-weight: 700; color: #fff; line-height: 1.02; margin-bottom: 6px;
-    }
-    .speaker-detail-role {
-      font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 48px;
-    }
-    .speaker-detail-bio {
-      font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.85); max-width: 540px;
-    }
-
-    .speaker-detail-org-area {
-      margin-bottom: 40px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .speaker-detail-org-name {
-      font-size: 22px; font-weight: 700; color: #fff;
-    }
-    .speaker-detail-org-link {
-      font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: underline;
-      letter-spacing: 0.04em; display: block; margin-top: 4px;
-    }
+    .speaker-detail-name { font-size: 56px; font-weight: 700; color: #fff; line-height: 1.02; margin-bottom: 6px; }
+    .speaker-detail-role { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 48px; }
+    .speaker-detail-bio { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.85); max-width: 540px; }
+    .speaker-detail-org-area { margin-bottom: 40px; display: flex; align-items: center; gap: 12px; }
+    .speaker-detail-org-name { font-size: 22px; font-weight: 700; color: #fff; }
+    .speaker-detail-org-link { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: underline; letter-spacing: 0.04em; display: block; margin-top: 4px; }
     .speaker-detail-org-link:hover { color: #fff; }
+    .speaker-detail-meta { display: flex; flex-direction: column; gap: 24px; }
+    .speaker-detail-meta-label { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 4px; }
+    .speaker-detail-meta-value { font-size: 24px; font-weight: 700; color: #fff; }
 
-    .speaker-detail-meta {
-      display: flex; flex-direction: column; gap: 24px;
-    }
-    .speaker-detail-meta-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.38); margin-bottom: 4px;
-    }
-    .speaker-detail-meta-value {
-      font-size: 24px; font-weight: 700; color: #fff;
-    }
+    /* ── Fak'ugesi shared link hover effect ── */
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-   /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
-
-    /* ── MORE TO EXPERIENCE — clearly different background ── */
-    .more-section {
-      background: var(--more-bg);
-      padding: 56px 0 72px;
-      position: relative;
-      border-top: 2px solid rgba(26,39,68,0.18);
-    }
-
-    /* Three cross icons at the bottom of more section */
-    .more-crosses-bottom {
-      position: absolute;
-      bottom: 20px;
-      left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 248px;
-      pointer-events: none;
-    }
-    /* Middle cross for more section */
-    .more-crosses-bottom-center {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-    .more-cross-icon {
-      width: 18px; height: 18px;
-      color: var(--navy);
-      opacity: 0.65;
-      transition: transform 0.1s linear;
-    }
-
-    .more-title {
-      font-size: 42px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 40px; padding: 0 248px;
-    }
-    .more-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      padding: 0 248px;
-      align-items: start;
-    }
-    .more-card {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.22s, box-shadow 0.22s;
-      background: var(--white);
-      border: 1px solid rgba(26,39,68,0.08);
-    }
+    /* ── MORE TO EXPERIENCE ── */
+    .more-section { background: var(--more-bg); padding: 56px 0 72px; position: relative; border-top: 2px solid rgba(26,39,68,0.18); }
+    .more-crosses-bottom { position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 248px; pointer-events: none; }
+    .more-crosses-bottom-center { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+    .more-cross-icon { width: 18px; height: 18px; color: var(--navy); opacity: 0.65; transition: transform 0.1s linear; }
+    .more-title { font-size: 42px; font-weight: 700; color: var(--dark-text); margin-bottom: 40px; padding: 0 248px; }
+    .more-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 0 248px; align-items: start; }
+    .more-card { display: flex; flex-direction: column; text-decoration: none; cursor: pointer; overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; background: var(--white); border: 1px solid rgba(26,39,68,0.08); }
     .more-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,39,68,0.18); }
-    .more-card-img {
-      width: 100%;
-      aspect-ratio: 16 / 11;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .more-card-img img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center;
-      display: block; transition: transform 0.55s;
-    }
+    .more-card-img { width: 100%; aspect-ratio: 16 / 11; overflow: hidden; flex-shrink: 0; }
+    .more-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.55s; }
     .more-card:hover .more-card-img img { transform: scale(1.04); }
-    .more-card-body {
-      background: #c5cde0;
-      padding: 14px 18px 20px;
-    }
-    .more-card-top {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 6px;
-    }
-    .more-card-tag {
-      font-size: 9px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray);
-    }
-    .more-card-link {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--navy); text-decoration: underline;
-      white-space: nowrap; text-underline-offset: 3px;
-    }
-    .more-card-name {
-      font-size: 28px; font-weight: 900; color: var(--dark-text); margin-bottom: 4px;
-      line-height: 1.05;
-    }
-    .more-card-time {
-      font-size: 13px; color: var(--body-gray); font-weight: 400;
-    }
+    .more-card-body { background: #c5cde0; padding: 14px 18px 20px; }
+    .more-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .more-card-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body-gray); }
+    .more-card-link { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); text-decoration: underline; white-space: nowrap; text-underline-offset: 3px; }
+    .more-card-name { font-size: 28px; font-weight: 900; color: var(--dark-text); margin-bottom: 4px; line-height: 1.05; }
+    .more-card-time { font-size: 13px; color: var(--body-gray); font-weight: 400; }
 
-    /* PARTNERS */
+    /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 64px 248px 72px; position: relative; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
     .partners-title { font-size: 42px; font-weight: 700; color: var(--dark-text); }
     .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
     .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .partner-card { display: flex; flex-direction: column; }
-    .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12); aspect-ratio: 1/1;
-      display: flex; align-items: center; justify-content: center; padding: 40px 32px; margin-bottom: 16px;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
+    .partner-logo-box { background: var(--white); border: 1px solid rgba(26,39,68,0.12); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; padding: 40px 32px; margin-bottom: 16px; transition: box-shadow 0.3s, transform 0.3s; }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
-    /* SVG cross helper */
-    .cross-svg {
-      width: 18px; height: 18px;
-      display: block;
-    }
+    .cross-svg { width: 18px; height: 18px; display: block; }
 
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -826,7 +462,7 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Schedule</p>
-      <h1 class="hero-title">What to expect at<br>Fak'ugesi 2026</h1>
+      <h1 class="hero-title">What To Expect At<br>Fak'ugesi 2026</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-dates">07 — 12.10.2026</p>
     </div>
@@ -889,20 +525,12 @@
 
 <!-- SCHEDULE TABLE -->
 <section class="schedule-section reveal" id="scheduleSection">
-  <!-- Full-section speaker background image -->
   <div class="schedule-section-bg" id="scheduleSectionBg"></div>
   <div class="schedule-section-bg-overlay"></div>
 
-  <!-- Cross icons TOP of schedule section -->
   <div class="schedule-crosses schedule-crosses-top">
-    <svg class="cross-svg" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
-    <svg class="cross-svg" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
+    <svg class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 
   <div class="schedule-inner">
@@ -913,7 +541,7 @@
       <span class="col-label">Speakers</span>
     </div>
 
-    <!-- DAY 0: Tuesday 7 -->
+    <!-- DAY 0 -->
     <div class="sched-panel active" id="day-0">
       <div class="sched-row" data-speaker-img="/images/Speakers/Adam Pantanowitz.jpg">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
@@ -924,19 +552,19 @@
       <div class="sched-row" data-speaker-img="/images/Speakers/Masilakhe Njomane.jpg">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">10:15 — 11:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Setting the Charge</div><div class="sched-event-sub">An AI Research Presentation</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Setting The Charge</div><div class="sched-event-sub">An AI Research Presentation</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Masilakhe Njomane">Masilakhe Njomane</span></div></div>
       </div>
       <div class="sched-row" data-speaker-img="/images/Speakers/Avril Joffe.jpg">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">11:45 — 12:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Policy by Design</div><div class="sched-event-sub">Shaping Creative Futures in the Age of AI</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Policy</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Policy By Design</div><div class="sched-event-sub">Shaping Creative Futures In The Age Of AI</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Policy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Avril Joffe">Avril Joffe</span><span class="speaker-name-text" data-speaker="Zwelakhe Gila">Zwelakhe Gila</span><span class="speaker-name-text" data-speaker="Kieran Jones">Kieran Jones</span><span class="speaker-name-text" data-speaker="Ndivhuwo Makondo">Ndivhuwo Makondo</span><span class="speaker-name-text" data-speaker="Mandy-Lee Pietersen">Mandy-Lee Pietersen</span><span class="speaker-name-text" data-speaker="Sazia Sousa">Sazia Sousa</span></div></div>
       </div>
       <div class="sched-row" data-speaker-img="/images/Speakers/Hannah Andrews.jpg">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">13:45 — 15:00</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">A Radical Reimagining</div><div class="sched-event-sub">African AI From the Artist's Perspective</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">A Radical Reimagining</div><div class="sched-event-sub">African AI From The Artist's Perspective</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Hannah Andrews">Hannah Andrews</span><span class="speaker-name-text" data-speaker="Vukosi Marivate">Vukosi Marivate</span></div></div>
       </div>
       <div class="sched-row" data-speaker-img="/images/Speakers/pierresaal-astronaute.jpg">
@@ -947,141 +575,134 @@
       </div>
     </div>
 
-    <!-- DAY 1: Wednesday 8 -->
+    <!-- DAY 1 -->
     <div class="sched-panel" id="day-1">
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">09:00 — 10:00</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">A Seat at the Table of Change</div><div class="sched-event-sub">Power &amp; representation in creative tech</div><div class="tags"><span class="tag">PRO</span><span class="tag">Policy</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">A Seat At The Table Of Change</div><div class="sched-event-sub">Power &amp; Representation In Creative Tech</div><div class="tags"><span class="tag">PRO</span><span class="tag">Policy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Thobile Chittenden">Thobile Chittenden</span><span class="speaker-name-text" data-speaker="Samukelisiwe Dube">Samukelisiwe Dube</span><span class="speaker-name-text" data-speaker="Masentle Nzimande">Masentle Nzimande</span></div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">10:30 — 12:00</div><a class="sched-location" href="#">Workshop Room A →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Pitchathon: Pitch Coaching</div><div class="sched-event-sub">Open workshop for registered startups</div><div class="tags"><span class="tag">Pitchathon</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Pitchathon: Pitch Coaching</div><div class="sched-event-sub">Open Workshop For Registered Startups</div><div class="tags"><span class="tag">Pitchathon</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">WIC Mentors</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">12:00 — 15:00</div><a class="sched-location" href="#">Gaming Arena →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — League Day 1</div><div class="sched-event-sub">African esports titles, round-robin format</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — League Day 1</div><div class="sched-event-sub">African Esports Titles, Round-Robin Format</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Competitors</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">14:00 — 15:30</div><a class="sched-location" href="#">Wits Digital Dome →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Kwasukasukela Screening</div><div class="sched-event-sub">Ongoing digital dome experience</div><div class="tags"><span class="tag">Immersive Africa</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Kwasukasukela Screening</div><div class="sched-event-sub">Ongoing Digital Dome Experience</div><div class="tags"><span class="tag">Immersive Africa</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">Dream Feel Factory</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">16:00 — 17:30</div><a class="sched-location" href="#">Main Stage →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Awards: Jury Q&amp;A</div><div class="sched-event-sub">Meet the 2026 jury — open to all pass holders</div><div class="tags"><span class="tag">Awards</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Awards: Jury Q&amp;A</div><div class="sched-event-sub">Meet The 2026 Jury — Open To All Pass Holders</div><div class="tags"><span class="tag">Awards</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">2026 Awards Jury</div></div>
       </div>
     </div>
 
-    <!-- DAY 2: Friday 9 -->
+    <!-- DAY 2 -->
     <div class="sched-panel" id="day-2">
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">09:00 — 10:30</div><a class="sched-location" href="#">PRO Lounge →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Entrepreneurs &amp; Investors Breakfast</div><div class="sched-event-sub">Industry Pass only — curated investor matching</div><div class="tags"><span class="tag">PRO</span><span class="tag">Industry</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Entrepreneurs &amp; Investors Breakfast</div><div class="sched-event-sub">Industry Pass Only — Curated Investor Matching</div><div class="tags"><span class="tag">PRO</span><span class="tag">Industry</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">Invited Investors</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">10:30 — 13:00</div><a class="sched-location" href="#">Main Stage →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Animation Challenge — Quarterfinals</div><div class="sched-event-sub">8 teams compete, 4 advance to semifinals</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Animation</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Animation Challenge — Quarterfinals</div><div class="sched-event-sub">8 Teams Compete, 4 Advance To Semifinals</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Animation</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Competitors</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">13:00 — 14:30</div><a class="sched-location" href="#">Workshop Room B →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Awards: Digital Art Masterclass</div><div class="sched-event-sub">Led by 2025 Awards winner</div><div class="tags"><span class="tag">Awards</span><span class="tag">Workshop</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Awards: Digital Art Masterclass</div><div class="sched-event-sub">Led By 2025 Awards Winner</div><div class="tags"><span class="tag">Awards</span><span class="tag">Workshop</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">2025 Awards Winner</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">15:00 — 17:00</div><a class="sched-location" href="#">Tshimologong Auditorium →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Pitchathon: Semifinal Pitches</div><div class="sched-event-sub">10 startups pitch to industry jury</div><div class="tags"><span class="tag">Pitchathon</span><span class="tag">Startups</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Pitchathon: Semifinal Pitches</div><div class="sched-event-sub">10 Startups Pitch To Industry Jury</div><div class="tags"><span class="tag">Pitchathon</span><span class="tag">Startups</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">10 Finalist Startups</div></div>
       </div>
     </div>
 
-    <!-- DAY 3: Saturday 10 -->
+    <!-- DAY 3 -->
     <div class="sched-panel" id="day-3">
       <div class="sched-row" data-speaker-img="/images/Speakers/Adam Pantanowitz.jpg">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">09:00 — 12:00</div><a class="sched-location" href="#">Wits Innovation Centre →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Pitchathon Grand Finale</div><div class="sched-event-sub">6 finalists, live jury scoring, R20k prize</div><div class="tags"><span class="tag">Pitchathon</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Pitchathon Grand Finale</div><div class="sched-event-sub">6 Finalists, Live Jury Scoring, R20k Prize</div><div class="tags"><span class="tag">Pitchathon</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Adam Pantanowitz">Adam Pantanowitz</span>WIC Jury Panel</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">11:00 — 16:00</div><a class="sched-location" href="#">Tshimologong Courtyard →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Dala Khona: Speedrun Marathon</div><div class="sched-event-sub">Live speedruns &amp; crowd challenges</div><div class="tags"><span class="tag">Dala Khona</span><span class="tag">Gaming</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Dala Khona: Speedrun Marathon</div><div class="sched-event-sub">Live Speedruns &amp; Crowd Challenges</div><div class="tags"><span class="tag">Dala Khona</span><span class="tag">Gaming</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">Speedrun Community</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">13:00 — 15:00</div><a class="sched-location" href="#">PRO Boardroom →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">PRO: Creative Organisations Roundtable</div><div class="sched-event-sub">Closed session — invite only</div><div class="tags"><span class="tag">PRO</span><span class="tag">Industry</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">PRO: Creative Organisations Roundtable</div><div class="sched-event-sub">Closed Session — Invite Only</div><div class="tags"><span class="tag">PRO</span><span class="tag">Industry</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">Invited Delegates</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">15:30 — 18:00</div><a class="sched-location" href="#">Gaming Arena →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — Semifinals</div><div class="sched-event-sub">Top 4 battle for finals spot</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — Semifinals</div><div class="sched-event-sub">Top 4 Battle For Finals Spot</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Semifinalists</div></div>
       </div>
     </div>
 
-    <!-- DAY 4: Sunday 11 -->
+    <!-- DAY 4 -->
     <div class="sched-panel" id="day-4">
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">10:00 — 12:00</div><a class="sched-location" href="#">Main Stage →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Animation Challenge — Grand Final</div><div class="sched-event-sub">Last 2 teams, live brief, audience votes</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Animation</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Animation Challenge — Grand Final</div><div class="sched-event-sub">Last 2 Teams, Live Brief, Audience Votes</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Animation</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Finalists</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">12:00 — 14:00</div><a class="sched-location" href="#">Gaming Arena →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — Final</div><div class="sched-event-sub">Championship match + live commentary</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Video Game Challenge — Final</div><div class="sched-event-sub">Championship Match + Live Commentary</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Finalists</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">14:00 — 15:30</div><a class="sched-location" href="#">Wits Digital Dome →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">Immersive Africa: Closing Screening — Kancícà</div><div class="sched-event-sub">Final scheduled screening this season</div><div class="tags"><span class="tag">Immersive Africa</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">Immersive Africa: Closing Screening — Kancícà</div><div class="sched-event-sub">Final Scheduled Screening This Season</div><div class="tags"><span class="tag">Immersive Africa</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">Dream Feel Factory</div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">16:00 — 17:30</div><a class="sched-location" href="#">Tshimologong Auditorium →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">PRO: Future of African Digital Creative Industry</div><div class="sched-event-sub">Closing keynote — all welcome</div><div class="tags"><span class="tag">PRO</span><span class="tag">Keynote</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">PRO: Future Of African Digital Creative Industry</div><div class="sched-event-sub">Closing Keynote — All Welcome</div><div class="tags"><span class="tag">PRO</span><span class="tag">Keynote</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Keynote Speaker">Keynote Speaker</span></div></div>
       </div>
       <div class="sched-row">
         <div class="sched-row-bg"></div><div class="sched-row-overlay"></div>
         <div class="sched-cell"><div class="sched-time">18:00 — 19:00</div><a class="sched-location" href="#">Main Stage →</a></div>
-        <div class="sched-cell"><div class="sched-event-title">JAMZ Winners Announced</div><div class="sched-event-sub">Prizes presented, community celebration</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Awards</span></div></div>
+        <div class="sched-cell"><div class="sched-event-title">JAMZ Winners Announced</div><div class="sched-event-sub">Prizes Presented, Community Celebration</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Awards</span></div></div>
         <div class="sched-cell"><div class="sched-speakers">JAMZ Jury</div></div>
       </div>
     </div>
   </div>
 
-  <!-- Cross icons BOTTOM of schedule section -->
   <div class="schedule-crosses schedule-crosses-bottom">
-    <svg class="cross-svg" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
-    <svg class="cross-svg" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
+    <svg class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 </section>
 
@@ -1093,7 +714,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
       </svg>
-      Back to schedule
+      Back To Schedule
     </button>
     <div class="speaker-detail-left">
       <div class="speaker-detail-name" id="sdName"></div>
@@ -1109,7 +730,7 @@
 
 <!-- MORE TO EXPERIENCE -->
 <section class="more-section reveal" id="moreSection">
-  <h2 class="more-title">More to Experience</h2>
+  <h2 class="more-title">More To Experience</h2>
   <div class="more-grid">
     <a class="more-card" href="expo.html">
       <div class="more-card-img"><img src="/images/Copy of _MGL3490.jpg" alt="Fak'ugesi Expo" /></div>
@@ -1129,23 +750,12 @@
     </a>
   </div>
 
-  <!-- Three cross icons at the bottom of more section -->
   <div class="more-crosses-bottom">
-    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
-    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
+    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
-  <!-- Centre cross -->
   <div class="more-crosses-bottom-center">
-    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-      <line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
-    </svg>
+    <svg class="more-cross-icon" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 </section>
 
@@ -1210,7 +820,7 @@
     });
   });
 
-  /* ── SCHEDULE ROW: section-level speaker bg, other rows fade on hover/active ── */
+  /* SCHEDULE ROW: section-level speaker bg */
   const scheduleSectionEl = document.getElementById('scheduleSection');
   const scheduleSectionBg = document.getElementById('scheduleSectionBg');
   let activeRow = null;
@@ -1228,9 +838,8 @@
     const panel = row.closest('.sched-panel');
     const imgSrc = row.getAttribute('data-speaker-img') || FALLBACK_IMG;
 
-    // HOVER: show section bg + fade all other rows
     row.addEventListener('mouseenter', () => {
-      if (activeRow) return; // a row is locked — don't override
+      if (activeRow) return;
       setSectionBg(imgSrc);
       panel.classList.add('panel-hover');
       scheduleSectionEl.classList.add('has-hover');
@@ -1243,25 +852,18 @@
       setSectionBg('');
     });
 
-    // CLICK: lock this row — bg stays until clicking elsewhere or same row
     row.addEventListener('click', (e) => {
       if (e.target.classList.contains('speaker-name-text')) return;
-
       if (activeRow === row) {
-        // Unlock
         row.classList.remove('row-active');
         activeRow = null;
         clearSectionState();
         return;
       }
-
-      // Unlock previous
       if (activeRow) {
         activeRow.classList.remove('row-active');
         activeRow.closest('.sched-panel').classList.remove('panel-active');
       }
-
-      // Lock new row
       activeRow = row;
       row.classList.add('row-active');
       setSectionBg(imgSrc);
@@ -1272,7 +874,6 @@
     });
   });
 
-  // Click outside rows: release lock
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.sched-row') && activeRow) {
       activeRow.classList.remove('row-active');

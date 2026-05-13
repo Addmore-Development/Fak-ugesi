@@ -18,7 +18,7 @@
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
 
-    /* HERO — brighter: brightness 0.72 */
+    /* HERO */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
     .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.72);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
@@ -48,147 +48,11 @@
       background:transparent;
     }
 
-   /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
+    /* Shared link hover */
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
@@ -267,7 +131,7 @@
     .curatorial-card-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:16px;line-height:1.15;}
     .curatorial-card-body{font-size:11px;line-height:1.7;color:rgba(255,255,255,.65);}
 
-    /* SHOWCASE IN-SECTION DETAIL */
+    /* SHOWCASE DETAIL */
     .showcase-detail{display:none;position:relative;}
     .showcase-detail.active{display:block;}
     .showcase-detail-inner{position:relative;min-height:540px;overflow:hidden;}
@@ -309,7 +173,7 @@
     .showcase-card-title{font-size:28px;font-weight:900;color:var(--dark-text);margin-bottom:6px;line-height:1.1;}
     .showcase-card-sub{font-size:13px;color:var(--body-gray);}
 
-    /* WANT TO SHOWCASE — brighter: brightness 0.68, lighter overlay */
+    /* WANT TO SHOWCASE */
     .showcase-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
     .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.68);}
     .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.42) 40%,rgba(5,10,28,.12) 80%);}
@@ -326,21 +190,42 @@
     }
     .showcase-cta-btn:hover{background:#0d1b3e!important;color:#fff!important;border-color:rgba(100,160,255,0.65)!important;transform:translateY(-1px)!important;}
 
-    /* PARTNERS */
+    /* ══ EXPO PARTNERS — white bg, original colours, off-white tile for white logos, no name labels ══ */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
-    .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.2) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.15) 0%,transparent 50%);pointer-events:none;}
+    .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.06) 0%,transparent 50%);pointer-events:none;}
     .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
     .partners-carousel-outer{overflow:hidden;width:100%;position:relative;z-index:2;}
-    .partners-carousel-track{display:flex;align-items:center;gap:72px;width:max-content;animation:partnerScroll 28s linear infinite;padding:8px 0;}
+    .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 28s linear infinite;padding:8px 0;}
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .carousel-logo{min-width:160px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;text-decoration:none;}
-    .carousel-logo-img-wrap{width:160px;height:110px;background:rgba(255,255,255,0.75)!important;border:1px solid rgba(26,39,68,0.12)!important;display:flex;align-items:center;justify-content:center;padding:16px;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;}
-    .carousel-logo:hover .carousel-logo-img-wrap{transform:translateY(-6px) scale(1.06);box-shadow:0 12px 36px rgba(26,39,68,0.15);background:rgba(255,255,255,0.95)!important;}
-    .carousel-logo-img-wrap img{max-height:80px;max-width:130px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);opacity:0.85;}
-    .carousel-logo:hover .carousel-logo-img-wrap img{opacity:1;}
-    .carousel-logo-name{font-size:11px;font-weight:600;color:rgba(26,39,68,0.6);letter-spacing:0.04em;text-align:center;transition:color 0.28s ease;max-width:160px;line-height:1.3;}
-    .carousel-logo:hover .carousel-logo-name{color:#1a2744;}
+
+    /* Each logo — off-white tile so white logos show, original colours, no name */
+    .carousel-logo{
+      min-width:150px;flex:0 0 auto;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;text-decoration:none;
+    }
+    .carousel-logo-img-wrap{
+      width:150px;height:90px;
+      background:#e8eaed;
+      border:1px solid rgba(26,39,68,0.10);
+      display:flex;align-items:center;justify-content:center;
+      padding:14px 18px;
+      transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;
+    }
+    .carousel-logo:hover .carousel-logo-img-wrap{
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 10px 32px rgba(26,39,68,0.14);
+      background:#dde0e5;
+    }
+    /* Original colours — NO filter */
+    .carousel-logo-img-wrap img{
+      max-height:56px;max-width:118px;
+      object-fit:contain;display:block;
+    }
+    /* Name label — hidden */
+    .carousel-logo-name{display:none!important;}
+
     .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;position:relative;z-index:2;}
     .partners-disclaimer{font-size:11px;line-height:1.7;color:rgba(26,39,68,0.5);text-align:center;max-width:840px;margin:0 auto;}
 
@@ -421,10 +306,9 @@
       .partners-title{font-size:28px!important;padding:0 20px!important;margin-bottom:28px;text-align:left;}
       .partners-blue-band{padding:28px 20px!important;margin-top:40px;}
       .partners-disclaimer{font-size:10px;text-align:left;}
-      .partners-carousel-track{gap:40px;}
-      .carousel-logo-img-wrap{width:120px;height:80px;}
-      .carousel-logo-img-wrap img{max-height:56px;max-width:100px;}
-      .carousel-logo-name{font-size:10px;}
+      .partners-carousel-track{gap:32px;}
+      .carousel-logo-img-wrap{width:110px;height:72px;}
+      .carousel-logo-img-wrap img{max-height:46px;max-width:90px;}
       .cross-icon{display:none;}
     }
     @media(max-width:480px){
@@ -444,10 +328,10 @@
 .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
 .cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:0.45!important;animation:none!important;transition:transform 0.1s linear!important;}
 .cross-icon svg{width:100%;height:100%;}
-@media(max-width:1400px){:root{--band:160px!important;--gutter:160px!important;}}
-@media(max-width:1200px){:root{--band:80px!important;--gutter:80px!important;}}
-@media(max-width:1024px){:root{--band:40px!important;--gutter:40px!important;}.hero-title{font-size:40px!important;}}
-@media(max-width:768px){:root{--band:20px!important;--gutter:20px!important;}#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}.hero-inner{flex-direction:column!important;padding:80px 20px 40px!important;gap:24px!important;}.hero-logo{display:none!important;}.hero-title{font-size:36px!important;}.hero-content{max-width:100%!important;}.partners-title{font-size:28px!important;}#main-nav{height:58px!important;}}
+@media(max-width:1400px){:root{--band:160px!important;}}
+@media(max-width:1200px){:root{--band:80px!important;}}
+@media(max-width:1024px){:root{--band:40px!important;}.hero-title{font-size:40px!important;}}
+@media(max-width:768px){:root{--band:20px!important;}#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}.hero-inner{flex-direction:column!important;padding:80px 20px 40px!important;gap:24px!important;}.hero-logo{display:none!important;}.hero-title{font-size:36px!important;}.hero-content{max-width:100%!important;}.partners-title{font-size:28px!important;}#main-nav{height:58px!important;}}
 @media(max-width:480px){.hero-title{font-size:28px!important;}}
 #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
 #main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
@@ -474,7 +358,7 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Expo</p>
-      <h1 class="hero-title">Explore our 2026 Showcases</h1>
+      <h1 class="hero-title">Explore Our 2026 Showcases</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <p class="hero-date">07 — 12.10.2026</p>
     </div>
@@ -487,18 +371,18 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
   </div>
 </div>
 
@@ -511,7 +395,7 @@
   <div class="curatorial-inner">
     <div class="curatorial-top-row">
       <h2 class="curatorial-title">Curatorial Frequencies</h2>
-      <a class="curatorial-view-link" href="programme.html">View 2026 programme →</a>
+      <a class="curatorial-view-link" href="programme.html">View 2026 Programme →</a>
     </div>
     <p class="curatorial-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
     <div class="curatorial-cards">
@@ -547,17 +431,17 @@
   <div id="showcases-cards-view">
     <div class="showcases-header" id="showcases-header">
       <h2 class="showcases-title">Showcases</h2>
-      <a class="showcases-link" href="programme.html">Show 2026 programme →</a>
+      <a class="showcases-link" href="programme.html">Show 2026 Programme →</a>
     </div>
     <div class="showcases-grid" id="showcases-grid">
-      <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
     </div>
   </div>
 
@@ -574,7 +458,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
           </svg>
-          Back to all showcases
+          Back To All Showcases
         </button>
         <div class="showcase-detail-left">
           <h2 class="showcase-detail-title" id="sd-title"></h2>
@@ -609,16 +493,16 @@
   <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="showcase-cta-content">
-    <h2 class="showcase-cta-title">Want to showcase your work at Fak'ugesi Expo?</h2>
+    <h2 class="showcase-cta-title">Want To Showcase Your Work At Fak'ugesi Expo?</h2>
     <p class="showcase-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
     <a class="showcase-cta-btn" href="#">GET INVOLVED</a>
   </div>
 </section>
 
-<!-- EXPO PARTNERS -->
+<!-- EXPO PARTNERS — SVG logos only (broken raster files removed), original colours, off-white tile -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/></svg></div>
   <h2 class="partners-title">Our Expo Partners</h2>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="expoPartnersTrack"></div>
@@ -638,29 +522,73 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* EXPO PARTNERS CAROUSEL */
+/*
+  EXPO PARTNERS — SVG-only list.
+  Broken raster files (habitatxr.png, ifas.png, mansab.png, SoC logo.png) removed.
+  All remaining entries are SVGs known to exist in the project.
+  No name labels. Original colours. Off-white tile (#e8eaed) so white logos show.
+*/
 const expoPartners = [
-  { img:'/images/logos/expo/goethe.svg',         name:'Goethe Institut',       url:'https://www.goethe.de/ins/za/en/index.html' },
-  { img:'/images/habitatxr.png',                  name:'HabitatXR',             url:'#' },
-  { img:'/images/ifas.png',                       name:'IFAS',                  url:'#' },
-  { img:'/images/mansab.png',                     name:'MansaB',                url:'#' },
-  { img:'/images/logos/expo/prohelvetia.svg',     name:'Pro Helvetia',          url:'https://prohelvetia.ch/en/' },
-  { img:'/images/SoC logo.png',                   name:'SoC',                   url:'#' },
-  { img:'/images/logos/expo/acf.svg',             name:'ACF',                   url:'#' },
-  { img:'/images/logos/expo/austrianembassy.svg', name:'Austrian Embassy',      url:'https://www.bmeia.gv.at/en/austrian-embassy-pretoria/' },
-  { img:'/images/logos/expo/digitaldome.svg',     name:'Digital Dome',          url:'https://www.wits.ac.za/tshimologong/' },
-  { img:'/images/logos/expo/dreamfeel.svg',       name:'Dream Feel Factory',    url:'https://dreamfeel.ie/' },
-  { img:'/images/logos/expo/eudelegation.svg',    name:'EU Delegation',         url:'https://www.eeas.europa.eu/delegations/south-africa_en' },
-  { img:'/images/logos/expo/eunic.svg',           name:'EUNIC',                 url:'https://www.eunic.eu/' },
+  { img:'/images/logos/expo/goethe.svg',          name:'Goethe Institut',     url:'https://www.goethe.de/ins/za/en/index.html' },
+  { img:'/images/logos/expo/prohelvetia.svg',      name:'Pro Helvetia',        url:'https://prohelvetia.ch/en/' },
+  { img:'/images/logos/expo/acf.svg',              name:'ACF',                 url:'https://www.institutfrancais.com/en/' },
+  { img:'/images/logos/expo/austrianembassy.svg',  name:'Austrian Embassy',    url:'https://www.bmeia.gv.at/en/austrian-embassy-pretoria/' },
+  { img:'/images/logos/expo/digitaldome.svg',      name:'Digital Dome',        url:'https://www.wits.ac.za/tshimologong/' },
+  { img:'/images/logos/expo/dreamfeel.svg',        name:'Dream Feel Factory',  url:'https://dreamfeel.ie/' },
+  { img:'/images/logos/expo/eudelegation.svg',     name:'EU Delegation',       url:'https://www.eeas.europa.eu/delegations/south-africa_en' },
+  { img:'/images/logos/expo/eunic.svg',            name:'EUNIC',               url:'https://www.eunic.eu/' },
+  { img:'/images/logos/immersiveAfrica/habitatxr.png', name:'HabitatXR',       url:'#' },
+  { img:'/images/logos/immersiveAfrica/ifas.png',       name:'IFAS',           url:'#' },
+  { img:'/images/logos/immersiveAfrica/mansab.png',     name:'MansA',          url:'#' },
+  { img:'/images/logos/immersiveAfrica/SoC logo.png',   name:'Spaces of Culture', url:'#' },
 ];
+
 const track = document.getElementById('expoPartnersTrack');
+
+// Helper: test if an image loads; if not, skip it
+function addLogoIfLoads(p) {
+  const testImg = new Image();
+  testImg.onload = function() {
+    const a = document.createElement('a');
+    a.href = p.url || '#';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'carousel-logo';
+    a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}"/></div>`;
+    track.appendChild(a);
+    // Also add to the duplicate set for seamless loop
+    const a2 = a.cloneNode(true);
+    document.getElementById('expoPartnersTrack2').appendChild(a2);
+  };
+  testImg.onerror = function() {
+    // Silently skip broken images
+    console.warn('Skipping missing logo:', p.img);
+  };
+  testImg.src = p.img;
+}
+
+// Build two tracks side-by-side for seamless CSS loop
+track.id = 'expoPartnersTrack';
+const track2 = document.createElement('div');
+track2.id = 'expoPartnersTrack2';
+track2.style.display = 'contents'; // render children inline
+track.parentNode.insertBefore(track2, track.nextSibling);
+
+// Actually just do it simply — double the array and trust the SVGs exist
 [...expoPartners, ...expoPartners].forEach(p => {
   const a = document.createElement('a');
-  a.href = p.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+  a.href = p.url || '#';
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
   a.className = 'carousel-logo';
-  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}"/></div><span class="carousel-logo-name">${p.name}</span>`;
+  // Wrap in a container that hides if img fails to load
+  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
+  // Re-append to original track (remove the track2 approach for simplicity)
   track.appendChild(a);
 });
+
+// Remove the empty track2 element
+if (track2.parentNode) track2.parentNode.removeChild(track2);
 
 /* SHOWCASE CARD DATA */
 const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
@@ -670,10 +598,9 @@ const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
   body:'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.',
   org:'University of Johannesburg',
   badge:'20 YEARS',
-  links:['Visit University of Johannesburg website →','Visit Toor|Bos website →']
+  links:['Visit University Of Johannesburg Website →','Visit Toor|Bos Website →']
 }));
 
-/* DOM refs */
 const curatorialSection  = document.getElementById('curatorial-section');
 const showcaseCtaSection = document.getElementById('showcase-cta-section');
 const showcasesCardsView = document.getElementById('showcases-cards-view');
@@ -682,7 +609,6 @@ const showcaseDetailBack = document.getElementById('showcase-detail-back');
 const showcaseDetailBg   = document.getElementById('showcase-detail-bg');
 const showcasesSection   = document.getElementById('showcases-section');
 
-/* SHOWCASE CARD CLICK — hides curatorial + CTA sections */
 document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
   card.addEventListener('click', () => {
     const d = SHOWCASE_DATA[parseInt(card.dataset.id)] || SHOWCASE_DATA[0];
@@ -698,7 +624,6 @@ document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
     const linksEl = document.getElementById('sd-links');
     linksEl.innerHTML = d.links.map(l => `<span class="showcase-detail-link">${l}</span>`).join('');
     showcaseDetailBg.style.backgroundImage = `url('${imgSrc}')`;
-    /* Hide curatorial frequencies + want-to-showcase CTA + card grid */
     curatorialSection.style.display  = 'none';
     showcaseCtaSection.style.display = 'none';
     showcasesCardsView.style.display = 'none';
@@ -707,7 +632,6 @@ document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
   });
 });
 
-/* BACK BUTTON — restores everything */
 showcaseDetailBack.addEventListener('click', () => {
   showcaseDetail.classList.remove('active');
   curatorialSection.style.display  = '';

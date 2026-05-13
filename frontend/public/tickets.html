@@ -41,9 +41,11 @@
     }
     .cross-icon-inline svg { width: 18px; height: 18px; }
 
-    /* ── HERO ── */
+    /* ── HERO — taller to clear nav ── */
     .hero {
-      position: relative; width: 100%; height: 420px;
+      position: relative; width: 100%;
+      /* Increased from 420px — nav is ~64px, this gives clear breathing room */
+      min-height: 560px;
       overflow: hidden; display: flex; align-items: flex-end;
     }
     .hero-bg {
@@ -61,11 +63,11 @@
     }
     .hero-blue-tint { position: absolute; inset: 0; background: rgba(30,60,160,0.18); z-index: 1; }
 
-    /* Hero inner — flex row so content left, logo right (same as market/index) */
+    /* Hero inner — flex row so content left, logo right */
     .hero-inner {
       position: relative; z-index: 3;
       width: 100%;
-      padding: 0 248px 44px;
+      padding: 0 248px 56px;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
@@ -87,7 +89,7 @@
     }
     .btn-tickets:hover { background: #1a2744; color: var(--white); border-color: rgba(255,220,60,0.75); transform: translateY(-1px); }
 
-    /* Logo right-aligned, vertically centred — mirrors market.html & index.html hero */
+    /* Logo right-aligned, vertically centred */
     .hero-logo {
       flex-shrink: 0;
       display: flex;
@@ -315,7 +317,7 @@
        RESPONSIVE
     ════════════════════════ */
     @media (max-width: 768px) {
-      .hero { height: auto !important; min-height: 60vh !important; align-items: flex-end !important; }
+      .hero { height: auto !important; min-height: 70vh !important; align-items: flex-end !important; }
       .hero-inner { padding: 0 24px 40px !important; flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
       .hero-title { font-size: 32px !important; line-height: 1.1 !important; }
       .hero-body { font-size: 12px !important; max-width: 100% !important; }
@@ -363,7 +365,7 @@
 <body>
 
 <!-- ═══════════════════════════════════════════
-     HERO — no cross-icons; logo aligned right
+     HERO — taller (560px min-height) to clear nav; logo aligned right
 ═══════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -373,12 +375,11 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Fak'ugesi Festival 2026 · 07 — 12 October</p>
-      <h1 class="hero-title">Join us between<br>07 and 12 October 2026</h1>
+      <h1 class="hero-title">Join Us Between<br>07 And 12 October 2026</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <a class="btn-tickets" href="#passes">GET YOUR TICKETS</a>
     </div>
 
-    <!-- Logo right-aligned, same pattern as market.html & index.html -->
     <div class="hero-logo">
       <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
     </div>
@@ -401,15 +402,12 @@
 
 <!-- ═══════════════════════════════════════════
      FESTIVAL PASSES
-     2 cross-icons at TOP (bright white, left + right)
-     3 cross-icons at BOTTOM (bright white, left + centre + right)
 ═══════════════════════════════════════════ -->
 <section class="passes-section reveal" id="passes">
   <div class="passes-bg"></div>
   <div class="passes-overlay"></div>
   <div class="passes-content">
 
-    <!-- TOP: 2 bright white crosses — left and right only -->
     <div class="cross-icon" style="top:20px;left:200px;opacity:1;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.8"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.8"/></svg>
     </div>
@@ -567,7 +565,6 @@
       </div><!-- /.passes-right -->
     </div><!-- /.passes-body -->
 
-    <!-- BOTTOM: 3 bright white crosses — left, centre, right -->
     <div class="cross-icon" style="bottom:20px;left:200px;opacity:1;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.8"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.8"/></svg>
     </div>
@@ -604,13 +601,10 @@
 
 <!-- ═══════════════════════════════════════════
      PARTNERS
-     2 cross-icons at TOP only — no bottom crosses
 ═══════════════════════════════════════════ -->
 <section class="partners-section reveal">
-  <!-- TOP: 2 navy crosses — left and right only -->
   <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <!-- No bottom crosses -->
 
   <div class="partners-header">
     <h2 class="partners-title">Our Main Partners</h2>

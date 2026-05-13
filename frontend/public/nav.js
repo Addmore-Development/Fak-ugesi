@@ -463,7 +463,7 @@
     .showcase-detail-link, .partners-link, .more-card-link,
     .sched-location, .sched-speakers a, .nav-dd a, .ticker-item,
     .carousel-logo-name, .hero-eyebrow, .showcases-header a,
-    .curatorial-view-link, .more-card-top span,
+    .curatorial-view-link, .more-card-top span,  .jury-prog-link,
     [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
       display:inline-block;
       transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
@@ -473,7 +473,7 @@
     .curatorial-view-link:hover, .showcases-link:hover, .showcase-card-more:hover,
     .showcase-detail-link:hover, .partners-link:hover, .more-card-link:hover,
     .sched-location:hover, .sched-speakers a:hover, .showcases-header a:hover,
-    .more-card-top span:hover,
+    .more-card-top span:hover,  .jury-prog-link:hover,
     [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
       transform: scale(1.1);
       transform-origin: left center;

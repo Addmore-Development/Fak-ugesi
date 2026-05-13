@@ -104,17 +104,22 @@
     }
 
     /* ── TICKER ── */
+    /* CHANGED: white bg + navy font on hover */
     .ticker-wrapper {
       background: var(--dark-text); overflow: hidden; white-space: nowrap;
       padding: 12px 0; position: relative; z-index: 10;
+      transition: background 0.28s ease;
     }
+    .ticker-wrapper:hover { background: #fff; }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+    .ticker-wrapper:hover .ticker-track span { color: var(--navy); }
     .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
       color: #fff; letter-spacing: 0.04em;
+      transition: color 0.2s;
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
 
     /* ── SIG NAV STRIP ── */
     .fug-sig-strip {
@@ -155,149 +160,13 @@
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
 
     /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative!important;text-decoration:none!important;padding-bottom:2px!important;transition:opacity 0.25s ease,transform 0.25s ease!important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* ══════════════════════════════════════════════
-       2025 WINNERS — same as sig-fakugesiPRO highlights
+       2025 WINNERS
     ══════════════════════════════════════════════ */
     .winners-section {
       background: #fff; padding: 0; position: relative; overflow: hidden;
@@ -313,12 +182,23 @@
       display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
     }
     .winners-nav { display: flex; align-items: center; gap: 16px; }
+
     .winners-nav button {
-      background: none; border: none; cursor: pointer;
-      font-size: 22px; color: var(--dark-text); padding: 4px 8px;
-      transition: opacity 0.2s, background 0.22s, color 0.22s; font-family: 'InterDisplay', sans-serif;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--dark-text);
+      padding: 4px 8px;
+      transition: opacity 0.22s;
+      font-family: 'InterDisplay', sans-serif;
     }
-    .winners-nav button:hover { opacity: 1; background: var(--navy); color: #fff; }
+    .winners-nav button:hover {
+      opacity: 0.38;
+      background: none !important;
+      color: var(--dark-text) !important;
+    }
+
     .winners-view-link {
       font-size: 11px; font-weight: 600; color: var(--navy);
       text-decoration: underline; letter-spacing: 0.06em;
@@ -354,8 +234,7 @@
     .winner-speakers p { font-size: 11px; font-weight: 500; color: var(--dark-text); line-height: 1.7; }
 
     /* ══════════════════════════════════════════════
-       CHALLENGE SECTIONS — full-width dark image
-       No cross icons; increased min-height
+       CHALLENGE SECTIONS
     ══════════════════════════════════════════════ */
     .challenge-section {
       position: relative; min-height: 620px; overflow: hidden;
@@ -417,7 +296,7 @@
     .prizes-section {
       background: var(--white); padding: 0; position: relative;
     }
-    .prizes-inner { padding: 56px 248px 72px; position: relative; }
+    .prizes-inner { padding: 80px 248px 100px; position: relative; }
     .prizes-header {
       display: flex; justify-content: space-between;
       align-items: flex-start; margin-bottom: 36px;
@@ -454,24 +333,8 @@
       color: var(--body-gray); line-height: 1.65;
     }
 
-    /* ── Prizes cross icons row ── */
-    .prizes-crosses-top {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 8px;
-      position: relative;
-    }
-    .prizes-crosses-top .cross-icon,
-    .prizes-crosses-bottom .cross-icon {
-      position: relative; top: auto; left: auto; right: auto; bottom: auto;
-    }
-    .prizes-crosses-bottom {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-top: 24px;
-      position: relative;
-    }
-
     /* ══════════════════════════════════════════════
-       REQUIREMENTS — navy bg, same as sig-awards
+       REQUIREMENTS
     ══════════════════════════════════════════════ */
     .req-section { background: var(--navy); padding: 56px 248px; position: relative; }
     .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
@@ -497,17 +360,9 @@
     }
 
     /* ══════════════════════════════════════════════
-       FAQ — same as sig-dalakhona / sig-fakugesiPRO
+       FAQ
     ══════════════════════════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
-    .faq-crosses-top {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 40px;
-      position: relative;
-    }
-    .faq-crosses-top .cross-icon {
-      position: relative; top: auto; left: auto; right: auto; bottom: auto;
-    }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
@@ -571,14 +426,6 @@
     }
     .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
 
-    /* ── Global: navy bg on button hover ── */
-    button:hover,
-    .challenge-cta:hover,
-    .winners-nav button:hover {
-      background: var(--navy) !important;
-      color: #fff !important;
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
@@ -586,7 +433,7 @@
       .hero-title { font-size: 40px; }
       .winners-header { padding: 40px 48px 28px; }
       .challenge-inner { padding: 56px 48px; }
-      .prizes-inner { padding: 48px 48px 56px; }
+      .prizes-inner { padding: 72px 48px 88px; }
       .req-section { padding: 48px 48px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
@@ -595,7 +442,7 @@
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
-      .cross-icon { display: none; }
+      .cross-icon { display: none !important; }
       .hero { display: flex; flex-direction: column; min-height: auto; }
       .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
       .hero-title { font-size: 32px; max-width: 100%; }
@@ -687,10 +534,10 @@
 
 <!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
 <section class="winners-section reveal">
-  <div class="cross-icon" style="top:56px;left:200px;">
+  <div class="cross-icon" style="top:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:56px;right:200px;">
+  <div class="cross-icon" style="top:20px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 
@@ -710,219 +557,113 @@
 
       <!-- SET 1 -->
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Team Sakuga" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Team Sakuga" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation Winner" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation Winner" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Runner-up" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Runner-up" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
 
       <!-- SET 2 (duplicate for seamless loop) -->
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Team Sakuga" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Team Sakuga" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation Winner" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation Winner" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Runner-up" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Runner-up" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
         <div class="winner-info">
           <p class="winner-cat">Runner-up</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
-
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/team-sokuga.png" alt="Animation" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
         <div class="winner-info">
           <p class="winner-cat">Animation</p>
           <p class="winner-name">Team Sakuga</p>
           <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers">
-            <p>Thobile Chittenden</p>
-            <p>Samukelisiwe Dube</p>
-            <p>Masentle Nzimande</p>
-            <p>Tadeo Lopez-Sendon</p>
-            <p>Meghna Singh</p>
-          </div>
+          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
         </div>
       </div>
 
@@ -930,17 +671,19 @@
   </div>
 
   <div style="position:relative;height:36px;margin-top:0;">
-    <div class="cross-icon" style="bottom:0;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:0;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
+  <div class="cross-icon" style="bottom:20px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
+  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:20px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+</div>
 </section>
 
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
-<!-- No cross icons, increased height via min-height + padding in CSS -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
   <div class="challenge-overlay"></div>
@@ -957,7 +700,6 @@
 </section>
 
 <!-- ═══════════════════════════════ 2026 VIDEO GAME CHALLENGE ═══════════════════════════════ -->
-<!-- No cross icons, increased height via min-height + padding in CSS -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');background-position:center 20%;"></div>
   <div class="challenge-overlay"></div>
@@ -976,14 +718,12 @@
 <!-- ═══════════════════════════════ 2026 PRIZES ═══════════════════════════════ -->
 <section class="prizes-section reveal">
   <div class="prizes-inner">
-    <!-- 2 cross icons at top -->
-    <div class="prizes-crosses-top">
-      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-      </div>
-      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-      </div>
+
+    <div class="cross-icon" style="top:20px;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:20px;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
 
     <div class="prizes-header">
@@ -1023,18 +763,16 @@
       </div>
     </div>
 
-    <!-- 3 cross icons at bottom -->
-    <div class="prizes-crosses-bottom">
-      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-      </div>
-      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-      </div>
-      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-      </div>
+    <div class="cross-icon" style="bottom:20px;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
+    <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="bottom:20px;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+
   </div>
 </section>
 
@@ -1066,17 +804,15 @@
 
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
-  <!-- 3 cross icons at top, evenly spaced -->
-  <div class="faq-crosses-top">
-    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
+
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 
   <div class="faq-layout">
@@ -1092,6 +828,17 @@
       <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
 </section>
 
 <!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->

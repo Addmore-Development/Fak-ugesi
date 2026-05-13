@@ -112,7 +112,7 @@
       max-width: 510px; margin-bottom: 28px;
     }
 
-    /* ── BUTTON: navy bg + lightning bolt on hover ── */
+    /* ── BUTTON: navy bg on hover — NO lightning emoji ── */
     .btn-apply {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -123,18 +123,14 @@
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
       position: relative; overflow: hidden;
     }
-    .btn-apply .btn-lightning {
-      display: none;
-      font-size: 14px;
-      line-height: 1;
-    }
+    /* Lightning emoji hidden permanently */
+    .btn-apply .btn-lightning { display: none !important; }
     .btn-apply:hover {
       background: var(--navy);
       border-color: var(--navy);
       color: #fff;
       transform: translateY(-1px);
     }
-    .btn-apply:hover .btn-lightning { display: inline; }
 
     .hero-signia {
       flex-shrink: 0;
@@ -160,13 +156,8 @@
       padding: 12px 0; position: relative; z-index: 10;
       transition: background 0.25s;
     }
-    /* White background on hover */
-    .ticker-wrapper:hover {
-      background: #fff;
-    }
-    .ticker-wrapper:hover .ticker-track span {
-      color: var(--dark-text);
-    }
+    .ticker-wrapper:hover { background: #fff; }
+    .ticker-wrapper:hover .ticker-track span { color: var(--dark-text); }
     .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
@@ -264,10 +255,6 @@
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .winners-strip:hover { animation-play-state: paused; }
-    @keyframes winnersAutoScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
 
     .winner-card {
       flex: 0 0 360px;
@@ -383,7 +370,6 @@
       font-size: 36px; font-weight: 700;
       color: rgba(255,255,255,0.75); line-height: 1;
     }
-    /* Smaller, thinner font for category card titles */
     .cat-card-title {
       font-size: 13px; font-weight: 300;
       color: rgba(255,255,255,0.9); line-height: 1.35;
@@ -657,18 +643,18 @@
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
 
     /* ══════════════════════════════════════════════
-       PARTNERS — navy outline bar at top
+       PARTNERS — thin 1px navy outline at top
     ══════════════════════════════════════════════ */
     .partners-section {
       background: var(--lavender);
       padding: 0;
       position: relative;
     }
-    /* Navy outline / border at the top of the partners section */
+    /* CHANGED: thin 1px outline instead of 3px */
     .partners-section::before {
       content: '';
       display: block;
-      height: 3px;
+      height: 1px;
       background: var(--navy);
       width: 100%;
     }
@@ -809,7 +795,6 @@
       <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <a class="btn-apply" href="#">
-        <span class="btn-lightning">⚡</span>
         SUBMIT YOUR APPLICATION
       </a>
     </div>
@@ -1080,7 +1065,6 @@
     </div>
   </div>
 
-  <!-- Bottom: 3 cross icons — left, centre, right -->
   <div style="position:relative;height:52px;margin-top:0;">
     <div class="cross-icon" style="top:8px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
@@ -1095,7 +1079,6 @@
 </section>
 
 <!-- ═══════════════════════════════ ELIGIBLE CATEGORIES ═══════════════════════════════ -->
-<!-- Cross icons removed from this section -->
 <section class="categories-section reveal">
   <div class="cat-bg"></div>
   <div class="cat-overlay"></div>
@@ -1149,7 +1132,6 @@
 
 <!-- ═══════════════════════════════ JURY ═══════════════════════════════ -->
 <section class="jury-section reveal">
-  <!-- Top cross icons: lowered to sit inside the section, not too close to the top edge -->
   <div style="position:relative;height:56px;">
     <div class="cross-icon" style="top:20px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
@@ -1229,7 +1211,6 @@
     </div>
   </div>
 
-  <!-- Bottom cross icons: raised up, not too close to the next section -->
   <div style="position:relative;height:52px;margin-top:8px;">
     <div class="cross-icon" style="top:16px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
@@ -1282,7 +1263,6 @@
     <div class="faq-layout">
       <div>
         <h2 class="faq-title-left">FAQ</h2>
-        <!-- "Submit your application" link removed from below the intro text -->
         <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
       </div>
       <div>
@@ -1303,7 +1283,6 @@
 </section>
 
 <!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
-<!-- Navy outline bar rendered via CSS ::before on .partners-section -->
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">

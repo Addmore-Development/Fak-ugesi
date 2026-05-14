@@ -299,7 +299,12 @@
       border-bottom: 1px solid rgba(26,39,68,0.12);
       font-weight: 700;
     }
-    .research-meta-right{
+    .research-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    .research-meta-left{
       display: flex;
       align-items: center;
       gap: 50px;
@@ -313,7 +318,7 @@
 
     /* Body text */
     .research-body-text {
-      font-size: 16px;
+      font-size: 17.9px;
       line-height: 1.75;
       color: var(--dark-text);
       margin-bottom: 40px;
@@ -528,7 +533,7 @@
 /* ──────────────────────────────────────────────────────────
    425px (small tablets & large phones)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 425px) {
+@media (max-width: 425.99px) {
   /* Hero */
   .hero-inner {
     padding: 60px 16px 36px;
@@ -574,7 +579,6 @@
   }
   .research-cover img {
     width: 100%;
-    max-height: 220px;
     object-fit: cover;
   }
   .research-body-text {
@@ -658,12 +662,7 @@
   .partner-desc {
     font-size: 10.5px;
   }
-}
 
-/* ──────────────────────────────────────────────────────────
-   320px (very narrow devices – iPhone SE, small Android)
-   ────────────────────────────────────────────────────────── */
-@media (max-width: 320px) {
   .hero-inner {
     padding: 44px 14px 28px;
   }
@@ -736,7 +735,6 @@
     font-size: 10px;
   }
 }
-
 
   </style>
 

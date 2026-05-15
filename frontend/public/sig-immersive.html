@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -16,9 +16,7 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    
-
-    /* ── HERO ── */
+    /* ── HERO — original, untouched ── */
     .hero{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end;padding-top:110px;}
     .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
@@ -28,8 +26,100 @@
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:510px;opacity:.85;margin-bottom:28px}
-    .hero-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #fff;color:#fff;background:transparent;padding:13px 30px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:8px;transition:background .22s,color .22s;}
-    .hero-cta:hover{background:#fff;color:var(--navy)}
+
+    /* ── Digital Dome logo — absolutely positioned top-right, doesn't touch layout ── */
+    .hero-signia{
+      position:absolute;
+      top:80px;right:248px;
+      z-index:4;
+      max-width:200px;
+      pointer-events:none;
+    }
+    .hero-signia img{
+      display:block;width:100%;height:auto;max-height:72px;
+      object-fit:contain;
+      filter:brightness(0) invert(1);
+      opacity:0.82;
+    }
+
+    /* ── BUTTONS: transparent / outlined at rest ── */
+    .hero-cta{
+      display:inline-flex;align-items:center;gap:10px;
+      border:1.5px solid #fff;color:#fff;background:transparent;
+      padding:13px 30px;font-size:11px;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+      text-decoration:none;margin-top:8px;
+      position:relative;overflow:hidden;isolation:isolate;
+      transition:background .22s,color .22s,border-color .22s;
+    }
+    .section-cta{
+      display:inline-flex;align-items:center;gap:10px;
+      border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;
+      padding:12px 28px;font-size:11px;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+      text-decoration:none;
+      position:relative;overflow:hidden;isolation:isolate;
+      transition:background .22s,color .22s,border-color .22s;
+    }
+
+    /* ── Lightning layer — hidden at rest, activates on hover ── */
+    .hero-cta::before,
+    .section-cta::before {
+      content:'';
+      position:absolute;inset:-2px;z-index:0;
+      opacity:0;
+      background:
+        linear-gradient(117deg, transparent 20%, rgba(140,180,255,0.55) 35%, transparent 50%),
+        linear-gradient(243deg, transparent 15%, rgba(180,140,255,0.45) 32%, transparent 52%),
+        linear-gradient(78deg,  transparent 40%, rgba(100,220,255,0.4)  55%, transparent 68%),
+        linear-gradient(195deg, transparent 25%, rgba(255,180,120,0.3)  42%, transparent 58%);
+      background-size:300% 300%, 280% 280%, 320% 320%, 260% 260%;
+      background-position:0% 50%, 100% 0%, 50% 100%, 20% 80%;
+      transition:opacity .18s ease;
+      pointer-events:none;
+    }
+    .hero-cta:hover::before,
+    .section-cta:hover::before {
+      opacity:1;
+      animation:
+        bolt1 0.9s ease-in-out infinite alternate,
+        bolt2 1.3s ease-in-out infinite alternate-reverse,
+        bolt3 0.7s ease-in-out infinite alternate,
+        bolt4 1.1s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes bolt1{
+      0%  {background-position:0% 50%,100% 0%,50% 100%,20% 80%;}
+      100%{background-position:100% 50%,0% 100%,50% 0%,80% 20%;}
+    }
+    @keyframes bolt2{
+      0%  {background-size:300% 300%,280% 280%,320% 320%,260% 260%;}
+      50% {background-size:380% 380%,200% 200%,260% 260%,340% 340%;}
+      100%{background-size:300% 300%,280% 280%,320% 320%,260% 260%;}
+    }
+    @keyframes bolt3{
+      0%  {filter:hue-rotate(0deg)  brightness(1);}
+      100%{filter:hue-rotate(40deg) brightness(1.3);}
+    }
+    @keyframes bolt4{
+      0%,100%{opacity:1;}
+      45%    {opacity:0.65;}
+      55%    {opacity:1;}
+      72%    {opacity:0.5;}
+      80%    {opacity:1;}
+    }
+
+    /* On hover: fill navy, keep white text, lightning plays behind */
+    .hero-cta:hover,
+    .section-cta:hover {
+      background:var(--navy) !important;
+      color:#fff !important;
+      border-color:rgba(255,255,255,0.85) !important;
+    }
+    /* Keep text above the lightning layer */
+    .hero-cta > *,
+    .section-cta > * {
+      position:relative;z-index:1;
+    }
 
     /* ── TICKER ── */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
@@ -37,11 +127,11 @@
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
-    .ticker-wrap { transition: background 0.28s ease; }
-    .ticker-wrap:hover { background: var(--navy) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
-    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
-    .ticker-wrap:hover .ticker-item { color: #ffffff !important; }
-    .ticker-wrap:hover .ticker-item .ticker-arrow { color: #ffffff !important; }
+    .ticker-wrap{transition:background 0.28s ease;}
+    .ticker-wrap:hover{background:var(--navy) !important;border-top-color:rgba(26,39,68,0.35) !important;border-bottom-color:rgba(26,39,68,0.35) !important;}
+    .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+    .ticker-wrap:hover .ticker-item{color:#ffffff !important;}
+    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff !important;}
 
     /* ── PREMIERING SECTION ── */
     .premiering-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
@@ -58,8 +148,6 @@
     .premiere-links a:hover{opacity:1}
     .premiere-co{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
     .premiere-co img{height:14px;width:auto;filter:invert(1) brightness(2)}
-    .section-cta{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s,border-color .22s;}
-    .section-cta:hover{background:#fff;color:var(--navy);border-color:#fff}
 
     /* ── ON-GOING SECTION ── */
     .ongoing-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
@@ -67,51 +155,20 @@
     .ongoing-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,10,28,.9) 0%,rgba(5,10,28,.4) 50%,transparent 100%)}
     .ongoing-content{position:relative;z-index:3;padding:0 248px 80px;width:100%}
 
-    /* ── PARTNERS — WHITE BACKGROUND ── */
-    .partners-section {
-      background: #ffffff !important;
-      padding:80px 0 0;position:relative;overflow:hidden;
-    }
-    .partners-section::before{
-      content:'';position:absolute;inset:0;
-      background-image: radial-gradient(ellipse at 20% 50%, rgba(120,160,200,0.08) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 20%, rgba(100,150,195,0.06) 0%, transparent 50%);
-      pointer-events:none;
-    }
+    /* ── PARTNERS ── */
+    .partners-section{background:#ffffff !important;padding:80px 0 0;position:relative;overflow:hidden;}
+    .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.06) 0%,transparent 50%);pointer-events:none;}
     .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
-
     .partners-carousel-outer{overflow:hidden;width:100%;position:relative;z-index:2;}
     .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 24s linear infinite;padding:8px 0;}
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
     .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer;text-decoration:none;}
-    .carousel-logo-img-wrap{
-      width:150px;height:90px;
-      background: #e8eaed;
-      border: 1px solid rgba(26,39,68,0.10);
-      display:flex;align-items:center;justify-content:center;padding:14px 18px;
-      transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;
-    }
-    .carousel-logo:hover .carousel-logo-img-wrap{
-      transform:translateY(-5px) scale(1.05);
-      box-shadow:0 10px 32px rgba(26,39,68,0.14);
-      background:#dde0e5;
-    }
-    .carousel-logo-img-wrap img{
-      max-height:56px;max-width:118px;
-      object-fit:contain;display:block;
-    }
+    .carousel-logo-img-wrap{width:150px;height:90px;background:#e8eaed;border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:14px 18px;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;}
+    .carousel-logo:hover .carousel-logo-img-wrap{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 32px rgba(26,39,68,0.14);background:#dde0e5;}
+    .carousel-logo-img-wrap img{max-height:56px;max-width:118px;object-fit:contain;display:block;}
     .carousel-logo-name{display:none !important;}
-
-    .partners-blue-band{
-      width:100%;
-      background:rgba(26,39,68,0.05);
-      border-top:1px solid rgba(26,39,68,0.08);
-      margin-top:56px;
-      padding:40px 248px;
-      position:relative;z-index:2;
-    }
+    .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;position:relative;z-index:2;}
     .partners-disclaimer{font-size:11px;line-height:1.7;color:rgba(26,39,68,0.5);text-align:center;max-width:840px;margin:0 auto;}
 
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -119,7 +176,7 @@
 
     /* ── Fak'ugesi shared link hover effect ── */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
-    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform .28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
@@ -128,40 +185,41 @@
       .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
       .section-header-label{font-size:36px}
+      .hero-signia{right:32px;}
     }
-
-    @media (max-width: 768px) {
-      .hero { min-height: 70vh !important; align-items: flex-end !important; padding-top: 58px !important; }
-      .hero-content { padding: 0 24px 48px !important; }
-      .hero-title { font-size: 36px !important; line-height: 1.1 !important; }
-      .hero-body { font-size: 12px !important; max-width: 100% !important; }
-      .hero-body br { display: none; }
-      .premiering-section,.ongoing-section { min-height: 70vh !important; }
-      .premiering-content,.ongoing-content { padding: 0 24px 48px !important; }
-      .section-header-label { font-size: 32px !important; }
-      .section-dates { font-size: 16px !important; margin-bottom: 32px !important; }
-      .premiere-title { font-size: 26px !important; }
-      .premiere-body { font-size: 12px !important; max-width: 100% !important; }
-      .premiere-links { flex-direction: column !important; gap: 10px !important; }
-      .partners-section { padding: 48px 0 0 !important; }
-      .partners-title { font-size: 24px !important; padding: 0 24px !important; margin-bottom: 32px !important; }
-      .partners-blue-band { padding: 24px 20px !important; margin-top: 32px !important; }
-      .partners-disclaimer { font-size: 10px !important; }
-      .cross-icon[style*="left:200px"] { left: 16px !important; }
-      .cross-icon[style*="right:200px"] { right: 16px !important; }
+    @media(max-width:768px){
+      .hero{min-height:70vh !important;align-items:flex-end !important;padding-top:58px !important;}
+      .hero-content{padding:0 24px 48px !important;}
+      .hero-title{font-size:36px !important;line-height:1.1 !important;}
+      .hero-body{font-size:12px !important;max-width:100% !important;}
+      .hero-body br{display:none;}
+      .hero-signia{top:68px;right:20px;max-width:110px;}
+      .premiering-section,.ongoing-section{min-height:70vh !important;}
+      .premiering-content,.ongoing-content{padding:0 24px 48px !important;}
+      .section-header-label{font-size:32px !important;}
+      .section-dates{font-size:16px !important;margin-bottom:32px !important;}
+      .premiere-title{font-size:26px !important;}
+      .premiere-body{font-size:12px !important;max-width:100% !important;}
+      .premiere-links{flex-direction:column !important;gap:10px !important;}
+      .partners-section{padding:48px 0 0 !important;}
+      .partners-title{font-size:24px !important;padding:0 24px !important;margin-bottom:32px !important;}
+      .partners-blue-band{padding:24px 20px !important;margin-top:32px !important;}
+      .partners-disclaimer{font-size:10px !important;}
+      .cross-icon[style*="left:200px"]{left:16px !important;}
+      .cross-icon[style*="right:200px"]{right:16px !important;}
     }
-
-    @media (max-width: 480px) {
-      .hero-title { font-size: 28px !important; }
-      .section-header-label { font-size: 26px !important; }
-      .premiere-title { font-size: 22px !important; }
-      .hero-content,.premiering-content,.ongoing-content { padding: 0 16px 36px !important; }
+    @media(max-width:480px){
+      .hero-title{font-size:28px !important;}
+      .section-header-label{font-size:26px !important;}
+      .premiere-title{font-size:22px !important;}
+      .hero-content,.premiering-content,.ongoing-content{padding:0 16px 36px !important;}
+      .hero-signia{max-width:80px;}
     }
   </style>
 
 <style id="fug-global-fixes">
-.hero { padding-top: 58px !important; }
-body > .hero:first-child { padding-top: 58px !important; }
+.hero{padding-top:58px !important;}
+body>.hero:first-child{padding-top:58px !important;}
 .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative !important;overflow:hidden !important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s !important;}
 .cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:1 !important;animation:none !important;transition:transform 0.1s linear !important;}
 .cross-icon svg{width:100%;height:100%;}
@@ -183,9 +241,16 @@ body > .hero:first-child { padding-top: 58px !important; }
 <body>
 <script src="nav.js"></script>
 
+<!-- ═══ HERO — original structure, logo added as absolute overlay ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+
+  <!-- Digital Dome logo: position:absolute, does not affect hero-content flow -->
+  <div class="hero-signia">
+    <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/>
+  </div>
+
   <div class="hero-content">
     <p class="hero-eyebrow">Immersive Africa</p>
     <h1 class="hero-title">Explore The<br>AfriVerse</h1>
@@ -194,6 +259,7 @@ body > .hero:first-child { padding-top: 58px !important; }
   </div>
 </section>
 
+<!-- ═══ TICKER ═══ -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
@@ -211,13 +277,14 @@ body > .hero:first-child { padding-top: 58px !important; }
   </div>
 </div>
 
+<!-- ═══ PREMIERING ═══ -->
 <section class="premiering-section">
   <div class="premiering-bg"></div>
   <div class="premiering-overlay"></div>
   <div class="cross-icon" style="top:40px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:40px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)"stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:30px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)"stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:30px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)"stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:40px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:30px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:30px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
 
   <div class="premiering-content">
     <h2 class="section-header-label">Premiering</h2>
@@ -238,6 +305,7 @@ body > .hero:first-child { padding-top: 58px !important; }
   </div>
 </section>
 
+<!-- ═══ ON-GOING ═══ -->
 <section class="ongoing-section">
   <div class="ongoing-bg"></div>
   <div class="ongoing-overlay"></div>
@@ -255,7 +323,6 @@ body > .hero:first-child { padding-top: 58px !important; }
     <div class="premiere-links">
       <a href="#">More about Kwasukasukela</a>
     </div>
-    <!-- logos: Digital Dome + HabitatXR -->
     <div class="premiere-co">
       <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Digital Dome" style="height:28px;"/>
       <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:28px;object-fit:contain;filter:brightness(0) invert(1);"/>
@@ -264,16 +331,12 @@ body > .hero:first-child { padding-top: 58px !important; }
   </div>
 </section>
 
-<!-- PARTNERS — WHITE BACKGROUND, NO LOGO NAMES, OFF-WHITE TILE -->
+<!-- ═══ PARTNERS ═══ -->
 <section class="partners-section reveal">
   <h2 class="partners-title">Our Immersive Africa Partners</h2>
-
   <div class="partners-carousel-outer">
-    <div class="partners-carousel-track" id="partnersTrack">
-      <!-- Injected by JS -->
-    </div>
+    <div class="partners-carousel-track" id="partnersTrack"></div>
   </div>
-
   <div class="partners-blue-band">
     <p class="partners-disclaimer">
       Immersive Africa is supported by the Spaces of Culture programme under Africa-Europe Partnerships for Culture, managed by EUNIC. By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes across our print and digital platforms, including social media.
@@ -290,7 +353,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── PARTNERS — no name labels, original colours, off-white tile ── */
+/* ── PARTNERS ── */
 const partners = [
   { img: 'images/logos/immersiveAfrica/acf.svg',            name: 'Maison des Mondes Africains', url: 'https://www.institutfrancais.com/en/' },
   { img: 'images/logos/immersiveAfrica/eunic.svg',           name: 'EUNIC',                        url: 'https://www.eunic.eu/' },
@@ -305,20 +368,12 @@ const partners = [
   { img: 'images/logos/immersiveAfrica/mansab.png',          name: 'MansA',                        url: '#' },
   { img: 'images/logos/immersiveAfrica/SoC logo.png',        name: 'Spaces of Culture',            url: '#' },
 ];
-
 const track = document.getElementById('partnersTrack');
-// Double up for seamless loop
 [...partners, ...partners].forEach(p => {
   const a = document.createElement('a');
-  a.href = p.url;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
+  a.href = p.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
   a.className = 'carousel-logo';
-  a.innerHTML = `
-    <div class="carousel-logo-img-wrap">
-      <img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/>
-    </div>
-  `;
+  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
   track.appendChild(a);
 });
 
@@ -327,8 +382,7 @@ const track = document.getElementById('partnersTrack');
   const btn = document.getElementById('immersive-cta');
   if (!btn) return;
   const arcColors = ['#a855f7','#ec4899','#3b82f6','#06b6d4','#10b981','#eab308'];
-  let frame = 0;
-  let si;
+  let frame = 0, si;
   function spawnArc() {
     if (!btn.matches(':hover')) return;
     const rect = btn.getBoundingClientRect();
@@ -352,8 +406,8 @@ const track = document.getElementById('partnersTrack');
 (function(){
   const styleEl = document.createElement('style');
   styleEl.textContent = `
-    .hero{min-height:490px!important;align-items:center!important;padding-top:0!important;}
-    .hero-content{padding-top:110px!important;padding-bottom:60px!important;}
+    .hero{min-height:490px!important;align-items:flex-end!important;padding-top:110px!important;}
+    .hero-content{padding-top:0!important;padding-bottom:72px!important;}
     .cross-icon{transition:transform 0.1s linear;}
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
     .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;justify-content:center;}
@@ -389,15 +443,9 @@ const track = document.getElementById('partnersTrack');
       const a = document.createElement('a');
       a.className = 'fug-sig-item';
       a.href = p.href;
-      const isActive = currentPage === p.href;
-      if (isActive) a.classList.add('fug-active');
+      if (currentPage === p.href) a.classList.add('fug-active');
       const img = document.createElement('img');
-      img.src = p.img; img.alt = p.label;
-      img.style.cssText = p.imgStyle;
-      if (isActive) { img.style.transform = 'scale(1.18)'; img.style.opacity = '1'; }
-      const label = document.createElement('span');
-      label.className = 'fug-sig-label';
-      label.textContent = p.label;
+      img.src = p.img; img.alt = p.label; img.style.cssText = p.imgStyle;
       a.appendChild(img);
       inner.appendChild(a);
     });
@@ -412,20 +460,18 @@ const track = document.getElementById('partnersTrack');
       const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
       [{style:'top:16px;left:200px;'},{style:'top:16px;right:200px;'}].forEach(({style}) => {
         const el = document.createElement('div');
-        el.className = 'cross-icon';
-        el.style.cssText = style;
-        el.innerHTML = CROSS_SVG;
+        el.className = 'cross-icon'; el.style.cssText = style; el.innerHTML = CROSS_SVG;
         hero.appendChild(el);
       });
     }
-    const ticker = document.querySelector('.ticker-wrapper, .ticker-bar, .ticker-wrap');
+    const ticker = document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
     if (ticker) ticker.after(buildStrip());
   }
 
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
 })();
 
-/* Cross icon scroll spin */
+/* ── CROSS ICON SCROLL SPIN ── */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){
@@ -446,8 +492,7 @@ const track = document.getElementById('partnersTrack');
             el.style.transform = 'rotate('+rot+'deg)';
           });
         }
-        lastY = y;
-        ticking = false;
+        lastY = y; ticking = false;
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(resetRot, 300);
       });

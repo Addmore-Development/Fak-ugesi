@@ -15,7 +15,7 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
+    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.65;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
 
     /* HERO */
@@ -190,7 +190,7 @@
     }
     .showcase-cta-btn:hover{background:#0d1b3e!important;color:#fff!important;border-color:rgba(100,160,255,0.65)!important;transform:translateY(-1px)!important;}
 
-    /* ══ EXPO PARTNERS — white bg, original colours, off-white tile for white logos, no name labels ══ */
+    /* ══ EXPO PARTNERS ══ */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
     .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.06) 0%,transparent 50%);pointer-events:none;}
     .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
@@ -199,7 +199,6 @@
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* Each logo — off-white tile so white logos show, original colours, no name */
     .carousel-logo{
       min-width:150px;flex:0 0 auto;
       display:flex;align-items:center;justify-content:center;
@@ -218,12 +217,10 @@
       box-shadow:0 10px 32px rgba(26,39,68,0.14);
       background:#dde0e5;
     }
-    /* Original colours — NO filter */
     .carousel-logo-img-wrap img{
       max-height:56px;max-width:118px;
       object-fit:contain;display:block;
     }
-    /* Name label — hidden */
     .carousel-logo-name{display:none!important;}
 
     .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;position:relative;z-index:2;}
@@ -326,7 +323,7 @@
 
 <style id="fug-global-fixes">
 .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
-.cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:0.45!important;animation:none!important;transition:transform 0.1s linear!important;}
+.cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:0.65!important;animation:none!important;transition:transform 0.1s linear!important;}
 .cross-icon svg{width:100%;height:100%;}
 @media(max-width:1400px){:root{--band:160px!important;}}
 @media(max-width:1200px){:root{--band:80px!important;}}
@@ -351,10 +348,11 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
+  <!-- Hero cross icons — navy, 200px -->
+  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Expo</p>
@@ -390,8 +388,11 @@
 <section class="curatorial-section reveal" id="curatorial-section">
   <div class="curatorial-bg-img"></div>
   <div class="curatorial-fade"></div>
-  <div class="cross-icon" style="top:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <!-- Curatorial cross icons — navy, 200px -->
+  <div class="cross-icon" style="top:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;right:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="curatorial-inner">
     <div class="curatorial-top-row">
       <h2 class="curatorial-title">Curatorial Frequencies</h2>
@@ -423,10 +424,11 @@
 
 <!-- SHOWCASES -->
 <section class="showcases-section reveal" id="showcases-section">
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <!-- Showcases cross icons — navy, 200px -->
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
 
   <div id="showcases-cards-view">
     <div class="showcases-header" id="showcases-header">
@@ -449,10 +451,11 @@
   <div class="showcase-detail" id="showcase-detail">
     <div class="showcase-detail-inner">
       <div class="showcase-detail-bg" id="showcase-detail-bg"></div>
-      <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
+      <!-- Showcase detail cross icons — navy, 200px -->
+      <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+      <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
       <div class="showcase-detail-content">
         <button class="showcase-detail-back" id="showcase-detail-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -490,8 +493,11 @@
 <section class="showcase-cta-section reveal" id="showcase-cta-section">
   <div class="showcase-cta-bg"></div>
   <div class="showcase-cta-overlay"></div>
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
+  <!-- CTA cross icons — navy, 200px -->
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="showcase-cta-content">
     <h2 class="showcase-cta-title">Want To Showcase Your Work At Fak'ugesi Expo?</h2>
     <p class="showcase-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
@@ -499,10 +505,11 @@
   </div>
 </section>
 
-<!-- EXPO PARTNERS — SVG logos only (broken raster files removed), original colours, off-white tile -->
+<!-- EXPO PARTNERS -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.2)" stroke-width="1.5"/></svg></div>
+  <!-- Partners cross icons — navy, 200px -->
+  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <h2 class="partners-title">Our Expo Partners</h2>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="expoPartnersTrack"></div>
@@ -522,12 +529,6 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/*
-  EXPO PARTNERS — SVG-only list.
-  Broken raster files (habitatxr.png, ifas.png, mansab.png, SoC logo.png) removed.
-  All remaining entries are SVGs known to exist in the project.
-  No name labels. Original colours. Off-white tile (#e8eaed) so white logos show.
-*/
 const expoPartners = [
   { img:'/images/logos/expo/goethe.svg',          name:'Goethe Institut',     url:'https://www.goethe.de/ins/za/en/index.html' },
   { img:'/images/logos/expo/prohelvetia.svg',      name:'Pro Helvetia',        url:'https://prohelvetia.ch/en/' },
@@ -545,50 +546,15 @@ const expoPartners = [
 
 const track = document.getElementById('expoPartnersTrack');
 
-// Helper: test if an image loads; if not, skip it
-function addLogoIfLoads(p) {
-  const testImg = new Image();
-  testImg.onload = function() {
-    const a = document.createElement('a');
-    a.href = p.url || '#';
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.className = 'carousel-logo';
-    a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}"/></div>`;
-    track.appendChild(a);
-    // Also add to the duplicate set for seamless loop
-    const a2 = a.cloneNode(true);
-    document.getElementById('expoPartnersTrack2').appendChild(a2);
-  };
-  testImg.onerror = function() {
-    // Silently skip broken images
-    console.warn('Skipping missing logo:', p.img);
-  };
-  testImg.src = p.img;
-}
-
-// Build two tracks side-by-side for seamless CSS loop
-track.id = 'expoPartnersTrack';
-const track2 = document.createElement('div');
-track2.id = 'expoPartnersTrack2';
-track2.style.display = 'contents'; // render children inline
-track.parentNode.insertBefore(track2, track.nextSibling);
-
-// Actually just do it simply — double the array and trust the SVGs exist
 [...expoPartners, ...expoPartners].forEach(p => {
   const a = document.createElement('a');
   a.href = p.url || '#';
   a.target = '_blank';
   a.rel = 'noopener noreferrer';
   a.className = 'carousel-logo';
-  // Wrap in a container that hides if img fails to load
   a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
-  // Re-append to original track (remove the track2 approach for simplicity)
   track.appendChild(a);
 });
-
-// Remove the empty track2 element
-if (track2.parentNode) track2.parentNode.removeChild(track2);
 
 /* SHOWCASE CARD DATA */
 const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
